@@ -1,0 +1,11 @@
+node_modules/
+
+# Ignore artifacts:
+dist/
+build/
+public/
+
+commitlint.config.cjs
+postcss.config.cjs
+tailwind.config.cjs
+*.d.ts
