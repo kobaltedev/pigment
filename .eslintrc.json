@@ -8,13 +8,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
   ],
-  "plugins": [
-    "solid",
-    "jsx-a11y",
-    "@typescript-eslint",
-    "import",
-    "simple-import-sort"
-  ],
+  "plugins": ["solid", "jsx-a11y", "@typescript-eslint", "import", "simple-import-sort"],
   "rules": {
     "import/first": "warn",
     "import/newline-after-import": "warn",
