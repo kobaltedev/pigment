@@ -24,9 +24,6 @@ export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   decorators,
   darkMode: {
-    darkClass: "ui-dark",
-    lightClass: "ui-light",
-    // TODO: override `appBg` and `appContentBg` in light and dark mode.
     light: { ...themes.normal },
     dark: { ...themes.dark },
   },
