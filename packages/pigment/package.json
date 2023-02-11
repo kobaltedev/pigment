@@ -1,0 +1,82 @@
+{
+  "name": "@kobalte/pigment",
+  "version": "0.0.0",
+  "private": false,
+  "description": "Ready to use UI components built with Kobalte and Tailwind CSS.",
+  "keywords": [
+    "solid",
+    "solidjs",
+    "ui",
+    "library",
+    "design-system",
+    "components",
+    "kobalte"
+  ],
+  "homepage": "https://github.com/kobaltedev/pigment/tree/main/packages/pigment#readme",
+  "bugs": {
+    "url": "https://github.com/kobaltedev/pigment/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kobaltedev/pigment.git"
+  },
+  "license": "MIT",
+  "author": "Fabien Marie-Louise <fabienml.dev@gmail.com>",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "solid": "./dist/index.jsx",
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": "./dist/index.cjs"
+    },
+    "./style": "./dist/pigment.css"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "dev": "vite serve dev --host",
+    "storybook": "storybook dev -p 6006",
+    "test": "jest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@kobalte/core": "^0.6.1",
+    "@kobalte/utils": "^0.5.1",
+    "@solid-primitives/refs": "^0.3.6",
+    "class-variance-authority": "^0.4.0"
+  },
+  "devDependencies": {
+    "@kobalte/pigment-tailwind-preset": "^0.0.0",
+    "@storybook/addon-a11y": "7.0.0-beta.43",
+    "@storybook/addon-essentials": "7.0.0-beta.43",
+    "@storybook/addon-interactions": "7.0.0-beta.43",
+    "@storybook/addon-links": "7.0.0-beta.43",
+    "@storybook/addon-postcss": "2.0.0",
+    "@storybook/html": "7.0.0-beta.43",
+    "@storybook/html-webpack5": "7.0.0-beta.43",
+    "@storybook/theming": "7.0.0-beta.43",
+    "autoprefixer": "10.4.13",
+    "postcss": "8.4.21",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "storybook": "7.0.0-beta.43",
+    "storybook-dark-mode": "2.0.6",
+    "tailwindcss": "3.2.6"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.6.10"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

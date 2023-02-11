@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
+    "target": "esnext",
+    "module": "esnext",
     "lib": ["dom", "dom.iterable", "esnext", "scripthost"],
     "newLine": "LF",
     "allowJs": false,
@@ -12,16 +12,12 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
     "sourceMap": true,
-    "types": ["solid-start/env", "solid-js", "vite/client", "node"],
-    "baseUrl": "./",
-    "paths": {
-      "~/*": ["./src/*"]
-    }
+    "types": ["solid-js", "vite/client", "node", "jest", "@testing-library/jest-dom"]
   },
   "exclude": ["node_modules"]
 }

@@ -4,6 +4,6 @@
     // ensure that nobody can accidentally use this config for a build
     "noEmit": true
   },
-  "include": ["src"],
+  "include": ["packages", "apps"],
   "exclude": ["node_modules", "**/dist", "**/build"]
 }

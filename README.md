@@ -1,27 +1,22 @@
 # Pigment
 
-Beautifully designed components built with Kobalte and Tailwind CSS.
+<p>
+  <a href="LICENSE.md">
+    <img src="https://img.shields.io/github/license/kobaltedev/pigment" alt="MIT License"/>
+  </a>
+  <a href="https://www.npmjs.com/package/@kobalte/pigment">
+    <img src="https://img.shields.io/npm/v/@kobalte/pigment" alt="npm - @kobalte/pigment"/>
+  </a>
+  <a href="https://www.npmjs.com/package/@kobalte/pigment">
+    <img src="https://img.shields.io/npm/dm/@kobalte/pigment.svg" alt="npm - downloads" height="18">
+  </a>
+</p>
 
-## Features
-
-- Accessible components from [Kobalte](https://kobalte.dev).
-- Styled with [TailwindCSS](https://tailwindcss.com/).
-- Icons from [Lucide](https://lucide.dev/).
-- Easy integration with [SolidStart](https://start.solidjs.com/).
-
-### Tailwind CSS Features
-
-- Animation with [tailwindcss-animate](https://github.com/jamiebuilds/tailwindcss-animate)
-- Conditional classes with [clsx](https://github.com/lukeed/clsx)
-- Variants with [class-variance-authority](https://github.com/joe-bell/cva)
+Ready to use UI components built with Kobalte and Tailwind CSS.
 
 ## Documentation
 
 For full documentation, visit [pigment.kobalte.dev](https://pigment.kobalte.dev/).
-
-## Acknowledgment
-
-- [shadcn/ui](ui.shadcn.com)
 
 ## License
 
