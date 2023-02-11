@@ -36,7 +36,7 @@ export function pigmentPreset(config?: PresetConfig): Partial<Config> {
             800: "#091022",
             900: "#050a1c",
           },
-          secondary: config?.colors?.secondary ?? colors.slate,
+          secondary: config?.colors?.secondary ?? colors.zinc,
           success: config?.colors?.success ?? colors.green,
           info: config?.colors?.info ?? colors.sky,
           warning: config?.colors?.warning ?? colors.amber,

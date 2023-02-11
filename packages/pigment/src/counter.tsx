@@ -12,7 +12,7 @@ export const Counter: Component<CounterProps> = props => {
   const getColor = () => (props.theme === "red" ? "red" : "black");
 
   return (
-    <div>
+    <div class="bg-info-500 dark:bg-success-500">
       <button style={{ color: getColor() }} onClick={() => setCount(c => c + 1)}>
         Click <span>{count()}</span> times
       </button>
