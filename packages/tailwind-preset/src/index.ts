@@ -17,6 +17,7 @@ interface PresetConfig {
     warning: Palette;
     danger: Palette;
     help: Palette;
+    "focus-ring": string;
   }>;
 }
 
@@ -48,6 +49,7 @@ export function pigmentPreset(config?: PresetConfig): Partial<Config> {
           warning: config?.colors?.warning ?? colors.amber,
           danger: config?.colors?.danger ?? colors.red,
           help: config?.colors?.help ?? colors.violet,
+          "focus-ring": config?.colors?.["focus-ring"] ?? colors.blue[400],
         },
         keyframes: {
           "accordion-down": {
