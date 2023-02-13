@@ -1,5 +1,5 @@
 /**
- * Shape variants used in several components.
+ * Default shape variants used in several components.
  */
 export const SHAPE_VARIANTS = {
   rounded: {

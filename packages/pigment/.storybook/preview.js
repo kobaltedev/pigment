@@ -29,7 +29,7 @@ export const parameters = {
     classTarget: "html",
     stylePreview: true,
     light: themes.normal,
-    dark: { ...themes.dark, barBg: "#27272a", appBg: "#27272a", appContentBg: "#18181b" },
+    dark: { ...themes.dark, barBg: "#1e293b", appBg: "#1e293b", appContentBg: "#0f172a" },
   },
   controls: {
     matchers: {

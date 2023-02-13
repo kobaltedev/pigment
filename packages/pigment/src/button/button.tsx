@@ -18,58 +18,27 @@ const buttonVariants = cva(
     "font-medium",
     "transition-colors",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-focus-ring",
-    "disabled:opacity-50 disabled:cursor-not-allowed",
+    "ui-disabled:opacity-50 ui-disabled:cursor-not-allowed",
   ],
   {
     variants: {
       variant: {
-        primary: [
-          "text-white",
-          "bg-primary-600 hover:bg-primary-700 active:bg-primary-800",
-          "border-primary-600 hover:border-primary-700 active:border-primary-800",
-        ],
-        "primary-destructive": [
-          "text-white",
-          "bg-danger-600 hover:bg-danger-700 active:bg-danger-800",
-          "border-danger-600 hover:border-danger-700 active:border-danger-800",
-        ],
-        secondary: [
-          "text-primary-700 hover:text-primary-800 active:text-primary-900",
-          "bg-primary-50 hover:bg-primary-100 active:bg-primary-200",
-          "border-primary-50 hover:border-primary-100 active:border-primary-200",
-        ],
-        "secondary-destructive": [
-          "text-danger-700 hover:text-danger-800 active:text-danger-900",
-          "bg-danger-50 hover:bg-danger-100 active:bg-danger-200",
-          "border-danger-50 hover:border-danger-100 active:border-danger-200",
-        ],
-        tertiary: [
-          "text-primary-700 hover:text-primary-800 active:text-primary-900",
-          "bg-transparent hover:bg-primary-50 active:bg-primary-100",
-          "border-transparent hover:border-primary-50 active:border-primary-100",
-        ],
-        "tertiary-destructive": [
-          "text-danger-700 hover:text-danger-800 active:text-danger-900",
-          "bg-transparent hover:bg-danger-50 active:bg-danger-100",
-          "border-transparent hover:border-danger-50 active:border-danger-100",
-        ],
-        default: [
-          "text-neutral-700 hover:text-neutral-800 active:text-neutral-900",
-          "bg-white hover:bg-neutral-50 active:bg-neutral-100",
-          "border-neutral-300  active:border-neutral-400",
-        ],
-        text: [
-          "text-neutral-600 hover:text-neutral-700 active:text-neutral-800",
-          "bg-transparent hover:bg-neutral-50 active:bg-neutral-100",
-          "border-transparent hover:border-neutral-50 active:border-neutral-100",
-        ],
+        solid: "",
+        soft: "",
+        outlined: "",
+        text: "",
+      },
+      colorScheme: {
+        primary: "",
+        neutral: "",
+        danger: "",
       },
       size: {
-        xs: "h-9 text-sm gap-2",
-        sm: "h-10 text-sm gap-2",
-        md: "h-11 text-base gap-2",
-        lg: "h-12 text-base gap-2",
-        xl: "h-14 text-lg gap-3",
+        sm: "h-9 text-sm gap-2",
+        md: "h-10 text-sm gap-2",
+        lg: "h-11 text-base gap-2",
+        xl: "h-12 text-base gap-2",
+        "2xl": "h-14 text-lg gap-3",
       },
       isSquare: {
         true: "p-0",
@@ -82,27 +51,144 @@ const buttonVariants = cva(
       ...SHAPE_VARIANTS,
     },
     compoundVariants: [
+      // solid + colors
+      {
+        variant: "solid",
+        colorScheme: "primary",
+        class: [
+          "text-white",
+          "bg-primary-600 hover:bg-primary-700 active:bg-primary-800",
+          "border-primary-600 hover:border-primary-700 active:border-primary-800",
+        ],
+      },
+      {
+        variant: "solid",
+        colorScheme: "neutral",
+        class: [
+          "text-white",
+          "bg-neutral-600 hover:bg-neutral-700 active:bg-neutral-800",
+          "border-neutral-600 hover:border-neutral-700 active:border-neutral-800",
+        ],
+      },
+      {
+        variant: "solid",
+        colorScheme: "danger",
+        class: [
+          "text-white",
+          "bg-danger-600 hover:bg-danger-700 active:bg-danger-800",
+          "border-danger-600 hover:border-danger-700 active:border-danger-800",
+        ],
+      },
+
+      // soft + colors
+      {
+        variant: "soft",
+        colorScheme: "primary",
+        class: [
+          "text-primary-700 hover:text-primary-800 active:text-primary-900",
+          "bg-primary-50 hover:bg-primary-100 active:bg-primary-200",
+          "border-primary-50 hover:border-primary-100 active:border-primary-200",
+        ],
+      },
+      {
+        variant: "soft",
+        colorScheme: "neutral",
+        class: [
+          "text-neutral-600 hover:text-neutral-700 active:text-neutral-800",
+          "bg-neutral-100 hover:bg-neutral-200 active:bg-neutral-300",
+          "border-neutral-100 hover:border-neutral-200 active:border-neutral-300",
+        ],
+      },
+      {
+        variant: "soft",
+        colorScheme: "danger",
+        class: [
+          "text-danger-700 hover:text-danger-800 active:text-danger-900",
+          "bg-danger-50 hover:bg-danger-100 active:bg-danger-200",
+          "border-danger-50 hover:border-danger-100 active:border-danger-200",
+        ],
+      },
+
+      // outlined + colors
+      {
+        variant: "outlined",
+        colorScheme: "primary",
+        class: [
+          "text-primary-700 hover:text-primary-800 active:text-primary-900",
+          "bg-transparent hover:bg-primary-50 active:bg-primary-100",
+          "border-primary-300  active:border-primary-400",
+        ],
+      },
+      {
+        variant: "outlined",
+        colorScheme: "neutral",
+        class: [
+          "text-neutral-600 hover:text-neutral-700 active:text-neutral-800",
+          "bg-transparent hover:bg-neutral-100 active:bg-neutral-200",
+          "border-neutral-200  active:border-neutral-300",
+        ],
+      },
+      {
+        variant: "outlined",
+        colorScheme: "danger",
+        class: [
+          "text-danger-700 hover:text-danger-800 active:text-danger-900",
+          "bg-transparent hover:bg-danger-50 active:bg-danger-100",
+          "border-danger-300  active:border-danger-400",
+        ],
+      },
+
+      // text + colors
+      {
+        variant: "text",
+        colorScheme: "primary",
+        class: [
+          "text-primary-700 hover:text-primary-800 active:text-primary-900",
+          "bg-transparent hover:bg-primary-50 active:bg-primary-100",
+          "border-transparent hover:border-primary-50 active:border-primary-100",
+        ],
+      },
+      {
+        variant: "text",
+        colorScheme: "neutral",
+        class: [
+          "text-neutral-600 hover:text-neutral-700 active:text-neutral-800",
+          "bg-transparent hover:bg-neutral-100 active:bg-neutral-200",
+          "border-transparent hover:border-neutral-100 active:border-neutral-200",
+        ],
+      },
+      {
+        variant: "text",
+        colorScheme: "danger",
+        class: [
+          "text-danger-700 hover:text-danger-800 active:text-danger-900",
+          "bg-transparent hover:bg-danger-50 active:bg-danger-100",
+          "border-transparent hover:border-danger-50 active:border-danger-100",
+        ],
+      },
+
       // rectangle button (e.g: Button)
       { isSquare: false, isFullWidth: false, class: "w-auto" },
-      { size: "xs", isSquare: false, class: "px-3.5" },
-      { size: "sm", isSquare: false, class: "px-4" },
-      { size: "md", isSquare: false, class: "px-[18px]" },
-      { size: "lg", isSquare: false, class: "px-5" },
-      { size: "xl", isSquare: false, class: "px-6" },
+      { size: "sm", isSquare: false, class: "px-3.5" },
+      { size: "md", isSquare: false, class: "px-4" },
+      { size: "lg", isSquare: false, class: "px-[18px]" },
+      { size: "xl", isSquare: false, class: "px-5" },
+      { size: "2xl", isSquare: false, class: "px-6" },
 
       // square button (e.g: IconButton)
-      { size: "xs", isSquare: true, isFullWidth: false, class: "w-9" },
-      { size: "sm", isSquare: true, isFullWidth: false, class: "w-10" },
-      { size: "md", isSquare: true, isFullWidth: false, class: "w-11" },
-      { size: "lg", isSquare: true, isFullWidth: false, class: "w-12" },
-      { size: "xl", isSquare: true, isFullWidth: false, class: "w-14" },
+      { size: "sm", isSquare: true, isFullWidth: false, class: "w-9" },
+      { size: "md", isSquare: true, isFullWidth: false, class: "w-10" },
+      { size: "lg", isSquare: true, isFullWidth: false, class: "w-11" },
+      { size: "xl", isSquare: true, isFullWidth: false, class: "w-12" },
+      { size: "2xl", isSquare: true, isFullWidth: false, class: "w-14" },
     ],
     defaultVariants: {
-      variant: "default",
-      size: "sm",
+      variant: "solid",
+      colorScheme: "primary",
+      size: "md",
       rounded: "md",
-      isFullWidth: false,
       isSquare: false,
+      isFullWidth: false,
     },
   }
 );
@@ -143,8 +229,8 @@ export const Button: PolymorphicComponent<"button", ButtonProps> = createPolymor
   props => {
     const [local, variantProps, contentProps, others] = splitProps(
       props,
-      ["class", "isDisabled", "isLoading", "loadingText", "loadingIcon", "loadingIconPlacement"],
-      ["variant", "size", "rounded", "isFullWidth", "isSquare"],
+      ["class", "isLoading", "loadingText", "loadingIcon", "loadingIconPlacement"],
+      ["variant", "colorScheme", "size", "rounded", "isSquare", "isFullWidth"],
       ["startIcon", "endIcon", "children"]
     );
 
@@ -232,7 +318,7 @@ function ButtonContent(props: ButtonContentProps) {
 function ButtonLoadingIcon(props: ComponentProps<"span">) {
   props = mergeDefaultProps(
     {
-      children: () => <LoaderIcon class="animate-spin" />,
+      children: () => <LoaderIcon class="text-[1.2em] animate-spin" />,
     },
     props
   );

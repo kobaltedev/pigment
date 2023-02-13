@@ -2,8 +2,8 @@ import kobaltePlugin from "@kobalte/tailwindcss";
 import formsPlugin from "@tailwindcss/forms";
 import type { Config } from "tailwindcss";
 import colors from "tailwindcss/colors";
-import animatePlugin from "tailwindcss-animate";
 import plugin from "tailwindcss/plugin";
+import animatePlugin from "tailwindcss-animate";
 
 type Scale = "50" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900";
 type Palette = Record<Scale, string>;
@@ -43,7 +43,7 @@ export function pigmentPreset(config?: PresetConfig): Partial<Config> {
       extend: {
         colors: {
           primary: config?.colors?.primary ?? colors.blue,
-          neutral: config?.colors?.neutral ?? colors.zinc,
+          neutral: config?.colors?.neutral ?? colors.slate,
           success: config?.colors?.success ?? colors.green,
           info: config?.colors?.info ?? colors.sky,
           warning: config?.colors?.warning ?? colors.amber,
