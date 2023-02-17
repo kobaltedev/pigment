@@ -33,8 +33,15 @@ function pigmentPlugin(options: PigmentOptions | undefined = {}): PluginCreator 
       }
     }
 
-    const commonBase = {
+    addBase({
       ":root": {
+        ...flattenKebabCase(
+          pigmentTheme.light,
+          (_, value) => value,
+          `--${cssVarPrefix}`,
+          cssVarPrefix,
+          ""
+        ),
         ...flattenKebabCase(
           pigmentTheme.common.borderRadius,
           (_, value) => value,
@@ -43,57 +50,38 @@ function pigmentPlugin(options: PigmentOptions | undefined = {}): PluginCreator 
           ""
         ),
       },
-    };
+    });
 
-    const lightBase = {
-      ":root": {
-        ...flattenKebabCase(
-          pigmentTheme.light,
-          (_, value) => value,
-          `--${cssVarPrefix}-`,
-          `${cssVarPrefix}-`,
-          ""
-        ),
-      },
-    };
-
-    let darkBase = {};
-
-    const darkBaseContent = {
-      ...flattenKebabCase(
-        pigmentTheme.dark,
-        (_, value) => value,
-        `--${cssVarPrefix}-`,
-        `${cssVarPrefix}-`,
-        ""
-      ),
-    };
+    const darkBaseStyle = flattenKebabCase(
+      pigmentTheme.dark,
+      (_, value) => value,
+      `--${cssVarPrefix}`,
+      cssVarPrefix,
+      ""
+    );
 
     const configDarkMode = config().darkMode;
-    const defaultDarkModeClassSelector = `.${config().prefix}dark`;
 
     if (configDarkMode === "media") {
-      darkBase = {
+      addBase({
         "@media (prefers-color-scheme: dark)": {
-          ":root": darkBaseContent,
+          ":root": darkBaseStyle,
         },
-      };
-    } else if (configDarkMode === "class") {
-      darkBase = {
-        [defaultDarkModeClassSelector]: darkBaseContent,
-      };
-    } else if (Array.isArray(configDarkMode)) {
-      const otherDarkModeSelectors = [...configDarkMode.slice(1)];
-      darkBase = {
-        [`${defaultDarkModeClassSelector}, ${otherDarkModeSelectors.join(", ")}`]: darkBaseContent,
-      };
-    }
+      });
+    } else if (configDarkMode != null) {
+      const defaultDarkModeClassSelector = `.${config().prefix}dark`;
 
-    addBase({
-      commonBase,
-      lightBase,
-      darkBase,
-    });
+      let darkModeSelector = defaultDarkModeClassSelector;
+
+      if (Array.isArray(configDarkMode)) {
+        const otherDarkModeSelectors = [...configDarkMode.slice(1)];
+        darkModeSelector = `${defaultDarkModeClassSelector}, ${otherDarkModeSelectors.join(", ")}`;
+      }
+
+      addBase({
+        [darkModeSelector]: darkBaseStyle,
+      });
+    }
 
     addUtilities({
       ".reset-svg": {
