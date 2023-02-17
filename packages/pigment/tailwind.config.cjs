@@ -1,8 +1,24 @@
-const { pigmentPreset } = require("@kobalte/pigment-tailwind-preset");
+const pigment = require("@kobalte/pigment-tailwind-plugin");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
-  darkMode: "class", // Override the Pigment preset because array syntax doesn't work with storybook
-  presets: [pigmentPreset()],
+  darkMode: "class",
+  plugins: [
+    pigment({
+      cssVarPrefix: "hope-",
+      theme: {
+        base: "default",
+        override: {
+          light: {
+            color: {
+              text: {
+                base: "#121212",
+              },
+            },
+          },
+        },
+      },
+    }),
+  ],
 };

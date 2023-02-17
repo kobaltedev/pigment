@@ -57,7 +57,7 @@
     "clsx": "^1.2.1"
   },
   "devDependencies": {
-    "@kobalte/pigment-tailwind-preset": "^0.0.0",
+    "@kobalte/pigment-tailwind-plugin": "^0.0.0",
     "@storybook/addon-a11y": "7.0.0-beta.43",
     "@storybook/addon-essentials": "7.0.0-beta.43",
     "@storybook/addon-interactions": "7.0.0-beta.43",

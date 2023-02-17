@@ -1,15 +1,15 @@
-# @kobalte/pigment-tailwind-preset
+# @kobalte/pigment-tailwind-plugin
 
-Pigment preset for Tailwind CSS
+Pigment plugin for Tailwind CSS.
 
 ## Installation
 
 ```bash
-npm install -D @kobalte/pigment-tailwind-preset
+npm install -D @kobalte/pigment-tailwind-plugin
 # or
-yarn add -D @kobalte/pigment-tailwind-preset
+yarn add -D @kobalte/pigment-tailwind-plugin
 # or
-pnpm add -D @kobalte/pigment-tailwind-preset
+pnpm add -D @kobalte/pigment-tailwind-plugin
 ```
 
 ## Documentation
