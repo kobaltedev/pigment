@@ -17,13 +17,13 @@ const buttonVariants = cva(
     "border border-solid",
     "font-medium",
     "transition-colors",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-focus-ring",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-border-focused",
     "ui-disabled:opacity-50 ui-disabled:cursor-not-allowed",
   ],
   {
     variants: {
       variant: {
-        solid: "",
+        solid: "text-text-inverse",
         soft: "",
         outlined: "",
         text: "",
@@ -56,27 +56,24 @@ const buttonVariants = cva(
         variant: "solid",
         colorScheme: "primary",
         class: [
-          "text-white",
-          "bg-primary-600 hover:bg-primary-700 active:bg-primary-800",
-          "border-primary-600 hover:border-primary-700 active:border-primary-800",
+          "bg-bg-primary-bold hover:bg-bg-primary-bold-hovered active:bg-bg-primary-bold-pressed",
+          "border-bg-primary-bold hover:border-bg-primary-bold-hovered active:border-bg-primary-bold-pressed",
         ],
       },
       {
         variant: "solid",
         colorScheme: "neutral",
         class: [
-          "text-white",
-          "bg-neutral-600 hover:bg-neutral-700 active:bg-neutral-800",
-          "border-neutral-600 hover:border-neutral-700 active:border-neutral-800",
+          "bg-bg-neutral-bold hover:bg-bg-neutral-bold-hovered active:bg-bg-neutral-bold-pressed",
+          "border-bg-neutral-bold hover:border-bg-neutral-bold-hovered active:border-bg-neutral-bold-pressed",
         ],
       },
       {
         variant: "solid",
         colorScheme: "danger",
         class: [
-          "text-white",
-          "bg-danger-600 hover:bg-danger-700 active:bg-danger-800",
-          "border-danger-600 hover:border-danger-700 active:border-danger-800",
+          "bg-bg-danger-bold hover:bg-bg-danger-bold-hovered active:bg-bg-danger-bold-pressed",
+          "border-bg-danger-bold hover:border-bg-danger-bold-hovered active:border-bg-danger-bold-pressed",
         ],
       },
 
@@ -85,9 +82,9 @@ const buttonVariants = cva(
         variant: "soft",
         colorScheme: "primary",
         class: [
-          "text-primary-700 hover:text-primary-800 active:text-primary-900",
-          "bg-primary-50 hover:bg-primary-100 active:bg-primary-200",
-          "border-primary-50 hover:border-primary-100 active:border-primary-200",
+          "text-text-primary",
+          "bg-bg-primary hover:bg-bg-primary-hovered active:bg-bg-primary-pressed",
+          "border-bg-primary hover:border-bg-primary-hovered active:border-bg-primary-pressed",
         ],
       },
       {
@@ -114,9 +111,9 @@ const buttonVariants = cva(
         variant: "outlined",
         colorScheme: "primary",
         class: [
-          "text-primary-700 hover:text-primary-800 active:text-primary-900",
-          "bg-transparent hover:bg-primary-50 active:bg-primary-100",
-          "border-primary-300  active:border-primary-400",
+          "text-text-primary",
+          "bg-transparent hover:bg-bg-primary-hovered active:bg-bg-primary-pressed",
+          "border-border-primary",
         ],
       },
       {
@@ -143,9 +140,9 @@ const buttonVariants = cva(
         variant: "text",
         colorScheme: "primary",
         class: [
-          "text-primary-700 hover:text-primary-800 active:text-primary-900",
-          "bg-transparent hover:bg-primary-50 active:bg-primary-100",
-          "border-transparent hover:border-primary-50 active:border-primary-100",
+          "text-text-primary",
+          "bg-transparent hover:bg-bg-primary-hovered active:bg-bg-primary-pressed",
+          "border-transparent hover:border-bg-primary-hovered active:border-bg-primary-pressed",
         ],
       },
       {

@@ -42,13 +42,6 @@ function pigmentPlugin(options: PigmentOptions | undefined = {}): PluginCreator 
           cssVarPrefix,
           ""
         ),
-        ...flattenKebabCase(
-          pigmentTheme.common.borderRadius,
-          (_, value) => value,
-          `--${cssVarPrefix}border-radius-`,
-          `${cssVarPrefix}border-radius-`,
-          ""
-        ),
       },
     });
 

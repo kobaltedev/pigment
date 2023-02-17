@@ -28,13 +28,13 @@ export interface TextColorTokens {
   linkPressed: string;
 
   /** Use for text that reinforces your brand. */
-  brand: string;
+  primary: string;
 
   /** Use for text to communicate a favorable outcome, such as input field success messaging. */
   success: string;
 
   /** Use for informative text or to communicate something is in progress. */
-  information: string;
+  info: string;
 
   /** Use for text to emphasize caution. */
   warning: string;
@@ -46,7 +46,7 @@ export interface TextColorTokens {
   danger: string;
 
   /** Use for text to emphasize change, something new, or provide help. */
-  discovery: string;
+  help: string;
 
   /** Use for text in selected state, such as an active tab. */
   selected: string;
@@ -69,13 +69,13 @@ export interface IconColorTokens {
   disabled: string;
 
   /** Use for icons that reinforce your brand. */
-  brand: string;
+  primary: string;
 
   /** Use for icons communicating a favorable outcome. */
   success: string;
 
   /** Use for icons communicating information or something in-progress. */
-  information: string;
+  info: string;
 
   /** Use for icons communicating caution. */
   warning: string;
@@ -87,7 +87,7 @@ export interface IconColorTokens {
   danger: string;
 
   /** Use for icons communicating change, something new, or provide help. */
-  discovery: string;
+  help: string;
 
   /** Use for icons in selected state, such as an active tab. */
   selected: string;
@@ -107,13 +107,13 @@ export interface BorderColorTokens {
   disabled: string;
 
   /** Use for borders or visual indicators of elements that reinforce your brand. */
-  brand: string;
+  primary: string;
 
   /** Use for borders communicating a favorable outcome, such as the borders on validated input fields. */
   success: string;
 
   /** Use for borders communicating information. */
-  information: string;
+  info: string;
 
   /** Use for borders communicating caution. */
   warning: string;
@@ -122,7 +122,7 @@ export interface BorderColorTokens {
   danger: string;
 
   /** Use for borders communicating change, something new, or provide help. */
-  discovery: string;
+  help: string;
 
   /** Use for focus rings of elements in a focus state. */
   focused: string;
@@ -217,22 +217,22 @@ export interface BackgroundColorTokens {
   neutralSubtlePressed: string;
 
   /** A vibrant background to reinforce your brand with more emphasis. */
-  brandBold: string;
+  primaryBold: string;
 
   /** A vibrant background to reinforce your brand with more emphasis, in a hovered state. */
-  brandBoldHovered: string;
+  primaryBoldHovered: string;
 
   /** A vibrant background to reinforce your brand with more emphasis, in a pressed state. */
-  brandBoldPressed: string;
+  primaryBoldPressed: string;
 
   /** Use for the background of elements used to reinforce your brand. */
-  brand: string;
+  primary: string;
 
   /** Use for the background of elements used to reinforce your brand, in a hovered state. */
-  brandHovered: string;
+  primaryHovered: string;
 
   /** Use for the background of elements used to reinforce your brand, in a pressed state. */
-  brandPressed: string;
+  primaryPressed: string;
 
   /** A vibrant background for communicating a favorable outcome. */
   successBold: string;
@@ -253,22 +253,22 @@ export interface BackgroundColorTokens {
   successPressed: string;
 
   /** A vibrant background for communicating information or something in-progress. */
-  informationBold: string;
+  infoBold: string;
 
   /** A vibrant background for communicating information or something in-progress, in a hovered state. */
-  informationBoldHovered: string;
+  infoBoldHovered: string;
 
   /** A vibrant background for communicating information or something in-progress, in a pressed state. */
-  informationBoldPressed: string;
+  infoBoldPressed: string;
 
   /** A soft background for communicating information or something in-progress. */
-  information: string;
+  info: string;
 
   /** A soft background for communicating information or something in-progress, in a hovered state. */
-  informationHovered: string;
+  infoHovered: string;
 
   /** A soft background for communicating information or something in-progress, in a pressed state. */
-  informationPressed: string;
+  infoPressed: string;
 
   /** A vibrant background for communicating caution. */
   warningBold: string;
@@ -307,22 +307,22 @@ export interface BackgroundColorTokens {
   dangerPressed: string;
 
   /** A vibrant background for communicating change, something new, or provide help. */
-  discoveryBold: string;
+  helpBold: string;
 
   /** A vibrant background for communicating change, something new, or provide help, in a hovered state. */
-  discoveryBoldHovered: string;
+  helpBoldHovered: string;
 
   /** A vibrant background for communicating change, something new, or provide help, in a pressed state. */
-  discoveryBoldPressed: string;
+  helpBoldPressed: string;
 
   /** A soft background for communicating change, something new, or provide help. */
-  discovery: string;
+  help: string;
 
   /** A soft background for communicating change, something new, or provide help, in a hovered state. */
-  discoveryHovered: string;
+  helpHovered: string;
 
   /** A soft background for communicating change, something new, or provide help, in a pressed state. */
-  discoveryPressed: string;
+  helpPressed: string;
 
   /** Use for the backgrounds of elements in a selected state, such as checkboxes and radio buttons. */
   selectedBold: string;
@@ -347,7 +347,7 @@ export interface ColorTokens {
   text: TextColorTokens;
   icon: IconColorTokens;
   border: BorderColorTokens;
-  background: BackgroundColorTokens;
+  bg: BackgroundColorTokens;
 }
 
 export interface ShadowTokens {
@@ -363,14 +363,7 @@ export interface ColorSchemeTokens {
   shadow: ShadowTokens;
 }
 
-export interface BorderRadiusTokens {
-  alert: string;
-  button: string;
-}
-
-export interface CommonTokens {
-  borderRadius: BorderRadiusTokens;
-}
+export interface CommonTokens {}
 
 /** All predefined Pigment theme names. */
 export type PredefinedThemeNames = "default";
