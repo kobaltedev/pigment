@@ -6,7 +6,7 @@ import type { Config, PluginCreator } from "tailwindcss/types/config";
 import animatePlugin from "tailwindcss-animate";
 
 import { themes } from "./themes";
-import { PigmentOptions } from "./types";
+import { PigmentOptions, Theme } from "./types";
 import { flattenKebabCase } from "./utils/flatten";
 
 function getCssVarPrefix(options: PigmentOptions) {
@@ -17,26 +17,24 @@ function pigmentPlugin(options: PigmentOptions | undefined = {}): PluginCreator 
   return function ({ addBase, addUtilities, config }) {
     const cssVarPrefix = getCssVarPrefix(options);
 
-    let pigmentTheme = themes.default;
+    const baseTheme = themes[options?.baseTheme ?? "default"];
 
-    if (options.theme != null) {
-      if (typeof options.theme === "object") {
-        const mergedTheme = {
-          value: themes[options.theme.base],
-        };
+    let finalTheme: Theme;
 
-        dset(mergedTheme, "value", options.theme.override);
+    if (options.themeOverride != null) {
+      const mergedTheme = { value: baseTheme };
 
-        pigmentTheme = mergedTheme.value;
-      } else {
-        pigmentTheme = themes[options.theme];
-      }
+      dset(mergedTheme, "value", options.themeOverride);
+
+      finalTheme = mergedTheme.value;
+    } else {
+      finalTheme = baseTheme;
     }
 
     addBase({
       ":root": {
         ...flattenKebabCase(
-          pigmentTheme.light,
+          finalTheme.light,
           (_, value) => value,
           `--${cssVarPrefix}`,
           cssVarPrefix,
@@ -46,7 +44,7 @@ function pigmentPlugin(options: PigmentOptions | undefined = {}): PluginCreator 
     });
 
     const darkBaseStyle = flattenKebabCase(
-      pigmentTheme.dark,
+      finalTheme.dark,
       (_, value) => value,
       `--${cssVarPrefix}`,
       cssVarPrefix,
@@ -98,7 +96,7 @@ function pigmentConfig(options: PigmentOptions): Partial<Config> {
       extend: {
         colors: flattenKebabCase(
           theme.color,
-          // Don't care about Tailwind opacity modifier
+          // Don't support Tailwind opacity modifier since token value can be anything.
           prefixedKey => `var(--${prefixedKey})`,
           "",
           `${cssVarPrefix}color-`,
