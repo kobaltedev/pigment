@@ -45,17 +45,17 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
-    "@kobalte/tailwindcss": "^0.4.2",
-    "@tailwindcss/forms": "^0.5.3",
-    "dset": "^3.1.2",
-    "tailwindcss-animate": "^1.0.5"
+    "dset": "^3.1.2"
   },
   "devDependencies": {
     "tailwindcss": "3.2.6",
     "tsup": "6.6.0"
   },
   "peerDependencies": {
-    "tailwindcss": "^3.2.6"
+    "@kobalte/tailwindcss": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.3",
+    "tailwindcss": "^3.2.6",
+    "tailwindcss-animate": "^1.0.5"
   },
   "publishConfig": {
     "access": "public"

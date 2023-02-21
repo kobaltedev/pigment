@@ -3,12 +3,6 @@ export type DeepPartial<T> = {
 };
 
 export interface CommonColorTokens {
-  /** Use to represent the "white" color in the application. */
-  white: string;
-
-  /** Use to represent the "black" color in the application. */
-  black: string;
-
   /** Use for focus rings of elements in a focus state. */
   focusRing: string;
 }
@@ -27,46 +21,6 @@ export interface TextColorTokens {
   disabled: string;
 
   /* -------------------------------------------------------------------------------------------------
-   * onSurface
-   * -----------------------------------------------------------------------------------------------*/
-
-  /** Use for text on a `background.surface`. */
-  onSurface: string;
-
-  /** Use for text on a `background.surfaceHover`. */
-  onSurfaceHover: string;
-
-  /** Use for text on a `background.surfaceActive`. */
-  onSurfaceActive: string;
-
-  /** Use for text on a `background.surfaceRaised`. */
-  onSurfaceRaised: string;
-
-  /** Use for text on a `background.surfaceRaisedHover`. */
-  onSurfaceRaisedHover: string;
-
-  /** Use for text on a `background.surfaceRaisedActive`. */
-  onSurfaceRaisedActive: string;
-
-  /** Use for text on a `background.surfaceOverlay`. */
-  onSurfaceOverlay: string;
-
-  /** Use for text on a `background.surfaceOverlayHover`. */
-  onSurfaceOverlayHover: string;
-
-  /** Use for text on a `background.surfaceOverlayActive`. */
-  onSurfaceOverlayActive: string;
-
-  /** Use for text on a `background.surfaceSunken`. */
-  onSurfaceSunken: string;
-
-  /** Use for text on a `background.surfaceSunkenHover`. */
-  onSurfaceSunkenHover: string;
-
-  /** Use for text on a `background.surfaceSunkenActive`. */
-  onSurfaceSunkenActive: string;
-
-  /* -------------------------------------------------------------------------------------------------
    * onSolid
    * -----------------------------------------------------------------------------------------------*/
 
@@ -78,15 +32,6 @@ export interface TextColorTokens {
 
   /** Use for text on a `background.solidPrimaryActive`. */
   onSolidPrimaryActive: string;
-
-  /** Use for text on a `background.solidAccent`. */
-  onSolidAccent: string;
-
-  /** Use for text on a `background.solidAccentHover`. */
-  onSolidAccentHover: string;
-
-  /** Use for text on a `background.solidAccentActive`. */
-  onSolidAccentActive: string;
 
   /** Use for text on a `background.solidNeutral`. */
   onSolidNeutral: string;
@@ -133,24 +78,6 @@ export interface TextColorTokens {
   /** Use for text on a `background.solidDangerActive`. */
   onSolidDangerActive: string;
 
-  /** Use for text on a `background.solidHelp`. */
-  onSolidHelp: string;
-
-  /** Use for text on a `background.solidHelpHover`. */
-  onSolidHelpHover: string;
-
-  /** Use for text on a `background.solidHelpActive`. */
-  onSolidHelpActive: string;
-
-  /** Use for text on a `background.solidInput`. */
-  onSolidInput: string;
-
-  /** Use for text on a `background.solidInputHover`. */
-  onSolidInputHover: string;
-
-  /** Use for text on a `background.solidInputActive`. */
-  onSolidInputActive: string;
-
   /* -------------------------------------------------------------------------------------------------
    * onSoft
    * -----------------------------------------------------------------------------------------------*/
@@ -162,15 +89,6 @@ export interface TextColorTokens {
 
   /** Use for text on a `background.softPrimaryActive`. */
   onSoftPrimaryActive: string;
-
-  /** Use for text on a `background.softAccent`. */
-  onSoftAccent: string;
-
-  /** Use for text on a `background.softAccentHover`. */
-  onSoftAccentHover: string;
-
-  /** Use for text on a `background.softAccentActive`. */
-  onSoftAccentActive: string;
 
   /** Use for text on a `background.softNeutral`. */
   onSoftNeutral: string;
@@ -217,15 +135,6 @@ export interface TextColorTokens {
   /** Use for text on a `background.softDangerActive`. */
   onSoftDangerActive: string;
 
-  /** Use for text on a `background.softHelp`. */
-  onSoftHelp: string;
-
-  /** Use for text on a `background.softHelpHover`. */
-  onSoftHelpHover: string;
-
-  /** Use for text on a `background.softHelpActive`. */
-  onSoftHelpActive: string;
-
   /** Use for text on a `background.softInput`. */
   onSoftInput: string;
 
@@ -247,15 +156,6 @@ export interface TextColorTokens {
 
   /** Use for text on a `background.outlinedPrimaryActive`. */
   onOutlinedPrimaryActive: string;
-
-  /** Use for text on a `background.outlinedAccent`. */
-  onOutlinedAccent: string;
-
-  /** Use for text on a `background.outlinedAccentHover`. */
-  onOutlinedAccentHover: string;
-
-  /** Use for text on a `background.outlinedAccentActive`. */
-  onOutlinedAccentActive: string;
 
   /** Use for text on a `background.outlinedNeutral`. */
   onOutlinedNeutral: string;
@@ -302,15 +202,6 @@ export interface TextColorTokens {
   /** Use for text on a `background.outlinedDangerActive`. */
   onOutlinedDangerActive: string;
 
-  /** Use for text on a `background.outlinedHelp`. */
-  onOutlinedHelp: string;
-
-  /** Use for text on a `background.outlinedHelpHover`. */
-  onOutlinedHelpHover: string;
-
-  /** Use for text on a `background.outlinedHelpActive`. */
-  onOutlinedHelpActive: string;
-
   /** Use for text on a `background.outlinedInput`. */
   onOutlinedInput: string;
 
@@ -332,15 +223,6 @@ export interface TextColorTokens {
 
   /** Use for text on a `background.ghostPrimaryActive`. */
   onGhostPrimaryActive: string;
-
-  /** Use for text on a `background.ghostAccent`. */
-  onGhostAccent: string;
-
-  /** Use for text on a `background.ghostAccentHover`. */
-  onGhostAccentHover: string;
-
-  /** Use for text on a `background.ghostAccentActive`. */
-  onGhostAccentActive: string;
 
   /** Use for text on a `background.ghostNeutral`. */
   onGhostNeutral: string;
@@ -386,24 +268,6 @@ export interface TextColorTokens {
 
   /** Use for text on a `background.ghostDangerActive`. */
   onGhostDangerActive: string;
-
-  /** Use for text on a `background.ghostHelp`. */
-  onGhostHelp: string;
-
-  /** Use for text on a `background.ghostHelpHover`. */
-  onGhostHelpHover: string;
-
-  /** Use for text on a `background.ghostHelpActive`. */
-  onGhostHelpActive: string;
-
-  /** Use for text on a `background.ghostInput`. */
-  onGhostInput: string;
-
-  /** Use for text on a `background.ghostInputHover`. */
-  onGhostInputHover: string;
-
-  /** Use for text on a `background.ghostInputActive`. */
-  onGhostInputActive: string;
 }
 
 export interface IconColorTokens {
@@ -420,46 +284,6 @@ export interface IconColorTokens {
   disabled: string;
 
   /* -------------------------------------------------------------------------------------------------
-   * onSurface
-   * -----------------------------------------------------------------------------------------------*/
-
-  /** Use for icons paired with `text.onSurface`. */
-  onSurface: string;
-
-  /** Use for icons paired with `text.onSurfaceHover`. */
-  onSurfaceHover: string;
-
-  /** Use for icons paired with `text.onSurfaceActive`. */
-  onSurfaceActive: string;
-
-  /** Use for icons paired with `text.onSurfaceRaised`. */
-  onSurfaceRaised: string;
-
-  /** Use for icons paired with `text.onSurfaceRaisedHover`. */
-  onSurfaceRaisedHover: string;
-
-  /** Use for icons paired with `text.onSurfaceRaisedActive`. */
-  onSurfaceRaisedActive: string;
-
-  /** Use for icons paired with `text.onSurfaceOverlay`. */
-  onSurfaceOverlay: string;
-
-  /** Use for icons paired with `text.onSurfaceOverlayHover`. */
-  onSurfaceOverlayHover: string;
-
-  /** Use for icons paired with `text.onSurfaceOverlayActive`. */
-  onSurfaceOverlayActive: string;
-
-  /** Use for icons paired with `text.onSurfaceSunken`. */
-  onSurfaceSunken: string;
-
-  /** Use for icons paired with `text.onSurfaceSunkenHover`. */
-  onSurfaceSunkenHover: string;
-
-  /** Use for icons paired with `text.onSurfaceSunkenActive`. */
-  onSurfaceSunkenActive: string;
-
-  /* -------------------------------------------------------------------------------------------------
    * onSolid
    * -----------------------------------------------------------------------------------------------*/
 
@@ -471,15 +295,6 @@ export interface IconColorTokens {
 
   /** Use for icons paired with `text.onSolidPrimaryActive`. */
   onSolidPrimaryActive: string;
-
-  /** Use for icons paired with `text.onSolidAccent`. */
-  onSolidAccent: string;
-
-  /** Use for icons paired with `text.onSolidAccentHover`. */
-  onSolidAccentHover: string;
-
-  /** Use for icons paired with `text.onSolidAccentActive`. */
-  onSolidAccentActive: string;
 
   /** Use for icons paired with `text.onSolidNeutral`. */
   onSolidNeutral: string;
@@ -526,24 +341,6 @@ export interface IconColorTokens {
   /** Use for icons paired with `text.onSolidDangerActive`. */
   onSolidDangerActive: string;
 
-  /** Use for icons paired with `text.onSolidHelp`. */
-  onSolidHelp: string;
-
-  /** Use for icons paired with `text.onSolidHelpHover`. */
-  onSolidHelpHover: string;
-
-  /** Use for icons paired with `text.onSolidHelpActive`. */
-  onSolidHelpActive: string;
-
-  /** Use for icons paired with `text.onSolidInput`. */
-  onSolidInput: string;
-
-  /** Use for icons paired with `text.onSolidInputHover`. */
-  onSolidInputHover: string;
-
-  /** Use for icons paired with `text.onSolidInputActive`. */
-  onSolidInputActive: string;
-
   /* -------------------------------------------------------------------------------------------------
    * onSoft
    * -----------------------------------------------------------------------------------------------*/
@@ -555,15 +352,6 @@ export interface IconColorTokens {
 
   /** Use for icons paired with `text.onSoftPrimaryActive`. */
   onSoftPrimaryActive: string;
-
-  /** Use for icons paired with `text.onSoftAccent`. */
-  onSoftAccent: string;
-
-  /** Use for icons paired with `text.onSoftAccentHover`. */
-  onSoftAccentHover: string;
-
-  /** Use for icons paired with `text.onSoftAccentActive`. */
-  onSoftAccentActive: string;
 
   /** Use for icons paired with `text.onSoftNeutral`. */
   onSoftNeutral: string;
@@ -610,15 +398,6 @@ export interface IconColorTokens {
   /** Use for icons paired with `text.onSoftDangerActive`. */
   onSoftDangerActive: string;
 
-  /** Use for icons paired with `text.onSoftHelp`. */
-  onSoftHelp: string;
-
-  /** Use for icons paired with `text.onSoftHelpHover`. */
-  onSoftHelpHover: string;
-
-  /** Use for icons paired with `text.onSoftHelpActive`. */
-  onSoftHelpActive: string;
-
   /** Use for icons paired with `text.onSoftInput`. */
   onSoftInput: string;
 
@@ -640,15 +419,6 @@ export interface IconColorTokens {
 
   /** Use for icons paired with `text.onOutlinedPrimaryActive`. */
   onOutlinedPrimaryActive: string;
-
-  /** Use for icons paired with `text.onOutlinedAccent`. */
-  onOutlinedAccent: string;
-
-  /** Use for icons paired with `text.onOutlinedAccentHover`. */
-  onOutlinedAccentHover: string;
-
-  /** Use for icons paired with `text.onOutlinedAccentActive`. */
-  onOutlinedAccentActive: string;
 
   /** Use for icons paired with `text.onOutlinedNeutral`. */
   onOutlinedNeutral: string;
@@ -695,15 +465,6 @@ export interface IconColorTokens {
   /** Use for icons paired with `text.onOutlinedDangerActive`. */
   onOutlinedDangerActive: string;
 
-  /** Use for icons paired with `text.onOutlinedHelp`. */
-  onOutlinedHelp: string;
-
-  /** Use for icons paired with `text.onOutlinedHelpHover`. */
-  onOutlinedHelpHover: string;
-
-  /** Use for icons paired with `text.onOutlinedHelpActive`. */
-  onOutlinedHelpActive: string;
-
   /** Use for icons paired with `text.onOutlinedInput`. */
   onOutlinedInput: string;
 
@@ -725,15 +486,6 @@ export interface IconColorTokens {
 
   /** Use for icons paired with `text.onGhostPrimaryActive`. */
   onGhostPrimaryActive: string;
-
-  /** Use for icons paired with `text.onGhostAccent`. */
-  onGhostAccent: string;
-
-  /** Use for icons paired with `text.onGhostAccentHover`. */
-  onGhostAccentHover: string;
-
-  /** Use for icons paired with `text.onGhostAccentActive`. */
-  onGhostAccentActive: string;
 
   /** Use for icons paired with `text.onGhostNeutral`. */
   onGhostNeutral: string;
@@ -779,24 +531,6 @@ export interface IconColorTokens {
 
   /** Use for icons paired with `text.onGhostDangerActive`. */
   onGhostDangerActive: string;
-
-  /** Use for icons paired with `text.onGhostHelp`. */
-  onGhostHelp: string;
-
-  /** Use for icons paired with `text.onGhostHelpHover`. */
-  onGhostHelpHover: string;
-
-  /** Use for icons paired with `text.onGhostHelpActive`. */
-  onGhostHelpActive: string;
-
-  /** Use for icons paired with `text.onGhostInput`. */
-  onGhostInput: string;
-
-  /** Use for icons paired with `text.onGhostInputHover`. */
-  onGhostInputHover: string;
-
-  /** Use for icons paired with `text.onGhostInputActive`. */
-  onGhostInputActive: string;
 }
 
 export interface BackgroundColorTokens {
@@ -813,40 +547,14 @@ export interface BackgroundColorTokens {
    * subtle
    * -----------------------------------------------------------------------------------------------*/
 
-  /** The default background for neutral elements. */
+  /** Use for the background of elements that appear to have no background in a resting state, such as menu items. */
   subtle: string;
 
-  /** The default background for neutral elements, in a hovered state. */
+  /** Use for the background of elements that appear to have no background in a resting state, such as menu items, in a hovered state. */
   subtleHover: string;
 
-  /** The default background for neutral elements, in an active state. */
-  subtleActive: string;
-
-  /* -------------------------------------------------------------------------------------------------
-   * subtlest
-   * -----------------------------------------------------------------------------------------------*/
-
-  /** Use for the background of elements that appear to have no background in a resting state, such as menu items. */
-  subtlest: string;
-
-  /** Use for the background of elements that appear to have no background in a resting state, such as menu items, in a hovered state. */
-  subtlestHover: string;
-
   /** Use for the background of elements that appear to have no background in a resting state, such as menu items, in an active state. */
-  subtlestActive: string;
-
-  /* -------------------------------------------------------------------------------------------------
-   * inverse
-   * -----------------------------------------------------------------------------------------------*/
-
-  /** Use for background of elements on a solid background. */
-  inverse: string;
-
-  /** Use for background of elements on a solid background, in a hovered state. */
-  inverseHover: string;
-
-  /** Use for background of elements on a solid background, in an active state. */
-  inverseActive: string;
+  subtleActive: string;
 
   /* -------------------------------------------------------------------------------------------------
    * surface
@@ -882,12 +590,6 @@ export interface BackgroundColorTokens {
   /** A secondary background for the UI commonly used to create depth or grouping items. */
   surfaceSunken: string;
 
-  /** A secondary background for the UI commonly used to create depth or grouping items, in a hovered state. */
-  surfaceSunkenHover: string;
-
-  /** A secondary background for the UI commonly used to create depth or grouping items, in an active state. */
-  surfaceSunkenActive: string;
-
   /* -------------------------------------------------------------------------------------------------
    * solid
    * -----------------------------------------------------------------------------------------------*/
@@ -900,15 +602,6 @@ export interface BackgroundColorTokens {
 
   /** A vibrant background option for elements used to reinforce your brand, but with more emphasis, in an active state. */
   solidPrimaryActive: string;
-
-  /** A vibrant background option for elements in a selected state, such as checkboxes and radio buttons. */
-  solidAccent: string;
-
-  /** A vibrant background option for elements in a selected state, such as checkboxes and radio buttons, in a hovered state. */
-  solidAccentHover: string;
-
-  /** A vibrant background option for elements in a selected state, such as checkboxes and radio buttons, in an active state. */
-  solidAccentActive: string;
 
   /** A vibrant background option for neutral UI elements. */
   solidNeutral: string;
@@ -955,24 +648,6 @@ export interface BackgroundColorTokens {
   /** A vibrant background option for communicating critical information, such as in danger buttons and error alerts, in an active state. */
   solidDangerActive: string;
 
-  /** A vibrant background option for communicating change or something new. */
-  solidHelp: string;
-
-  /** A vibrant background option for communicating change or something new, in a hovered state. */
-  solidHelpHover: string;
-
-  /** A vibrant background option for communicating change or something new, in an active state. */
-  solidHelpActive: string;
-
-  /** A vibrant background option for form UI elements, such as text fields, checkboxes, and radio buttons. */
-  solidInput: string;
-
-  /** A vibrant background option for form UI elements, such as text fields, checkboxes, and radio buttons, in a hovered state. */
-  solidInputHover: string;
-
-  /** A vibrant background option for form UI elements, such as text fields, checkboxes, and radio buttons, in an active state. */
-  solidInputActive: string;
-
   /* -------------------------------------------------------------------------------------------------
    * soft
    * -----------------------------------------------------------------------------------------------*/
@@ -985,15 +660,6 @@ export interface BackgroundColorTokens {
 
   /** A subtle background option for elements used to reinforce your brand, in an active state. */
   softPrimaryActive: string;
-
-  /** A subtle background option for elements in a selected state, such as menu items. */
-  softAccent: string;
-
-  /** A subtle background option for elements in a selected state, such as menu items. */
-  softAccentHover: string;
-
-  /** A subtle background option for elements in a selected state, such as menu items. */
-  softAccentActive: string;
 
   /** A subtle background option for neutral UI elements. */
   softNeutral: string;
@@ -1040,15 +706,6 @@ export interface BackgroundColorTokens {
   /** A subtle background option for communicating critical information, in an active state. */
   softDangerActive: string;
 
-  /** A subtle background option for communicating change or something new. */
-  softHelp: string;
-
-  /** A subtle background option for communicating change or something new, in a hovered state. */
-  softHelpHover: string;
-
-  /** A subtle background option for communicating change or something new, in an active state. */
-  softHelpActive: string;
-
   /** A subtle background option for form UI elements, such as text fields, checkboxes, and radio buttons. */
   softInput: string;
 
@@ -1070,15 +727,6 @@ export interface BackgroundColorTokens {
 
   /** Use for background of outlined elements used to reinforce your brand, in an active state. */
   outlinedPrimaryActive: string;
-
-  /** Use for background of outlined elements in a selected state. */
-  outlinedAccent: string;
-
-  /** Use for background of outlined elements in a selected state, in a hovered state. */
-  outlinedAccentHover: string;
-
-  /** Use for background of outlined elements in a selected state, in an active state. */
-  outlinedAccentActive: string;
 
   /** Use for background of outlined neutral elements. */
   outlinedNeutral: string;
@@ -1125,15 +773,6 @@ export interface BackgroundColorTokens {
   /** Use for background of outlined elements communicating critical information, in an active state. */
   outlinedDangerActive: string;
 
-  /** Use for background of outlined elements communicating change or something new. */
-  outlinedHelp: string;
-
-  /** Use for background of outlined elements communicating change or something new, in a hovered state. */
-  outlinedHelpHover: string;
-
-  /** Use for background of outlined elements communicating change or something new, in an active state. */
-  outlinedHelpActive: string;
-
   /** Use for background of outlined form UI elements, such as text fields, checkboxes, and radio buttons. */
   outlinedInput: string;
 
@@ -1155,15 +794,6 @@ export interface BackgroundColorTokens {
 
   /** Use for the background of elements used to reinforce your brand, that appear to have no background in a resting state, in an active state. */
   ghostPrimaryActive: string;
-
-  /** Use for the background of elements in a selected state, that appear to have no background in a resting state. */
-  ghostAccent: string;
-
-  /** Use for the background of elements in a selected state, that appear to have no background in a resting state, in a hovered state. */
-  ghostAccentHover: string;
-
-  /** Use for the background of elements in a selected state, that appear to have no background in a resting state, in an active state. */
-  ghostAccentActive: string;
 
   /** Use for the background of neutral elements, that appear to have no background in a resting state. */
   ghostNeutral: string;
@@ -1209,24 +839,6 @@ export interface BackgroundColorTokens {
 
   /** Use for the background of elements communicating critical information, that appear to have no background in a resting state, in an active state. */
   ghostDangerActive: string;
-
-  /** Use for the background of elements communicating change or something new, that appear to have no background in a resting state. */
-  ghostHelp: string;
-
-  /** Use for the background of elements communicating change or something new, that appear to have no background in a resting state, in a hovered state. */
-  ghostHelpHover: string;
-
-  /** Use for the background of elements communicating change or something new, that appear to have no background in a resting state, in an active state. */
-  ghostHelpActive: string;
-
-  /** Use for background of form UI elements, that appear to have no background in a resting state, such as text fields, checkboxes, and radio buttons. */
-  ghostInput: string;
-
-  /** Use for background of form UI elements, that appear to have no background in a resting state, such as text fields, checkboxes, and radio buttons, in a hovered state. */
-  ghostInputHover: string;
-
-  /** Use for background of form UI elements, that appear to have no background in a resting state, such as text fields, checkboxes, and radio buttons, in an active state. */
-  ghostInputActive: string;
 }
 
 export interface BorderColorTokens {
@@ -1235,46 +847,6 @@ export interface BorderColorTokens {
 
   /** Use for borders of elements in a disabled state. */
   disabled: string;
-
-  /* -------------------------------------------------------------------------------------------------
-   * surface
-   * -----------------------------------------------------------------------------------------------*/
-
-  /** Use for border of `background.surface` elements. */
-  surface: string;
-
-  /** Use for border of `background.surfaceHover` elements. */
-  surfaceHover: string;
-
-  /** Use for border of `background.surfaceActive` elements. */
-  surfaceActive: string;
-
-  /** Use for border of `background.surfaceRaised` elements. */
-  surfaceRaised: string;
-
-  /** Use for border of `background.surfaceRaisedHover` elements. */
-  surfaceRaisedHover: string;
-
-  /** Use for border of `background.surfaceRaisedActive` elements. */
-  surfaceRaisedActive: string;
-
-  /** Use for border of `background.surfaceOverlay` elements. */
-  surfaceOverlay: string;
-
-  /** Use for border of `background.surfaceOverlayHover` elements. */
-  surfaceOverlayHover: string;
-
-  /** Use for border of `background.surfaceOverlayActive` elements. */
-  surfaceOverlayActive: string;
-
-  /** Use for border of `background.surfaceSunken` elements. */
-  surfaceSunken: string;
-
-  /** Use for border of `background.surfaceSunkenHover` elements. */
-  surfaceSunkenHover: string;
-
-  /** Use for border of `background.surfaceSunkenActive` elements. */
-  surfaceSunkenActive: string;
 
   /* -------------------------------------------------------------------------------------------------
    * solid
@@ -1288,15 +860,6 @@ export interface BorderColorTokens {
 
   /** A vibrant border option for elements used to reinforce your brand, but with more emphasis, in an active state. */
   solidPrimaryActive: string;
-
-  /** A vibrant border option for elements in a selected state, such as checkboxes and radio buttons. */
-  solidAccent: string;
-
-  /** A vibrant border option for elements in a selected state, such as checkboxes and radio buttons, in a hovered state. */
-  solidAccentHover: string;
-
-  /** A vibrant border option for elements in a selected state, such as checkboxes and radio buttons, in an active state. */
-  solidAccentActive: string;
 
   /** A vibrant border option for neutral UI elements. */
   solidNeutral: string;
@@ -1343,24 +906,6 @@ export interface BorderColorTokens {
   /** A vibrant border option for communicating critical information, such as in danger buttons and error alerts, in an active state. */
   solidDangerActive: string;
 
-  /** A vibrant border option for communicating change or something new. */
-  solidHelp: string;
-
-  /** A vibrant border option for communicating change or something new, in a hovered state. */
-  solidHelpHover: string;
-
-  /** A vibrant border option for communicating change or something new, in an active state. */
-  solidHelpActive: string;
-
-  /** A vibrant border option for form UI elements, such as text fields, checkboxes, and radio buttons. */
-  solidInput: string;
-
-  /** A vibrant border option for form UI elements, such as text fields, checkboxes, and radio buttons, in a hovered state. */
-  solidInputHover: string;
-
-  /** A vibrant border option for form UI elements, such as text fields, checkboxes, and radio buttons, in an active state. */
-  solidInputActive: string;
-
   /* -------------------------------------------------------------------------------------------------
    * soft
    * -----------------------------------------------------------------------------------------------*/
@@ -1373,15 +918,6 @@ export interface BorderColorTokens {
 
   /** A subtle border option for elements used to reinforce your brand, in an active state. */
   softPrimaryActive: string;
-
-  /** A subtle border option for elements in a selected state, such as menu items. */
-  softAccent: string;
-
-  /** A subtle border option for elements in a selected state, such as menu items. */
-  softAccentHover: string;
-
-  /** A subtle border option for elements in a selected state, such as menu items. */
-  softAccentActive: string;
 
   /** A subtle border option for neutral UI elements. */
   softNeutral: string;
@@ -1428,15 +964,6 @@ export interface BorderColorTokens {
   /** A subtle border option for communicating critical information, in an active state. */
   softDangerActive: string;
 
-  /** A subtle border option for communicating change or something new. */
-  softHelp: string;
-
-  /** A subtle border option for communicating change or something new, in a hovered state. */
-  softHelpHover: string;
-
-  /** A subtle border option for communicating change or something new, in an active state. */
-  softHelpActive: string;
-
   /** A subtle border option for form UI elements, such as text fields, checkboxes, and radio buttons. */
   softInput: string;
 
@@ -1458,15 +985,6 @@ export interface BorderColorTokens {
 
   /** Use for border of outlined elements used to reinforce your brand, in an active state. */
   outlinedPrimaryActive: string;
-
-  /** Use for border of outlined elements in a selected state. */
-  outlinedAccent: string;
-
-  /** Use for border of outlined elements in a selected state, in a hovered state. */
-  outlinedAccentHover: string;
-
-  /** Use for border of outlined elements in a selected state, in an active state. */
-  outlinedAccentActive: string;
 
   /** Use for border of outlined neutral elements. */
   outlinedNeutral: string;
@@ -1513,15 +1031,6 @@ export interface BorderColorTokens {
   /** Use for border of outlined elements communicating critical information, in an active state. */
   outlinedDangerActive: string;
 
-  /** Use for border of outlined elements communicating change or something new. */
-  outlinedHelp: string;
-
-  /** Use for border of outlined elements communicating change or something new, in a hovered state. */
-  outlinedHelpHover: string;
-
-  /** Use for border of outlined elements communicating change or something new, in an active state. */
-  outlinedHelpActive: string;
-
   /** Use for border of outlined form UI elements, such as text fields, checkboxes, and radio buttons. */
   outlinedInput: string;
 
@@ -1543,15 +1052,6 @@ export interface BorderColorTokens {
 
   /** Use for the border of elements used to reinforce your brand, that appear to have no background in a resting state, in an active state. */
   ghostPrimaryActive: string;
-
-  /** Use for the border of elements in a selected state, that appear to have no background in a resting state. */
-  ghostAccent: string;
-
-  /** Use for the border of elements in a selected state, that appear to have no background in a resting state, in a hovered state. */
-  ghostAccentHover: string;
-
-  /** Use for the border of elements in a selected state, that appear to have no background in a resting state, in an active state. */
-  ghostAccentActive: string;
 
   /** Use for the border of neutral elements, that appear to have no background in a resting state. */
   ghostNeutral: string;
@@ -1597,24 +1097,6 @@ export interface BorderColorTokens {
 
   /** Use for the border of elements communicating critical information, that appear to have no background in a resting state, in an active state. */
   ghostDangerActive: string;
-
-  /** Use for the border of elements communicating change or something new, that appear to have no background in a resting state. */
-  ghostHelp: string;
-
-  /** Use for the border of elements communicating change or something new, that appear to have no background in a resting state, in a hovered state. */
-  ghostHelpHover: string;
-
-  /** Use for the border of elements communicating change or something new, that appear to have no background in a resting state, in an active state. */
-  ghostHelpActive: string;
-
-  /** Use for border of form UI elements, that appear to have no background in a resting state, such as text fields, checkboxes, and radio buttons. */
-  ghostInput: string;
-
-  /** Use for border of form UI elements, that appear to have no background in a resting state, such as text fields, checkboxes, and radio buttons, in a hovered state. */
-  ghostInputHover: string;
-
-  /** Use for border of form UI elements, that appear to have no background in a resting state, such as text fields, checkboxes, and radio buttons, in an active state. */
-  ghostInputActive: string;
 }
 
 export interface ColorTokens {

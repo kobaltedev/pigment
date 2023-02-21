@@ -1,11 +1,11 @@
 import { Button as KButton, createPolymorphicComponent, useLocale } from "@kobalte/core";
 import { mergeDefaultProps, PolymorphicComponent } from "@kobalte/utils";
 import { cva, VariantProps } from "class-variance-authority";
-import { clsx } from "clsx";
 import { ComponentProps, JSX, Show, splitProps } from "solid-js";
 
 import { LoaderIcon } from "../icons";
 import { SHAPE_VARIANTS } from "../theme/shape";
+import { cn } from "../utils/cn";
 
 /* -------------------------------------------------------------------------------------------------
  * CSS
@@ -17,36 +17,44 @@ const buttonVariants = cva(
     "border border-solid",
     "font-medium",
     "transition-colors",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-border-focused",
-    "ui-disabled:opacity-50 ui-disabled:cursor-not-allowed",
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring",
   ],
   {
     variants: {
       variant: {
-        solid: "text-text-inverse",
+        solid: "",
         soft: "",
         outlined: "",
-        text: "",
+        ghost: "",
       },
       colorScheme: {
         primary: "",
         neutral: "",
+        warning: "",
         danger: "",
       },
       size: {
+        xs: "h-7 text-sm gap-1",
         sm: "h-9 text-sm gap-2",
         md: "h-10 text-sm gap-2",
-        lg: "h-11 text-base gap-2",
-        xl: "h-12 text-base gap-2",
-        "2xl": "h-14 text-lg gap-3",
+        lg: "h-12 text-base gap-2",
+        xl: "h-14 text-lg gap-3",
+      },
+      shrinkOnPress: {
+        true: "ui-not-disabled:active:scale-95",
       },
       isSquare: {
         true: "p-0",
-        false: "",
       },
       isFullWidth: {
         true: "flex w-full",
         false: "inline-flex",
+      },
+      isLoading: {
+        true: "opacity-80 select-none pointer-events-none",
+      },
+      isDisabled: {
+        true: "ui-disabled:text-text-disabled ui-disabled:cursor-not-allowed ui-disabled:select-none",
       },
       ...SHAPE_VARIANTS,
     },
@@ -55,25 +63,41 @@ const buttonVariants = cva(
       {
         variant: "solid",
         colorScheme: "primary",
+        isDisabled: false,
         class: [
-          "bg-bg-primary-bold hover:bg-bg-primary-bold-hovered active:bg-bg-primary-bold-pressed",
-          "border-bg-primary-bold hover:border-bg-primary-bold-hovered active:border-bg-primary-bold-pressed",
+          "text-text-on-solid-primary hover:text-text-on-solid-primary-hover active:text-text-on-solid-primary-active",
+          "bg-background-solid-primary hover:bg-background-solid-primary-hover active:bg-background-solid-primary-active",
+          "border-border-solid-primary hover:border-border-solid-primary-hover active:border-border-solid-primary-active",
         ],
       },
       {
         variant: "solid",
         colorScheme: "neutral",
+        isDisabled: false,
         class: [
-          "bg-bg-neutral-bold hover:bg-bg-neutral-bold-hovered active:bg-bg-neutral-bold-pressed",
-          "border-bg-neutral-bold hover:border-bg-neutral-bold-hovered active:border-bg-neutral-bold-pressed",
+          "text-text-on-solid-neutral hover:text-text-on-solid-neutral-hover active:text-text-on-solid-neutral-active",
+          "bg-background-solid-neutral hover:bg-background-solid-neutral-hover active:bg-background-solid-neutral-active",
+          "border-border-solid-neutral hover:border-border-solid-neutral-hover active:border-border-solid-neutral-active",
+        ],
+      },
+      {
+        variant: "solid",
+        colorScheme: "warning",
+        isDisabled: false,
+        class: [
+          "text-text-on-solid-warning hover:text-text-on-solid-warning-hover active:text-text-on-solid-warning-active",
+          "bg-background-solid-warning hover:bg-background-solid-warning-hover active:bg-background-solid-warning-active",
+          "border-border-solid-warning hover:border-border-solid-warning-hover active:border-border-solid-warning-active",
         ],
       },
       {
         variant: "solid",
         colorScheme: "danger",
+        isDisabled: false,
         class: [
-          "bg-bg-danger-bold hover:bg-bg-danger-bold-hovered active:bg-bg-danger-bold-pressed",
-          "border-bg-danger-bold hover:border-bg-danger-bold-hovered active:border-bg-danger-bold-pressed",
+          "text-text-on-solid-danger hover:text-text-on-solid-danger-hover active:text-text-on-solid-danger-active",
+          "bg-background-solid-danger hover:bg-background-solid-danger-hover active:bg-background-solid-danger-active",
+          "border-border-solid-danger hover:border-border-solid-danger-hover active:border-border-solid-danger-active",
         ],
       },
 
@@ -81,28 +105,41 @@ const buttonVariants = cva(
       {
         variant: "soft",
         colorScheme: "primary",
+        isDisabled: false,
         class: [
-          "text-text-primary",
-          "bg-bg-primary hover:bg-bg-primary-hovered active:bg-bg-primary-pressed",
-          "border-bg-primary hover:border-bg-primary-hovered active:border-bg-primary-pressed",
+          "text-text-on-soft-primary hover:text-text-on-soft-primary-hover active:text-text-on-soft-primary-active",
+          "bg-background-soft-primary hover:bg-background-soft-primary-hover active:bg-background-soft-primary-active",
+          "border-border-soft-primary hover:border-border-soft-primary-hover active:border-border-soft-primary-active",
         ],
       },
       {
         variant: "soft",
         colorScheme: "neutral",
+        isDisabled: false,
         class: [
-          "text-neutral-600 hover:text-neutral-700 active:text-neutral-800",
-          "bg-neutral-100 hover:bg-neutral-200 active:bg-neutral-300",
-          "border-neutral-100 hover:border-neutral-200 active:border-neutral-300",
+          "text-text-on-soft-neutral hover:text-text-on-soft-neutral-hover active:text-text-on-soft-neutral-active",
+          "bg-background-soft-neutral hover:bg-background-soft-neutral-hover active:bg-background-soft-neutral-active",
+          "border-border-soft-neutral hover:border-border-soft-neutral-hover active:border-border-soft-neutral-active",
+        ],
+      },
+      {
+        variant: "soft",
+        colorScheme: "warning",
+        isDisabled: false,
+        class: [
+          "text-text-on-soft-warning hover:text-text-on-soft-warning-hover active:text-text-on-soft-warning-active",
+          "bg-background-soft-warning hover:bg-background-soft-warning-hover active:bg-background-soft-warning-active",
+          "border-border-soft-warning hover:border-border-soft-warning-hover active:border-border-soft-warning-active",
         ],
       },
       {
         variant: "soft",
         colorScheme: "danger",
+        isDisabled: false,
         class: [
-          "text-danger-700 hover:text-danger-800 active:text-danger-900",
-          "bg-danger-50 hover:bg-danger-100 active:bg-danger-200",
-          "border-danger-50 hover:border-danger-100 active:border-danger-200",
+          "text-text-on-soft-danger hover:text-text-on-soft-danger-hover active:text-text-on-soft-danger-active",
+          "bg-background-soft-danger hover:bg-background-soft-danger-hover active:bg-background-soft-danger-active",
+          "border-border-soft-danger hover:border-border-soft-danger-hover active:border-border-soft-danger-active",
         ],
       },
 
@@ -110,82 +147,127 @@ const buttonVariants = cva(
       {
         variant: "outlined",
         colorScheme: "primary",
+        isDisabled: false,
         class: [
-          "text-text-primary",
-          "bg-transparent hover:bg-bg-primary-hovered active:bg-bg-primary-pressed",
-          "border-border-primary",
+          "text-text-on-outlined-primary hover:text-text-on-outlined-primary-hover active:text-text-on-outlined-primary-active",
+          "bg-background-outlined-primary hover:bg-background-outlined-primary-hover active:bg-background-outlined-primary-active",
+          "border-border-outlined-primary hover:border-border-outlined-primary-hover active:border-border-outlined-primary-active",
         ],
       },
       {
         variant: "outlined",
         colorScheme: "neutral",
+        isDisabled: false,
         class: [
-          "text-neutral-600 hover:text-neutral-700 active:text-neutral-800",
-          "bg-transparent hover:bg-neutral-100 active:bg-neutral-200",
-          "border-neutral-200  active:border-neutral-300",
+          "text-text-on-outlined-neutral hover:text-text-on-outlined-neutral-hover active:text-text-on-outlined-neutral-active",
+          "bg-background-outlined-neutral hover:bg-background-outlined-neutral-hover active:bg-background-outlined-neutral-active",
+          "border-border-outlined-neutral hover:border-border-outlined-neutral-hover active:border-border-outlined-neutral-active",
+        ],
+      },
+      {
+        variant: "outlined",
+        colorScheme: "warning",
+        isDisabled: false,
+        class: [
+          "text-text-on-outlined-warning hover:text-text-on-outlined-warning-hover active:text-text-on-outlined-warning-active",
+          "bg-background-outlined-warning hover:bg-background-outlined-warning-hover active:bg-background-outlined-warning-active",
+          "border-border-outlined-warning hover:border-border-outlined-warning-hover active:border-border-outlined-warning-active",
         ],
       },
       {
         variant: "outlined",
         colorScheme: "danger",
+        isDisabled: false,
         class: [
-          "text-danger-700 hover:text-danger-800 active:text-danger-900",
-          "bg-transparent hover:bg-danger-50 active:bg-danger-100",
-          "border-danger-300  active:border-danger-400",
+          "text-text-on-outlined-danger hover:text-text-on-outlined-danger-hover active:text-text-on-outlined-danger-active",
+          "bg-background-outlined-danger hover:bg-background-outlined-danger-hover active:bg-background-outlined-danger-active",
+          "border-border-outlined-danger hover:border-border-outlined-danger-hover active:border-border-outlined-danger-active",
         ],
       },
 
-      // text + colors
+      // ghost + colors
       {
-        variant: "text",
+        variant: "ghost",
         colorScheme: "primary",
+        isDisabled: false,
         class: [
-          "text-text-primary",
-          "bg-transparent hover:bg-bg-primary-hovered active:bg-bg-primary-pressed",
-          "border-transparent hover:border-bg-primary-hovered active:border-bg-primary-pressed",
+          "text-text-on-ghost-primary hover:text-text-on-ghost-primary-hover active:text-text-on-ghost-primary-active",
+          "bg-background-ghost-primary hover:bg-background-ghost-primary-hover active:bg-background-ghost-primary-active",
+          "border-border-ghost-primary hover:border-border-ghost-primary-hover active:border-border-ghost-primary-active",
         ],
       },
       {
-        variant: "text",
+        variant: "ghost",
         colorScheme: "neutral",
+        isDisabled: false,
         class: [
-          "text-neutral-600 hover:text-neutral-700 active:text-neutral-800",
-          "bg-transparent hover:bg-neutral-100 active:bg-neutral-200",
-          "border-transparent hover:border-neutral-100 active:border-neutral-200",
+          "text-text-on-ghost-neutral hover:text-text-on-ghost-neutral-hover active:text-text-on-ghost-neutral-active",
+          "bg-background-ghost-neutral hover:bg-background-ghost-neutral-hover active:bg-background-ghost-neutral-active",
+          "border-border-ghost-neutral hover:border-border-ghost-neutral-hover active:border-border-ghost-neutral-active",
         ],
       },
       {
-        variant: "text",
-        colorScheme: "danger",
+        variant: "ghost",
+        colorScheme: "warning",
+        isDisabled: false,
         class: [
-          "text-danger-700 hover:text-danger-800 active:text-danger-900",
-          "bg-transparent hover:bg-danger-50 active:bg-danger-100",
-          "border-transparent hover:border-danger-50 active:border-danger-100",
+          "text-text-on-ghost-warning hover:text-text-on-ghost-warning-hover active:text-text-on-ghost-warning-active",
+          "bg-background-ghost-warning hover:bg-background-ghost-warning-hover active:bg-background-ghost-warning-active",
+          "border-border-ghost-warning hover:border-border-ghost-warning-hover active:border-border-ghost-warning-active",
         ],
+      },
+      {
+        variant: "ghost",
+        colorScheme: "danger",
+        isDisabled: false,
+        class: [
+          "text-text-on-ghost-danger hover:text-text-on-ghost-danger-hover active:text-text-on-ghost-danger-active",
+          "bg-background-ghost-danger hover:bg-background-ghost-danger-hover active:bg-background-ghost-danger-active",
+          "border-border-ghost-danger hover:border-border-ghost-danger-hover active:border-border-ghost-danger-active",
+        ],
+      },
+
+      // disabled + variants
+      {
+        variant: ["solid", "soft"],
+        isDisabled: true,
+        class: ["ui-disabled:bg-background-disabled ui-disabled:border-transparent"],
+      },
+      {
+        variant: "outlined",
+        isDisabled: true,
+        class: ["ui-disabled:bg-transparent ui-disabled:border-border-disabled"],
+      },
+      {
+        variant: "ghost",
+        isDisabled: true,
+        class: ["ui-disabled:bg-transparent ui-disabled:border-transparent"],
       },
 
       // rectangle button (e.g: Button)
       { isSquare: false, isFullWidth: false, class: "w-auto" },
+      { size: "xs", isSquare: false, class: "px-2" },
       { size: "sm", isSquare: false, class: "px-3.5" },
       { size: "md", isSquare: false, class: "px-4" },
-      { size: "lg", isSquare: false, class: "px-[18px]" },
-      { size: "xl", isSquare: false, class: "px-5" },
-      { size: "2xl", isSquare: false, class: "px-6" },
+      { size: "lg", isSquare: false, class: "px-5" },
+      { size: "xl", isSquare: false, class: "px-6" },
 
       // square button (e.g: IconButton)
+      { size: "xs", isSquare: true, isFullWidth: false, class: "w-7" },
       { size: "sm", isSquare: true, isFullWidth: false, class: "w-9" },
       { size: "md", isSquare: true, isFullWidth: false, class: "w-10" },
-      { size: "lg", isSquare: true, isFullWidth: false, class: "w-11" },
-      { size: "xl", isSquare: true, isFullWidth: false, class: "w-12" },
-      { size: "2xl", isSquare: true, isFullWidth: false, class: "w-14" },
+      { size: "lg", isSquare: true, isFullWidth: false, class: "w-12" },
+      { size: "xl", isSquare: true, isFullWidth: false, class: "w-14" },
     ],
     defaultVariants: {
       variant: "solid",
       colorScheme: "primary",
       size: "md",
       rounded: "md",
+      shrinkOnPress: true,
       isSquare: false,
       isFullWidth: false,
+      isDisabled: false,
     },
   }
 );
@@ -196,7 +278,7 @@ const buttonVariants = cva(
 
 export interface ButtonProps
   extends KButton.ButtonRootOptions,
-    VariantProps<typeof buttonVariants> {
+    Omit<VariantProps<typeof buttonVariants>, "isLoading" | "isDisabled"> {
   /** Whether the button is in a loading state. */
   isLoading?: boolean;
 
@@ -227,7 +309,17 @@ export const Button: PolymorphicComponent<"button", ButtonProps> = createPolymor
     const [local, variantProps, contentProps, others] = splitProps(
       props,
       ["class", "isLoading", "loadingText", "loadingIcon", "loadingIconPlacement"],
-      ["variant", "colorScheme", "size", "rounded", "isSquare", "isFullWidth"],
+      [
+        "variant",
+        "colorScheme",
+        "size",
+        "rounded",
+        "shrinkOnPress",
+        "isSquare",
+        "isFullWidth",
+        "isLoading",
+        "isDisabled",
+      ],
       ["startIcon", "endIcon", "children"]
     );
 
@@ -248,7 +340,11 @@ export const Button: PolymorphicComponent<"button", ButtonProps> = createPolymor
     };
 
     return (
-      <KButton.Root class={clsx(buttonVariants(variantProps), local.class)} {...others}>
+      <KButton.Root
+        class={cn(buttonVariants(variantProps), local.class)}
+        isDisabled={variantProps.isDisabled}
+        {...others}
+      >
         <Show when={local.isLoading} fallback={content()}>
           <Show
             when={local.loadingText}
@@ -330,5 +426,5 @@ function ButtonLoadingIcon(props: ComponentProps<"span">) {
 function ButtonIcon(props: ComponentProps<"span">) {
   const [local, others] = splitProps(props, ["class"]);
 
-  return <span aria-hidden="true" class={clsx("shrink-0 reset-svg", local.class)} {...others} />;
+  return <span aria-hidden="true" class={cn("shrink-0 reset-svg", local.class)} {...others} />;
 }

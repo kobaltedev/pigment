@@ -1,16 +1,13 @@
-import kobaltePlugin from "@kobalte/tailwindcss";
-import formsPlugin from "@tailwindcss/forms";
 import { dset } from "dset/merge";
 import plugin from "tailwindcss/plugin";
 import type { Config, PluginCreator } from "tailwindcss/types/config";
-import animatePlugin from "tailwindcss-animate";
 
 import { themes } from "./themes";
 import { PigmentOptions, Theme } from "./types";
 import { flattenKebabCase } from "./utils/flatten";
 
 function getCssVarPrefix(options: PigmentOptions) {
-  return options.cssVarPrefix ?? "kb-";
+  return options.cssVarPrefix ?? "ui-";
 }
 
 function pigmentPlugin(options: PigmentOptions | undefined = {}): PluginCreator {
@@ -33,6 +30,8 @@ function pigmentPlugin(options: PigmentOptions | undefined = {}): PluginCreator 
 
     addBase({
       ":root": {
+        "-webkit-font-smoothing": "antialiased",
+        "-moz-osx-font-smoothing": "grayscale",
         ...flattenKebabCase(
           finalTheme.light,
           (_, value) => value,
@@ -109,23 +108,8 @@ function pigmentConfig(options: PigmentOptions): Partial<Config> {
           `${cssVarPrefix}shadow-`,
           ""
         ),
-        keyframes: {
-          "accordion-down": {
-            from: { height: "0" },
-            to: { height: "var(--kb-accordion-content-height)" },
-          },
-          "accordion-up": {
-            from: { height: "var(--kb-accordion-content-height)" },
-            to: { height: "0" },
-          },
-        },
-        animation: {
-          "accordion-down": "accordion-down 0.2s ease-out",
-          "accordion-up": "accordion-up 0.2s ease-out",
-        },
       },
     },
-    plugins: [formsPlugin({ strategy: "class" }), animatePlugin, kobaltePlugin],
   };
 }
 

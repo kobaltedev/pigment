@@ -2,43 +2,31 @@ import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 
 import { Button, ButtonProps } from "./button";
+import { InfoCircleIcon } from "../icons";
 
 type Story = StoryObj<ButtonProps>;
-
-export const Default: Story = {
-  args: {
-    variant: "solid",
-    colorScheme: "primary",
-    size: "md",
-    rounded: "md",
-    isSquare: false,
-    isFullWidth: false,
-    isLoading: false,
-    isDisabled: false,
-    loadingText: "",
-    loadingIconPlacement: "start",
-    children: "Button",
-  },
-};
 
 export default {
   title: "Button",
   argTypes: {
     variant: {
-      options: ["solid", "soft", "outlined", "text"],
+      options: ["solid", "soft", "outlined", "ghost"],
       control: { type: "select" },
     },
     colorScheme: {
-      options: ["primary", "neutral", "danger"],
+      options: ["primary", "neutral", "warning", "danger"],
       control: { type: "select" },
     },
     size: {
-      options: ["sm", "md", "lg", "xl", "2xl"],
+      options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
     rounded: {
       options: ["none", "xs", "sm", "md", "lg", "xl", "2xl", "3xl", "full"],
       control: { type: "select" },
+    },
+    shrinkOnPress: {
+      control: { type: "boolean" },
     },
     isSquare: {
       control: { type: "boolean" },
@@ -65,3 +53,39 @@ export default {
   },
   render: props => <Button {...props} />,
 } as Meta<ComponentProps<typeof Button>>;
+
+export const Default: Story = {
+  args: {
+    variant: "solid",
+    colorScheme: "primary",
+    size: "md",
+    rounded: "md",
+    shrinkOnPress: true,
+    isSquare: false,
+    isFullWidth: false,
+    isLoading: false,
+    isDisabled: false,
+    loadingText: "",
+    loadingIconPlacement: "start",
+    children: "Button",
+  },
+};
+
+export const WithIcon: Story = {
+  args: {
+    variant: "solid",
+    colorScheme: "primary",
+    size: "md",
+    rounded: "md",
+    shrinkOnPress: true,
+    isSquare: false,
+    isFullWidth: false,
+    isLoading: false,
+    isDisabled: false,
+    loadingText: "",
+    loadingIconPlacement: "start",
+    children: "Button",
+    startIcon: () => <InfoCircleIcon />,
+    endIcon: () => <InfoCircleIcon />,
+  },
+};
