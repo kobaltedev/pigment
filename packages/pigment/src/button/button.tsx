@@ -4,7 +4,6 @@ import { cva, VariantProps } from "class-variance-authority";
 import { ComponentProps, JSX, Show, splitProps } from "solid-js";
 
 import { LoaderIcon } from "../icons";
-import { SHAPE_VARIANTS } from "../theme/shape";
 import { cn } from "../utils/cn";
 
 /* -------------------------------------------------------------------------------------------------
@@ -13,7 +12,7 @@ import { cn } from "../utils/cn";
 
 const buttonVariants = cva(
   [
-    "appearance-none relative justify-center items-center",
+    "appearance-none relative justify-center items-center rounded-md",
     "border border-solid",
     "font-medium",
     "transition-colors",
@@ -56,7 +55,6 @@ const buttonVariants = cva(
       isDisabled: {
         true: "ui-disabled:text-text-disabled ui-disabled:cursor-not-allowed ui-disabled:select-none",
       },
-      ...SHAPE_VARIANTS,
     },
     compoundVariants: [
       // solid + colors
@@ -263,7 +261,6 @@ const buttonVariants = cva(
       variant: "solid",
       colorScheme: "primary",
       size: "md",
-      rounded: "md",
       shrinkOnPress: true,
       isSquare: false,
       isFullWidth: false,
@@ -313,7 +310,6 @@ export const Button: PolymorphicComponent<"button", ButtonProps> = createPolymor
         "variant",
         "colorScheme",
         "size",
-        "rounded",
         "shrinkOnPress",
         "isSquare",
         "isFullWidth",

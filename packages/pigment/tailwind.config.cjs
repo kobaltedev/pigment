@@ -1,16 +1,19 @@
-const pigmentPlugin = require("@kobalte/pigment-tailwind-plugin");
-const kobaltePlugin = require("@kobalte/tailwindcss");
-const formsPlugin = require("@tailwindcss/forms");
-const animatePlugin = require("tailwindcss-animate");
+import kobaltePlugin from "@kobalte/tailwindcss";
+import formsPlugin from "@tailwindcss/forms";
+import animatePlugin from "tailwindcss-animate";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  corePlugins: {
+    preflight: false,
+  },
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
-  darkMode: "class",
-  plugins: [
-    formsPlugin({ strategy: "class" }),
-    animatePlugin,
-    kobaltePlugin,
-    pigmentPlugin({ theme: "default" }),
-  ],
+  prefix: "pg-",
+  darkMode: ["class", "[data-pg-theme='dark']"],
+  theme: {
+    extend: {
+      colors: {},
+    },
+  },
+  plugins: [formsPlugin({ strategy: "class" }), animatePlugin, kobaltePlugin],
 };

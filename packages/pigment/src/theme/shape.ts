@@ -1,16 +1,27 @@
-/**
- * Default shape variants used in several components.
- */
-export const SHAPE_VARIANTS = {
-  rounded: {
-    none: "rounded-none",
-    xs: "rounded-sm",
-    sm: "rounded",
-    md: "rounded-md",
-    lg: "rounded-lg",
-    xl: "rounded-xl",
-    "2xl": "rounded-2xl",
-    "3xl": "rounded-3xl",
-    full: "rounded-full",
-  },
-};
+export default {};
+
+/*
+
+const theme = extendTheme({
+  components: {
+    Button: {
+      defaultProps: {
+        variant: "soft",
+      },
+      additionalClasses: {
+        root: ({ props, state, cn }) => cn([
+          "base",
+          props.size === "md" && "size-md-variant",
+          props.variant === "solid" && props.colorScheme === "primary" && "solid-primary-compound-variant",
+          props.variant === "solid" && props.colorScheme === "secondary" && "hover:bg-secondary-500/60"
+        ]),
+      }
+    }
+  }
+});
+
+<ThemeProvider theme={theme}>
+  <App/>
+</ThemeProvider>
+
+*/

@@ -69,3 +69,11 @@ export const CrossCircleIcon = createLucideIcon(() => (
     <line x1="9" y1="9" x2="15" y2="15" />
   </>
 ));
+
+export const HelpCircleIcon = createLucideIcon(() => (
+  <>
+    <circle cx="12" cy="12" r="10"></circle>
+    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+  </>
+));
