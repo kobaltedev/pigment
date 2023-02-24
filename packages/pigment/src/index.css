@@ -2,599 +2,646 @@
 @tailwind components;
 @tailwind utilities;
 
-// Reference tokens
-$white: #fff;
-
-$neutral-50: #f8fafc;
-$neutral-100: #f1f5f9;
-$neutral-200: #e2e8f0;
-$neutral-300: #cbd5e1;
-$neutral-400: #94a3b8;
-$neutral-500: #64748b;
-$neutral-600: #475569;
-$neutral-700: #334155;
-$neutral-800: #1e293b;
-$neutral-900: #0f172a;
-$neutral-100A: #0f172a08;
-$neutral-200A: #0f172a0f;
-$neutral-300A: #0f172a24;
-$neutral-400A: #0f172a4f;
-$neutral-500A: #0f172a7d;
-
-$primary-50: #eff6ff;
-$primary-100: #dbeafe;
-$primary-200: #bfdbfe;
-$primary-300: #93c5fd;
-$primary-400: #60a5fa;
-$primary-500: #3b82f6;
-$primary-600: #2563eb;
-$primary-700: #1d4ed8;
-$primary-800: #1e40af;
-$primary-900: #1e3a8a;
-
-$success-50: #f0fdf4;
-$success-100: #dcfce7;
-$success-200: #bbf7d0;
-$success-300: #86efac;
-$success-400: #4ade80;
-$success-500: #22c55e;
-$success-600: #16a34a;
-$success-700: #15803d;
-$success-800: #166534;
-$success-900: #14532d;
-
-$info-50: #f0f9ff;
-$info-100: #e0f2fe;
-$info-200: #bae6fd;
-$info-300: #7dd3fc;
-$info-400: #38bdf8;
-$info-500: #0ea5e9;
-$info-600: #0284c7;
-$info-700: #0369a1;
-$info-800: #075985;
-$info-900: #0c4a6e;
-
-$warning-50: #fffbeb;
-$warning-100: #fef3c7;
-$warning-200: #fde68a;
-$warning-300: #fcd34d;
-$warning-400: #fbbf24;
-$warning-500: #f59e0b;
-$warning-600: #d97706;
-$warning-700: #b45309;
-$warning-800: #92400e;
-$warning-900: #78350f;
-
-$danger-50: #fef2f2;
-$danger-100: #fee2e2;
-$danger-200: #fecaca;
-$danger-300: #fca5a5;
-$danger-400: #f87171;
-$danger-500: #ef4444;
-$danger-600: #dc2626;
-$danger-700: #b91c1c;
-$danger-800: #991b1b;
-$danger-900: #7f1d1d;
-
-$help-50: #f5f3ff;
-$help-100: #ede9fe;
-$help-200: #ddd6fe;
-$help-300: #c4b5fd;
-$help-400: #a78bfa;
-$help-500: #8b5cf6;
-$help-600: #7c3aed;
-$help-700: #6d28d9;
-$help-800: #5b21b6;
-$help-900: #4c1d95;
-
 @layer base {
+  /* -------------------------------------------------------------------------------------------------
+   * Reference tokens
+   * -----------------------------------------------------------------------------------------------*/
+
+  $white: #ffffff;
+  $black: #0c0e10;
+
+  $slate-50: #f8fafc;
+  $slate-100: #f1f5f9;
+  $slate-200: #e2e8f0;
+  $slate-300: #cbd5e1;
+  $slate-400: #94a3b8;
+  $slate-500: #64748b;
+  $slate-600: #475569;
+  $slate-700: #334155;
+  $slate-800: #1e293b;
+  $slate-900: #0f172a;
+
+  $slate-100A: #0f172a08;
+  $slate-200A: #0f172a0f;
+  $slate-300A: #0f172a24;
+  $slate-400A: #0f172a4f;
+  $slate-500A: #0f172a7d;
+
+  $slate-100A-dark: #cbd5e10a;
+  $slate-200A-dark: #cbd5e114;
+  $slate-300A-dark: #cbd5e129;
+  $slate-400A-dark: #cbd5e147;
+  $slate-500A-dark: #cbd5e180;
+
+  $stone-50: #fafaf9;
+  $stone-100: #f5f5f4;
+  $stone-200: #e7e5e4;
+  $stone-300: #d6d3d1;
+  $stone-400: #a8a29e;
+  $stone-500: #78716c;
+  $stone-600: #57534e;
+  $stone-700: #44403c;
+  $stone-800: #292524;
+  $stone-900: #1c1917;
+
+  $red-50: #fef2f2;
+  $red-100: #fee2e2;
+  $red-200: #fecaca;
+  $red-300: #fca5a5;
+  $red-400: #f87171;
+  $red-500: #ef4444;
+  $red-600: #dc2626;
+  $red-700: #b91c1c;
+  $red-800: #991b1b;
+  $red-900: #7f1d1d;
+
+  $amber-50: #fffbeb;
+  $amber-100: #fef3c7;
+  $amber-200: #fde68a;
+  $amber-300: #fcd34d;
+  $amber-400: #fbbf24;
+  $amber-500: #f59e0b;
+  $amber-600: #d97706;
+  $amber-700: #b45309;
+  $amber-800: #92400e;
+  $amber-900: #78350f;
+
+  $green-50: #f0fdf4;
+  $green-100: #dcfce7;
+  $green-200: #bbf7d0;
+  $green-300: #86efac;
+  $green-400: #4ade80;
+  $green-500: #22c55e;
+  $green-600: #16a34a;
+  $green-700: #15803d;
+  $green-800: #166534;
+  $green-900: #14532d;
+
+  $blue-50: #eff6ff;
+  $blue-100: #dbeafe;
+  $blue-200: #bfdbfe;
+  $blue-300: #93c5fd;
+  $blue-400: #60a5fa;
+  $blue-500: #3b82f6;
+  $blue-600: #2563eb;
+  $blue-700: #1d4ed8;
+  $blue-800: #1e40af;
+  $blue-900: #1e3a8a;
+
+  $violet-50: #f5f3ff;
+  $violet-100: #ede9fe;
+  $violet-200: #ddd6fe;
+  $violet-300: #c4b5fd;
+  $violet-400: #a78bfa;
+  $violet-500: #8b5cf6;
+  $violet-600: #7c3aed;
+  $violet-700: #6d28d9;
+  $violet-800: #5b21b6;
+  $violet-900: #4c1d95;
+
   :root {
-    // Base - text
-    --pg-color-text-base: $neutral-900;
-    --pg-color-text-subtle: $neutral-700;
-    --pg-color-text-subtlest: $neutral-600;
-    --pg-color-text-disabled: $neutral-400A;
+    /* -------------------------------------------------------------------------------------------------
+     * Typography
+     * -----------------------------------------------------------------------------------------------*/
 
-    // Base - icon
-    --pg-color-icon-base: $neutral-800;
-    --pg-color-icon-subtle: $neutral-600;
-    --pg-color-icon-subtlest: $neutral-500;
-    --pg-color-icon-disabled: $neutral-300A;
+    --pg-font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
-    // Base - background
-    --pg-color-bg-base: $white;
-    --pg-color-bg-disabled: $neutral-100A;
+    /* -------------------------------------------------------------------------------------------------
+     * Color - Texts
+     * -----------------------------------------------------------------------------------------------*/
 
-    // Base - border
-    --pg-color-border-base: $neutral-300A;
-    --pg-color-border-disabled: $neutral-200A;
+    --pg-color-text: $slate-900;
+    --pg-color-text-subtle: $slate-700;
+    --pg-color-text-subtlest: $slate-600;
+    --pg-color-text-danger: $red-600;
 
-    // Surface
+    /* -------------------------------------------------------------------------------------------------
+     * Color - Icons
+     * -----------------------------------------------------------------------------------------------*/
+
+    --pg-color-icon: $slate-800;
+    --pg-color-icon-subtle: $slate-600;
+    --pg-color-icon-subtlest: $slate-500;
+    --pg-color-icon-danger: $red-500;
+
+    /* -------------------------------------------------------------------------------------------------
+     * Color - Backgrounds
+     * -----------------------------------------------------------------------------------------------*/
+
+    --pg-color-body-bg: $white;
+
+    /* Subtle */
+    --pg-color-subtle-bg: transparent;
+    --pg-color-subtle-bg-hover: $slate-200A;
+    --pg-color-subtle-bg-active: $slate-300A;
+
+    /* Inverse */
+    --pg-color-inverse-bg: #00000029;
+    --pg-color-inverse-bg-hover: #0000003d;
+    --pg-color-inverse-bg-active: #00000052;
+
+    /* Surface */
     --pg-color-surface-bg: $white;
-    --pg-color-surface-bg-hover: $neutral-100;
-    --pg-color-surface-bg-active: $neutral-200;
-
+    --pg-color-surface-bg-hover: $slate-100;
+    --pg-color-surface-bg-active: $slate-200;
     --pg-color-surface-raised-bg: $white;
-    --pg-color-surface-raised-bg-hover: $neutral-100;
-    --pg-color-surface-raised-bg-active: $neutral-200;
-
+    --pg-color-surface-raised-bg-hover: $slate-100;
+    --pg-color-surface-raised-bg-active: $slate-200;
     --pg-color-surface-overlay-bg: $white;
-    --pg-color-surface-overlay-bg-hover: $neutral-100;
-    --pg-color-surface-overlay-bg-active: $neutral-200;
+    --pg-color-surface-overlay-bg-hover: $slate-100;
+    --pg-color-surface-overlay-bg-active: $slate-200;
+    --pg-color-surface-sunken-bg: $slate-50;
 
-    --pg-color-surface-sunken-bg: $neutral-50;
+    /* -------------------------------------------------------------------------------------------------
+     * Color - Misc.
+     * -----------------------------------------------------------------------------------------------*/
 
-    // Neutral - ghost
-    --pg-color-ghost-neutral-bg: transparent;
-    --pg-color-ghost-neutral-bg-hover: $neutral-200A;
-    --pg-color-ghost-neutral-bg-active: $neutral-300A;
+    --pg-color-focus-ring: $blue-400;
+    --pg-color-backdrop: $slate-500A;
+    --pg-color-separator: $slate-300A;
 
-    // Primary - solid
+    /* -------------------------------------------------------------------------------------------------
+     * Color - Global variants - Disabled
+     * -----------------------------------------------------------------------------------------------*/
+
+    --pg-color-disabled-text: $slate-400A;
+    --pg-color-disabled-icon: $slate-300A;
+    --pg-color-disabled-bg: $slate-100A;
+    --pg-color-disabled-border: $slate-200A;
+
+    /* -------------------------------------------------------------------------------------------------
+     * Color - Global variants - Solid
+     * -----------------------------------------------------------------------------------------------*/
+
+    /* Primary */
     --pg-color-solid-primary-text: $white;
     --pg-color-solid-primary-icon: $white;
-    --pg-color-solid-primary-bg: $primary-600;
-    --pg-color-solid-primary-border: $primary-600;
-
+    --pg-color-solid-primary-bg: $blue-600;
+    --pg-color-solid-primary-border: $blue-600;
     --pg-color-solid-primary-text-hover: $white;
     --pg-color-solid-primary-icon-hover: $white;
-    --pg-color-solid-primary-bg-hover: $primary-700;
-    --pg-color-solid-primary-border-hover: $primary-700;
-
+    --pg-color-solid-primary-bg-hover: $blue-700;
+    --pg-color-solid-primary-border-hover: $blue-700;
     --pg-color-solid-primary-text-active: $white;
     --pg-color-solid-primary-icon-active: $white;
-    --pg-color-solid-primary-bg-active: $primary-800;
-    --pg-color-solid-primary-border-active: $primary-800;
+    --pg-color-solid-primary-bg-active: $blue-800;
+    --pg-color-solid-primary-border-active: $blue-800;
 
-    // Primary - soft
-    --pg-color-soft-primary-text: $primary-700;
-    --pg-color-soft-primary-icon: $primary-600;
-    --pg-color-soft-primary-bg: #eff6ff;
-    --pg-color-soft-primary-border: #eff6ff;
-
-    --pg-color-soft-primary-text-hover: $primary-800;
-    --pg-color-soft-primary-icon-hover: $primary-700;
-    --pg-color-soft-primary-bg-hover: #dbeafe;
-    --pg-color-soft-primary-border-hover: #dbeafe;
-
-    --pg-color-soft-primary-text-active: $primary-800;
-    --pg-color-soft-primary-icon-active: $primary-700;
-    --pg-color-soft-primary-bg-active: #bfdbfe;
-    --pg-color-soft-primary-border-active: #bfdbfe;
-
-    // Primary - outlined
-    --pg-color-outlined-primary-text: $primary-600;
-    --pg-color-outlined-primary-icon: #3b82f6;
-    --pg-color-outlined-primary-bg: transparent;
-    --pg-color-outlined-primary-border: $primary-600;
-
-    --pg-color-outlined-primary-text-hover: $white;
-    --pg-color-outlined-primary-icon-hover: $white;
-    --pg-color-outlined-primary-bg-hover: $primary-600;
-    --pg-color-outlined-primary-border-hover: $primary-600;
-
-    --pg-color-outlined-primary-text-active: $white;
-    --pg-color-outlined-primary-icon-active: $white;
-    --pg-color-outlined-primary-bg-active: $primary-700;
-    --pg-color-outlined-primary-border-active: $primary-700;
-
-    // Primary - ghost
-    --pg-color-ghost-primary-text: $primary-600;
-    --pg-color-ghost-primary-icon: #3b82f6;
-    --pg-color-ghost-primary-bg: transparent;
-    --pg-color-ghost-primary-border: transparent;
-
-    --pg-color-ghost-primary-text-hover: $primary-700;
-    --pg-color-ghost-primary-icon-hover: $primary-600;
-    --pg-color-ghost-primary-bg-hover: #eff6ff;
-    --pg-color-ghost-primary-border-hover: #eff6ff;
-
-    --pg-color-ghost-primary-text-active: $primary-800;
-    --pg-color-ghost-primary-icon-active: $primary-700;
-    --pg-color-ghost-primary-bg-active: #dbeafe;
-    --pg-color-ghost-primary-border-active: #dbeafe;
-
-    // Secondary - solid
+    /* Secondary */
     --pg-color-solid-secondary-text: $white;
     --pg-color-solid-secondary-icon: $white;
-    --pg-color-solid-secondary-bg: $neutral-900;
-    --pg-color-solid-secondary-border: $neutral-900;
-
+    --pg-color-solid-secondary-bg: $slate-900;
+    --pg-color-solid-secondary-border: $slate-900;
     --pg-color-solid-secondary-text-hover: $white;
     --pg-color-solid-secondary-icon-hover: $white;
-    --pg-color-solid-secondary-bg-hover: $neutral-700;
-    --pg-color-solid-secondary-border-hover: $neutral-700;
-
+    --pg-color-solid-secondary-bg-hover: $slate-700;
+    --pg-color-solid-secondary-border-hover: $slate-700;
     --pg-color-solid-secondary-text-active: $white;
     --pg-color-solid-secondary-icon-active: $white;
-    --pg-color-solid-secondary-bg-active: $neutral-800;
-    --pg-color-solid-secondary-border-active: $neutral-800;
+    --pg-color-solid-secondary-bg-active: $slate-800;
+    --pg-color-solid-secondary-border-active: $slate-800;
 
-    // Secondary - soft
-    --pg-color-soft-secondary-text: $neutral-700;
-    --pg-color-soft-secondary-icon: $neutral-600;
-    --pg-color-soft-secondary-bg: $neutral-100;
-    --pg-color-soft-secondary-border: $neutral-100;
-
-    --pg-color-soft-secondary-text-hover: $neutral-800;
-    --pg-color-soft-secondary-icon-hover: $neutral-700;
-    --pg-color-soft-secondary-bg-hover: $neutral-200;
-    --pg-color-soft-secondary-border-hover: $neutral-200;
-
-    --pg-color-soft-secondary-text-active: $neutral-800;
-    --pg-color-soft-secondary-icon-active: $neutral-700;
-    --pg-color-soft-secondary-bg-active: #cbd5e1;
-    --pg-color-soft-secondary-border-active: #cbd5e1;
-
-    // Secondary - outlined
-    --pg-color-outlined-secondary-text: $neutral-800;
-    --pg-color-outlined-secondary-icon: $neutral-700;
-    --pg-color-outlined-secondary-bg: transparent;
-    --pg-color-outlined-secondary-border: $neutral-800;
-
-    --pg-color-outlined-secondary-text-hover: $white;
-    --pg-color-outlined-secondary-icon-hover: $white;
-    --pg-color-outlined-secondary-bg-hover: $neutral-800;
-    --pg-color-outlined-secondary-border-hover: $neutral-800;
-
-    --pg-color-outlined-secondary-text-active: $white;
-    --pg-color-outlined-secondary-icon-active: $white;
-    --pg-color-outlined-secondary-bg-active: $neutral-700;
-    --pg-color-outlined-secondary-border-active: $neutral-700;
-
-    // Secondary - ghost
-    --pg-color-ghost-secondary-text: $neutral-800;
-    --pg-color-ghost-secondary-icon: $neutral-700;
-    --pg-color-ghost-secondary-bg: transparent;
-    --pg-color-ghost-secondary-border: transparent;
-
-    --pg-color-ghost-secondary-text-hover: $neutral-700;
-    --pg-color-ghost-secondary-icon-hover: $neutral-600;
-    --pg-color-ghost-secondary-bg-hover: $neutral-100;
-    --pg-color-ghost-secondary-border-hover: $neutral-100;
-
-    --pg-color-ghost-secondary-text-active: $neutral-800;
-    --pg-color-ghost-secondary-icon-active: $neutral-700;
-    --pg-color-ghost-secondary-bg-active: $neutral-200;
-    --pg-color-ghost-secondary-border-active: $neutral-200;
-
-    // Success - solid
+    /* Success */
     --pg-color-solid-success-text: $white;
     --pg-color-solid-success-icon: $white;
-    --pg-color-solid-success-bg: $success-600;
-    --pg-color-solid-success-border: $success-600;
-
+    --pg-color-solid-success-bg: $green-600;
+    --pg-color-solid-success-border: $green-600;
     --pg-color-solid-success-text-hover: $white;
     --pg-color-solid-success-icon-hover: $white;
-    --pg-color-solid-success-bg-hover: #15803d;
-    --pg-color-solid-success-border-hover: #15803d;
-
+    --pg-color-solid-success-bg-hover: $green-700;
+    --pg-color-solid-success-border-hover: $green-700;
     --pg-color-solid-success-text-active: $white;
     --pg-color-solid-success-icon-active: $white;
-    --pg-color-solid-success-bg-active: #166534;
-    --pg-color-solid-success-border-active: #166534;
+    --pg-color-solid-success-bg-active: $green-800;
+    --pg-color-solid-success-border-active: $green-800;
 
-    // Success - soft
-    --pg-color-soft-success-text: #15803d;
-    --pg-color-soft-success-icon: $success-600;
-    --pg-color-soft-success-bg: #f0fdf4;
-    --pg-color-soft-success-border: #f0fdf4;
-
-    --pg-color-soft-success-text-hover: #166534;
-    --pg-color-soft-success-icon-hover: #15803d;
-    --pg-color-soft-success-bg-hover: #dcfce7;
-    --pg-color-soft-success-border-hover: #dcfce7;
-
-    --pg-color-soft-success-text-active: #166534;
-    --pg-color-soft-success-icon-active: #15803d;
-    --pg-color-soft-success-bg-active: #bbf7d0;
-    --pg-color-soft-success-border-active: #bbf7d0;
-
-    // Success - outlined
-    --pg-color-outlined-success-text: $success-600;
-    --pg-color-outlined-success-icon: #22c55e;
-    --pg-color-outlined-success-bg: transparent;
-    --pg-color-outlined-success-border: $success-600;
-
-    --pg-color-outlined-success-text-hover: $white;
-    --pg-color-outlined-success-icon-hover: $white;
-    --pg-color-outlined-success-bg-hover: $success-600;
-    --pg-color-outlined-success-border-hover: $success-600;
-
-    --pg-color-outlined-success-text-active: $white;
-    --pg-color-outlined-success-icon-active: $white;
-    --pg-color-outlined-success-bg-active: #15803d;
-    --pg-color-outlined-success-border-active: #15803d;
-
-    // Success - ghost
-    --pg-color-ghost-success-text: $success-600;
-    --pg-color-ghost-success-icon: #22c55e;
-    --pg-color-ghost-success-bg: transparent;
-    --pg-color-ghost-success-border: transparent;
-
-    --pg-color-ghost-success-text-hover: #15803d;
-    --pg-color-ghost-success-icon-hover: $success-600;
-    --pg-color-ghost-success-bg-hover: #f0fdf4;
-    --pg-color-ghost-success-border-hover: #f0fdf4;
-
-    --pg-color-ghost-success-text-active: #166534;
-    --pg-color-ghost-success-icon-active: #15803d;
-    --pg-color-ghost-success-bg-active: #dcfce7;
-    --pg-color-ghost-success-border-active: #dcfce7;
-
-    // Info - solid
+    /* Info */
     --pg-color-solid-info-text: $white;
     --pg-color-solid-info-icon: $white;
-    --pg-color-solid-info-bg: $primary-600;
-    --pg-color-solid-info-border: $primary-600;
-
+    --pg-color-solid-info-bg: $blue-600;
+    --pg-color-solid-info-border: $blue-600;
     --pg-color-solid-info-text-hover: $white;
     --pg-color-solid-info-icon-hover: $white;
-    --pg-color-solid-info-bg-hover: $primary-700;
-    --pg-color-solid-info-border-hover: $primary-700;
-
+    --pg-color-solid-info-bg-hover: $blue-700;
+    --pg-color-solid-info-border-hover: $blue-700;
     --pg-color-solid-info-text-active: $white;
     --pg-color-solid-info-icon-active: $white;
-    --pg-color-solid-info-bg-active: $primary-800;
-    --pg-color-solid-info-border-active: $primary-800;
+    --pg-color-solid-info-bg-active: $blue-800;
+    --pg-color-solid-info-border-active: $blue-800;
 
-    // Info - soft
-    --pg-color-soft-info-text: $primary-700;
-    --pg-color-soft-info-icon: $primary-600;
-    --pg-color-soft-info-bg: #eff6ff;
-    --pg-color-soft-info-border: #eff6ff;
+    /* Warning */
+    --pg-color-solid-warning-text: $stone-600;
+    --pg-color-solid-warning-icon: $stone-500;
+    --pg-color-solid-warning-bg: $amber-300;
+    --pg-color-solid-warning-border: $amber-300;
+    --pg-color-solid-warning-text-hover: $stone-700;
+    --pg-color-solid-warning-icon-hover: $stone-600;
+    --pg-color-solid-warning-bg-hover: $amber-400;
+    --pg-color-solid-warning-border-hover: $amber-400;
+    --pg-color-solid-warning-text-active: $stone-700;
+    --pg-color-solid-warning-icon-active: $stone-600;
+    --pg-color-solid-warning-bg-active: $amber-500;
+    --pg-color-solid-warning-border-active: $amber-500;
 
-    --pg-color-soft-info-text-hover: $primary-800;
-    --pg-color-soft-info-icon-hover: $primary-700;
-    --pg-color-soft-info-bg-hover: #dbeafe;
-    --pg-color-soft-info-border-hover: #dbeafe;
-
-    --pg-color-soft-info-text-active: $primary-800;
-    --pg-color-soft-info-icon-active: $primary-700;
-    --pg-color-soft-info-bg-active: #bfdbfe;
-    --pg-color-soft-info-border-active: #bfdbfe;
-
-    // Info - outlined
-    --pg-color-outlined-info-text: $primary-600;
-    --pg-color-outlined-info-icon: #3b82f6;
-    --pg-color-outlined-info-bg: transparent;
-    --pg-color-outlined-info-border: $primary-600;
-
-    --pg-color-outlined-info-text-hover: $white;
-    --pg-color-outlined-info-icon-hover: $white;
-    --pg-color-outlined-info-bg-hover: $primary-600;
-    --pg-color-outlined-info-border-hover: $primary-600;
-
-    --pg-color-outlined-info-text-active: $white;
-    --pg-color-outlined-info-icon-active: $white;
-    --pg-color-outlined-info-bg-active: $primary-700;
-    --pg-color-outlined-info-border-active: $primary-700;
-
-    // Info - ghost
-    --pg-color-ghost-info-text: $primary-600;
-    --pg-color-ghost-info-icon: #3b82f6;
-    --pg-color-ghost-info-bg: transparent;
-    --pg-color-ghost-info-border: transparent;
-
-    --pg-color-ghost-info-text-hover: $primary-700;
-    --pg-color-ghost-info-icon-hover: $primary-600;
-    --pg-color-ghost-info-bg-hover: #eff6ff;
-    --pg-color-ghost-info-border-hover: #eff6ff;
-
-    --pg-color-ghost-info-text-active: $primary-800;
-    --pg-color-ghost-info-icon-active: $primary-700;
-    --pg-color-ghost-info-bg-active: #dbeafe;
-    --pg-color-ghost-info-border-active: #dbeafe;
-
-    // Warning - solid
-    --pg-color-solid-warning-text: #57534e;
-    --pg-color-solid-warning-icon: #78716c;
-    --pg-color-solid-warning-bg: #fcd34d;
-    --pg-color-solid-warning-border: #fcd34d;
-
-    --pg-color-solid-warning-text-hover: #44403c;
-    --pg-color-solid-warning-icon-hover: #57534e;
-    --pg-color-solid-warning-bg-hover: #fbbf24;
-    --pg-color-solid-warning-border-hover: #fbbf24;
-
-    --pg-color-solid-warning-text-active: #44403c;
-    --pg-color-solid-warning-icon-active: #57534e;
-    --pg-color-solid-warning-bg-active: #f59e0b;
-    --pg-color-solid-warning-border-active: #f59e0b;
-
-    // Warning - soft
-    --pg-color-soft-warning-text: #b45309;
-    --pg-color-soft-warning-icon: #d97706;
-    --pg-color-soft-warning-bg: #fef3c7;
-    --pg-color-soft-warning-border: #fef3c7;
-
-    --pg-color-soft-warning-text-hover: #92400e;
-    --pg-color-soft-warning-icon-hover: #b45309;
-    --pg-color-soft-warning-bg-hover: #fde68a;
-    --pg-color-soft-warning-border-hover: #fde68a;
-
-    --pg-color-soft-warning-text-active: #92400e;
-    --pg-color-soft-warning-icon-active: #b45309;
-    --pg-color-soft-warning-bg-active: #fcd34d;
-    --pg-color-soft-warning-border-active: #fcd34d;
-
-    // Warning - outlined
-    --pg-color-outlined-warning-text: #b45309;
-    --pg-color-outlined-warning-icon: #d97706;
-    --pg-color-outlined-warning-bg: transparent;
-    --pg-color-outlined-warning-border: #d97706;
-
-    --pg-color-outlined-warning-text-hover: #57534e;
-    --pg-color-outlined-warning-icon-hover: #78716c;
-    --pg-color-outlined-warning-bg-hover: #fcd34d;
-    --pg-color-outlined-warning-border-hover: #fcd34d;
-
-    --pg-color-outlined-warning-text-active: #44403c;
-    --pg-color-outlined-warning-icon-active: #57534e;
-    --pg-color-outlined-warning-bg-active: #fbbf24;
-    --pg-color-outlined-warning-border-active: #fbbf24;
-
-    // Warning - ghost
-    --pg-color-ghost-warning-text: #b45309;
-    --pg-color-ghost-warning-icon: #f59e0b;
-    --pg-color-ghost-warning-bg: transparent;
-    --pg-color-ghost-warning-border: transparent;
-
-    --pg-color-ghost-warning-text-hover: #b45309;
-    --pg-color-ghost-warning-icon-hover: #d97706;
-    --pg-color-ghost-warning-bg-hover: #fef3c7;
-    --pg-color-ghost-warning-border-hover: #fef3c7;
-
-    --pg-color-ghost-warning-text-active: #92400e;
-    --pg-color-ghost-warning-icon-active: #b45309;
-    --pg-color-ghost-warning-bg-active: #fde68a;
-    --pg-color-ghost-warning-border-active: #fde68a;
-
-    // Danger - solid
+    /* Danger */
     --pg-color-solid-danger-text: $white;
     --pg-color-solid-danger-icon: $white;
-    --pg-color-solid-danger-bg: #dc2626;
-    --pg-color-solid-danger-border: #dc2626;
-
+    --pg-color-solid-danger-bg: $red-600;
+    --pg-color-solid-danger-border: $red-600;
     --pg-color-solid-danger-text-hover: $white;
     --pg-color-solid-danger-icon-hover: $white;
-    --pg-color-solid-danger-bg-hover: #b91c1c;
-    --pg-color-solid-danger-border-hover: #b91c1c;
-
+    --pg-color-solid-danger-bg-hover: $red-700;
+    --pg-color-solid-danger-border-hover: $red-700;
     --pg-color-solid-danger-text-active: $white;
     --pg-color-solid-danger-icon-active: $white;
-    --pg-color-solid-danger-bg-active: #991b1b;
-    --pg-color-solid-danger-border-active: #991b1b;
+    --pg-color-solid-danger-bg-active: $red-800;
+    --pg-color-solid-danger-border-active: $red-800;
 
-    // Danger - soft
-    --pg-color-soft-danger-text: #b91c1c;
-    --pg-color-soft-danger-icon: #dc2626;
-    --pg-color-soft-danger-bg: #fef2f2;
-    --pg-color-soft-danger-border: #fef2f2;
+    /* Help */
+    --pg-color-solid-help-text: $white;
+    --pg-color-solid-help-icon: $white;
+    --pg-color-solid-help-bg: $violet-600;
+    --pg-color-solid-help-border: $violet-600;
+    --pg-color-solid-help-text-hover: $white;
+    --pg-color-solid-help-icon-hover: $white;
+    --pg-color-solid-help-bg-hover: $violet-700;
+    --pg-color-solid-help-border-hover: $violet-700;
+    --pg-color-solid-help-text-active: $white;
+    --pg-color-solid-help-icon-active: $white;
+    --pg-color-solid-help-bg-active: $violet-800;
+    --pg-color-solid-help-border-active: $violet-800;
 
-    --pg-color-soft-danger-text-hover: #991b1b;
-    --pg-color-soft-danger-icon-hover: #b91c1c;
-    --pg-color-soft-danger-bg-hover: #fee2e2;
-    --pg-color-soft-danger-border-hover: #fee2e2;
-
-    --pg-color-soft-danger-text-active: #991b1b;
-    --pg-color-soft-danger-icon-active: #b91c1c;
-    --pg-color-soft-danger-bg-active: #fecaca;
-    --pg-color-soft-danger-border-active: #fecaca;
-
-    // Danger - outlined
-    --pg-color-outlined-danger-text: #dc2626;
-    --pg-color-outlined-danger-icon: #ef4444;
-    --pg-color-outlined-danger-bg: transparent;
-    --pg-color-outlined-danger-border: #dc2626;
-
-    --pg-color-outlined-danger-text-hover: $white;
-    --pg-color-outlined-danger-icon-hover: $white;
-    --pg-color-outlined-danger-bg-hover: #dc2626;
-    --pg-color-outlined-danger-border-hover: #dc2626;
-
-    --pg-color-outlined-danger-text-active: $white;
-    --pg-color-outlined-danger-icon-active: $white;
-    --pg-color-outlined-danger-bg-active: #b91c1c;
-    --pg-color-outlined-danger-border-active: #dc2626;
-
-    // Danger - ghost
-    --pg-color-ghost-danger-text: #dc2626;
-    --pg-color-ghost-danger-icon: #ef4444;
-    --pg-color-ghost-danger-bg: transparent;
-    --pg-color-ghost-danger-border: transparent;
-
-    --pg-color-ghost-danger-text-hover: #b91c1c;
-    --pg-color-ghost-danger-icon-hover: #dc2626;
-    --pg-color-ghost-danger-bg-hover: #fef2f2;
-    --pg-color-ghost-danger-border-hover: #fef2f2;
-
-    --pg-color-ghost-danger-text-active: #991b1b;
-    --pg-color-ghost-danger-icon-active: #b91c1c;
-    --pg-color-ghost-danger-bg-active: #fee2e2;
-    --pg-color-ghost-danger-border-active: #fee2e2;
-
-    // Help - solid
-    // Help - soft
-    // Help - outlined
-    // Help - ghost
-
-    // Selected - solid
+    /* Selected */
     --pg-color-solid-selected-text: $white;
     --pg-color-solid-selected-icon: $white;
-    --pg-color-solid-selected-bg: $primary-600;
-    --pg-color-solid-selected-border: $primary-600;
-
+    --pg-color-solid-selected-bg: $blue-600;
+    --pg-color-solid-selected-border: $blue-600;
     --pg-color-solid-selected-text-hover: $white;
     --pg-color-solid-selected-icon-hover: $white;
-    --pg-color-solid-selected-bg-hover: $primary-700;
-    --pg-color-solid-selected-border-hover: $primary-700;
-
+    --pg-color-solid-selected-bg-hover: $blue-700;
+    --pg-color-solid-selected-border-hover: $blue-700;
     --pg-color-solid-selected-text-active: $white;
     --pg-color-solid-selected-icon-active: $white;
-    --pg-color-solid-selected-bg-active: $primary-800;
-    --pg-color-solid-selected-border-active: $primary-800;
+    --pg-color-solid-selected-bg-active: $blue-800;
+    --pg-color-solid-selected-border-active: $blue-800;
 
-    // Selected - soft
-    --pg-color-soft-selected-text: $white;
-    --pg-color-soft-selected-icon: $white;
-    --pg-color-soft-selected-bg: $primary-600;
-    --pg-color-soft-selected-border: $primary-600;
+    /* -------------------------------------------------------------------------------------------------
+     * Color - Global variants - Soft
+     * -----------------------------------------------------------------------------------------------*/
 
-    --pg-color-soft-selected-text-hover: $white;
-    --pg-color-soft-selected-icon-hover: $white;
-    --pg-color-soft-selected-bg-hover: $primary-700;
-    --pg-color-soft-selected-border-hover: $primary-700;
+    /* Primary */
+    --pg-color-soft-primary-text: $blue-700;
+    --pg-color-soft-primary-icon: $blue-600;
+    --pg-color-soft-primary-bg: $blue-50;
+    --pg-color-soft-primary-border: $blue-50;
+    --pg-color-soft-primary-text-hover: $blue-800;
+    --pg-color-soft-primary-icon-hover: $blue-700;
+    --pg-color-soft-primary-bg-hover: $blue-100;
+    --pg-color-soft-primary-border-hover: $blue-100;
+    --pg-color-soft-primary-text-active: $blue-800;
+    --pg-color-soft-primary-icon-active: $blue-700;
+    --pg-color-soft-primary-bg-active: $blue-200;
+    --pg-color-soft-primary-border-active: $blue-200;
 
-    --pg-color-soft-selected-text-active: $white;
-    --pg-color-soft-selected-icon-active: $white;
-    --pg-color-soft-selected-bg-active: $primary-800;
-    --pg-color-soft-selected-border-active: $primary-800;
+    /* Secondary */
+    --pg-color-soft-secondary-text: $slate-700;
+    --pg-color-soft-secondary-icon: $slate-600;
+    --pg-color-soft-secondary-bg: $slate-100;
+    --pg-color-soft-secondary-border: $slate-100;
+    --pg-color-soft-secondary-text-hover: $slate-800;
+    --pg-color-soft-secondary-icon-hover: $slate-700;
+    --pg-color-soft-secondary-bg-hover: $slate-200;
+    --pg-color-soft-secondary-border-hover: $slate-200;
+    --pg-color-soft-secondary-text-active: $slate-800;
+    --pg-color-soft-secondary-icon-active: $slate-700;
+    --pg-color-soft-secondary-bg-active: $slate-300;
+    --pg-color-soft-secondary-border-active: $slate-300;
 
-    // Input - soft
-    --pg-color-soft-input-text: $neutral-900;
-    --pg-color-soft-input-icon: $neutral-700;
-    --pg-color-soft-input-bg: $neutral-100;
-    --pg-color-soft-input-border: $neutral-100;
+    /* Success */
+    --pg-color-soft-success-text: $green-700;
+    --pg-color-soft-success-icon: $green-600;
+    --pg-color-soft-success-bg: $green-50;
+    --pg-color-soft-success-border: $green-50;
+    --pg-color-soft-success-text-hover: $green-800;
+    --pg-color-soft-success-icon-hover: $green-700;
+    --pg-color-soft-success-bg-hover: $green-100;
+    --pg-color-soft-success-border-hover: $green-100;
+    --pg-color-soft-success-text-active: $green-800;
+    --pg-color-soft-success-icon-active: $green-700;
+    --pg-color-soft-success-bg-active: $green-200;
+    --pg-color-soft-success-border-active: $green-200;
 
-    --pg-color-soft-input-text-hover: $neutral-900;
-    --pg-color-soft-input-icon-hover: $neutral-700;
-    --pg-color-soft-input-bg-hover: $neutral-100;
-    --pg-color-soft-input-border-hover: $neutral-100;
+    /* Info */
+    --pg-color-soft-info-text: $blue-700;
+    --pg-color-soft-info-icon: $blue-600;
+    --pg-color-soft-info-bg: $blue-50;
+    --pg-color-soft-info-border: $blue-50;
+    --pg-color-soft-info-text-hover: $blue-800;
+    --pg-color-soft-info-icon-hover: $blue-700;
+    --pg-color-soft-info-bg-hover: $blue-100;
+    --pg-color-soft-info-border-hover: $blue-100;
+    --pg-color-soft-info-text-active: $blue-800;
+    --pg-color-soft-info-icon-active: $blue-700;
+    --pg-color-soft-info-bg-active: $blue-200;
+    --pg-color-soft-info-border-active: $blue-200;
 
-    --pg-color-soft-input-text-active: $neutral-900;
-    --pg-color-soft-input-icon-active: $neutral-700;
-    --pg-color-soft-input-bg-active: $neutral-100;
-    --pg-color-soft-input-border-active: $neutral-100;
+    /* Warning */
+    --pg-color-soft-warning-text: $amber-700;
+    --pg-color-soft-warning-icon: $amber-600;
+    --pg-color-soft-warning-bg: $amber-100;
+    --pg-color-soft-warning-border: $amber-100;
+    --pg-color-soft-warning-text-hover: $amber-800;
+    --pg-color-soft-warning-icon-hover: $amber-700;
+    --pg-color-soft-warning-bg-hover: $amber-200;
+    --pg-color-soft-warning-border-hover: $amber-200;
+    --pg-color-soft-warning-text-active: $amber-800;
+    --pg-color-soft-warning-icon-active: $amber-700;
+    --pg-color-soft-warning-bg-active: $amber-300;
+    --pg-color-soft-warning-border-active: $amber-300;
 
-    // Input - outlined
-    --pg-color-outlined-input-text: $neutral-900;
-    --pg-color-outlined-input-icon: $neutral-600;
+    /* Danger */
+    --pg-color-soft-danger-text: $red-700;
+    --pg-color-soft-danger-icon: $red-600;
+    --pg-color-soft-danger-bg: $red-50;
+    --pg-color-soft-danger-border: $red-50;
+    --pg-color-soft-danger-text-hover: $red-800;
+    --pg-color-soft-danger-icon-hover: $red-700;
+    --pg-color-soft-danger-bg-hover: $red-100;
+    --pg-color-soft-danger-border-hover: $red-100;
+    --pg-color-soft-danger-text-active: $red-800;
+    --pg-color-soft-danger-icon-active: $red-700;
+    --pg-color-soft-danger-bg-active: $red-200;
+    --pg-color-soft-danger-border-active: $red-200;
+
+    /* Help */
+    --pg-color-soft-help-text: $violet-700;
+    --pg-color-soft-help-icon: $violet-600;
+    --pg-color-soft-help-bg: $violet-50;
+    --pg-color-soft-help-border: $violet-50;
+    --pg-color-soft-help-text-hover: $violet-800;
+    --pg-color-soft-help-icon-hover: $violet-700;
+    --pg-color-soft-help-bg-hover: $violet-100;
+    --pg-color-soft-help-border-hover: $violet-100;
+    --pg-color-soft-help-text-active: $violet-800;
+    --pg-color-soft-help-icon-active: $violet-700;
+    --pg-color-soft-help-bg-active: $violet-200;
+    --pg-color-soft-help-border-active: $violet-200;
+
+    /* Selected */
+    --pg-color-soft-selected-text: $blue-700;
+    --pg-color-soft-selected-icon: $blue-600;
+    --pg-color-soft-selected-bg: $blue-50;
+    --pg-color-soft-selected-border: $blue-50;
+    --pg-color-soft-selected-text-hover: $blue-800;
+    --pg-color-soft-selected-icon-hover: $blue-700;
+    --pg-color-soft-selected-bg-hover: $blue-100;
+    --pg-color-soft-selected-border-hover: $blue-100;
+    --pg-color-soft-selected-text-active: $blue-800;
+    --pg-color-soft-selected-icon-active: $blue-700;
+    --pg-color-soft-selected-bg-active: $blue-200;
+    --pg-color-soft-selected-border-active: $blue-200;
+
+    /* Input */
+    --pg-color-soft-input-text: $slate-900;
+    --pg-color-soft-input-icon: $slate-700;
+    --pg-color-soft-input-bg: $slate-100;
+    --pg-color-soft-input-border: $slate-100;
+    --pg-color-soft-input-text-hover: $slate-900;
+    --pg-color-soft-input-icon-hover: $slate-700;
+    --pg-color-soft-input-bg-hover: $slate-100;
+    --pg-color-soft-input-border-hover: $slate-100;
+    --pg-color-soft-input-text-active: $slate-900;
+    --pg-color-soft-input-icon-active: $slate-700;
+    --pg-color-soft-input-bg-active: $slate-100;
+    --pg-color-soft-input-border-active: $slate-100;
+
+    /* -------------------------------------------------------------------------------------------------
+     * Color - Global variants - Outlined
+     * -----------------------------------------------------------------------------------------------*/
+
+    /* Primary */
+    --pg-color-outlined-primary-text: $blue-600;
+    --pg-color-outlined-primary-icon: $blue-500;
+    --pg-color-outlined-primary-bg: transparent;
+    --pg-color-outlined-primary-border: $blue-600;
+    --pg-color-outlined-primary-text-hover: $white;
+    --pg-color-outlined-primary-icon-hover: $white;
+    --pg-color-outlined-primary-bg-hover: $blue-600;
+    --pg-color-outlined-primary-border-hover: $blue-600;
+    --pg-color-outlined-primary-text-active: $white;
+    --pg-color-outlined-primary-icon-active: $white;
+    --pg-color-outlined-primary-bg-active: $blue-700;
+    --pg-color-outlined-primary-border-active: $blue-700;
+
+    /* Secondary */
+    --pg-color-outlined-secondary-text: $slate-800;
+    --pg-color-outlined-secondary-icon: $slate-700;
+    --pg-color-outlined-secondary-bg: transparent;
+    --pg-color-outlined-secondary-border: $slate-800;
+    --pg-color-outlined-secondary-text-hover: $white;
+    --pg-color-outlined-secondary-icon-hover: $white;
+    --pg-color-outlined-secondary-bg-hover: $slate-800;
+    --pg-color-outlined-secondary-border-hover: $slate-800;
+    --pg-color-outlined-secondary-text-active: $white;
+    --pg-color-outlined-secondary-icon-active: $white;
+    --pg-color-outlined-secondary-bg-active: $slate-700;
+    --pg-color-outlined-secondary-border-active: $slate-700;
+
+    /* Success */
+    --pg-color-outlined-success-text: $green-600;
+    --pg-color-outlined-success-icon: $green-500;
+    --pg-color-outlined-success-bg: transparent;
+    --pg-color-outlined-success-border: $green-600;
+    --pg-color-outlined-success-text-hover: $white;
+    --pg-color-outlined-success-icon-hover: $white;
+    --pg-color-outlined-success-bg-hover: $green-600;
+    --pg-color-outlined-success-border-hover: $green-600;
+    --pg-color-outlined-success-text-active: $white;
+    --pg-color-outlined-success-icon-active: $white;
+    --pg-color-outlined-success-bg-active: $green-700;
+    --pg-color-outlined-success-border-active: $green-700;
+
+    /* Info */
+    --pg-color-outlined-info-text: $blue-600;
+    --pg-color-outlined-info-icon: $blue-500;
+    --pg-color-outlined-info-bg: transparent;
+    --pg-color-outlined-info-border: $blue-600;
+    --pg-color-outlined-info-text-hover: $white;
+    --pg-color-outlined-info-icon-hover: $white;
+    --pg-color-outlined-info-bg-hover: $blue-600;
+    --pg-color-outlined-info-border-hover: $blue-600;
+    --pg-color-outlined-info-text-active: $white;
+    --pg-color-outlined-info-icon-active: $white;
+    --pg-color-outlined-info-bg-active: $blue-700;
+    --pg-color-outlined-info-border-active: $blue-700;
+
+    /* Warning */
+    --pg-color-outlined-warning-text: $amber-700;
+    --pg-color-outlined-warning-icon: $amber-600;
+    --pg-color-outlined-warning-bg: transparent;
+    --pg-color-outlined-warning-border: $amber-600;
+    --pg-color-outlined-warning-text-hover: $stone-600;
+    --pg-color-outlined-warning-icon-hover: $stone-500;
+    --pg-color-outlined-warning-bg-hover: $amber-300;
+    --pg-color-outlined-warning-border-hover: $amber-300;
+    --pg-color-outlined-warning-text-active: $stone-700;
+    --pg-color-outlined-warning-icon-active: $stone-600;
+    --pg-color-outlined-warning-bg-active: $amber-400;
+    --pg-color-outlined-warning-border-active: $amber-400;
+
+    /* Danger */
+    --pg-color-outlined-danger-text: $red-600;
+    --pg-color-outlined-danger-icon: $red-500;
+    --pg-color-outlined-danger-bg: transparent;
+    --pg-color-outlined-danger-border: $red-600;
+    --pg-color-outlined-danger-text-hover: $white;
+    --pg-color-outlined-danger-icon-hover: $white;
+    --pg-color-outlined-danger-bg-hover: $red-600;
+    --pg-color-outlined-danger-border-hover: $red-600;
+    --pg-color-outlined-danger-text-active: $white;
+    --pg-color-outlined-danger-icon-active: $white;
+    --pg-color-outlined-danger-bg-active: $red-700;
+    --pg-color-outlined-danger-border-active: $red-600;
+
+    /* Help */
+    --pg-color-outlined-help-text: $violet-600;
+    --pg-color-outlined-help-icon: $violet-500;
+    --pg-color-outlined-help-bg: transparent;
+    --pg-color-outlined-help-border: $violet-600;
+    --pg-color-outlined-help-text-hover: $white;
+    --pg-color-outlined-help-icon-hover: $white;
+    --pg-color-outlined-help-bg-hover: $violet-600;
+    --pg-color-outlined-help-border-hover: $violet-600;
+    --pg-color-outlined-help-text-active: $white;
+    --pg-color-outlined-help-icon-active: $white;
+    --pg-color-outlined-help-bg-active: $violet-700;
+    --pg-color-outlined-help-border-active: $violet-700;
+
+    /* Input */
+    --pg-color-outlined-input-text: $slate-900;
+    --pg-color-outlined-input-icon: $slate-600;
     --pg-color-outlined-input-bg: transparent;
-    --pg-color-outlined-input-border: $neutral-300A;
-
-    --pg-color-outlined-input-text-hover: $neutral-900;
-    --pg-color-outlined-input-icon-hover: $neutral-600;
+    --pg-color-outlined-input-border: $slate-300A;
+    --pg-color-outlined-input-text-hover: $slate-900;
+    --pg-color-outlined-input-icon-hover: $slate-600;
     --pg-color-outlined-input-bg-hover: transparent;
-    --pg-color-outlined-input-border-hover: $neutral-300A;
-
-    --pg-color-outlined-input-text-active: $neutral-900;
-    --pg-color-outlined-input-icon-active: $neutral-600;
+    --pg-color-outlined-input-border-hover: $slate-300A;
+    --pg-color-outlined-input-text-active: $slate-900;
+    --pg-color-outlined-input-icon-active: $slate-600;
     --pg-color-outlined-input-bg-active: transparent;
-    --pg-color-outlined-input-border-active: $neutral-300A;
+    --pg-color-outlined-input-border-active: $slate-300A;
 
-    // Misc
-    --pg-color-focus-ring: $primary-400;
-    --pg-color-backdrop-bg: $neutral-500A;
+    /* -------------------------------------------------------------------------------------------------
+     * Color - Global variants - Ghost
+     * -----------------------------------------------------------------------------------------------*/
 
-    // Shadow
+    /* Primary */
+    --pg-color-ghost-primary-text: $blue-600;
+    --pg-color-ghost-primary-icon: $blue-500;
+    --pg-color-ghost-primary-bg: transparent;
+    --pg-color-ghost-primary-border: transparent;
+    --pg-color-ghost-primary-text-hover: $blue-700;
+    --pg-color-ghost-primary-icon-hover: $blue-600;
+    --pg-color-ghost-primary-bg-hover: $blue-50;
+    --pg-color-ghost-primary-border-hover: $blue-50;
+    --pg-color-ghost-primary-text-active: $blue-800;
+    --pg-color-ghost-primary-icon-active: $blue-700;
+    --pg-color-ghost-primary-bg-active: $blue-100;
+    --pg-color-ghost-primary-border-active: $blue-100;
+
+    /* Secondary */
+    --pg-color-ghost-secondary-text: $slate-800;
+    --pg-color-ghost-secondary-icon: $slate-700;
+    --pg-color-ghost-secondary-bg: transparent;
+    --pg-color-ghost-secondary-border: transparent;
+    --pg-color-ghost-secondary-text-hover: $slate-700;
+    --pg-color-ghost-secondary-icon-hover: $slate-600;
+    --pg-color-ghost-secondary-bg-hover: $slate-100;
+    --pg-color-ghost-secondary-border-hover: $slate-100;
+    --pg-color-ghost-secondary-text-active: $slate-800;
+    --pg-color-ghost-secondary-icon-active: $slate-700;
+    --pg-color-ghost-secondary-bg-active: $slate-200;
+    --pg-color-ghost-secondary-border-active: $slate-200;
+
+    /* Success */
+    --pg-color-ghost-success-text: $green-600;
+    --pg-color-ghost-success-icon: $green-500;
+    --pg-color-ghost-success-bg: transparent;
+    --pg-color-ghost-success-border: transparent;
+    --pg-color-ghost-success-text-hover: $green-700;
+    --pg-color-ghost-success-icon-hover: $green-600;
+    --pg-color-ghost-success-bg-hover: $green-50;
+    --pg-color-ghost-success-border-hover: $green-50;
+    --pg-color-ghost-success-text-active: $green-800;
+    --pg-color-ghost-success-icon-active: $green-700;
+    --pg-color-ghost-success-bg-active: $green-100;
+    --pg-color-ghost-success-border-active: $green-100;
+
+    /* Info */
+    --pg-color-ghost-info-text: $blue-600;
+    --pg-color-ghost-info-icon: $blue-500;
+    --pg-color-ghost-info-bg: transparent;
+    --pg-color-ghost-info-border: transparent;
+    --pg-color-ghost-info-text-hover: $blue-700;
+    --pg-color-ghost-info-icon-hover: $blue-600;
+    --pg-color-ghost-info-bg-hover: $blue-50;
+    --pg-color-ghost-info-border-hover: $blue-50;
+    --pg-color-ghost-info-text-active: $blue-800;
+    --pg-color-ghost-info-icon-active: $blue-700;
+    --pg-color-ghost-info-bg-active: $blue-100;
+    --pg-color-ghost-info-border-active: $blue-100;
+
+    /* Warning */
+    --pg-color-ghost-warning-text: $amber-700;
+    --pg-color-ghost-warning-icon: $amber-500;
+    --pg-color-ghost-warning-bg: transparent;
+    --pg-color-ghost-warning-border: transparent;
+    --pg-color-ghost-warning-text-hover: $amber-700;
+    --pg-color-ghost-warning-icon-hover: $amber-600;
+    --pg-color-ghost-warning-bg-hover: $amber-100;
+    --pg-color-ghost-warning-border-hover: $amber-100;
+    --pg-color-ghost-warning-text-active: $amber-800;
+    --pg-color-ghost-warning-icon-active: $amber-700;
+    --pg-color-ghost-warning-bg-active: $amber-200;
+    --pg-color-ghost-warning-border-active: $amber-200;
+
+    /* Danger */
+    --pg-color-ghost-danger-text: $red-600;
+    --pg-color-ghost-danger-icon: $red-500;
+    --pg-color-ghost-danger-bg: transparent;
+    --pg-color-ghost-danger-border: transparent;
+    --pg-color-ghost-danger-text-hover: $red-700;
+    --pg-color-ghost-danger-icon-hover: $red-600;
+    --pg-color-ghost-danger-bg-hover: $red-50;
+    --pg-color-ghost-danger-border-hover: $red-50;
+    --pg-color-ghost-danger-text-active: $red-800;
+    --pg-color-ghost-danger-icon-active: $red-700;
+    --pg-color-ghost-danger-bg-active: $red-100;
+    --pg-color-ghost-danger-border-active: $red-100;
+
+    /* Help */
+    --pg-color-ghost-help-text: $violet-600;
+    --pg-color-ghost-help-icon: $violet-500;
+    --pg-color-ghost-help-bg: transparent;
+    --pg-color-ghost-help-border: transparent;
+    --pg-color-ghost-help-text-hover: $violet-700;
+    --pg-color-ghost-help-icon-hover: $violet-600;
+    --pg-color-ghost-help-bg-hover: $violet-50;
+    --pg-color-ghost-help-border-hover: $violet-50;
+    --pg-color-ghost-help-text-active: $violet-800;
+    --pg-color-ghost-help-icon-active: $violet-700;
+    --pg-color-ghost-help-bg-active: $violet-100;
+    --pg-color-ghost-help-border-active: $violet-100;
+
+    /* -------------------------------------------------------------------------------------------------
+     * Shadows
+     * -----------------------------------------------------------------------------------------------*/
+
     --pg-shadow-surface-raised: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
     --pg-shadow-surface-overlay: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
       0 4px 6px -4px rgba(0, 0, 0, 0.1);
-
-    // Typography
-    --pg-font-family-body: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   }
 
   .pg-dark,

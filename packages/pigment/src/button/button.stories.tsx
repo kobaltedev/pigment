@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 
-import { Button, ButtonProps } from "./button";
 import { InfoCircleIcon } from "../icons";
+import { Button, ButtonProps } from "./button";
 
 type Story = StoryObj<ButtonProps>;
 
@@ -14,21 +14,14 @@ export default {
       control: { type: "select" },
     },
     colorScheme: {
-      options: ["primary", "neutral", "warning", "danger"],
+      options: ["primary", "secondary", "warning", "danger"],
       control: { type: "select" },
     },
     size: {
       options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
-    rounded: {
-      options: ["none", "xs", "sm", "md", "lg", "xl", "2xl", "3xl", "full"],
-      control: { type: "select" },
-    },
-    shrinkOnPress: {
-      control: { type: "boolean" },
-    },
-    isSquare: {
+    isIconOnly: {
       control: { type: "boolean" },
     },
     isFullWidth: {
@@ -58,9 +51,8 @@ export const Default: Story = {
   args: {
     variant: "solid",
     colorScheme: "primary",
-    size: "md",
-    shrinkOnPress: true,
-    isSquare: false,
+    size: "sm",
+    isIconOnly: false,
     isFullWidth: false,
     isLoading: false,
     isDisabled: false,
@@ -74,9 +66,8 @@ export const WithIcon: Story = {
   args: {
     variant: "solid",
     colorScheme: "primary",
-    size: "md",
-    shrinkOnPress: true,
-    isSquare: false,
+    size: "sm",
+    isIconOnly: false,
     isFullWidth: false,
     isLoading: false,
     isDisabled: false,
