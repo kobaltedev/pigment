@@ -152,7 +152,7 @@
 
     --pg-color-focus-ring: $blue-400;
     --pg-color-backdrop: $slate-500A;
-    --pg-color-separator: $slate-300A;
+    --pg-color-border: $slate-300A;
 
     /* -------------------------------------------------------------------------------------------------
      * Color - Global variants - Disabled
@@ -177,16 +177,16 @@
     --pg-color-solid-primary-bg-active: $blue-800;
     --pg-color-solid-primary-border-active: $blue-800;
 
-    /* Secondary */
-    --pg-color-solid-secondary-text: $white;
-    --pg-color-solid-secondary-bg: $slate-900;
-    --pg-color-solid-secondary-border: $slate-900;
-    --pg-color-solid-secondary-text-hover: $white;
-    --pg-color-solid-secondary-bg-hover: $slate-700;
-    --pg-color-solid-secondary-border-hover: $slate-700;
-    --pg-color-solid-secondary-text-active: $white;
-    --pg-color-solid-secondary-bg-active: $slate-800;
-    --pg-color-solid-secondary-border-active: $slate-800;
+    /* Neutral */
+    --pg-color-solid-neutral-text: $white;
+    --pg-color-solid-neutral-bg: $slate-700;
+    --pg-color-solid-neutral-border: $slate-700;
+    --pg-color-solid-neutral-text-hover: $white;
+    --pg-color-solid-neutral-bg-hover: $slate-800;
+    --pg-color-solid-neutral-border-hover: $slate-800;
+    --pg-color-solid-neutral-text-active: $white;
+    --pg-color-solid-neutral-bg-active: $slate-900;
+    --pg-color-solid-neutral-border-active: $slate-900;
 
     /* Success */
     --pg-color-solid-success-text: $white;
@@ -211,13 +211,13 @@
     --pg-color-solid-info-border-active: $blue-800;
 
     /* Warning */
-    --pg-color-solid-warning-text: $stone-600;
+    --pg-color-solid-warning-text: $stone-800;
     --pg-color-solid-warning-bg: $amber-300;
     --pg-color-solid-warning-border: $amber-300;
-    --pg-color-solid-warning-text-hover: $stone-700;
+    --pg-color-solid-warning-text-hover: $stone-900;
     --pg-color-solid-warning-bg-hover: $amber-400;
     --pg-color-solid-warning-border-hover: $amber-400;
-    --pg-color-solid-warning-text-active: $stone-700;
+    --pg-color-solid-warning-text-active: $stone-900;
     --pg-color-solid-warning-bg-active: $amber-500;
     --pg-color-solid-warning-border-active: $amber-500;
 
@@ -269,16 +269,16 @@
     --pg-color-soft-primary-bg-active: $blue-200;
     --pg-color-soft-primary-border-active: $blue-200;
 
-    /* Secondary */
-    --pg-color-soft-secondary-text: $slate-700;
-    --pg-color-soft-secondary-bg: $slate-100;
-    --pg-color-soft-secondary-border: $slate-100;
-    --pg-color-soft-secondary-text-hover: $slate-800;
-    --pg-color-soft-secondary-bg-hover: $slate-200;
-    --pg-color-soft-secondary-border-hover: $slate-200;
-    --pg-color-soft-secondary-text-active: $slate-800;
-    --pg-color-soft-secondary-bg-active: $slate-300;
-    --pg-color-soft-secondary-border-active: $slate-300;
+    /* Neutral */
+    --pg-color-soft-neutral-text: $slate-900;
+    --pg-color-soft-neutral-bg: $slate-200A;
+    --pg-color-soft-neutral-border: transparent;
+    --pg-color-soft-neutral-text-hover: $slate-900;
+    --pg-color-soft-neutral-bg-hover: $slate-300A;
+    --pg-color-soft-neutral-border-hover: transparent;
+    --pg-color-soft-neutral-text-active: $slate-900;
+    --pg-color-soft-neutral-bg-active: $slate-400A;
+    --pg-color-soft-neutral-border-active: transparent;
 
     /* Success */
     --pg-color-soft-success-text: $green-700;
@@ -372,16 +372,16 @@
     --pg-color-outlined-primary-bg-active: $blue-700;
     --pg-color-outlined-primary-border-active: $blue-700;
 
-    /* Secondary */
-    --pg-color-outlined-secondary-text: $slate-800;
-    --pg-color-outlined-secondary-bg: transparent;
-    --pg-color-outlined-secondary-border: $slate-800;
-    --pg-color-outlined-secondary-text-hover: $white;
-    --pg-color-outlined-secondary-bg-hover: $slate-800;
-    --pg-color-outlined-secondary-border-hover: $slate-800;
-    --pg-color-outlined-secondary-text-active: $white;
-    --pg-color-outlined-secondary-bg-active: $slate-700;
-    --pg-color-outlined-secondary-border-active: $slate-700;
+    /* Neutral */
+    --pg-color-outlined-neutral-text: $slate-900;
+    --pg-color-outlined-neutral-bg: transparent;
+    --pg-color-outlined-neutral-border: $slate-300A;
+    --pg-color-outlined-neutral-text-hover: $slate-900;
+    --pg-color-outlined-neutral-bg-hover: $slate-200A;
+    --pg-color-outlined-neutral-border-hover: $slate-300A;
+    --pg-color-outlined-neutral-text-active: $slate-900;
+    --pg-color-outlined-neutral-bg-active: $slate-300A;
+    --pg-color-outlined-neutral-border-active: $slate-300A;
 
     /* Success */
     --pg-color-outlined-success-text: $green-600;
@@ -409,10 +409,10 @@
     --pg-color-outlined-warning-text: $amber-700;
     --pg-color-outlined-warning-bg: transparent;
     --pg-color-outlined-warning-border: $amber-600;
-    --pg-color-outlined-warning-text-hover: $stone-600;
+    --pg-color-outlined-warning-text-hover: $stone-900;
     --pg-color-outlined-warning-bg-hover: $amber-300;
     --pg-color-outlined-warning-border-hover: $amber-300;
-    --pg-color-outlined-warning-text-active: $stone-700;
+    --pg-color-outlined-warning-text-active: $stone-900;
     --pg-color-outlined-warning-bg-active: $amber-400;
     --pg-color-outlined-warning-border-active: $amber-400;
 
@@ -464,16 +464,16 @@
     --pg-color-ghost-primary-bg-active: $blue-100;
     --pg-color-ghost-primary-border-active: $blue-100;
 
-    /* Secondary */
-    --pg-color-ghost-secondary-text: $slate-800;
-    --pg-color-ghost-secondary-bg: transparent;
-    --pg-color-ghost-secondary-border: transparent;
-    --pg-color-ghost-secondary-text-hover: $slate-700;
-    --pg-color-ghost-secondary-bg-hover: $slate-100;
-    --pg-color-ghost-secondary-border-hover: $slate-100;
-    --pg-color-ghost-secondary-text-active: $slate-800;
-    --pg-color-ghost-secondary-bg-active: $slate-200;
-    --pg-color-ghost-secondary-border-active: $slate-200;
+    /* Neutral */
+    --pg-color-ghost-neutral-text: $slate-900;
+    --pg-color-ghost-neutral-bg: transparent;
+    --pg-color-ghost-neutral-border: transparent;
+    --pg-color-ghost-neutral-text-hover: $slate-900;
+    --pg-color-ghost-neutral-bg-hover: $slate-200A;
+    --pg-color-ghost-neutral-border-hover: transparent;
+    --pg-color-ghost-neutral-text-active: $slate-900;
+    --pg-color-ghost-neutral-bg-active: $slate-300A;
+    --pg-color-ghost-neutral-border-active: transparent;
 
     /* Success */
     --pg-color-ghost-success-text: $green-600;

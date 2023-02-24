@@ -26,9 +26,9 @@ const buttonVariants = cva(
         outlined: "",
         ghost: "",
       },
-      colorScheme: {
+      color: {
         primary: "",
-        secondary: "",
+        neutral: "",
         warning: "",
         danger: "",
       },
@@ -57,7 +57,7 @@ const buttonVariants = cva(
       // solid + colors
       {
         variant: "solid",
-        colorScheme: "primary",
+        color: "primary",
         isDisabled: false,
         class: [
           "pg-text-solid-primary-text hover:pg-text-solid-primary-text-hover active:pg-text-solid-primary-text-active",
@@ -67,17 +67,17 @@ const buttonVariants = cva(
       },
       {
         variant: "solid",
-        colorScheme: "secondary",
+        color: "neutral",
         isDisabled: false,
         class: [
-          "pg-text-solid-secondary-text hover:pg-text-solid-secondary-text-hover active:pg-text-solid-secondary-text-active",
-          "pg-bg-solid-secondary-bg hover:pg-bg-solid-secondary-bg-hover active:pg-bg-solid-secondary-bg-active",
-          "pg-border-solid-secondary-border hover:pg-border-solid-secondary-border-hover active:pg-border-solid-secondary-border-active",
+          "pg-text-solid-neutral-text hover:pg-text-solid-neutral-text-hover active:pg-text-solid-neutral-text-active",
+          "pg-bg-solid-neutral-bg hover:pg-bg-solid-neutral-bg-hover active:pg-bg-solid-neutral-bg-active",
+          "pg-border-solid-neutral-border hover:pg-border-solid-neutral-border-hover active:pg-border-solid-neutral-border-active",
         ],
       },
       {
         variant: "solid",
-        colorScheme: "warning",
+        color: "warning",
         isDisabled: false,
         class: [
           "pg-text-solid-warning-text hover:pg-text-solid-warning-text-hover active:pg-text-solid-warning-text-active",
@@ -87,7 +87,7 @@ const buttonVariants = cva(
       },
       {
         variant: "solid",
-        colorScheme: "danger",
+        color: "danger",
         isDisabled: false,
         class: [
           "pg-text-solid-danger-text hover:pg-text-solid-danger-text-hover active:pg-text-solid-danger-text-active",
@@ -99,7 +99,7 @@ const buttonVariants = cva(
       // soft + colors
       {
         variant: "soft",
-        colorScheme: "primary",
+        color: "primary",
         isDisabled: false,
         class: [
           "pg-text-soft-primary-text hover:pg-text-soft-primary-text-hover active:pg-text-soft-primary-text-active",
@@ -109,17 +109,17 @@ const buttonVariants = cva(
       },
       {
         variant: "soft",
-        colorScheme: "secondary",
+        color: "neutral",
         isDisabled: false,
         class: [
-          "pg-text-soft-secondary-text hover:pg-text-soft-secondary-text-hover active:pg-text-soft-secondary-text-active",
-          "pg-bg-soft-secondary-bg hover:pg-bg-soft-secondary-bg-hover active:pg-bg-soft-secondary-bg-active",
-          "pg-border-soft-secondary-border hover:pg-border-soft-secondary-border-hover active:pg-border-soft-secondary-border-active",
+          "pg-text-soft-neutral-text hover:pg-text-soft-neutral-text-hover active:pg-text-soft-neutral-text-active",
+          "pg-bg-soft-neutral-bg hover:pg-bg-soft-neutral-bg-hover active:pg-bg-soft-neutral-bg-active",
+          "pg-border-soft-neutral-border hover:pg-border-soft-neutral-border-hover active:pg-border-soft-neutral-border-active",
         ],
       },
       {
         variant: "soft",
-        colorScheme: "warning",
+        color: "warning",
         isDisabled: false,
         class: [
           "pg-text-soft-warning-text hover:pg-text-soft-warning-text-hover active:pg-text-soft-warning-text-active",
@@ -129,7 +129,7 @@ const buttonVariants = cva(
       },
       {
         variant: "soft",
-        colorScheme: "danger",
+        color: "danger",
         isDisabled: false,
         class: [
           "pg-text-soft-danger-text hover:pg-text-soft-danger-text-hover active:pg-text-soft-danger-text-active",
@@ -141,7 +141,7 @@ const buttonVariants = cva(
       // outlined + colors
       {
         variant: "outlined",
-        colorScheme: "primary",
+        color: "primary",
         isDisabled: false,
         class: [
           "pg-text-outlined-primary-text hover:pg-text-outlined-primary-text-hover active:pg-text-outlined-primary-text-active",
@@ -151,17 +151,17 @@ const buttonVariants = cva(
       },
       {
         variant: "outlined",
-        colorScheme: "secondary",
+        color: "neutral",
         isDisabled: false,
         class: [
-          "pg-text-outlined-secondary-text hover:pg-text-outlined-secondary-text-hover active:pg-text-outlined-secondary-text-active",
-          "pg-bg-outlined-secondary-bg hover:pg-bg-outlined-secondary-bg-hover active:pg-bg-outlined-secondary-bg-active",
-          "pg-border-outlined-secondary-border hover:pg-border-outlined-secondary-border-hover active:pg-border-outlined-secondary-border-active",
+          "pg-text-outlined-neutral-text hover:pg-text-outlined-neutral-text-hover active:pg-text-outlined-neutral-text-active",
+          "pg-bg-outlined-neutral-bg hover:pg-bg-outlined-neutral-bg-hover active:pg-bg-outlined-neutral-bg-active",
+          "pg-border-outlined-neutral-border hover:pg-border-outlined-neutral-border-hover active:pg-border-outlined-neutral-border-active",
         ],
       },
       {
         variant: "outlined",
-        colorScheme: "warning",
+        color: "warning",
         isDisabled: false,
         class: [
           "pg-text-outlined-warning-text hover:pg-text-outlined-warning-text-hover active:pg-text-outlined-warning-text-active",
@@ -171,7 +171,7 @@ const buttonVariants = cva(
       },
       {
         variant: "outlined",
-        colorScheme: "danger",
+        color: "danger",
         isDisabled: false,
         class: [
           "pg-text-outlined-danger-text hover:pg-text-outlined-danger-text-hover active:pg-text-outlined-danger-text-active",
@@ -183,7 +183,7 @@ const buttonVariants = cva(
       // ghost + colors
       {
         variant: "ghost",
-        colorScheme: "primary",
+        color: "primary",
         isDisabled: false,
         class: [
           "pg-text-ghost-primary-text hover:pg-text-ghost-primary-text-hover active:pg-text-ghost-primary-text-active",
@@ -193,17 +193,17 @@ const buttonVariants = cva(
       },
       {
         variant: "ghost",
-        colorScheme: "secondary",
+        color: "neutral",
         isDisabled: false,
         class: [
-          "pg-text-ghost-secondary-text hover:pg-text-ghost-secondary-text-hover active:pg-text-ghost-secondary-text-active",
-          "pg-bg-ghost-secondary-bg hover:pg-bg-ghost-secondary-bg-hover active:pg-bg-ghost-secondary-bg-active",
-          "pg-border-ghost-secondary-border hover:pg-border-ghost-secondary-border-hover active:pg-border-ghost-secondary-border-active",
+          "pg-text-ghost-neutral-text hover:pg-text-ghost-neutral-text-hover active:pg-text-ghost-neutral-text-active",
+          "pg-bg-ghost-neutral-bg hover:pg-bg-ghost-neutral-bg-hover active:pg-bg-ghost-neutral-bg-active",
+          "pg-border-ghost-neutral-border hover:pg-border-ghost-neutral-border-hover active:pg-border-ghost-neutral-border-active",
         ],
       },
       {
         variant: "ghost",
-        colorScheme: "warning",
+        color: "warning",
         isDisabled: false,
         class: [
           "pg-text-ghost-warning-text hover:pg-text-ghost-warning-text-hover active:pg-text-ghost-warning-text-active",
@@ -213,7 +213,7 @@ const buttonVariants = cva(
       },
       {
         variant: "ghost",
-        colorScheme: "danger",
+        color: "danger",
         isDisabled: false,
         class: [
           "pg-text-ghost-danger-text hover:pg-text-ghost-danger-text-hover active:pg-text-ghost-danger-text-active",
@@ -256,7 +256,7 @@ const buttonVariants = cva(
     ],
     defaultVariants: {
       variant: "solid",
-      colorScheme: "primary",
+      color: "primary",
       size: "sm",
       isIconOnly: false,
       isFullWidth: false,
@@ -302,7 +302,7 @@ export const Button: PolymorphicComponent<"button", ButtonProps> = createPolymor
     const [local, variantProps, contentProps, others] = splitProps(
       props,
       ["class", "isLoading", "loadingText", "loadingIcon", "loadingIconPlacement"],
-      ["variant", "colorScheme", "size", "isIconOnly", "isFullWidth", "isLoading", "isDisabled"],
+      ["variant", "color", "size", "isIconOnly", "isFullWidth", "isLoading", "isDisabled"],
       ["startIcon", "endIcon", "children"]
     );
 

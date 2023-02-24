@@ -71,14 +71,14 @@ module.exports = {
 
         ...colorToken("focus-ring"),
         ...colorToken("backdrop"),
-        ...colorToken("separator"),
+        ...colorToken("border"),
 
         ...colorToken("disabled-text"),
         ...colorToken("disabled-bg"),
         ...colorToken("disabled-border"),
 
         ...globalVariantTokens("solid", "primary"),
-        ...globalVariantTokens("solid", "secondary"),
+        ...globalVariantTokens("solid", "neutral"),
         ...globalVariantTokens("solid", "success"),
         ...globalVariantTokens("solid", "info"),
         ...globalVariantTokens("solid", "warning"),
@@ -87,7 +87,7 @@ module.exports = {
         ...globalVariantTokens("solid", "selected"),
 
         ...globalVariantTokens("soft", "primary"),
-        ...globalVariantTokens("soft", "secondary"),
+        ...globalVariantTokens("soft", "neutral"),
         ...globalVariantTokens("soft", "success"),
         ...globalVariantTokens("soft", "info"),
         ...globalVariantTokens("soft", "warning"),
@@ -97,7 +97,7 @@ module.exports = {
         ...globalVariantTokens("soft", "input"),
 
         ...globalVariantTokens("outlined", "primary"),
-        ...globalVariantTokens("outlined", "secondary"),
+        ...globalVariantTokens("outlined", "neutral"),
         ...globalVariantTokens("outlined", "success"),
         ...globalVariantTokens("outlined", "info"),
         ...globalVariantTokens("outlined", "warning"),
@@ -106,7 +106,7 @@ module.exports = {
         ...globalVariantTokens("outlined", "input"),
 
         ...globalVariantTokens("ghost", "primary"),
-        ...globalVariantTokens("ghost", "secondary"),
+        ...globalVariantTokens("ghost", "neutral"),
         ...globalVariantTokens("ghost", "success"),
         ...globalVariantTokens("ghost", "info"),
         ...globalVariantTokens("ghost", "warning"),
