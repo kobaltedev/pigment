@@ -16,6 +16,7 @@ const buttonVariants = cva(
     "pg-border pg-border-solid",
     "pg-font-medium",
     "pg-transition-colors",
+    "pg-cursor-pointer",
     "focus-visible:pg-outline focus-visible:pg-outline-2 focus-visible:pg-outline-offset-2 focus-visible:pg-outline-focus-ring",
   ],
   {
@@ -33,14 +34,14 @@ const buttonVariants = cva(
         danger: "",
       },
       size: {
-        xs: "pg-h-7 pg-text-sm pg-gap-1 pg-rounded",
-        sm: "pg-h-9 pg-text-sm pg-gap-2 pg-rounded-md",
-        md: "pg-h-11 pg-text-base pg-gap-2 pg-rounded-md",
-        lg: "pg-h-13 pg-text-lg pg-gap-3 pg-rounded-md",
-        xl: "pg-h-15 pg-text-xl pg-gap-3 pg-rounded-md",
+        xs: "pg-h-7 pg-gap-1 pg-rounded",
+        sm: "pg-h-9 pg-gap-2 pg-rounded-md",
+        md: "pg-h-11 pg-gap-2 pg-rounded-md",
+        lg: "pg-h-13 pg-gap-2.5 pg-rounded-md",
+        xl: "pg-h-15 pg-gap-3 pg-rounded-md",
       },
       isIconOnly: {
-        true: "pg-p-0",
+        true: "pg-p-0 pg-reset-svg",
       },
       isFullWidth: {
         true: "pg-flex pg-w-full",
@@ -241,18 +242,18 @@ const buttonVariants = cva(
 
       // rectangle button (e.g: Button)
       { isIconOnly: false, isFullWidth: false, class: "pg-w-auto" },
-      { size: "xs", isIconOnly: false, class: "pg-px-2.5" },
-      { size: "sm", isIconOnly: false, class: "pg-px-4" },
-      { size: "md", isIconOnly: false, class: "pg-px-5" },
-      { size: "lg", isIconOnly: false, class: "pg-px-7" },
-      { size: "xl", isIconOnly: false, class: "pg-px-8" },
+      { size: "xs", isIconOnly: false, class: "pg-px-2.5 pg-text-sm" },
+      { size: "sm", isIconOnly: false, class: "pg-px-4 pg-text-sm" },
+      { size: "md", isIconOnly: false, class: "pg-px-5 pg-text-base" },
+      { size: "lg", isIconOnly: false, class: "pg-px-7 pg-text-lg" },
+      { size: "xl", isIconOnly: false, class: "pg-px-8 pg-text-xl" },
 
       // square button (e.g: IconButton)
-      { size: "xs", isIconOnly: true, isFullWidth: false, class: "pg-w-7" },
-      { size: "sm", isIconOnly: true, isFullWidth: false, class: "pg-w-9" },
-      { size: "md", isIconOnly: true, isFullWidth: false, class: "pg-w-11" },
-      { size: "lg", isIconOnly: true, isFullWidth: false, class: "pg-w-13" },
-      { size: "xl", isIconOnly: true, isFullWidth: false, class: "pg-w-15" },
+      { size: "xs", isIconOnly: true, isFullWidth: false, class: "pg-w-7 pg-text-base" },
+      { size: "sm", isIconOnly: true, isFullWidth: false, class: "pg-w-9 pg-text-xl" },
+      { size: "md", isIconOnly: true, isFullWidth: false, class: "pg-w-11 pg-text-2xl" },
+      { size: "lg", isIconOnly: true, isFullWidth: false, class: "pg-w-13 pg-text-3xl" },
+      { size: "xl", isIconOnly: true, isFullWidth: false, class: "pg-w-15 pg-text-4xl" },
     ],
     defaultVariants: {
       variant: "solid",
@@ -265,11 +266,56 @@ const buttonVariants = cva(
   }
 );
 
+const buttonIconVariants = cva("pg-shrink-0 pg-reset-svg", {
+  variants: {
+    size: {
+      xs: "",
+      sm: "",
+      md: "",
+      lg: "",
+      xl: "",
+    },
+    isIconOnly: {
+      true: "",
+    },
+  },
+  compoundVariants: [
+    // start, end and loading icons in rectangle button (e.g: Button)
+    { size: "xs", isIconOnly: false, class: "pg-text-sm" },
+    { size: "sm", isIconOnly: false, class: "pg-text-base" },
+    { size: "md", isIconOnly: false, class: "pg-text-lg" },
+    { size: "lg", isIconOnly: false, class: "pg-text-xl" },
+    { size: "xl", isIconOnly: false, class: "pg-text-2xl" },
+
+    // only loading icon in square button (e.g: IconButton)
+    { size: "xs", isIconOnly: true, class: "pg-text-base" },
+    { size: "sm", isIconOnly: true, class: "pg-text-xl" },
+    { size: "md", isIconOnly: true, class: "pg-text-2xl" },
+    { size: "lg", isIconOnly: true, class: "pg-text-3xl" },
+    { size: "xl", isIconOnly: true, class: "pg-text-4xl" },
+  ],
+});
+
+const loadingContentVariants = cva(
+  "pg-inline-flex pg-items-center pg-justify-center pg-opacity-0",
+  {
+    variants: {
+      size: {
+        xs: "pg-gap-1",
+        sm: "pg-gap-2",
+        md: "pg-gap-2",
+        lg: "pg-gap-2.5",
+        xl: "pg-gap-3",
+      },
+    },
+  }
+);
+
 /* -------------------------------------------------------------------------------------------------
  * Button
  * -----------------------------------------------------------------------------------------------*/
 
-export interface ButtonProps
+interface ButtonBaseProps
   extends KButton.ButtonRootOptions,
     Omit<VariantProps<typeof buttonVariants>, "isLoading" | "isDisabled"> {
   /** Whether the button is in a loading state. */
@@ -287,24 +333,27 @@ export interface ButtonProps
    */
   loadingIconPlacement?: "start" | "end";
 
-  /** The icon to show before the button's label. */
+  /** The icon to show before the button content. */
   startIcon?: JSX.Element;
 
-  /** The icon to show after the button's label. */
+  /** The icon to show after the button content. */
   endIcon?: JSX.Element;
 
-  /** The label of the button. */
+  /** The content of the button. */
   children?: JSX.Element;
 }
 
-export const Button: PolymorphicComponent<"button", ButtonProps> = createPolymorphicComponent(
+const ButtonBase: PolymorphicComponent<"button", ButtonBaseProps> = createPolymorphicComponent(
   props => {
-    const [local, variantProps, contentProps, others] = splitProps(
-      props,
-      ["class", "isLoading", "loadingText", "loadingIcon", "loadingIconPlacement"],
-      ["variant", "color", "size", "isIconOnly", "isFullWidth", "isLoading", "isDisabled"],
-      ["startIcon", "endIcon", "children"]
-    );
+    const [local, variantProps, contentProps, loadingIconProps, loadingContentProps, others] =
+      splitProps(
+        props,
+        ["class", "isLoading", "loadingText", "loadingIcon", "loadingIconPlacement"],
+        ["variant", "color", "size", "isIconOnly", "isFullWidth", "isLoading", "isDisabled"],
+        ["size", "startIcon", "endIcon", "children"],
+        ["size", "isIconOnly"],
+        ["size"]
+      );
 
     const { direction } = useLocale();
 
@@ -319,7 +368,7 @@ export const Button: PolymorphicComponent<"button", ButtonProps> = createPolymor
     };
 
     const content = () => {
-      return <ButtonContent isRtl={isRtl()} {...contentProps} />;
+      return <ButtonBaseContent isRtl={isRtl()} {...contentProps} />;
     };
 
     return (
@@ -333,8 +382,10 @@ export const Button: PolymorphicComponent<"button", ButtonProps> = createPolymor
             when={local.loadingText}
             fallback={
               <>
-                <ButtonLoadingIcon class="pg-absolute" />
-                <span class="pg-opacity-0">{content()}</span>
+                <ButtonBaseLoadingIcon class="pg-absolute" {...loadingIconProps} />
+                <Show when={!variantProps.isIconOnly}>
+                  <span class={loadingContentVariants(loadingContentProps)}>{content()}</span>
+                </Show>
               </>
             }
           >
@@ -343,11 +394,11 @@ export const Button: PolymorphicComponent<"button", ButtonProps> = createPolymor
               fallback={
                 <>
                   {local.loadingText}
-                  <ButtonLoadingIcon />
+                  <ButtonBaseLoadingIcon {...loadingIconProps} />
                 </>
               }
             >
-              <ButtonLoadingIcon />
+              <ButtonBaseLoadingIcon {...loadingIconProps} />
               {local.loadingText}
             </Show>
           </Show>
@@ -358,14 +409,15 @@ export const Button: PolymorphicComponent<"button", ButtonProps> = createPolymor
 );
 
 /* -------------------------------------------------------------------------------------------------
- * ButtonContent
+ * ButtonBaseContent
  * -----------------------------------------------------------------------------------------------*/
 
-interface ButtonContentProps extends Pick<ButtonProps, "startIcon" | "endIcon" | "children"> {
+interface ButtonBaseContentProps
+  extends Pick<ButtonBaseProps, "size" | "startIcon" | "endIcon" | "children"> {
   isRtl: boolean;
 }
 
-function ButtonContent(props: ButtonContentProps) {
+function ButtonBaseContent(props: ButtonBaseContentProps) {
   const leftIcon = () => {
     return props.isRtl ? props.endIcon : props.startIcon;
   };
@@ -377,39 +429,90 @@ function ButtonContent(props: ButtonContentProps) {
   return (
     <>
       <Show when={leftIcon()}>
-        <ButtonIcon>{leftIcon()}</ButtonIcon>
+        <ButtonBaseIcon size={props.size} isIconOnly={false}>
+          {leftIcon()}
+        </ButtonBaseIcon>
       </Show>
       {props.children}
       <Show when={rightIcon()}>
-        <ButtonIcon>{rightIcon()}</ButtonIcon>
+        <ButtonBaseIcon size={props.size} isIconOnly={false}>
+          {rightIcon()}
+        </ButtonBaseIcon>
       </Show>
     </>
   );
 }
 
 /* -------------------------------------------------------------------------------------------------
- * ButtonLoadingIcon
+ * ButtonBaseIcon
  * -----------------------------------------------------------------------------------------------*/
 
-function ButtonLoadingIcon(props: ComponentProps<"span">) {
+interface ButtonBaseIconProps
+  extends ComponentProps<"span">,
+    Pick<ButtonBaseProps, "size" | "isIconOnly"> {}
+
+function ButtonBaseIcon(props: ButtonBaseIconProps) {
+  const [local, variantProps, others] = splitProps(props, ["class"], ["size", "isIconOnly"]);
+
+  return (
+    <span
+      aria-hidden="true"
+      class={cn(buttonIconVariants(variantProps), local.class)}
+      {...others}
+    />
+  );
+}
+
+/* -------------------------------------------------------------------------------------------------
+ * ButtonBaseLoadingIcon
+ * -----------------------------------------------------------------------------------------------*/
+
+function ButtonBaseLoadingIcon(props: ButtonBaseIconProps) {
   props = mergeDefaultProps(
     {
-      children: () => <LoaderIcon class="pg-text-[1.2em] pg-animate-spin" />,
+      children: () => <LoaderIcon class="pg-animate-spin" />,
     },
     props
   );
 
-  return <ButtonIcon {...props} />;
+  return <ButtonBaseIcon {...props} />;
 }
 
 /* -------------------------------------------------------------------------------------------------
- * ButtonIcon
+ * Button
  * -----------------------------------------------------------------------------------------------*/
 
-function ButtonIcon(props: ComponentProps<"span">) {
-  const [local, others] = splitProps(props, ["class"]);
+export interface ButtonProps extends Omit<ButtonBaseProps, "isIconOnly"> {}
 
-  return (
-    <span aria-hidden="true" class={cn("pg-shrink-0 pg-reset-svg", local.class)} {...others} />
-  );
+export const Button: PolymorphicComponent<"button", ButtonProps> = createPolymorphicComponent(
+  props => {
+    return <ButtonBase isIconOnly={false} {...props} />;
+  }
+);
+
+/* -------------------------------------------------------------------------------------------------
+ * IconButton
+ * -----------------------------------------------------------------------------------------------*/
+
+export interface IconButtonProps
+  extends Omit<
+    ButtonBaseProps,
+    | "isIconOnly"
+    | "loadingText"
+    | "loadingIconPlacement"
+    | "startIcon"
+    | "endIcon"
+    | "isFullWidth"
+    | "children"
+  > {
+  /** An accessible label that describes the button. */
+  "aria-label": string;
+
+  /** The icon to be used in the button. */
+  children?: JSX.Element;
 }
+
+export const IconButton: PolymorphicComponent<"button", IconButtonProps> =
+  createPolymorphicComponent(props => {
+    return <ButtonBase isIconOnly {...props} />;
+  });

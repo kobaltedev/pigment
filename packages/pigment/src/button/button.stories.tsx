@@ -21,9 +21,6 @@ export default {
       options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
-    isIconOnly: {
-      control: { type: "boolean" },
-    },
     isFullWidth: {
       control: { type: "boolean" },
     },
@@ -52,7 +49,6 @@ export const Default: Story = {
     variant: "solid",
     color: "primary",
     size: "sm",
-    isIconOnly: false,
     isFullWidth: false,
     isLoading: false,
     isDisabled: false,
@@ -67,7 +63,6 @@ export const WithIcon: Story = {
     variant: "solid",
     color: "primary",
     size: "sm",
-    isIconOnly: false,
     isFullWidth: false,
     isLoading: false,
     isDisabled: false,
