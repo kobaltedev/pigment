@@ -13,12 +13,17 @@ function colorToken(suffix) {
 function globalVariantTokens(variant, color) {
   return {
     ...colorToken(`${variant}-${color}-text`),
+    ...colorToken(`${variant}-${color}-icon`),
     ...colorToken(`${variant}-${color}-bg`),
     ...colorToken(`${variant}-${color}-border`),
+
     ...colorToken(`${variant}-${color}-text-hover`),
+    ...colorToken(`${variant}-${color}-icon-hover`),
     ...colorToken(`${variant}-${color}-bg-hover`),
     ...colorToken(`${variant}-${color}-border-hover`),
+
     ...colorToken(`${variant}-${color}-text-active`),
+    ...colorToken(`${variant}-${color}-icon-active`),
     ...colorToken(`${variant}-${color}-bg-active`),
     ...colorToken(`${variant}-${color}-border-active`),
   };
@@ -48,6 +53,12 @@ module.exports = {
         ...colorToken("text-success"),
         ...colorToken("text-danger"),
 
+        ...colorToken("icon"),
+        ...colorToken("icon-subtle"),
+        ...colorToken("icon-subtlest"),
+        ...colorToken("icon-success"),
+        ...colorToken("icon-danger"),
+
         ...colorToken("body-bg"),
 
         ...colorToken("subtle-bg"),
@@ -74,6 +85,7 @@ module.exports = {
         ...colorToken("border"),
 
         ...colorToken("disabled-text"),
+        ...colorToken("disabled-icon"),
         ...colorToken("disabled-bg"),
         ...colorToken("disabled-border"),
 

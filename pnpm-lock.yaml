@@ -118,7 +118,7 @@ importers:
       tailwindcss: 3.2.6
       tailwindcss-animate: 1.0.5
     dependencies:
-      '@kobalte/core': 0.6.1_solid-js@1.6.11
+      '@kobalte/core': 0.6.2_solid-js@1.6.11
       '@kobalte/utils': 0.5.1_solid-js@1.6.11
       '@solid-primitives/refs': 0.3.6_solid-js@1.6.11
       class-variance-authority: 0.4.0_typescript@4.9.5
@@ -2695,8 +2695,8 @@ packages:
       '@commitlint/types': 17.4.4
       '@types/node': 18.13.0
       chalk: 4.1.2
-      cosmiconfig: 8.0.0
-      cosmiconfig-typescript-loader: 4.3.0_p7cp6dsfhdrlk7mvuxd3wodbsu
+      cosmiconfig: 8.1.0
+      cosmiconfig-typescript-loader: 4.3.0_4keguzx4iprxlz3dc5hbrkcrka
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
@@ -3617,8 +3617,8 @@ packages:
     resolution: {integrity: sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==}
     dev: true
 
-  /@kobalte/core/0.6.1_solid-js@1.6.11:
-    resolution: {integrity: sha512-N4v0hr52yxo18pi+kKDqI1xG9RRO2VZQp1kxy63Z38nV7VPJR3DNB3iPHPDrun6Lsn+3L2tKG0bAA/1pWPKOPw==}
+  /@kobalte/core/0.6.2_solid-js@1.6.11:
+    resolution: {integrity: sha512-bgdpT1SNab58Qdm6VX/jFFm/Axgg9TE65Fpg1mGWo1QpdlUlh9XMnJKHQioi2ntPDHGetiKjtohBctyRhzH6oQ==}
     peerDependencies:
       solid-js: ^1.6.10
     dependencies:
@@ -6357,7 +6357,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001457
-      electron-to-chromium: 1.4.310
+      electron-to-chromium: 1.4.311
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: true
@@ -6887,7 +6887,7 @@ packages:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
     dev: true
 
-  /cosmiconfig-typescript-loader/4.3.0_p7cp6dsfhdrlk7mvuxd3wodbsu:
+  /cosmiconfig-typescript-loader/4.3.0_4keguzx4iprxlz3dc5hbrkcrka:
     resolution: {integrity: sha512-NTxV1MFfZDLPiBMjxbHRwSh5LaLcPMwNdCutmnHJCKoVnlvldPWlllonKwrsRJ5pYZBIBGRWWU2tfvzxgeSW5Q==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
@@ -6897,7 +6897,7 @@ packages:
       typescript: '>=3'
     dependencies:
       '@types/node': 18.13.0
-      cosmiconfig: 8.0.0
+      cosmiconfig: 8.1.0
       ts-node: 10.9.1_4bewfcp2iebiwuold25d6rgcsy
       typescript: 4.9.5
     dev: true
@@ -6913,8 +6913,8 @@ packages:
       yaml: 1.10.2
     dev: true
 
-  /cosmiconfig/8.0.0:
-    resolution: {integrity: sha512-da1EafcpH6b/TD8vDRaWV7xFINlHlF6zKsGwS1TsuVJTZRkquaS5HTMq7uq6h31619QjbsYl21gVDOm32KM1vQ==}
+  /cosmiconfig/8.1.0:
+    resolution: {integrity: sha512-0tLZ9URlPGU7JsKq0DQOQ3FoRsYX8xDZ7xMiATQfaiGMz7EHowNkbU9u1coAOmnh9p/1ySpm0RB3JNWRXM5GCg==}
     engines: {node: '>=14'}
     dependencies:
       import-fresh: 3.3.0
@@ -7514,8 +7514,8 @@ packages:
       jake: 10.8.5
     dev: true
 
-  /electron-to-chromium/1.4.310:
-    resolution: {integrity: sha512-/xlATgfwkm5uDDwLw5nt/MNEf7c1oazLURMZLy39vOioGYyYzLWIDT8fZMJak6qTiAJ7udFTy7JG7ziyjNutiA==}
+  /electron-to-chromium/1.4.311:
+    resolution: {integrity: sha512-RoDlZufvrtr2Nx3Yx5MB8jX3aHIxm8nRWPJm3yVvyHmyKaRvn90RjzB6hNnt0AkhS3IInJdyRfQb4mWhPvUjVw==}
     dev: true
 
   /emittery/0.10.2:
@@ -8026,7 +8026,7 @@ packages:
       glob: 7.2.3
       is-glob: 4.0.3
       resolve: 1.22.1
-      tsconfig-paths: 3.14.1
+      tsconfig-paths: 3.14.2
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -8087,7 +8087,7 @@ packages:
       object.values: 1.1.6
       resolve: 1.22.1
       semver: 6.3.0
-      tsconfig-paths: 3.14.1
+      tsconfig-paths: 3.14.2
     transitivePeerDependencies:
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
@@ -13602,8 +13602,8 @@ packages:
       yn: 3.1.1
     dev: true
 
-  /tsconfig-paths/3.14.1:
-    resolution: {integrity: sha512-fxDhWnFSLt3VuTwtvJt5fpwxBHg5AdKWMsgcPOOIilyjymcYVZoCQF8fvFRezCNfblEXmi+PcM1eYHeOAgXCOQ==}
+  /tsconfig-paths/3.14.2:
+    resolution: {integrity: sha512-o/9iXgCYc5L/JxCHPe3Hvh8Q/2xm5Z+p18PESBU6Ff33695QnCHBEjcytY2q19ua7Mbl/DavtBOLq+oG0RCL+g==}
     dependencies:
       '@types/json5': 0.0.29
       json5: 1.0.2
