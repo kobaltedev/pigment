@@ -3,12 +3,14 @@ import { mergeDefaultProps, PolymorphicComponent } from "@kobalte/utils";
 import { Show, splitProps } from "solid-js";
 
 import { LoaderIcon } from "../icons";
+import { mergeThemeProps, useThemeClasses } from "../theme/theme-context";
 import { cn } from "../utils/cn";
 import {
   ButtonBaseContentProps,
   ButtonBaseIconProps,
   ButtonBaseProps,
   ButtonProps,
+  ButtonSlots,
   IconButtonProps,
 } from "./button.props";
 import { buttonIconVariants, buttonVariants, loadingContentVariants } from "./button.styles";
@@ -19,6 +21,16 @@ import { buttonIconVariants, buttonVariants, loadingContentVariants } from "./bu
 
 const ButtonBase: PolymorphicComponent<"button", ButtonBaseProps> = createPolymorphicComponent(
   props => {
+    props = mergeThemeProps(
+      "Button",
+      {
+        loadingIconPlacement: "start",
+      },
+      props
+    );
+
+    const buttonThemeClasses = useThemeClasses<ButtonSlots>("Button", props);
+
     const [local, variantProps, contentProps, loadingIconProps, loadingContentProps, others] =
       splitProps(
         props,
@@ -47,7 +59,7 @@ const ButtonBase: PolymorphicComponent<"button", ButtonBaseProps> = createPolymo
 
     return (
       <KButton.Root
-        class={cn(buttonVariants(variantProps), local.class)}
+        class={cn(buttonVariants(variantProps), buttonThemeClasses.root, local.class)}
         isDisabled={variantProps.isDisabled}
         {...others}
       >

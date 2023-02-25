@@ -33,14 +33,8 @@
       },
       "require": "./dist/index.cjs"
     },
-    "./index.css": {
-      "import": "./dist/index.css",
-      "require": "./dist/index.css"
-    },
-    "./themes": {
-      "import": "./dist/themes",
-      "require": "./dist/themes"
-    }
+    "./dist/index.css": "./dist/index.css",
+    "./dist/themes/": "./dist/themes/"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

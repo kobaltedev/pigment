@@ -41,7 +41,7 @@ export const buttonVariants = cva(
         true: "pg-opacity-80 pg-select-none pg-pointer-events-none",
       },
       isDisabled: {
-        true: "ui-disabled:pg-text-disabled-text ui-disabled:pg-cursor-not-allowed ui-disabled:pg-select-none",
+        true: "pg-disabled:pg-text-disabled-text pg-disabled:pg-cursor-not-allowed pg-disabled:pg-select-none",
       },
     },
     compoundVariants: [
@@ -217,17 +217,17 @@ export const buttonVariants = cva(
       {
         variant: ["solid", "soft"],
         isDisabled: true,
-        class: ["ui-disabled:pg-bg-disabled-bg ui-disabled:pg-border-transparent"],
+        class: ["pg-disabled:pg-bg-disabled-bg pg-disabled:pg-border-transparent"],
       },
       {
         variant: "outlined",
         isDisabled: true,
-        class: ["ui-disabled:pg-bg-transparent ui-disabled:pg-border-disabled-border"],
+        class: ["pg-disabled:pg-bg-transparent pg-disabled:pg-border-disabled-border"],
       },
       {
         variant: "ghost",
         isDisabled: true,
-        class: ["ui-disabled:pg-bg-transparent ui-disabled:pg-border-transparent"],
+        class: ["pg-disabled:pg-bg-transparent pg-disabled:pg-border-transparent"],
       },
 
       // rectangle button (e.g: Button)

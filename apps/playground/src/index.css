@@ -1,0 +1,5 @@
+@import "tailwindcss/base";
+@import "@kobalte/pigment/dist/themes/default.css";
+@import "@kobalte/pigment/dist/index.css";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";

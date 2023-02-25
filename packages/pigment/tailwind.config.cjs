@@ -135,7 +135,7 @@ module.exports = {
   plugins: [
     formsPlugin({ strategy: "class" }),
     animatePlugin,
-    kobaltePlugin,
+    kobaltePlugin({ prefix: "pg" }),
     plugin(({ addBase, addUtilities, theme }) => {
       addBase({
         "*, *::before, *::after": {
