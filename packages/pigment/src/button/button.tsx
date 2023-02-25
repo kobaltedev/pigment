@@ -23,9 +23,9 @@ const ButtonBase: PolymorphicComponent<"button", ButtonBaseProps> = createPolymo
       splitProps(
         props,
         ["class", "isLoading", "loadingText", "loadingIcon", "loadingIconPlacement"],
-        ["variant", "color", "size", "isIconOnly", "isFullWidth", "isLoading", "isDisabled"],
-        ["size", "startIcon", "endIcon", "children"],
-        ["size", "isIconOnly"],
+        ["variant", "colorScheme", "size", "isIconOnly", "isFullWidth", "isLoading", "isDisabled"],
+        ["variant", "colorScheme", "size", "isDisabled", "startIcon", "endIcon", "children"],
+        ["variant", "colorScheme", "size", "isIconOnly", "isDisabled"],
         ["size"]
       );
 
@@ -83,6 +83,12 @@ const ButtonBase: PolymorphicComponent<"button", ButtonBaseProps> = createPolymo
 );
 
 function ButtonBaseContent(props: ButtonBaseContentProps) {
+  const [iconProps, others] = splitProps(
+    props,
+
+    ["variant", "colorScheme", "size", "isDisabled"]
+  );
+
   const leftIcon = () => {
     return props.isRtl ? props.endIcon : props.startIcon;
   };
@@ -94,13 +100,13 @@ function ButtonBaseContent(props: ButtonBaseContentProps) {
   return (
     <>
       <Show when={leftIcon()}>
-        <ButtonBaseIcon size={props.size} isIconOnly={false}>
+        <ButtonBaseIcon isIconOnly={false} {...iconProps}>
           {leftIcon()}
         </ButtonBaseIcon>
       </Show>
       {props.children}
       <Show when={rightIcon()}>
-        <ButtonBaseIcon size={props.size} isIconOnly={false}>
+        <ButtonBaseIcon isIconOnly={false} {...iconProps}>
           {rightIcon()}
         </ButtonBaseIcon>
       </Show>
@@ -109,7 +115,11 @@ function ButtonBaseContent(props: ButtonBaseContentProps) {
 }
 
 function ButtonBaseIcon(props: ButtonBaseIconProps) {
-  const [local, variantProps, others] = splitProps(props, ["class"], ["size", "isIconOnly"]);
+  const [local, variantProps, others] = splitProps(
+    props,
+    ["class"],
+    ["variant", "colorScheme", "size", "isIconOnly", "isDisabled"]
+  );
 
   return (
     <span

@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 
 import { InfoCircleIcon } from "../icons";
-import { IconButton, IconButtonProps } from "./button";
+import { IconButton } from "./button";
+import { IconButtonProps } from "./button.props";
 
 type Story = StoryObj<IconButtonProps>;
 
@@ -13,7 +14,7 @@ export default {
       options: ["solid", "soft", "outlined", "ghost"],
       control: { type: "select" },
     },
-    color: {
+    colorScheme: {
       options: ["primary", "neutral", "warning", "danger"],
       control: { type: "select" },
     },
@@ -34,7 +35,7 @@ export default {
 export const Default: Story = {
   args: {
     variant: "solid",
-    color: "primary",
+    colorScheme: "primary",
     size: "sm",
     isLoading: false,
     isDisabled: false,

@@ -36,13 +36,16 @@ export interface ButtonBaseProps
 }
 
 export interface ButtonBaseContentProps
-  extends Pick<ButtonBaseProps, "size" | "startIcon" | "endIcon" | "children"> {
+  extends Pick<
+    ButtonBaseProps,
+    "variant" | "colorScheme" | "size" | "isDisabled" | "startIcon" | "endIcon" | "children"
+  > {
   isRtl: boolean;
 }
 
 export interface ButtonBaseIconProps
   extends ComponentProps<"span">,
-    Pick<ButtonBaseProps, "size" | "isIconOnly"> {}
+    Pick<ButtonBaseProps, "variant" | "colorScheme" | "size" | "isIconOnly" | "isDisabled"> {}
 
 /* -------------------------------------------------------------------------------------------------
  * Button

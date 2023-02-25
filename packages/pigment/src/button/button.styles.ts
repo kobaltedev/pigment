@@ -17,7 +17,7 @@ export const buttonVariants = cva(
         outlined: "",
         ghost: "",
       },
-      color: {
+      colorScheme: {
         primary: "",
         neutral: "",
         warning: "",
@@ -48,7 +48,7 @@ export const buttonVariants = cva(
       // solid + colors
       {
         variant: "solid",
-        color: "primary",
+        colorScheme: "primary",
         isDisabled: false,
         class: [
           "pg-text-solid-primary-text hover:pg-text-solid-primary-text-hover active:pg-text-solid-primary-text-active",
@@ -58,7 +58,7 @@ export const buttonVariants = cva(
       },
       {
         variant: "solid",
-        color: "neutral",
+        colorScheme: "neutral",
         isDisabled: false,
         class: [
           "pg-text-solid-neutral-text hover:pg-text-solid-neutral-text-hover active:pg-text-solid-neutral-text-active",
@@ -68,7 +68,7 @@ export const buttonVariants = cva(
       },
       {
         variant: "solid",
-        color: "warning",
+        colorScheme: "warning",
         isDisabled: false,
         class: [
           "pg-text-solid-warning-text hover:pg-text-solid-warning-text-hover active:pg-text-solid-warning-text-active",
@@ -78,7 +78,7 @@ export const buttonVariants = cva(
       },
       {
         variant: "solid",
-        color: "danger",
+        colorScheme: "danger",
         isDisabled: false,
         class: [
           "pg-text-solid-danger-text hover:pg-text-solid-danger-text-hover active:pg-text-solid-danger-text-active",
@@ -90,7 +90,7 @@ export const buttonVariants = cva(
       // soft + colors
       {
         variant: "soft",
-        color: "primary",
+        colorScheme: "primary",
         isDisabled: false,
         class: [
           "pg-text-soft-primary-text hover:pg-text-soft-primary-text-hover active:pg-text-soft-primary-text-active",
@@ -100,7 +100,7 @@ export const buttonVariants = cva(
       },
       {
         variant: "soft",
-        color: "neutral",
+        colorScheme: "neutral",
         isDisabled: false,
         class: [
           "pg-text-soft-neutral-text hover:pg-text-soft-neutral-text-hover active:pg-text-soft-neutral-text-active",
@@ -110,7 +110,7 @@ export const buttonVariants = cva(
       },
       {
         variant: "soft",
-        color: "warning",
+        colorScheme: "warning",
         isDisabled: false,
         class: [
           "pg-text-soft-warning-text hover:pg-text-soft-warning-text-hover active:pg-text-soft-warning-text-active",
@@ -120,7 +120,7 @@ export const buttonVariants = cva(
       },
       {
         variant: "soft",
-        color: "danger",
+        colorScheme: "danger",
         isDisabled: false,
         class: [
           "pg-text-soft-danger-text hover:pg-text-soft-danger-text-hover active:pg-text-soft-danger-text-active",
@@ -132,7 +132,7 @@ export const buttonVariants = cva(
       // outlined + colors
       {
         variant: "outlined",
-        color: "primary",
+        colorScheme: "primary",
         isDisabled: false,
         class: [
           "pg-text-outlined-primary-text hover:pg-text-outlined-primary-text-hover active:pg-text-outlined-primary-text-active",
@@ -142,7 +142,7 @@ export const buttonVariants = cva(
       },
       {
         variant: "outlined",
-        color: "neutral",
+        colorScheme: "neutral",
         isDisabled: false,
         class: [
           "pg-text-outlined-neutral-text hover:pg-text-outlined-neutral-text-hover active:pg-text-outlined-neutral-text-active",
@@ -152,7 +152,7 @@ export const buttonVariants = cva(
       },
       {
         variant: "outlined",
-        color: "warning",
+        colorScheme: "warning",
         isDisabled: false,
         class: [
           "pg-text-outlined-warning-text hover:pg-text-outlined-warning-text-hover active:pg-text-outlined-warning-text-active",
@@ -162,7 +162,7 @@ export const buttonVariants = cva(
       },
       {
         variant: "outlined",
-        color: "danger",
+        colorScheme: "danger",
         isDisabled: false,
         class: [
           "pg-text-outlined-danger-text hover:pg-text-outlined-danger-text-hover active:pg-text-outlined-danger-text-active",
@@ -174,7 +174,7 @@ export const buttonVariants = cva(
       // ghost + colors
       {
         variant: "ghost",
-        color: "primary",
+        colorScheme: "primary",
         isDisabled: false,
         class: [
           "pg-text-ghost-primary-text hover:pg-text-ghost-primary-text-hover active:pg-text-ghost-primary-text-active",
@@ -184,7 +184,7 @@ export const buttonVariants = cva(
       },
       {
         variant: "ghost",
-        color: "neutral",
+        colorScheme: "neutral",
         isDisabled: false,
         class: [
           "pg-text-ghost-neutral-text hover:pg-text-ghost-neutral-text-hover active:pg-text-ghost-neutral-text-active",
@@ -194,7 +194,7 @@ export const buttonVariants = cva(
       },
       {
         variant: "ghost",
-        color: "warning",
+        colorScheme: "warning",
         isDisabled: false,
         class: [
           "pg-text-ghost-warning-text hover:pg-text-ghost-warning-text-hover active:pg-text-ghost-warning-text-active",
@@ -204,7 +204,7 @@ export const buttonVariants = cva(
       },
       {
         variant: "ghost",
-        color: "danger",
+        colorScheme: "danger",
         isDisabled: false,
         class: [
           "pg-text-ghost-danger-text hover:pg-text-ghost-danger-text-hover active:pg-text-ghost-danger-text-active",
@@ -247,7 +247,7 @@ export const buttonVariants = cva(
     ],
     defaultVariants: {
       variant: "solid",
-      color: "primary",
+      colorScheme: "primary",
       size: "sm",
       isIconOnly: false,
       isFullWidth: false,
@@ -258,6 +258,18 @@ export const buttonVariants = cva(
 
 export const buttonIconVariants = cva("pg-shrink-0 pg-reset-svg", {
   variants: {
+    variant: {
+      solid: "",
+      soft: "",
+      outlined: "",
+      ghost: "",
+    },
+    colorScheme: {
+      primary: "",
+      neutral: "",
+      warning: "",
+      danger: "",
+    },
     size: {
       xs: "",
       sm: "",
@@ -268,8 +280,147 @@ export const buttonIconVariants = cva("pg-shrink-0 pg-reset-svg", {
     isIconOnly: {
       true: "",
     },
+    isDisabled: {
+      true: "pg-text-disabled-icon",
+    },
   },
   compoundVariants: [
+    // solid + colors
+    {
+      variant: "solid",
+      colorScheme: "primary",
+      isDisabled: false,
+      class: [
+        "pg-text-solid-primary-icon hover:pg-text-solid-primary-icon-hover active:pg-text-solid-primary-icon-active",
+      ],
+    },
+    {
+      variant: "solid",
+      colorScheme: "neutral",
+      isDisabled: false,
+      class: [
+        "pg-text-solid-neutral-icon hover:pg-text-solid-neutral-icon-hover active:pg-text-solid-neutral-icon-active",
+      ],
+    },
+    {
+      variant: "solid",
+      colorScheme: "warning",
+      isDisabled: false,
+      class: [
+        "pg-text-solid-warning-icon hover:pg-text-solid-warning-icon-hover active:pg-text-solid-warning-icon-active",
+      ],
+    },
+    {
+      variant: "solid",
+      colorScheme: "danger",
+      isDisabled: false,
+      class: [
+        "pg-text-solid-danger-icon hover:pg-text-solid-danger-icon-hover active:pg-text-solid-danger-icon-active",
+      ],
+    },
+
+    // soft + colors
+    {
+      variant: "soft",
+      colorScheme: "primary",
+      isDisabled: false,
+      class: [
+        "pg-text-soft-primary-icon hover:pg-text-soft-primary-icon-hover active:pg-text-soft-primary-icon-active",
+      ],
+    },
+    {
+      variant: "soft",
+      colorScheme: "neutral",
+      isDisabled: false,
+      class: [
+        "pg-text-soft-neutral-icon hover:pg-text-soft-neutral-icon-hover active:pg-text-soft-neutral-icon-active",
+      ],
+    },
+    {
+      variant: "soft",
+      colorScheme: "warning",
+      isDisabled: false,
+      class: [
+        "pg-text-soft-warning-icon hover:pg-text-soft-warning-icon-hover active:pg-text-soft-warning-icon-active",
+      ],
+    },
+    {
+      variant: "soft",
+      colorScheme: "danger",
+      isDisabled: false,
+      class: [
+        "pg-text-soft-danger-icon hover:pg-text-soft-danger-icon-hover active:pg-text-soft-danger-icon-active",
+      ],
+    },
+
+    // outlined + colors
+    {
+      variant: "outlined",
+      colorScheme: "primary",
+      isDisabled: false,
+      class: [
+        "pg-text-outlined-primary-icon hover:pg-text-outlined-primary-icon-hover active:pg-text-outlined-primary-icon-active",
+      ],
+    },
+    {
+      variant: "outlined",
+      colorScheme: "neutral",
+      isDisabled: false,
+      class: [
+        "pg-text-outlined-neutral-icon hover:pg-text-outlined-neutral-icon-hover active:pg-text-outlined-neutral-icon-active",
+      ],
+    },
+    {
+      variant: "outlined",
+      colorScheme: "warning",
+      isDisabled: false,
+      class: [
+        "pg-text-outlined-warning-icon hover:pg-text-outlined-warning-icon-hover active:pg-text-outlined-warning-icon-active",
+      ],
+    },
+    {
+      variant: "outlined",
+      colorScheme: "danger",
+      isDisabled: false,
+      class: [
+        "pg-text-outlined-danger-icon hover:pg-text-outlined-danger-icon-hover active:pg-text-outlined-danger-icon-active",
+      ],
+    },
+
+    // ghost + colors
+    {
+      variant: "ghost",
+      colorScheme: "primary",
+      isDisabled: false,
+      class: [
+        "pg-text-ghost-primary-icon hover:pg-text-ghost-primary-icon-hover active:pg-text-ghost-primary-icon-active",
+      ],
+    },
+    {
+      variant: "ghost",
+      colorScheme: "neutral",
+      isDisabled: false,
+      class: [
+        "pg-text-ghost-neutral-icon hover:pg-text-ghost-neutral-icon-hover active:pg-text-ghost-neutral-icon-active",
+      ],
+    },
+    {
+      variant: "ghost",
+      colorScheme: "warning",
+      isDisabled: false,
+      class: [
+        "pg-text-ghost-warning-icon hover:pg-text-ghost-warning-icon-hover active:pg-text-ghost-warning-icon-active",
+      ],
+    },
+    {
+      variant: "ghost",
+      colorScheme: "danger",
+      isDisabled: false,
+      class: [
+        "pg-text-ghost-danger-icon hover:pg-text-ghost-danger-icon-hover active:pg-text-ghost-danger-icon-active",
+      ],
+    },
+
     // start, end and loading icons in rectangle button (e.g: Button)
     { size: "xs", isIconOnly: false, class: "pg-text-sm" },
     { size: "sm", isIconOnly: false, class: "pg-text-base" },

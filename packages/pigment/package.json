@@ -33,7 +33,14 @@
       },
       "require": "./dist/index.cjs"
     },
-    "./style": "./dist/pigment.css"
+    "./index.css": {
+      "import": "./dist/index.css",
+      "require": "./dist/index.css"
+    },
+    "./themes": {
+      "import": "./dist/themes",
+      "require": "./dist/themes"
+    }
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -42,7 +49,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup && postcss ./src/index.css -o ./dist/pigment.css",
+    "build": "tsup && postcss styles --base styles --dir dist",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "dev": "vite serve dev --host",
     "storybook": "storybook dev -p 6006",

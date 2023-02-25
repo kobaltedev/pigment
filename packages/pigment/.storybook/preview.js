@@ -1,6 +1,7 @@
 /* @refresh reload */
 
-import "../src/index.css";
+import "../styles/themes/default.css";
+import "../styles/index.css";
 
 import { themes } from "@storybook/theming";
 

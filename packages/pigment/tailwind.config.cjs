@@ -40,7 +40,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--pg-font-family)"],
+        sans: ["var(--pg-font-family-sans)"],
+        mono: ["var(--pg-font-family-mono)"],
       },
       spacing: {
         13: "3.25rem",
@@ -137,58 +138,40 @@ module.exports = {
     kobaltePlugin,
     plugin(({ addBase, addUtilities, theme }) => {
       addBase({
-        // Use a more-intuitive box-sizing model.
         "*, *::before, *::after": {
+          // Use a more-intuitive box-sizing model.
           boxSizing: "border-box",
         },
 
-        // Remove default margin.
-        "*": {
-          margin: 0,
+        html: {
+          // Improve text rendering.
+          WebkitFontSmoothing: "antialiased",
+          MozOsxFontSmoothing: "grayscale",
+
+          // Fix font resize problem in iOS.
+          WebkitTextSizeAdjust: "100%",
         },
 
-        // Use theme sans-serif font-family and accessible line-height.
-        html: {
+        body: {
+          // Remove the margin in all browsers.
+          margin: 0,
+
+          // Use theme background and foreground colors.
+          backgroundColor: theme("colors.body-bg"),
+          color: theme("colors.text"),
+
+          // Use theme sans-serif font-family and accessible line-height.
           fontFamily: theme("fontFamily.sans"),
           lineHeight: "1.5",
           fontSize: "16px",
-        },
-
-        // Use theme background and foreground colors, improve text rendering.
-        body: {
-          backgroundColor: theme("colors.body-bg"),
-          color: theme("colors.text"),
-          fontFamily: "inherit",
-          lineHeight: "inherit",
-          WebkitFontSmoothing: "antialiased",
-          MozOsxFontSmoothing: "grayscale",
-        },
-
-        // Improve media defaults.
-        "img, picture, video, canvas, svg": {
-          display: "block",
-          maxWidth: "100%",
-        },
-
-        // Remove built-in form typography styles.
-        "button, input, textarea, select, optgroup": {
-          font: "inherit",
-        },
-
-        // Remove built-in headings typography styles.
-        "h1, h2, h3, h4, h5, h6": {
-          font: "inherit",
-        },
-
-        // Avoid text overflows.
-        "p, h1, h2, h3, h4, h5, h6": {
-          overflowWrap: "break-word",
         },
       });
 
       addUtilities({
         ".reset-svg": {
           "> svg": {
+            display: "block",
+            maxWidth: "100%",
             width: "1em",
             height: "1em",
           },
