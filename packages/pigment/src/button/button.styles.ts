@@ -4,9 +4,9 @@ export const buttonVariants = cva(
   [
     "pg-appearance-none pg-relative pg-justify-center pg-items-center",
     "pg-border pg-border-solid",
-    "pg-font-medium",
-    "pg-transition-colors",
-    "pg-cursor-pointer",
+    "pg-font-medium pg-no-underline",
+    "pg-transition-colors pg-cursor-pointer",
+    "active:pg-scale-95",
     "focus-visible:pg-outline focus-visible:pg-outline-2 focus-visible:pg-outline-offset-2 focus-visible:pg-outline-focus-ring",
   ],
   {

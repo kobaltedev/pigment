@@ -1,7 +1,7 @@
 /* @refresh reload */
 import "./index.css";
 
-import { cn, extendTheme, ThemeProvider } from "@kobalte/pigment";
+import { extendTheme, ThemeProvider } from "@kobalte/pigment";
 import { render } from "solid-js/web";
 
 import App from "./App";

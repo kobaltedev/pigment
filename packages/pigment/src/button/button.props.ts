@@ -1,4 +1,4 @@
-import { Button as KButton } from "@kobalte/core";
+import { Button as KButton, Link as KLink } from "@kobalte/core";
 import { ComponentProps, JSX } from "solid-js";
 
 import { ButtonVariants } from "./button.styles";
@@ -8,7 +8,7 @@ import { ButtonVariants } from "./button.styles";
  * -----------------------------------------------------------------------------------------------*/
 
 export interface ButtonBaseProps
-  extends KButton.ButtonRootOptions,
+  extends Omit<KButton.ButtonRootProps, "asChild">,
     Omit<ButtonVariants, "isLoading" | "isDisabled"> {
   /** Whether the button is in a loading state. */
   isLoading?: boolean;
@@ -77,4 +77,43 @@ export interface IconButtonProps
   children?: JSX.Element;
 }
 
-export type IconButtonSlots = "root";
+/* -------------------------------------------------------------------------------------------------
+ * LinkButtonBase
+ * -----------------------------------------------------------------------------------------------*/
+
+export interface LinkButtonBaseProps
+  extends KLink.LinkRootProps,
+    Omit<ButtonVariants, "isLoading" | "isDisabled"> {
+  /** The icon to show before the link button content. */
+  startIcon?: JSX.Element;
+
+  /** The icon to show after the link button content. */
+  endIcon?: JSX.Element;
+
+  /** The content of the link button. */
+  children?: JSX.Element;
+}
+
+/* -------------------------------------------------------------------------------------------------
+ * LinkButton
+ * -----------------------------------------------------------------------------------------------*/
+
+export interface LinkButtonProps extends Omit<LinkButtonBaseProps, "isIconOnly"> {}
+
+export type LinkButtonSlots = "root";
+
+/* -------------------------------------------------------------------------------------------------
+ * LinkIconButton
+ * -----------------------------------------------------------------------------------------------*/
+
+export interface LinkIconButtonProps
+  extends Omit<
+    LinkButtonBaseProps,
+    "isIconOnly" | "startIcon" | "endIcon" | "isFullWidth" | "children"
+  > {
+  /** An accessible label that describes the link button. */
+  "aria-label": string;
+
+  /** The icon to be used in the link button. */
+  children?: JSX.Element;
+}

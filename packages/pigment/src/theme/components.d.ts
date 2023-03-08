@@ -1,4 +1,4 @@
-import { ButtonProps, ButtonSlots } from "../button/button.props";
+import { ButtonProps, ButtonSlots, LinkButtonProps, LinkButtonSlots } from "../button/button.props";
 
 export interface ComponentTheme<Props, Slots extends string> {
   /** Default props to be passed to the component. */
@@ -11,4 +11,5 @@ export interface ComponentTheme<Props, Slots extends string> {
 export interface Components {
   // alphabetical order
   Button?: ComponentTheme<ButtonProps, ButtonSlots>;
+  LinkButton?: ComponentTheme<LinkButtonProps, LinkButtonSlots>;
 }

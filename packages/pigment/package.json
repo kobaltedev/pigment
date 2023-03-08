@@ -51,14 +51,14 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@kobalte/core": "^0.6.1",
-    "@kobalte/utils": "^0.5.1",
-    "@solid-primitives/refs": "^0.3.6",
+    "@kobalte/core": "^0.7.1",
+    "@kobalte/utils": "^0.6.0",
+    "@solid-primitives/refs": "^1.0.0",
     "class-variance-authority": "^0.4.0",
     "clsx": "^1.2.1"
   },
   "devDependencies": {
-    "@kobalte/tailwindcss": "^0.4.2",
+    "@kobalte/tailwindcss": "^0.5.0",
     "@storybook/addon-a11y": "7.0.0-beta.43",
     "@storybook/addon-essentials": "7.0.0-beta.43",
     "@storybook/addon-interactions": "7.0.0-beta.43",
@@ -77,11 +77,11 @@
     "react-dom": "18.2.0",
     "storybook": "7.0.0-beta.43",
     "storybook-dark-mode": "2.0.6",
-    "tailwindcss": "3.2.6",
+    "tailwindcss": "3.2.7",
     "tailwindcss-animate": "1.0.5"
   },
   "peerDependencies": {
-    "solid-js": "^1.6.10"
+    "solid-js": "^1.6.12"
   },
   "publishConfig": {
     "access": "public"

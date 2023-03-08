@@ -1,5 +1,5 @@
-import { Button as KButton, createPolymorphicComponent, useLocale } from "@kobalte/core";
-import { mergeDefaultProps, PolymorphicComponent } from "@kobalte/utils";
+import { Button as KButton, Link as KLink, useLocale } from "@kobalte/core";
+import { mergeDefaultProps } from "@kobalte/utils";
 import { Show, splitProps } from "solid-js";
 
 import { LoaderIcon } from "../icons";
@@ -12,6 +12,10 @@ import {
   ButtonProps,
   ButtonSlots,
   IconButtonProps,
+  LinkButtonBaseProps,
+  LinkButtonProps,
+  LinkButtonSlots,
+  LinkIconButtonProps,
 } from "./button.props";
 import { buttonIconVariants, buttonVariants, loadingContentVariants } from "./button.styles";
 
@@ -19,87 +23,81 @@ import { buttonIconVariants, buttonVariants, loadingContentVariants } from "./bu
  * ButtonBase
  * -----------------------------------------------------------------------------------------------*/
 
-const ButtonBase: PolymorphicComponent<"button", ButtonBaseProps> = createPolymorphicComponent(
-  props => {
-    props = mergeThemeProps(
-      "Button",
-      {
-        loadingIconPlacement: "start",
-      },
-      props
+function ButtonBase(props: ButtonBaseProps) {
+  props = mergeThemeProps(
+    "Button",
+    {
+      loadingIconPlacement: "start",
+    },
+    props
+  );
+
+  const buttonThemeClasses = useThemeClasses<ButtonSlots>("Button", props);
+
+  const [local, variantProps, contentProps, loadingIconProps, loadingContentProps, others] =
+    splitProps(
+      props,
+      ["class", "isLoading", "loadingText", "loadingIcon", "loadingIconPlacement"],
+      ["variant", "colorScheme", "size", "isIconOnly", "isFullWidth", "isLoading", "isDisabled"],
+      ["variant", "colorScheme", "size", "isDisabled", "startIcon", "endIcon", "children"],
+      ["variant", "colorScheme", "size", "isIconOnly", "isDisabled"],
+      ["size"]
     );
 
-    const buttonThemeClasses = useThemeClasses<ButtonSlots>("Button", props);
+  const { direction } = useLocale();
 
-    const [local, variantProps, contentProps, loadingIconProps, loadingContentProps, others] =
-      splitProps(
-        props,
-        ["class", "isLoading", "loadingText", "loadingIcon", "loadingIconPlacement"],
-        ["variant", "colorScheme", "size", "isIconOnly", "isFullWidth", "isLoading", "isDisabled"],
-        ["variant", "colorScheme", "size", "isDisabled", "startIcon", "endIcon", "children"],
-        ["variant", "colorScheme", "size", "isIconOnly", "isDisabled"],
-        ["size"]
-      );
+  const isRtl = () => direction() === "rtl";
 
-    const { direction } = useLocale();
+  const isLoadingIconLeft = () => {
+    if (isRtl()) {
+      return local.loadingIconPlacement === "end";
+    } else {
+      return local.loadingIconPlacement === "start";
+    }
+  };
 
-    const isRtl = () => direction() === "rtl";
+  const content = () => {
+    return <ButtonBaseContent isRtl={isRtl()} {...contentProps} />;
+  };
 
-    const isLoadingIconLeft = () => {
-      if (isRtl()) {
-        return local.loadingIconPlacement === "end";
-      } else {
-        return local.loadingIconPlacement === "start";
-      }
-    };
-
-    const content = () => {
-      return <ButtonBaseContent isRtl={isRtl()} {...contentProps} />;
-    };
-
-    return (
-      <KButton.Root
-        class={cn(buttonVariants(variantProps), buttonThemeClasses.root, local.class)}
-        isDisabled={variantProps.isDisabled}
-        {...others}
-      >
-        <Show when={local.isLoading} fallback={content()}>
+  return (
+    <KButton.Root
+      class={cn(buttonVariants(variantProps), buttonThemeClasses.root, local.class)}
+      isDisabled={variantProps.isDisabled}
+      {...others}
+    >
+      <Show when={local.isLoading} fallback={content()}>
+        <Show
+          when={local.loadingText}
+          fallback={
+            <>
+              <ButtonBaseLoadingIcon class="pg-absolute" {...loadingIconProps} />
+              <Show when={!variantProps.isIconOnly}>
+                <span class={loadingContentVariants(loadingContentProps)}>{content()}</span>
+              </Show>
+            </>
+          }
+        >
           <Show
-            when={local.loadingText}
+            when={isLoadingIconLeft()}
             fallback={
               <>
-                <ButtonBaseLoadingIcon class="pg-absolute" {...loadingIconProps} />
-                <Show when={!variantProps.isIconOnly}>
-                  <span class={loadingContentVariants(loadingContentProps)}>{content()}</span>
-                </Show>
+                {local.loadingText}
+                <ButtonBaseLoadingIcon {...loadingIconProps} />
               </>
             }
           >
-            <Show
-              when={isLoadingIconLeft()}
-              fallback={
-                <>
-                  {local.loadingText}
-                  <ButtonBaseLoadingIcon {...loadingIconProps} />
-                </>
-              }
-            >
-              <ButtonBaseLoadingIcon {...loadingIconProps} />
-              {local.loadingText}
-            </Show>
+            <ButtonBaseLoadingIcon {...loadingIconProps} />
+            {local.loadingText}
           </Show>
         </Show>
-      </KButton.Root>
-    );
-  }
-);
+      </Show>
+    </KButton.Root>
+  );
+}
 
 function ButtonBaseContent(props: ButtonBaseContentProps) {
-  const [iconProps, others] = splitProps(
-    props,
-
-    ["variant", "colorScheme", "size", "isDisabled"]
-  );
+  const [iconProps] = splitProps(props, ["variant", "colorScheme", "size", "isDisabled"]);
 
   const leftIcon = () => {
     return props.isRtl ? props.endIcon : props.startIcon;
@@ -157,17 +155,59 @@ function ButtonBaseLoadingIcon(props: ButtonBaseIconProps) {
  * Button
  * -----------------------------------------------------------------------------------------------*/
 
-export const Button: PolymorphicComponent<"button", ButtonProps> = createPolymorphicComponent(
-  props => {
-    return <ButtonBase isIconOnly={false} {...props} />;
-  }
-);
+export function Button(props: ButtonProps) {
+  return <ButtonBase isIconOnly={false} {...props} />;
+}
 
 /* -------------------------------------------------------------------------------------------------
  * IconButton
  * -----------------------------------------------------------------------------------------------*/
 
-export const IconButton: PolymorphicComponent<"button", IconButtonProps> =
-  createPolymorphicComponent(props => {
-    return <ButtonBase isIconOnly {...props} />;
-  });
+export function IconButton(props: IconButtonProps) {
+  return <ButtonBase isIconOnly {...props} />;
+}
+
+/* -------------------------------------------------------------------------------------------------
+ * LinkButtonBase
+ * -----------------------------------------------------------------------------------------------*/
+
+function LinkButtonBase(props: LinkButtonBaseProps) {
+  props = mergeThemeProps("LinkButton", {}, props);
+
+  const linkButtonThemeClasses = useThemeClasses<LinkButtonSlots>("LinkButton", props);
+
+  const [local, variantProps, contentProps, others] = splitProps(
+    props,
+    ["class"],
+    ["variant", "colorScheme", "size", "isIconOnly", "isFullWidth", "isDisabled"],
+    ["variant", "colorScheme", "size", "isDisabled", "startIcon", "endIcon", "children"]
+  );
+
+  const { direction } = useLocale();
+
+  return (
+    <KLink.Root
+      class={cn(buttonVariants(variantProps), linkButtonThemeClasses.root, local.class)}
+      isDisabled={variantProps.isDisabled}
+      {...others}
+    >
+      <ButtonBaseContent isRtl={direction() === "rtl"} {...contentProps} />
+    </KLink.Root>
+  );
+}
+
+/* -------------------------------------------------------------------------------------------------
+ * LinkButton
+ * -----------------------------------------------------------------------------------------------*/
+
+export function LinkButton(props: LinkButtonProps) {
+  return <LinkButtonBase isIconOnly={false} {...props} />;
+}
+
+/* -------------------------------------------------------------------------------------------------
+ * LinkIconButton
+ * -----------------------------------------------------------------------------------------------*/
+
+export function LinkIconButton(props: LinkIconButtonProps) {
+  return <LinkButtonBase isIconOnly {...props} />;
+}

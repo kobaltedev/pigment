@@ -2,7 +2,7 @@
   "name": "kobalte-pigment-monorepo",
   "version": "0.0.0",
   "private": true,
-  "description": "Ready to use UI components built with Kobalte and Tailwind CSS.",
+  "description": "Ready to use UI components built with Kobalte.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kobaltedev/pigment.git"
@@ -60,7 +60,7 @@
     "@types/testing-library__jest-dom": "5.14.5",
     "@typescript-eslint/eslint-plugin": "5.51.0",
     "@typescript-eslint/parser": "5.51.0",
-    "babel-preset-solid": "1.6.10",
+    "babel-preset-solid": "1.6.12",
     "commitizen": "4.3.0",
     "eslint": "8.34.0",
     "eslint-config-prettier": "8.6.0",
@@ -69,22 +69,22 @@
     "eslint-plugin-jsx-a11y": "6.7.1",
     "eslint-plugin-prettier": "4.2.1",
     "eslint-plugin-simple-import-sort": "10.0.0",
-    "eslint-plugin-solid": "0.9.4",
+    "eslint-plugin-solid": "0.11.0",
     "husky": "8.0.3",
     "inquirer": "8.2.5",
     "jest": "28.1.3",
     "jest-environment-jsdom": "28.1.3",
-    "lint-staged": "13.1.1",
+    "lint-staged": "13.1.2",
     "prettier": "2.8.4",
-    "solid-js": "1.6.10",
+    "solid-js": "1.6.12",
     "sort-package-json": "2.4.1",
     "ts-jest": "28.0.8",
-    "tsup": "6.6.0",
-    "tsup-preset-solid": "0.1.5",
+    "tsup": "6.6.3",
+    "tsup-preset-solid": "0.1.8",
     "turbo": "1.7.4",
     "typescript": "4.9.5",
     "vite": "3.2.5",
-    "vite-plugin-solid": "2.5.0"
+    "vite-plugin-solid": "2.6.1"
   },
   "packageManager": "pnpm@7.26.3"
 }

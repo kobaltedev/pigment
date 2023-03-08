@@ -12,7 +12,7 @@
   </a>
 </p>
 
-Ready to use UI components built with Kobalte and Tailwind CSS.
+Ready to use UI components built with Kobalte.
 
 ## Documentation
 
