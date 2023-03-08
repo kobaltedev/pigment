@@ -9,10 +9,7 @@ import { ButtonVariants } from "./button.styles";
 
 export interface ButtonBaseProps
   extends Omit<KButton.ButtonRootProps, "asChild">,
-    Omit<ButtonVariants, "isLoading" | "isDisabled"> {
-  /** Whether the button is in a loading state. */
-  isLoading?: boolean;
-
+    Omit<ButtonVariants, "isDisabled"> {
   /** The label to show when the button is in a loading state. */
   loadingText?: string;
 
@@ -30,9 +27,6 @@ export interface ButtonBaseProps
 
   /** The icon to show after the button content. */
   endIcon?: JSX.Element;
-
-  /** The content of the button. */
-  children?: JSX.Element;
 }
 
 export interface ButtonBaseContentProps
@@ -62,20 +56,8 @@ export type ButtonSlots = "root";
 export interface IconButtonProps
   extends Omit<
     ButtonBaseProps,
-    | "isIconOnly"
-    | "loadingText"
-    | "loadingIconPlacement"
-    | "startIcon"
-    | "endIcon"
-    | "isFullWidth"
-    | "children"
-  > {
-  /** An accessible label that describes the button. */
-  "aria-label": string;
-
-  /** The icon to be used in the button. */
-  children?: JSX.Element;
-}
+    "isIconOnly" | "loadingText" | "loadingIconPlacement" | "startIcon" | "endIcon" | "isFullWidth"
+  > {}
 
 /* -------------------------------------------------------------------------------------------------
  * LinkButtonBase
@@ -89,9 +71,6 @@ export interface LinkButtonBaseProps
 
   /** The icon to show after the link button content. */
   endIcon?: JSX.Element;
-
-  /** The content of the link button. */
-  children?: JSX.Element;
 }
 
 /* -------------------------------------------------------------------------------------------------
@@ -107,13 +86,4 @@ export type LinkButtonSlots = "root";
  * -----------------------------------------------------------------------------------------------*/
 
 export interface LinkIconButtonProps
-  extends Omit<
-    LinkButtonBaseProps,
-    "isIconOnly" | "startIcon" | "endIcon" | "isFullWidth" | "children"
-  > {
-  /** An accessible label that describes the link button. */
-  "aria-label": string;
-
-  /** The icon to be used in the link button. */
-  children?: JSX.Element;
-}
+  extends Omit<LinkButtonBaseProps, "isIconOnly" | "startIcon" | "endIcon" | "isFullWidth"> {}

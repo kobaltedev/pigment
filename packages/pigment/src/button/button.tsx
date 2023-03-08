@@ -32,7 +32,7 @@ function ButtonBase(props: ButtonBaseProps) {
     props
   );
 
-  const buttonThemeClasses = useThemeClasses<ButtonSlots>("Button", props);
+  const themeClasses = useThemeClasses<ButtonSlots>("Button", props);
 
   const [local, variantProps, contentProps, loadingIconProps, loadingContentProps, others] =
     splitProps(
@@ -62,7 +62,7 @@ function ButtonBase(props: ButtonBaseProps) {
 
   return (
     <KButton.Root
-      class={cn(buttonVariants(variantProps), buttonThemeClasses.root, local.class)}
+      class={cn(buttonVariants(variantProps), themeClasses.root, local.class)}
       isDisabled={variantProps.isDisabled}
       {...others}
     >
@@ -174,7 +174,7 @@ export function IconButton(props: IconButtonProps) {
 function LinkButtonBase(props: LinkButtonBaseProps) {
   props = mergeThemeProps("LinkButton", {}, props);
 
-  const linkButtonThemeClasses = useThemeClasses<LinkButtonSlots>("LinkButton", props);
+  const themeClasses = useThemeClasses<LinkButtonSlots>("LinkButton", props);
 
   const [local, variantProps, contentProps, others] = splitProps(
     props,
@@ -187,7 +187,7 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
 
   return (
     <KLink.Root
-      class={cn(buttonVariants(variantProps), linkButtonThemeClasses.root, local.class)}
+      class={cn(buttonVariants(variantProps), themeClasses.root, local.class)}
       isDisabled={variantProps.isDisabled}
       {...others}
     >

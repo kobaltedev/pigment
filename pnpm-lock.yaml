@@ -111,9 +111,9 @@ importers:
 
   packages/pigment:
     specifiers:
-      '@kobalte/core': ^0.7.1
+      '@kobalte/core': ^0.7.2
       '@kobalte/tailwindcss': ^0.5.0
-      '@kobalte/utils': ^0.6.0
+      '@kobalte/utils': ^0.6.1
       '@solid-primitives/refs': ^1.0.0
       '@storybook/addon-a11y': 7.0.0-beta.43
       '@storybook/addon-essentials': 7.0.0-beta.43
@@ -139,8 +139,8 @@ importers:
       tailwindcss: 3.2.7
       tailwindcss-animate: 1.0.5
     dependencies:
-      '@kobalte/core': 0.7.1_solid-js@1.6.12
-      '@kobalte/utils': 0.6.0_solid-js@1.6.12
+      '@kobalte/core': 0.7.2_solid-js@1.6.12
+      '@kobalte/utils': 0.6.1_solid-js@1.6.12
       '@solid-primitives/refs': 1.0.0_solid-js@1.6.12
       class-variance-authority: 0.4.0_typescript@4.9.5
       clsx: 1.2.1
@@ -3638,8 +3638,8 @@ packages:
     resolution: {integrity: sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==}
     dev: true
 
-  /@kobalte/core/0.7.1_solid-js@1.6.12:
-    resolution: {integrity: sha512-nAfdkt/8NPwo9SNEfLQdx/WopkT065wrDGl5cmR5Im2i8cACCGqoXG+IvjKMnwcgzMUfuV1wSAgRYcNM6br35A==}
+  /@kobalte/core/0.7.2_solid-js@1.6.12:
+    resolution: {integrity: sha512-aRgyhskkarD83dS/g0NPtutUaZhkZ6ztevT62Nw5I7thPsFVhuRjkPD1GsD1GSbnJYMvRlXbsPxab4Vdo4KCrA==}
     peerDependencies:
       solid-js: ^1.6.12
     dependencies:
@@ -3647,7 +3647,7 @@ packages:
       '@internationalized/date': 3.1.0
       '@internationalized/number': 3.2.0
       '@internationalized/string': 3.1.0
-      '@kobalte/utils': 0.6.0_solid-js@1.6.12
+      '@kobalte/utils': 0.6.1_solid-js@1.6.12
       solid-js: 1.6.12
     dev: false
 
@@ -3659,8 +3659,8 @@ packages:
       tailwindcss: 3.2.7_postcss@8.4.21
     dev: true
 
-  /@kobalte/utils/0.6.0_solid-js@1.6.12:
-    resolution: {integrity: sha512-PpSCwPadWq6CU8XcS/JF+jyM064dimFQrxwdohHsYP3LpUCM9ZQ48z1v8PRK4BIabZPIxI+7h14E4tJleTGk+w==}
+  /@kobalte/utils/0.6.1_solid-js@1.6.12:
+    resolution: {integrity: sha512-YvBqe9t9j0iYFUHfKXSMLQKM3s5+nL72RvT9b75W+IOxUpSpN4rdaI8C2j97k3LsEt7qY4ktJdt8lPM1rr8JXw==}
     peerDependencies:
       solid-js: ^1.6.12
     dependencies:

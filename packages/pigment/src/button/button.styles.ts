@@ -6,7 +6,6 @@ export const buttonVariants = cva(
     "pg-border pg-border-solid",
     "pg-font-medium pg-no-underline",
     "pg-transition-colors pg-cursor-pointer",
-    "active:pg-scale-95",
     "focus-visible:pg-outline focus-visible:pg-outline-2 focus-visible:pg-outline-offset-2 focus-visible:pg-outline-focus-ring",
   ],
   {
@@ -217,17 +216,24 @@ export const buttonVariants = cva(
       {
         variant: ["solid", "soft"],
         isDisabled: true,
-        class: ["pg-disabled:pg-bg-disabled-bg pg-disabled:pg-border-transparent"],
+        class: "pg-disabled:pg-bg-disabled-bg pg-disabled:pg-border-transparent",
       },
       {
         variant: "outlined",
         isDisabled: true,
-        class: ["pg-disabled:pg-bg-transparent pg-disabled:pg-border-disabled-border"],
+        class: "pg-disabled:pg-bg-transparent pg-disabled:pg-border-disabled-border",
       },
       {
         variant: "ghost",
         isDisabled: true,
-        class: ["pg-disabled:pg-bg-transparent pg-disabled:pg-border-transparent"],
+        class: "pg-disabled:pg-bg-transparent pg-disabled:pg-border-transparent",
+      },
+
+      // active state
+      {
+        isLoading: false,
+        isDisabled: false,
+        class: "active:pg-scale-95",
       },
 
       // rectangle button (e.g: Button)
@@ -290,33 +296,29 @@ export const buttonIconVariants = cva("pg-shrink-0 pg-reset-svg", {
       variant: "solid",
       colorScheme: "primary",
       isDisabled: false,
-      class: [
+      class:
         "pg-text-solid-primary-icon hover:pg-text-solid-primary-icon-hover active:pg-text-solid-primary-icon-active",
-      ],
     },
     {
       variant: "solid",
       colorScheme: "neutral",
       isDisabled: false,
-      class: [
+      class:
         "pg-text-solid-neutral-icon hover:pg-text-solid-neutral-icon-hover active:pg-text-solid-neutral-icon-active",
-      ],
     },
     {
       variant: "solid",
       colorScheme: "warning",
       isDisabled: false,
-      class: [
+      class:
         "pg-text-solid-warning-icon hover:pg-text-solid-warning-icon-hover active:pg-text-solid-warning-icon-active",
-      ],
     },
     {
       variant: "solid",
       colorScheme: "danger",
       isDisabled: false,
-      class: [
+      class:
         "pg-text-solid-danger-icon hover:pg-text-solid-danger-icon-hover active:pg-text-solid-danger-icon-active",
-      ],
     },
 
     // soft + colors
@@ -324,33 +326,29 @@ export const buttonIconVariants = cva("pg-shrink-0 pg-reset-svg", {
       variant: "soft",
       colorScheme: "primary",
       isDisabled: false,
-      class: [
+      class:
         "pg-text-soft-primary-icon hover:pg-text-soft-primary-icon-hover active:pg-text-soft-primary-icon-active",
-      ],
     },
     {
       variant: "soft",
       colorScheme: "neutral",
       isDisabled: false,
-      class: [
+      class:
         "pg-text-soft-neutral-icon hover:pg-text-soft-neutral-icon-hover active:pg-text-soft-neutral-icon-active",
-      ],
     },
     {
       variant: "soft",
       colorScheme: "warning",
       isDisabled: false,
-      class: [
+      class:
         "pg-text-soft-warning-icon hover:pg-text-soft-warning-icon-hover active:pg-text-soft-warning-icon-active",
-      ],
     },
     {
       variant: "soft",
       colorScheme: "danger",
       isDisabled: false,
-      class: [
+      class:
         "pg-text-soft-danger-icon hover:pg-text-soft-danger-icon-hover active:pg-text-soft-danger-icon-active",
-      ],
     },
 
     // outlined + colors
@@ -358,33 +356,29 @@ export const buttonIconVariants = cva("pg-shrink-0 pg-reset-svg", {
       variant: "outlined",
       colorScheme: "primary",
       isDisabled: false,
-      class: [
+      class:
         "pg-text-outlined-primary-icon hover:pg-text-outlined-primary-icon-hover active:pg-text-outlined-primary-icon-active",
-      ],
     },
     {
       variant: "outlined",
       colorScheme: "neutral",
       isDisabled: false,
-      class: [
+      class:
         "pg-text-outlined-neutral-icon hover:pg-text-outlined-neutral-icon-hover active:pg-text-outlined-neutral-icon-active",
-      ],
     },
     {
       variant: "outlined",
       colorScheme: "warning",
       isDisabled: false,
-      class: [
+      class:
         "pg-text-outlined-warning-icon hover:pg-text-outlined-warning-icon-hover active:pg-text-outlined-warning-icon-active",
-      ],
     },
     {
       variant: "outlined",
       colorScheme: "danger",
       isDisabled: false,
-      class: [
+      class:
         "pg-text-outlined-danger-icon hover:pg-text-outlined-danger-icon-hover active:pg-text-outlined-danger-icon-active",
-      ],
     },
 
     // ghost + colors
@@ -392,33 +386,29 @@ export const buttonIconVariants = cva("pg-shrink-0 pg-reset-svg", {
       variant: "ghost",
       colorScheme: "primary",
       isDisabled: false,
-      class: [
+      class:
         "pg-text-ghost-primary-icon hover:pg-text-ghost-primary-icon-hover active:pg-text-ghost-primary-icon-active",
-      ],
     },
     {
       variant: "ghost",
       colorScheme: "neutral",
       isDisabled: false,
-      class: [
+      class:
         "pg-text-ghost-neutral-icon hover:pg-text-ghost-neutral-icon-hover active:pg-text-ghost-neutral-icon-active",
-      ],
     },
     {
       variant: "ghost",
       colorScheme: "warning",
       isDisabled: false,
-      class: [
+      class:
         "pg-text-ghost-warning-icon hover:pg-text-ghost-warning-icon-hover active:pg-text-ghost-warning-icon-active",
-      ],
     },
     {
       variant: "ghost",
       colorScheme: "danger",
       isDisabled: false,
-      class: [
+      class:
         "pg-text-ghost-danger-icon hover:pg-text-ghost-danger-icon-hover active:pg-text-ghost-danger-icon-active",
-      ],
     },
 
     // start, end and loading icons in rectangle button (e.g: Button)
@@ -435,6 +425,13 @@ export const buttonIconVariants = cva("pg-shrink-0 pg-reset-svg", {
     { size: "lg", isIconOnly: true, class: "pg-text-3xl" },
     { size: "xl", isIconOnly: true, class: "pg-text-4xl" },
   ],
+  defaultVariants: {
+    variant: "solid",
+    colorScheme: "primary",
+    size: "sm",
+    isIconOnly: false,
+    isDisabled: false,
+  },
 });
 
 export const loadingContentVariants = cva(
@@ -448,6 +445,9 @@ export const loadingContentVariants = cva(
         lg: "pg-gap-2.5",
         xl: "pg-gap-3",
       },
+    },
+    defaultVariants: {
+      size: "sm",
     },
   }
 );
