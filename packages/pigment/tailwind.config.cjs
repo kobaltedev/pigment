@@ -51,12 +51,14 @@ module.exports = {
         ...colorToken("text"),
         ...colorToken("text-subtle"),
         ...colorToken("text-subtlest"),
+        ...colorToken("text-dimmed"),
         ...colorToken("text-success"),
         ...colorToken("text-danger"),
 
         ...colorToken("icon"),
         ...colorToken("icon-subtle"),
         ...colorToken("icon-subtlest"),
+        ...colorToken("icon-dimmed"),
         ...colorToken("icon-success"),
         ...colorToken("icon-danger"),
 
@@ -81,9 +83,12 @@ module.exports = {
         ...colorToken("surface-overlay-bg-active"),
         ...colorToken("surface-sunken-bg"),
 
+        ...colorToken("border"),
+        ...colorToken("border-success"),
+        ...colorToken("border-danger"),
+
         ...colorToken("focus-ring"),
         ...colorToken("backdrop"),
-        ...colorToken("border"),
 
         ...colorToken("disabled-text"),
         ...colorToken("disabled-icon"),

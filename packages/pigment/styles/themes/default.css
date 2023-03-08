@@ -113,6 +113,7 @@ $violet-900: #4c1d95;
   --pg-color-text: $slate-900;
   --pg-color-text-subtle: $slate-700;
   --pg-color-text-subtlest: $slate-600;
+  --pg-color-text-dimmed: $slate-500;
   --pg-color-text-success: $green-600;
   --pg-color-text-danger: $red-600;
 
@@ -123,6 +124,7 @@ $violet-900: #4c1d95;
   --pg-color-icon: $slate-900;
   --pg-color-icon-subtle: $slate-700;
   --pg-color-icon-subtlest: $slate-600;
+  --pg-color-icon-dimmed: $slate-500;
   --pg-color-icon-success: $green-600;
   --pg-color-icon-danger: $red-600;
 
@@ -155,12 +157,19 @@ $violet-900: #4c1d95;
   --pg-color-surface-sunken-bg: $slate-50;
 
   /* -------------------------------------------------------------------------------------------------
+   * Color - Border
+   * -----------------------------------------------------------------------------------------------*/
+
+  --pg-color-border: $slate-300A;
+  --pg-color-border-success: $green-500;
+  --pg-color-border-danger: $red-500;
+
+  /* -------------------------------------------------------------------------------------------------
    * Color - Misc.
    * -----------------------------------------------------------------------------------------------*/
 
   --pg-color-focus-ring: $blue-400;
   --pg-color-backdrop: $slate-500A;
-  --pg-color-border: $slate-300A;
 
   /* -------------------------------------------------------------------------------------------------
    * Color - Global variants - Disabled

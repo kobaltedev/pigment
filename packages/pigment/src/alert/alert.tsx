@@ -5,7 +5,7 @@ import { CloseButton } from "../close-button";
 import {
   AlertTriangleIcon,
   CheckCircleIcon,
-  CrossCircleIcon,
+  AlertCircleIcon,
   HelpCircleIcon,
   InfoCircleIcon,
 } from "../icons";
@@ -21,7 +21,7 @@ export function Alert(props: AlertProps) {
       successIcon: () => <CheckCircleIcon />,
       infoIcon: () => <InfoCircleIcon />,
       warningIcon: () => <AlertTriangleIcon />,
-      dangerIcon: () => <CrossCircleIcon />,
+      dangerIcon: () => <AlertCircleIcon />,
       helpIcon: () => <HelpCircleIcon />,
     },
     props
