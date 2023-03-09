@@ -71,7 +71,6 @@
     "cssnano": "5.1.15",
     "postcss": "8.4.21",
     "postcss-cli": "10.1.0",
-    "postcss-simple-vars": "7.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "storybook": "7.0.0-beta.43",
