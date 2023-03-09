@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 
+import { Button } from "../button";
+import { InfoCircleIcon } from "../icons";
 import { TextField } from "./text-field";
 import { TextFieldProps } from "./text-field.props";
 
@@ -21,7 +23,7 @@ export default {
       options: ["top", "bottom"],
       control: { type: "select" },
     },
-    isMultiline: {
+    hasErrorIcon: {
       control: { type: "boolean" },
     },
     isInvalid: {
@@ -51,12 +53,78 @@ export const Default: Story = {
     variant: "outlined",
     size: "sm",
     descriptionPlacement: "bottom",
-    isMultiline: false,
+    hasErrorIcon: true,
     isInvalid: false,
     isDisabled: false,
     placeholder: "example@acme.com",
     label: "E-mail",
     description: "We will never share your email.",
     error: "Please enter a valid email address.",
+  },
+};
+
+export const WithIcon: Story = {
+  args: {
+    variant: "outlined",
+    size: "sm",
+    descriptionPlacement: "bottom",
+    hasErrorIcon: true,
+    isInvalid: false,
+    isDisabled: false,
+    placeholder: "example@acme.com",
+    label: "E-mail",
+    description: "We will never share your email.",
+    error: "Please enter a valid email address.",
+    startIcon: () => <InfoCircleIcon />,
+    endIcon: () => <InfoCircleIcon />,
+  },
+};
+
+export const WithSection: Story = {
+  args: {
+    variant: "outlined",
+    size: "sm",
+    descriptionPlacement: "bottom",
+    hasErrorIcon: true,
+    isInvalid: false,
+    isDisabled: false,
+    placeholder: "example@acme.com",
+    label: "E-mail",
+    description: "We will never share your email.",
+    error: "Please enter a valid email address.",
+    startSection: () => <span class="pg-mx-2">http://</span>,
+    endSection: () => (
+      <Button
+        size="sm"
+        variant="solid"
+        colorScheme="neutral"
+        class="pg-rounded-l-none pg-z-10 pg-ml-2"
+      >
+        Search
+      </Button>
+    ),
+  },
+};
+
+export const WithIconAndSection: Story = {
+  args: {
+    variant: "outlined",
+    size: "sm",
+    descriptionPlacement: "bottom",
+    hasErrorIcon: true,
+    isInvalid: false,
+    isDisabled: false,
+    placeholder: "example@acme.com",
+    label: "E-mail",
+    description: "We will never share your email.",
+    error: "Please enter a valid email address.",
+    startIcon: () => <InfoCircleIcon />,
+    endIcon: () => <InfoCircleIcon />,
+    startSection: () => <span class="pg-ml-2">http://</span>,
+    endSection: () => (
+      <Button size="sm" variant="solid" colorScheme="neutral" class="pg-rounded-l-none pg-z-10">
+        Search
+      </Button>
+    ),
   },
 };

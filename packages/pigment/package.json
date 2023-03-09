@@ -67,7 +67,6 @@
     "@storybook/html": "7.0.0-beta.43",
     "@storybook/html-webpack5": "7.0.0-beta.43",
     "@storybook/theming": "7.0.0-beta.43",
-    "@tailwindcss/forms": "0.5.3",
     "autoprefixer": "10.4.13",
     "cssnano": "5.1.15",
     "postcss": "8.4.21",

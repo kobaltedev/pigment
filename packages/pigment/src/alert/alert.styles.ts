@@ -2,7 +2,7 @@ import { cva, VariantProps } from "class-variance-authority";
 
 export const alertVariants = cva(
   [
-    "pg-flex pg-items-start pg-space-x-1 pg-border pg-border-solid pg-rounded-md pg-py-3 pg-text-sm",
+    "pg-flex pg-items-start pg-space-x-1.5 pg-border pg-border-solid pg-rounded-md pg-py-3 pg-text-sm",
   ],
   {
     variants: {
@@ -91,7 +91,7 @@ export const alertVariants = cva(
 );
 
 export const alertIconVariants = cva(
-  "pg-flex pg-justify-center pg-items-center pg-shrink-0 pg-reset-svg pg-h-7 pg-w-7 pg-text-base",
+  "pg-flex pg-justify-center pg-items-center pg-shrink-0 pg-reset-svg pg-h-7 pg-w-7 pg-text-xl pg-leading-none",
   {
     variants: {
       variant: {
@@ -108,58 +108,18 @@ export const alertIconVariants = cva(
     },
     compoundVariants: [
       // solid + colors
-      {
-        variant: "solid",
-        status: "success",
-        class: "pg-text-solid-success-icon",
-      },
-      {
-        variant: "solid",
-        status: "info",
-        class: "pg-text-solid-info-icon",
-      },
-      {
-        variant: "solid",
-        status: "warning",
-        class: "pg-text-solid-warning-icon",
-      },
-      {
-        variant: "solid",
-        status: "danger",
-        class: "pg-text-solid-danger-icon",
-      },
-      {
-        variant: "solid",
-        status: "help",
-        class: ["pg-text-solid-help-icon"],
-      },
+      { variant: "solid", status: "success", class: "pg-text-solid-success-icon" },
+      { variant: "solid", status: "info", class: "pg-text-solid-info-icon" },
+      { variant: "solid", status: "warning", class: "pg-text-solid-warning-icon" },
+      { variant: "solid", status: "danger", class: "pg-text-solid-danger-icon" },
+      { variant: "solid", status: "help", class: ["pg-text-solid-help-icon"] },
 
       // soft + colors
-      {
-        variant: "soft",
-        status: "success",
-        class: "pg-text-soft-success-icon",
-      },
-      {
-        variant: "soft",
-        status: "info",
-        class: "pg-text-soft-info-icon",
-      },
-      {
-        variant: "soft",
-        status: "warning",
-        class: "pg-text-soft-warning-icon",
-      },
-      {
-        variant: "soft",
-        status: "danger",
-        class: "pg-text-soft-danger-icon",
-      },
-      {
-        variant: "soft",
-        status: "help",
-        class: "pg-text-soft-help-icon",
-      },
+      { variant: "soft", status: "success", class: "pg-text-soft-success-icon" },
+      { variant: "soft", status: "info", class: "pg-text-soft-info-icon" },
+      { variant: "soft", status: "warning", class: "pg-text-soft-warning-icon" },
+      { variant: "soft", status: "danger", class: "pg-text-soft-danger-icon" },
+      { variant: "soft", status: "help", class: "pg-text-soft-help-icon" },
     ],
     defaultVariants: {
       variant: "soft",

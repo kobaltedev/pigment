@@ -1,10 +1,7 @@
 import { cva, VariantProps } from "class-variance-authority";
 
-export const textFieldInputVariants = cva(
-  [
-    "pg-appearance-none pg-grow pg-m-0 pg-outline-none",
-    "pg-border pg-border-solid pg-transition-colors",
-  ],
+export const textFieldWrapperVariants = cva(
+  "pg-flex pg-items-center pg-grow pg-border pg-border-solid pg-transition-colors",
   {
     variants: {
       variant: {
@@ -19,6 +16,119 @@ export const textFieldInputVariants = cva(
         lg: "pg-h-13 pg-rounded-md pg-text-lg",
         xl: "pg-h-15 pg-rounded-md pg-text-xl",
       },
+      isFocused: {
+        true: "",
+        false: "",
+      },
+      isInvalid: {
+        true: "",
+        false: "",
+      },
+      isDisabled: {
+        true: "pg-group-disabled:pg-text-disabled-text",
+        false: "",
+      },
+    },
+    compoundVariants: [
+      // variant + text colors
+      {
+        variant: "soft",
+        isInvalid: false,
+        isDisabled: false,
+        class:
+          "pg-text-soft-input-text hover:pg-text-soft-input-text-hover active:pg-text-soft-input-text-active",
+      },
+      {
+        variant: "outlined",
+        isInvalid: false,
+        isDisabled: false,
+        class:
+          "pg-text-outlined-input-text hover:pg-text-outlined-input-text-hover active:pg-text-outlined-input-text-active",
+      },
+
+      // variant + border colors
+      {
+        variant: "soft",
+        isFocused: false,
+        isInvalid: false,
+        isDisabled: false,
+        class:
+          "pg-border-soft-input-border hover:pg-border-soft-input-border-hover active:pg-border-soft-input-border-active",
+      },
+      {
+        variant: "outlined",
+        isFocused: false,
+        isInvalid: false,
+        isDisabled: false,
+        class:
+          "pg-border-outlined-input-border hover:pg-border-outlined-input-border-hover active:pg-border-outlined-input-border-active",
+      },
+
+      // all variants + focus colors
+      {
+        isFocused: true,
+        isInvalid: false,
+        isDisabled: false,
+        class: "pg-border-focus-ring",
+      },
+
+      // all variants + invalid colors
+      {
+        isInvalid: true,
+        isDisabled: false,
+        class: "pg-text-text-danger pg-border-border-danger",
+      },
+
+      // variant + disabled
+      {
+        variant: "soft",
+        isDisabled: true,
+        class: "pg-group-disabled:pg-bg-disabled-bg pg-group-disabled:pg-border-transparent",
+      },
+      {
+        variant: "outlined",
+        isDisabled: true,
+        class: "pg-group-disabled:pg-bg-transparent pg-group-disabled:pg-border-disabled-border",
+      },
+
+      // variant + not disabled
+      {
+        variant: "soft",
+        isDisabled: false,
+        class: "placeholder:pg-text-text-subtlest",
+      },
+      {
+        variant: "outlined",
+        isDisabled: false,
+        class: "placeholder:pg-text-text-dimmed",
+      },
+    ],
+    defaultVariants: {
+      variant: "outlined",
+      size: "sm",
+      isFocused: false,
+      isInvalid: false,
+      isDisabled: false,
+    },
+  }
+);
+
+export const textFieldInputVariants = cva(
+  [
+    "pg-appearance-none pg-grow pg-h-full pg-m-0 pg-py-0",
+    "pg-border-none pg-bg-transparent pg-text-current",
+    "pg-outline-none",
+    "pg-disabled:placeholder:pg-text-disabled-text pg-disabled:pg-cursor-not-allowed pg-disabled:pg-select-none",
+  ],
+  {
+    variants: {
+      size: {
+        xs: "pg-text-sm",
+        sm: "pg-text-sm",
+        md: "pg-text-base",
+        lg: "pg-text-lg",
+        xl: "pg-text-xl",
+      },
       hasLeftIcon: {
         true: "",
         false: "",
@@ -27,78 +137,116 @@ export const textFieldInputVariants = cva(
         true: "",
         false: "",
       },
-      isDisabled: {
-        true: "pg-disabled:pg-text-disabled-text pg-disabled:placeholder:pg-text-disabled-text pg-disabled:pg-cursor-not-allowed pg-disabled:pg-select-none",
-        false: "placeholder:pg-text-text-dimmed",
+      hasLeftSection: {
+        true: "",
+        false: "",
+      },
+      hasRightSection: {
+        true: "",
+        false: "",
+      },
+    },
+    compoundVariants: [
+      // any size + no icon + section
+      { hasLeftIcon: false, hasLeftSection: true, class: "pg-pl-0" },
+      { hasRightIcon: false, hasRightSection: true, class: "pg-pr-0" },
+
+      // size + no prefix
+      { size: "xs", hasLeftIcon: false, hasLeftSection: false, class: "pg-pl-2" },
+      { size: "sm", hasLeftIcon: false, hasLeftSection: false, class: "pg-pl-2.5" },
+      { size: "md", hasLeftIcon: false, hasLeftSection: false, class: "pg-pl-3.5" },
+      { size: "lg", hasLeftIcon: false, hasLeftSection: false, class: "pg-pl-4" },
+      { size: "xl", hasLeftIcon: false, hasLeftSection: false, class: "pg-pl-5" },
+
+      // size + no suffix
+      { size: "xs", hasRightIcon: false, hasRightSection: false, class: "pg-pr-2" },
+      { size: "sm", hasRightIcon: false, hasRightSection: false, class: "pg-pr-2.5" },
+      { size: "md", hasRightIcon: false, hasRightSection: false, class: "pg-pr-3.5" },
+      { size: "lg", hasRightIcon: false, hasRightSection: false, class: "pg-pr-4" },
+      { size: "xl", hasRightIcon: false, hasRightSection: false, class: "pg-pr-5" },
+
+      // size + left icon
+      { size: "xs", hasLeftIcon: true, class: "pg-pl-7" },
+      { size: "sm", hasLeftIcon: true, class: "pg-pl-9" },
+      { size: "md", hasLeftIcon: true, class: "pg-pl-11" },
+      { size: "lg", hasLeftIcon: true, class: "pg-pl-13" },
+      { size: "xl", hasLeftIcon: true, class: "pg-pl-15" },
+
+      // size + right icon
+      { size: "xs", hasRightIcon: true, class: "pg-pr-7" },
+      { size: "sm", hasRightIcon: true, class: "pg-pr-9" },
+      { size: "md", hasRightIcon: true, class: "pg-pr-11" },
+      { size: "lg", hasRightIcon: true, class: "pg-pr-13" },
+      { size: "xl", hasRightIcon: true, class: "pg-pr-15" },
+    ],
+    defaultVariants: {
+      size: "sm",
+      hasLeftIcon: false,
+      hasRightIcon: false,
+      hasLeftSection: false,
+      hasRightSection: false,
+    },
+  }
+);
+
+export const textFieldIconVariants = cva(
+  [
+    "pg-reset-svg pg-absolute pg-top-0 pg-bottom-0 pg-flex pg-justify-center pg-items-center pg-shrink-0",
+    "pg-leading-none pg-pointer-events-none",
+    "pg-bg-transparent bg-border-transparent",
+  ],
+  {
+    variants: {
+      variant: {
+        soft: "",
+        outlined: "",
+      },
+      size: {
+        xs: "pg-h-7 pg-w-7 pg-text-base",
+        sm: "pg-h-9 pg-w-9 pg-text-base",
+        md: "pg-h-11 pg-w-11 pg-text-lg",
+        lg: "pg-h-13 pg-w-13 pg-text-xl",
+        xl: "pg-h-15 pg-w-15 pg-text-2xl",
       },
       isInvalid: {
         true: "",
-        false: "focus:pg-border-focus-ring",
+        false: "",
+      },
+      isDisabled: {
+        true: "pg-text-disabled-icon",
       },
     },
     compoundVariants: [
       // variant + colors
       {
         variant: "soft",
-        isDisabled: false,
         isInvalid: false,
-        class: [
-          "pg-text-soft-input-text hover:pg-text-soft-input-text-hover active:pg-text-soft-input-text-active",
-          "pg-border-soft-input-border hover:pg-border-soft-input-border-hover active:pg-border-soft-input-border-active",
-        ],
+        isDisabled: false,
+        class:
+          "pg-text-soft-input-icon hover:pg-text-soft-input-icon-hover active:pg-text-soft-input-icon-active",
       },
       {
         variant: "outlined",
-        isDisabled: false,
         isInvalid: false,
-        class: [
-          "pg-text-outlined-input-text hover:pg-text-outlined-input-text-hover active:pg-text-outlined-input-text-active",
-          "pg-border-outlined-input-border hover:pg-border-outlined-input-border-hover active:pg-border-outlined-input-border-active",
-        ],
+        isDisabled: false,
+        class:
+          "pg-text-outlined-input-icon hover:pg-text-outlined-input-icon-hover active:pg-text-outlined-input-icon-active",
       },
 
-      // variant + disabled
-      {
-        variant: "soft",
-        isDisabled: true,
-        class: "pg-disabled:pg-bg-disabled-bg pg-disabled:pg-border-transparent",
-      },
-      {
-        variant: "outlined",
-        isDisabled: true,
-        class: "pg-disabled:pg-bg-transparent pg-disabled:pg-border-disabled-border",
-      },
-
-      // invalid
+      // invalid color
       {
         isInvalid: true,
         isDisabled: false,
-        class: "pg-text-text-danger pg-border-border-danger",
+        class: "pg-text-icon-danger",
       },
-
-      // size + padding-left
-      { size: "xs", hasLeftIcon: false, class: "pg-pl-2" },
-      { size: "sm", hasLeftIcon: false, class: "pg-pl-2.5" },
-      { size: "md", hasLeftIcon: false, class: "pg-pl-3" },
-      { size: "lg", hasLeftIcon: false, class: "pg-pl-3.5" },
-      { size: "xl", hasLeftIcon: false, class: "pg-pl-4" },
-
-      // size + padding-right
-      { size: "xs", hasRightIcon: false, class: "pg-pr-2" },
-      { size: "sm", hasRightIcon: false, class: "pg-pr-2.5" },
-      { size: "md", hasRightIcon: false, class: "pg-pr-3" },
-      { size: "lg", hasRightIcon: false, class: "pg-pr-3.5" },
-      { size: "xl", hasRightIcon: false, class: "pg-pr-4" },
     ],
     defaultVariants: {
       variant: "outlined",
       size: "sm",
-      hasLeftIcon: false,
-      hasRightIcon: false,
-      isDisabled: false,
       isInvalid: false,
+      isDisabled: false,
     },
   }
 );
 
-export type TextFieldInputVariants = VariantProps<typeof textFieldInputVariants>;
+export type TextFieldWrapperVariants = VariantProps<typeof textFieldWrapperVariants>;

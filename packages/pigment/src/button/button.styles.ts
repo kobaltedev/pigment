@@ -30,7 +30,7 @@ export const buttonVariants = cva(
         xl: "pg-h-15 pg-gap-3 pg-rounded-md",
       },
       isIconOnly: {
-        true: "pg-p-0 pg-reset-svg",
+        true: "pg-reset-svg pg-p-0 pg-leading-none",
       },
       isFullWidth: {
         true: "pg-flex pg-w-full",
@@ -245,11 +245,11 @@ export const buttonVariants = cva(
       { size: "xl", isIconOnly: false, class: "pg-px-8 pg-text-xl" },
 
       // square button (e.g: IconButton)
-      { size: "xs", isIconOnly: true, isFullWidth: false, class: "pg-w-7 pg-text-base" },
-      { size: "sm", isIconOnly: true, isFullWidth: false, class: "pg-w-9 pg-text-xl" },
-      { size: "md", isIconOnly: true, isFullWidth: false, class: "pg-w-11 pg-text-2xl" },
-      { size: "lg", isIconOnly: true, isFullWidth: false, class: "pg-w-13 pg-text-3xl" },
-      { size: "xl", isIconOnly: true, isFullWidth: false, class: "pg-w-15 pg-text-4xl" },
+      { size: "xs", isIconOnly: true, isFullWidth: false, class: "pg-w-7 pg-text-xl" },
+      { size: "sm", isIconOnly: true, isFullWidth: false, class: "pg-w-9 pg-text-2xl" },
+      { size: "md", isIconOnly: true, isFullWidth: false, class: "pg-w-11 pg-text-3xl" },
+      { size: "lg", isIconOnly: true, isFullWidth: false, class: "pg-w-13 pg-text-4xl" },
+      { size: "xl", isIconOnly: true, isFullWidth: false, class: "pg-w-15 pg-text-5xl" },
     ],
     defaultVariants: {
       variant: "solid",
@@ -262,7 +262,7 @@ export const buttonVariants = cva(
   }
 );
 
-export const buttonIconVariants = cva("pg-shrink-0 pg-reset-svg", {
+export const buttonIconVariants = cva("pg-reset-svg pg-shrink-0", {
   variants: {
     variant: {
       solid: "",
@@ -412,18 +412,18 @@ export const buttonIconVariants = cva("pg-shrink-0 pg-reset-svg", {
     },
 
     // start, end and loading icons in rectangle button (e.g: Button)
-    { size: "xs", isIconOnly: false, class: "pg-text-sm" },
+    { size: "xs", isIconOnly: false, class: "pg-text-base" },
     { size: "sm", isIconOnly: false, class: "pg-text-base" },
     { size: "md", isIconOnly: false, class: "pg-text-lg" },
     { size: "lg", isIconOnly: false, class: "pg-text-xl" },
     { size: "xl", isIconOnly: false, class: "pg-text-2xl" },
 
     // only loading icon in square button (e.g: IconButton)
-    { size: "xs", isIconOnly: true, class: "pg-text-base" },
-    { size: "sm", isIconOnly: true, class: "pg-text-xl" },
-    { size: "md", isIconOnly: true, class: "pg-text-2xl" },
-    { size: "lg", isIconOnly: true, class: "pg-text-3xl" },
-    { size: "xl", isIconOnly: true, class: "pg-text-4xl" },
+    { size: "xs", isIconOnly: true, class: "pg-text-xl" },
+    { size: "sm", isIconOnly: true, class: "pg-text-2xl" },
+    { size: "md", isIconOnly: true, class: "pg-text-3xl" },
+    { size: "lg", isIconOnly: true, class: "pg-text-4xl" },
+    { size: "xl", isIconOnly: true, class: "pg-text-5xl" },
   ],
   defaultVariants: {
     variant: "solid",

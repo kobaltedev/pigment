@@ -446,17 +446,17 @@ $violet-900: #4c1d95;
 
   /* Input */
   --pg-color-soft-input-text: $slate-900;
-  --pg-color-soft-input-icon: $slate-900;
+  --pg-color-soft-input-icon: $slate-600;
   --pg-color-soft-input-bg: $slate-100;
   --pg-color-soft-input-border: $slate-100;
 
   --pg-color-soft-input-text-hover: $slate-900;
-  --pg-color-soft-input-icon-hover: $slate-900;
+  --pg-color-soft-input-icon-hover: $slate-600;
   --pg-color-soft-input-bg-hover: $slate-100;
   --pg-color-soft-input-border-hover: $slate-100;
 
   --pg-color-soft-input-text-active: $slate-900;
-  --pg-color-soft-input-icon-active: $slate-900;
+  --pg-color-soft-input-icon-active: $slate-600;
   --pg-color-soft-input-bg-active: $slate-100;
   --pg-color-soft-input-border-active: $slate-100;
 
@@ -578,17 +578,17 @@ $violet-900: #4c1d95;
 
   /* Input */
   --pg-color-outlined-input-text: $slate-900;
-  --pg-color-outlined-input-icon: $slate-900;
+  --pg-color-outlined-input-icon: $slate-600;
   --pg-color-outlined-input-bg: transparent;
   --pg-color-outlined-input-border: $slate-300A;
 
   --pg-color-outlined-input-text-hover: $slate-900;
-  --pg-color-outlined-input-icon-hover: $slate-900;
+  --pg-color-outlined-input-icon-hover: $slate-600;
   --pg-color-outlined-input-bg-hover: transparent;
   --pg-color-outlined-input-border-hover: $slate-300A;
 
   --pg-color-outlined-input-text-active: $slate-900;
-  --pg-color-outlined-input-icon-active: $slate-900;
+  --pg-color-outlined-input-icon-active: $slate-600;
   --pg-color-outlined-input-bg-active: transparent;
   --pg-color-outlined-input-border-active: $slate-300A;
 

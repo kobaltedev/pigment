@@ -1,5 +1,4 @@
 const kobaltePlugin = require("@kobalte/tailwindcss");
-const formsPlugin = require("@tailwindcss/forms");
 const animatePlugin = require("tailwindcss-animate");
 
 const plugin = require("tailwindcss/plugin");
@@ -138,7 +137,6 @@ module.exports = {
     },
   },
   plugins: [
-    formsPlugin({ strategy: "class" }),
     animatePlugin,
     kobaltePlugin({ prefix: "pg" }),
     plugin(({ addBase, addUtilities, theme }) => {
