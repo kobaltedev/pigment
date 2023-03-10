@@ -1,0 +1,70 @@
+{
+  "name": "@kobalte/pigment-docs",
+  "private": true,
+  "description": "Documentation website of Pigment.",
+  "keywords": [
+    "solid",
+    "solidjs",
+    "ui",
+    "library",
+    "design-system",
+    "components",
+    "kobalte"
+  ],
+  "homepage": "https://github.com/kobaltedev/pigment/tree/main/apps/docs#readme",
+  "bugs": {
+    "url": "https://github.com/kobaltedev/pigment/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kobaltedev/pigment.git"
+  },
+  "license": "MIT",
+  "author": "Fabien Marie-Louise <fabienml.dev@gmail.com>",
+  "type": "module",
+  "scripts": {
+    "build": "solid-start build",
+    "clean": "rm -rf .solid && rm -rf netlify && rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "dev": "solid-start dev --host",
+    "start": "solid-start start"
+  },
+  "dependencies": {
+    "@kobalte/pigment": "0.0.0",
+    "@solidjs/meta": "0.28.2",
+    "@solidjs/router": "0.7.0"
+  },
+  "devDependencies": {
+    "@mdx-js/mdx": "2.3.0",
+    "@mdx-js/rollup": "2.3.0",
+    "@tailwindcss/typography": "0.5.9",
+    "acorn": "8.8.2",
+    "autoprefixer": "10.4.13",
+    "babel-preset-solid": "1.6.12",
+    "encoding": "0.1.13",
+    "github-slugger": "1.5.0",
+    "iconv-lite": "0.6.3",
+    "node-fetch": "2.6.9",
+    "postcss": "8.4.21",
+    "rehype-pretty-code": "0.9.4",
+    "rehype-raw": "6.1.1",
+    "rehype-slug": "5.1.0",
+    "remark-code-extra": "1.0.1",
+    "remark-gfm": "3.0.1",
+    "remark-shiki-twoslash": "3.1.1",
+    "safer-buffer": "2.1.2",
+    "shiki": "0.14.1",
+    "solid-js": "1.6.12",
+    "solid-mdx": "0.0.6",
+    "solid-start": "0.2.23",
+    "solid-start-netlify": "0.2.23",
+    "solid-start-node": "0.2.23",
+    "tailwindcss": "3.2.7",
+    "typescript": "4.9.5",
+    "undici": "5.20.0",
+    "unist-util-visit": "4.1.2",
+    "vite": "3.2.5"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

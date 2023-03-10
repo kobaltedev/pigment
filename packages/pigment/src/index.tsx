@@ -9,3 +9,4 @@ export * from "./theme/theme-provider";
 export * from "./alert";
 export * from "./button";
 export * from "./close-button";
+export { As } from "@kobalte/core";
