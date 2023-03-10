@@ -14,7 +14,7 @@ export default {
       control: { type: "select" },
     },
     size: {
-      options: ["xs", "sm", "md", "lg", "xl"],
+      options: ["xs", "sm", "md"],
       control: { type: "select" },
     },
     hasErrorIcon: {

@@ -5,7 +5,12 @@ import { AlertCircleIcon, CheckIcon, MinusIcon } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme/theme-context";
 import { cn } from "../utils/cn";
 import { CheckboxProps, CheckboxSlots } from "./checkbox.props";
-import { checkboxLabelVariants, checkboxRootVariants, checkboxVariants } from "./checkbox.styles";
+import {
+  checkboxDescriptionVariants,
+  checkboxLabelVariants,
+  checkboxRootVariants,
+  checkboxVariants,
+} from "./checkbox.styles";
 
 export function Checkbox(props: CheckboxProps) {
   const descriptionId = `checkbox-${createUniqueId()}-description`;
@@ -80,7 +85,7 @@ export function Checkbox(props: CheckboxProps) {
           <KCheckbox.Control class={cn(checkboxVariants(variantProps), themeClasses.checkbox)}>
             <KCheckbox.Indicator
               class={cn(
-                "pg-reset-svg pg-flex pg-justify-center pg-items-center pg-grow-0 pg-shrink-0",
+                "pg-reset-svg pg-flex pg-justify-center pg-items-center",
                 themeClasses.icon
               )}
             >
@@ -98,10 +103,7 @@ export function Checkbox(props: CheckboxProps) {
             <Show when={description()}>
               <span
                 id={descriptionId}
-                class={cn(
-                  "pg-text-xs pg-text-text-subtlest pg-group-disabled:pg-text-disabled-text pg-mt-1.5",
-                  themeClasses.description
-                )}
+                class={cn(checkboxDescriptionVariants(variantProps), themeClasses.description)}
               >
                 {description()}
               </span>

@@ -13,7 +13,6 @@ import {
   Meta,
   Routes,
   Scripts,
-  Stylesheet,
   Title,
 } from "solid-start";
 

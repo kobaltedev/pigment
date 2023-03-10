@@ -1,7 +1,7 @@
 import { cva, VariantProps } from "class-variance-authority";
 
 export const checkboxVariants = cva(
-  "pg-flex pg-justify-center pg-items-center pg-shrink-0 pg-border pg-border-solid pg-transition-colors",
+  "pg-flex pg-justify-center pg-items-center pg-grow-0 pg-shrink-0 pg-mt-0.5 pg-border pg-border-solid pg-transition-colors",
   {
     variants: {
       variant: {
@@ -10,11 +10,9 @@ export const checkboxVariants = cva(
           "pg-bg-outlined-input-bg hover:pg-bg-outlined-input-bg-hover active:pg-bg-outlined-input-bg-active",
       },
       size: {
-        xs: "pg-h-4 pg-w-4 pg-rounded pg-text-xs",
-        sm: "pg-h-5 pg-w-5 pg-rounded pg-text-base",
-        md: "pg-h-6 pg-w-6 pg-rounded-md pg-text-lg",
-        lg: "pg-h-7 pg-w-7 pg-rounded-md pg-text-2xl",
-        xl: "pg-h-9 pg-w-9 pg-rounded-lg pg-text-3xl",
+        xs: "pg-h-3 pg-w-3 pg-rounded pg-text-xs",
+        sm: "pg-h-4 pg-w-4 pg-rounded pg-text-base",
+        md: "pg-h-5 pg-w-5 pg-rounded pg-text-xl",
       },
       isInvalid: {
         true: "",
@@ -109,8 +107,6 @@ export const checkboxRootVariants = cva("pg-group pg-inline-flex pg-items-start"
       xs: "pg-gap-x-1",
       sm: "pg-gap-x-1.5",
       md: "pg-gap-x-2",
-      lg: "pg-gap-x-2.5",
-      xl: "pg-gap-x-3",
     },
   },
   defaultVariants: {
@@ -119,15 +115,29 @@ export const checkboxRootVariants = cva("pg-group pg-inline-flex pg-items-start"
 });
 
 export const checkboxLabelVariants = cva(
-  "pg-font-normal pg-text-outlined-input-text pg-group-disabled:pg-text-disabled-text",
+  "pg-text-outlined-input-text pg-group-disabled:pg-text-disabled-text",
   {
     variants: {
       size: {
         xs: "pg-text-xs",
         sm: "pg-text-sm",
         md: "pg-text-base",
-        lg: "pg-text-lg",
-        xl: "pg-text-2xl",
+      },
+    },
+    defaultVariants: {
+      size: "sm",
+    },
+  }
+);
+
+export const checkboxDescriptionVariants = cva(
+  "pg-text-text-subtlest pg-group-disabled:pg-text-disabled-text",
+  {
+    variants: {
+      size: {
+        xs: "pg-text-xs pg-mt-1",
+        sm: "pg-text-xs pg-mt-1.5",
+        md: "pg-text-sm pg-mt-2",
       },
     },
     defaultVariants: {

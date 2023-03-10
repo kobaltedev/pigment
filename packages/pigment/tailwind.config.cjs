@@ -42,6 +42,9 @@ module.exports = {
         sans: ["var(--pg-font-family-sans)"],
         mono: ["var(--pg-font-family-mono)"],
       },
+      fontSize: {
+        "2xs": ["10px", "14px"],
+      },
       spacing: {
         13: "3.25rem",
         15: "3.75rem",
@@ -171,10 +174,13 @@ module.exports = {
       addUtilities({
         ".reset-svg": {
           "> svg": {
-            display: "block",
-            maxWidth: "100%",
+            display: "inline-block",
+            flexShrink: "0",
             width: "1em",
             height: "1em",
+            color: "currentColor",
+            lineHeight: "1em",
+            verticalAlign: "middle",
           },
         },
       });
