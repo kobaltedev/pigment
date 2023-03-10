@@ -29,6 +29,9 @@ export default {
     isInvalid: {
       control: { type: "boolean" },
     },
+    isRequired: {
+      control: { type: "boolean" },
+    },
     isDisabled: {
       control: { type: "boolean" },
     },
@@ -55,6 +58,7 @@ export const Default: Story = {
     descriptionPlacement: "bottom",
     hasErrorIcon: true,
     isInvalid: false,
+    isRequired: false,
     isDisabled: false,
     placeholder: "example@acme.com",
     label: "E-mail",
@@ -70,6 +74,7 @@ export const WithIcon: Story = {
     descriptionPlacement: "bottom",
     hasErrorIcon: true,
     isInvalid: false,
+    isRequired: false,
     isDisabled: false,
     placeholder: "example@acme.com",
     label: "E-mail",
@@ -87,6 +92,7 @@ export const WithSection: Story = {
     descriptionPlacement: "bottom",
     hasErrorIcon: true,
     isInvalid: false,
+    isRequired: false,
     isDisabled: false,
     placeholder: "example@acme.com",
     label: "E-mail",
@@ -113,6 +119,7 @@ export const WithIconAndSection: Story = {
     descriptionPlacement: "bottom",
     hasErrorIcon: true,
     isInvalid: false,
+    isRequired: false,
     isDisabled: false,
     placeholder: "example@acme.com",
     label: "E-mail",

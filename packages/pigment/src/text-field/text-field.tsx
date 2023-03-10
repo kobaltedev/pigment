@@ -21,6 +21,7 @@ export function TextField(props: TextFieldProps) {
     {
       type: "text",
       descriptionPlacement: "bottom",
+      hasRequiredIndicator: true,
       hasErrorIcon: true,
       errorIcon: () => <AlertCircleIcon />,
     },
@@ -42,6 +43,7 @@ export function TextField(props: TextFieldProps) {
       "label",
       "description",
       "error",
+      "hasRequiredIndicator",
       "hasErrorIcon",
       "errorIcon",
       "startIcon",
@@ -142,6 +144,11 @@ export function TextField(props: TextFieldProps) {
           )}
         >
           {label()}
+          <Show when={local.hasRequiredIndicator && others.isRequired}>
+            <span class="pg-text-text-danger pg-group-disabled:pg-text-disabled-text pg-ml-0.5">
+              *
+            </span>
+          </Show>
         </KTextField.Label>
       </Show>
       <Show when={showTopDescription()}>

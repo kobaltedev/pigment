@@ -5,7 +5,7 @@ import { TextFieldWrapperVariants } from "./text-field.styles";
 
 export interface TextFieldProps
   extends Omit<KTextField.TextFieldRootProps, "ref" | "validationState">,
-    Omit<TextFieldWrapperVariants, "isDisabled"> {
+    Omit<TextFieldWrapperVariants, "isFocused" | "isDisabled"> {
   /** A ref to the inner `<input>` element. */
   ref: Ref<HTMLInputElement>;
 
@@ -29,6 +29,9 @@ export interface TextFieldProps
 
   /** The error message that gives the user information about how to fix a validation error on the text field. */
   error?: JSX.Element;
+
+  /** Whether an asterisk should appear next to the label when the text field is required. */
+  hasRequiredIndicator?: boolean;
 
   /** Whether an icon should appear next to the error message. */
   hasErrorIcon?: boolean;
