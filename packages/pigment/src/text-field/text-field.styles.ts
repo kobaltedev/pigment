@@ -76,7 +76,10 @@ export const textFieldWrapperVariants = cva(
       {
         isInvalid: true,
         isDisabled: false,
-        class: "pg-text-text-danger pg-border-border-danger",
+        class: [
+          "pg-text-text-danger",
+          "pg-border-solid-danger-border hover:pg-border-solid-danger-border-hover active:pg-border-solid-danger-border-active",
+        ],
       },
 
       // variant + disabled

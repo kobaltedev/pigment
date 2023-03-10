@@ -155,8 +155,6 @@
    * -----------------------------------------------------------------------------------------------*/
 
   --pg-color-border: var(--pg-color-neutral-300A);
-  --pg-color-border-success: var(--pg-color-success-500);
-  --pg-color-border-danger: var(--pg-color-danger-500);
 
   /* -------------------------------------------------------------------------------------------------
    * Color - Misc.
@@ -442,17 +440,17 @@
   --pg-color-soft-input-text: var(--pg-color-neutral-900);
   --pg-color-soft-input-icon: var(--pg-color-neutral-600);
   --pg-color-soft-input-bg: var(--pg-color-neutral-100);
-  --pg-color-soft-input-border: var(--pg-color-neutral-100);
+  --pg-color-soft-input-border: var(--pg-color-neutral-200);
 
   --pg-color-soft-input-text-hover: var(--pg-color-neutral-900);
   --pg-color-soft-input-icon-hover: var(--pg-color-neutral-600);
   --pg-color-soft-input-bg-hover: var(--pg-color-neutral-100);
-  --pg-color-soft-input-border-hover: var(--pg-color-neutral-100);
+  --pg-color-soft-input-border-hover: var(--pg-color-neutral-200);
 
   --pg-color-soft-input-text-active: var(--pg-color-neutral-900);
   --pg-color-soft-input-icon-active: var(--pg-color-neutral-600);
   --pg-color-soft-input-bg-active: var(--pg-color-neutral-100);
-  --pg-color-soft-input-border-active: var(--pg-color-neutral-100);
+  --pg-color-soft-input-border-active: var(--pg-color-neutral-200);
 
   /* -------------------------------------------------------------------------------------------------
    * Color - Global variants - Outlined

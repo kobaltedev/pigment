@@ -83,8 +83,6 @@ module.exports = {
         ...colorToken("surface-sunken-bg"),
 
         ...colorToken("border"),
-        ...colorToken("border-success"),
-        ...colorToken("border-danger"),
 
         ...colorToken("focus-ring"),
         ...colorToken("backdrop"),

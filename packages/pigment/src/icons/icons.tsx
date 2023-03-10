@@ -32,6 +32,10 @@ export const ChevronUpIcon = createLucideIcon(() => <polyline points="18 15 12 9
 
 export const ChevronDownIcon = createLucideIcon(() => <polyline points="6 9 12 15 18 9" />);
 
+export const CheckIcon = createLucideIcon(() => <polyline points="20 6 9 17 4 12" />);
+
+export const MinusIcon = createLucideIcon(() => <line x1="5" y1="12" x2="19" y2="12" />);
+
 export const CrossIcon = createLucideIcon(() => (
   <>
     <line x1="18" y1="6" x2="6" y2="18" />

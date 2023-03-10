@@ -136,7 +136,7 @@ export function TextField(props: TextFieldProps) {
       <Show when={label()}>
         <KTextField.Label
           class={cn(
-            "pg-text-sm pg-font-medium pg-text-text-subtle pg-disabled:pg-text-disabled-text",
+            "pg-text-sm pg-font-medium pg-text-text-subtle pg-group-disabled:pg-text-disabled-text",
             showTopDescription() ? "pg-mb-0.5" : "pg-mb-1",
             themeClasses.label
           )}
@@ -147,7 +147,7 @@ export function TextField(props: TextFieldProps) {
       <Show when={showTopDescription()}>
         <KTextField.Description
           class={cn(
-            "pg-text-xs pg-text-text-subtlest pg-disabled:pg-text-disabled-text pg-mb-1",
+            "pg-text-xs pg-text-text-subtlest pg-group-disabled:pg-text-disabled-text pg-mb-1",
             themeClasses.description
           )}
         >
@@ -193,7 +193,7 @@ export function TextField(props: TextFieldProps) {
       <Show when={showBottomDescription()}>
         <KTextField.Description
           class={cn(
-            "pg-text-xs pg-text-text-subtlest pg-disabled:pg-text-disabled-text pg-mt-1.5",
+            "pg-text-xs pg-text-text-subtlest pg-group-disabled:pg-text-disabled-text pg-mt-1.5",
             themeClasses.description
           )}
         >
@@ -203,7 +203,7 @@ export function TextField(props: TextFieldProps) {
       <Show when={showError()}>
         <KTextField.ErrorMessage
           class={cn(
-            "pg-flex pg-items-center pg-space-x-1 pg-text-xs pg-text-text-danger pg-disabled:pg-text-disabled-text pg-mt-1.5",
+            "pg-flex pg-items-center pg-space-x-1 pg-text-xs pg-text-text-danger pg-group-disabled:pg-text-disabled-text pg-mt-1.5",
             themeClasses.error
           )}
         >
