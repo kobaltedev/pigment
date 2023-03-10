@@ -13,8 +13,6 @@ export const textFieldWrapperVariants = cva(
         xs: "pg-h-7 pg-rounded pg-text-sm",
         sm: "pg-h-9 pg-rounded-md pg-text-sm",
         md: "pg-h-11 pg-rounded-md pg-text-base",
-        lg: "pg-h-13 pg-rounded-md pg-text-lg",
-        xl: "pg-h-15 pg-rounded-md pg-text-xl",
       },
       isFocused: {
         true: "",
@@ -129,8 +127,6 @@ export const textFieldInputVariants = cva(
         xs: "pg-text-sm",
         sm: "pg-text-sm",
         md: "pg-text-base",
-        lg: "pg-text-lg",
-        xl: "pg-text-xl",
       },
       hasLeftIcon: {
         true: "",
@@ -158,29 +154,21 @@ export const textFieldInputVariants = cva(
       { size: "xs", hasLeftIcon: false, hasLeftSection: false, class: "pg-pl-2" },
       { size: "sm", hasLeftIcon: false, hasLeftSection: false, class: "pg-pl-2.5" },
       { size: "md", hasLeftIcon: false, hasLeftSection: false, class: "pg-pl-3.5" },
-      { size: "lg", hasLeftIcon: false, hasLeftSection: false, class: "pg-pl-4" },
-      { size: "xl", hasLeftIcon: false, hasLeftSection: false, class: "pg-pl-5" },
 
       // size + no suffix
       { size: "xs", hasRightIcon: false, hasRightSection: false, class: "pg-pr-2" },
       { size: "sm", hasRightIcon: false, hasRightSection: false, class: "pg-pr-2.5" },
       { size: "md", hasRightIcon: false, hasRightSection: false, class: "pg-pr-3.5" },
-      { size: "lg", hasRightIcon: false, hasRightSection: false, class: "pg-pr-4" },
-      { size: "xl", hasRightIcon: false, hasRightSection: false, class: "pg-pr-5" },
 
       // size + left icon
       { size: "xs", hasLeftIcon: true, class: "pg-pl-7" },
       { size: "sm", hasLeftIcon: true, class: "pg-pl-9" },
       { size: "md", hasLeftIcon: true, class: "pg-pl-11" },
-      { size: "lg", hasLeftIcon: true, class: "pg-pl-13" },
-      { size: "xl", hasLeftIcon: true, class: "pg-pl-15" },
 
       // size + right icon
       { size: "xs", hasRightIcon: true, class: "pg-pr-7" },
       { size: "sm", hasRightIcon: true, class: "pg-pr-9" },
       { size: "md", hasRightIcon: true, class: "pg-pr-11" },
-      { size: "lg", hasRightIcon: true, class: "pg-pr-13" },
-      { size: "xl", hasRightIcon: true, class: "pg-pr-15" },
     ],
     defaultVariants: {
       size: "sm",
@@ -208,8 +196,6 @@ export const textFieldIconVariants = cva(
         xs: "pg-h-7 pg-w-7 pg-text-base",
         sm: "pg-h-9 pg-w-9 pg-text-base",
         md: "pg-h-11 pg-w-11 pg-text-lg",
-        lg: "pg-h-13 pg-w-13 pg-text-xl",
-        xl: "pg-h-15 pg-w-15 pg-text-2xl",
       },
       isInvalid: {
         true: "",
