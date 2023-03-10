@@ -26,6 +26,9 @@ export default {
     title: {
       control: { type: "text" },
     },
+    children: {
+      control: { type: "text" },
+    },
   },
   render: props => <Alert {...props} />,
 } as Meta<ComponentProps<typeof Alert>>;

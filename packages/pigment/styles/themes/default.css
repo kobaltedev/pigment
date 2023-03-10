@@ -105,8 +105,9 @@
   --pg-color-text-subtlest: var(--pg-color-neutral-600);
   --pg-color-text-dimmed: var(--pg-color-neutral-500);
   --pg-color-text-inverse: var(--pg-color-neutral-0);
-  --pg-color-text-warning-inverse: #1c1917;
   --pg-color-text-success: var(--pg-color-success-600);
+  --pg-color-text-success-inverse: #111c18;
+  --pg-color-text-warning-inverse: #1c1917;
   --pg-color-text-danger: var(--pg-color-danger-600);
 
   /* -------------------------------------------------------------------------------------------------
@@ -118,8 +119,9 @@
   --pg-color-icon-subtlest: var(--pg-color-neutral-600);
   --pg-color-icon-dimmed: var(--pg-color-neutral-500);
   --pg-color-icon-inverse: var(--pg-color-neutral-0);
-  --pg-color-icon-warning-inverse: #292524;
   --pg-color-icon-success: var(--pg-color-success-600);
+  --pg-color-icon-success-inverse: #1b291b;
+  --pg-color-icon-warning-inverse: #292524;
   --pg-color-icon-danger: var(--pg-color-danger-600);
 
   /* -------------------------------------------------------------------------------------------------
@@ -209,20 +211,20 @@
   --pg-color-solid-neutral-border-active: var(--pg-color-neutral-900);
 
   /* Success */
-  --pg-color-solid-success-text: var(--pg-color-text-inverse);
-  --pg-color-solid-success-icon: var(--pg-color-icon-inverse);
-  --pg-color-solid-success-bg: var(--pg-color-success-600);
-  --pg-color-solid-success-border: var(--pg-color-success-600);
+  --pg-color-solid-success-text: var(--pg-color-text-success-inverse);
+  --pg-color-solid-success-icon: var(--pg-color-icon-success-inverse);
+  --pg-color-solid-success-bg: var(--pg-color-success-400);
+  --pg-color-solid-success-border: var(--pg-color-success-400);
 
-  --pg-color-solid-success-text-hover: var(--pg-color-text-inverse);
-  --pg-color-solid-success-icon-hover: var(--pg-color-icon-inverse);
-  --pg-color-solid-success-bg-hover: var(--pg-color-success-700);
-  --pg-color-solid-success-border-hover: var(--pg-color-success-700);
+  --pg-color-solid-success-text-hover: var(--pg-color-text-success-inverse);
+  --pg-color-solid-success-icon-hover: var(--pg-color-icon-success-inverse);
+  --pg-color-solid-success-bg-hover: var(--pg-color-success-500);
+  --pg-color-solid-success-border-hover: var(--pg-color-success-500);
 
-  --pg-color-solid-success-text-active: var(--pg-color-text-inverse);
-  --pg-color-solid-success-icon-active: var(--pg-color-icon-inverse);
-  --pg-color-solid-success-bg-active: var(--pg-color-success-800);
-  --pg-color-solid-success-border-active: var(--pg-color-success-800);
+  --pg-color-solid-success-text-active: var(--pg-color-text-success-inverse);
+  --pg-color-solid-success-icon-active: var(--pg-color-icon-success-inverse);
+  --pg-color-solid-success-bg-active: var(--pg-color-success-600);
+  --pg-color-solid-success-border-active: var(--pg-color-success-600);
 
   /* Info */
   --pg-color-solid-info-text: var(--pg-color-text-inverse);
@@ -494,15 +496,15 @@
   --pg-color-outlined-success-bg: transparent;
   --pg-color-outlined-success-border: var(--pg-color-success-600);
 
-  --pg-color-outlined-success-text-hover: var(--pg-color-text-inverse);
-  --pg-color-outlined-success-icon-hover: var(--pg-color-icon-inverse);
-  --pg-color-outlined-success-bg-hover: var(--pg-color-success-600);
-  --pg-color-outlined-success-border-hover: var(--pg-color-success-600);
+  --pg-color-outlined-success-text-hover: var(--pg-color-text-success-inverse);
+  --pg-color-outlined-success-icon-hover: var(--pg-color-icon-success-inverse);
+  --pg-color-outlined-success-bg-hover: var(--pg-color-success-400);
+  --pg-color-outlined-success-border-hover: var(--pg-color-success-400);
 
-  --pg-color-outlined-success-text-active: var(--pg-color-text-inverse);
-  --pg-color-outlined-success-icon-active: var(--pg-color-icon-inverse);
-  --pg-color-outlined-success-bg-active: var(--pg-color-success-700);
-  --pg-color-outlined-success-border-active: var(--pg-color-success-700);
+  --pg-color-outlined-success-text-active: var(--pg-color-text-success-inverse);
+  --pg-color-outlined-success-icon-active: var(--pg-color-icon-success-inverse);
+  --pg-color-outlined-success-bg-active: var(--pg-color-success-500);
+  --pg-color-outlined-success-border-active: var(--pg-color-success-500);
 
   /* Info */
   --pg-color-outlined-info-text: var(--pg-color-info-600);
