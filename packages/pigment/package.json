@@ -2,7 +2,7 @@
   "name": "@kobalte/pigment",
   "version": "0.0.0",
   "private": false,
-  "description": "Ready to use UI components built with Kobalte.",
+  "description": "Ready to use UI components built with Kobalte and TailwindCSS.",
   "keywords": [
     "solid",
     "solidjs",
@@ -10,7 +10,8 @@
     "library",
     "design-system",
     "components",
-    "kobalte"
+    "kobalte",
+    "tailwindcss"
   ],
   "homepage": "https://github.com/kobaltedev/pigment/tree/main/packages/pigment#readme",
   "bugs": {
@@ -26,15 +27,14 @@
   "type": "module",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "solid": "./dist/index.jsx",
       "import": {
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
       },
       "require": "./dist/index.cjs"
-    },
-    "./dist/index.css": "./dist/index.css",
-    "./dist/themes/": "./dist/themes/"
+    }
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -43,7 +43,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup && postcss styles --base styles --dir dist",
+    "build": "tsup",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "dev": "vite serve dev --host",
     "storybook": "storybook dev -p 6006",
@@ -55,10 +55,11 @@
     "@kobalte/utils": "^0.6.1",
     "@solid-primitives/refs": "^1.0.0",
     "class-variance-authority": "^0.4.0",
-    "clsx": "^1.2.1"
+    "clsx": "^1.2.1",
+    "tailwind-merge": "^1.10.0"
   },
   "devDependencies": {
-    "@kobalte/tailwindcss": "^0.5.0",
+    "@kobalte/pigment-tailwindcss": "0.0.0",
     "@storybook/addon-a11y": "7.0.0-beta.43",
     "@storybook/addon-essentials": "7.0.0-beta.43",
     "@storybook/addon-interactions": "7.0.0-beta.43",
@@ -68,15 +69,12 @@
     "@storybook/html-webpack5": "7.0.0-beta.43",
     "@storybook/theming": "7.0.0-beta.43",
     "autoprefixer": "10.4.13",
-    "cssnano": "5.1.15",
     "postcss": "8.4.21",
-    "postcss-cli": "10.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "storybook": "7.0.0-beta.43",
     "storybook-dark-mode": "2.0.6",
-    "tailwindcss": "3.2.7",
-    "tailwindcss-animate": "1.0.5"
+    "tailwindcss": "3.2.7"
   },
   "peerDependencies": {
     "solid-js": "^1.6.12"

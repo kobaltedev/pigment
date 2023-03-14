@@ -34,6 +34,7 @@
     "@solidjs/router": "0.7.0"
   },
   "devDependencies": {
+    "@kobalte/pigment-tailwindcss": "0.0.0",
     "@mdx-js/mdx": "2.3.0",
     "@mdx-js/rollup": "2.3.0",
     "@tailwindcss/typography": "0.5.9",

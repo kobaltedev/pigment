@@ -1,18 +1,18 @@
 import { cva, VariantProps } from "class-variance-authority";
 
 export const textFieldWrapperVariants = cva(
-  "pg-flex pg-items-center pg-grow pg-border pg-border-solid pg-transition-colors",
+  "flex items-center grow border border-solid transition-colors",
   {
     variants: {
       variant: {
-        soft: "pg-bg-soft-input-bg hover:pg-bg-soft-input-bg-hover active:pg-bg-soft-input-bg-active",
+        soft: "bg-soft-input-bg hover:bg-soft-input-bg-hover active:bg-soft-input-bg-active",
         outlined:
-          "pg-bg-outlined-input-bg hover:pg-bg-outlined-input-bg-hover active:pg-bg-outlined-input-bg-active",
+          "bg-outlined-input-bg hover:bg-outlined-input-bg-hover active:bg-outlined-input-bg-active",
       },
       size: {
-        xs: "pg-h-7 pg-rounded pg-text-sm",
-        sm: "pg-h-9 pg-rounded-md pg-text-sm",
-        md: "pg-h-11 pg-rounded-md pg-text-base",
+        xs: "h-7 rounded text-sm",
+        sm: "h-9 rounded-md text-sm",
+        md: "h-11 rounded-md text-base",
       },
       isFocused: {
         true: "",
@@ -23,7 +23,7 @@ export const textFieldWrapperVariants = cva(
         false: "",
       },
       isDisabled: {
-        true: "pg-group-disabled:pg-text-disabled-text",
+        true: "ui-group-disabled:text-disabled-text",
         false: "",
       },
     },
@@ -34,14 +34,14 @@ export const textFieldWrapperVariants = cva(
         isInvalid: false,
         isDisabled: false,
         class:
-          "pg-text-soft-input-text hover:pg-text-soft-input-text-hover active:pg-text-soft-input-text-active",
+          "text-soft-input-text hover:text-soft-input-text-hover active:text-soft-input-text-active",
       },
       {
         variant: "outlined",
         isInvalid: false,
         isDisabled: false,
         class:
-          "pg-text-outlined-input-text hover:pg-text-outlined-input-text-hover active:pg-text-outlined-input-text-active",
+          "text-outlined-input-text hover:text-outlined-input-text-hover active:text-outlined-input-text-active",
       },
 
       // variant + border colors
@@ -51,7 +51,7 @@ export const textFieldWrapperVariants = cva(
         isInvalid: false,
         isDisabled: false,
         class:
-          "pg-border-soft-input-border hover:pg-border-soft-input-border-hover active:pg-border-soft-input-border-active",
+          "border-soft-input-border hover:border-soft-input-border-hover active:border-soft-input-border-active",
       },
       {
         variant: "outlined",
@@ -59,7 +59,7 @@ export const textFieldWrapperVariants = cva(
         isInvalid: false,
         isDisabled: false,
         class:
-          "pg-border-outlined-input-border hover:pg-border-outlined-input-border-hover active:pg-border-outlined-input-border-active",
+          "border-outlined-input-border hover:border-outlined-input-border-hover active:border-outlined-input-border-active",
       },
 
       // all variants + focus colors
@@ -67,7 +67,7 @@ export const textFieldWrapperVariants = cva(
         isFocused: true,
         isInvalid: false,
         isDisabled: false,
-        class: "pg-border-focus-ring",
+        class: "border-focus-ring",
       },
 
       // all variants + invalid colors
@@ -75,8 +75,8 @@ export const textFieldWrapperVariants = cva(
         isInvalid: true,
         isDisabled: false,
         class: [
-          "pg-text-text-danger",
-          "pg-border-solid-danger-border hover:pg-border-solid-danger-border-hover active:pg-border-solid-danger-border-active",
+          "text-text-danger",
+          "border-solid-danger-border hover:border-solid-danger-border-hover active:border-solid-danger-border-active",
         ],
       },
 
@@ -84,24 +84,24 @@ export const textFieldWrapperVariants = cva(
       {
         variant: "soft",
         isDisabled: true,
-        class: "pg-group-disabled:pg-bg-disabled-bg pg-group-disabled:pg-border-transparent",
+        class: "ui-group-disabled:bg-disabled-bg ui-group-disabled:border-transparent",
       },
       {
         variant: "outlined",
         isDisabled: true,
-        class: "pg-group-disabled:pg-bg-transparent pg-group-disabled:pg-border-disabled-border",
+        class: "ui-group-disabled:bg-transparent ui-group-disabled:border-disabled-border",
       },
 
       // variant + not disabled
       {
         variant: "soft",
         isDisabled: false,
-        class: "placeholder:pg-text-text-subtlest",
+        class: "placeholder:text-text-subtlest",
       },
       {
         variant: "outlined",
         isDisabled: false,
-        class: "placeholder:pg-text-text-dimmed",
+        class: "placeholder:text-text-dimmed",
       },
     ],
     defaultVariants: {
@@ -116,17 +116,17 @@ export const textFieldWrapperVariants = cva(
 
 export const textFieldInputVariants = cva(
   [
-    "pg-appearance-none pg-grow pg-h-full pg-m-0 pg-py-0",
-    "pg-border-none pg-bg-transparent pg-text-current",
-    "pg-outline-none",
-    "pg-disabled:placeholder:pg-text-disabled-text pg-disabled:pg-cursor-not-allowed pg-disabled:pg-select-none",
+    "appearance-none grow h-full m-0 py-0",
+    "border-none bg-transparent text-current",
+    "outline-none",
+    "ui-disabled:placeholder:text-disabled-text ui-disabled:cursor-not-allowed ui-disabled:select-none",
   ],
   {
     variants: {
       size: {
-        xs: "pg-text-sm",
-        sm: "pg-text-sm",
-        md: "pg-text-base",
+        xs: "text-sm",
+        sm: "text-sm",
+        md: "text-base",
       },
       hasLeftIcon: {
         true: "",
@@ -147,28 +147,28 @@ export const textFieldInputVariants = cva(
     },
     compoundVariants: [
       // any size + no icon + section
-      { hasLeftIcon: false, hasLeftSection: true, class: "pg-pl-0" },
-      { hasRightIcon: false, hasRightSection: true, class: "pg-pr-0" },
+      { hasLeftIcon: false, hasLeftSection: true, class: "pl-0" },
+      { hasRightIcon: false, hasRightSection: true, class: "pr-0" },
 
       // size + no prefix
-      { size: "xs", hasLeftIcon: false, hasLeftSection: false, class: "pg-pl-2" },
-      { size: "sm", hasLeftIcon: false, hasLeftSection: false, class: "pg-pl-2.5" },
-      { size: "md", hasLeftIcon: false, hasLeftSection: false, class: "pg-pl-3.5" },
+      { size: "xs", hasLeftIcon: false, hasLeftSection: false, class: "pl-2" },
+      { size: "sm", hasLeftIcon: false, hasLeftSection: false, class: "pl-2.5" },
+      { size: "md", hasLeftIcon: false, hasLeftSection: false, class: "pl-3.5" },
 
       // size + no suffix
-      { size: "xs", hasRightIcon: false, hasRightSection: false, class: "pg-pr-2" },
-      { size: "sm", hasRightIcon: false, hasRightSection: false, class: "pg-pr-2.5" },
-      { size: "md", hasRightIcon: false, hasRightSection: false, class: "pg-pr-3.5" },
+      { size: "xs", hasRightIcon: false, hasRightSection: false, class: "pr-2" },
+      { size: "sm", hasRightIcon: false, hasRightSection: false, class: "pr-2.5" },
+      { size: "md", hasRightIcon: false, hasRightSection: false, class: "pr-3.5" },
 
       // size + left icon
-      { size: "xs", hasLeftIcon: true, class: "pg-pl-7" },
-      { size: "sm", hasLeftIcon: true, class: "pg-pl-9" },
-      { size: "md", hasLeftIcon: true, class: "pg-pl-11" },
+      { size: "xs", hasLeftIcon: true, class: "pl-7" },
+      { size: "sm", hasLeftIcon: true, class: "pl-9" },
+      { size: "md", hasLeftIcon: true, class: "pl-11" },
 
       // size + right icon
-      { size: "xs", hasRightIcon: true, class: "pg-pr-7" },
-      { size: "sm", hasRightIcon: true, class: "pg-pr-9" },
-      { size: "md", hasRightIcon: true, class: "pg-pr-11" },
+      { size: "xs", hasRightIcon: true, class: "pr-7" },
+      { size: "sm", hasRightIcon: true, class: "pr-9" },
+      { size: "md", hasRightIcon: true, class: "pr-11" },
     ],
     defaultVariants: {
       size: "sm",
@@ -182,9 +182,9 @@ export const textFieldInputVariants = cva(
 
 export const textFieldIconVariants = cva(
   [
-    "pg-reset-svg pg-absolute pg-top-0 pg-bottom-0 pg-flex pg-justify-center pg-items-center pg-shrink-0",
-    "pg-leading-none pg-pointer-events-none",
-    "pg-bg-transparent bg-border-transparent",
+    "reset-svg absolute top-0 bottom-0 flex justify-center items-center shrink-0",
+    "leading-none pointer-events-none",
+    "bg-transparent bg-border-transparent",
   ],
   {
     variants: {
@@ -193,16 +193,16 @@ export const textFieldIconVariants = cva(
         outlined: "",
       },
       size: {
-        xs: "pg-h-7 pg-w-7 pg-text-base",
-        sm: "pg-h-9 pg-w-9 pg-text-base",
-        md: "pg-h-11 pg-w-11 pg-text-lg",
+        xs: "h-7 w-7 text-base",
+        sm: "h-9 w-9 text-base",
+        md: "h-11 w-11 text-lg",
       },
       isInvalid: {
         true: "",
         false: "",
       },
       isDisabled: {
-        true: "pg-text-disabled-icon",
+        true: "text-disabled-icon",
       },
     },
     compoundVariants: [
@@ -212,21 +212,21 @@ export const textFieldIconVariants = cva(
         isInvalid: false,
         isDisabled: false,
         class:
-          "pg-text-soft-input-icon hover:pg-text-soft-input-icon-hover active:pg-text-soft-input-icon-active",
+          "text-soft-input-icon hover:text-soft-input-icon-hover active:text-soft-input-icon-active",
       },
       {
         variant: "outlined",
         isInvalid: false,
         isDisabled: false,
         class:
-          "pg-text-outlined-input-icon hover:pg-text-outlined-input-icon-hover active:pg-text-outlined-input-icon-active",
+          "text-outlined-input-icon hover:text-outlined-input-icon-hover active:text-outlined-input-icon-active",
       },
 
       // invalid color
       {
         isInvalid: true,
         isDisabled: false,
-        class: "pg-text-icon-danger",
+        class: "text-icon-danger",
       },
     ],
     defaultVariants: {

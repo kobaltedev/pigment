@@ -59,9 +59,9 @@ export function Alert(props: AlertProps) {
           {variantProps.status != null && local[`${variantProps.status}Icon`]}
         </div>
       </Show>
-      <div class={cn("pg-flex pg-flex-col pg-space-y-1 pg-grow pg-py-1", themeClasses.content)}>
+      <div class={cn("flex flex-col space-y-1 grow py-1", themeClasses.content)}>
         <Show when={title()}>
-          <div class={cn("pg-font-semibold", themeClasses.title)}>{title()}</div>
+          <div class={cn("font-semibold", themeClasses.title)}>{title()}</div>
         </Show>
         <Show when={description()}>
           <div class={themeClasses.description}>{description()}</div>
@@ -72,7 +72,7 @@ export function Alert(props: AlertProps) {
           inheritTextColor
           size="xs"
           aria-label={local.dismissButtonLabel}
-          class={cn("pg-shrink-0", themeClasses.dismissButton)}
+          class={cn("shrink-0", themeClasses.dismissButton)}
           onClick={local.onDismiss}
         />
       </Show>

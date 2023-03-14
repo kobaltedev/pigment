@@ -71,7 +71,7 @@ function ButtonBase(props: ButtonBaseProps) {
           when={local.loadingText}
           fallback={
             <>
-              <ButtonBaseLoadingIcon class="pg-absolute" {...loadingIconProps} />
+              <ButtonBaseLoadingIcon class="absolute" {...loadingIconProps} />
               <Show when={!variantProps.isIconOnly}>
                 <span class={loadingContentVariants(loadingContentProps)}>{content()}</span>
               </Show>
@@ -143,7 +143,7 @@ function ButtonBaseIcon(props: ButtonBaseIconProps) {
 function ButtonBaseLoadingIcon(props: ButtonBaseIconProps) {
   props = mergeDefaultProps(
     {
-      children: () => <LoaderIcon class="pg-animate-spin" />,
+      children: () => <LoaderIcon class="animate-spin" />,
     },
     props
   );

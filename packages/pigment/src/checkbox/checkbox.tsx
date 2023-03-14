@@ -1,4 +1,4 @@
-import { Checkbox as KCheckbox, useLocale } from "@kobalte/core";
+import { Checkbox as KCheckbox } from "@kobalte/core";
 import { createMemo, createUniqueId, Show, splitProps } from "solid-js";
 
 import { AlertCircleIcon, CheckIcon, MinusIcon } from "../icons";
@@ -79,22 +79,19 @@ export function Checkbox(props: CheckboxProps) {
             {...local.inputProps}
             ref={local.ref}
             id={local.id}
-            class={cn("pg-peer", local.inputProps?.class)}
+            class={cn("peer", local.inputProps?.class)}
             aria-describedby={ariaDescribedBy()}
           />
           <KCheckbox.Control class={cn(checkboxVariants(variantProps), themeClasses.checkbox)}>
             <KCheckbox.Indicator
-              class={cn(
-                "pg-reset-svg pg-flex pg-justify-center pg-items-center",
-                themeClasses.icon
-              )}
+              class={cn("reset-svg flex justify-center items-center", themeClasses.icon)}
             >
               <Show when={state.isIndeterminate()} fallback={local.checkedIcon}>
                 {local.indeterminateIcon}
               </Show>
             </KCheckbox.Indicator>
           </KCheckbox.Control>
-          <div class={cn("pg-flex pg-flex-col pg-space-y-1 pg-grow", themeClasses.labelWrapper)}>
+          <div class={cn("flex flex-col space-y-1 grow", themeClasses.labelWrapper)}>
             <Show when={label()}>
               <KCheckbox.Label class={cn(checkboxLabelVariants(variantProps), themeClasses.label)}>
                 {label()}
@@ -112,7 +109,7 @@ export function Checkbox(props: CheckboxProps) {
               <span
                 id={errorId}
                 class={cn(
-                  "pg-flex pg-items-center pg-space-x-1 pg-text-xs pg-text-text-danger pg-group-disabled:pg-text-disabled-text pg-mt-1.5",
+                  "flex items-center space-x-1 text-xs text-text-danger ui-group-disabled:text-disabled-text mt-1.5",
                   themeClasses.error
                 )}
               >
@@ -120,7 +117,7 @@ export function Checkbox(props: CheckboxProps) {
                   <span
                     aria-hidden="true"
                     class={cn(
-                      "pg-reset-svg pg-text-sm pg-text-icon-danger pg-group-disabled:pg-text-disabled-icon",
+                      "reset-svg text-sm text-icon-danger ui-group-disabled:text-disabled-icon",
                       themeClasses.errorIcon
                     )}
                   >

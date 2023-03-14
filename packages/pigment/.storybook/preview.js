@@ -1,7 +1,6 @@
 /* @refresh reload */
 
-import "../styles/themes/default.css";
-import "../styles/index.css";
+import "./index.css";
 
 import { themes } from "@storybook/theming";
 
@@ -25,8 +24,8 @@ export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   decorators,
   darkMode: {
-    darkClass: "pg-dark",
-    lightClass: "pg-light",
+    darkClass: "dark",
+    lightClass: "light",
     classTarget: "html",
     stylePreview: true,
     light: themes.normal,

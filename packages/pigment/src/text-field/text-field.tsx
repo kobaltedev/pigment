@@ -130,7 +130,7 @@ export function TextField(props: TextFieldProps) {
 
   return (
     <KTextField.Root
-      class={cn("pg-group pg-flex pg-flex-col pg-items-start", themeClasses.root, local.class)}
+      class={cn("group flex flex-col items-start", themeClasses.root, local.class)}
       validationState={variantProps.isInvalid ? "invalid" : undefined}
       isDisabled={variantProps.isDisabled}
       {...others}
@@ -138,23 +138,21 @@ export function TextField(props: TextFieldProps) {
       <Show when={label()}>
         <KTextField.Label
           class={cn(
-            "pg-text-sm pg-font-medium pg-text-text-subtle pg-group-disabled:pg-text-disabled-text",
-            showTopDescription() ? "pg-mb-0.5" : "pg-mb-1",
+            "text-sm font-medium text-text-subtle ui-group-disabled:text-disabled-text",
+            showTopDescription() ? "mb-0.5" : "mb-1",
             themeClasses.label
           )}
         >
           {label()}
           <Show when={local.hasRequiredIndicator && others.isRequired}>
-            <span class="pg-text-text-danger pg-group-disabled:pg-text-disabled-text pg-ml-0.5">
-              *
-            </span>
+            <span class="text-text-danger ui-group-disabled:text-disabled-text ml-0.5">*</span>
           </Show>
         </KTextField.Label>
       </Show>
       <Show when={showTopDescription()}>
         <KTextField.Description
           class={cn(
-            "pg-text-xs pg-text-text-subtlest pg-group-disabled:pg-text-disabled-text pg-mb-1",
+            "text-xs text-text-subtlest ui-group-disabled:text-disabled-text mb-1",
             themeClasses.description
           )}
         >
@@ -163,7 +161,7 @@ export function TextField(props: TextFieldProps) {
       </Show>
       <div class={cn(textFieldWrapperVariants(variantProps), themeClasses.wrapper)}>
         {leftSection()}
-        <div class="pg-relative pg-flex pg-items-center pg-grow pg-h-full">
+        <div class="relative flex items-center grow h-full">
           <KTextField.Input
             {...local.inputProps}
             ref={mergeRefs(el => (ref = el), local.ref)}
@@ -185,12 +183,10 @@ export function TextField(props: TextFieldProps) {
             }}
           />
           <Show when={leftIcon()}>
-            <TextFieldIcon class={cn("pg-left-0", leftIconThemeClasses())}>
-              {leftIcon()}
-            </TextFieldIcon>
+            <TextFieldIcon class={cn("left-0", leftIconThemeClasses())}>{leftIcon()}</TextFieldIcon>
           </Show>
           <Show when={rightIcon()}>
-            <TextFieldIcon class={cn("pg-right-0", rightIconThemeClasses())}>
+            <TextFieldIcon class={cn("right-0", rightIconThemeClasses())}>
               {rightIcon()}
             </TextFieldIcon>
           </Show>
@@ -200,7 +196,7 @@ export function TextField(props: TextFieldProps) {
       <Show when={showBottomDescription()}>
         <KTextField.Description
           class={cn(
-            "pg-text-xs pg-text-text-subtlest pg-group-disabled:pg-text-disabled-text pg-mt-1.5",
+            "text-xs text-text-subtlest ui-group-disabled:text-disabled-text mt-1.5",
             themeClasses.description
           )}
         >
@@ -210,7 +206,7 @@ export function TextField(props: TextFieldProps) {
       <Show when={showError()}>
         <KTextField.ErrorMessage
           class={cn(
-            "pg-flex pg-items-center pg-space-x-1 pg-text-xs pg-text-text-danger pg-group-disabled:pg-text-disabled-text pg-mt-1.5",
+            "flex items-center space-x-1 text-xs text-text-danger ui-group-disabled:text-disabled-text mt-1.5",
             themeClasses.error
           )}
         >
@@ -218,7 +214,7 @@ export function TextField(props: TextFieldProps) {
             <span
               aria-hidden="true"
               class={cn(
-                "pg-reset-svg pg-text-sm pg-text-icon-danger pg-group-disabled:pg-text-disabled-icon",
+                "reset-svg text-sm text-icon-danger ui-group-disabled:text-disabled-icon",
                 themeClasses.errorIcon
               )}
             >

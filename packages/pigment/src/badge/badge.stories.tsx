@@ -23,7 +23,7 @@ export default {
     },
   },
   render: props => (
-    <div class="pg-flex pg-items-center pg-space-x-2">
+    <div class="flex items-center space-x-2">
       <Badge {...props}>Badge</Badge>
       <Badge {...props}>1</Badge>
       <Badge {...props}>10</Badge>

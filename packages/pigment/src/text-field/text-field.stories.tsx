@@ -98,14 +98,9 @@ export const WithSection: Story = {
     label: "E-mail",
     description: "We will never share your email.",
     error: "Please enter a valid email address.",
-    startSection: () => <span class="pg-mx-2">http://</span>,
+    startSection: () => <span class="mx-2">http://</span>,
     endSection: () => (
-      <Button
-        size="sm"
-        variant="solid"
-        colorScheme="neutral"
-        class="pg-rounded-l-none pg-z-10 pg-ml-2"
-      >
+      <Button size="sm" variant="solid" colorScheme="neutral" class="rounded-l-none z-10 ml-2">
         Search
       </Button>
     ),
@@ -127,9 +122,9 @@ export const WithIconAndSection: Story = {
     error: "Please enter a valid email address.",
     startIcon: () => <InfoCircleIcon />,
     endIcon: () => <InfoCircleIcon />,
-    startSection: () => <span class="pg-ml-2">http://</span>,
+    startSection: () => <span class="ml-2">http://</span>,
     endSection: () => (
-      <Button size="sm" variant="solid" colorScheme="neutral" class="pg-rounded-l-none pg-z-10">
+      <Button size="sm" variant="solid" colorScheme="neutral" class="rounded-l-none z-10">
         Search
       </Button>
     ),

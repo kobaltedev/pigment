@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
+  content: ["./node_modules/@kobalte/pigment/dist/*.{js,cjs}", "./src/**/*.{html,js,jsx,ts,tsx}"],
+  presets: [require("@kobalte/pigment-tailwindcss")],
 };

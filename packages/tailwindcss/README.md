@@ -1,15 +1,15 @@
-# @kobalte/pigment
+# @kobalte/pigment-tailwindcss
 
-Ready to use UI components built with Kobalte and TailwindCSS.
+Pigment preset for TailwindCSS.
 
 ## Installation
 
 ```bash
-npm install @kobalte/pigment
+npm install -D @kobalte/pigment-tailwindcss
 # or
-yarn add @kobalte/pigment
+yarn add -D @kobalte/pigment-tailwindcss
 # or
-pnpm add @kobalte/pigment
+pnpm add -D @kobalte/pigment-tailwindcss
 ```
 
 ## Documentation
