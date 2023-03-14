@@ -33,7 +33,7 @@ export function Header(props: HeaderProps) {
       <div class="relative flex items-center basis-0 justify-end h-14 md:flex-grow">
         <div id="docsearch" class="px-1 flex items-center justify-center" />
         <div class="hidden lg:flex lg:gap-x-1 lg:mr-1">
-          <LinkButton variant="ghost" colorScheme="neutral" asChild>
+          <LinkButton variant="ghost" color="neutral" asChild>
             <As
               component={Link}
               href="/docs/core/overview/introduction"
@@ -42,7 +42,7 @@ export function Header(props: HeaderProps) {
               Documentation
             </As>
           </LinkButton>
-          <LinkButton variant="ghost" colorScheme="neutral" asChild>
+          <LinkButton variant="ghost" color="neutral" asChild>
             <As
               component={Link}
               href={LATEST_CORE_CHANGELOG_URL}
@@ -52,7 +52,7 @@ export function Header(props: HeaderProps) {
             </As>
           </LinkButton>
         </div>
-        <LinkIconButton variant="ghost" colorScheme="neutral" asChild>
+        <LinkIconButton variant="ghost" color="neutral" asChild>
           <As
             component={Link}
             href="https://github.com/kobaltedev/pigment"

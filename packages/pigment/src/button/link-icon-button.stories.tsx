@@ -14,7 +14,7 @@ export default {
       options: ["solid", "soft", "outlined", "ghost"],
       control: { type: "select" },
     },
-    colorScheme: {
+    color: {
       options: ["primary", "neutral", "warning", "danger"],
       control: { type: "select" },
     },
@@ -35,7 +35,7 @@ export default {
 export const Default: Story = {
   args: {
     variant: "solid",
-    colorScheme: "primary",
+    color: "primary",
     size: "sm",
     isDisabled: false,
     href: "https://kobalte.dev",

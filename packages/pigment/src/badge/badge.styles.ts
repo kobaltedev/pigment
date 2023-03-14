@@ -9,7 +9,7 @@ export const badgeVariants = cva(
         soft: "",
         outlined: "",
       },
-      colorScheme: {
+      color: {
         primary: "",
         neutral: "",
         success: "",
@@ -28,117 +28,117 @@ export const badgeVariants = cva(
       // solid + colors
       {
         variant: "solid",
-        colorScheme: "primary",
+        color: "primary",
         class: "text-solid-primary-text bg-solid-primary-bg border-solid-primary-border",
       },
       {
         variant: "solid",
-        colorScheme: "neutral",
+        color: "neutral",
         class: "text-solid-neutral-text bg-solid-neutral-bg border-solid-neutral-border",
       },
       {
         variant: "solid",
-        colorScheme: "success",
+        color: "success",
         class: "text-solid-success-text bg-solid-success-bg border-solid-success-border",
       },
       {
         variant: "solid",
-        colorScheme: "info",
+        color: "info",
         class: "text-solid-info-text bg-solid-info-bg border-solid-info-border",
       },
       {
         variant: "solid",
-        colorScheme: "warning",
+        color: "warning",
         class: "text-solid-warning-text bg-solid-warning-bg border-solid-warning-border",
       },
       {
         variant: "solid",
-        colorScheme: "danger",
+        color: "danger",
         class: "text-solid-danger-text bg-solid-danger-bg border-solid-danger-border",
       },
       {
         variant: "solid",
-        colorScheme: "help",
+        color: "help",
         class: "text-solid-help-text bg-solid-help-bg border-solid-help-border",
       },
 
       // soft + colors
       {
         variant: "soft",
-        colorScheme: "primary",
+        color: "primary",
         class: "text-soft-primary-text bg-soft-primary-bg border-soft-primary-border",
       },
       {
         variant: "soft",
-        colorScheme: "neutral",
+        color: "neutral",
         class: "text-soft-neutral-text bg-soft-neutral-bg border-soft-neutral-border",
       },
       {
         variant: "soft",
-        colorScheme: "success",
+        color: "success",
         class: "text-soft-success-text bg-soft-success-bg border-soft-success-border",
       },
       {
         variant: "soft",
-        colorScheme: "info",
+        color: "info",
         class: "text-soft-info-text bg-soft-info-bg border-soft-info-border",
       },
       {
         variant: "soft",
-        colorScheme: "warning",
+        color: "warning",
         class: "text-soft-warning-text bg-soft-warning-bg border-soft-warning-border",
       },
       {
         variant: "soft",
-        colorScheme: "danger",
+        color: "danger",
         class: "text-soft-danger-text bg-soft-danger-bg border-soft-danger-border",
       },
       {
         variant: "soft",
-        colorScheme: "help",
+        color: "help",
         class: "text-soft-help-text bg-soft-help-bg border-soft-help-border",
       },
 
       // outlined + colors
       {
         variant: "outlined",
-        colorScheme: "primary",
+        color: "primary",
         class: "text-outlined-primary-text bg-outlined-primary-bg border-outlined-primary-border",
       },
       {
         variant: "outlined",
-        colorScheme: "neutral",
+        color: "neutral",
         class: "text-outlined-neutral-text bg-outlined-neutral-bg border-outlined-neutral-border",
       },
       {
         variant: "outlined",
-        colorScheme: "success",
+        color: "success",
         class: "text-outlined-success-text bg-outlined-success-bg border-outlined-success-border",
       },
       {
         variant: "outlined",
-        colorScheme: "info",
+        color: "info",
         class: "text-outlined-info-text bg-outlined-info-bg border-outlined-info-border",
       },
       {
         variant: "outlined",
-        colorScheme: "warning",
+        color: "warning",
         class: "text-outlined-warning-text bg-outlined-warning-bg border-outlined-warning-border",
       },
       {
         variant: "outlined",
-        colorScheme: "danger",
+        color: "danger",
         class: "text-outlined-danger-text bg-outlined-danger-bg border-outlined-danger-border",
       },
       {
         variant: "outlined",
-        colorScheme: "help",
+        color: "help",
         class: "text-outlined-help-text bg-outlined-help-bg border-outlined-help-border",
       },
     ],
     defaultVariants: {
       variant: "soft",
-      colorScheme: "neutral",
+      color: "neutral",
       size: "sm",
     },
   }

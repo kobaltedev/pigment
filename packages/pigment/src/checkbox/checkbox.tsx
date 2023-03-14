@@ -19,6 +19,10 @@ export function Checkbox(props: CheckboxProps) {
   props = mergeThemeProps(
     "Checkbox",
     {
+      variant: "outlined",
+      size: "sm",
+      isInvalid: false,
+      isDisabled: false,
       hasErrorIcon: true,
       errorIcon: () => <AlertCircleIcon />,
       checkedIcon: () => <CheckIcon />,

@@ -14,7 +14,7 @@ export default {
       options: ["solid", "soft", "outlined", "ghost"],
       control: { type: "select" },
     },
-    colorScheme: {
+    color: {
       options: ["primary", "neutral", "warning", "danger"],
       control: { type: "select" },
     },
@@ -41,7 +41,7 @@ export default {
 export const Default: Story = {
   args: {
     variant: "solid",
-    colorScheme: "primary",
+    color: "primary",
     size: "sm",
     isFullWidth: false,
     isDisabled: false,
@@ -53,7 +53,7 @@ export const Default: Story = {
 export const WithIcon: Story = {
   args: {
     variant: "solid",
-    colorScheme: "primary",
+    color: "primary",
     size: "sm",
     isFullWidth: false,
     isDisabled: false,

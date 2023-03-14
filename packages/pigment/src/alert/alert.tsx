@@ -3,21 +3,26 @@ import { children, createMemo, Show, splitProps } from "solid-js";
 
 import { CloseButton } from "../close-button";
 import {
+  AlertCircleIcon,
   AlertTriangleIcon,
   CheckCircleIcon,
-  AlertCircleIcon,
   HelpCircleIcon,
   InfoCircleIcon,
 } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme/theme-context";
 import { cn } from "../utils/cn";
 import { AlertProps, AlertSlots } from "./alert.props";
-import { alertIconVariants, alertVariants } from "./alert.styles";
+import { alertContentVariants, alertIconVariants, alertVariants } from "./alert.styles";
 
 export function Alert(props: AlertProps) {
   props = mergeThemeProps(
     "Alert",
     {
+      variant: "soft",
+      status: "info",
+      hasIcon: true,
+      isDismissible: false,
+      isSingleLine: false,
       successIcon: () => <CheckCircleIcon />,
       infoIcon: () => <InfoCircleIcon />,
       warningIcon: () => <AlertTriangleIcon />,
@@ -43,7 +48,7 @@ export function Alert(props: AlertProps) {
       "helpIcon",
       "onDismiss",
     ],
-    ["variant", "status", "hasIcon", "isDismissible"]
+    ["variant", "status", "hasIcon", "isDismissible", "isSingleLine"]
   );
 
   const title = createMemo(() => local.title);
@@ -59,12 +64,12 @@ export function Alert(props: AlertProps) {
           {variantProps.status != null && local[`${variantProps.status}Icon`]}
         </div>
       </Show>
-      <div class={cn("flex flex-col space-y-1 grow py-1", themeClasses.content)}>
+      <div class={cn(alertContentVariants(variantProps), themeClasses.content)}>
         <Show when={title()}>
           <div class={cn("font-semibold", themeClasses.title)}>{title()}</div>
         </Show>
         <Show when={description()}>
-          <div class={themeClasses.description}>{description()}</div>
+          <div class={cn("grow", themeClasses.description)}>{description()}</div>
         </Show>
       </div>
       <Show when={variantProps.isDismissible}>

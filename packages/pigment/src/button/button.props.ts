@@ -1,5 +1,6 @@
 import { Button as KButton, Link as KLink } from "@kobalte/core";
-import { ComponentProps, JSX } from "solid-js";
+import { OverrideComponentProps } from "@kobalte/utils";
+import { JSX } from "solid-js";
 
 import { ButtonVariants } from "./button.styles";
 
@@ -8,7 +9,7 @@ import { ButtonVariants } from "./button.styles";
  * -----------------------------------------------------------------------------------------------*/
 
 export interface ButtonBaseProps
-  extends Omit<KButton.ButtonRootProps, "asChild">,
+  extends Omit<KButton.ButtonRootProps, "asChild" | "color">,
     Omit<ButtonVariants, "isDisabled"> {
   /** The label to show when the button is in a loading state. */
   loadingText?: string;
@@ -32,14 +33,16 @@ export interface ButtonBaseProps
 export interface ButtonBaseContentProps
   extends Pick<
     ButtonBaseProps,
-    "variant" | "colorScheme" | "size" | "isDisabled" | "startIcon" | "endIcon" | "children"
+    "variant" | "color" | "size" | "isDisabled" | "startIcon" | "endIcon" | "children"
   > {
   isRtl: boolean;
 }
 
 export interface ButtonBaseIconProps
-  extends ComponentProps<"span">,
-    Pick<ButtonBaseProps, "variant" | "colorScheme" | "size" | "isIconOnly" | "isDisabled"> {}
+  extends OverrideComponentProps<
+    "span",
+    Pick<ButtonBaseProps, "variant" | "color" | "size" | "isIconOnly" | "isDisabled">
+  > {}
 
 /* -------------------------------------------------------------------------------------------------
  * Button
@@ -64,7 +67,7 @@ export interface IconButtonProps
  * -----------------------------------------------------------------------------------------------*/
 
 export interface LinkButtonBaseProps
-  extends KLink.LinkRootProps,
+  extends Omit<KLink.LinkRootProps, "color">,
     Omit<ButtonVariants, "isLoading" | "isDisabled"> {
   /** The icon to show before the link button content. */
   startIcon?: JSX.Element;

@@ -49,9 +49,10 @@ export const mdxComponents = {
       <pre ref={domRef} onMouseLeave={reset} {...others}>
         <IconButton
           aria-label="copy to clipboard"
-          variant="soft"
-          colorScheme="neutral"
+          variant="ghost"
+          color="neutral"
           size="xs"
+          class="pg-copy-btn absolute top-2 right-2 z-10"
           onClick={copyToClipboard}
         >
           <Show when={isCopied()} fallback={<CopyIcon />}>

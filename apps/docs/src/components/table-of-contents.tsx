@@ -88,16 +88,16 @@ export function TableOfContents() {
   const currentSection = useCurrentSection(toc);
 
   return (
-    <div class="hidden xl:sticky xl:top-[4.5rem] xl:block xl:h-[calc(100vh-4.5rem)] xl:flex-none xl:overflow-y-auto xl:py-4 xl:pr-4">
+    <div class="hidden xl:sticky xl:top-[4.5rem] xl:block xl:h-[calc(100vh-4.5rem)] xl:flex-none xl:overflow-y-auto xl:py-4 xl:pr-2">
       <nav aria-labelledby="on-this-page-title" class="w-56">
         <Suspense>
           <h2
             id="on-this-page-title"
-            class="font-display text-sm font-medium text-slate-900 dark:text-white/90"
+            class="font-display text-sm font-medium ml-3 text-slate-900 dark:text-white/90"
           >
             On this page
           </h2>
-          <ol class="mt-3 text-sm">
+          <ol class="mt-3 text-sm space-y-1">
             <For each={toc()}>
               {section => (
                 <li>

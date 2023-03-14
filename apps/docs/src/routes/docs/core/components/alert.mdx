@@ -1,0 +1,114 @@
+import { Alert } from "@kobalte/pigment";
+
+import { Preview } from "../../../../components";
+import {
+  BasicUsage,
+  WithSingleLine,
+  WithVariants,
+  WithStatuses,
+  WithDismissButton,
+  WithComposition,
+} from "../../../../examples/alert";
+
+# Alert
+
+Display a brief, important message in a way that attracts the user's attention without interrupting the user's task.
+
+## Import
+
+```tsx
+import { Alert } from "@kobalte/pigment";
+```
+
+## Usage
+
+<Preview isCentered={false}>
+  <BasicUsage />
+</Preview>
+
+```tsx
+<Alert variant="soft" status="info" title="Software update">
+  A new software update is available. See what's new in version 1.0.
+</Alert>
+```
+
+## Single line
+
+<Preview isCentered={false}>
+  <WithSingleLine />
+</Preview>
+
+```tsx
+<Alert variant="soft" status="info" title="Software update" isSingleLine>
+  A new software update is available. See what's new in version 1.0.
+</Alert>
+```
+
+## Variants
+
+<Preview isCentered={false}>
+  <WithVariants />
+</Preview>
+
+```tsx
+<div class="flex flex-col space-y-4">
+  <Alert variant="solid" status="info" title="Software update">
+    A new software update is available. See what's new in version 1.0.
+  </Alert>
+  <Alert variant="soft" status="info" title="Software update">
+    A new software update is available. See what's new in version 1.0.
+  </Alert>
+</div>
+```
+
+## Statuses
+
+<Preview isCentered={false}>
+  <WithStatuses />
+</Preview>
+
+```tsx
+<div class="flex flex-col space-y-4">
+  <Alert variant="soft" status="success" title="Well done">
+    The data has been successfully saved on our server.
+  </Alert>
+  <Alert variant="soft" status="info" title="Software update">
+    A new software update is available. See what's new in version 1.0.
+  </Alert>
+  <Alert variant="soft" status="warning" title="Attention needed">
+    Your registration token is about to expire, sign up now.
+  </Alert>
+  <Alert variant="soft" status="danger" title="Something went wrong">
+    There was an error processing your request.
+  </Alert>
+  <Alert variant="soft" status="help" title="What's new in 1.0">
+    Learn about the exciting new features in the next major release.
+  </Alert>
+</div>
+```
+
+## Dismissible alerts
+
+<Preview isCentered={false}>
+  <WithDismissButton />
+</Preview>
+
+```tsx
+<Alert
+  variant="soft"
+  status="info"
+  title="Software update"
+  isDismissible
+  onDismiss={() => alert("dismissed")}
+>
+  A new software update is available. See what's new in version 1.0.
+</Alert>
+```
+
+## Composition
+
+<Preview isCentered={false}>
+  <WithComposition />
+</Preview>
+
+## API Reference

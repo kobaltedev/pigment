@@ -15,6 +15,9 @@ export function CloseButton(props: CloseButtonProps) {
   props = mergeThemeProps(
     "CloseButton",
     {
+      size: "sm",
+      inheritTextColor: false,
+      isDisabled: false,
       children: () => <CrossIcon />,
     },
     props

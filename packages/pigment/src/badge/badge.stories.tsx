@@ -13,7 +13,7 @@ export default {
       options: ["solid", "soft", "outlined"],
       control: { type: "select" },
     },
-    colorScheme: {
+    color: {
       options: ["primary", "neutral", "success", "info", "warning", "danger", "help"],
       control: { type: "select" },
     },
@@ -37,7 +37,7 @@ export default {
 export const Default: Story = {
   args: {
     variant: "soft",
-    colorScheme: "neutral",
+    color: "neutral",
     size: "sm",
   },
 };

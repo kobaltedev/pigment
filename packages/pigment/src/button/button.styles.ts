@@ -16,7 +16,7 @@ export const buttonVariants = cva(
         outlined: "",
         ghost: "",
       },
-      colorScheme: {
+      color: {
         primary: "",
         neutral: "",
         warning: "",
@@ -47,7 +47,7 @@ export const buttonVariants = cva(
       // solid + colors
       {
         variant: "solid",
-        colorScheme: "primary",
+        color: "primary",
         isDisabled: false,
         class: [
           "text-solid-primary-text hover:text-solid-primary-text-hover active:text-solid-primary-text-active",
@@ -57,7 +57,7 @@ export const buttonVariants = cva(
       },
       {
         variant: "solid",
-        colorScheme: "neutral",
+        color: "neutral",
         isDisabled: false,
         class: [
           "text-solid-neutral-text hover:text-solid-neutral-text-hover active:text-solid-neutral-text-active",
@@ -67,7 +67,7 @@ export const buttonVariants = cva(
       },
       {
         variant: "solid",
-        colorScheme: "warning",
+        color: "warning",
         isDisabled: false,
         class: [
           "text-solid-warning-text hover:text-solid-warning-text-hover active:text-solid-warning-text-active",
@@ -77,7 +77,7 @@ export const buttonVariants = cva(
       },
       {
         variant: "solid",
-        colorScheme: "danger",
+        color: "danger",
         isDisabled: false,
         class: [
           "text-solid-danger-text hover:text-solid-danger-text-hover active:text-solid-danger-text-active",
@@ -89,7 +89,7 @@ export const buttonVariants = cva(
       // soft + colors
       {
         variant: "soft",
-        colorScheme: "primary",
+        color: "primary",
         isDisabled: false,
         class: [
           "text-soft-primary-text hover:text-soft-primary-text-hover active:text-soft-primary-text-active",
@@ -99,7 +99,7 @@ export const buttonVariants = cva(
       },
       {
         variant: "soft",
-        colorScheme: "neutral",
+        color: "neutral",
         isDisabled: false,
         class: [
           "text-soft-neutral-text hover:text-soft-neutral-text-hover active:text-soft-neutral-text-active",
@@ -109,7 +109,7 @@ export const buttonVariants = cva(
       },
       {
         variant: "soft",
-        colorScheme: "warning",
+        color: "warning",
         isDisabled: false,
         class: [
           "text-soft-warning-text hover:text-soft-warning-text-hover active:text-soft-warning-text-active",
@@ -119,7 +119,7 @@ export const buttonVariants = cva(
       },
       {
         variant: "soft",
-        colorScheme: "danger",
+        color: "danger",
         isDisabled: false,
         class: [
           "text-soft-danger-text hover:text-soft-danger-text-hover active:text-soft-danger-text-active",
@@ -131,7 +131,7 @@ export const buttonVariants = cva(
       // outlined + colors
       {
         variant: "outlined",
-        colorScheme: "primary",
+        color: "primary",
         isDisabled: false,
         class: [
           "text-outlined-primary-text hover:text-outlined-primary-text-hover active:text-outlined-primary-text-active",
@@ -141,7 +141,7 @@ export const buttonVariants = cva(
       },
       {
         variant: "outlined",
-        colorScheme: "neutral",
+        color: "neutral",
         isDisabled: false,
         class: [
           "text-outlined-neutral-text hover:text-outlined-neutral-text-hover active:text-outlined-neutral-text-active",
@@ -151,7 +151,7 @@ export const buttonVariants = cva(
       },
       {
         variant: "outlined",
-        colorScheme: "warning",
+        color: "warning",
         isDisabled: false,
         class: [
           "text-outlined-warning-text hover:text-outlined-warning-text-hover active:text-outlined-warning-text-active",
@@ -161,7 +161,7 @@ export const buttonVariants = cva(
       },
       {
         variant: "outlined",
-        colorScheme: "danger",
+        color: "danger",
         isDisabled: false,
         class: [
           "text-outlined-danger-text hover:text-outlined-danger-text-hover active:text-outlined-danger-text-active",
@@ -173,7 +173,7 @@ export const buttonVariants = cva(
       // ghost + colors
       {
         variant: "ghost",
-        colorScheme: "primary",
+        color: "primary",
         isDisabled: false,
         class: [
           "text-ghost-primary-text hover:text-ghost-primary-text-hover active:text-ghost-primary-text-active",
@@ -183,7 +183,7 @@ export const buttonVariants = cva(
       },
       {
         variant: "ghost",
-        colorScheme: "neutral",
+        color: "neutral",
         isDisabled: false,
         class: [
           "text-ghost-neutral-text hover:text-ghost-neutral-text-hover active:text-ghost-neutral-text-active",
@@ -193,7 +193,7 @@ export const buttonVariants = cva(
       },
       {
         variant: "ghost",
-        colorScheme: "warning",
+        color: "warning",
         isDisabled: false,
         class: [
           "text-ghost-warning-text hover:text-ghost-warning-text-hover active:text-ghost-warning-text-active",
@@ -203,7 +203,7 @@ export const buttonVariants = cva(
       },
       {
         variant: "ghost",
-        colorScheme: "danger",
+        color: "danger",
         isDisabled: false,
         class: [
           "text-ghost-danger-text hover:text-ghost-danger-text-hover active:text-ghost-danger-text-active",
@@ -253,7 +253,7 @@ export const buttonVariants = cva(
     ],
     defaultVariants: {
       variant: "solid",
-      colorScheme: "primary",
+      color: "primary",
       size: "sm",
       isIconOnly: false,
       isFullWidth: false,
@@ -270,7 +270,7 @@ export const buttonIconVariants = cva("reset-svg shrink-0", {
       outlined: "",
       ghost: "",
     },
-    colorScheme: {
+    color: {
       primary: "",
       neutral: "",
       warning: "",
@@ -294,28 +294,28 @@ export const buttonIconVariants = cva("reset-svg shrink-0", {
     // solid + colors
     {
       variant: "solid",
-      colorScheme: "primary",
+      color: "primary",
       isDisabled: false,
       class:
         "text-solid-primary-icon hover:text-solid-primary-icon-hover active:text-solid-primary-icon-active",
     },
     {
       variant: "solid",
-      colorScheme: "neutral",
+      color: "neutral",
       isDisabled: false,
       class:
         "text-solid-neutral-icon hover:text-solid-neutral-icon-hover active:text-solid-neutral-icon-active",
     },
     {
       variant: "solid",
-      colorScheme: "warning",
+      color: "warning",
       isDisabled: false,
       class:
         "text-solid-warning-icon hover:text-solid-warning-icon-hover active:text-solid-warning-icon-active",
     },
     {
       variant: "solid",
-      colorScheme: "danger",
+      color: "danger",
       isDisabled: false,
       class:
         "text-solid-danger-icon hover:text-solid-danger-icon-hover active:text-solid-danger-icon-active",
@@ -324,28 +324,28 @@ export const buttonIconVariants = cva("reset-svg shrink-0", {
     // soft + colors
     {
       variant: "soft",
-      colorScheme: "primary",
+      color: "primary",
       isDisabled: false,
       class:
         "text-soft-primary-icon hover:text-soft-primary-icon-hover active:text-soft-primary-icon-active",
     },
     {
       variant: "soft",
-      colorScheme: "neutral",
+      color: "neutral",
       isDisabled: false,
       class:
         "text-soft-neutral-icon hover:text-soft-neutral-icon-hover active:text-soft-neutral-icon-active",
     },
     {
       variant: "soft",
-      colorScheme: "warning",
+      color: "warning",
       isDisabled: false,
       class:
         "text-soft-warning-icon hover:text-soft-warning-icon-hover active:text-soft-warning-icon-active",
     },
     {
       variant: "soft",
-      colorScheme: "danger",
+      color: "danger",
       isDisabled: false,
       class:
         "text-soft-danger-icon hover:text-soft-danger-icon-hover active:text-soft-danger-icon-active",
@@ -354,28 +354,28 @@ export const buttonIconVariants = cva("reset-svg shrink-0", {
     // outlined + colors
     {
       variant: "outlined",
-      colorScheme: "primary",
+      color: "primary",
       isDisabled: false,
       class:
         "text-outlined-primary-icon hover:text-outlined-primary-icon-hover active:text-outlined-primary-icon-active",
     },
     {
       variant: "outlined",
-      colorScheme: "neutral",
+      color: "neutral",
       isDisabled: false,
       class:
         "text-outlined-neutral-icon hover:text-outlined-neutral-icon-hover active:text-outlined-neutral-icon-active",
     },
     {
       variant: "outlined",
-      colorScheme: "warning",
+      color: "warning",
       isDisabled: false,
       class:
         "text-outlined-warning-icon hover:text-outlined-warning-icon-hover active:text-outlined-warning-icon-active",
     },
     {
       variant: "outlined",
-      colorScheme: "danger",
+      color: "danger",
       isDisabled: false,
       class:
         "text-outlined-danger-icon hover:text-outlined-danger-icon-hover active:text-outlined-danger-icon-active",
@@ -384,28 +384,28 @@ export const buttonIconVariants = cva("reset-svg shrink-0", {
     // ghost + colors
     {
       variant: "ghost",
-      colorScheme: "primary",
+      color: "primary",
       isDisabled: false,
       class:
         "text-ghost-primary-icon hover:text-ghost-primary-icon-hover active:text-ghost-primary-icon-active",
     },
     {
       variant: "ghost",
-      colorScheme: "neutral",
+      color: "neutral",
       isDisabled: false,
       class:
         "text-ghost-neutral-icon hover:text-ghost-neutral-icon-hover active:text-ghost-neutral-icon-active",
     },
     {
       variant: "ghost",
-      colorScheme: "warning",
+      color: "warning",
       isDisabled: false,
       class:
         "text-ghost-warning-icon hover:text-ghost-warning-icon-hover active:text-ghost-warning-icon-active",
     },
     {
       variant: "ghost",
-      colorScheme: "danger",
+      color: "danger",
       isDisabled: false,
       class:
         "text-ghost-danger-icon hover:text-ghost-danger-icon-hover active:text-ghost-danger-icon-active",
@@ -427,7 +427,7 @@ export const buttonIconVariants = cva("reset-svg shrink-0", {
   ],
   defaultVariants: {
     variant: "solid",
-    colorScheme: "primary",
+    color: "primary",
     size: "sm",
     isIconOnly: false,
     isDisabled: false,

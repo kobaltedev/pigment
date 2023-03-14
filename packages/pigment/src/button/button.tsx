@@ -27,6 +27,12 @@ function ButtonBase(props: ButtonBaseProps) {
   props = mergeThemeProps(
     "Button",
     {
+      variant: "solid",
+      color: "primary",
+      size: "sm",
+      isIconOnly: false,
+      isFullWidth: false,
+      isDisabled: false,
       loadingIconPlacement: "start",
     },
     props
@@ -38,9 +44,9 @@ function ButtonBase(props: ButtonBaseProps) {
     splitProps(
       props,
       ["class", "isLoading", "loadingText", "loadingIcon", "loadingIconPlacement"],
-      ["variant", "colorScheme", "size", "isIconOnly", "isFullWidth", "isLoading", "isDisabled"],
-      ["variant", "colorScheme", "size", "isDisabled", "startIcon", "endIcon", "children"],
-      ["variant", "colorScheme", "size", "isIconOnly", "isDisabled"],
+      ["variant", "color", "size", "isIconOnly", "isFullWidth", "isLoading", "isDisabled"],
+      ["variant", "color", "size", "isDisabled", "startIcon", "endIcon", "children"],
+      ["variant", "color", "size", "isIconOnly", "isDisabled"],
       ["size"]
     );
 
@@ -97,7 +103,7 @@ function ButtonBase(props: ButtonBaseProps) {
 }
 
 function ButtonBaseContent(props: ButtonBaseContentProps) {
-  const [iconProps] = splitProps(props, ["variant", "colorScheme", "size", "isDisabled"]);
+  const [iconProps] = splitProps(props, ["variant", "color", "size", "isDisabled"]);
 
   const leftIcon = () => {
     return props.isRtl ? props.endIcon : props.startIcon;
@@ -128,7 +134,7 @@ function ButtonBaseIcon(props: ButtonBaseIconProps) {
   const [local, variantProps, others] = splitProps(
     props,
     ["class"],
-    ["variant", "colorScheme", "size", "isIconOnly", "isDisabled"]
+    ["variant", "color", "size", "isIconOnly", "isDisabled"]
   );
 
   return (
@@ -172,15 +178,26 @@ export function IconButton(props: IconButtonProps) {
  * -----------------------------------------------------------------------------------------------*/
 
 function LinkButtonBase(props: LinkButtonBaseProps) {
-  props = mergeThemeProps("LinkButton", {}, props);
+  props = mergeThemeProps(
+    "LinkButton",
+    {
+      variant: "solid",
+      color: "primary",
+      size: "sm",
+      isIconOnly: false,
+      isFullWidth: false,
+      isDisabled: false,
+    },
+    props
+  );
 
   const themeClasses = useThemeClasses<LinkButtonSlots>("LinkButton", props);
 
   const [local, variantProps, contentProps, others] = splitProps(
     props,
     ["class"],
-    ["variant", "colorScheme", "size", "isIconOnly", "isFullWidth", "isDisabled"],
-    ["variant", "colorScheme", "size", "isDisabled", "startIcon", "endIcon", "children"]
+    ["variant", "color", "size", "isIconOnly", "isFullWidth", "isDisabled"],
+    ["variant", "color", "size", "isDisabled", "startIcon", "endIcon", "children"]
   );
 
   const { direction } = useLocale();

@@ -7,15 +7,19 @@ import { BadgeProps, BadgeSlots } from "./badge.props";
 import { badgeVariants } from "./badge.styles";
 
 export function Badge(props: BadgeProps) {
-  props = mergeThemeProps("Badge", {}, props);
+  props = mergeThemeProps(
+    "Badge",
+    {
+      variant: "soft",
+      color: "neutral",
+      size: "sm",
+    },
+    props
+  );
 
   const themeClasses = useThemeClasses<BadgeSlots>("Badge", props);
 
-  const [local, variantProps, others] = splitProps(
-    props,
-    ["class"],
-    ["variant", "colorScheme", "size"]
-  );
+  const [local, variantProps, others] = splitProps(props, ["class"], ["variant", "color", "size"]);
 
   return (
     <Polymorphic

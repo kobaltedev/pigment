@@ -27,7 +27,20 @@ const CORE_NAV_SECTIONS: NavSection[] = [
   },
   {
     title: "Theming",
-    links: [],
+    links: [
+      {
+        title: "Design tokens",
+        href: "/docs/core/theming/design-tokens",
+      },
+      {
+        title: "Customization",
+        href: "/docs/core/theming/customization",
+      },
+      {
+        title: "Dark mode",
+        href: "/docs/core/theming/dark-mode",
+      },
+    ],
   },
   {
     title: "Components",

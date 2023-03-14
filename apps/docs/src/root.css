@@ -105,11 +105,11 @@ pre {
   position: relative;
 }
 
-[data-pg-theme="light"] .shiki.github-dark {
+[data-pg-theme="dark"] .shiki.github-light {
   display: none !important;
 }
 
-[data-pg-theme="dark"] .shiki.github-light {
+:not([data-pg-theme="dark"]) .shiki.github-dark {
   display: none !important;
 }
 

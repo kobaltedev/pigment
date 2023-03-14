@@ -48,9 +48,8 @@ export default function preset(): Partial<Config> {
           ...colorToken("text-subtlest"),
           ...colorToken("text-dimmed"),
           ...colorToken("text-inverse"),
-          ...colorToken("text-success"),
-          ...colorToken("text-success-inverse"),
           ...colorToken("text-warning-inverse"),
+          ...colorToken("text-success"),
           ...colorToken("text-danger"),
 
           ...colorToken("icon"),
@@ -58,9 +57,8 @@ export default function preset(): Partial<Config> {
           ...colorToken("icon-subtlest"),
           ...colorToken("icon-dimmed"),
           ...colorToken("icon-inverse"),
-          ...colorToken("icon-success"),
-          ...colorToken("icon-success-inverse"),
           ...colorToken("icon-warning-inverse"),
+          ...colorToken("icon-success"),
           ...colorToken("icon-danger"),
 
           ...colorToken("body-bg"),

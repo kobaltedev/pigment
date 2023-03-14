@@ -23,6 +23,10 @@ export function TextField(props: TextFieldProps) {
       descriptionPlacement: "bottom",
       hasRequiredIndicator: true,
       hasErrorIcon: true,
+      variant: "outlined",
+      size: "sm",
+      isInvalid: false,
+      isDisabled: false,
       errorIcon: () => <AlertCircleIcon />,
     },
     props
