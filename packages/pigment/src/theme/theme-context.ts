@@ -14,13 +14,13 @@ function useComponentTheme<T extends keyof Components>(component: T) {
 }
 
 /**
- * Resolve the `additionalClasses` provided in the component theme configuration.
+ * Resolve the `slotClasses` provided in the component theme configuration.
  */
 export function useThemeClasses<Slots extends string>(
   component: keyof Components,
   props: any
 ): Record<Slots, string> {
-  const classes = useComponentTheme(component)?.additionalClasses ?? {};
+  const classes = useComponentTheme(component)?.slotClasses ?? {};
 
   if (isFunction(classes)) {
     return classes(props);

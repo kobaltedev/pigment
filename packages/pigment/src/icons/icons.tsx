@@ -58,7 +58,7 @@ export const InfoCircleIcon = createLucideIcon(() => (
   </>
 ));
 
-export const AlertTriangleIcon = createLucideIcon(() => (
+export const ExclamationTriangleIcon = createLucideIcon(() => (
   <>
     <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
     <line x1="12" y1="9" x2="12" y2="13" />
@@ -66,7 +66,7 @@ export const AlertTriangleIcon = createLucideIcon(() => (
   </>
 ));
 
-export const AlertCircleIcon = createLucideIcon(() => (
+export const ExclamationCircleIcon = createLucideIcon(() => (
   <>
     <circle cx="12" cy="12" r="10"></circle>
     <line x1="12" y1="8" x2="12" y2="12"></line>
@@ -74,7 +74,7 @@ export const AlertCircleIcon = createLucideIcon(() => (
   </>
 ));
 
-export const HelpCircleIcon = createLucideIcon(() => (
+export const QuestionMarkCircleIcon = createLucideIcon(() => (
   <>
     <circle cx="12" cy="12" r="10"></circle>
     <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>

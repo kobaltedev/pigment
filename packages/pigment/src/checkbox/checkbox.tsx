@@ -1,7 +1,7 @@
 import { Checkbox as KCheckbox } from "@kobalte/core";
 import { createMemo, createUniqueId, Show, splitProps } from "solid-js";
 
-import { AlertCircleIcon, CheckIcon, MinusIcon } from "../icons";
+import { ExclamationCircleIcon, CheckIcon, MinusIcon } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme/theme-context";
 import { cn } from "../utils/cn";
 import { CheckboxProps, CheckboxSlots } from "./checkbox.props";
@@ -24,7 +24,7 @@ export function Checkbox(props: CheckboxProps) {
       isInvalid: false,
       isDisabled: false,
       hasErrorIcon: true,
-      errorIcon: () => <AlertCircleIcon />,
+      errorIcon: () => <ExclamationCircleIcon />,
       checkedIcon: () => <CheckIcon />,
       indeterminateIcon: () => <MinusIcon />,
     },
@@ -39,6 +39,7 @@ export function Checkbox(props: CheckboxProps) {
       "ref",
       "id",
       "class",
+      "slotClasses",
       "inputProps",
       "label",
       "description",
@@ -72,7 +73,12 @@ export function Checkbox(props: CheckboxProps) {
 
   return (
     <KCheckbox.Root
-      class={cn(checkboxRootVariants(variantProps), themeClasses.root, local.class)}
+      class={cn(
+        checkboxRootVariants(variantProps),
+        themeClasses.root,
+        local.slotClasses?.root,
+        local.class
+      )}
       validationState={variantProps.isInvalid ? "invalid" : undefined}
       isDisabled={variantProps.isDisabled}
       {...others}
@@ -86,25 +92,51 @@ export function Checkbox(props: CheckboxProps) {
             class={cn("peer", local.inputProps?.class)}
             aria-describedby={ariaDescribedBy()}
           />
-          <KCheckbox.Control class={cn(checkboxVariants(variantProps), themeClasses.checkbox)}>
+          <KCheckbox.Control
+            class={cn(
+              checkboxVariants(variantProps),
+              themeClasses.checkbox,
+              local.slotClasses?.checkbox
+            )}
+          >
             <KCheckbox.Indicator
-              class={cn("reset-svg flex justify-center items-center", themeClasses.icon)}
+              class={cn(
+                "reset-svg flex justify-center items-center",
+                themeClasses.icon,
+                local.slotClasses?.icon
+              )}
             >
               <Show when={state.isIndeterminate()} fallback={local.checkedIcon}>
                 {local.indeterminateIcon}
               </Show>
             </KCheckbox.Indicator>
           </KCheckbox.Control>
-          <div class={cn("flex flex-col space-y-1 grow", themeClasses.labelWrapper)}>
+          <div
+            class={cn(
+              "flex flex-col space-y-1 grow",
+              themeClasses.labelWrapper,
+              local.slotClasses?.labelWrapper
+            )}
+          >
             <Show when={label()}>
-              <KCheckbox.Label class={cn(checkboxLabelVariants(variantProps), themeClasses.label)}>
+              <KCheckbox.Label
+                class={cn(
+                  checkboxLabelVariants(variantProps),
+                  themeClasses.label,
+                  local.slotClasses?.label
+                )}
+              >
                 {label()}
               </KCheckbox.Label>
             </Show>
             <Show when={description()}>
               <span
                 id={descriptionId}
-                class={cn(checkboxDescriptionVariants(variantProps), themeClasses.description)}
+                class={cn(
+                  checkboxDescriptionVariants(variantProps),
+                  themeClasses.description,
+                  local.slotClasses?.description
+                )}
               >
                 {description()}
               </span>
@@ -114,7 +146,8 @@ export function Checkbox(props: CheckboxProps) {
                 id={errorId}
                 class={cn(
                   "flex items-center space-x-1 text-xs text-text-danger ui-group-disabled:text-disabled-text mt-1.5",
-                  themeClasses.error
+                  themeClasses.error,
+                  local.slotClasses?.error
                 )}
               >
                 <Show when={local.hasErrorIcon} fallback={error()}>
@@ -122,7 +155,8 @@ export function Checkbox(props: CheckboxProps) {
                     aria-hidden="true"
                     class={cn(
                       "reset-svg text-sm text-icon-danger ui-group-disabled:text-disabled-icon",
-                      themeClasses.errorIcon
+                      themeClasses.errorIcon,
+                      local.slotClasses?.errorIcon
                     )}
                   >
                     {errorIcon()}

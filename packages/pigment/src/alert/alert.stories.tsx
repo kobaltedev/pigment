@@ -23,6 +23,9 @@ export default {
     isDismissible: {
       control: { type: "boolean" },
     },
+    isMultiline: {
+      control: { type: "boolean" },
+    },
     title: {
       control: { type: "text" },
     },
@@ -40,6 +43,7 @@ export const Default: Story = {
     title: "Announcement",
     hasIcon: true,
     isDismissible: true,
+    isMultiline: false,
     children: "Pigment is going live soon, get ready!",
   },
 };

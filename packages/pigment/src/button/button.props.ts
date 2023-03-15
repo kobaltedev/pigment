@@ -2,15 +2,19 @@ import { Button as KButton, Link as KLink } from "@kobalte/core";
 import { OverrideComponentProps } from "@kobalte/utils";
 import { JSX } from "solid-js";
 
+import { SlotProp } from "../utils/slot";
 import { ButtonVariants } from "./button.styles";
 
 /* -------------------------------------------------------------------------------------------------
- * ButtonBase
+ * Button
  * -----------------------------------------------------------------------------------------------*/
+
+export type ButtonSlots = "root" | "startIcon" | "endIcon" | "loadingIcon";
 
 export interface ButtonBaseProps
   extends Omit<KButton.ButtonRootProps, "asChild" | "color">,
-    Omit<ButtonVariants, "isDisabled"> {
+    Omit<ButtonVariants, "isDisabled">,
+    SlotProp<ButtonSlots> {
   /** The label to show when the button is in a loading state. */
   loadingText?: string;
 
@@ -36,6 +40,10 @@ export interface ButtonBaseContentProps
     "variant" | "color" | "size" | "isDisabled" | "startIcon" | "endIcon" | "children"
   > {
   isRtl: boolean;
+
+  startIconClass?: string;
+
+  endIconClass?: string;
 }
 
 export interface ButtonBaseIconProps
@@ -44,17 +52,7 @@ export interface ButtonBaseIconProps
     Pick<ButtonBaseProps, "variant" | "color" | "size" | "isIconOnly" | "isDisabled">
   > {}
 
-/* -------------------------------------------------------------------------------------------------
- * Button
- * -----------------------------------------------------------------------------------------------*/
-
 export interface ButtonProps extends Omit<ButtonBaseProps, "isIconOnly"> {}
-
-export type ButtonSlots = "root";
-
-/* -------------------------------------------------------------------------------------------------
- * IconButton
- * -----------------------------------------------------------------------------------------------*/
 
 export interface IconButtonProps
   extends Omit<
@@ -63,12 +61,15 @@ export interface IconButtonProps
   > {}
 
 /* -------------------------------------------------------------------------------------------------
- * LinkButtonBase
+ * LinkButton
  * -----------------------------------------------------------------------------------------------*/
+
+export type LinkButtonSlots = "root" | "startIcon" | "endIcon";
 
 export interface LinkButtonBaseProps
   extends Omit<KLink.LinkRootProps, "color">,
-    Omit<ButtonVariants, "isLoading" | "isDisabled"> {
+    Omit<ButtonVariants, "isLoading" | "isDisabled">,
+    SlotProp<LinkButtonSlots> {
   /** The icon to show before the link button content. */
   startIcon?: JSX.Element;
 
@@ -76,17 +77,7 @@ export interface LinkButtonBaseProps
   endIcon?: JSX.Element;
 }
 
-/* -------------------------------------------------------------------------------------------------
- * LinkButton
- * -----------------------------------------------------------------------------------------------*/
-
 export interface LinkButtonProps extends Omit<LinkButtonBaseProps, "isIconOnly"> {}
-
-export type LinkButtonSlots = "root";
-
-/* -------------------------------------------------------------------------------------------------
- * LinkIconButton
- * -----------------------------------------------------------------------------------------------*/
 
 export interface LinkIconButtonProps
   extends Omit<LinkButtonBaseProps, "isIconOnly" | "startIcon" | "endIcon" | "isFullWidth"> {}

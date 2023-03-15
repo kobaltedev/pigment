@@ -3,7 +3,7 @@ import { callHandler } from "@kobalte/utils";
 import { mergeRefs } from "@solid-primitives/refs";
 import { createMemo, createSignal, JSX, mergeProps, Show, splitProps } from "solid-js";
 
-import { AlertCircleIcon } from "../icons";
+import { ExclamationCircleIcon } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme/theme-context";
 import { cn } from "../utils/cn";
 import { TextFieldProps, TextFieldSlots } from "./text-field.props";
@@ -27,7 +27,7 @@ export function TextField(props: TextFieldProps) {
       size: "sm",
       isInvalid: false,
       isDisabled: false,
-      errorIcon: () => <AlertCircleIcon />,
+      errorIcon: () => <ExclamationCircleIcon />,
     },
     props
   );
@@ -40,6 +40,7 @@ export function TextField(props: TextFieldProps) {
       "ref",
       "id",
       "class",
+      "slotClasses",
       "type",
       "placeholder",
       "descriptionPlacement",
@@ -97,12 +98,20 @@ export function TextField(props: TextFieldProps) {
     return isRtl() ? local.startSection : local.endSection;
   });
 
-  const leftIconThemeClasses = createMemo(() => {
-    return isRtl() ? themeClasses.endIcon : themeClasses.startIcon;
+  const leftIconClass = createMemo(() => {
+    if (isRtl()) {
+      return cn("left-0", themeClasses.endIcon, local.slotClasses?.endIcon);
+    } else {
+      return cn("left-0", themeClasses.startIcon, local.slotClasses?.startIcon);
+    }
   });
 
-  const rightIconThemeClasses = createMemo(() => {
-    return isRtl() ? themeClasses.startIcon : themeClasses.endIcon;
+  const rightIconClass = createMemo(() => {
+    if (isRtl()) {
+      return cn("right-0", themeClasses.startIcon, local.slotClasses?.startIcon);
+    } else {
+      return cn("right-0", themeClasses.endIcon, local.slotClasses?.endIcon);
+    }
   });
 
   const variantProps = mergeProps(
@@ -134,7 +143,12 @@ export function TextField(props: TextFieldProps) {
 
   return (
     <KTextField.Root
-      class={cn("group flex flex-col items-start", themeClasses.root, local.class)}
+      class={cn(
+        "group flex flex-col items-start",
+        themeClasses.root,
+        local.slotClasses?.root,
+        local.class
+      )}
       validationState={variantProps.isInvalid ? "invalid" : undefined}
       isDisabled={variantProps.isDisabled}
       {...others}
@@ -144,7 +158,8 @@ export function TextField(props: TextFieldProps) {
           class={cn(
             "text-sm font-medium text-text-subtle ui-group-disabled:text-disabled-text",
             showTopDescription() ? "mb-0.5" : "mb-1",
-            themeClasses.label
+            themeClasses.label,
+            local.slotClasses?.label
           )}
         >
           {label()}
@@ -157,13 +172,20 @@ export function TextField(props: TextFieldProps) {
         <KTextField.Description
           class={cn(
             "text-xs text-text-subtlest ui-group-disabled:text-disabled-text mb-1",
-            themeClasses.description
+            themeClasses.description,
+            local.slotClasses?.description
           )}
         >
           {description()}
         </KTextField.Description>
       </Show>
-      <div class={cn(textFieldWrapperVariants(variantProps), themeClasses.wrapper)}>
+      <div
+        class={cn(
+          textFieldWrapperVariants(variantProps),
+          themeClasses.wrapper,
+          local.slotClasses?.wrapper
+        )}
+      >
         {leftSection()}
         <div class="relative flex items-center grow h-full">
           <KTextField.Input
@@ -175,6 +197,7 @@ export function TextField(props: TextFieldProps) {
             class={cn(
               textFieldInputVariants(variantProps),
               themeClasses.input,
+              local.slotClasses?.input,
               local.inputProps?.class
             )}
             onFocus={e => {
@@ -187,12 +210,10 @@ export function TextField(props: TextFieldProps) {
             }}
           />
           <Show when={leftIcon()}>
-            <TextFieldIcon class={cn("left-0", leftIconThemeClasses())}>{leftIcon()}</TextFieldIcon>
+            <TextFieldIcon class={leftIconClass()}>{leftIcon()}</TextFieldIcon>
           </Show>
           <Show when={rightIcon()}>
-            <TextFieldIcon class={cn("right-0", rightIconThemeClasses())}>
-              {rightIcon()}
-            </TextFieldIcon>
+            <TextFieldIcon class={rightIconClass()}>{rightIcon()}</TextFieldIcon>
           </Show>
         </div>
         {rightSection()}
@@ -201,7 +222,8 @@ export function TextField(props: TextFieldProps) {
         <KTextField.Description
           class={cn(
             "text-xs text-text-subtlest ui-group-disabled:text-disabled-text mt-1.5",
-            themeClasses.description
+            themeClasses.description,
+            local.slotClasses?.description
           )}
         >
           {description()}
@@ -211,7 +233,8 @@ export function TextField(props: TextFieldProps) {
         <KTextField.ErrorMessage
           class={cn(
             "flex items-center space-x-1 text-xs text-text-danger ui-group-disabled:text-disabled-text mt-1.5",
-            themeClasses.error
+            themeClasses.error,
+            local.slotClasses?.error
           )}
         >
           <Show when={local.hasErrorIcon} fallback={error()}>
@@ -219,7 +242,8 @@ export function TextField(props: TextFieldProps) {
               aria-hidden="true"
               class={cn(
                 "reset-svg text-sm text-icon-danger ui-group-disabled:text-disabled-icon",
-                themeClasses.errorIcon
+                themeClasses.errorIcon,
+                local.slotClasses?.errorIcon
               )}
             >
               {errorIcon()}

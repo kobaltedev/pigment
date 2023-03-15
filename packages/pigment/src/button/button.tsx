@@ -1,6 +1,6 @@
 import { Button as KButton, Link as KLink, useLocale } from "@kobalte/core";
 import { mergeDefaultProps } from "@kobalte/utils";
-import { Show, splitProps } from "solid-js";
+import { createMemo, Show, splitProps } from "solid-js";
 
 import { LoaderIcon } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme/theme-context";
@@ -20,7 +20,7 @@ import {
 import { buttonIconVariants, buttonVariants, loadingContentVariants } from "./button.styles";
 
 /* -------------------------------------------------------------------------------------------------
- * ButtonBase
+ * Button
  * -----------------------------------------------------------------------------------------------*/
 
 function ButtonBase(props: ButtonBaseProps) {
@@ -43,9 +43,18 @@ function ButtonBase(props: ButtonBaseProps) {
   const [local, variantProps, contentProps, loadingIconProps, loadingContentProps, others] =
     splitProps(
       props,
-      ["class", "isLoading", "loadingText", "loadingIcon", "loadingIconPlacement"],
+      [
+        "class",
+        "slotClasses",
+        "startIcon",
+        "endIcon",
+        "isLoading",
+        "loadingText",
+        "loadingIcon",
+        "loadingIconPlacement",
+      ],
       ["variant", "color", "size", "isIconOnly", "isFullWidth", "isLoading", "isDisabled"],
-      ["variant", "color", "size", "isDisabled", "startIcon", "endIcon", "children"],
+      ["variant", "color", "size", "isDisabled", "children"],
       ["variant", "color", "size", "isIconOnly", "isDisabled"],
       ["size"]
     );
@@ -63,12 +72,24 @@ function ButtonBase(props: ButtonBaseProps) {
   };
 
   const content = () => {
-    return <ButtonBaseContent isRtl={isRtl()} {...contentProps} />;
+    return (
+      <ButtonBaseContent
+        isRtl={direction() === "rtl"}
+        startIconClass={cn(themeClasses.startIcon, local.slotClasses?.startIcon)}
+        endIconClass={cn(themeClasses.endIcon, local.slotClasses?.endIcon)}
+        {...contentProps}
+      />
+    );
   };
 
   return (
     <KButton.Root
-      class={cn(buttonVariants(variantProps), themeClasses.root, local.class)}
+      class={cn(
+        buttonVariants(variantProps),
+        themeClasses.root,
+        local.slotClasses?.root,
+        local.class
+      )}
       isDisabled={variantProps.isDisabled}
       {...others}
     >
@@ -77,24 +98,28 @@ function ButtonBase(props: ButtonBaseProps) {
           when={local.loadingText}
           fallback={
             <>
-              <ButtonBaseLoadingIcon class="absolute" {...loadingIconProps} />
+              <ButtonBaseLoadingIcon
+                class={cn("absolute", themeClasses.loadingIcon, local.slotClasses?.loadingIcon)}
+                {...loadingIconProps}
+              />
               <Show when={!variantProps.isIconOnly}>
                 <span class={loadingContentVariants(loadingContentProps)}>{content()}</span>
               </Show>
             </>
           }
         >
-          <Show
-            when={isLoadingIconLeft()}
-            fallback={
-              <>
-                {local.loadingText}
-                <ButtonBaseLoadingIcon {...loadingIconProps} />
-              </>
-            }
-          >
-            <ButtonBaseLoadingIcon {...loadingIconProps} />
-            {local.loadingText}
+          <Show when={isLoadingIconLeft()}>
+            <ButtonBaseLoadingIcon
+              class={cn(themeClasses.loadingIcon, local.slotClasses?.loadingIcon)}
+              {...loadingIconProps}
+            />
+          </Show>
+          {local.loadingText}
+          <Show when={!isLoadingIconLeft()}>
+            <ButtonBaseLoadingIcon
+              class={cn(themeClasses.loadingIcon, local.slotClasses?.loadingIcon)}
+              {...loadingIconProps}
+            />
           </Show>
         </Show>
       </Show>
@@ -105,24 +130,32 @@ function ButtonBase(props: ButtonBaseProps) {
 function ButtonBaseContent(props: ButtonBaseContentProps) {
   const [iconProps] = splitProps(props, ["variant", "color", "size", "isDisabled"]);
 
-  const leftIcon = () => {
+  const leftIcon = createMemo(() => {
     return props.isRtl ? props.endIcon : props.startIcon;
+  });
+
+  const rightIcon = createMemo(() => {
+    return props.isRtl ? props.startIcon : props.endIcon;
+  });
+
+  const leftIconClass = () => {
+    return props.isRtl ? props.endIconClass : props.startIconClass;
   };
 
-  const rightIcon = () => {
-    return props.isRtl ? props.startIcon : props.endIcon;
+  const rightIconClass = () => {
+    return props.isRtl ? props.startIconClass : props.endIconClass;
   };
 
   return (
     <>
       <Show when={leftIcon()}>
-        <ButtonBaseIcon isIconOnly={false} {...iconProps}>
+        <ButtonBaseIcon class={leftIconClass()} isIconOnly={false} {...iconProps}>
           {leftIcon()}
         </ButtonBaseIcon>
       </Show>
       {props.children}
       <Show when={rightIcon()}>
-        <ButtonBaseIcon isIconOnly={false} {...iconProps}>
+        <ButtonBaseIcon class={rightIconClass()} isIconOnly={false} {...iconProps}>
           {rightIcon()}
         </ButtonBaseIcon>
       </Show>
@@ -157,24 +190,16 @@ function ButtonBaseLoadingIcon(props: ButtonBaseIconProps) {
   return <ButtonBaseIcon {...props} />;
 }
 
-/* -------------------------------------------------------------------------------------------------
- * Button
- * -----------------------------------------------------------------------------------------------*/
-
 export function Button(props: ButtonProps) {
   return <ButtonBase isIconOnly={false} {...props} />;
 }
-
-/* -------------------------------------------------------------------------------------------------
- * IconButton
- * -----------------------------------------------------------------------------------------------*/
 
 export function IconButton(props: IconButtonProps) {
   return <ButtonBase isIconOnly {...props} />;
 }
 
 /* -------------------------------------------------------------------------------------------------
- * LinkButtonBase
+ * LinkButton
  * -----------------------------------------------------------------------------------------------*/
 
 function LinkButtonBase(props: LinkButtonBaseProps) {
@@ -195,7 +220,7 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
 
   const [local, variantProps, contentProps, others] = splitProps(
     props,
-    ["class"],
+    ["class", "slotClasses"],
     ["variant", "color", "size", "isIconOnly", "isFullWidth", "isDisabled"],
     ["variant", "color", "size", "isDisabled", "startIcon", "endIcon", "children"]
   );
@@ -204,26 +229,28 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
 
   return (
     <KLink.Root
-      class={cn(buttonVariants(variantProps), themeClasses.root, local.class)}
+      class={cn(
+        buttonVariants(variantProps),
+        themeClasses.root,
+        local.slotClasses?.root,
+        local.class
+      )}
       isDisabled={variantProps.isDisabled}
       {...others}
     >
-      <ButtonBaseContent isRtl={direction() === "rtl"} {...contentProps} />
+      <ButtonBaseContent
+        isRtl={direction() === "rtl"}
+        startIconClass={cn(themeClasses.startIcon, local.slotClasses?.startIcon)}
+        endIconClass={cn(themeClasses.endIcon, local.slotClasses?.endIcon)}
+        {...contentProps}
+      />
     </KLink.Root>
   );
 }
 
-/* -------------------------------------------------------------------------------------------------
- * LinkButton
- * -----------------------------------------------------------------------------------------------*/
-
 export function LinkButton(props: LinkButtonProps) {
   return <LinkButtonBase isIconOnly={false} {...props} />;
 }
-
-/* -------------------------------------------------------------------------------------------------
- * LinkIconButton
- * -----------------------------------------------------------------------------------------------*/
 
 export function LinkIconButton(props: LinkIconButtonProps) {
   return <LinkButtonBase isIconOnly {...props} />;

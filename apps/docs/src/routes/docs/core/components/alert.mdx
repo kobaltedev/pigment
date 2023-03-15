@@ -1,13 +1,10 @@
-import { Alert } from "@kobalte/pigment";
-
 import { Preview } from "../../../../components";
 import {
   BasicUsage,
-  WithSingleLine,
+  WithMultiline,
   WithVariants,
   WithStatuses,
   WithDismissButton,
-  WithComposition,
 } from "../../../../examples/alert";
 
 # Alert
@@ -28,23 +25,23 @@ import { Alert } from "@kobalte/pigment";
 
 ```tsx
 <Alert variant="soft" status="info" title="Software update">
-  A new software update is available. See what's new in version 1.0.
+  A new software update is available.
 </Alert>
 ```
 
-## Single line
+### Multiline
 
 <Preview isCentered={false}>
-  <WithSingleLine />
+  <WithMultiline />
 </Preview>
 
 ```tsx
-<Alert variant="soft" status="info" title="Software update" isSingleLine>
-  A new software update is available. See what's new in version 1.0.
+<Alert variant="soft" status="info" title="Software update" isMultiline>
+  A new software update is available.
 </Alert>
 ```
 
-## Variants
+### Variants
 
 <Preview isCentered={false}>
   <WithVariants />
@@ -53,15 +50,15 @@ import { Alert } from "@kobalte/pigment";
 ```tsx
 <div class="flex flex-col space-y-4">
   <Alert variant="solid" status="info" title="Software update">
-    A new software update is available. See what's new in version 1.0.
+    A new software update is available.
   </Alert>
   <Alert variant="soft" status="info" title="Software update">
-    A new software update is available. See what's new in version 1.0.
+    A new software update is available.
   </Alert>
 </div>
 ```
 
-## Statuses
+### Statuses
 
 <Preview isCentered={false}>
   <WithStatuses />
@@ -69,25 +66,25 @@ import { Alert } from "@kobalte/pigment";
 
 ```tsx
 <div class="flex flex-col space-y-4">
-  <Alert variant="soft" status="success" title="Well done">
+  <Alert variant="soft" status="success" title="Well done.">
     The data has been successfully saved on our server.
   </Alert>
-  <Alert variant="soft" status="info" title="Software update">
-    A new software update is available. See what's new in version 1.0.
+  <Alert variant="soft" status="info" title="Software update.">
+    A new software update is available.
   </Alert>
-  <Alert variant="soft" status="warning" title="Attention needed">
-    Your registration token is about to expire, sign up now.
+  <Alert variant="soft" status="warning" title="Attention needed.">
+    Your registration token is about to expire.
   </Alert>
-  <Alert variant="soft" status="danger" title="Something went wrong">
+  <Alert variant="soft" status="danger" title="Something went wrong.">
     There was an error processing your request.
   </Alert>
-  <Alert variant="soft" status="help" title="What's new in 1.0">
+  <Alert variant="soft" status="help" title="What's new in 1.0.">
     Learn about the exciting new features in the next major release.
   </Alert>
 </div>
 ```
 
-## Dismissible alerts
+### Dismissible alerts
 
 <Preview isCentered={false}>
   <WithDismissButton />
@@ -99,16 +96,11 @@ import { Alert } from "@kobalte/pigment";
   status="info"
   title="Software update"
   isDismissible
+  dismissButtonLabel="Close"
   onDismiss={() => alert("dismissed")}
 >
-  A new software update is available. See what's new in version 1.0.
+  A new software update is available.
 </Alert>
 ```
-
-## Composition
-
-<Preview isCentered={false}>
-  <WithComposition />
-</Preview>
 
 ## API Reference

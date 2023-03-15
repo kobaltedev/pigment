@@ -1,11 +1,24 @@
 import { TextField as KTextField } from "@kobalte/core";
 import { ComponentProps, JSX, Ref } from "solid-js";
 
+import { SlotProp } from "../utils/slot";
 import { TextFieldWrapperVariants } from "./text-field.styles";
+
+export type TextFieldSlots =
+  | "root"
+  | "label"
+  | "wrapper"
+  | "input"
+  | "startIcon"
+  | "endIcon"
+  | "description"
+  | "error"
+  | "errorIcon";
 
 export interface TextFieldProps
   extends Omit<KTextField.TextFieldRootProps, "ref" | "validationState">,
-    Omit<TextFieldWrapperVariants, "isFocused" | "isDisabled"> {
+    Omit<TextFieldWrapperVariants, "isFocused" | "isDisabled">,
+    SlotProp<TextFieldSlots> {
   /** A ref to the inner `<input>` element. */
   ref: Ref<HTMLInputElement>;
 
@@ -51,14 +64,3 @@ export interface TextFieldProps
   /** The section to show after the text field end icon and content. */
   endSection?: JSX.Element;
 }
-
-export type TextFieldSlots =
-  | "root"
-  | "label"
-  | "wrapper"
-  | "input"
-  | "startIcon"
-  | "endIcon"
-  | "description"
-  | "error"
-  | "errorIcon";

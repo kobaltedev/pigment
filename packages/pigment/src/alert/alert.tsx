@@ -3,10 +3,10 @@ import { children, createMemo, Show, splitProps } from "solid-js";
 
 import { CloseButton } from "../close-button";
 import {
-  AlertCircleIcon,
-  AlertTriangleIcon,
+  ExclamationCircleIcon,
+  ExclamationTriangleIcon,
   CheckCircleIcon,
-  HelpCircleIcon,
+  QuestionMarkCircleIcon,
   InfoCircleIcon,
 } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme/theme-context";
@@ -22,12 +22,12 @@ export function Alert(props: AlertProps) {
       status: "info",
       hasIcon: true,
       isDismissible: false,
-      isSingleLine: false,
+      isMultiline: false,
       successIcon: () => <CheckCircleIcon />,
       infoIcon: () => <InfoCircleIcon />,
-      warningIcon: () => <AlertTriangleIcon />,
-      dangerIcon: () => <AlertCircleIcon />,
-      helpIcon: () => <HelpCircleIcon />,
+      warningIcon: () => <ExclamationTriangleIcon />,
+      dangerIcon: () => <ExclamationCircleIcon />,
+      helpIcon: () => <QuestionMarkCircleIcon />,
     },
     props
   );
@@ -39,6 +39,7 @@ export function Alert(props: AlertProps) {
     [
       "class",
       "children",
+      "slotClasses",
       "title",
       "dismissButtonLabel",
       "successIcon",
@@ -48,7 +49,7 @@ export function Alert(props: AlertProps) {
       "helpIcon",
       "onDismiss",
     ],
-    ["variant", "status", "hasIcon", "isDismissible", "isSingleLine"]
+    ["variant", "status", "hasIcon", "isDismissible", "isMultiline"]
   );
 
   const title = createMemo(() => local.title);
@@ -56,20 +57,38 @@ export function Alert(props: AlertProps) {
 
   return (
     <KAlert.Root
-      class={cn(alertVariants(variantProps), themeClasses.root, local.class)}
+      class={cn(
+        alertVariants(variantProps),
+        themeClasses.root,
+        local.slotClasses?.root,
+        local.class
+      )}
       {...others}
     >
       <Show when={variantProps.hasIcon}>
-        <div class={cn(alertIconVariants(variantProps), themeClasses.icon)} aria-hidden="true">
+        <div
+          class={cn(alertIconVariants(variantProps), themeClasses.icon, local.slotClasses?.icon)}
+          aria-hidden="true"
+        >
           {variantProps.status != null && local[`${variantProps.status}Icon`]}
         </div>
       </Show>
-      <div class={cn(alertContentVariants(variantProps), themeClasses.content)}>
+      <div
+        class={cn(
+          alertContentVariants(variantProps),
+          themeClasses.content,
+          local.slotClasses?.content
+        )}
+      >
         <Show when={title()}>
-          <div class={cn("font-semibold", themeClasses.title)}>{title()}</div>
+          <div class={cn("font-semibold", themeClasses.title, local.slotClasses?.title)}>
+            {title()}
+          </div>
         </Show>
         <Show when={description()}>
-          <div class={cn("grow", themeClasses.description)}>{description()}</div>
+          <div class={cn("grow", themeClasses.description, local.slotClasses?.description)}>
+            {description()}
+          </div>
         </Show>
       </div>
       <Show when={variantProps.isDismissible}>
@@ -77,7 +96,7 @@ export function Alert(props: AlertProps) {
           inheritTextColor
           size="xs"
           aria-label={local.dismissButtonLabel}
-          class={cn("shrink-0", themeClasses.dismissButton)}
+          class={cn("shrink-0", themeClasses.dismissButton, local.slotClasses?.dismissButton)}
           onClick={local.onDismiss}
         />
       </Show>

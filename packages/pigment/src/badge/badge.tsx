@@ -19,12 +19,21 @@ export function Badge(props: BadgeProps) {
 
   const themeClasses = useThemeClasses<BadgeSlots>("Badge", props);
 
-  const [local, variantProps, others] = splitProps(props, ["class"], ["variant", "color", "size"]);
+  const [local, variantProps, others] = splitProps(
+    props,
+    ["class", "slotClasses"],
+    ["variant", "color", "size"]
+  );
 
   return (
     <Polymorphic
       fallback="span"
-      class={cn(badgeVariants(variantProps), themeClasses.root, local.class)}
+      class={cn(
+        badgeVariants(variantProps),
+        themeClasses.root,
+        local.slotClasses?.root,
+        local.class
+      )}
       {...others}
     />
   );

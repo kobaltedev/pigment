@@ -21,9 +21,9 @@ export const alertVariants = cva(["flex space-x-1.5 py-3 border border-solid rou
       true: "pr-2",
       false: "pr-4",
     },
-    isSingleLine: {
-      true: "items-center",
-      false: "items-start",
+    isMultiline: {
+      true: "items-start",
+      false: "items-center",
     },
   },
   compoundVariants: [
@@ -86,19 +86,19 @@ export const alertVariants = cva(["flex space-x-1.5 py-3 border border-solid rou
     status: "info",
     hasIcon: true,
     isDismissible: false,
-    isSingleLine: false,
+    isMultiline: false,
   },
 });
 
 export const alertContentVariants = cva("flex grow", {
   variants: {
-    isSingleLine: {
-      true: "items-center space-x-2",
-      false: "flex-col space-y-1 py-1",
+    isMultiline: {
+      true: "flex-col space-y-1 py-1",
+      false: "flex-row items-center space-x-1",
     },
   },
   defaultVariants: {
-    isSingleLine: false,
+    isMultiline: false,
   },
 });
 

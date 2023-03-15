@@ -2,8 +2,14 @@ import { Alert as KAlert } from "@kobalte/core";
 import { JSX } from "solid-js";
 
 import { AlertVariants } from "./alert.styles";
+import { SlotProp } from "../utils/slot";
 
-export interface AlertProps extends Omit<KAlert.AlertRootProps, "title">, AlertVariants {
+export type AlertSlots = "root" | "icon" | "content" | "title" | "description" | "dismissButton";
+
+export interface AlertProps
+  extends Omit<KAlert.AlertRootProps, "title">,
+    AlertVariants,
+    SlotProp<AlertSlots> {
   /** The title of the alert. */
   title?: JSX.Element;
 
@@ -28,5 +34,3 @@ export interface AlertProps extends Omit<KAlert.AlertRootProps, "title">, AlertV
   /** Event handler called when the dismiss button is clicked. */
   onDismiss?: () => void;
 }
-
-export type AlertSlots = "root" | "icon" | "content" | "title" | "description" | "dismissButton";

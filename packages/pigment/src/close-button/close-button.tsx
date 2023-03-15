@@ -27,7 +27,7 @@ export function CloseButton(props: CloseButtonProps) {
 
   const [local, variantProps, others] = splitProps(
     props,
-    ["class", "aria-label"],
+    ["class", "slotClasses", "aria-label"],
     ["size", "inheritTextColor", "isDisabled"]
   );
 
@@ -35,7 +35,12 @@ export function CloseButton(props: CloseButtonProps) {
 
   return (
     <KButton.Root
-      class={cn(closeButtonVariants(variantProps), themeClasses.root, local.class)}
+      class={cn(
+        closeButtonVariants(variantProps),
+        themeClasses.root,
+        local.slotClasses?.root,
+        local.class
+      )}
       aria-label={local["aria-label"] || stringFormatter().format("dismiss")}
       isDisabled={variantProps.isDisabled}
       {...others}
