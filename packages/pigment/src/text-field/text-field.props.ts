@@ -19,8 +19,8 @@ export interface TextFieldProps
   extends Omit<KTextField.TextFieldRootProps, "ref" | "validationState">,
     Omit<TextFieldWrapperVariants, "isFocused" | "isDisabled">,
     SlotProp<TextFieldSlots> {
-  /** A ref to the inner `<input>` element. */
-  ref: Ref<HTMLInputElement>;
+  /** A ref to the inner `<input>` or `<textarea>` element. */
+  ref: Ref<HTMLInputElement | HTMLTextAreaElement>;
 
   /** The type of content handled by the text field. */
   type?: "text" | "email" | "tel" | "password" | "url" | "number" | "date" | string;
@@ -31,8 +31,11 @@ export interface TextFieldProps
   /** Whether the description should appear above or below the input. */
   descriptionPlacement?: "top" | "bottom";
 
-  /** Additional props to be spread on the inner `<input>` element. */
-  inputProps?: ComponentProps<"input">;
+  /** Additional props to be spread on the inner `<input>` or `<textarea>` element. */
+  inputProps?: ComponentProps<"input"> | ComponentProps<"textarea">;
+
+  /** Whether the text field should render a `<textarea>` instead of an `<input>`. */
+  isMultiline?: boolean;
 
   /** The label that gives the user information on the text field. */
   label?: JSX.Element;

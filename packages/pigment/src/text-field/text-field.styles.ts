@@ -74,10 +74,7 @@ export const textFieldWrapperVariants = cva(
       {
         isInvalid: true,
         isDisabled: false,
-        class: [
-          "text-text-danger",
-          "border-solid-danger-border hover:border-solid-danger-border-hover active:border-solid-danger-border-active",
-        ],
+        class: "text-text-danger border-solid-danger-border",
       },
 
       // variant + disabled
@@ -176,6 +173,91 @@ export const textFieldInputVariants = cva(
       hasRightIcon: false,
       hasLeftSection: false,
       hasRightSection: false,
+    },
+  }
+);
+
+export const textFieldTextAreaVariants = cva(
+  [
+    "appearance-none grow h-full m-0 resize",
+    "border border-solid transition-colors",
+    "outline-none focus-visible:border-focus-ring",
+  ],
+  {
+    variants: {
+      variant: {
+        soft: "bg-soft-input-bg hover:bg-soft-input-bg-hover active:bg-soft-input-bg-active",
+        outlined:
+          "bg-outlined-input-bg hover:bg-outlined-input-bg-hover active:bg-outlined-input-bg-active",
+      },
+      size: {
+        xs: "px-2 py-2 rounded text-sm",
+        sm: "px-2.5 py-2.5 rounded-md text-sm",
+        md: "px-3.5 py-3.5 rounded-md text-base",
+      },
+      isInvalid: {
+        true: "",
+        false: "",
+      },
+      isDisabled: {
+        true: "ui-disabled:placeholder:text-disabled-text ui-disabled:cursor-not-allowed ui-disabled:select-none",
+        false: "",
+      },
+    },
+    compoundVariants: [
+      // variant + text colors
+      {
+        variant: "soft",
+        isInvalid: false,
+        isDisabled: false,
+        class: [
+          "text-soft-input-text hover:text-soft-input-text-hover active:text-soft-input-text-active",
+          "border-soft-input-border hover:border-soft-input-border-hover active:border-soft-input-border-active",
+        ],
+      },
+      {
+        variant: "outlined",
+        isInvalid: false,
+        isDisabled: false,
+        class: [
+          "text-outlined-input-text hover:text-outlined-input-text-hover active:text-outlined-input-text-active",
+          "border-outlined-input-border hover:border-outlined-input-border-hover active:border-outlined-input-border-active",
+        ],
+      },
+
+      // all variants + invalid colors
+      {
+        isInvalid: true,
+        isDisabled: false,
+        class: "text-text-danger border-solid-danger-border",
+      },
+
+      // variant + disabled
+      {
+        variant: "soft",
+        isDisabled: true,
+        class: "ui-group-disabled:bg-disabled-bg ui-group-disabled:border-transparent",
+      },
+      {
+        variant: "outlined",
+        isDisabled: true,
+        class: "ui-group-disabled:bg-transparent ui-group-disabled:border-disabled-border",
+      },
+
+      // variant + not disabled
+      {
+        variant: "soft",
+        isDisabled: false,
+        class: "placeholder:text-text-subtlest",
+      },
+      {
+        variant: "outlined",
+        isDisabled: false,
+        class: "placeholder:text-text-dimmed",
+      },
+    ],
+    defaultVariants: {
+      size: "sm",
     },
   }
 );

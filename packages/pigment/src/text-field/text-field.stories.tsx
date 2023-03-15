@@ -35,6 +35,9 @@ export default {
     isDisabled: {
       control: { type: "boolean" },
     },
+    isMultiline: {
+      control: { type: "boolean" },
+    },
     placeholder: {
       control: { type: "text" },
     },
@@ -60,6 +63,7 @@ export const Default: Story = {
     isInvalid: false,
     isRequired: false,
     isDisabled: false,
+    isMultiline: false,
     placeholder: "example@acme.com",
     label: "E-mail",
     description: "We will never share your email.",
@@ -76,6 +80,7 @@ export const WithIcon: Story = {
     isInvalid: false,
     isRequired: false,
     isDisabled: false,
+    isMultiline: false,
     placeholder: "example@acme.com",
     label: "E-mail",
     description: "We will never share your email.",
@@ -94,13 +99,14 @@ export const WithSection: Story = {
     isInvalid: false,
     isRequired: false,
     isDisabled: false,
+    isMultiline: false,
     placeholder: "example@acme.com",
     label: "E-mail",
     description: "We will never share your email.",
     error: "Please enter a valid email address.",
     startSection: () => <span class="mx-2">http://</span>,
     endSection: () => (
-      <Button size="sm" variant="solid" colorScheme="neutral" class="rounded-l-none z-10 ml-2">
+      <Button size="sm" variant="solid" color="neutral" class="rounded-l-none z-10 ml-2">
         Search
       </Button>
     ),
@@ -116,6 +122,7 @@ export const WithIconAndSection: Story = {
     isInvalid: false,
     isRequired: false,
     isDisabled: false,
+    isMultiline: false,
     placeholder: "example@acme.com",
     label: "E-mail",
     description: "We will never share your email.",
@@ -124,7 +131,7 @@ export const WithIconAndSection: Story = {
     endIcon: () => <InfoCircleIcon />,
     startSection: () => <span class="ml-2">http://</span>,
     endSection: () => (
-      <Button size="sm" variant="solid" colorScheme="neutral" class="rounded-l-none z-10">
+      <Button size="sm" variant="solid" color="neutral" class="rounded-l-none z-10">
         Search
       </Button>
     ),

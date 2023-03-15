@@ -1,7 +1,15 @@
 import { TextField as KTextField, useLocale } from "@kobalte/core";
 import { callHandler } from "@kobalte/utils";
 import { mergeRefs } from "@solid-primitives/refs";
-import { createMemo, createSignal, JSX, mergeProps, Show, splitProps } from "solid-js";
+import {
+  ComponentProps,
+  createMemo,
+  createSignal,
+  JSX,
+  mergeProps,
+  Show,
+  splitProps,
+} from "solid-js";
 
 import { ExclamationCircleIcon } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme/theme-context";
@@ -10,11 +18,12 @@ import { TextFieldProps, TextFieldSlots } from "./text-field.props";
 import {
   textFieldIconVariants,
   textFieldInputVariants,
+  textFieldTextAreaVariants,
   textFieldWrapperVariants,
 } from "./text-field.styles";
 
 export function TextField(props: TextFieldProps) {
-  let ref: HTMLInputElement | undefined;
+  let ref: HTMLInputElement | HTMLTextAreaElement | undefined;
 
   props = mergeThemeProps(
     "TextField",
@@ -45,6 +54,7 @@ export function TextField(props: TextFieldProps) {
       "placeholder",
       "descriptionPlacement",
       "inputProps",
+      "isMultiline",
       "label",
       "description",
       "error",
@@ -179,45 +189,68 @@ export function TextField(props: TextFieldProps) {
           {description()}
         </KTextField.Description>
       </Show>
-      <div
-        class={cn(
-          textFieldWrapperVariants(variantProps),
-          themeClasses.wrapper,
-          local.slotClasses?.wrapper
-        )}
-      >
-        {leftSection()}
-        <div class="relative flex items-center grow h-full">
-          <KTextField.Input
-            {...local.inputProps}
+      <Show
+        when={!local.isMultiline}
+        fallback={
+          <KTextField.TextArea
+            {...(local.inputProps as ComponentProps<"textarea">)}
             ref={mergeRefs(el => (ref = el), local.ref)}
             id={local.id}
-            type={local.type}
             placeholder={local.placeholder}
+            //autoResize
             class={cn(
-              textFieldInputVariants(variantProps),
+              textFieldTextAreaVariants(variantProps),
               themeClasses.input,
               local.slotClasses?.input,
               local.inputProps?.class
             )}
-            onFocus={e => {
-              local.inputProps?.onFocus && callHandler(e, local.inputProps.onFocus);
-              setIsFocused(true);
-            }}
-            onBlur={e => {
-              local.inputProps?.onBlur && callHandler(e, local.inputProps.onBlur);
-              setIsFocused(false);
-            }}
           />
-          <Show when={leftIcon()}>
-            <TextFieldIcon class={leftIconClass()}>{leftIcon()}</TextFieldIcon>
-          </Show>
-          <Show when={rightIcon()}>
-            <TextFieldIcon class={rightIconClass()}>{rightIcon()}</TextFieldIcon>
-          </Show>
+        }
+      >
+        <div
+          class={cn(
+            textFieldWrapperVariants(variantProps),
+            themeClasses.wrapper,
+            local.slotClasses?.wrapper
+          )}
+        >
+          {leftSection()}
+          <div class="relative flex items-center grow h-full">
+            <KTextField.Input
+              {...(local.inputProps as ComponentProps<"input">)}
+              ref={mergeRefs(el => (ref = el), local.ref)}
+              id={local.id}
+              type={local.type}
+              placeholder={local.placeholder}
+              class={cn(
+                textFieldInputVariants(variantProps),
+                themeClasses.input,
+                local.slotClasses?.input,
+                local.inputProps?.class
+              )}
+              onFocus={e => {
+                if (local.inputProps?.onFocus) {
+                  callHandler(e, local.inputProps.onFocus as ComponentProps<"input">["onFocus"]);
+                }
+                setIsFocused(true);
+              }}
+              onBlur={e => {
+                if (local.inputProps?.onBlur) {
+                  callHandler(e, local.inputProps.onBlur as ComponentProps<"input">["onBlur"]);
+                }
+                setIsFocused(false);
+              }}
+            />
+            <Show when={leftIcon()}>
+              <TextFieldIcon class={leftIconClass()}>{leftIcon()}</TextFieldIcon>
+            </Show>
+            <Show when={rightIcon()}>
+              <TextFieldIcon class={rightIconClass()}>{rightIcon()}</TextFieldIcon>
+            </Show>
+          </div>
+          {rightSection()}
         </div>
-        {rightSection()}
-      </div>
+      </Show>
       <Show when={showBottomDescription()}>
         <KTextField.Description
           class={cn(
