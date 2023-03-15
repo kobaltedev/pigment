@@ -3,11 +3,12 @@ import { children, createMemo, Show, splitProps } from "solid-js";
 
 import { CloseButton } from "../close-button";
 import {
+  CheckCircleIcon,
   ExclamationCircleIcon,
   ExclamationTriangleIcon,
-  CheckCircleIcon,
-  QuestionMarkCircleIcon,
   InfoCircleIcon,
+  LifeBuoyIcon,
+  QuestionMarkCircleIcon,
 } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme/theme-context";
 import { cn } from "../utils/cn";
@@ -23,6 +24,7 @@ export function Alert(props: AlertProps) {
       hasIcon: true,
       isDismissible: false,
       isMultiline: false,
+      neutralIcon: () => <LifeBuoyIcon />,
       successIcon: () => <CheckCircleIcon />,
       infoIcon: () => <InfoCircleIcon />,
       warningIcon: () => <ExclamationTriangleIcon />,
@@ -42,6 +44,7 @@ export function Alert(props: AlertProps) {
       "slotClasses",
       "title",
       "dismissButtonLabel",
+      "neutralIcon",
       "successIcon",
       "infoIcon",
       "warningIcon",

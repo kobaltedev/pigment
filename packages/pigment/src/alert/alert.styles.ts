@@ -7,6 +7,7 @@ export const alertVariants = cva(["flex space-x-1.5 py-3 border border-solid rou
       soft: "",
     },
     status: {
+      neutral: "",
       success: "",
       info: "",
       warning: "",
@@ -28,6 +29,11 @@ export const alertVariants = cva(["flex space-x-1.5 py-3 border border-solid rou
   },
   compoundVariants: [
     // solid + colors
+    {
+      variant: "solid",
+      status: "neutral",
+      class: "text-solid-neutral-text bg-solid-neutral-bg border-solid-neutral-border",
+    },
     {
       variant: "solid",
       status: "success",
@@ -57,6 +63,11 @@ export const alertVariants = cva(["flex space-x-1.5 py-3 border border-solid rou
     // soft + colors
     {
       variant: "soft",
+      status: "neutral",
+      class: "text-soft-neutral-text bg-soft-neutral-bg border-soft-neutral-border",
+    },
+    {
+      variant: "soft",
       status: "success",
       class: "text-soft-success-text bg-soft-success-bg border-soft-success-border",
     },
@@ -81,13 +92,6 @@ export const alertVariants = cva(["flex space-x-1.5 py-3 border border-solid rou
       class: "text-soft-help-text bg-soft-help-bg border-soft-help-border",
     },
   ],
-  defaultVariants: {
-    variant: "soft",
-    status: "info",
-    hasIcon: true,
-    isDismissible: false,
-    isMultiline: false,
-  },
 });
 
 export const alertContentVariants = cva("flex grow", {
@@ -96,9 +100,6 @@ export const alertContentVariants = cva("flex grow", {
       true: "flex-col space-y-1 py-1",
       false: "flex-row items-center space-x-1",
     },
-  },
-  defaultVariants: {
-    isMultiline: false,
   },
 });
 
@@ -111,6 +112,7 @@ export const alertIconVariants = cva(
         soft: "",
       },
       status: {
+        neutral: "",
         success: "",
         info: "",
         warning: "",
@@ -120,6 +122,7 @@ export const alertIconVariants = cva(
     },
     compoundVariants: [
       // solid + colors
+      { variant: "solid", status: "neutral", class: "text-solid-neutral-icon" },
       { variant: "solid", status: "success", class: "text-solid-success-icon" },
       { variant: "solid", status: "info", class: "text-solid-info-icon" },
       { variant: "solid", status: "warning", class: "text-solid-warning-icon" },
@@ -127,16 +130,13 @@ export const alertIconVariants = cva(
       { variant: "solid", status: "help", class: ["text-solid-help-icon"] },
 
       // soft + colors
+      { variant: "soft", status: "neutral", class: "text-soft-neutral-icon" },
       { variant: "soft", status: "success", class: "text-soft-success-icon" },
       { variant: "soft", status: "info", class: "text-soft-info-icon" },
       { variant: "soft", status: "warning", class: "text-soft-warning-icon" },
       { variant: "soft", status: "danger", class: "text-soft-danger-icon" },
       { variant: "soft", status: "help", class: "text-soft-help-icon" },
     ],
-    defaultVariants: {
-      variant: "soft",
-      status: "info",
-    },
   }
 );
 

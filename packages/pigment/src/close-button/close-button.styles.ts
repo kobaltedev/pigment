@@ -27,11 +27,6 @@ export const closeButtonVariants = cva(
         false: "active:scale-95",
       },
     },
-    defaultVariants: {
-      size: "sm",
-      inheritTextColor: false,
-      isDisabled: false,
-    },
   }
 );
 

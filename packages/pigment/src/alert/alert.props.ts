@@ -1,8 +1,8 @@
 import { Alert as KAlert } from "@kobalte/core";
 import { JSX } from "solid-js";
 
-import { AlertVariants } from "./alert.styles";
 import { SlotProp } from "../utils/slot";
+import { AlertVariants } from "./alert.styles";
 
 export type AlertSlots = "root" | "icon" | "content" | "title" | "description" | "dismissButton";
 
@@ -15,6 +15,9 @@ export interface AlertProps
 
   /** An accessible label for the dismiss button. */
   dismissButtonLabel?: string;
+
+  /** The icon to show when the alert has a `neutral` status. */
+  neutralIcon?: JSX.Element;
 
   /** The icon to show when the alert has a `success` status. */
   successIcon?: JSX.Element;

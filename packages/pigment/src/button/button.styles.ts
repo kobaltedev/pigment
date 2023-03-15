@@ -19,8 +19,11 @@ export const buttonVariants = cva(
       color: {
         primary: "",
         neutral: "",
+        success: "",
+        info: "",
         warning: "",
         danger: "",
+        help: "",
       },
       size: {
         xs: "h-7 gap-1 rounded",
@@ -67,6 +70,26 @@ export const buttonVariants = cva(
       },
       {
         variant: "solid",
+        color: "success",
+        isDisabled: false,
+        class: [
+          "text-solid-success-text hover:text-solid-success-text-hover active:text-solid-success-text-active",
+          "bg-solid-success-bg hover:bg-solid-success-bg-hover active:bg-solid-success-bg-active",
+          "border-solid-success-border hover:border-solid-success-border-hover active:border-solid-success-border-active",
+        ],
+      },
+      {
+        variant: "solid",
+        color: "info",
+        isDisabled: false,
+        class: [
+          "text-solid-info-text hover:text-solid-info-text-hover active:text-solid-info-text-active",
+          "bg-solid-info-bg hover:bg-solid-info-bg-hover active:bg-solid-info-bg-active",
+          "border-solid-info-border hover:border-solid-info-border-hover active:border-solid-info-border-active",
+        ],
+      },
+      {
+        variant: "solid",
         color: "warning",
         isDisabled: false,
         class: [
@@ -83,6 +106,16 @@ export const buttonVariants = cva(
           "text-solid-danger-text hover:text-solid-danger-text-hover active:text-solid-danger-text-active",
           "bg-solid-danger-bg hover:bg-solid-danger-bg-hover active:bg-solid-danger-bg-active",
           "border-solid-danger-border hover:border-solid-danger-border-hover active:border-solid-danger-border-active",
+        ],
+      },
+      {
+        variant: "solid",
+        color: "help",
+        isDisabled: false,
+        class: [
+          "text-solid-help-text hover:text-solid-help-text-hover active:text-solid-help-text-active",
+          "bg-solid-help-bg hover:bg-solid-help-bg-hover active:bg-solid-help-bg-active",
+          "border-solid-help-border hover:border-solid-help-border-hover active:border-solid-help-border-active",
         ],
       },
 
@@ -109,6 +142,26 @@ export const buttonVariants = cva(
       },
       {
         variant: "soft",
+        color: "success",
+        isDisabled: false,
+        class: [
+          "text-soft-success-text hover:text-soft-success-text-hover active:text-soft-success-text-active",
+          "bg-soft-success-bg hover:bg-soft-success-bg-hover active:bg-soft-success-bg-active",
+          "border-soft-success-border hover:border-soft-success-border-hover active:border-soft-success-border-active",
+        ],
+      },
+      {
+        variant: "soft",
+        color: "info",
+        isDisabled: false,
+        class: [
+          "text-soft-info-text hover:text-soft-info-text-hover active:text-soft-info-text-active",
+          "bg-soft-info-bg hover:bg-soft-info-bg-hover active:bg-soft-info-bg-active",
+          "border-soft-info-border hover:border-soft-info-border-hover active:border-soft-info-border-active",
+        ],
+      },
+      {
+        variant: "soft",
         color: "warning",
         isDisabled: false,
         class: [
@@ -125,6 +178,16 @@ export const buttonVariants = cva(
           "text-soft-danger-text hover:text-soft-danger-text-hover active:text-soft-danger-text-active",
           "bg-soft-danger-bg hover:bg-soft-danger-bg-hover active:bg-soft-danger-bg-active",
           "border-soft-danger-border hover:border-soft-danger-border-hover active:border-soft-danger-border-active",
+        ],
+      },
+      {
+        variant: "soft",
+        color: "help",
+        isDisabled: false,
+        class: [
+          "text-soft-help-text hover:text-soft-help-text-hover active:text-soft-help-text-active",
+          "bg-soft-help-bg hover:bg-soft-help-bg-hover active:bg-soft-help-bg-active",
+          "border-soft-help-border hover:border-soft-help-border-hover active:border-soft-help-border-active",
         ],
       },
 
@@ -151,6 +214,26 @@ export const buttonVariants = cva(
       },
       {
         variant: "outlined",
+        color: "success",
+        isDisabled: false,
+        class: [
+          "text-outlined-success-text hover:text-outlined-success-text-hover active:text-outlined-success-text-active",
+          "bg-outlined-success-bg hover:bg-outlined-success-bg-hover active:bg-outlined-success-bg-active",
+          "border-outlined-success-border hover:border-outlined-success-border-hover active:border-outlined-success-border-active",
+        ],
+      },
+      {
+        variant: "outlined",
+        color: "info",
+        isDisabled: false,
+        class: [
+          "text-outlined-info-text hover:text-outlined-info-text-hover active:text-outlined-info-text-active",
+          "bg-outlined-info-bg hover:bg-outlined-info-bg-hover active:bg-outlined-info-bg-active",
+          "border-outlined-info-border hover:border-outlined-info-border-hover active:border-outlined-info-border-active",
+        ],
+      },
+      {
+        variant: "outlined",
         color: "warning",
         isDisabled: false,
         class: [
@@ -167,6 +250,16 @@ export const buttonVariants = cva(
           "text-outlined-danger-text hover:text-outlined-danger-text-hover active:text-outlined-danger-text-active",
           "bg-outlined-danger-bg hover:bg-outlined-danger-bg-hover active:bg-outlined-danger-bg-active",
           "border-outlined-danger-border hover:border-outlined-danger-border-hover active:border-outlined-danger-border-active",
+        ],
+      },
+      {
+        variant: "outlined",
+        color: "help",
+        isDisabled: false,
+        class: [
+          "text-outlined-help-text hover:text-outlined-help-text-hover active:text-outlined-help-text-active",
+          "bg-outlined-help-bg hover:bg-outlined-help-bg-hover active:bg-outlined-help-bg-active",
+          "border-outlined-help-border hover:border-outlined-help-border-hover active:border-outlined-help-border-active",
         ],
       },
 
@@ -193,6 +286,26 @@ export const buttonVariants = cva(
       },
       {
         variant: "ghost",
+        color: "success",
+        isDisabled: false,
+        class: [
+          "text-ghost-success-text hover:text-ghost-success-text-hover active:text-ghost-success-text-active",
+          "bg-ghost-success-bg hover:bg-ghost-success-bg-hover active:bg-ghost-success-bg-active",
+          "border-ghost-success-border hover:border-ghost-success-border-hover active:border-ghost-success-border-active",
+        ],
+      },
+      {
+        variant: "ghost",
+        color: "info",
+        isDisabled: false,
+        class: [
+          "text-ghost-info-text hover:text-ghost-info-text-hover active:text-ghost-info-text-active",
+          "bg-ghost-info-bg hover:bg-ghost-info-bg-hover active:bg-ghost-info-bg-active",
+          "border-ghost-info-border hover:border-ghost-info-border-hover active:border-ghost-info-border-active",
+        ],
+      },
+      {
+        variant: "ghost",
         color: "warning",
         isDisabled: false,
         class: [
@@ -209,6 +322,16 @@ export const buttonVariants = cva(
           "text-ghost-danger-text hover:text-ghost-danger-text-hover active:text-ghost-danger-text-active",
           "bg-ghost-danger-bg hover:bg-ghost-danger-bg-hover active:bg-ghost-danger-bg-active",
           "border-ghost-danger-border hover:border-ghost-danger-border-hover active:border-ghost-danger-border-active",
+        ],
+      },
+      {
+        variant: "ghost",
+        color: "help",
+        isDisabled: false,
+        class: [
+          "text-ghost-help-text hover:text-ghost-help-text-hover active:text-ghost-help-text-active",
+          "bg-ghost-help-bg hover:bg-ghost-help-bg-hover active:bg-ghost-help-bg-active",
+          "border-ghost-help-border hover:border-ghost-help-border-hover active:border-ghost-help-border-active",
         ],
       },
 
@@ -251,14 +374,6 @@ export const buttonVariants = cva(
       { size: "lg", isIconOnly: true, isFullWidth: false, class: "w-13 text-4xl" },
       { size: "xl", isIconOnly: true, isFullWidth: false, class: "w-15 text-5xl" },
     ],
-    defaultVariants: {
-      variant: "solid",
-      color: "primary",
-      size: "sm",
-      isIconOnly: false,
-      isFullWidth: false,
-      isDisabled: false,
-    },
   }
 );
 
@@ -273,8 +388,11 @@ export const buttonIconVariants = cva("reset-svg shrink-0", {
     color: {
       primary: "",
       neutral: "",
+      success: "",
+      info: "",
       warning: "",
       danger: "",
+      help: "",
     },
     size: {
       xs: "",
@@ -308,6 +426,20 @@ export const buttonIconVariants = cva("reset-svg shrink-0", {
     },
     {
       variant: "solid",
+      color: "success",
+      isDisabled: false,
+      class:
+        "text-solid-success-icon hover:text-solid-success-icon-hover active:text-solid-success-icon-active",
+    },
+    {
+      variant: "solid",
+      color: "info",
+      isDisabled: false,
+      class:
+        "text-solid-info-icon hover:text-solid-info-icon-hover active:text-solid-info-icon-active",
+    },
+    {
+      variant: "solid",
       color: "warning",
       isDisabled: false,
       class:
@@ -319,6 +451,13 @@ export const buttonIconVariants = cva("reset-svg shrink-0", {
       isDisabled: false,
       class:
         "text-solid-danger-icon hover:text-solid-danger-icon-hover active:text-solid-danger-icon-active",
+    },
+    {
+      variant: "solid",
+      color: "help",
+      isDisabled: false,
+      class:
+        "text-solid-help-icon hover:text-solid-help-icon-hover active:text-solid-help-icon-active",
     },
 
     // soft + colors
@@ -338,6 +477,20 @@ export const buttonIconVariants = cva("reset-svg shrink-0", {
     },
     {
       variant: "soft",
+      color: "success",
+      isDisabled: false,
+      class:
+        "text-soft-success-icon hover:text-soft-success-icon-hover active:text-soft-success-icon-active",
+    },
+    {
+      variant: "soft",
+      color: "info",
+      isDisabled: false,
+      class:
+        "text-soft-info-icon hover:text-soft-info-icon-hover active:text-soft-info-icon-active",
+    },
+    {
+      variant: "soft",
       color: "warning",
       isDisabled: false,
       class:
@@ -349,6 +502,13 @@ export const buttonIconVariants = cva("reset-svg shrink-0", {
       isDisabled: false,
       class:
         "text-soft-danger-icon hover:text-soft-danger-icon-hover active:text-soft-danger-icon-active",
+    },
+    {
+      variant: "soft",
+      color: "help",
+      isDisabled: false,
+      class:
+        "text-soft-help-icon hover:text-soft-help-icon-hover active:text-soft-help-icon-active",
     },
 
     // outlined + colors
@@ -368,6 +528,20 @@ export const buttonIconVariants = cva("reset-svg shrink-0", {
     },
     {
       variant: "outlined",
+      color: "success",
+      isDisabled: false,
+      class:
+        "text-outlined-success-icon hover:text-outlined-success-icon-hover active:text-outlined-success-icon-active",
+    },
+    {
+      variant: "outlined",
+      color: "info",
+      isDisabled: false,
+      class:
+        "text-outlined-info-icon hover:text-outlined-info-icon-hover active:text-outlined-info-icon-active",
+    },
+    {
+      variant: "outlined",
       color: "warning",
       isDisabled: false,
       class:
@@ -379,6 +553,13 @@ export const buttonIconVariants = cva("reset-svg shrink-0", {
       isDisabled: false,
       class:
         "text-outlined-danger-icon hover:text-outlined-danger-icon-hover active:text-outlined-danger-icon-active",
+    },
+    {
+      variant: "outlined",
+      color: "help",
+      isDisabled: false,
+      class:
+        "text-outlined-help-icon hover:text-outlined-help-icon-hover active:text-outlined-help-icon-active",
     },
 
     // ghost + colors
@@ -398,6 +579,20 @@ export const buttonIconVariants = cva("reset-svg shrink-0", {
     },
     {
       variant: "ghost",
+      color: "success",
+      isDisabled: false,
+      class:
+        "text-ghost-success-icon hover:text-ghost-success-icon-hover active:text-ghost-success-icon-active",
+    },
+    {
+      variant: "ghost",
+      color: "info",
+      isDisabled: false,
+      class:
+        "text-ghost-info-icon hover:text-ghost-info-icon-hover active:text-ghost-info-icon-active",
+    },
+    {
+      variant: "ghost",
       color: "warning",
       isDisabled: false,
       class:
@@ -409,6 +604,13 @@ export const buttonIconVariants = cva("reset-svg shrink-0", {
       isDisabled: false,
       class:
         "text-ghost-danger-icon hover:text-ghost-danger-icon-hover active:text-ghost-danger-icon-active",
+    },
+    {
+      variant: "ghost",
+      color: "help",
+      isDisabled: false,
+      class:
+        "text-ghost-help-icon hover:text-ghost-help-icon-hover active:text-ghost-help-icon-active",
     },
 
     // start, end and loading icons in rectangle button (e.g: Button)
@@ -425,13 +627,6 @@ export const buttonIconVariants = cva("reset-svg shrink-0", {
     { size: "lg", isIconOnly: true, class: "text-4xl" },
     { size: "xl", isIconOnly: true, class: "text-5xl" },
   ],
-  defaultVariants: {
-    variant: "solid",
-    color: "primary",
-    size: "sm",
-    isIconOnly: false,
-    isDisabled: false,
-  },
 });
 
 export const loadingContentVariants = cva("inline-flex items-center justify-center opacity-0", {
@@ -443,9 +638,6 @@ export const loadingContentVariants = cva("inline-flex items-center justify-cent
       lg: "gap-2.5",
       xl: "gap-3",
     },
-  },
-  defaultVariants: {
-    size: "sm",
   },
 });
 

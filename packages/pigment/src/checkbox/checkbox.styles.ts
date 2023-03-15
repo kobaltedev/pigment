@@ -92,12 +92,6 @@ export const checkboxVariants = cva(
         class: "ui-group-disabled:bg-transparent ui-group-disabled:border-disabled-border",
       },
     ],
-    defaultVariants: {
-      variant: "outlined",
-      size: "sm",
-      isInvalid: false,
-      isDisabled: false,
-    },
   }
 );
 
@@ -108,9 +102,6 @@ export const checkboxRootVariants = cva("group inline-flex items-start", {
       sm: "gap-x-1.5",
       md: "gap-x-2",
     },
-  },
-  defaultVariants: {
-    size: "sm",
   },
 });
 
@@ -124,9 +115,6 @@ export const checkboxLabelVariants = cva(
         md: "text-base",
       },
     },
-    defaultVariants: {
-      size: "sm",
-    },
   }
 );
 
@@ -139,9 +127,6 @@ export const checkboxDescriptionVariants = cva(
         sm: "text-xs mt-1.5",
         md: "text-sm mt-2",
       },
-    },
-    defaultVariants: {
-      size: "sm",
     },
   }
 );

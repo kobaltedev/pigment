@@ -18,7 +18,7 @@ export const defaultTheme = {
     "--pg-color-neutral-900": "#0f172a",
     "--pg-color-neutral-1000": "#070c18",
 
-    /* Based on Tailwind - slate */
+    /* Based on Tailwind - slate-900 */
     "--pg-color-neutral-100A": "#0f172a08",
     "--pg-color-neutral-200A": "#0f172a0f",
     "--pg-color-neutral-300A": "#0f172a24",
@@ -474,10 +474,10 @@ export const defaultTheme = {
     "--pg-color-outlined-neutral-border-active": "var(--pg-color-neutral-300A)",
 
     /* Success */
-    "--pg-color-outlined-success-text": "var(--pg-color-success-600)",
-    "--pg-color-outlined-success-icon": "var(--pg-color-success-600)",
+    "--pg-color-outlined-success-text": "var(--pg-color-success-700)",
+    "--pg-color-outlined-success-icon": "var(--pg-color-success-700)",
     "--pg-color-outlined-success-bg": "transparent",
-    "--pg-color-outlined-success-border": "var(--pg-color-success-600)",
+    "--pg-color-outlined-success-border": "var(--pg-color-success-700)",
     "--pg-color-outlined-success-text-hover": "var(--pg-color-text-inverse)",
     "--pg-color-outlined-success-icon-hover": "var(--pg-color-icon-inverse)",
     "--pg-color-outlined-success-bg-hover": "var(--pg-color-success-600)",
@@ -576,8 +576,8 @@ export const defaultTheme = {
     "--pg-color-ghost-neutral-border-active": "transparent",
 
     /* Success */
-    "--pg-color-ghost-success-text": "var(--pg-color-success-600)",
-    "--pg-color-ghost-success-icon": "var(--pg-color-success-600)",
+    "--pg-color-ghost-success-text": "var(--pg-color-success-700)",
+    "--pg-color-ghost-success-icon": "var(--pg-color-success-700)",
     "--pg-color-ghost-success-bg": "transparent",
     "--pg-color-ghost-success-border": "transparent",
     "--pg-color-ghost-success-text-hover": "var(--pg-color-success-700)",

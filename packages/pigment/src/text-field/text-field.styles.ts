@@ -101,13 +101,6 @@ export const textFieldWrapperVariants = cva(
         class: "placeholder:text-text-dimmed",
       },
     ],
-    defaultVariants: {
-      variant: "outlined",
-      size: "sm",
-      isFocused: false,
-      isInvalid: false,
-      isDisabled: false,
-    },
   }
 );
 
@@ -167,13 +160,6 @@ export const textFieldInputVariants = cva(
       { size: "sm", hasRightIcon: true, class: "pr-9" },
       { size: "md", hasRightIcon: true, class: "pr-11" },
     ],
-    defaultVariants: {
-      size: "sm",
-      hasLeftIcon: false,
-      hasRightIcon: false,
-      hasLeftSection: false,
-      hasRightSection: false,
-    },
   }
 );
 
@@ -256,9 +242,6 @@ export const textFieldTextAreaVariants = cva(
         class: "placeholder:text-text-dimmed",
       },
     ],
-    defaultVariants: {
-      size: "sm",
-    },
   }
 );
 
@@ -311,12 +294,6 @@ export const textFieldIconVariants = cva(
         class: "text-icon-danger",
       },
     ],
-    defaultVariants: {
-      variant: "outlined",
-      size: "sm",
-      isInvalid: false,
-      isDisabled: false,
-    },
   }
 );
 

@@ -14,7 +14,7 @@ export default {
       control: { type: "select" },
     },
     status: {
-      options: ["success", "info", "warning", "danger", "help"],
+      options: ["neutral", "success", "info", "warning", "danger", "help"],
       control: { type: "select" },
     },
     hasIcon: {
@@ -38,7 +38,7 @@ export default {
 
 export const Default: Story = {
   args: {
-    variant: "solid",
+    variant: "soft",
     status: "info",
     title: "Announcement",
     hasIcon: true,

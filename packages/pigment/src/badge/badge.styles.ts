@@ -136,11 +136,6 @@ export const badgeVariants = cva(
         class: "text-outlined-help-text bg-outlined-help-bg border-outlined-help-border",
       },
     ],
-    defaultVariants: {
-      variant: "soft",
-      color: "neutral",
-      size: "sm",
-    },
   }
 );
 
