@@ -39,7 +39,7 @@ export interface ButtonBaseContentProps
     ButtonBaseProps,
     "variant" | "color" | "size" | "isDisabled" | "startIcon" | "endIcon" | "children"
   > {
-  isRtl: boolean;
+  isRtl?: boolean;
 
   startIconClass?: string;
 

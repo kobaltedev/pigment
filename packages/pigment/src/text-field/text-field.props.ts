@@ -20,7 +20,7 @@ export interface TextFieldProps
     Omit<TextFieldWrapperVariants, "isFocused" | "isDisabled">,
     SlotProp<TextFieldSlots> {
   /** A ref to the inner `<input>` or `<textarea>` element. */
-  ref: Ref<HTMLInputElement | HTMLTextAreaElement>;
+  ref?: Ref<HTMLInputElement | HTMLTextAreaElement>;
 
   /** The type of content handled by the text field. */
   type?: "text" | "email" | "tel" | "password" | "url" | "number" | "date" | string;

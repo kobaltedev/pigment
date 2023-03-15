@@ -1,6 +1,6 @@
 import { Preview } from "../../../../components";
 import {
-  BasicUsage,
+  WithPlayground,
   WithMultiline,
   WithVariants,
   WithStatuses,
@@ -17,19 +17,11 @@ Display a brief, important message in a way that attracts the user's attention w
 import { Alert } from "@kobalte/pigment";
 ```
 
-## Usage
+## Playground
 
-<Preview isCentered={false}>
-  <BasicUsage />
-</Preview>
+<WithPlayground />
 
-```tsx
-<Alert variant="soft" status="info" title="Software update">
-  A new software update is available.
-</Alert>
-```
-
-### Multiline
+## Multiline
 
 <Preview isCentered={false}>
   <WithMultiline />
@@ -41,7 +33,7 @@ import { Alert } from "@kobalte/pigment";
 </Alert>
 ```
 
-### Variants
+## Variants
 
 <Preview isCentered={false}>
   <WithVariants />
@@ -58,7 +50,7 @@ import { Alert } from "@kobalte/pigment";
 </div>
 ```
 
-### Statuses
+## Statuses
 
 <Preview isCentered={false}>
   <WithStatuses />
@@ -66,6 +58,9 @@ import { Alert } from "@kobalte/pigment";
 
 ```tsx
 <div class="flex flex-col space-y-4">
+  <Alert variant="soft" status="neutral" title="Service temporarily unavailable.">
+    We are currently migrating our infrastructure.
+  </Alert>
   <Alert variant="soft" status="success" title="Well done.">
     The data has been successfully saved on our server.
   </Alert>
@@ -84,7 +79,7 @@ import { Alert } from "@kobalte/pigment";
 </div>
 ```
 
-### Dismissible alerts
+## Dismissible alerts
 
 <Preview isCentered={false}>
   <WithDismissButton />

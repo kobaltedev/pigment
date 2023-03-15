@@ -7,6 +7,9 @@ export * from "./theme/theme-provider";
 
 // components
 export * from "./alert";
+export * from "./badge";
 export * from "./button";
+export * from "./checkbox";
 export * from "./close-button";
+export * from "./text-field";
 export { As } from "@kobalte/core";

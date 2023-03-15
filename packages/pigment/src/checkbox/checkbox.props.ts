@@ -19,7 +19,7 @@ export interface CheckboxProps
     Omit<CheckboxVariants, "isDisabled">,
     SlotProp<CheckboxSlots> {
   /** A ref to the inner `<input>` element. */
-  ref: Ref<HTMLInputElement>;
+  ref?: Ref<HTMLInputElement>;
 
   /** Additional props to be spread on the inner `<input>` element. */
   inputProps?: KCheckbox.CheckboxInputProps;

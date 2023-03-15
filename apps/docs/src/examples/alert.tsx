@@ -1,10 +1,25 @@
-import { Alert } from "@kobalte/pigment";
+import { Alert, AlertProps, TextField } from "@kobalte/pigment";
+import { createSignal } from "solid-js";
 
-export function BasicUsage() {
+import { Playground } from "../components";
+
+export function WithPlayground() {
+  const [variant, setVariant] = createSignal<AlertProps["variant"]>("soft");
+  const [status, setStatus] = createSignal<AlertProps["status"]>("info");
+  const [title, setTitle] = createSignal("Software update.");
+  const [children, setChildren] = createSignal("A new software update is available.");
+
   return (
-    <Alert variant="soft" status="info" title="Software update.">
-      A new software update is available.
-    </Alert>
+    <Playground
+      preview={
+        <Alert variant={variant()} status={status()} title={title}>
+          {children()}
+        </Alert>
+      }
+    >
+      <TextField label="Title" value={title()} onValueChange={setTitle} />
+      <TextField label="Children" value={children()} onValueChange={setChildren} />
+    </Playground>
   );
 }
 
@@ -32,6 +47,9 @@ export function WithVariants() {
 export function WithStatuses() {
   return (
     <div class="flex flex-col space-y-4">
+      <Alert variant="soft" status="neutral" title="Service temporarily unavailable.">
+        We are currently migrating our infrastructure.
+      </Alert>
       <Alert variant="soft" status="success" title="Well done.">
         The data has been successfully saved on our server.
       </Alert>

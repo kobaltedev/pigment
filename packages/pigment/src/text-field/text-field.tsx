@@ -153,12 +153,7 @@ export function TextField(props: TextFieldProps) {
 
   return (
     <KTextField.Root
-      class={cn(
-        "group flex flex-col items-start",
-        themeClasses.root,
-        local.slotClasses?.root,
-        local.class
-      )}
+      class={cn("group flex flex-col", themeClasses.root, local.slotClasses?.root, local.class)}
       validationState={variantProps.isInvalid ? "invalid" : undefined}
       isDisabled={variantProps.isDisabled}
       {...others}
@@ -166,7 +161,7 @@ export function TextField(props: TextFieldProps) {
       <Show when={label()}>
         <KTextField.Label
           class={cn(
-            "text-sm font-medium text-text-subtle ui-group-disabled:text-disabled-text",
+            "grow-0 text-sm font-medium text-text-subtle ui-group-disabled:text-disabled-text",
             showTopDescription() ? "mb-0.5" : "mb-1",
             themeClasses.label,
             local.slotClasses?.label
@@ -181,7 +176,7 @@ export function TextField(props: TextFieldProps) {
       <Show when={showTopDescription()}>
         <KTextField.Description
           class={cn(
-            "text-xs text-text-subtlest ui-group-disabled:text-disabled-text mb-1",
+            "grow-0 text-xs text-text-subtlest ui-group-disabled:text-disabled-text mb-1",
             themeClasses.description,
             local.slotClasses?.description
           )}
@@ -254,7 +249,7 @@ export function TextField(props: TextFieldProps) {
       <Show when={showBottomDescription()}>
         <KTextField.Description
           class={cn(
-            "text-xs text-text-subtlest ui-group-disabled:text-disabled-text mt-1.5",
+            "grow-0 text-xs text-text-subtlest ui-group-disabled:text-disabled-text mt-1.5",
             themeClasses.description,
             local.slotClasses?.description
           )}
@@ -265,7 +260,7 @@ export function TextField(props: TextFieldProps) {
       <Show when={showError()}>
         <KTextField.ErrorMessage
           class={cn(
-            "flex items-center space-x-1 text-xs text-text-danger ui-group-disabled:text-disabled-text mt-1.5",
+            "flex items-center grow-0 space-x-1 text-xs text-text-danger ui-group-disabled:text-disabled-text mt-1.5",
             themeClasses.error,
             local.slotClasses?.error
           )}
