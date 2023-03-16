@@ -4,8 +4,10 @@ import {
   WithMultiline,
   WithVariants,
   WithStatuses,
+  WithCustomIcon,
   WithDismissButton,
 } from "../../../../examples/alert";
+import { Alert } from "@kobalte/pigment";
 
 # Alert
 
@@ -21,19 +23,11 @@ import { Alert } from "@kobalte/pigment";
 
 <WithPlayground />
 
-## Multiline
+## Usage
 
-<Preview isCentered={false}>
-  <WithMultiline />
-</Preview>
+### Variants
 
-```tsx
-<Alert variant="soft" status="info" title="Software update" isMultiline>
-  A new software update is available.
-</Alert>
-```
-
-## Variants
+The Alert component supports two Pigment's global variants: `solid` and `soft` (default).
 
 <Preview isCentered={false}>
   <WithVariants />
@@ -50,7 +44,9 @@ import { Alert } from "@kobalte/pigment";
 </div>
 ```
 
-## Statuses
+### Statuses
+
+The Alert component supports six differents status: `neutral`, `success`, `info` (default), `warning`, `danger` and `help`.
 
 <Preview isCentered={false}>
   <WithStatuses />
@@ -79,7 +75,23 @@ import { Alert } from "@kobalte/pigment";
 </div>
 ```
 
-## Dismissible alerts
+### Custom icon
+
+The `icon` prop is used to change the Alert icon. It accepts either a `JSX.Element` or a function receiving the Alert's status and should return a `JSX.Element`.
+
+<Preview isCentered={false}>
+  <WithCustomIcon />
+</Preview>
+
+```tsx
+<Alert variant="soft" status="info" title="Software update" icon={<RocketIcon />}>
+  A new software update is available.
+</Alert>
+```
+
+### Dismissible
+
+Use the `isDismissible` prop paired with the `onDismiss` event handler to make a dismissible alert. Additionally, the `dismissButtonLabel` prop can be used to provide an accessible label for the dismiss button.
 
 <Preview isCentered={false}>
   <WithDismissButton />
@@ -97,5 +109,35 @@ import { Alert } from "@kobalte/pigment";
   A new software update is available.
 </Alert>
 ```
+
+<Alert>
+  <span>By default, the dismiss button label is _"Dismiss"_</span>
+  <span>, internationalized in +30 languages.</span>
+</Alert>
+
+### Multiline
+
+The Alert component display it's content on a single line by default. Use the `isMultiline` prop to display a multiline alert.
+
+<Preview isCentered={false}>
+  <WithMultiline />
+</Preview>
+
+```tsx
+<Alert variant="soft" status="info" title="Software update" isMultiline>
+  A new software update is available.
+</Alert>
+```
+
+## Slots
+
+| Name          | Static selector            | Description                 |
+| :------------ | :------------------------- | --------------------------- |
+| root          | `.pg-alert-root`           | Root element                |
+| icon          | `.pg-alert-icon`           | Icon wrapper                |
+| content       | `.pg-alert-content`        | Wraps title and description |
+| title         | `.pg-alert-title`          | Title                       |
+| description   | `.pg-alert-description`    | Description                 |
+| dismissButton | `.pg-alert-dismiss-button` | Dismiss button              |
 
 ## API Reference

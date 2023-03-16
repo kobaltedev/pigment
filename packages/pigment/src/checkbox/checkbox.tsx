@@ -27,6 +27,7 @@ export function Checkbox(props: CheckboxProps) {
       isInvalid: false,
       isDisabled: false,
       hasErrorIcon: true,
+      inputProps: {},
       errorIcon: () => <ExclamationCircleIcon />,
       checkedIcon: () => <CheckIcon />,
       indeterminateIcon: () => <MinusIcon />,

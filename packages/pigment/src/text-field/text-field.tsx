@@ -39,6 +39,7 @@ export function TextField(props: TextFieldProps) {
       size: "sm",
       isInvalid: false,
       isDisabled: false,
+      inputProps: {},
       errorIcon: () => <ExclamationCircleIcon />,
     },
     props

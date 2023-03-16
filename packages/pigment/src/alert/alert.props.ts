@@ -13,26 +13,11 @@ export interface AlertProps
   /** The title of the alert. */
   title?: JSX.Element;
 
+  /** The icon displayed next to the title. */
+  icon?: ((status: AlertVariants["status"]) => JSX.Element) | JSX.Element;
+
   /** An accessible label for the dismiss button. */
   dismissButtonLabel?: string;
-
-  /** The icon to show when the alert has a `neutral` status. */
-  neutralIcon?: JSX.Element;
-
-  /** The icon to show when the alert has a `success` status. */
-  successIcon?: JSX.Element;
-
-  /** The icon to show when the alert has an `info` status. */
-  infoIcon?: JSX.Element;
-
-  /** The icon to show when the alert has a `warning` status. */
-  warningIcon?: JSX.Element;
-
-  /** The icon to show when the alert has a `danger` status. */
-  dangerIcon?: JSX.Element;
-
-  /** The icon to show when the alert has an `help` status. */
-  helpIcon?: JSX.Element;
 
   /** Event handler called when the dismiss button is clicked. */
   onDismiss?: () => void;

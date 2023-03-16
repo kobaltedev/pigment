@@ -15,6 +15,7 @@ import { cn } from "../utils/cn";
 import { makeStaticClass } from "../utils/make-static-class";
 import { AlertProps, AlertSlots } from "./alert.props";
 import { alertContentVariants, alertIconVariants, alertVariants } from "./alert.styles";
+import { isFunction } from "@kobalte/utils";
 
 const alertStaticClass = makeStaticClass<AlertSlots>("alert");
 
@@ -27,12 +28,6 @@ export function Alert(props: AlertProps) {
       hasIcon: true,
       isDismissible: false,
       isMultiline: false,
-      neutralIcon: () => <LifeBuoyIcon />,
-      successIcon: () => <CheckCircleIcon />,
-      infoIcon: () => <InfoCircleIcon />,
-      warningIcon: () => <ExclamationTriangleIcon />,
-      dangerIcon: () => <ExclamationCircleIcon />,
-      helpIcon: () => <QuestionMarkCircleIcon />,
     },
     props
   );
@@ -41,25 +36,36 @@ export function Alert(props: AlertProps) {
 
   const [local, variantProps, others] = splitProps(
     props,
-    [
-      "class",
-      "children",
-      "slotClasses",
-      "title",
-      "dismissButtonLabel",
-      "neutralIcon",
-      "successIcon",
-      "infoIcon",
-      "warningIcon",
-      "dangerIcon",
-      "helpIcon",
-      "onDismiss",
-    ],
+    ["class", "children", "slotClasses", "icon", "title", "dismissButtonLabel", "onDismiss"],
     ["variant", "status", "hasIcon", "isDismissible", "isMultiline"]
   );
 
+  const iconProp = createMemo(() => local.icon);
   const title = createMemo(() => local.title);
   const description = children(() => local.children);
+
+  const icon = () => {
+    const icon = iconProp();
+
+    if (icon) {
+      return isFunction(icon) ? icon(variantProps.status) : icon;
+    }
+
+    switch (variantProps.status) {
+      case "neutral":
+        return () => <LifeBuoyIcon />;
+      case "success":
+        return () => <CheckCircleIcon />;
+      case "info":
+        return () => <InfoCircleIcon />;
+      case "warning":
+        return () => <ExclamationTriangleIcon />;
+      case "danger":
+        return () => <ExclamationCircleIcon />;
+      case "help":
+        return () => <QuestionMarkCircleIcon />;
+    }
+  };
 
   return (
     <KAlert.Root
@@ -82,7 +88,7 @@ export function Alert(props: AlertProps) {
           )}
           aria-hidden="true"
         >
-          {variantProps.status != null && local[`${variantProps.status}Icon`]}
+          {icon()}
         </div>
       </Show>
       <div
