@@ -12,8 +12,11 @@ import {
 } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme/theme-context";
 import { cn } from "../utils/cn";
+import { makeStaticClass } from "../utils/make-static-class";
 import { AlertProps, AlertSlots } from "./alert.props";
 import { alertContentVariants, alertIconVariants, alertVariants } from "./alert.styles";
+
+const alertStaticClass = makeStaticClass<AlertSlots>("alert");
 
 export function Alert(props: AlertProps) {
   props = mergeThemeProps(
@@ -62,6 +65,7 @@ export function Alert(props: AlertProps) {
     <KAlert.Root
       class={cn(
         alertVariants(variantProps),
+        alertStaticClass("root"),
         themeClasses.root,
         local.slotClasses?.root,
         local.class
@@ -70,7 +74,12 @@ export function Alert(props: AlertProps) {
     >
       <Show when={variantProps.hasIcon}>
         <div
-          class={cn(alertIconVariants(variantProps), themeClasses.icon, local.slotClasses?.icon)}
+          class={cn(
+            alertIconVariants(variantProps),
+            alertStaticClass("icon"),
+            themeClasses.icon,
+            local.slotClasses?.icon
+          )}
           aria-hidden="true"
         >
           {variantProps.status != null && local[`${variantProps.status}Icon`]}
@@ -79,17 +88,32 @@ export function Alert(props: AlertProps) {
       <div
         class={cn(
           alertContentVariants(variantProps),
+          alertStaticClass("content"),
           themeClasses.content,
           local.slotClasses?.content
         )}
       >
         <Show when={title()}>
-          <div class={cn("font-semibold", themeClasses.title, local.slotClasses?.title)}>
+          <div
+            class={cn(
+              "font-semibold",
+              alertStaticClass("title"),
+              themeClasses.title,
+              local.slotClasses?.title
+            )}
+          >
             {title()}
           </div>
         </Show>
         <Show when={description()}>
-          <div class={cn("grow", themeClasses.description, local.slotClasses?.description)}>
+          <div
+            class={cn(
+              "grow",
+              alertStaticClass("description"),
+              themeClasses.description,
+              local.slotClasses?.description
+            )}
+          >
             {description()}
           </div>
         </Show>
@@ -99,7 +123,12 @@ export function Alert(props: AlertProps) {
           inheritTextColor
           size="xs"
           aria-label={local.dismissButtonLabel}
-          class={cn("shrink-0", themeClasses.dismissButton, local.slotClasses?.dismissButton)}
+          class={cn(
+            "shrink-0",
+            alertStaticClass("dismissButton"),
+            themeClasses.dismissButton,
+            local.slotClasses?.dismissButton
+          )}
           onClick={local.onDismiss}
         />
       </Show>

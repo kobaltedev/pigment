@@ -5,6 +5,9 @@ import { mergeThemeProps, useThemeClasses } from "../theme/theme-context";
 import { cn } from "../utils/cn";
 import { BadgeProps, BadgeSlots } from "./badge.props";
 import { badgeVariants } from "./badge.styles";
+import { makeStaticClass } from "../utils/make-static-class";
+
+const badgeStaticClass = makeStaticClass<BadgeSlots>("badge");
 
 export function Badge(props: BadgeProps) {
   props = mergeThemeProps(
@@ -30,6 +33,7 @@ export function Badge(props: BadgeProps) {
       fallback="span"
       class={cn(
         badgeVariants(variantProps),
+        badgeStaticClass("root"),
         themeClasses.root,
         local.slotClasses?.root,
         local.class

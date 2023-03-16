@@ -1,16 +1,19 @@
 import { Checkbox as KCheckbox } from "@kobalte/core";
 import { createMemo, createUniqueId, Show, splitProps } from "solid-js";
 
-import { ExclamationCircleIcon, CheckIcon, MinusIcon } from "../icons";
+import { CheckIcon, ExclamationCircleIcon, MinusIcon } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme/theme-context";
 import { cn } from "../utils/cn";
+import { makeStaticClass } from "../utils/make-static-class";
 import { CheckboxProps, CheckboxSlots } from "./checkbox.props";
 import {
   checkboxDescriptionVariants,
   checkboxLabelVariants,
   checkboxRootVariants,
-  checkboxVariants,
+  checkboxControlVariants,
 } from "./checkbox.styles";
+
+const checkboxStaticClass = makeStaticClass<CheckboxSlots>("checkbox");
 
 export function Checkbox(props: CheckboxProps) {
   const descriptionId = `checkbox-${createUniqueId()}-description`;
@@ -75,6 +78,7 @@ export function Checkbox(props: CheckboxProps) {
     <KCheckbox.Root
       class={cn(
         checkboxRootVariants(variantProps),
+        checkboxStaticClass("root"),
         themeClasses.root,
         local.slotClasses?.root,
         local.class
@@ -94,16 +98,18 @@ export function Checkbox(props: CheckboxProps) {
           />
           <KCheckbox.Control
             class={cn(
-              checkboxVariants(variantProps),
-              themeClasses.checkbox,
-              local.slotClasses?.checkbox
+              checkboxControlVariants(variantProps),
+              checkboxStaticClass("control"),
+              themeClasses.control,
+              local.slotClasses?.control
             )}
           >
             <KCheckbox.Indicator
               class={cn(
                 "reset-svg flex justify-center items-center",
-                themeClasses.icon,
-                local.slotClasses?.icon
+                checkboxStaticClass("indicator"),
+                themeClasses.indicator,
+                local.slotClasses?.indicator
               )}
             >
               <Show when={state.isIndeterminate()} fallback={local.checkedIcon}>
@@ -114,6 +120,7 @@ export function Checkbox(props: CheckboxProps) {
           <div
             class={cn(
               "flex flex-col space-y-1 grow",
+              checkboxStaticClass("labelWrapper"),
               themeClasses.labelWrapper,
               local.slotClasses?.labelWrapper
             )}
@@ -122,6 +129,7 @@ export function Checkbox(props: CheckboxProps) {
               <KCheckbox.Label
                 class={cn(
                   checkboxLabelVariants(variantProps),
+                  checkboxStaticClass("label"),
                   themeClasses.label,
                   local.slotClasses?.label
                 )}
@@ -134,6 +142,7 @@ export function Checkbox(props: CheckboxProps) {
                 id={descriptionId}
                 class={cn(
                   checkboxDescriptionVariants(variantProps),
+                  checkboxStaticClass("description"),
                   themeClasses.description,
                   local.slotClasses?.description
                 )}
@@ -146,6 +155,7 @@ export function Checkbox(props: CheckboxProps) {
                 id={errorId}
                 class={cn(
                   "flex items-center space-x-1 text-xs text-text-danger ui-group-disabled:text-disabled-text mt-1.5",
+                  checkboxStaticClass("error"),
                   themeClasses.error,
                   local.slotClasses?.error
                 )}
@@ -155,6 +165,7 @@ export function Checkbox(props: CheckboxProps) {
                     aria-hidden="true"
                     class={cn(
                       "reset-svg text-sm text-icon-danger ui-group-disabled:text-disabled-icon",
+                      checkboxStaticClass("errorIcon"),
                       themeClasses.errorIcon,
                       local.slotClasses?.errorIcon
                     )}

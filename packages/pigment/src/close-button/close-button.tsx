@@ -8,8 +8,11 @@ import { splitProps } from "solid-js";
 import { CrossIcon } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme/theme-context";
 import { cn } from "../utils/cn";
+import { makeStaticClass } from "../utils/make-static-class";
 import { CloseButtonProps, CloseButtonSlots } from "./close-button.props";
 import { closeButtonVariants } from "./close-button.styles";
+
+const closeButtonStaticClass = makeStaticClass<CloseButtonSlots>("close-button");
 
 export function CloseButton(props: CloseButtonProps) {
   props = mergeThemeProps(
@@ -37,6 +40,7 @@ export function CloseButton(props: CloseButtonProps) {
     <KButton.Root
       class={cn(
         closeButtonVariants(variantProps),
+        closeButtonStaticClass("root"),
         themeClasses.root,
         local.slotClasses?.root,
         local.class

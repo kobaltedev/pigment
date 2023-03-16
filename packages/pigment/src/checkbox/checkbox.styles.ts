@@ -1,6 +1,16 @@
 import { cva, VariantProps } from "class-variance-authority";
 
-export const checkboxVariants = cva(
+export const checkboxRootVariants = cva("group inline-flex items-start", {
+  variants: {
+    size: {
+      xs: "gap-x-1",
+      sm: "gap-x-1.5",
+      md: "gap-x-2",
+    },
+  },
+});
+
+export const checkboxControlVariants = cva(
   "flex justify-center items-center grow-0 shrink-0 mt-0.5 border border-solid transition-colors",
   {
     variants: {
@@ -95,16 +105,6 @@ export const checkboxVariants = cva(
   }
 );
 
-export const checkboxRootVariants = cva("group inline-flex items-start", {
-  variants: {
-    size: {
-      xs: "gap-x-1",
-      sm: "gap-x-1.5",
-      md: "gap-x-2",
-    },
-  },
-});
-
 export const checkboxLabelVariants = cva(
   "text-outlined-input-text ui-group-disabled:text-disabled-text",
   {
@@ -131,4 +131,4 @@ export const checkboxDescriptionVariants = cva(
   }
 );
 
-export type CheckboxVariants = VariantProps<typeof checkboxVariants>;
+export type CheckboxControlVariants = VariantProps<typeof checkboxControlVariants>;
