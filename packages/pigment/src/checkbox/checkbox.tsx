@@ -139,7 +139,7 @@ export function Checkbox(props: CheckboxProps) {
           >
             <KCheckbox.Indicator
               class={cn(
-                "reset-svg flex justify-center items-center",
+                "reset-svg inline-flex justify-center items-center",
                 checkboxStaticClass("indicator"),
                 themeClasses.indicator,
                 local.slotClasses?.indicator

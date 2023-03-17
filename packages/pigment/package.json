@@ -51,7 +51,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@kobalte/core": "^0.7.2",
+    "@kobalte/core": "^0.7.3",
     "@kobalte/utils": "^0.6.1",
     "@solid-primitives/refs": "^1.0.0",
     "class-variance-authority": "^0.4.0",
