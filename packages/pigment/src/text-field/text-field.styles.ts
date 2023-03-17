@@ -10,7 +10,6 @@ export const textFieldWrapperVariants = cva(
           "bg-outlined-input-bg hover:bg-outlined-input-bg-hover active:bg-outlined-input-bg-active",
       },
       size: {
-        xs: "h-7 rounded text-sm",
         sm: "h-9 rounded-md text-sm",
         md: "h-11 rounded-md text-base",
       },
@@ -114,7 +113,6 @@ export const textFieldInputVariants = cva(
   {
     variants: {
       size: {
-        xs: "text-sm",
         sm: "text-sm",
         md: "text-base",
       },
@@ -141,22 +139,18 @@ export const textFieldInputVariants = cva(
       { hasRightIcon: false, hasRightSection: true, class: "pr-0" },
 
       // size + no prefix
-      { size: "xs", hasLeftIcon: false, hasLeftSection: false, class: "pl-2" },
       { size: "sm", hasLeftIcon: false, hasLeftSection: false, class: "pl-2.5" },
       { size: "md", hasLeftIcon: false, hasLeftSection: false, class: "pl-3.5" },
 
       // size + no suffix
-      { size: "xs", hasRightIcon: false, hasRightSection: false, class: "pr-2" },
       { size: "sm", hasRightIcon: false, hasRightSection: false, class: "pr-2.5" },
       { size: "md", hasRightIcon: false, hasRightSection: false, class: "pr-3.5" },
 
       // size + left icon
-      { size: "xs", hasLeftIcon: true, class: "pl-7" },
       { size: "sm", hasLeftIcon: true, class: "pl-9" },
       { size: "md", hasLeftIcon: true, class: "pl-11" },
 
       // size + right icon
-      { size: "xs", hasRightIcon: true, class: "pr-7" },
       { size: "sm", hasRightIcon: true, class: "pr-9" },
       { size: "md", hasRightIcon: true, class: "pr-11" },
     ],
@@ -177,7 +171,6 @@ export const textFieldTextAreaVariants = cva(
           "bg-outlined-input-bg hover:bg-outlined-input-bg-hover active:bg-outlined-input-bg-active",
       },
       size: {
-        xs: "px-2 py-2 rounded text-sm",
         sm: "px-2.5 py-2.5 rounded-md text-sm",
         md: "px-3.5 py-3.5 rounded-md text-base",
       },
@@ -258,7 +251,6 @@ export const textFieldIconVariants = cva(
         outlined: "",
       },
       size: {
-        xs: "h-7 w-7 text-base",
         sm: "h-9 w-9 text-base",
         md: "h-11 w-11 text-lg",
       },

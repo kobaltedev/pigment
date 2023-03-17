@@ -14,7 +14,11 @@ export default {
       control: { type: "select" },
     },
     size: {
-      options: ["xs", "sm", "md"],
+      options: ["sm", "md"],
+      control: { type: "select" },
+    },
+    labelPlacement: {
+      options: ["start", "end"],
       control: { type: "select" },
     },
     hasErrorIcon: {
@@ -46,6 +50,7 @@ export const Default: Story = {
   args: {
     variant: "outlined",
     size: "sm",
+    labelPlacement: "end",
     hasErrorIcon: true,
     isIndeterminate: false,
     isInvalid: false,
@@ -59,6 +64,7 @@ export const WithDescription: Story = {
   args: {
     variant: "outlined",
     size: "sm",
+    labelPlacement: "end",
     hasErrorIcon: true,
     isIndeterminate: false,
     isInvalid: false,

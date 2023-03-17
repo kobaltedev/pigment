@@ -1,17 +1,16 @@
 import { cva, VariantProps } from "class-variance-authority";
 
-export const checkboxRootVariants = cva("group inline-flex items-start", {
+export const checkboxRootVariants = cva("group inline-grid", {
   variants: {
     size: {
-      xs: "gap-x-1",
-      sm: "gap-x-1.5",
-      md: "gap-x-2",
+      sm: "gap-1.5",
+      md: "gap-x-2 gap-y-1.5",
     },
   },
 });
 
 export const checkboxControlVariants = cva(
-  "flex justify-center items-center grow-0 shrink-0 mt-0.5 border border-solid transition-colors",
+  "self-center row-start-1 inline-flex justify-center items-center grow-0 shrink-0 border border-solid transition-colors",
   {
     variants: {
       variant: {
@@ -20,7 +19,6 @@ export const checkboxControlVariants = cva(
           "bg-outlined-input-bg hover:bg-outlined-input-bg-hover active:bg-outlined-input-bg-active",
       },
       size: {
-        xs: "h-3 w-3 rounded text-xs",
         sm: "h-4 w-4 rounded text-base",
         md: "h-5 w-5 rounded text-xl",
       },
@@ -106,11 +104,10 @@ export const checkboxControlVariants = cva(
 );
 
 export const checkboxLabelVariants = cva(
-  "text-outlined-input-text ui-group-disabled:text-disabled-text",
+  "self-center row-start-1 text-outlined-input-text ui-group-disabled:text-disabled-text",
   {
     variants: {
       size: {
-        xs: "text-xs",
         sm: "text-sm",
         md: "text-base",
       },
@@ -119,13 +116,24 @@ export const checkboxLabelVariants = cva(
 );
 
 export const checkboxDescriptionVariants = cva(
-  "text-text-subtlest ui-group-disabled:text-disabled-text",
+  "order-3 text-text-subtlest ui-group-disabled:text-disabled-text",
   {
     variants: {
       size: {
-        xs: "text-xs mt-1",
-        sm: "text-xs mt-1.5",
-        md: "text-sm mt-2",
+        sm: "text-xs",
+        md: "text-sm",
+      },
+    },
+  }
+);
+
+export const checkboxErrorVariants = cva(
+  "order-4 inline-flex items-center gap-x-1 text-text-danger ui-group-disabled:text-disabled-text",
+  {
+    variants: {
+      size: {
+        sm: "text-xs",
+        md: "text-sm",
       },
     },
   }

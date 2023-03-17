@@ -1,4 +1,4 @@
-import { Checkbox as KCheckbox } from "@kobalte/core";
+import { Checkbox as KCheckbox, useLocale } from "@kobalte/core";
 import { createMemo, createUniqueId, Show, splitProps } from "solid-js";
 
 import { CheckIcon, ExclamationCircleIcon, MinusIcon } from "../icons";
@@ -7,10 +7,11 @@ import { cn } from "../utils/cn";
 import { makeStaticClass } from "../utils/make-static-class";
 import { CheckboxProps, CheckboxSlots } from "./checkbox.props";
 import {
+  checkboxControlVariants,
   checkboxDescriptionVariants,
+  checkboxErrorVariants,
   checkboxLabelVariants,
   checkboxRootVariants,
-  checkboxControlVariants,
 } from "./checkbox.styles";
 
 const checkboxStaticClass = makeStaticClass<CheckboxSlots>("checkbox");
@@ -24,6 +25,7 @@ export function Checkbox(props: CheckboxProps) {
     {
       variant: "outlined",
       size: "sm",
+      labelPlacement: "end",
       isInvalid: false,
       isDisabled: false,
       hasErrorIcon: true,
@@ -45,6 +47,7 @@ export function Checkbox(props: CheckboxProps) {
       "class",
       "slotClasses",
       "inputProps",
+      "labelPlacement",
       "label",
       "description",
       "error",
@@ -55,6 +58,10 @@ export function Checkbox(props: CheckboxProps) {
     ],
     ["variant", "size", "isInvalid", "isDisabled"]
   );
+
+  const { direction } = useLocale();
+
+  const isRtl = () => direction() === "rtl";
 
   const label = createMemo(() => local.label);
   const description = createMemo(() => local.description);
@@ -74,6 +81,30 @@ export function Checkbox(props: CheckboxProps) {
       .filter(Boolean)
       .join(" ");
   };
+
+  const controlOrderClass = () => {
+    if (local.labelPlacement === "end") {
+      return isRtl() ? "order-2" : "order-1";
+    } else if (local.labelPlacement === "start") {
+      return isRtl() ? "order-1" : "order-2";
+    }
+  };
+
+  const labelOrderClass = () => {
+    if (local.labelPlacement === "end") {
+      return isRtl() ? "order-1" : "order-2";
+    } else if (local.labelPlacement === "start") {
+      return isRtl() ? "order-2" : "order-1";
+    }
+  };
+
+  const supportTextColStartClass = createMemo(() => {
+    if (local.labelPlacement === "end") {
+      return isRtl() ? "col-start-1" : "col-start-2";
+    } else if (local.labelPlacement === "start") {
+      return isRtl() ? "col-start-2" : "col-start-1";
+    }
+  });
 
   return (
     <KCheckbox.Root
@@ -99,6 +130,7 @@ export function Checkbox(props: CheckboxProps) {
           />
           <KCheckbox.Control
             class={cn(
+              controlOrderClass(),
               checkboxControlVariants(variantProps),
               checkboxStaticClass("control"),
               themeClasses.control,
@@ -118,66 +150,60 @@ export function Checkbox(props: CheckboxProps) {
               </Show>
             </KCheckbox.Indicator>
           </KCheckbox.Control>
-          <div
-            class={cn(
-              "flex flex-col space-y-1 grow",
-              checkboxStaticClass("labelWrapper"),
-              themeClasses.labelWrapper,
-              local.slotClasses?.labelWrapper
-            )}
-          >
-            <Show when={label()}>
-              <KCheckbox.Label
-                class={cn(
-                  checkboxLabelVariants(variantProps),
-                  checkboxStaticClass("label"),
-                  themeClasses.label,
-                  local.slotClasses?.label
-                )}
-              >
-                {label()}
-              </KCheckbox.Label>
-            </Show>
-            <Show when={description()}>
-              <span
-                id={descriptionId}
-                class={cn(
-                  checkboxDescriptionVariants(variantProps),
-                  checkboxStaticClass("description"),
-                  themeClasses.description,
-                  local.slotClasses?.description
-                )}
-              >
-                {description()}
-              </span>
-            </Show>
-            <Show when={showError()}>
-              <span
-                id={errorId}
-                class={cn(
-                  "flex items-center space-x-1 text-xs text-text-danger ui-group-disabled:text-disabled-text mt-1.5",
-                  checkboxStaticClass("error"),
-                  themeClasses.error,
-                  local.slotClasses?.error
-                )}
-              >
-                <Show when={local.hasErrorIcon} fallback={error()}>
-                  <span
-                    aria-hidden="true"
-                    class={cn(
-                      "reset-svg text-sm text-icon-danger ui-group-disabled:text-disabled-icon",
-                      checkboxStaticClass("errorIcon"),
-                      themeClasses.errorIcon,
-                      local.slotClasses?.errorIcon
-                    )}
-                  >
-                    {errorIcon()}
-                  </span>
-                  <span>{error()}</span>
-                </Show>
-              </span>
-            </Show>
-          </div>
+          <Show when={label()}>
+            <KCheckbox.Label
+              class={cn(
+                labelOrderClass(),
+                checkboxLabelVariants(variantProps),
+                checkboxStaticClass("label"),
+                themeClasses.label,
+                local.slotClasses?.label
+              )}
+            >
+              {label()}
+            </KCheckbox.Label>
+          </Show>
+          <Show when={description()}>
+            <span
+              id={descriptionId}
+              class={cn(
+                supportTextColStartClass(),
+                checkboxDescriptionVariants(variantProps),
+                checkboxStaticClass("description"),
+                themeClasses.description,
+                local.slotClasses?.description
+              )}
+            >
+              {description()}
+            </span>
+          </Show>
+          <Show when={showError()}>
+            <span
+              id={errorId}
+              class={cn(
+                supportTextColStartClass(),
+                checkboxErrorVariants(variantProps),
+                checkboxStaticClass("error"),
+                themeClasses.error,
+                local.slotClasses?.error
+              )}
+            >
+              <Show when={local.hasErrorIcon} fallback={error()}>
+                <span
+                  aria-hidden="true"
+                  class={cn(
+                    "reset-svg text-sm text-icon-danger ui-group-disabled:text-disabled-icon",
+                    checkboxStaticClass("errorIcon"),
+                    themeClasses.errorIcon,
+                    local.slotClasses?.errorIcon
+                  )}
+                >
+                  {errorIcon()}
+                </span>
+                <span>{error()}</span>
+              </Show>
+            </span>
+          </Show>
         </>
       )}
     </KCheckbox.Root>

@@ -16,7 +16,7 @@ export default {
       control: { type: "select" },
     },
     size: {
-      options: ["xs", "sm", "md"],
+      options: ["sm", "md"],
       control: { type: "select" },
     },
     descriptionPlacement: {

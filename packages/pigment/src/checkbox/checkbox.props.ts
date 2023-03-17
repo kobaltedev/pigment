@@ -8,7 +8,6 @@ export type CheckboxSlots =
   | "root"
   | "control"
   | "indicator"
-  | "labelWrapper"
   | "label"
   | "description"
   | "error"
@@ -23,6 +22,9 @@ export interface CheckboxProps
 
   /** Additional props to be spread on the inner `<input>` element. */
   inputProps?: KCheckbox.CheckboxInputProps;
+
+  /** Whether the label, description and error message should appear before or after the checkbox. */
+  labelPlacement?: "start" | "end";
 
   /** The label that gives the user information on the checkbox. */
   label?: JSX.Element;

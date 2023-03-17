@@ -1,4 +1,4 @@
-import { Alert, AlertProps, TextField } from "@kobalte/pigment";
+import { Alert, AlertProps, Checkbox, TextField } from "@kobalte/pigment";
 import { createSignal } from "solid-js";
 
 import { Playground } from "../components";
@@ -8,17 +8,25 @@ export function WithPlayground() {
   const [status, setStatus] = createSignal<AlertProps["status"]>("info");
   const [title, setTitle] = createSignal("Software update.");
   const [children, setChildren] = createSignal("A new software update is available.");
+  const [isDismissible, setIsDismissible] = createSignal(false);
+  const [isMultiline, setIsMultiline] = createSignal(false);
 
   return (
     <Playground
       preview={
-        <Alert variant={variant()} status={status()} title={title}>
+        <Alert
+          variant={variant()}
+          status={status()}
+          title={title}
+          isDismissible={isDismissible()}
+          isMultiline={isMultiline()}
+        >
           {children()}
         </Alert>
       }
     >
       <TextField label="Title" value={title()} onValueChange={setTitle} />
-      <TextField label="Children" value={children()} onValueChange={setChildren} />
+      <TextField label="Children" value={children()} onValueChange={setChildren} isMultiline />
     </Playground>
   );
 }

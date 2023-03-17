@@ -50,7 +50,7 @@ export const mdxComponents = {
         <IconButton
           aria-label="copy to clipboard"
           variant="ghost"
-          color="neutral"
+          color={isCopied() ? "success" : "neutral"}
           size="xs"
           class="pg-copy-btn absolute top-2 right-2 z-10"
           onClick={copyToClipboard}

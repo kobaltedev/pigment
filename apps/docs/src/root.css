@@ -39,7 +39,7 @@
   }
 
   .pg-table .pg-code {
-    @apply bg-transparent dark:bg-transparent p-0 text-blue-900;
+    @apply bg-transparent dark:bg-transparent p-0 text-blue-600;
   }
 
   .pg-tabs-snippets pre.shiki {
