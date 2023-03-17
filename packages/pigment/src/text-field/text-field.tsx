@@ -19,6 +19,8 @@ import { TextFieldProps, TextFieldSlots } from "./text-field.props";
 import {
   textFieldIconVariants,
   textFieldInputVariants,
+  textFieldLabelVariants,
+  textFieldSupportTextVariants,
   textFieldTextAreaVariants,
   textFieldWrapperVariants,
 } from "./text-field.styles";
@@ -32,7 +34,6 @@ export function TextField(props: TextFieldProps) {
     "TextField",
     {
       type: "text",
-      descriptionPlacement: "bottom",
       hasRequiredIndicator: true,
       hasErrorIcon: true,
       variant: "outlined",
@@ -56,7 +57,6 @@ export function TextField(props: TextFieldProps) {
       "slotClasses",
       "type",
       "placeholder",
-      "descriptionPlacement",
       "inputProps",
       "isMultiline",
       "label",
@@ -84,12 +84,8 @@ export function TextField(props: TextFieldProps) {
   const error = createMemo(() => local.error);
   const errorIcon = createMemo(() => local.errorIcon);
 
-  const showTopDescription = () => {
-    return description() && local.descriptionPlacement === "top";
-  };
-
-  const showBottomDescription = () => {
-    return !variantProps.isInvalid && description() && local.descriptionPlacement === "bottom";
+  const showDescription = () => {
+    return !variantProps.isInvalid && description();
   };
 
   const showError = () => {
@@ -201,8 +197,7 @@ export function TextField(props: TextFieldProps) {
       <Show when={label()}>
         <KTextField.Label
           class={cn(
-            "grow-0 text-sm font-medium text-text-subtle ui-group-disabled:text-disabled-text",
-            showTopDescription() ? "mb-0.5" : "mb-1",
+            textFieldLabelVariants(variantProps),
             textFieldStaticClass("label"),
             themeClasses.label,
             local.slotClasses?.label
@@ -213,18 +208,6 @@ export function TextField(props: TextFieldProps) {
             <span class="text-text-danger ui-group-disabled:text-disabled-text ml-0.5">*</span>
           </Show>
         </KTextField.Label>
-      </Show>
-      <Show when={showTopDescription()}>
-        <KTextField.Description
-          class={cn(
-            "grow-0 text-xs text-text-subtlest ui-group-disabled:text-disabled-text mb-1",
-            textFieldStaticClass("description"),
-            themeClasses.description,
-            local.slotClasses?.description
-          )}
-        >
-          {description()}
-        </KTextField.Description>
       </Show>
       <Show
         when={!local.isMultiline}
@@ -281,10 +264,11 @@ export function TextField(props: TextFieldProps) {
           {rightSection()}
         </div>
       </Show>
-      <Show when={showBottomDescription()}>
+      <Show when={showDescription()}>
         <KTextField.Description
           class={cn(
-            "grow-0 text-xs text-text-subtlest ui-group-disabled:text-disabled-text mt-1.5",
+            "text-text-subtlest",
+            textFieldSupportTextVariants(variantProps),
             textFieldStaticClass("description"),
             themeClasses.description,
             local.slotClasses?.description
@@ -296,7 +280,8 @@ export function TextField(props: TextFieldProps) {
       <Show when={showError()}>
         <KTextField.ErrorMessage
           class={cn(
-            "flex items-center grow-0 space-x-1 text-xs text-text-danger ui-group-disabled:text-disabled-text mt-1.5",
+            "flex items-center gap-x-1 text-text-danger",
+            textFieldSupportTextVariants(variantProps),
             textFieldStaticClass("error"),
             themeClasses.error,
             local.slotClasses?.error

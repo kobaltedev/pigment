@@ -19,10 +19,6 @@ export default {
       options: ["sm", "md"],
       control: { type: "select" },
     },
-    descriptionPlacement: {
-      options: ["top", "bottom"],
-      control: { type: "select" },
-    },
     hasErrorIcon: {
       control: { type: "boolean" },
     },
@@ -58,7 +54,6 @@ export const Default: Story = {
   args: {
     variant: "outlined",
     size: "sm",
-    descriptionPlacement: "bottom",
     hasErrorIcon: true,
     isInvalid: false,
     isRequired: false,
@@ -75,7 +70,6 @@ export const WithIcon: Story = {
   args: {
     variant: "outlined",
     size: "sm",
-    descriptionPlacement: "bottom",
     hasErrorIcon: true,
     isInvalid: false,
     isRequired: false,
@@ -94,7 +88,6 @@ export const WithSection: Story = {
   args: {
     variant: "outlined",
     size: "sm",
-    descriptionPlacement: "bottom",
     hasErrorIcon: true,
     isInvalid: false,
     isRequired: false,
@@ -117,7 +110,6 @@ export const WithIconAndSection: Story = {
   args: {
     variant: "outlined",
     size: "sm",
-    descriptionPlacement: "bottom",
     hasErrorIcon: true,
     isInvalid: false,
     isRequired: false,

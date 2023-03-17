@@ -289,4 +289,25 @@ export const textFieldIconVariants = cva(
   }
 );
 
+export const textFieldLabelVariants = cva(
+  "grow-0 font-medium text-text-subtle ui-group-disabled:text-disabled-text",
+  {
+    variants: {
+      size: {
+        sm: "mb-1 text-sm",
+        md: "mb-1.5 text-base",
+      },
+    },
+  }
+);
+
+export const textFieldSupportTextVariants = cva("grow-0 ui-group-disabled:text-disabled-text", {
+  variants: {
+    size: {
+      sm: "mt-1.5 text-xs",
+      md: "mt-2 text-sm",
+    },
+  },
+});
+
 export type TextFieldWrapperVariants = VariantProps<typeof textFieldWrapperVariants>;

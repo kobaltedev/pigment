@@ -28,9 +28,6 @@ export interface TextFieldProps
   /** The placeholder displayed when the text field is empty. */
   placeholder?: string;
 
-  /** Whether the description should appear above or below the input. */
-  descriptionPlacement?: "top" | "bottom";
-
   /** Additional props to be spread on the inner `<input>` or `<textarea>` element. */
   inputProps?: ComponentProps<"input"> | ComponentProps<"textarea">;
 

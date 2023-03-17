@@ -3,8 +3,8 @@ import { cva, VariantProps } from "class-variance-authority";
 export const checkboxRootVariants = cva("group inline-grid", {
   variants: {
     size: {
-      sm: "gap-1.5",
-      md: "gap-x-2 gap-y-1.5",
+      sm: "gap-x-2 gap-y-px",
+      md: "gap-x-3 gap-y-0.5",
     },
   },
 });
@@ -115,28 +115,13 @@ export const checkboxLabelVariants = cva(
   }
 );
 
-export const checkboxDescriptionVariants = cva(
-  "order-3 text-text-subtlest ui-group-disabled:text-disabled-text",
-  {
-    variants: {
-      size: {
-        sm: "text-xs",
-        md: "text-sm",
-      },
+export const checkboxSupportTextVariants = cva("ui-group-disabled:text-disabled-text", {
+  variants: {
+    size: {
+      sm: "text-xs",
+      md: "text-sm",
     },
-  }
-);
-
-export const checkboxErrorVariants = cva(
-  "order-4 inline-flex items-center gap-x-1 text-text-danger ui-group-disabled:text-disabled-text",
-  {
-    variants: {
-      size: {
-        sm: "text-xs",
-        md: "text-sm",
-      },
-    },
-  }
-);
+  },
+});
 
 export type CheckboxControlVariants = VariantProps<typeof checkboxControlVariants>;

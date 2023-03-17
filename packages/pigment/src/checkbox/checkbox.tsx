@@ -8,10 +8,9 @@ import { makeStaticClass } from "../utils/make-static-class";
 import { CheckboxProps, CheckboxSlots } from "./checkbox.props";
 import {
   checkboxControlVariants,
-  checkboxDescriptionVariants,
-  checkboxErrorVariants,
   checkboxLabelVariants,
   checkboxRootVariants,
+  checkboxSupportTextVariants,
 } from "./checkbox.styles";
 
 const checkboxStaticClass = makeStaticClass<CheckboxSlots>("checkbox");
@@ -167,8 +166,9 @@ export function Checkbox(props: CheckboxProps) {
             <span
               id={descriptionId}
               class={cn(
+                "order-3 text-text-subtlest",
                 supportTextColStartClass(),
-                checkboxDescriptionVariants(variantProps),
+                checkboxSupportTextVariants(variantProps),
                 checkboxStaticClass("description"),
                 themeClasses.description,
                 local.slotClasses?.description
@@ -181,8 +181,9 @@ export function Checkbox(props: CheckboxProps) {
             <span
               id={errorId}
               class={cn(
+                "order-4 inline-flex items-center gap-x-1 text-text-danger",
                 supportTextColStartClass(),
-                checkboxErrorVariants(variantProps),
+                checkboxSupportTextVariants(variantProps),
                 checkboxStaticClass("error"),
                 themeClasses.error,
                 local.slotClasses?.error
