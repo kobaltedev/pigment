@@ -22,7 +22,12 @@ function createLucideIcon(SVGPath: Component) {
 
 export const LoaderIcon = createLucideIcon(() => <path d="M21 12a9 9 0 1 1-6.219-8.56" />);
 
-export const SelectorIcon = createLucideIcon(() => <path d="M21 12a9 9 0 1 1-6.219-8.56" />);
+export const SelectorIcon = createLucideIcon(() => (
+  <>
+    <path d="m7 15 5 5 5-5"></path>
+    <path d="m7 9 5-5 5 5"></path>
+  </>
+));
 
 export const ChevronLeftIcon = createLucideIcon(() => <polyline points="15 18 9 12 15 6" />);
 

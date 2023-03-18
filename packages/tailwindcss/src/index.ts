@@ -134,6 +134,9 @@ export default function preset(): Partial<Config> {
           "surface-raised": "var(--pg-shadow-surface-raised)",
           "surface-overlay": "var(--pg-shadow-surface-overlay)",
         },
+        data: {
+          "placeholder-shown": "placeholder-shown",
+        },
       },
     },
     plugins: [

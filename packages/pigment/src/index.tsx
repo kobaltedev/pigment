@@ -11,5 +11,6 @@ export * from "./badge";
 export * from "./button";
 export * from "./checkbox";
 export * from "./close-button";
+export * from "./select";
 export * from "./text-field";
 export { As } from "@kobalte/core";
