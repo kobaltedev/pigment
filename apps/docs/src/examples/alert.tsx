@@ -1,5 +1,5 @@
 import { Alert, AlertProps, Checkbox, Select, TextField } from "@kobalte/pigment";
-import { createSignal } from "solid-js";
+import { createMemo, createSignal } from "solid-js";
 
 import { Playground } from "../components";
 
@@ -11,19 +11,32 @@ export function WithPlayground() {
   const [isDismissible, setIsDismissible] = createSignal(false);
   const [isMultiline, setIsMultiline] = createSignal(false);
 
+  const snippet = createMemo(() => {
+    return `<Alert
+  variant="${variant()}"
+  status="${status()}"
+  title="${title()}"
+  isDismissible={${isDismissible()}}
+  isMultiline={${isMultiline()}}
+>
+  ${children()}
+</Alert>`;
+  });
+
   return (
     <Playground
       preview={
         <Alert
           variant={variant()}
           status={status()}
-          title={title}
+          title={title()}
           isDismissible={isDismissible()}
           isMultiline={isMultiline()}
         >
           {children()}
         </Alert>
       }
+      snippet={snippet()}
     >
       <Select
         label="Variant"
@@ -39,6 +52,18 @@ export function WithPlayground() {
       />
       <TextField label="Title" value={title()} onValueChange={setTitle} />
       <TextField label="Children" value={children()} onValueChange={setChildren} isMultiline />
+      <Checkbox
+        class="self-start"
+        label="Dismissible"
+        isChecked={isDismissible()}
+        onCheckedChange={setIsDismissible}
+      />
+      <Checkbox
+        class="self-start"
+        label="Multiline"
+        isChecked={isMultiline()}
+        onCheckedChange={setIsMultiline}
+      />
     </Playground>
   );
 }
@@ -102,10 +127,10 @@ function RocketIcon() {
       stroke-linecap="round"
       stroke-linejoin="round"
     >
-      <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
-      <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
-      <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
-      <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
+      <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+      <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+      <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+      <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
     </svg>
   );
 }

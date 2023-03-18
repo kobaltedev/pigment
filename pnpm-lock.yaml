@@ -102,6 +102,7 @@ importers:
       babel-preset-solid: 1.6.13
       encoding: 0.1.13
       github-slugger: 1.5.0
+      highlight.js: ^11.7.0
       iconv-lite: 0.6.3
       node-fetch: 2.6.9
       postcss: 8.4.21
@@ -127,6 +128,7 @@ importers:
       '@kobalte/pigment': link:../../packages/pigment
       '@solidjs/meta': 0.28.2_solid-js@1.6.15
       '@solidjs/router': 0.7.1_solid-js@1.6.15
+      highlight.js: 11.7.0
     devDependencies:
       '@kobalte/pigment-tailwindcss': link:../../packages/tailwindcss
       '@mdx-js/mdx': 2.3.0
@@ -8868,6 +8870,11 @@ packages:
     hasBin: true
     dev: true
 
+  /highlight.js/11.7.0:
+    resolution: {integrity: sha512-1rRqesRFhMO/PRF+G86evnyJkCgaZFOI+Z6kdj15TA18funfoqJXvgPCLSf0SWq3SRfg1j3HlDs8o4s3EGq1oQ==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
   /homedir-polyfill/1.0.3:
     resolution: {integrity: sha512-eSmmWE5bZTK2Nou4g0AI3zZ9rswp7GRKoKXS1BLUkvPviOqs4YTN1djQIqrXy9k5gEtdLPy86JjRwsNM9tnDcA==}
     engines: {node: '>=0.10.0'}
@@ -14646,7 +14653,7 @@ packages:
       merge-anything: 5.1.4
       solid-js: 1.6.15
       solid-refresh: 0.5.2_solid-js@1.6.15
-      vite: 3.2.5
+      vite: 3.2.5_@types+node@18.13.0
       vitefu: 0.2.4_vite@3.2.5
     transitivePeerDependencies:
       - supports-color
@@ -14727,7 +14734,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 3.2.5
+      vite: 3.2.5_@types+node@18.13.0
     dev: true
 
   /vscode-oniguruma/1.7.0:

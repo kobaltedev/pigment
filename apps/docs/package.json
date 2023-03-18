@@ -31,7 +31,8 @@
   "dependencies": {
     "@kobalte/pigment": "0.0.0",
     "@solidjs/meta": "0.28.2",
-    "@solidjs/router": "0.7.1"
+    "@solidjs/router": "0.7.1",
+    "highlight.js": "^11.7.0"
   },
   "devDependencies": {
     "@kobalte/pigment-tailwindcss": "0.0.0",

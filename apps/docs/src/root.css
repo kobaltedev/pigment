@@ -1,6 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import "highlight.js/styles/tokyo-night-dark.css";
 
 @font-face {
   font-family: "Lexend";
@@ -54,6 +55,14 @@
     border-top: none;
     border-top-right-radius: 0;
     border-top-left-radius: 0;
+  }
+
+  pre.pg-hljs .pg-copy-btn {
+    opacity: 0;
+  }
+
+  pre.pg-hljs:hover .pg-copy-btn {
+    opacity: 1;
   }
 }
 

@@ -1,5 +1,6 @@
 export * from "./footer";
 export * from "./header";
+export * from "./highlight";
 export * from "./icons";
 export * from "./layout";
 export * from "./navigation";
