@@ -66,16 +66,17 @@
   }
 }
 
-/*  Start of Shiki Twoslash CSS:
-  Code blocks structurally look like:
-  <pre class='shiki lsp twoslash [theme-name]'>
-    <div class='language-id'>[lang-id]</div>
-    <div class='code-container'>
-      <code>[the code as a series of spans]</code>
-      <a href='playground...'>Try</a> (optional)
-    </div>
-  </pre>
-  */
+/*
+Start of Shiki Twoslash CSS:
+Code blocks structurally look like:
+<pre class='shiki lsp twoslash [theme-name]'>
+  <div class='language-id'>[lang-id]</div>
+  <div class='code-container'>
+    <code>[the code as a series of spans]</code>
+    <a href='playground...'>Try</a> (optional)
+  </div>
+</pre>
+*/
 
 .pg-preview + pre.shiki,
 .pg-preview + pre.shiki + pre.shiki {

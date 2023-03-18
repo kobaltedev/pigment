@@ -66,24 +66,6 @@ export const Default: Story = {
   },
 };
 
-export const WithIcon: Story = {
-  args: {
-    variant: "outlined",
-    size: "sm",
-    hasErrorIcon: true,
-    isInvalid: false,
-    isRequired: false,
-    isDisabled: false,
-    isMultiline: false,
-    placeholder: "example@acme.com",
-    label: "E-mail",
-    description: "We will never share your email.",
-    error: "Please enter a valid email address.",
-    startIcon: () => <InfoCircleIcon />,
-    endIcon: () => <InfoCircleIcon />,
-  },
-};
-
 export const WithDecorator: Story = {
   args: {
     variant: "outlined",
@@ -97,33 +79,9 @@ export const WithDecorator: Story = {
     label: "E-mail",
     description: "We will never share your email.",
     error: "Please enter a valid email address.",
-    startDecorator: () => <span class="mx-2">http://</span>,
+    startDecorator: () => <InfoCircleIcon class="h-4 w-4 mx-2.5" />,
     endDecorator: () => (
-      <Button size="sm" variant="solid" color="neutral" class="rounded-l-none z-10 ml-2">
-        Search
-      </Button>
-    ),
-  },
-};
-
-export const WithIconAndDecorator: Story = {
-  args: {
-    variant: "outlined",
-    size: "sm",
-    hasErrorIcon: true,
-    isInvalid: false,
-    isRequired: false,
-    isDisabled: false,
-    isMultiline: false,
-    placeholder: "example@acme.com",
-    label: "E-mail",
-    description: "We will never share your email.",
-    error: "Please enter a valid email address.",
-    startIcon: () => <InfoCircleIcon />,
-    endIcon: () => <InfoCircleIcon />,
-    startDecorator: () => <span class="ml-2">http://</span>,
-    endDecorator: () => (
-      <Button size="sm" variant="solid" color="neutral" class="rounded-l-none z-10">
+      <Button size="sm" variant="solid" color="neutral" class="rounded-l-none z-10 ml-2.5">
         Search
       </Button>
     ),

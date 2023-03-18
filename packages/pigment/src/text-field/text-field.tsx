@@ -17,13 +17,11 @@ import { cn } from "../utils/cn";
 import { makeStaticClass } from "../utils/make-static-class";
 import { TextFieldProps, TextFieldSlots } from "./text-field.props";
 import {
-  textFieldIconVariants,
   textFieldInputVariants,
   textFieldLabelVariants,
   textFieldSupportTextVariants,
   textFieldTextAreaVariants,
   textFieldControlVariants,
-  TextFieldControlVariants,
 } from "./text-field.styles";
 
 const textFieldStaticClass = makeStaticClass<TextFieldSlots>("text-field");
@@ -66,8 +64,6 @@ export function TextField(props: TextFieldProps) {
       "hasRequiredIndicator",
       "hasErrorIcon",
       "errorIcon",
-      "startIcon",
-      "endIcon",
       "startDecorator",
       "endDecorator",
     ],
@@ -93,14 +89,6 @@ export function TextField(props: TextFieldProps) {
     return variantProps.isInvalid && error();
   };
 
-  const leftIcon = createMemo(() => {
-    return isRtl() ? local.endIcon : local.startIcon;
-  });
-
-  const rightIcon = createMemo(() => {
-    return isRtl() ? local.startIcon : local.endIcon;
-  });
-
   const leftDecorator = createMemo(() => {
     return isRtl() ? local.endDecorator : local.startDecorator;
   });
@@ -109,50 +97,8 @@ export function TextField(props: TextFieldProps) {
     return isRtl() ? local.startDecorator : local.endDecorator;
   });
 
-  const leftIconClass = createMemo(() => {
-    if (isRtl()) {
-      return cn(
-        "left-0",
-        textFieldStaticClass("endIcon"),
-        themeClasses.endIcon,
-        local.slotClasses?.endIcon
-      );
-    } else {
-      return cn(
-        "left-0",
-        textFieldStaticClass("startIcon"),
-        themeClasses.startIcon,
-        local.slotClasses?.startIcon
-      );
-    }
-  });
-
-  const rightIconClass = createMemo(() => {
-    if (isRtl()) {
-      return cn(
-        "right-0",
-        textFieldStaticClass("startIcon"),
-        themeClasses.startIcon,
-        local.slotClasses?.startIcon
-      );
-    } else {
-      return cn(
-        "right-0",
-        textFieldStaticClass("endIcon"),
-        themeClasses.endIcon,
-        local.slotClasses?.endIcon
-      );
-    }
-  });
-
   const variantProps = mergeProps(
     {
-      get hasLeftIcon() {
-        return leftIcon() != null;
-      },
-      get hasRightIcon() {
-        return rightIcon() != null;
-      },
       get hasLeftDecorator() {
         return leftDecorator() != null;
       },
@@ -164,12 +110,6 @@ export function TextField(props: TextFieldProps) {
       },
     },
     partialVariantProps
-  );
-
-  const TextFieldIcon = (props: { class?: string; children?: JSX.Element }) => (
-    <span aria-hidden="true" class={cn(props.class, textFieldIconVariants(variantProps))}>
-      {props.children}
-    </span>
   );
 
   const onInputFocus: JSX.EventHandlerUnion<HTMLInputElement, FocusEvent> = e => {
@@ -238,30 +178,22 @@ export function TextField(props: TextFieldProps) {
           )}
         >
           {leftDecorator()}
-          <div class="relative flex items-center grow h-full">
-            <KTextField.Input
-              {...(local.inputProps as ComponentProps<"input">)}
-              ref={mergeRefs(el => (ref = el), local.ref)}
-              id={local.id}
-              type={local.type}
-              placeholder={local.placeholder}
-              class={cn(
-                textFieldInputVariants(variantProps),
-                textFieldStaticClass("input"),
-                themeClasses.input,
-                local.slotClasses?.input,
-                local.inputProps?.class
-              )}
-              onFocus={onInputFocus}
-              onBlur={onInputBlur}
-            />
-            <Show when={leftIcon()}>
-              <TextFieldIcon class={leftIconClass()}>{leftIcon()}</TextFieldIcon>
-            </Show>
-            <Show when={rightIcon()}>
-              <TextFieldIcon class={rightIconClass()}>{rightIcon()}</TextFieldIcon>
-            </Show>
-          </div>
+          <KTextField.Input
+            {...(local.inputProps as ComponentProps<"input">)}
+            ref={mergeRefs(el => (ref = el), local.ref)}
+            id={local.id}
+            type={local.type}
+            placeholder={local.placeholder}
+            class={cn(
+              textFieldInputVariants(variantProps),
+              textFieldStaticClass("input"),
+              themeClasses.input,
+              local.slotClasses?.input,
+              local.inputProps?.class
+            )}
+            onFocus={onInputFocus}
+            onBlur={onInputBlur}
+          />
           {rightDecorator()}
         </div>
       </Show>

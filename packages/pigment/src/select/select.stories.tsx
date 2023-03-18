@@ -5,6 +5,7 @@ import { Button } from "../button";
 import { InfoCircleIcon } from "../icons";
 import { Select } from "./select";
 import { SelectProps } from "./select.props";
+import { Badge } from "../badge";
 
 type Story = StoryObj<SelectProps<any, any>>;
 
@@ -141,36 +142,11 @@ export const WithDecorator: Story = {
     description: "Choose wisely.",
     error: "Please select a fruit.",
     options: ["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"],
-    startDecorator: () => <span class="mx-2">http://</span>,
+    startDecorator: () => <InfoCircleIcon class="h-4 w-4 mx-2.5" />,
     endDecorator: () => (
-      <Button size="sm" variant="solid" color="neutral" class="rounded-l-none z-10 ml-2">
-        Search
-      </Button>
-    ),
-  },
-};
-
-export const WithIconAndDecorator: Story = {
-  args: {
-    variant: "outlined",
-    size: "sm",
-    hasErrorIcon: true,
-    isInvalid: false,
-    isRequired: false,
-    isDisabled: false,
-    allowEmptySelection: false,
-    placeholder: "Select a fruit",
-    label: "Fruit",
-    description: "Choose wisely.",
-    error: "Please select a fruit.",
-    options: ["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"],
-    startIcon: () => <InfoCircleIcon />,
-    endIcon: () => <InfoCircleIcon />,
-    startDecorator: () => <span class="ml-2">http://</span>,
-    endDecorator: () => (
-      <Button size="sm" variant="solid" color="neutral" class="rounded-l-none z-10">
-        Search
-      </Button>
+      <Badge size="sm" variant="soft" color="danger" class="mx-2.5">
+        +5
+      </Badge>
     ),
   },
 };

@@ -9,8 +9,6 @@ export type TextFieldSlots =
   | "label"
   | "control"
   | "input"
-  | "startIcon"
-  | "endIcon"
   | "description"
   | "error"
   | "errorIcon";
@@ -51,12 +49,6 @@ export interface TextFieldProps
 
   /** The icon to show next to the error message. */
   errorIcon?: JSX.Element;
-
-  /** The leading icon of the text field. */
-  startIcon?: JSX.Element;
-
-  /** The trailing icon of the text field. */
-  endIcon?: JSX.Element;
 
   /** The leading adornment of the text field. */
   startDecorator?: JSX.Element;

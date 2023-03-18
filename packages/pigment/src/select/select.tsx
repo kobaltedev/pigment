@@ -1,6 +1,6 @@
-import { Select as KSelect, useLocale } from "@kobalte/core";
-import { callHandler, isFunction, isString } from "@kobalte/utils";
-import { Accessor, createMemo, createSignal, JSX, mergeProps, Show, splitProps } from "solid-js";
+import { As, Select as KSelect, useLocale } from "@kobalte/core";
+import { isFunction, isString } from "@kobalte/utils";
+import { Accessor, createMemo, mergeProps, Show, splitProps } from "solid-js";
 
 import { CheckIcon, ExclamationCircleIcon, SelectorIcon } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme/theme-context";
@@ -10,7 +10,6 @@ import { SelectProps, SelectSlots } from "./select.props";
 import {
   selectButtonVariants,
   selectDropdownVariants,
-  selectControlVariants,
   selectIconVariants,
   selectLabelVariants,
   selectListboxVariants,
@@ -28,6 +27,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
     "Select",
     {
       hasRequiredIndicator: true,
+      hasDropdownIcon: true,
       hasErrorIcon: true,
       variant: "outlined",
       size: "sm",
@@ -41,7 +41,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       optionDisabled: "disabled" as any,
       optionGroupLabel: "label" as any,
       optionGroupChildren: "options" as any,
-      endIcon: () => <SelectorIcon />,
+      dropdownIcon: () => <SelectorIcon />,
       errorIcon: () => <ExclamationCircleIcon />,
     },
     props
@@ -61,9 +61,8 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       "error",
       "hasRequiredIndicator",
       "hasErrorIcon",
+      "dropdownIcon",
       "errorIcon",
-      "startIcon",
-      "endIcon",
       "startDecorator",
       "endDecorator",
       "optionLabel",
@@ -93,14 +92,12 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       "isDisabled",
       "isReadOnly",
     ],
-    ["variant", "size", "isInvalid", "isDisabled"]
+    ["variant", "size", "hasDropdownIcon", "isInvalid", "isDisabled"]
   );
 
   const { direction } = useLocale();
 
   const isRtl = () => direction() === "rtl";
-
-  const [isFocused, setIsFocused] = createSignal(false);
 
   const label = createMemo(() => local.label);
   const description = createMemo(() => local.description);
@@ -115,14 +112,6 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
     return variantProps.isInvalid && error();
   };
 
-  const leftIcon = createMemo(() => {
-    return isRtl() ? local.endIcon : local.startIcon;
-  });
-
-  const rightIcon = createMemo(() => {
-    return isRtl() ? local.startIcon : local.endIcon;
-  });
-
   const leftDecorator = createMemo(() => {
     return isRtl() ? local.endDecorator : local.startDecorator;
   });
@@ -131,67 +120,16 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
     return isRtl() ? local.startDecorator : local.endDecorator;
   });
 
-  const leftIconClass = createMemo(() => {
-    if (isRtl()) {
-      return cn(
-        "left-0",
-        selectStaticClass("endIcon"),
-        themeClasses.endIcon,
-        local.slotClasses?.endIcon
-      );
-    } else {
-      return cn(
-        "left-0",
-        selectStaticClass("startIcon"),
-        themeClasses.startIcon,
-        local.slotClasses?.startIcon
-      );
-    }
-  });
-
-  const rightIconClass = createMemo(() => {
-    if (isRtl()) {
-      return cn(
-        "right-0",
-        selectStaticClass("startIcon"),
-        themeClasses.startIcon,
-        local.slotClasses?.startIcon
-      );
-    } else {
-      return cn(
-        "right-0",
-        selectStaticClass("endIcon"),
-        themeClasses.endIcon,
-        local.slotClasses?.endIcon
-      );
-    }
-  });
-
   const variantProps = mergeProps(
     {
-      get hasLeftIcon() {
-        return leftIcon() != null;
-      },
-      get hasRightIcon() {
-        return rightIcon() != null;
-      },
       get hasLeftDecorator() {
         return leftDecorator() != null;
       },
       get hasRightDecorator() {
         return rightDecorator() != null;
       },
-      get isFocused() {
-        return isFocused();
-      },
     },
     partialVariantProps
-  );
-
-  const SelectIcon = (props: { class?: string; children?: JSX.Element }) => (
-    <KSelect.Icon class={cn(props.class, selectIconVariants(variantProps))}>
-      {props.children}
-    </KSelect.Icon>
   );
 
   const getOptionLabel = (option: Option) => {
@@ -246,16 +184,6 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
         {getOptionGroupLabel(optGroup())}
       </Show>
     );
-  };
-
-  const onButtonFocus: JSX.EventHandlerUnion<HTMLButtonElement, FocusEvent> = e => {
-    callHandler<any, FocusEvent>(e, local.inputProps?.onFocus);
-    setIsFocused(true);
-  };
-
-  const onButtonBlur: JSX.EventHandlerUnion<HTMLButtonElement, FocusEvent> = e => {
-    callHandler<any, FocusEvent>(e, local.inputProps?.onBlur);
-    setIsFocused(false);
   };
 
   return (
@@ -316,45 +244,39 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
             </Show>
           </KSelect.Label>
         </Show>
-        <div
+        <KSelect.Trigger
           class={cn(
-            selectControlVariants(variantProps),
-            selectStaticClass("control"),
-            themeClasses.control,
-            local.slotClasses?.control
+            selectButtonVariants(variantProps),
+            selectStaticClass("button"),
+            themeClasses.button,
+            local.slotClasses?.button
           )}
+          {...others}
         >
           {leftDecorator()}
-          <div class="relative flex items-center grow h-full">
-            <KSelect.Trigger
-              class={cn(
-                selectButtonVariants(variantProps),
-                selectStaticClass("button"),
-                themeClasses.button,
-                local.slotClasses?.button
-              )}
-              onFocus={onButtonFocus}
-              onBlur={onButtonBlur}
-              {...others}
-            >
-              <KSelect.Value
-                class={cn(
-                  selectValueVariants(variantProps),
-                  selectStaticClass("value"),
-                  themeClasses.value,
-                  local.slotClasses?.value
-                )}
-              />
-            </KSelect.Trigger>
-            <Show when={leftIcon()}>
-              <SelectIcon class={leftIconClass()}>{leftIcon()}</SelectIcon>
-            </Show>
-            <Show when={rightIcon()}>
-              <SelectIcon class={rightIconClass()}>{rightIcon()}</SelectIcon>
-            </Show>
-          </div>
+          <KSelect.Value
+            class={cn(
+              selectValueVariants(variantProps),
+              selectStaticClass("value"),
+              themeClasses.value,
+              local.slotClasses?.value
+            )}
+          />
           {rightDecorator()}
-        </div>
+          <Show when={variantProps.hasDropdownIcon}>
+            <KSelect.Icon
+              class={cn(
+                selectIconVariants(variantProps),
+                selectStaticClass("icon"),
+                themeClasses.icon,
+                local.slotClasses?.icon
+              )}
+              asChild
+            >
+              <As component="span">{local.dropdownIcon}</As>
+            </KSelect.Icon>
+          </Show>
+        </KSelect.Trigger>
         <Show when={showDescription()}>
           <KSelect.Description
             class={cn(

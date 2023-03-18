@@ -1,7 +1,11 @@
 import { cva, VariantProps } from "class-variance-authority";
 
-export const selectControlVariants = cva(
-  "flex items-center grow border border-solid transition-colors",
+export const selectButtonVariants = cva(
+  [
+    "appearance-none flex items-center grow border border-solid transition-colors",
+    "ui-disabled:cursor-not-allowed ui-disabled:select-none",
+    "outline-none focus-visible:border-focus-ring",
+  ],
   {
     variants: {
       variant: {
@@ -13,7 +17,15 @@ export const selectControlVariants = cva(
         sm: "h-9 rounded-md text-sm",
         md: "h-11 rounded-md text-base",
       },
-      isFocused: {
+      hasDropdownIcon: {
+        true: "pr-0",
+        false: "",
+      },
+      hasLeftDecorator: {
+        true: "pl-0",
+        false: "",
+      },
+      hasRightDecorator: {
         true: "",
         false: "",
       },
@@ -46,7 +58,6 @@ export const selectControlVariants = cva(
       // variant + border colors
       {
         variant: "soft",
-        isFocused: false,
         isInvalid: false,
         isDisabled: false,
         class:
@@ -54,19 +65,10 @@ export const selectControlVariants = cva(
       },
       {
         variant: "outlined",
-        isFocused: false,
         isInvalid: false,
         isDisabled: false,
         class:
           "border-outlined-input-border hover:border-outlined-input-border-hover active:border-outlined-input-border-active",
-      },
-
-      // all variants + focus colors
-      {
-        isFocused: true,
-        isInvalid: false,
-        isDisabled: false,
-        class: "border-focus-ring",
       },
 
       // all variants + invalid colors
@@ -87,68 +89,22 @@ export const selectControlVariants = cva(
         isDisabled: true,
         class: "ui-group-disabled:bg-transparent ui-group-disabled:border-disabled-border",
       },
-    ],
-  }
-);
 
-export const selectButtonVariants = cva(
-  [
-    "appearance-none inline-flex justify-start items-center grow h-full m-0 py-0",
-    "border-none bg-transparent text-current",
-    "outline-none",
-    "ui-disabled:cursor-not-allowed ui-disabled:select-none",
-  ],
-  {
-    variants: {
-      size: {
-        sm: "text-sm",
-        md: "text-base",
-      },
-      hasLeftIcon: {
-        true: "",
-        false: "",
-      },
-      hasRightIcon: {
-        true: "",
-        false: "",
-      },
-      hasLeftDecorator: {
-        true: "",
-        false: "",
-      },
-      hasRightDecorator: {
-        true: "",
-        false: "",
-      },
-    },
-    compoundVariants: [
-      // any size + no icon + decorator
-      { hasLeftIcon: false, hasLeftDecorator: true, class: "pl-0" },
-      { hasRightIcon: false, hasRightDecorator: true, class: "pr-0" },
+      // size + no left decorator
+      { size: "sm", hasLeftDecorator: false, class: "pl-2.5" },
+      { size: "md", hasLeftDecorator: false, class: "pl-3.5" },
 
-      // size + no prefix
-      { size: "sm", hasLeftIcon: false, hasLeftDecorator: false, class: "pl-2.5" },
-      { size: "md", hasLeftIcon: false, hasLeftDecorator: false, class: "pl-3.5" },
-
-      // size + no suffix
-      { size: "sm", hasRightIcon: false, hasRightDecorator: false, class: "pr-2.5" },
-      { size: "md", hasRightIcon: false, hasRightDecorator: false, class: "pr-3.5" },
-
-      // size + left icon
-      { size: "sm", hasLeftIcon: true, class: "pl-9" },
-      { size: "md", hasLeftIcon: true, class: "pl-11" },
-
-      // size + right icon
-      { size: "sm", hasRightIcon: true, class: "pr-9" },
-      { size: "md", hasRightIcon: true, class: "pr-11" },
+      // size + no right decorator + no dropdown icon
+      { size: "sm", hasRightDecorator: false, hasDropdownIcon: false, class: "pr-2.5" },
+      { size: "md", hasRightDecorator: false, hasDropdownIcon: false, class: "pr-3.5" },
     ],
   }
 );
 
 export const selectIconVariants = cva(
   [
-    "reset-svg absolute top-0 bottom-0 flex justify-center items-center shrink-0",
-    "leading-none pointer-events-none",
+    "reset-svg flex justify-center items-center grow-0 shrink-0",
+    "leading-none ui-not-disabled:cursor-pointer",
     "bg-transparent bg-border-transparent",
   ],
   {
@@ -158,8 +114,12 @@ export const selectIconVariants = cva(
         outlined: "",
       },
       size: {
-        sm: "h-9 w-9 text-base",
-        md: "h-11 w-11 text-lg",
+        sm: "pr-2.5 text-base",
+        md: "pr-3.5 text-lg",
+      },
+      hasRightDecorator: {
+        true: "pl-0",
+        false: "",
       },
       isInvalid: {
         true: "",
@@ -192,11 +152,15 @@ export const selectIconVariants = cva(
         isDisabled: false,
         class: "text-icon-danger",
       },
+
+      // size + no right decorator
+      { size: "sm", hasRightDecorator: false, class: "pl-2.5" },
+      { size: "md", hasRightDecorator: false, class: "pl-3.5" },
     ],
   }
 );
 
-export const selectValueVariants = cva("", {
+export const selectValueVariants = cva("inline-flex justify-start items-center grow shrink", {
   variants: {
     variant: {
       soft: "",
@@ -302,4 +266,4 @@ export const selectOptionIndicatorVariants = cva(
   }
 );
 
-export type SelectControlVariants = VariantProps<typeof selectControlVariants>;
+export type SelectControlVariants = VariantProps<typeof selectButtonVariants>;

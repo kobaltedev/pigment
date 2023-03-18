@@ -116,43 +116,23 @@ export const textFieldInputVariants = cva(
         sm: "text-sm",
         md: "text-base",
       },
-      hasLeftIcon: {
-        true: "",
-        false: "",
-      },
-      hasRightIcon: {
-        true: "",
-        false: "",
-      },
       hasLeftDecorator: {
-        true: "",
+        true: "pl-0",
         false: "",
       },
       hasRightDecorator: {
-        true: "",
+        true: "pr-0",
         false: "",
       },
     },
     compoundVariants: [
-      // any size + no icon + decorator
-      { hasLeftIcon: false, hasLeftDecorator: true, class: "pl-0" },
-      { hasRightIcon: false, hasRightDecorator: true, class: "pr-0" },
+      // size + no left decorator
+      { size: "sm", hasLeftDecorator: false, class: "pl-2.5" },
+      { size: "md", hasLeftDecorator: false, class: "pl-3.5" },
 
-      // size + no prefix
-      { size: "sm", hasLeftIcon: false, hasLeftDecorator: false, class: "pl-2.5" },
-      { size: "md", hasLeftIcon: false, hasLeftDecorator: false, class: "pl-3.5" },
-
-      // size + no suffix
-      { size: "sm", hasRightIcon: false, hasRightDecorator: false, class: "pr-2.5" },
-      { size: "md", hasRightIcon: false, hasRightDecorator: false, class: "pr-3.5" },
-
-      // size + left icon
-      { size: "sm", hasLeftIcon: true, class: "pl-9" },
-      { size: "md", hasLeftIcon: true, class: "pl-11" },
-
-      // size + right icon
-      { size: "sm", hasRightIcon: true, class: "pr-9" },
-      { size: "md", hasRightIcon: true, class: "pr-11" },
+      // size + no right decorator
+      { size: "sm", hasRightDecorator: false, class: "pr-2.5" },
+      { size: "md", hasRightDecorator: false, class: "pr-3.5" },
     ],
   }
 );
@@ -233,57 +213,6 @@ export const textFieldTextAreaVariants = cva(
         variant: "outlined",
         isDisabled: false,
         class: "placeholder:text-text-dimmed",
-      },
-    ],
-  }
-);
-
-export const textFieldIconVariants = cva(
-  [
-    "reset-svg absolute top-0 bottom-0 flex justify-center items-center shrink-0",
-    "leading-none pointer-events-none",
-    "bg-transparent bg-border-transparent",
-  ],
-  {
-    variants: {
-      variant: {
-        soft: "",
-        outlined: "",
-      },
-      size: {
-        sm: "h-9 w-9 text-base",
-        md: "h-11 w-11 text-lg",
-      },
-      isInvalid: {
-        true: "",
-        false: "",
-      },
-      isDisabled: {
-        true: "text-disabled-icon",
-      },
-    },
-    compoundVariants: [
-      // variant + colors
-      {
-        variant: "soft",
-        isInvalid: false,
-        isDisabled: false,
-        class:
-          "text-soft-input-icon hover:text-soft-input-icon-hover active:text-soft-input-icon-active",
-      },
-      {
-        variant: "outlined",
-        isInvalid: false,
-        isDisabled: false,
-        class:
-          "text-outlined-input-icon hover:text-outlined-input-icon-hover active:text-outlined-input-icon-active",
-      },
-
-      // invalid color
-      {
-        isInvalid: true,
-        isDisabled: false,
-        class: "text-icon-danger",
       },
     ],
   }

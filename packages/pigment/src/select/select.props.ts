@@ -7,11 +7,9 @@ import { SelectControlVariants } from "./select.styles";
 export type SelectSlots =
   | "root"
   | "label"
-  | "control"
   | "button"
   | "value"
-  | "startIcon"
-  | "endIcon"
+  | "icon"
   | "description"
   | "error"
   | "errorIcon"
@@ -86,11 +84,8 @@ export interface SelectProps<Option, OptGroup = never>
   /** The icon to show next to the error message. */
   errorIcon?: JSX.Element;
 
-  /** The leading icon of the select. */
-  startIcon?: JSX.Element;
-
-  /** The trailing icon of the select. */
-  endIcon?: JSX.Element;
+  /** The icon to show next to the value as a visual affordance for the fact it can be open. */
+  dropdownIcon?: JSX.Element;
 
   /** The leading adornment of the select. */
   startDecorator?: JSX.Element;
