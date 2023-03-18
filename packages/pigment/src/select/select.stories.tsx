@@ -31,6 +31,9 @@ export default {
     isDisabled: {
       control: { type: "boolean" },
     },
+    disallowEmptySelection: {
+      control: { type: "boolean" },
+    },
     placeholder: {
       control: { type: "text" },
     },
@@ -55,6 +58,7 @@ export const Default: Story = {
     isInvalid: false,
     isRequired: false,
     isDisabled: false,
+    allowEmptySelection: false,
     placeholder: "Select a fruit",
     label: "Fruit",
     description: "Choose wisely.",
@@ -71,6 +75,7 @@ export const WithObject: Story = {
     isInvalid: false,
     isRequired: false,
     isDisabled: false,
+    allowEmptySelection: false,
     placeholder: "Select a fruit",
     label: "Fruit",
     description: "Choose wisely.",
@@ -93,6 +98,7 @@ export const WithOptGroup: Story = {
     isInvalid: false,
     isRequired: false,
     isDisabled: false,
+    allowEmptySelection: false,
     placeholder: "Select a food",
     label: "Food",
     description: "Choose wisely.",

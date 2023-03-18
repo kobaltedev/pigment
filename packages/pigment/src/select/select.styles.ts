@@ -255,7 +255,7 @@ export const selectDropdownVariants = cva(
   }
 );
 
-export const selectListboxVariants = cva("flex flex-col outline-none", {
+export const selectListboxVariants = cva("flex flex-col outline-none max-h-96 overflow-y-auto", {
   variants: {
     size: {
       sm: "gap-y-0.5 p-1.5 text-sm",
@@ -266,8 +266,8 @@ export const selectListboxVariants = cva("flex flex-col outline-none", {
 
 export const selectOptionVariants = cva(
   [
-    "flex justify-between items-center rounded select-none outline-none",
-    "bg-subtle-bg ui-not-disabled:ui-highlighted:bg-subtle-bg-hover ui-not-disabled:ui-highlighted:active:bg-subtle-bg-active",
+    "group flex justify-between items-center rounded select-none outline-none ui-not-disabled:cursor-pointer",
+    "bg-subtle-bg ui-highlighted:bg-subtle-bg-hover ui-highlighted:active:bg-subtle-bg-active",
     "ui-selected:font-medium",
     "ui-disabled:text-disabled-text",
   ],
@@ -275,7 +275,7 @@ export const selectOptionVariants = cva(
     variants: {
       size: {
         sm: "p-2 gap-x-2",
-        md: "p-3 gap-x-3",
+        md: "p-2.5 gap-x-2.5",
       },
     },
   }
@@ -293,11 +293,11 @@ export const selectOptionIndicatorVariants = cva(
   }
 );
 
-export const selectOptGroupVariants = cva("", {
+export const selectOptGroupVariants = cva("text-text-dimmed uppercase", {
   variants: {
     size: {
-      sm: "",
-      md: "",
+      sm: "px-2 pt-3 text-2xs",
+      md: "px-2.5 pt-3.5 text-xs",
     },
   },
 });

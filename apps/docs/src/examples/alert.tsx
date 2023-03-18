@@ -1,4 +1,4 @@
-import { Alert, AlertProps, Checkbox, TextField } from "@kobalte/pigment";
+import { Alert, AlertProps, Checkbox, Select, TextField } from "@kobalte/pigment";
 import { createSignal } from "solid-js";
 
 import { Playground } from "../components";
@@ -25,6 +25,18 @@ export function WithPlayground() {
         </Alert>
       }
     >
+      <Select
+        label="Variant"
+        value={variant()!}
+        onValueChange={setVariant}
+        options={["solid", "soft"]}
+      />
+      <Select
+        label="Status"
+        value={status()!}
+        onValueChange={setStatus}
+        options={["neutral", "success", "info", "warning", "danger", "help"]}
+      />
       <TextField label="Title" value={title()} onValueChange={setTitle} />
       <TextField label="Children" value={children()} onValueChange={setChildren} isMultiline />
     </Playground>

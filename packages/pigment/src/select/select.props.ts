@@ -38,6 +38,7 @@ export interface SelectProps<Option, OptGroup = never>
       | "optionGroupChildren"
       | "isOptionGroup"
       | "isModal"
+      | "placeholder"
       | "id"
       | "name"
       | "isRequired"
@@ -55,17 +56,17 @@ export interface SelectProps<Option, OptGroup = never>
   /** Template of selected option. */
   valueTemplate?: (selectedOption: Accessor<Option>) => JSX.Element;
 
-  /** Template of an option items. */
+  /** Template of an option item. */
   optionTemplate?: (option: Accessor<Option>) => JSX.Element;
 
   /** Template of an option group item. */
   optionGroupTemplate?: (optGroup: Accessor<OptGroup>) => JSX.Element;
 
-  /** The placeholder displayed when the select is empty. */
-  placeholder?: string;
+  /** Additional props to be spread on the inner `<select>` element. */
+  inputProps?: ComponentProps<"select">;
 
-  /** Additional props to be spread on the inner `<select>` or `<input>` element. */
-  inputProps?: ComponentProps<"select"> | ComponentProps<"input">;
+  /** Whether the select allows empty selection. */
+  allowEmptySelection?: boolean;
 
   /** The label that gives the user information on the select. */
   label?: JSX.Element;

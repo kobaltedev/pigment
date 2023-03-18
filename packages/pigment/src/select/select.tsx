@@ -1,16 +1,6 @@
 import { Select as KSelect, useLocale } from "@kobalte/core";
 import { callHandler, isFunction, isString } from "@kobalte/utils";
-import { mergeRefs } from "@solid-primitives/refs";
-import {
-  Accessor,
-  ComponentProps,
-  createMemo,
-  createSignal,
-  JSX,
-  mergeProps,
-  Show,
-  splitProps,
-} from "solid-js";
+import { Accessor, createMemo, createSignal, JSX, mergeProps, Show, splitProps } from "solid-js";
 
 import { CheckIcon, ExclamationCircleIcon, SelectorIcon } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme/theme-context";
@@ -18,24 +8,22 @@ import { cn } from "../utils/cn";
 import { makeStaticClass } from "../utils/make-static-class";
 import { SelectProps, SelectSlots } from "./select.props";
 import {
+  selectButtonVariants,
+  selectDropdownVariants,
   selectFieldVariants,
   selectIconVariants,
-  selectButtonVariants,
   selectLabelVariants,
-  selectSupportTextVariants,
-  selectDropdownVariants,
   selectListboxVariants,
-  selectOptionVariants,
   selectOptGroupVariants,
   selectOptionIndicatorVariants,
+  selectOptionVariants,
+  selectSupportTextVariants,
   selectValueVariants,
 } from "./select.styles";
 
 const selectStaticClass = makeStaticClass<SelectSlots>("select");
 
 export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptGroup>) {
-  let ref: HTMLSelectElement | HTMLInputElement | undefined;
-
   props = mergeThemeProps(
     "Select",
     {
@@ -45,6 +33,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       size: "sm",
       isInvalid: false,
       isDisabled: false,
+      allowEmptySelection: false,
       inputProps: {},
       optionValue: "value" as any,
       optionTextValue: "label" as any,
@@ -63,10 +52,10 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
   const [local, rootProps, partialVariantProps, others] = splitProps(
     props,
     [
-      "ref",
       "class",
       "slotClasses",
       "inputProps",
+      "allowEmptySelection",
       "label",
       "description",
       "error",
@@ -205,16 +194,6 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
     </KSelect.Icon>
   );
 
-  const onTriggerFocus: JSX.EventHandlerUnion<HTMLButtonElement, FocusEvent> = e => {
-    callHandler<any, FocusEvent>(e, local.inputProps?.onFocus);
-    setIsFocused(true);
-  };
-
-  const onTriggerBlur: JSX.EventHandlerUnion<HTMLButtonElement, FocusEvent> = e => {
-    callHandler<any, FocusEvent>(e, local.inputProps?.onBlur);
-    setIsFocused(false);
-  };
-
   const getOptionLabel = (option: Option) => {
     if (isString(option)) {
       return option;
@@ -269,9 +248,20 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
     );
   };
 
+  const onButtonFocus: JSX.EventHandlerUnion<HTMLButtonElement, FocusEvent> = e => {
+    callHandler<any, FocusEvent>(e, local.inputProps?.onFocus);
+    setIsFocused(true);
+  };
+
+  const onButtonBlur: JSX.EventHandlerUnion<HTMLButtonElement, FocusEvent> = e => {
+    callHandler<any, FocusEvent>(e, local.inputProps?.onBlur);
+    setIsFocused(false);
+  };
+
   return (
     <KSelect.Root
       validationState={variantProps.isInvalid ? "invalid" : undefined}
+      disallowEmptySelection={!local.allowEmptySelection}
       renderValue={valueTemplate}
       renderItem={item => (
         <KSelect.Item
@@ -308,7 +298,9 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
           local.slotClasses?.root,
           local.class
         )}
+        data-disabled={rootProps.isDisabled ? "" : undefined}
       >
+        <KSelect.HiddenSelect />
         <Show when={label()}>
           <KSelect.Label
             class={cn(
@@ -341,8 +333,9 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
                 themeClasses.button,
                 local.slotClasses?.button
               )}
-              onFocus={onTriggerFocus}
-              onBlur={onTriggerBlur}
+              onFocus={onButtonFocus}
+              onBlur={onButtonBlur}
+              {...others}
             >
               <KSelect.Value
                 class={cn(
