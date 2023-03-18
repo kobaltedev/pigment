@@ -84,7 +84,7 @@ export const WithIcon: Story = {
   },
 };
 
-export const WithSection: Story = {
+export const WithDecorator: Story = {
   args: {
     variant: "outlined",
     size: "sm",
@@ -97,8 +97,8 @@ export const WithSection: Story = {
     label: "E-mail",
     description: "We will never share your email.",
     error: "Please enter a valid email address.",
-    startSection: () => <span class="mx-2">http://</span>,
-    endSection: () => (
+    startDecorator: () => <span class="mx-2">http://</span>,
+    endDecorator: () => (
       <Button size="sm" variant="solid" color="neutral" class="rounded-l-none z-10 ml-2">
         Search
       </Button>
@@ -106,7 +106,7 @@ export const WithSection: Story = {
   },
 };
 
-export const WithIconAndSection: Story = {
+export const WithIconAndDecorator: Story = {
   args: {
     variant: "outlined",
     size: "sm",
@@ -121,8 +121,8 @@ export const WithIconAndSection: Story = {
     error: "Please enter a valid email address.",
     startIcon: () => <InfoCircleIcon />,
     endIcon: () => <InfoCircleIcon />,
-    startSection: () => <span class="ml-2">http://</span>,
-    endSection: () => (
+    startDecorator: () => <span class="ml-2">http://</span>,
+    endDecorator: () => (
       <Button size="sm" variant="solid" color="neutral" class="rounded-l-none z-10">
         Search
       </Button>

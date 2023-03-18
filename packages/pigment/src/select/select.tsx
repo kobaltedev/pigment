@@ -10,7 +10,7 @@ import { SelectProps, SelectSlots } from "./select.props";
 import {
   selectButtonVariants,
   selectDropdownVariants,
-  selectFieldVariants,
+  selectControlVariants,
   selectIconVariants,
   selectLabelVariants,
   selectListboxVariants,
@@ -64,8 +64,8 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       "errorIcon",
       "startIcon",
       "endIcon",
-      "startSection",
-      "endSection",
+      "startDecorator",
+      "endDecorator",
       "optionLabel",
       "optionGroupLabel",
       "valueTemplate",
@@ -123,12 +123,12 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
     return isRtl() ? local.startIcon : local.endIcon;
   });
 
-  const leftSection = createMemo(() => {
-    return isRtl() ? local.endSection : local.startSection;
+  const leftDecorator = createMemo(() => {
+    return isRtl() ? local.endDecorator : local.startDecorator;
   });
 
-  const rightSection = createMemo(() => {
-    return isRtl() ? local.startSection : local.endSection;
+  const rightDecorator = createMemo(() => {
+    return isRtl() ? local.startDecorator : local.endDecorator;
   });
 
   const leftIconClass = createMemo(() => {
@@ -175,11 +175,11 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       get hasRightIcon() {
         return rightIcon() != null;
       },
-      get hasLeftSection() {
-        return leftSection() != null;
+      get hasLeftDecorator() {
+        return leftDecorator() != null;
       },
-      get hasRightSection() {
-        return rightSection() != null;
+      get hasRightDecorator() {
+        return rightDecorator() != null;
       },
       get isFocused() {
         return isFocused();
@@ -318,13 +318,13 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
         </Show>
         <div
           class={cn(
-            selectFieldVariants(variantProps),
-            selectStaticClass("wrapper"),
-            themeClasses.wrapper,
-            local.slotClasses?.wrapper
+            selectControlVariants(variantProps),
+            selectStaticClass("control"),
+            themeClasses.control,
+            local.slotClasses?.control
           )}
         >
-          {leftSection()}
+          {leftDecorator()}
           <div class="relative flex items-center grow h-full">
             <KSelect.Trigger
               class={cn(
@@ -353,7 +353,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
               <SelectIcon class={rightIconClass()}>{rightIcon()}</SelectIcon>
             </Show>
           </div>
-          {rightSection()}
+          {rightDecorator()}
         </div>
         <Show when={showDescription()}>
           <KSelect.Description

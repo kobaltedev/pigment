@@ -2,12 +2,12 @@ import { Select as KSelect } from "@kobalte/core";
 import { Accessor, ComponentProps, JSX } from "solid-js";
 
 import { SlotProp } from "../utils/slot";
-import { SelectFieldVariants } from "./select.styles";
+import { SelectControlVariants } from "./select.styles";
 
 export type SelectSlots =
   | "root"
   | "label"
-  | "wrapper"
+  | "control"
   | "button"
   | "value"
   | "startIcon"
@@ -45,7 +45,7 @@ export interface SelectProps<Option, OptGroup = never>
       | "isDisabled"
       | "isReadOnly"
     >,
-    Omit<SelectFieldVariants, "isFocused" | "isDisabled">,
+    Omit<SelectControlVariants, "isFocused" | "isDisabled">,
     SlotProp<SelectSlots> {
   /** Property name or getter function to use as the label of an option. */
   optionLabel?: keyof Option | ((option: Option) => string);
@@ -86,15 +86,15 @@ export interface SelectProps<Option, OptGroup = never>
   /** The icon to show next to the error message. */
   errorIcon?: JSX.Element;
 
-  /** The icon to show before the select field content. */
+  /** The leading icon of the select. */
   startIcon?: JSX.Element;
 
-  /** The icon to show after the select field content. */
+  /** The trailing icon of the select. */
   endIcon?: JSX.Element;
 
-  /** The section to show before the select field start icon and content. */
-  startSection?: JSX.Element;
+  /** The leading adornment of the select. */
+  startDecorator?: JSX.Element;
 
-  /** The section to show after the select field end icon and content. */
-  endSection?: JSX.Element;
+  /** The trailing adornment of the select. */
+  endDecorator?: JSX.Element;
 }

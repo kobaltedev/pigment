@@ -22,7 +22,8 @@ import {
   textFieldLabelVariants,
   textFieldSupportTextVariants,
   textFieldTextAreaVariants,
-  textFieldWrapperVariants,
+  textFieldControlVariants,
+  TextFieldControlVariants,
 } from "./text-field.styles";
 
 const textFieldStaticClass = makeStaticClass<TextFieldSlots>("text-field");
@@ -67,8 +68,8 @@ export function TextField(props: TextFieldProps) {
       "errorIcon",
       "startIcon",
       "endIcon",
-      "startSection",
-      "endSection",
+      "startDecorator",
+      "endDecorator",
     ],
     ["variant", "size", "isInvalid", "isDisabled"]
   );
@@ -100,12 +101,12 @@ export function TextField(props: TextFieldProps) {
     return isRtl() ? local.startIcon : local.endIcon;
   });
 
-  const leftSection = createMemo(() => {
-    return isRtl() ? local.endSection : local.startSection;
+  const leftDecorator = createMemo(() => {
+    return isRtl() ? local.endDecorator : local.startDecorator;
   });
 
-  const rightSection = createMemo(() => {
-    return isRtl() ? local.startSection : local.endSection;
+  const rightDecorator = createMemo(() => {
+    return isRtl() ? local.startDecorator : local.endDecorator;
   });
 
   const leftIconClass = createMemo(() => {
@@ -152,11 +153,11 @@ export function TextField(props: TextFieldProps) {
       get hasRightIcon() {
         return rightIcon() != null;
       },
-      get hasLeftSection() {
-        return leftSection() != null;
+      get hasLeftDecorator() {
+        return leftDecorator() != null;
       },
-      get hasRightSection() {
-        return rightSection() != null;
+      get hasRightDecorator() {
+        return rightDecorator() != null;
       },
       get isFocused() {
         return isFocused();
@@ -230,13 +231,13 @@ export function TextField(props: TextFieldProps) {
       >
         <div
           class={cn(
-            textFieldWrapperVariants(variantProps),
-            textFieldStaticClass("wrapper"),
-            themeClasses.wrapper,
-            local.slotClasses?.wrapper
+            textFieldControlVariants(variantProps),
+            textFieldStaticClass("control"),
+            themeClasses.control,
+            local.slotClasses?.control
           )}
         >
-          {leftSection()}
+          {leftDecorator()}
           <div class="relative flex items-center grow h-full">
             <KTextField.Input
               {...(local.inputProps as ComponentProps<"input">)}
@@ -261,7 +262,7 @@ export function TextField(props: TextFieldProps) {
               <TextFieldIcon class={rightIconClass()}>{rightIcon()}</TextFieldIcon>
             </Show>
           </div>
-          {rightSection()}
+          {rightDecorator()}
         </div>
       </Show>
       <Show when={showDescription()}>

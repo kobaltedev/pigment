@@ -90,7 +90,7 @@ export const WithObject: Story = {
   },
 };
 
-export const WithOptGroup: Story = {
+export const WithOptionGroup: Story = {
   args: {
     variant: "outlined",
     size: "sm",
@@ -124,5 +124,53 @@ export const WithOptGroup: Story = {
         ],
       },
     ],
+  },
+};
+
+export const WithDecorator: Story = {
+  args: {
+    variant: "outlined",
+    size: "sm",
+    hasErrorIcon: true,
+    isInvalid: false,
+    isRequired: false,
+    isDisabled: false,
+    allowEmptySelection: false,
+    placeholder: "Select a fruit",
+    label: "Fruit",
+    description: "Choose wisely.",
+    error: "Please select a fruit.",
+    options: ["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"],
+    startDecorator: () => <span class="mx-2">http://</span>,
+    endDecorator: () => (
+      <Button size="sm" variant="solid" color="neutral" class="rounded-l-none z-10 ml-2">
+        Search
+      </Button>
+    ),
+  },
+};
+
+export const WithIconAndDecorator: Story = {
+  args: {
+    variant: "outlined",
+    size: "sm",
+    hasErrorIcon: true,
+    isInvalid: false,
+    isRequired: false,
+    isDisabled: false,
+    allowEmptySelection: false,
+    placeholder: "Select a fruit",
+    label: "Fruit",
+    description: "Choose wisely.",
+    error: "Please select a fruit.",
+    options: ["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"],
+    startIcon: () => <InfoCircleIcon />,
+    endIcon: () => <InfoCircleIcon />,
+    startDecorator: () => <span class="ml-2">http://</span>,
+    endDecorator: () => (
+      <Button size="sm" variant="solid" color="neutral" class="rounded-l-none z-10">
+        Search
+      </Button>
+    ),
   },
 };

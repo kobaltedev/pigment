@@ -1,6 +1,6 @@
 import { cva, VariantProps } from "class-variance-authority";
 
-export const selectFieldVariants = cva(
+export const selectControlVariants = cva(
   "flex items-center grow border border-solid transition-colors",
   {
     variants: {
@@ -112,27 +112,27 @@ export const selectButtonVariants = cva(
         true: "",
         false: "",
       },
-      hasLeftSection: {
+      hasLeftDecorator: {
         true: "",
         false: "",
       },
-      hasRightSection: {
+      hasRightDecorator: {
         true: "",
         false: "",
       },
     },
     compoundVariants: [
-      // any size + no icon + section
-      { hasLeftIcon: false, hasLeftSection: true, class: "pl-0" },
-      { hasRightIcon: false, hasRightSection: true, class: "pr-0" },
+      // any size + no icon + decorator
+      { hasLeftIcon: false, hasLeftDecorator: true, class: "pl-0" },
+      { hasRightIcon: false, hasRightDecorator: true, class: "pr-0" },
 
       // size + no prefix
-      { size: "sm", hasLeftIcon: false, hasLeftSection: false, class: "pl-2.5" },
-      { size: "md", hasLeftIcon: false, hasLeftSection: false, class: "pl-3.5" },
+      { size: "sm", hasLeftIcon: false, hasLeftDecorator: false, class: "pl-2.5" },
+      { size: "md", hasLeftIcon: false, hasLeftDecorator: false, class: "pl-3.5" },
 
       // size + no suffix
-      { size: "sm", hasRightIcon: false, hasRightSection: false, class: "pr-2.5" },
-      { size: "md", hasRightIcon: false, hasRightSection: false, class: "pr-3.5" },
+      { size: "sm", hasRightIcon: false, hasRightDecorator: false, class: "pr-2.5" },
+      { size: "md", hasRightIcon: false, hasRightDecorator: false, class: "pr-3.5" },
 
       // size + left icon
       { size: "sm", hasLeftIcon: true, class: "pl-9" },
@@ -264,6 +264,15 @@ export const selectListboxVariants = cva("flex flex-col outline-none max-h-96 ov
   },
 });
 
+export const selectOptGroupVariants = cva("text-text-dimmed uppercase", {
+  variants: {
+    size: {
+      sm: "px-2 pt-3 text-2xs",
+      md: "px-2.5 pt-3.5 text-xs",
+    },
+  },
+});
+
 export const selectOptionVariants = cva(
   [
     "group flex justify-between items-center rounded select-none outline-none ui-not-disabled:cursor-pointer",
@@ -293,13 +302,4 @@ export const selectOptionIndicatorVariants = cva(
   }
 );
 
-export const selectOptGroupVariants = cva("text-text-dimmed uppercase", {
-  variants: {
-    size: {
-      sm: "px-2 pt-3 text-2xs",
-      md: "px-2.5 pt-3.5 text-xs",
-    },
-  },
-});
-
-export type SelectFieldVariants = VariantProps<typeof selectFieldVariants>;
+export type SelectControlVariants = VariantProps<typeof selectControlVariants>;

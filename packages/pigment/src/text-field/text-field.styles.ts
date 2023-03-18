@@ -1,6 +1,6 @@
 import { cva, VariantProps } from "class-variance-authority";
 
-export const textFieldWrapperVariants = cva(
+export const textFieldControlVariants = cva(
   "flex items-center grow border border-solid transition-colors",
   {
     variants: {
@@ -124,27 +124,27 @@ export const textFieldInputVariants = cva(
         true: "",
         false: "",
       },
-      hasLeftSection: {
+      hasLeftDecorator: {
         true: "",
         false: "",
       },
-      hasRightSection: {
+      hasRightDecorator: {
         true: "",
         false: "",
       },
     },
     compoundVariants: [
-      // any size + no icon + section
-      { hasLeftIcon: false, hasLeftSection: true, class: "pl-0" },
-      { hasRightIcon: false, hasRightSection: true, class: "pr-0" },
+      // any size + no icon + decorator
+      { hasLeftIcon: false, hasLeftDecorator: true, class: "pl-0" },
+      { hasRightIcon: false, hasRightDecorator: true, class: "pr-0" },
 
       // size + no prefix
-      { size: "sm", hasLeftIcon: false, hasLeftSection: false, class: "pl-2.5" },
-      { size: "md", hasLeftIcon: false, hasLeftSection: false, class: "pl-3.5" },
+      { size: "sm", hasLeftIcon: false, hasLeftDecorator: false, class: "pl-2.5" },
+      { size: "md", hasLeftIcon: false, hasLeftDecorator: false, class: "pl-3.5" },
 
       // size + no suffix
-      { size: "sm", hasRightIcon: false, hasRightSection: false, class: "pr-2.5" },
-      { size: "md", hasRightIcon: false, hasRightSection: false, class: "pr-3.5" },
+      { size: "sm", hasRightIcon: false, hasRightDecorator: false, class: "pr-2.5" },
+      { size: "md", hasRightIcon: false, hasRightDecorator: false, class: "pr-3.5" },
 
       // size + left icon
       { size: "sm", hasLeftIcon: true, class: "pl-9" },
@@ -310,4 +310,4 @@ export const textFieldSupportTextVariants = cva("grow-0 ui-group-disabled:text-d
   },
 });
 
-export type TextFieldWrapperVariants = VariantProps<typeof textFieldWrapperVariants>;
+export type TextFieldControlVariants = VariantProps<typeof textFieldControlVariants>;
