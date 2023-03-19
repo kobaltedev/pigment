@@ -11,15 +11,15 @@
 import { mergeProps } from "solid-js";
 
 import { COLOR_SCHEME_STORAGE_KEY } from "./color-scheme-storage-manager";
-import { ColorSchemeScriptProps, ConfigColorScheme } from "./types";
+import { ColorSchemeScriptProps, ColorSchemeWithSystem } from "./types";
 import { FALLBACK_COLOR_SCHEME_VALUE } from "./utils";
 
-const VALID_VALUES = new Set<ConfigColorScheme>(["light", "dark", "system"]);
+const VALID_VALUES = new Set<ColorSchemeWithSystem>(["light", "dark", "system"]);
 
 /**
  * runtime safe-guard against invalid color mode values
  */
-function normalize(initialColorScheme: ConfigColorScheme) {
+function normalize(initialColorScheme: ColorSchemeWithSystem) {
   if (!VALID_VALUES.has(initialColorScheme)) {
     return FALLBACK_COLOR_SCHEME_VALUE;
   }

@@ -1,9 +1,9 @@
 /*!
- * Original code by Chakra UI
+ * Portions of this file are based on code from chakra-ui.
  * MIT Licensed, Copyright (c) 2019 Segun Adebayo.
  *
  * Credits to the Chakra UI team:
- * https://github.com/chakra-ui/chakra-ui/blob/main/packages/color-mode/src/color-mode-provider.tsx
+ * https://github.com/chakra-ui/chakra-ui/blob/26800eebaa52e49b2dd3f1b191c34b368a75bc54/packages/components/color-mode/src/color-mode-provider.tsx
  */
 
 import { createEffect, createSignal, onCleanup } from "solid-js";
@@ -14,7 +14,7 @@ import {
   ColorScheme,
   ColorSchemeContextType,
   ColorSchemeProviderProps,
-  ConfigColorScheme,
+  ColorSchemeWithSystem,
 } from "./types";
 import {
   addColorSchemeListener,
@@ -42,7 +42,7 @@ export function ColorSchemeProvider(props: ColorSchemeProviderProps) {
     setColorSchemeDataset(value, props.disableTransitionOnChange);
   };
 
-  const setColorScheme = (value: ConfigColorScheme) => {
+  const setColorScheme = (value: ColorSchemeWithSystem) => {
     if (colorSchemeListenerCleanupFn) {
       colorSchemeListenerCleanupFn();
       colorSchemeListenerCleanupFn = undefined;

@@ -53,7 +53,10 @@ export function Highlight(props: HighlightProps) {
         variant="ghost"
         color={isCopied() ? "success" : "neutral"}
         size="xs"
-        class="pg-copy-btn absolute top-2 right-2 z-10 text-slate-400 hover:text-slate-100"
+        class={cn(
+          "pg-copy-btn absolute top-2 right-2 z-10 text-slate-400",
+          isCopied() ? "hover:text-green-800" : " hover:text-slate-100"
+        )}
         onClick={copyToClipboard}
       >
         <Show when={isCopied()} fallback={<CopyIcon />}>

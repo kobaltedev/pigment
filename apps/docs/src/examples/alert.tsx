@@ -1,4 +1,4 @@
-import { Alert, AlertProps, Checkbox, Select, TextField } from "@kobalte/pigment";
+import { Alert, AlertProps, Checkbox, Select } from "@kobalte/pigment";
 import { createMemo, createSignal } from "solid-js";
 
 import { Playground } from "../components";
@@ -6,8 +6,6 @@ import { Playground } from "../components";
 export function WithPlayground() {
   const [variant, setVariant] = createSignal<AlertProps["variant"]>("soft");
   const [status, setStatus] = createSignal<AlertProps["status"]>("info");
-  const [title, setTitle] = createSignal("Software update.");
-  const [children, setChildren] = createSignal("A new software update is available.");
   const [isDismissible, setIsDismissible] = createSignal(false);
   const [isMultiline, setIsMultiline] = createSignal(false);
 
@@ -15,11 +13,11 @@ export function WithPlayground() {
     return `<Alert
   variant="${variant()}"
   status="${status()}"
-  title="${title()}"
   isDismissible={${isDismissible()}}
   isMultiline={${isMultiline()}}
+  title="Software update."
 >
-  ${children()}
+  A new software update is available.
 </Alert>`;
   });
 
@@ -29,11 +27,11 @@ export function WithPlayground() {
         <Alert
           variant={variant()}
           status={status()}
-          title={title()}
           isDismissible={isDismissible()}
           isMultiline={isMultiline()}
+          title="Software update."
         >
-          {children()}
+          A new software update is available.
         </Alert>
       }
       snippet={snippet()}
@@ -50,20 +48,12 @@ export function WithPlayground() {
         onValueChange={setStatus}
         options={["neutral", "success", "info", "warning", "danger", "help"]}
       />
-      <TextField label="Title" value={title()} onValueChange={setTitle} />
-      <TextField label="Children" value={children()} onValueChange={setChildren} isMultiline />
       <Checkbox
-        class="self-start"
         label="Dismissible"
         isChecked={isDismissible()}
         onCheckedChange={setIsDismissible}
       />
-      <Checkbox
-        class="self-start"
-        label="Multiline"
-        isChecked={isMultiline()}
-        onCheckedChange={setIsMultiline}
-      />
+      <Checkbox label="Multiline" isChecked={isMultiline()} onCheckedChange={setIsMultiline} />
     </Playground>
   );
 }
