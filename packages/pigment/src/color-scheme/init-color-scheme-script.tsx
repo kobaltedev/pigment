@@ -8,7 +8,7 @@
  * https://github.com/chakra-ui/chakra-ui/blob/132a98958be64e46619b1e280ca6405d0a833cb0/packages/components/color-mode/src/color-mode-script.tsx
  */
 
-import { mergeProps } from "solid-js";
+import { mergeDefaultProps } from "@kobalte/utils";
 
 import { COLOR_SCHEME_STORAGE_KEY } from "./color-scheme-storage-manager";
 import { ColorSchemeScriptProps, ColorSchemeWithSystem } from "./types";
@@ -28,11 +28,11 @@ function normalize(initialColorScheme: ColorSchemeWithSystem) {
 }
 
 export function InitColorSchemeScript(props: ColorSchemeScriptProps) {
-  props = mergeProps(
+  props = mergeDefaultProps(
     {
       initialColorScheme: FALLBACK_COLOR_SCHEME_VALUE,
       storageKey: COLOR_SCHEME_STORAGE_KEY,
-    } as ColorSchemeScriptProps,
+    },
     props
   );
 

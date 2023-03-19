@@ -43,5 +43,6 @@ export type ColorSchemeScriptProps = {
   /** The key used to store color scheme preference in localStorage. */
   storageKey?: string;
 
+  /** The `nonce` attribute that will be passed to the script when used on a site with strict Content-Security-Policy. */
   nonce?: string;
 };
