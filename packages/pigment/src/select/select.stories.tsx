@@ -20,6 +20,9 @@ export default {
       options: ["sm", "md"],
       control: { type: "select" },
     },
+    hasDropdownIcon: {
+      control: { type: "boolean" },
+    },
     hasErrorIcon: {
       control: { type: "boolean" },
     },
@@ -55,6 +58,7 @@ export const Default: Story = {
   args: {
     variant: "outlined",
     size: "sm",
+    hasDropdownIcon: true,
     hasErrorIcon: true,
     isInvalid: false,
     isRequired: false,
@@ -68,10 +72,35 @@ export const Default: Story = {
   },
 };
 
+export const WithDecorator: Story = {
+  args: {
+    variant: "outlined",
+    size: "sm",
+    hasDropdownIcon: true,
+    hasErrorIcon: true,
+    isInvalid: false,
+    isRequired: false,
+    isDisabled: false,
+    allowEmptySelection: false,
+    placeholder: "Select a fruit",
+    label: "Fruit",
+    description: "Choose wisely.",
+    error: "Please select a fruit.",
+    options: ["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"],
+    startDecorator: () => <InfoCircleIcon class="h-4 w-4 mx-2.5" />,
+    endDecorator: () => (
+      <Badge size="sm" variant="soft" color="danger" class="mx-2.5">
+        +5
+      </Badge>
+    ),
+  },
+};
+
 export const WithObject: Story = {
   args: {
     variant: "outlined",
     size: "sm",
+    hasDropdownIcon: true,
     hasErrorIcon: true,
     isInvalid: false,
     isRequired: false,
@@ -95,6 +124,7 @@ export const WithOptionGroup: Story = {
   args: {
     variant: "outlined",
     size: "sm",
+    hasDropdownIcon: true,
     hasErrorIcon: true,
     isInvalid: false,
     isRequired: false,
@@ -125,28 +155,5 @@ export const WithOptionGroup: Story = {
         ],
       },
     ],
-  },
-};
-
-export const WithDecorator: Story = {
-  args: {
-    variant: "outlined",
-    size: "sm",
-    hasErrorIcon: true,
-    isInvalid: false,
-    isRequired: false,
-    isDisabled: false,
-    allowEmptySelection: false,
-    placeholder: "Select a fruit",
-    label: "Fruit",
-    description: "Choose wisely.",
-    error: "Please select a fruit.",
-    options: ["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"],
-    startDecorator: () => <InfoCircleIcon class="h-4 w-4 mx-2.5" />,
-    endDecorator: () => (
-      <Badge size="sm" variant="soft" color="danger" class="mx-2.5">
-        +5
-      </Badge>
-    ),
   },
 };

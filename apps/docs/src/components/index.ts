@@ -8,3 +8,4 @@ export * from "./playground";
 export * from "./preview";
 export * from "./prose";
 export * from "./table-of-contents";
+export * from "./theme-selector";

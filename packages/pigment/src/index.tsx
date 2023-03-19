@@ -1,4 +1,5 @@
 // utils
+export * from "./color-scheme";
 export * from "./utils/cn";
 
 // theme

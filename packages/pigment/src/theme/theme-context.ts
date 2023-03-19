@@ -16,17 +16,10 @@ function useComponentTheme<T extends keyof Components>(component: T) {
 /**
  * Resolve the `slotClasses` provided in the component theme configuration.
  */
-export function useThemeClasses<Slots extends string>(
-  component: keyof Components,
-  props: any
-): Record<Slots, string> {
+export function useThemeClasses<Slots extends string>(component: keyof Components, props: any) {
   const classes = useComponentTheme(component)?.slotClasses ?? {};
 
-  if (isFunction(classes)) {
-    return classes(props);
-  } else {
-    return classes as Record<Slots, string>;
-  }
+  return (isFunction(classes) ? classes(props) : classes) as Partial<Record<Slots, string>>;
 }
 
 /**

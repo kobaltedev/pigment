@@ -654,7 +654,7 @@ export const defaultTheme = {
     "--pg-shadow-surface-overlay":
       "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)",
   },
-  '.dark, [data-pg-theme="dark"]': {
+  '.dark, [data-pg-color-scheme="dark"]': {
     /* -------------------------------------------------------------------------------------------------
      * Color - Reference tokens
      * -----------------------------------------------------------------------------------------------*/

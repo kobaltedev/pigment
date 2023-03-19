@@ -1,6 +1,7 @@
 // @refresh reload
 import "./root.css";
 
+import { ColorSchemeProvider, InitColorSchemeScript, ThemeProvider } from "@kobalte/pigment";
 import { Suspense } from "solid-js";
 import { MDXProvider } from "solid-mdx";
 import {
@@ -49,12 +50,17 @@ export default function Root() {
       </Head>
       <Body>
         <ErrorBoundary>
+          <InitColorSchemeScript />
           <Suspense>
-            <MDXProvider components={mdxComponents}>
-              <Routes>
-                <FileRoutes />
-              </Routes>
-            </MDXProvider>
+            <ColorSchemeProvider>
+              <ThemeProvider>
+                <MDXProvider components={mdxComponents}>
+                  <Routes>
+                    <FileRoutes />
+                  </Routes>
+                </MDXProvider>
+              </ThemeProvider>
+            </ColorSchemeProvider>
           </Suspense>
         </ErrorBoundary>
         <Scripts />

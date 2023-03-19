@@ -42,6 +42,7 @@ export interface SelectProps<Option, OptGroup = never>
       | "isRequired"
       | "isDisabled"
       | "isReadOnly"
+      | "sameWidth"
     >,
     Omit<SelectControlVariants, "isFocused" | "isDisabled">,
     SlotProp<SelectSlots> {
@@ -77,6 +78,9 @@ export interface SelectProps<Option, OptGroup = never>
 
   /** Whether an asterisk should appear next to the label when the select is required. */
   hasRequiredIndicator?: boolean;
+
+  /** Whether an icon should appear next to the selected option in the listbox. */
+  hasSelectedIcon?: boolean;
 
   /** Whether an icon should appear next to the error message. */
   hasErrorIcon?: boolean;

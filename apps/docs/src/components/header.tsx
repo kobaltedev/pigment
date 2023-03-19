@@ -1,9 +1,10 @@
-import { As, cn, LinkButton, LinkIconButton } from "@kobalte/pigment";
+import { As, LinkButton, LinkIconButton } from "@kobalte/pigment";
 import { Link, useMatch } from "@solidjs/router";
 
 import { NavSection } from "../model/navigation";
 import { LATEST_CORE_CHANGELOG_URL, LATEST_CORE_VERSION_NAME } from "../VERSIONS";
 import { GitHubIcon } from "./icons";
+import { ThemeSelector } from "./theme-selector";
 
 interface HeaderProps {
   navSections: NavSection[];
@@ -52,7 +53,7 @@ export function Header(props: HeaderProps) {
             </As>
           </LinkButton>
         </div>
-        <LinkIconButton variant="ghost" color="neutral" asChild>
+        <LinkIconButton variant="ghost" color="neutral" class="mr-1" asChild>
           <As
             component={Link}
             href="https://github.com/kobaltedev/pigment"
@@ -63,7 +64,7 @@ export function Header(props: HeaderProps) {
             <GitHubIcon class="text-slate-600 h-5 w-5" />
           </As>
         </LinkIconButton>
-        {/* <ThemeSelector /> */}
+        <ThemeSelector />
       </div>
     </header>
   );

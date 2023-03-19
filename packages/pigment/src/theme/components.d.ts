@@ -11,7 +11,7 @@ export interface ComponentTheme<Props, Slots extends string> {
   defaultProps?: Partial<Props>;
 
   /** CSS classes to be passed to the component slots. */
-  slotClasses?: Record<Slots, string> | ((props: Props) => Record<Slots, string>);
+  slotClasses?: Partial<Record<Slots, string>> | ((props: Props) => Partial<Record<Slots, string>>);
 }
 
 export interface Components {

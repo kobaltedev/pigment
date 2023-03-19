@@ -9,7 +9,10 @@ export function Footer() {
         <div class="flex flex-col sm:flex-row items-baseline justify-between gap-4 py-8 md:py-12">
           <div>
             <div class="mb-2">
-              <Link class="inline-block font-semibold font-display text-xl" href="/">
+              <Link
+                class="inline-block font-semibold font-display text-xl dark:text-white/90"
+                href="/"
+              >
                 Pigment
                 <span class="text-3xl text-blue-600 leading-[0]">.</span>
               </Link>

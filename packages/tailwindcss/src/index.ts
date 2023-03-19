@@ -32,7 +32,7 @@ function globalVariantTokens(variant: string, color: string) {
 
 export default function preset(): Partial<Config> {
   return {
-    darkMode: ["class", "[data-pg-theme='dark']"],
+    darkMode: ["class", "[data-pg-color-scheme='dark']"],
     theme: {
       extend: {
         fontSize: {

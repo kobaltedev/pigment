@@ -115,11 +115,11 @@ pre {
   position: relative;
 }
 
-[data-pg-theme="dark"] .shiki.github-light {
+[data-pg-color-scheme="dark"] .shiki.github-light {
   display: none !important;
 }
 
-:not([data-pg-theme="dark"]) .shiki.github-dark {
+[data-pg-color-scheme="light"] .shiki.github-dark {
   display: none !important;
 }
 
@@ -140,7 +140,7 @@ pre.shiki {
     "Courier New", monospace;
 }
 
-[data-pg-theme="dark"] pre.shiki {
+[data-pg-color-scheme="dark"] pre.shiki {
   border-color: #3f3f46;
   background-color: #27272a !important;
 }
@@ -172,7 +172,7 @@ pre.shiki div.highlight {
   opacity: 1;
   background-color: rgb(224 242 254 / 0.8);
 }
-[data-pg-theme="dark"] pre.shiki div.highlight {
+[data-pg-color-scheme="dark"] pre.shiki div.highlight {
   background-color: rgb(12 74 110 / 0.4);
 }
 pre.shiki div.line {

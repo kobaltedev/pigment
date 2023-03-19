@@ -28,6 +28,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
     {
       hasRequiredIndicator: true,
       hasDropdownIcon: true,
+      hasSelectedIcon: true,
       hasErrorIcon: true,
       variant: "outlined",
       size: "sm",
@@ -60,6 +61,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       "description",
       "error",
       "hasRequiredIndicator",
+      "hasSelectedIcon",
       "hasErrorIcon",
       "dropdownIcon",
       "errorIcon",
@@ -91,6 +93,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       "isRequired",
       "isDisabled",
       "isReadOnly",
+      "sameWidth",
     ],
     ["variant", "size", "hasDropdownIcon", "isInvalid", "isDisabled"]
   );
@@ -146,27 +149,34 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
 
   const valueTemplate = (selectedOption: Accessor<Option>) => {
     return (
-      <Show when={!local.valueTemplate} fallback={local.valueTemplate?.(selectedOption)}>
-        {getOptionLabel(selectedOption())}
+      <Show when={local.valueTemplate} fallback={getOptionLabel(selectedOption())}>
+        {local.valueTemplate?.(selectedOption)}
       </Show>
     );
   };
 
   const optionTemplate = (option: Accessor<Option>) => {
     return (
-      <Show when={!local.optionTemplate} fallback={local.optionTemplate?.(option)}>
-        <KSelect.ItemLabel>{getOptionLabel(option())}</KSelect.ItemLabel>
-        <KSelect.ItemIndicator
-          class={cn(
-            selectOptionIndicatorVariants(variantProps),
-            selectStaticClass("optionIndicator"),
-            themeClasses.optionIndicator,
-            local.slotClasses?.optionIndicator
-          )}
+      <>
+        <Show
+          when={local.optionTemplate}
+          fallback={<KSelect.ItemLabel>{getOptionLabel(option())}</KSelect.ItemLabel>}
         >
-          <CheckIcon />
-        </KSelect.ItemIndicator>
-      </Show>
+          {local.optionTemplate?.(option)}
+        </Show>
+        <Show when={local.hasSelectedIcon}>
+          <KSelect.ItemIndicator
+            class={cn(
+              selectOptionIndicatorVariants(variantProps),
+              selectStaticClass("optionIndicator"),
+              themeClasses.optionIndicator,
+              local.slotClasses?.optionIndicator
+            )}
+          >
+            <CheckIcon />
+          </KSelect.ItemIndicator>
+        </Show>
+      </>
     );
   };
 
@@ -180,8 +190,8 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
 
   const optionGroupTemplate = (optGroup: Accessor<OptGroup>) => {
     return (
-      <Show when={!local.optionGroupTemplate} fallback={local.optionGroupTemplate?.(optGroup)}>
-        {getOptionGroupLabel(optGroup())}
+      <Show when={local.optionGroupTemplate} fallback={getOptionGroupLabel(optGroup())}>
+        {local.optionGroupTemplate?.(optGroup)}
       </Show>
     );
   };
