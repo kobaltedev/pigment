@@ -1,16 +1,16 @@
 import { cva, VariantProps } from "class-variance-authority";
 
-export const checkboxRootVariants = cva("group inline-grid", {
+export const checkboxRootVariants = cva("group inline-flex", {
   variants: {
     size: {
-      sm: "gap-x-2 gap-y-px",
-      md: "gap-x-3 gap-y-0.5",
+      sm: "gap-x-2",
+      md: "gap-x-3",
     },
   },
 });
 
 export const checkboxControlVariants = cva(
-  "self-center row-start-1 inline-flex justify-center items-center grow-0 shrink-0 border border-solid transition-colors",
+  "inline-flex justify-center items-center grow-0 shrink-0 mt-0.5 border border-solid transition-colors",
   {
     variants: {
       variant: {
@@ -103,8 +103,17 @@ export const checkboxControlVariants = cva(
   }
 );
 
+export const checkboxLabelWrapperVariants = cva("flex flex-col grow shrink", {
+  variants: {
+    size: {
+      sm: "gap-y-0.5",
+      md: "gap-y-1",
+    },
+  },
+});
+
 export const checkboxLabelVariants = cva(
-  "self-center row-start-1 text-outlined-input-text ui-group-disabled:text-disabled-text",
+  "text-outlined-input-text ui-group-disabled:text-disabled-text",
   {
     variants: {
       size: {

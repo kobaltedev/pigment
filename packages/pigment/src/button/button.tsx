@@ -7,9 +7,9 @@ import { mergeThemeProps, useThemeClasses } from "../theme/theme-context";
 import { cn } from "../utils/cn";
 import { makeStaticClass } from "../utils/make-static-class";
 import {
-  ButtonBaseContentProps,
-  ButtonBaseIconProps,
   ButtonBaseProps,
+  ButtonContentProps,
+  ButtonIconProps,
   ButtonProps,
   ButtonSlots,
   IconButtonProps,
@@ -24,7 +24,7 @@ import { buttonIconVariants, buttonVariants, loadingContentVariants } from "./bu
  * Common
  * -----------------------------------------------------------------------------------------------*/
 
-function ButtonIcon(props: ButtonBaseIconProps) {
+function ButtonIcon(props: ButtonIconProps) {
   const [local, variantProps, others] = splitProps(
     props,
     ["class"],
@@ -40,7 +40,7 @@ function ButtonIcon(props: ButtonBaseIconProps) {
   );
 }
 
-function ButtonLoadingIcon(props: ButtonBaseIconProps) {
+function ButtonLoadingIcon(props: ButtonIconProps) {
   props = mergeDefaultProps(
     {
       children: () => <LoaderIcon class="animate-spin" />,
@@ -51,7 +51,7 @@ function ButtonLoadingIcon(props: ButtonBaseIconProps) {
   return <ButtonIcon {...props} />;
 }
 
-function ButtonContent(props: ButtonBaseContentProps) {
+function ButtonContent(props: ButtonContentProps) {
   const [iconProps] = splitProps(props, ["variant", "color", "size", "isDisabled"]);
 
   const leftIcon = createMemo(() => {
@@ -113,18 +113,9 @@ function ButtonBase(props: ButtonBaseProps) {
   const [local, variantProps, contentProps, loadingIconProps, loadingContentProps, others] =
     splitProps(
       props,
-      [
-        "class",
-        "slotClasses",
-        "startIcon",
-        "endIcon",
-        "isLoading",
-        "loadingText",
-        "loadingIcon",
-        "loadingIconPlacement",
-      ],
+      ["class", "slotClasses", "isLoading", "loadingText", "loadingIcon", "loadingIconPlacement"],
       ["variant", "color", "size", "isIconOnly", "isFullWidth", "isLoading", "isDisabled"],
-      ["variant", "color", "size", "isDisabled", "children"],
+      ["variant", "color", "size", "isDisabled", "startIcon", "endIcon", "children"],
       ["variant", "color", "size", "isIconOnly", "isDisabled"],
       ["size"]
     );

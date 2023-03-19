@@ -1,3 +1,6 @@
+// external libs
+export { As, I18nProvider, useLocale } from "@kobalte/core";
+
 // utils
 export * from "./color-scheme";
 export * from "./utils/cn";
@@ -14,4 +17,3 @@ export * from "./checkbox";
 export * from "./close-button";
 export * from "./select";
 export * from "./text-field";
-export { As } from "@kobalte/core";

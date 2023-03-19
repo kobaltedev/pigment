@@ -34,7 +34,7 @@ export interface ButtonBaseProps
   endIcon?: JSX.Element;
 }
 
-export interface ButtonBaseContentProps
+export interface ButtonContentProps
   extends Pick<
     ButtonBaseProps,
     "variant" | "color" | "size" | "isDisabled" | "startIcon" | "endIcon" | "children"
@@ -46,7 +46,7 @@ export interface ButtonBaseContentProps
   endIconClass?: string;
 }
 
-export interface ButtonBaseIconProps
+export interface ButtonIconProps
   extends OverrideComponentProps<
     "span",
     Pick<ButtonBaseProps, "variant" | "color" | "size" | "isIconOnly" | "isDisabled">
