@@ -27,8 +27,8 @@ export interface ColorSchemeContextType {
 }
 
 export interface ColorSchemeOptions {
-  /** The initial color scheme to use. */
-  initialColorScheme?: ColorSchemeWithSystem;
+  /** The default color scheme to use. */
+  defaultScheme?: ColorSchemeWithSystem;
 
   /** Whether css transitions should be disabled during the color scheme changes. */
   disableTransitionOnChange?: boolean;
@@ -37,8 +37,8 @@ export interface ColorSchemeOptions {
 export type ColorSchemeProviderProps = ParentProps<ColorSchemeOptions>;
 
 export type ColorSchemeScriptProps = {
-  /** The initial color scheme to use. */
-  initialColorScheme?: ColorSchemeWithSystem;
+  /** The default color scheme to use. */
+  defaultScheme?: ColorSchemeWithSystem;
 
   /** The key used to store color scheme preference in localStorage. */
   storageKey?: string;

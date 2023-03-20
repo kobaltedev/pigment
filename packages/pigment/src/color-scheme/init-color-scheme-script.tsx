@@ -30,13 +30,13 @@ function normalize(initialColorScheme: ColorSchemeWithSystem) {
 export function InitColorSchemeScript(props: ColorSchemeScriptProps) {
   props = mergeDefaultProps(
     {
-      initialColorScheme: FALLBACK_COLOR_SCHEME_VALUE,
+      defaultScheme: FALLBACK_COLOR_SCHEME_VALUE,
       storageKey: COLOR_SCHEME_STORAGE_KEY,
     },
     props
   );
 
-  const init = normalize(props.initialColorScheme!);
+  const init = normalize(props.defaultScheme!);
 
   return (
     <script

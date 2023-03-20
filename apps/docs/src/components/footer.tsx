@@ -4,7 +4,7 @@ import { DiscordIcon, GitHubIcon, OpenCollectiveIcon, TwitterIcon } from "./icon
 
 export function Footer() {
   return (
-    <footer class="mt-6 border-t border-slate-200 dark:border-slate-800 dark:bg-slate-900">
+    <footer class="mt-6 border-t border-slate-200 dark:border-slate-800">
       <div class="max-w-4xl mx-auto px-4">
         <div class="flex flex-col sm:flex-row items-baseline justify-between gap-4 py-8 md:py-12">
           <div>

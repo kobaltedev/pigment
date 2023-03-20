@@ -46,7 +46,7 @@ export function Highlight(props: HighlightProps) {
     <pre
       ref={domRef}
       onMouseLeave={reset}
-      class={cn("pg-hljs not-prose relative m-0 p-0 border-none", props.class)}
+      class={cn("pg-hljs not-prose relative m-0 p-0 bg-transparent", props.class)}
     >
       <IconButton
         aria-label="copy to clipboard"
@@ -64,7 +64,7 @@ export function Highlight(props: HighlightProps) {
         </Show>
       </IconButton>
       {/* eslint-disable-next-line solid/no-innerhtml */}
-      <code class={cn("hljs", props.language)} innerHTML={getHighlightedCode()} />
+      <code class={cn("hljs ", props.language)} innerHTML={getHighlightedCode()} />
     </pre>
   );
 }

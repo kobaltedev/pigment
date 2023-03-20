@@ -6,7 +6,7 @@
  * https://github.com/chakra-ui/chakra-ui/blob/26800eebaa52e49b2dd3f1b191c34b368a75bc54/packages/components/color-mode/src/color-mode-context.ts
  */
 
-import { createContext, createMemo, useContext } from "solid-js";
+import { createContext, useContext } from "solid-js";
 
 import { ColorSchemeContextType } from "./types";
 
@@ -24,23 +24,4 @@ export function useColorScheme() {
   }
 
   return context;
-}
-
-/**
- * Change value based on color scheme.
- *
- * @param light the light mode value
- * @param dark the dark mode value
- * @return A memoized value based on the color scheme.
- *
- * @example
- *
- * ```js
- * const Icon = useColorSchemeValue(MoonIcon, SunIcon)
- * ```
- */
-export function useColorSchemeValue<TLight = unknown, TDark = unknown>(light: TLight, dark: TDark) {
-  const { colorScheme } = useColorScheme();
-
-  return createMemo(() => (colorScheme() === "dark" ? dark : light));
 }

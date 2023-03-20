@@ -23,7 +23,7 @@ export function Layout(props: LayoutProps) {
   return (
     <>
       <Header navSections={props.navSections} />
-      <div class="relative flex justify-center dark:bg-slate-900">
+      <div class="relative flex justify-center">
         <div class="hidden lg:relative lg:block lg:flex-none">
           <div class="sticky top-[61px] h-[calc(100vh-61px)] overflow-y-auto py-6 pl-2 pr-2">
             <Navigation sections={props.navSections} />

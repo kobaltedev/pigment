@@ -29,7 +29,7 @@ import {
  * Returns the color scheme and function to toggle it.
  */
 export function ColorSchemeProvider(props: ColorSchemeProviderProps) {
-  const fallbackColorScheme = () => props.initialColorScheme ?? FALLBACK_COLOR_SCHEME_VALUE;
+  const fallbackColorScheme = () => props.defaultScheme ?? FALLBACK_COLOR_SCHEME_VALUE;
   let colorSchemeListenerCleanupFn: (() => unknown) | undefined;
 
   const [colorScheme, rawSetColorScheme] = createSignal(

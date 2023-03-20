@@ -49,8 +49,8 @@ export default function Root() {
         <Link rel="manifest" href="/site.webmanifest" />
       </Head>
       <Body>
+        <InitColorSchemeScript />
         <ErrorBoundary>
-          <InitColorSchemeScript />
           <Suspense>
             <ColorSchemeProvider>
               <ThemeProvider>

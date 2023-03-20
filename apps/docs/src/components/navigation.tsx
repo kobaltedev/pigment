@@ -29,9 +29,9 @@ export function Navigation(props: NavigationProps) {
                       <Link
                         href={link.href}
                         class={cn(
-                          "flex items-center justify-between w-full font-sans transition font-normal rounded px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-900/20",
+                          "flex items-center justify-between w-full font-sans transition font-normal rounded px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-700/20",
                           link.href === location.pathname
-                            ? "text-slate-700 dark:text-slate-600"
+                            ? "text-slate-700 dark:text-slate-300"
                             : "text-slate-600 dark:text-slate-400"
                         )}
                       >

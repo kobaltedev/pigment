@@ -14,7 +14,7 @@ export function Header(props: HeaderProps) {
   const isChangelogPath = useMatch(() => "/docs/changelog/*");
 
   return (
-    <header class="sticky top-0 z-50 flex flex-wrap items-center justify-between bg-white border-b border-b-slate-200 dark:border-b-slate-800 px-4 transition duration-500 lg:px-4 dark:bg-slate-900">
+    <header class="sticky top-0 z-50 flex flex-wrap items-center justify-between bg-body-bg border-b border-b-slate-200 dark:border-b-slate-800 px-4 transition duration-500 lg:px-4 ">
       <div class="mr-6 flex lg:hidden">
         {/*  <MobileNavigation sections={props.navSections} /> */}
       </div>
@@ -38,7 +38,11 @@ export function Header(props: HeaderProps) {
             <As
               component={Link}
               href="/docs/core/overview/introduction"
-              class={!isChangelogPath() ? "text-slate-900" : "text-slate-700"}
+              class={
+                !isChangelogPath()
+                  ? "text-slate-900 dark:text-slate-50"
+                  : "text-slate-700 dark:text-slate-200"
+              }
             >
               Documentation
             </As>
@@ -47,7 +51,11 @@ export function Header(props: HeaderProps) {
             <As
               component={Link}
               href={LATEST_CORE_CHANGELOG_URL}
-              class={isChangelogPath() ? "text-slate-900" : "text-slate-700"}
+              class={
+                isChangelogPath()
+                  ? "text-slate-900 dark:text-slate-50"
+                  : "text-slate-700 dark:text-slate-200"
+              }
             >
               Changelog
             </As>
@@ -61,7 +69,7 @@ export function Header(props: HeaderProps) {
             rel="noopener noreferrer"
             aria-label="GitHub"
           >
-            <GitHubIcon class="text-slate-600 h-5 w-5" />
+            <GitHubIcon class="h-5 w-5" />
           </As>
         </LinkIconButton>
         <ThemeSelector />

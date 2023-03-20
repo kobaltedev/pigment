@@ -1,0 +1,113 @@
+import { Preview } from "../../../../components";
+import { ColorSchemeToggle, TailwindExample } from "../../../../examples/dark-mode";
+
+# Dark mode
+
+Learn about the different methods for applying dark mode to a Pigment app.
+
+## Set as default
+
+To set dark mode as the default for your app, add `defaultScheme="dark"` to the `<ColorSchemeProvider>` wrapper component:
+
+```tsx {8}
+// index.tsx
+
+import { ColorSchemeProvider } from "@kobalte/pigment";
+import { render } from "solid-js/web";
+import App from "./App";
+
+render(
+  () => (
+    <ColorSchemeProvider defaultScheme="dark">
+      <App />
+    </ColorSchemeProvider>
+  ),
+  document.getElementById("root") as HTMLElement
+);
+```
+
+## Usage with SolidStart
+
+For a SolidStart application, you need to add it to the `root.tsx` file, and to prevent the UI from flickering, apply the `InitColorSchemeScript` before the main application script:
+
+```tsx {24,27}
+// root.tsx
+
+import { InitColorSchemeScript, ColorSchemeProvider } from "@kobalte/pigment";
+import { Suspense } from "solid-js";
+import {
+  Body,
+  ErrorBoundary,
+  FileRoutes,
+  Head,
+  Html,
+  Meta,
+  Routes,
+  Scripts,
+  Title,
+} from "solid-start";
+export default function Root() {
+  return (
+    <Html lang="en">
+      <Head>
+        <Title>SolidStart - Bare</Title>
+        <Meta charset="utf-8" />
+        <Meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <Body>
+        <InitColorSchemeScript defaultScheme="dark" />
+        <ErrorBoundary>
+          <Suspense>
+            <ColorSchemeProvider defaultScheme="dark">
+              <Routes>
+                <FileRoutes />
+              </Routes>
+            </ColorSchemeProvider>
+          </Suspense>
+        </ErrorBoundary>
+        <Scripts />
+      </Body>
+    </Html>
+  );
+}
+```
+
+## Changing color scheme
+
+To manage color scheme in your application, Pigment exposes the `useColorScheme` primitive. It gives you an accessor to get the current color scheme and a function to toggle it.
+
+In the example below, we're using a `Button` component that calls `toggleColorScheme` from the primitive to handle the toggling.
+
+<Preview>
+  <ColorSchemeToggle />
+</Preview>
+
+{/* prettier-ignore-start */}
+```tsx
+import { Button, useColorScheme } from "@kobalte/pigment";
+
+function ColorSchemeToggle() {
+  const { colorScheme, toggleColorScheme } = useColorScheme();
+
+  return (
+    <Button onClick={toggleColorScheme}>
+      Turn {colorScheme() === "light" ? "dark" : "light"}
+    </Button>
+  );
+}
+```
+{/* prettier-ignore-end */}
+
+## Usage with TailwindCSS
+
+The Pigment preset for TailwindCSS ensure the correct selector is added to the Tailwind config in order to work with the `dark:` modifier.
+
+<Preview>
+  <TailwindExample />
+</Preview>
+
+```tsx
+<div class="rounded p-4 bg-amber-400 text-slate-800 dark:bg-amber-800 dark:text-amber-300">
+  This box's style will change based on the color scheme.
+</div>
+```
