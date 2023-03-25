@@ -1,3 +1,5 @@
+import twDefaultTheme from "tailwindcss/defaultTheme";
+
 export const defaultTheme = {
   ":root": {
     /* -------------------------------------------------------------------------------------------------
@@ -653,6 +655,15 @@ export const defaultTheme = {
       "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)",
     "--pg-shadow-surface-overlay":
       "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)",
+
+    /* -------------------------------------------------------------------------------------------------
+     * Typography
+     * -----------------------------------------------------------------------------------------------*/
+
+    "--pg-font-family-fallback": twDefaultTheme.fontFamily.sans.join(", "),
+    "--pg-font-family-sans": "var(--pg-font-family-fallback)",
+    "--pg-font-family-serif": twDefaultTheme.fontFamily.serif.join(", "),
+    "--pg-font-family-mono": twDefaultTheme.fontFamily.mono.join(", "),
   },
   '.dark, [data-pg-color-scheme="dark"]': {
     /* -------------------------------------------------------------------------------------------------

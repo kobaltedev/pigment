@@ -6,8 +6,7 @@ export * from "./color-scheme";
 export * from "./utils/cn";
 
 // theme
-export * from "./theme/extend-theme";
-export * from "./theme/theme-provider";
+export * from "./theme";
 
 // components
 export * from "./alert";

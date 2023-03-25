@@ -35,6 +35,11 @@ export default function preset(): Partial<Config> {
     darkMode: ["class", "[data-pg-color-scheme='dark']"],
     theme: {
       extend: {
+        fontFamily: {
+          sans: "var(--pg-font-family-sans)",
+          serif: "var(--pg-font-family-serif)",
+          mono: "var(--pg-font-family-mono)",
+        },
         fontSize: {
           "2xs": ["10px", "14px"],
         },

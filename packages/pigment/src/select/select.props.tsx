@@ -53,13 +53,13 @@ export interface SelectProps<Option, OptGroup = never>
   optionGroupLabel?: keyof OptGroup | ((optGroup: OptGroup) => string);
 
   /** Template of selected option. */
-  valueTemplate?: (selectedOption: Accessor<Option>) => JSX.Element;
+  valueTemplate?: (selectedOption: Option) => JSX.Element;
 
   /** Template of an option item. */
-  optionTemplate?: (option: Accessor<Option>) => JSX.Element;
+  optionTemplate?: (option: Option) => JSX.Element;
 
   /** Template of an option group item. */
-  optionGroupTemplate?: (optGroup: Accessor<OptGroup>) => JSX.Element;
+  optionGroupTemplate?: (optGroup: OptGroup) => JSX.Element;
 
   /** Additional props to be spread on the inner `<select>` element. */
   inputProps?: ComponentProps<"select">;

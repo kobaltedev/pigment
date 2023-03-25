@@ -22,6 +22,6 @@ export interface Components {
   Checkbox?: ComponentTheme<CheckboxProps, CheckboxSlots>;
   CloseButton?: ComponentTheme<CloseButtonProps, CloseButtonSlots>;
   LinkButton?: ComponentTheme<LinkButtonProps, LinkButtonSlots>;
-  Select?: ComponentTheme<SelectProps, SelectSlots>;
+  Select?: ComponentTheme<SelectProps<any>, SelectSlots>;
   TextField?: ComponentTheme<TextFieldProps, TextFieldSlots>;
 }

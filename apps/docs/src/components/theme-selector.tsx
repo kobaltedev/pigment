@@ -1,6 +1,6 @@
 import {
   colorSchemeStorageManager,
-  ConfigColorScheme,
+  ColorSchemeWithSystem,
   Select,
   useColorScheme,
 } from "@kobalte/pigment";
@@ -28,7 +28,7 @@ export function ThemeSelector() {
       <Select
         options={THEME_OPTIONS}
         defaultValue={colorSchemeStorageManager.get("system")}
-        onValueChange={value => setColorScheme(value as ConfigColorScheme)}
+        onValueChange={value => setColorScheme(value as ColorSchemeWithSystem)}
         hasDropdownIcon={false}
         hasSelectedIcon={false}
         sameWidth={false}
@@ -45,8 +45,8 @@ export function ThemeSelector() {
         )}
         optionTemplate={option => (
           <span class="flex items-center gap-x-2.5 ui-group-selected:text-soft-selected-text">
-            {option().icon()}
-            {option().label}
+            {option.icon()}
+            {option.label}
           </span>
         )}
       />
