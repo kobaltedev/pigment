@@ -9,12 +9,12 @@ export function SlotClassesExample() {
       isDismissible
       title="Software update."
       slotClasses={{
-        root: "rounded-md border-blue-300 w-96",
-        content: "gap-y-1 text-slate-800",
-        icon: "text-2xl mt-0.5",
+        root: "rounded-md bg-blue-50 border-blue-300 w-96 dark:bg-blue-900 dark:border-blue-700",
+        content: "gap-y-1 text-slate-800 dark:text-slate-100",
+        icon: "text-blue-500 text-2xl mt-0.5 dark:text-blue-400",
         title: "text-base font-normal italic",
         description: "text-sm",
-        dismissButton: "text-xl",
+        dismissButton: "text-slate-500 text-xl dark:text-slate-400",
       }}
     >
       A new software update is available.

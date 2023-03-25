@@ -61,7 +61,7 @@ export function Header(props: HeaderProps) {
             </As>
           </LinkButton>
         </div>
-        <LinkIconButton variant="ghost" color="neutral" class="mr-1" asChild>
+        <LinkIconButton variant="ghost" color="neutral" class="mr-2.5" asChild>
           <As
             component={Link}
             href="https://github.com/kobaltedev/pigment"

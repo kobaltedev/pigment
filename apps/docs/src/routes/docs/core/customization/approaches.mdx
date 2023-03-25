@@ -1,3 +1,5 @@
+import { Alert } from "@kobalte/pigment";
+
 import { Preview, TabsSnippets } from "../../../../components";
 import { GithubThemeExample, SlotClassesExample } from "../../../../examples/approaches";
 
@@ -7,7 +9,9 @@ Learn about the different approaches available to customize Pigment components, 
 
 ## The `slotClasses` prop
 
-Supported by every Pigment components, the `slotClasses` prop allow you to apply CSS classes to internal parts (slots) of a component. It's the recommended way to quickly customize components on the spot.
+To customizing only a specific instance of a given component, use the `slotClasses` prop.
+
+Supported by every Pigment components, it allows you to apply CSS classes to internal parts (slots) of a component.
 
 <Preview>
   <SlotClassesExample />
@@ -21,12 +25,12 @@ Supported by every Pigment components, the `slotClasses` prop allow you to apply
   isDismissible
   title="Software update."
   slotClasses={{
-    root: "rounded-md border-blue-300 w-96",
-    content: "gap-y-1 text-slate-800",
-    icon: "text-2xl mt-0.5",
+    root: "rounded-md bg-blue-50 border-blue-300 w-96 dark:bg-blue-900 dark:border-blue-700",
+    content: "gap-y-1 text-slate-800 dark:text-slate-100",
+    icon: "text-blue-500 text-2xl mt-0.5 dark:text-blue-400",
     title: "text-base font-normal italic",
     description: "text-sm",
-    dismissButton: "text-xl",
+    dismissButton: "text-slate-500 text-xl dark:text-slate-400",
   }}
 >
   A new software update is available.
@@ -34,6 +38,8 @@ Supported by every Pigment components, the `slotClasses` prop allow you to apply
 ```
 
 ## Theming
+
+To ensure every instance of a given component looks the same across you app, use Pigment's theming API.
 
 Theming in Pigment is done in two places:
 
@@ -117,6 +123,70 @@ The example below demonstrate how to reproduce GitHub primary button (in light m
 
 ### Customizing design tokens
 
+Design tokens are a single source of truth to name and store design decisions for Pigment components.
+
+For example, instead of choosing one of many shades of gray for a background color, we can apply a design token that is consistent with all similar usages across the application.
+
+To print your own design language into Pigment components, start by customizing these tokens first, as every component uses them.
+
+To do that, override Pigment's CSS custom properties in your style sheet.
+
+```css
+/* style.css */
+
+:root {
+  --pg-font-family-sans: Inter, var(--pg-font-family-fallback);
+
+  /* affects all Pigment components that has `color="primary"` prop. */
+  --pg-color-primary-50: #eff6ff;
+  --pg-color-primary-100: #dbeafe;
+  --pg-color-primary-200: #bfdbfe;
+  --pg-color-primary-300: #93c5fd;
+  --pg-color-primary-400: #60a5fa;
+  --pg-color-primary-500: #3b82f6;
+  --pg-color-primary-600: #2563eb;
+  --pg-color-primary-700: #1d4ed8;
+  --pg-color-primary-800: #1e40af;
+  --pg-color-primary-900: #1e3a8a;
+}
+```
+
+Under the hood, the Pigment preset for Tailwind CSS will add them to the theme, enabling you to use them in Tailwind's utility classes.
+
+```tsx
+<button class="font-sans bg-primary-500">Button</button>
+```
+
 ### Customizing components
 
-## Reusable component
+Each Pigment component uses a pre-defined set of design tokens. To change that while ensuring that every instance has the same styles, do it targeting the component directly from the theme.
+
+Here's a preview of how you'd change the button's primary background color:
+
+```tsx {4-8}
+import { Button, cn, createTheme, ThemeProvider } from "@kobalte/pigment";
+
+const theme = createTheme({
+  components: {
+    Button: {
+      slotClasses: props => ({
+        root: cn(props.variant === "solid" && props.color === "primary" && "bg-primary-600"),
+      }),
+    },
+  },
+});
+
+export function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <Button>Button</Button>
+    </ThemeProvider>
+  );
+}
+```
+
+<Alert isMultiline>
+  <span>The `cn` utility function is built on top of [clsx](https://github.com/lukeed/clsx) </span>
+  <span>and [tailwind-merge](https://github.com/dcastil/tailwind-merge) </span>
+  <span>allows you to construct `className` strings conditionally.</span>
+</Alert>

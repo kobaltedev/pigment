@@ -53,22 +53,6 @@ const CORE_NAV_SECTIONS: NavSection[] = [
         title: "Alert",
         href: "/docs/core/components/alert",
       },
-      {
-        title: "Button",
-        href: "/docs/core/components/button",
-      },
-      {
-        title: "Checkbox",
-        href: "/docs/core/components/checkbox",
-      },
-      {
-        title: "CloseButton",
-        href: "/docs/core/components/close-button",
-      },
-      {
-        title: "TextField",
-        href: "/docs/core/components/text-field",
-      },
     ],
   },
 ];

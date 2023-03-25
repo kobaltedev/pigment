@@ -1,0 +1,112 @@
+import { Alert, Button } from "@kobalte/pigment";
+
+import { Preview, TabsSnippets } from "../../../../components";
+
+# Getting started
+
+Learn how to install and start using Pigment.
+
+## Installation
+
+Install Pigment's base package by running either of the following:
+
+<TabsSnippets>
+  <TabsSnippets.List>
+    <TabsSnippets.Trigger value="npm">npm</TabsSnippets.Trigger>
+    <TabsSnippets.Trigger value="yarn">yarn</TabsSnippets.Trigger>
+    <TabsSnippets.Trigger value="pnpm">pnpm</TabsSnippets.Trigger>
+  </TabsSnippets.List>
+  <TabsSnippets.Content value="npm">
+    {/* <!-- prettier-ignore-start --> */}
+    ```bash
+    npm install @kobalte/pigment
+    ```
+    {/* <!-- prettier-ignore-end --> */}
+  </TabsSnippets.Content>
+  <TabsSnippets.Content value="yarn">
+    {/* <!-- prettier-ignore-start --> */}
+    ```bash
+    yarn add @kobalte/pigment
+    ```
+    {/* <!-- prettier-ignore-end --> */}
+  </TabsSnippets.Content>
+  <TabsSnippets.Content value="pnpm">
+    {/* <!-- prettier-ignore-start --> */}
+    ```bash
+    pnpm add @kobalte/pigment
+    ```
+    {/* <!-- prettier-ignore-end --> */}
+  </TabsSnippets.Content>
+</TabsSnippets>
+
+Install Pigment's Tailwind CSS preset as a dev dependency by running either of the following:
+
+<TabsSnippets>
+  <TabsSnippets.List>
+    <TabsSnippets.Trigger value="npm">npm</TabsSnippets.Trigger>
+    <TabsSnippets.Trigger value="yarn">yarn</TabsSnippets.Trigger>
+    <TabsSnippets.Trigger value="pnpm">pnpm</TabsSnippets.Trigger>
+  </TabsSnippets.List>
+  <TabsSnippets.Content value="npm">
+    {/* <!-- prettier-ignore-start --> */}
+    ```bash
+    npm install -D @kobalte/pigment-tailwindcss
+    ```
+    {/* <!-- prettier-ignore-end --> */}
+  </TabsSnippets.Content>
+  <TabsSnippets.Content value="yarn">
+    {/* <!-- prettier-ignore-start --> */}
+    ```bash
+    yarn add -D @kobalte/pigment-tailwindcss
+    ```
+    {/* <!-- prettier-ignore-end --> */}
+  </TabsSnippets.Content>
+  <TabsSnippets.Content value="pnpm">
+    {/* <!-- prettier-ignore-start --> */}
+    ```bash
+    pnpm add -D @kobalte/pigment-tailwindcss
+    ```
+    {/* <!-- prettier-ignore-end --> */}
+  </TabsSnippets.Content>
+</TabsSnippets>
+
+## Adding the Tailwind CSS preset
+
+Make sure that you have [Tailwind CSS](https://tailwindcss.com/docs/guides/solidjs) installed, then inside the `tailwind.config.cjs` file:
+
+1. Add Pigment in the `content` array, in order to get the classes applied to the components.
+2. Require Pigment as a preset.
+
+```js {2,6}
+module.exports = {
+  content: [
+    "./node_modules/@kobalte/pigment/dist/**/*.{js,cjs,mjs}",
+    "./src/**/*.{html,js,jsx,ts,tsx,mdx}",
+  ],
+  theme: {},
+  presets: [require("@kobalte/pigment-tailwindcss")],
+};
+```
+
+<Alert status="warning" isMultiline>
+  <span>Pigment is designed to work with Tailwind's default theme </span>
+  <span>and [preflight](https://tailwindcss.com/docs/preflight) enabled. </span>
+  <span>Disabling preflight or changing structural theme tokens like `spacing` </span>
+  <span>will produce unexpected behavior.</span>
+</Alert>
+
+## Using the components
+
+Import the components you need and start building your application.
+
+<Preview>
+  <Button>Hello world</Button>
+</Preview>
+
+```tsx
+import { Button } from "@kobalte/pigment";
+
+export default function App() {
+  return <Button>Hello world</Button>;
+}
+```

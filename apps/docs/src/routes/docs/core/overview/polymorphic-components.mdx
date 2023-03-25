@@ -1,0 +1,57 @@
+import { Alert } from "@kobalte/pigment";
+
+# Polymorphic components
+
+Some Pigment components accept a special `asChild` prop that lets you change the root element.
+
+Paired with the `<As>` component this allows you to attach a component accessibility and functional requirements onto your own element instead.
+
+When using this pattern the following rules apply to the component with the `asChild` prop, and it's child `<As>` component :
+
+- CSS classes are combined.
+- Styles are combined, if same attribute exists the one from `<As>` win.
+- Event handlers are chained, The one from `<As>` get called first.
+
+<Alert status="warning" isMultiline>
+  <span>If you decide to change the default rendered node </span>
+  <span>(e.g. change a `button` to a `div`) then it's up </span>
+  <span>to you to ensure the correct accessibility </span>
+  <span>and functionality of your chosen node type.</span>
+</Alert>
+
+## With HTML elements
+
+You can use any HTML element with the `As` component. For example, `a` tag will render an anchor:
+
+```tsx
+import { As, MenuTrigger } from "@kobalte/pigment";
+
+function App() {
+  return (
+    <MenuTrigger asChild>
+      <As component="a" href="/">
+        Trigger
+      </As>
+    </MenuTrigger>
+  );
+}
+```
+
+## With other components
+
+You can also use polymorphic components with any other component. For example, with `@solidjs/router` Link:
+
+```tsx
+import { As, MenuTrigger } from "@kobalte/pigment";
+import { Link } from "@solidjs/router";
+
+function App() {
+  return (
+    <MenuTrigger asChild>
+      <As component={Link} href="/">
+        Trigger
+      </As>
+    </MenuTrigger>
+  );
+}
+```
