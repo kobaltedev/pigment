@@ -2,6 +2,7 @@ import { cva, VariantProps } from "class-variance-authority";
 
 export const buttonVariants = cva(
   [
+    "group",
     "appearance-none relative justify-center items-center",
     "border border-solid",
     "font-medium no-underline",
@@ -377,7 +378,7 @@ export const buttonVariants = cva(
   }
 );
 
-export const buttonIconVariants = cva("reset-svg shrink-0", {
+export const buttonIconVariants = cva("reset-svg shrink-0 transition-colors", {
   variants: {
     variant: {
       solid: "",
@@ -415,49 +416,49 @@ export const buttonIconVariants = cva("reset-svg shrink-0", {
       color: "primary",
       isDisabled: false,
       class:
-        "text-solid-primary-icon hover:text-solid-primary-icon-hover active:text-solid-primary-icon-active",
+        "text-solid-primary-icon group-hover:text-solid-primary-icon-hover group-active:text-solid-primary-icon-active",
     },
     {
       variant: "solid",
       color: "neutral",
       isDisabled: false,
       class:
-        "text-solid-neutral-icon hover:text-solid-neutral-icon-hover active:text-solid-neutral-icon-active",
+        "text-solid-neutral-icon group-hover:text-solid-neutral-icon-hover group-active:text-solid-neutral-icon-active",
     },
     {
       variant: "solid",
       color: "success",
       isDisabled: false,
       class:
-        "text-solid-success-icon hover:text-solid-success-icon-hover active:text-solid-success-icon-active",
+        "text-solid-success-icon group-hover:text-solid-success-icon-hover group-active:text-solid-success-icon-active",
     },
     {
       variant: "solid",
       color: "info",
       isDisabled: false,
       class:
-        "text-solid-info-icon hover:text-solid-info-icon-hover active:text-solid-info-icon-active",
+        "text-solid-info-icon group-hover:text-solid-info-icon-hover group-active:text-solid-info-icon-active",
     },
     {
       variant: "solid",
       color: "warning",
       isDisabled: false,
       class:
-        "text-solid-warning-icon hover:text-solid-warning-icon-hover active:text-solid-warning-icon-active",
+        "text-solid-warning-icon group-hover:text-solid-warning-icon-hover group-active:text-solid-warning-icon-active",
     },
     {
       variant: "solid",
       color: "danger",
       isDisabled: false,
       class:
-        "text-solid-danger-icon hover:text-solid-danger-icon-hover active:text-solid-danger-icon-active",
+        "text-solid-danger-icon group-hover:text-solid-danger-icon-hover group-active:text-solid-danger-icon-active",
     },
     {
       variant: "solid",
       color: "help",
       isDisabled: false,
       class:
-        "text-solid-help-icon hover:text-solid-help-icon-hover active:text-solid-help-icon-active",
+        "text-solid-help-icon group-hover:text-solid-help-icon-hover group-active:text-solid-help-icon-active",
     },
 
     // soft + colors
@@ -466,49 +467,49 @@ export const buttonIconVariants = cva("reset-svg shrink-0", {
       color: "primary",
       isDisabled: false,
       class:
-        "text-soft-primary-icon hover:text-soft-primary-icon-hover active:text-soft-primary-icon-active",
+        "text-soft-primary-icon group-hover:text-soft-primary-icon-hover group-active:text-soft-primary-icon-active",
     },
     {
       variant: "soft",
       color: "neutral",
       isDisabled: false,
       class:
-        "text-soft-neutral-icon hover:text-soft-neutral-icon-hover active:text-soft-neutral-icon-active",
+        "text-soft-neutral-icon group-hover:text-soft-neutral-icon-hover group-active:text-soft-neutral-icon-active",
     },
     {
       variant: "soft",
       color: "success",
       isDisabled: false,
       class:
-        "text-soft-success-icon hover:text-soft-success-icon-hover active:text-soft-success-icon-active",
+        "text-soft-success-icon group-hover:text-soft-success-icon-hover group-active:text-soft-success-icon-active",
     },
     {
       variant: "soft",
       color: "info",
       isDisabled: false,
       class:
-        "text-soft-info-icon hover:text-soft-info-icon-hover active:text-soft-info-icon-active",
+        "text-soft-info-icon group-hover:text-soft-info-icon-hover group-active:text-soft-info-icon-active",
     },
     {
       variant: "soft",
       color: "warning",
       isDisabled: false,
       class:
-        "text-soft-warning-icon hover:text-soft-warning-icon-hover active:text-soft-warning-icon-active",
+        "text-soft-warning-icon group-hover:text-soft-warning-icon-hover group-active:text-soft-warning-icon-active",
     },
     {
       variant: "soft",
       color: "danger",
       isDisabled: false,
       class:
-        "text-soft-danger-icon hover:text-soft-danger-icon-hover active:text-soft-danger-icon-active",
+        "text-soft-danger-icon group-hover:text-soft-danger-icon-hover group-active:text-soft-danger-icon-active",
     },
     {
       variant: "soft",
       color: "help",
       isDisabled: false,
       class:
-        "text-soft-help-icon hover:text-soft-help-icon-hover active:text-soft-help-icon-active",
+        "text-soft-help-icon group-hover:text-soft-help-icon-hover group-active:text-soft-help-icon-active",
     },
 
     // outlined + colors
@@ -517,49 +518,49 @@ export const buttonIconVariants = cva("reset-svg shrink-0", {
       color: "primary",
       isDisabled: false,
       class:
-        "text-outlined-primary-icon hover:text-outlined-primary-icon-hover active:text-outlined-primary-icon-active",
+        "text-outlined-primary-icon group-hover:text-outlined-primary-icon-hover group-active:text-outlined-primary-icon-active",
     },
     {
       variant: "outlined",
       color: "neutral",
       isDisabled: false,
       class:
-        "text-outlined-neutral-icon hover:text-outlined-neutral-icon-hover active:text-outlined-neutral-icon-active",
+        "text-outlined-neutral-icon group-hover:text-outlined-neutral-icon-hover group-active:text-outlined-neutral-icon-active",
     },
     {
       variant: "outlined",
       color: "success",
       isDisabled: false,
       class:
-        "text-outlined-success-icon hover:text-outlined-success-icon-hover active:text-outlined-success-icon-active",
+        "text-outlined-success-icon group-hover:text-outlined-success-icon-hover group-active:text-outlined-success-icon-active",
     },
     {
       variant: "outlined",
       color: "info",
       isDisabled: false,
       class:
-        "text-outlined-info-icon hover:text-outlined-info-icon-hover active:text-outlined-info-icon-active",
+        "text-outlined-info-icon group-hover:text-outlined-info-icon-hover group-active:text-outlined-info-icon-active",
     },
     {
       variant: "outlined",
       color: "warning",
       isDisabled: false,
       class:
-        "text-outlined-warning-icon hover:text-outlined-warning-icon-hover active:text-outlined-warning-icon-active",
+        "text-outlined-warning-icon group-hover:text-outlined-warning-icon-hover group-active:text-outlined-warning-icon-active",
     },
     {
       variant: "outlined",
       color: "danger",
       isDisabled: false,
       class:
-        "text-outlined-danger-icon hover:text-outlined-danger-icon-hover active:text-outlined-danger-icon-active",
+        "text-outlined-danger-icon group-hover:text-outlined-danger-icon-hover group-active:text-outlined-danger-icon-active",
     },
     {
       variant: "outlined",
       color: "help",
       isDisabled: false,
       class:
-        "text-outlined-help-icon hover:text-outlined-help-icon-hover active:text-outlined-help-icon-active",
+        "text-outlined-help-icon group-hover:text-outlined-help-icon-hover group-active:text-outlined-help-icon-active",
     },
 
     // ghost + colors
@@ -568,49 +569,49 @@ export const buttonIconVariants = cva("reset-svg shrink-0", {
       color: "primary",
       isDisabled: false,
       class:
-        "text-ghost-primary-icon hover:text-ghost-primary-icon-hover active:text-ghost-primary-icon-active",
+        "text-ghost-primary-icon group-hover:text-ghost-primary-icon-hover group-active:text-ghost-primary-icon-active",
     },
     {
       variant: "ghost",
       color: "neutral",
       isDisabled: false,
       class:
-        "text-ghost-neutral-icon hover:text-ghost-neutral-icon-hover active:text-ghost-neutral-icon-active",
+        "text-ghost-neutral-icon group-hover:text-ghost-neutral-icon-hover group-active:text-ghost-neutral-icon-active",
     },
     {
       variant: "ghost",
       color: "success",
       isDisabled: false,
       class:
-        "text-ghost-success-icon hover:text-ghost-success-icon-hover active:text-ghost-success-icon-active",
+        "text-ghost-success-icon group-hover:text-ghost-success-icon-hover group-active:text-ghost-success-icon-active",
     },
     {
       variant: "ghost",
       color: "info",
       isDisabled: false,
       class:
-        "text-ghost-info-icon hover:text-ghost-info-icon-hover active:text-ghost-info-icon-active",
+        "text-ghost-info-icon group-hover:text-ghost-info-icon-hover group-active:text-ghost-info-icon-active",
     },
     {
       variant: "ghost",
       color: "warning",
       isDisabled: false,
       class:
-        "text-ghost-warning-icon hover:text-ghost-warning-icon-hover active:text-ghost-warning-icon-active",
+        "text-ghost-warning-icon group-hover:text-ghost-warning-icon-hover group-active:text-ghost-warning-icon-active",
     },
     {
       variant: "ghost",
       color: "danger",
       isDisabled: false,
       class:
-        "text-ghost-danger-icon hover:text-ghost-danger-icon-hover active:text-ghost-danger-icon-active",
+        "text-ghost-danger-icon group-hover:text-ghost-danger-icon-hover group-active:text-ghost-danger-icon-active",
     },
     {
       variant: "ghost",
       color: "help",
       isDisabled: false,
       class:
-        "text-ghost-help-icon hover:text-ghost-help-icon-hover active:text-ghost-help-icon-active",
+        "text-ghost-help-icon group-hover:text-ghost-help-icon-hover group-active:text-ghost-help-icon-active",
     },
 
     // start, end and loading icons in rectangle button (e.g: Button)
