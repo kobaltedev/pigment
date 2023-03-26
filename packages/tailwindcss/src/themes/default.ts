@@ -465,7 +465,7 @@ export const defaultTheme = {
     "--pg-color-outlined-neutral-text": "var(--pg-color-neutral-800)",
     "--pg-color-outlined-neutral-icon": "var(--pg-color-neutral-800)",
     "--pg-color-outlined-neutral-bg": "transparent",
-    "--pg-color-outlined-neutral-border": "var(--pg-color-neutral-300A)",
+    "--pg-color-outlined-neutral-border": "var(--pg-color-neutral-800)",
     "--pg-color-outlined-neutral-text-hover": "var(--pg-color-text-inverse)",
     "--pg-color-outlined-neutral-icon-hover": "var(--pg-color-icon-inverse)",
     "--pg-color-outlined-neutral-bg-hover": "var(--pg-color-neutral-700)",

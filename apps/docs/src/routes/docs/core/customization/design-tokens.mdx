@@ -107,9 +107,60 @@ Each variant conveys a different level of importance in the user interface:
   </div>
 </Preview>
 
-| Token and description                                         | Light value | Dark value |
-| ------------------------------------------------------------- | ----------- | ---------- |
-| <span class="whitespace-nowrap">**--pg-color-**</span> <br /> | ``          |            |
+```tsx
+<div class="flex items-center space-x-4 text-sm">
+  <div class="rounded-md px-3 py-2 text-solid-primary-text bg-solid-primary-bg border border-solid border-solid-primary-border hover:text-solid-primary-text-hover hover:bg-solid-primary-bg-hover hover:border-solid-primary-border-hover active:text-solid-primary-text-active active:bg-solid-primary-bg-active active:border-solid-primary-border-active">
+    Primary
+  </div>
+  <div class="rounded-md px-3 py-2 text-solid-neutral-text bg-solid-neutral-bg border border-solid border-solid-neutral-border hover:text-solid-neutral-text-hover hover:bg-solid-neutral-bg-hover hover:border-solid-neutral-border-hover active:text-solid-neutral-text-active active:bg-solid-neutral-bg-active active:border-solid-neutral-border-active">
+    Neutral
+  </div>
+  <div class="rounded-md px-3 py-2 text-solid-success-text bg-solid-success-bg border border-solid border-solid-success-border hover:text-solid-success-text-hover hover:bg-solid-success-bg-hover hover:border-solid-success-border-hover active:text-solid-success-text-active active:bg-solid-success-bg-active active:border-solid-success-border-active">
+    Success
+  </div>
+  <div class="rounded-md px-3 py-2 text-solid-info-text bg-solid-info-bg border border-solid border-solid-info-border hover:text-solid-info-text-hover hover:bg-solid-info-bg-hover hover:border-solid-info-border-hover active:text-solid-info-text-active active:bg-solid-info-bg-active active:border-solid-info-border-active">
+    Info
+  </div>
+  <div class="rounded-md px-3 py-2 text-solid-warning-text bg-solid-warning-bg border border-solid border-solid-warning-border hover:text-solid-warning-text-hover hover:bg-solid-warning-bg-hover hover:border-solid-warning-border-hover active:text-solid-warning-text-active active:bg-solid-warning-bg-active active:border-solid-warning-border-active">
+    Warning
+  </div>
+  <div class="rounded-md px-3 py-2 text-solid-danger-text bg-solid-danger-bg border border-solid border-solid-danger-border hover:text-solid-danger-text-hover hover:bg-solid-danger-bg-hover hover:border-solid-danger-border-hover active:text-solid-danger-text-active active:bg-solid-danger-bg-active active:border-solid-danger-border-active">
+    Danger
+  </div>
+  <div class="rounded-md px-3 py-2 text-solid-help-text bg-solid-help-bg border border-solid border-solid-help-border hover:text-solid-help-text-hover hover:bg-solid-help-bg-hover hover:border-solid-help-border-hover active:text-solid-help-text-active active:bg-solid-help-bg-active active:border-solid-help-border-active">
+    Help
+  </div>
+</div>
+```
+
+#### Primary
+
+| Token and description                                                                    | Light value                    | Dark value |
+| ---------------------------------------------------------------------------------------- | ------------------------------ | ---------- |
+| <span class="whitespace-nowrap">**--pg-color-solid-primary-text**</span> <br />          | `var(--pg-color-text-inverse)` |            |
+| <span class="whitespace-nowrap">**--pg-color-solid-primary-icon**</span> <br />          | `var(--pg-color-icon-inverse)` |            |
+| <span class="whitespace-nowrap">**--pg-color-solid-primary-bg**</span> <br />            | `var(--pg-color-primary-600)`  |            |
+| <span class="whitespace-nowrap">**--pg-color-solid-primary-border**</span> <br />        | `var(--pg-color-primary-600)`  |            |
+| <span class="whitespace-nowrap">**--pg-color-solid-primary-text-hover**</span> <br />    | `var(--pg-color-text-inverse)` |            |
+| <span class="whitespace-nowrap">**--pg-color-solid-primary-icon-hover**</span> <br />    | `var(--pg-color-icon-inverse)` |            |
+| <span class="whitespace-nowrap">**--pg-color-solid-primary-bg-hover**</span> <br />      | `var(--pg-color-primary-700)`  |            |
+| <span class="whitespace-nowrap">**--pg-color-solid-primary-border-hover**</span> <br />  | `var(--pg-color-primary-700)`  |            |
+| <span class="whitespace-nowrap">**--pg-color-solid-primary-text-active**</span> <br />   | `var(--pg-color-text-inverse)` |            |
+| <span class="whitespace-nowrap">**--pg-color-solid-primary-icon-active**</span> <br />   | `var(--pg-color-icon-inverse)` |            |
+| <span class="whitespace-nowrap">**--pg-color-solid-primary-bg-active**</span> <br />     | `var(--pg-color-primary-800)`  |            |
+| <span class="whitespace-nowrap">**--pg-color-solid-primary-border-active**</span> <br /> | `var(--pg-color-primary-800)`  |            |
+
+#### Neutral
+
+#### Success
+
+#### Info
+
+#### Warning
+
+#### Danger
+
+#### Help
 
 ### Soft
 
@@ -138,6 +189,46 @@ Each variant conveys a different level of importance in the user interface:
     </div>
   </div>
 </Preview>
+
+```tsx
+<div class="flex items-center space-x-4 text-sm">
+  <div class="rounded-md px-3 py-2 text-soft-primary-text bg-soft-primary-bg border border-solid border-soft-primary-border hover:text-soft-primary-text-hover hover:bg-soft-primary-bg-hover hover:border-soft-primary-border-hover active:text-soft-primary-text-active active:bg-soft-primary-bg-active active:border-soft-primary-border-active">
+    Primary
+  </div>
+  <div class="rounded-md px-3 py-2 text-soft-neutral-text bg-soft-neutral-bg border border-solid border-soft-neutral-border hover:text-soft-neutral-text-hover hover:bg-soft-neutral-bg-hover hover:border-soft-neutral-border-hover active:text-soft-neutral-text-active active:bg-soft-neutral-bg-active active:border-soft-neutral-border-active">
+    Neutral
+  </div>
+  <div class="rounded-md px-3 py-2 text-soft-success-text bg-soft-success-bg border border-solid border-soft-success-border hover:text-soft-success-text-hover hover:bg-soft-success-bg-hover hover:border-soft-success-border-hover active:text-soft-success-text-active active:bg-soft-success-bg-active active:border-soft-success-border-active">
+    Success
+  </div>
+  <div class="rounded-md px-3 py-2 text-soft-info-text bg-soft-info-bg border border-solid border-soft-info-border hover:text-soft-info-text-hover hover:bg-soft-info-bg-hover hover:border-soft-info-border-hover active:text-soft-info-text-active active:bg-soft-info-bg-active active:border-soft-info-border-active">
+    Info
+  </div>
+  <div class="rounded-md px-3 py-2 text-soft-warning-text bg-soft-warning-bg border border-solid border-soft-warning-border hover:text-soft-warning-text-hover hover:bg-soft-warning-bg-hover hover:border-soft-warning-border-hover active:text-soft-warning-text-active active:bg-soft-warning-bg-active active:border-soft-warning-border-active">
+    Warning
+  </div>
+  <div class="rounded-md px-3 py-2 text-soft-danger-text bg-soft-danger-bg border border-solid border-soft-danger-border hover:text-soft-danger-text-hover hover:bg-soft-danger-bg-hover hover:border-soft-danger-border-hover active:text-soft-danger-text-active active:bg-soft-danger-bg-active active:border-soft-danger-border-active">
+    Danger
+  </div>
+  <div class="rounded-md px-3 py-2 text-soft-help-text bg-soft-help-bg border border-solid border-soft-help-border hover:text-soft-help-text-hover hover:bg-soft-help-bg-hover hover:border-soft-help-border-hover active:text-soft-help-text-active active:bg-soft-help-bg-active active:border-soft-help-border-active">
+    Help
+  </div>
+</div>
+```
+
+#### Primary
+
+#### Neutral
+
+#### Success
+
+#### Info
+
+#### Warning
+
+#### Danger
+
+#### Help
 
 | Token and description                                         | Light value | Dark value |
 | ------------------------------------------------------------- | ----------- | ---------- |
@@ -171,6 +262,46 @@ Each variant conveys a different level of importance in the user interface:
   </div>
 </Preview>
 
+```tsx
+<div class="flex items-center space-x-4 text-sm">
+  <div class="rounded-md px-3 py-2 text-outlined-primary-text bg-outlined-primary-bg border border-solid border-outlined-primary-border hover:text-outlined-primary-text-hover hover:bg-outlined-primary-bg-hover hover:border-outlined-primary-border-hover active:text-outlined-primary-text-active active:bg-outlined-primary-bg-active active:border-outlined-primary-border-active">
+    Primary
+  </div>
+  <div class="rounded-md px-3 py-2 text-outlined-neutral-text bg-outlined-neutral-bg border border-solid border-outlined-neutral-border hover:text-outlined-neutral-text-hover hover:bg-outlined-neutral-bg-hover hover:border-outlined-neutral-border-hover active:text-outlined-neutral-text-active active:bg-outlined-neutral-bg-active active:border-outlined-neutral-border-active">
+    Neutral
+  </div>
+  <div class="rounded-md px-3 py-2 text-outlined-success-text bg-outlined-success-bg border border-solid border-outlined-success-border hover:text-outlined-success-text-hover hover:bg-outlined-success-bg-hover hover:border-outlined-success-border-hover active:text-outlined-success-text-active active:bg-outlined-success-bg-active active:border-outlined-success-border-active">
+    Success
+  </div>
+  <div class="rounded-md px-3 py-2 text-outlined-info-text bg-outlined-info-bg border border-solid border-outlined-info-border hover:text-outlined-info-text-hover hover:bg-outlined-info-bg-hover hover:border-outlined-info-border-hover active:text-outlined-info-text-active active:bg-outlined-info-bg-active active:border-outlined-info-border-active">
+    Info
+  </div>
+  <div class="rounded-md px-3 py-2 text-outlined-warning-text bg-outlined-warning-bg border border-solid border-outlined-warning-border hover:text-outlined-warning-text-hover hover:bg-outlined-warning-bg-hover hover:border-outlined-warning-border-hover active:text-outlined-warning-text-active active:bg-outlined-warning-bg-active active:border-outlined-warning-border-active">
+    Warning
+  </div>
+  <div class="rounded-md px-3 py-2 text-outlined-danger-text bg-outlined-danger-bg border border-solid border-outlined-danger-border hover:text-outlined-danger-text-hover hover:bg-outlined-danger-bg-hover hover:border-outlined-danger-border-hover active:text-outlined-danger-text-active active:bg-outlined-danger-bg-active active:border-outlined-danger-border-active">
+    Danger
+  </div>
+  <div class="rounded-md px-3 py-2 text-outlined-help-text bg-outlined-help-bg border border-solid border-outlined-help-border hover:text-outlined-help-text-hover hover:bg-outlined-help-bg-hover hover:border-outlined-help-border-hover active:text-outlined-help-text-active active:bg-outlined-help-bg-active active:border-outlined-help-border-active">
+    Help
+  </div>
+</div>
+```
+
+#### Primary
+
+#### Neutral
+
+#### Success
+
+#### Info
+
+#### Warning
+
+#### Danger
+
+#### Help
+
 | Token and description                                         | Light value | Dark value |
 | ------------------------------------------------------------- | ----------- | ---------- |
 | <span class="whitespace-nowrap">**--pg-color-**</span> <br /> | ``          |            |
@@ -203,6 +334,46 @@ Each variant conveys a different level of importance in the user interface:
   </div>
 </Preview>
 
+```tsx
+<div class="flex items-center space-x-4 text-sm">
+  <div class="rounded-md px-3 py-2 text-ghost-primary-text bg-ghost-primary-bg border border-solid border-ghost-primary-border hover:text-ghost-primary-text-hover hover:bg-ghost-primary-bg-hover hover:border-ghost-primary-border-hover active:text-ghost-primary-text-active active:bg-ghost-primary-bg-active active:border-ghost-primary-border-active">
+    Primary
+  </div>
+  <div class="rounded-md px-3 py-2 text-ghost-neutral-text bg-ghost-neutral-bg border border-solid border-ghost-neutral-border hover:text-ghost-neutral-text-hover hover:bg-ghost-neutral-bg-hover hover:border-ghost-neutral-border-hover active:text-ghost-neutral-text-active active:bg-ghost-neutral-bg-active active:border-ghost-neutral-border-active">
+    Neutral
+  </div>
+  <div class="rounded-md px-3 py-2 text-ghost-success-text bg-ghost-success-bg border border-solid border-ghost-success-border hover:text-ghost-success-text-hover hover:bg-ghost-success-bg-hover hover:border-ghost-success-border-hover active:text-ghost-success-text-active active:bg-ghost-success-bg-active active:border-ghost-success-border-active">
+    Success
+  </div>
+  <div class="rounded-md px-3 py-2 text-ghost-info-text bg-ghost-info-bg border border-solid border-ghost-info-border hover:text-ghost-info-text-hover hover:bg-ghost-info-bg-hover hover:border-ghost-info-border-hover active:text-ghost-info-text-active active:bg-ghost-info-bg-active active:border-ghost-info-border-active">
+    Info
+  </div>
+  <div class="rounded-md px-3 py-2 text-ghost-warning-text bg-ghost-warning-bg border border-solid border-ghost-warning-border hover:text-ghost-warning-text-hover hover:bg-ghost-warning-bg-hover hover:border-ghost-warning-border-hover active:text-ghost-warning-text-active active:bg-ghost-warning-bg-active active:border-ghost-warning-border-active">
+    Warning
+  </div>
+  <div class="rounded-md px-3 py-2 text-ghost-danger-text bg-ghost-danger-bg border border-solid border-ghost-danger-border hover:text-ghost-danger-text-hover hover:bg-ghost-danger-bg-hover hover:border-ghost-danger-border-hover active:text-ghost-danger-text-active active:bg-ghost-danger-bg-active active:border-ghost-danger-border-active">
+    Danger
+  </div>
+  <div class="rounded-md px-3 py-2 text-ghost-help-text bg-ghost-help-bg border border-solid border-ghost-help-border hover:text-ghost-help-text-hover hover:bg-ghost-help-bg-hover hover:border-ghost-help-border-hover active:text-ghost-help-text-active active:bg-ghost-help-bg-active active:border-ghost-help-border-active">
+    Help
+  </div>
+</div>
+```
+
+#### Primary
+
+#### Neutral
+
+#### Success
+
+#### Info
+
+#### Warning
+
+#### Danger
+
+#### Help
+
 | Token and description                                         | Light value | Dark value |
 | ------------------------------------------------------------- | ----------- | ---------- |
 | <span class="whitespace-nowrap">**--pg-color-**</span> <br /> | ``          |            |
@@ -214,11 +385,11 @@ Form tokens are used by form UI elements, such as text fields, select, checkboxe
 <Preview>
   <div class="flex items-center space-x-4 text-sm">
     <input
-      class="appearance-none rounded-md px-3 py-2 text-soft-input-text bg-soft-input-bg border border-solid border-soft-input-border placeholder-text-subtlest"
+      class="appearance-none rounded-md px-3 py-2 text-soft-input-text bg-soft-input-bg border border-solid border-soft-input-border placeholder-text-subtlest hover:text-soft-input-text-hover hover:bg-soft-input-bg-hover hover:border-soft-input-border-hover active:text-soft-input-text-active active:bg-soft-input-bg-active active:border-soft-input-border-active"
       placeholder="Soft"
     />
     <input
-      class="appearance-none rounded-md px-3 py-2 text-outlined-input-text bg-outlined-input-bg border border-solid border-outlined-input-border placeholder-text-dimmed"
+      class="appearance-none rounded-md px-3 py-2 text-outlined-input-text bg-outlined-input-bg border border-solid border-outlined-input-border placeholder-text-dimmed hover:text-outlined-input-text-hover hover:bg-outlined-input-bg-hover hover:border-outlined-input-border-hover active:text-outlined-input-text-active active:bg-outlined-input-bg-active active:border-outlined-input-border-active"
       placeholder="Outlined"
     />
   </div>
@@ -227,15 +398,17 @@ Form tokens are used by form UI elements, such as text fields, select, checkboxe
 ```tsx
 <div class="flex items-center space-x-4 text-sm">
   <input
-    class="appearance-none rounded-md px-3 py-2 text-soft-input-text bg-soft-input-bg border border-solid border-soft-input-border placeholder-text-subtlest"
+    class="appearance-none rounded-md px-3 py-2 text-soft-input-text bg-soft-input-bg border border-solid border-soft-input-border placeholder-text-subtlest hover:text-soft-input-text-hover hover:bg-soft-input-bg-hover hover:border-soft-input-border-hover active:text-soft-input-text-active active:bg-soft-input-bg-active active:border-soft-input-border-active"
     placeholder="Soft"
   />
   <input
-    class="appearance-none rounded-md px-3 py-2 text-outlined-input-text bg-outlined-input-bg border border-solid border-outlined-input-border placeholder-text-dimmed"
+    class="appearance-none rounded-md px-3 py-2 text-outlined-input-text bg-outlined-input-bg border border-solid border-outlined-input-border placeholder-text-dimmed hover:text-outlined-input-text-hover hover:bg-outlined-input-bg-hover hover:border-outlined-input-border-hover active:text-outlined-input-text-active active:bg-outlined-input-bg-active active:border-outlined-input-border-active"
     placeholder="Outlined"
   />
 </div>
 ```
+
+### Soft
 
 | Token and description                                                                                                                                                                           | Light value                   | Dark value |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | ---------- |
@@ -251,6 +424,8 @@ Form tokens are used by form UI elements, such as text fields, select, checkboxe
 | <span class="whitespace-nowrap">**--pg-color-soft-input-icon-active**</span> <br /> Active state for `soft-input` icon.                                                                         | `var(--pg-color-neutral-600)` |            |
 | <span class="whitespace-nowrap">**--pg-color-soft-input-bg-active**</span> <br /> Active state for `soft-input` background.                                                                     | `var(--pg-color-neutral-100)` |            |
 | <span class="whitespace-nowrap">**--pg-color-soft-input-border-active**</span> <br /> Active state for `soft-input` border.                                                                     | `var(--pg-color-neutral-200)` |            |
+
+### Outlined
 
 | Token and description                                                                                                                                                       | Light value                    | Dark value |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ---------- |
@@ -273,10 +448,10 @@ State tokens are used to globally define look and feel of elements that share si
 
 <Preview>
   <div class="flex items-center space-x-4 text-sm">
-    <div class="rounded-md px-3 py-2 text-solid-selected-text bg-solid-selected-bg border border-solid border-solid-selected-border">
+    <div class="rounded-md px-3 py-2 text-solid-selected-text bg-solid-selected-bg border border-solid border-solid-selected-border hover:text-solid-selected-text-hover hover:bg-solid-selected-bg-hover hover:border-solid-selected-border-hover active:text-solid-selected-text-active active:bg-solid-selected-bg-active active:border-solid-selected-border-active">
       Solid selected
     </div>
-    <div class="rounded-md px-3 py-2 text-soft-selected-text bg-soft-selected-bg border border-solid border-soft-selected-border">
+    <div class="rounded-md px-3 py-2 text-soft-selected-text bg-soft-selected-bg border border-solid border-soft-selected-border hover:text-soft-selected-text-hover hover:bg-soft-selected-bg-hover hover:border-soft-selected-border-hover active:text-soft-selected-text-active active:bg-soft-selected-bg-active active:border-soft-selected-border-active">
       Soft selected
     </div>
     <div class="rounded-md px-3 py-2 text-disabled-text bg-disabled-bg border border-solid border-disabled-border">
@@ -287,17 +462,21 @@ State tokens are used to globally define look and feel of elements that share si
 
 ```tsx
 <div class="flex items-center space-x-4 text-sm">
-  <div class="rounded-md px-3 py-2 text-solid-selected-text bg-solid-selected-bg border border-solid border-solid-selected-border">
-    Solid selected
-  </div>
-  <div class="rounded-md px-3 py-2 text-soft-selected-text bg-soft-selected-bg border border-solid border-soft-selected-border">
-    Soft selected
-  </div>
-  <div class="rounded-md px-3 py-2 text-disabled-text bg-disabled-bg border border-solid border-disabled-border">
-    Disabled
+  <div class="flex items-center space-x-4 text-sm">
+    <div class="rounded-md px-3 py-2 text-solid-selected-text bg-solid-selected-bg border border-solid border-solid-selected-border hover:text-solid-selected-text-hover hover:bg-solid-selected-bg-hover hover:border-solid-selected-border-hover active:text-solid-selected-text-active active:bg-solid-selected-bg-active active:border-solid-selected-border-active">
+      Solid selected
+    </div>
+    <div class="rounded-md px-3 py-2 text-soft-selected-text bg-soft-selected-bg border border-solid border-soft-selected-border hover:text-soft-selected-text-hover hover:bg-soft-selected-bg-hover hover:border-soft-selected-border-hover active:text-soft-selected-text-active active:bg-soft-selected-bg-active active:border-soft-selected-border-active">
+      Soft selected
+    </div>
+    <div class="rounded-md px-3 py-2 text-disabled-text bg-disabled-bg border border-solid border-disabled-border">
+      Disabled
+    </div>
   </div>
 </div>
 ```
+
+### Solid selected
 
 | Token and description                                                                                                                                                            | Light value                    | Dark value |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ---------- |
@@ -314,6 +493,8 @@ State tokens are used to globally define look and feel of elements that share si
 | <span class="whitespace-nowrap">**--pg-color-solid-selected-bg-active**</span> <br /> Active state for `solid-selected` background.                                              | `var(--pg-color-primary-800)`  |            |
 | <span class="whitespace-nowrap">**--pg-color-solid-selected-border-active**</span> <br /> Active state for `solid-selected` border.                                              | `var(--pg-color-primary-800)`  |            |
 
+### Soft selected
+
 | Token and description                                                                                                                                   | Light value                   | Dark value |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | ---------- |
 | <span class="whitespace-nowrap">**--pg-color-soft-selected-text**</span> <br /> Use for text in selected state.                                         | `var(--pg-color-primary-700)` |            |
@@ -328,6 +509,8 @@ State tokens are used to globally define look and feel of elements that share si
 | <span class="whitespace-nowrap">**--pg-color-soft-selected-icon-active**</span> <br /> Active state for `soft-selected` icon.                           | `var(--pg-color-primary-800)` |            |
 | <span class="whitespace-nowrap">**--pg-color-soft-selected-bg-active**</span> <br /> Active state for `soft-selected` background.                       | `var(--pg-color-primary-200)` |            |
 | <span class="whitespace-nowrap">**--pg-color-soft-selected-border-active**</span> <br /> Active state for `soft-selected` border.                       | `var(--pg-color-primary-200)` |            |
+
+### Disabled
 
 | Token and description                                                                                                         | Light value                    | Dark value |
 | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ---------- |
