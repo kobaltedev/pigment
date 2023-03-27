@@ -4,16 +4,23 @@ import { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
 import animatePlugin from "tailwindcss-animate";
 
-import { getDefaultTheme } from "./default-theme";
-import { PigmentOptions, Theme } from "./types";
-import { createVarsFn, DARK_DATA_ATTR_SELECTOR, flattenKebabCase, getCssVarsPrefix } from "./utils";
+import { PREDEFINED_THEMES } from "./themes";
+import { PigmentOptions, PredefinedTheme, Theme } from "./types";
+import {
+  createVarsFn,
+  DARK_DATA_ATTR_SELECTOR,
+  flattenKebabCase,
+  getCssVarsPrefix,
+  isString,
+} from "./utils";
 
 export default function preset(options: PigmentOptions | undefined = {}): Partial<Config> {
   const cssVarsPrefix = getCssVarsPrefix(options);
 
   const vars = createVarsFn(cssVarsPrefix);
 
-  const baseTheme = getDefaultTheme(vars);
+  // The theme doesn't matter here, we only care about the object shape.
+  const themeShape = PREDEFINED_THEMES.base(vars);
 
   return {
     darkMode: ["class", DARK_DATA_ATTR_SELECTOR],
@@ -32,8 +39,7 @@ export default function preset(options: PigmentOptions | undefined = {}): Partia
           15: "3.75rem",
         },
         colors: flattenKebabCase(
-          // The theme doesn't matter here, we only care about the object shape.
-          baseTheme.light.color,
+          themeShape.light.color,
           // Don't support Tailwind opacity modifier since token value can be anything.
           prefixedKey => `var(--${prefixedKey})`,
           "",
@@ -41,8 +47,7 @@ export default function preset(options: PigmentOptions | undefined = {}): Partia
           ""
         ),
         boxShadow: flattenKebabCase(
-          // The theme doesn't matter here, we only care about the object shape.
-          baseTheme.light.shadow,
+          themeShape.light.shadow,
           prefixedKey => `var(--${prefixedKey})`,
           "",
           `${cssVarsPrefix}shadow-`,
@@ -57,43 +62,60 @@ export default function preset(options: PigmentOptions | undefined = {}): Partia
       animatePlugin,
       kobaltePlugin,
       plugin(({ addBase, addUtilities, theme }) => {
-        let finalTheme: Theme = baseTheme;
+        const themes: Record<PredefinedTheme | string, Theme> = {};
 
-        if (options.theme != null) {
-          const mergedTheme = { value: baseTheme };
-
-          dset(mergedTheme, "value", options.theme(vars));
-
-          finalTheme = mergedTheme.value;
+        if (options.themes != null && options?.themes.length > 0) {
+          options?.themes.forEach(theme => {
+            if (isString(theme)) {
+              // Add the predefined theme.
+              themes[theme] = PREDEFINED_THEMES[theme](vars);
+            } else {
+              // Create a custom theme by extending a predefined theme.
+              const mergedTheme = { value: PREDEFINED_THEMES[theme.extend](vars) };
+              dset(mergedTheme, "value", theme.tokens(vars));
+              themes[theme.name] = mergedTheme.value;
+            }
+          });
+        } else {
+          // Fallback to base theme.
+          themes.base = PREDEFINED_THEMES.base(vars);
         }
 
-        addBase({
-          ":root": {
-            ...flattenKebabCase(
-              finalTheme.common,
-              (_, value) => value,
-              `--${cssVarsPrefix}`,
-              cssVarsPrefix,
-              ""
-            ),
-            ...flattenKebabCase(
-              finalTheme.light,
-              (_, value) => value,
-              `--${cssVarsPrefix}`,
-              cssVarsPrefix,
-              ""
-            ),
-          },
-        });
+        Object.keys(themes).forEach(key => {
+          const theme = themes[key];
+          const themeSelector = `[data-pg-theme='${key}']`;
 
-        addBase({
-          [`.dark, ${DARK_DATA_ATTR_SELECTOR}`]: flattenKebabCase(
-            finalTheme.dark,
-            (_, value) => value,
-            `--${cssVarsPrefix}`,
-            cssVarsPrefix,
-            ""
-          ),
+          addBase({
+            [themeSelector]: {
+              ...flattenKebabCase(
+                theme.common,
+                (_, value) => value,
+                `--${cssVarsPrefix}`,
+                cssVarsPrefix,
+                ""
+              ),
+              ...flattenKebabCase(
+                theme.light,
+                (_, value) => value,
+                `--${cssVarsPrefix}`,
+                cssVarsPrefix,
+                ""
+              ),
+            },
+          });
+
+          addBase({
+            [`${themeSelector}.dark,
+              ${themeSelector} .dark,
+              ${themeSelector}${DARK_DATA_ATTR_SELECTOR},
+              ${themeSelector} ${DARK_DATA_ATTR_SELECTOR}`]: flattenKebabCase(
+              theme.dark,
+              (_, value) => value,
+              `--${cssVarsPrefix}`,
+              cssVarsPrefix,
+              ""
+            ),
+          });
         });
 
         addBase({

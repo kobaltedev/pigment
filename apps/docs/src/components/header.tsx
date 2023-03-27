@@ -1,13 +1,36 @@
 import { As, LinkButton, LinkIconButton } from "@kobalte/pigment";
 import { Link, useMatch } from "@solidjs/router";
-import { JSX } from "solid-js";
+import { JSX, ParentProps } from "solid-js";
 
 import { LATEST_CORE_CHANGELOG_URL, LATEST_CORE_VERSION_NAME } from "../VERSIONS";
 import { GitHubIcon } from "./icons";
-import { ThemeSelector } from "./theme-selector";
+import { ColorSchemeSelector } from "./color-scheme-selector";
 
 interface HeaderProps {
   drawerContent: JSX.Element;
+}
+
+interface HeaderLink extends ParentProps {
+  href: string;
+  isActive: boolean;
+}
+
+function HeaderLink(props: HeaderLink) {
+  return (
+    <LinkButton variant="ghost" color="neutral" asChild>
+      <As
+        component={Link}
+        href={props.href}
+        class={
+          props.isActive
+            ? "text-slate-900 dark:text-slate-50"
+            : "font-normal text-slate-700 dark:text-slate-200"
+        }
+      >
+        {props.children}
+      </As>
+    </LinkButton>
+  );
 }
 
 export function Header(props: HeaderProps) {
@@ -34,45 +57,15 @@ export function Header(props: HeaderProps) {
       <div class="relative flex items-center basis-0 justify-end h-14 md:flex-grow">
         <div id="docsearch" class="px-1 flex items-center justify-center" />
         <div class="hidden lg:flex lg:gap-x-1 lg:mr-1">
-          <LinkButton variant="ghost" color="neutral" asChild>
-            <As
-              component={Link}
-              href="/docs/core/overview/introduction"
-              class={
-                isCorePath()
-                  ? "text-slate-900 dark:text-slate-50"
-                  : "text-slate-700 dark:text-slate-200"
-              }
-            >
-              Documentation
-            </As>
-          </LinkButton>
-          <LinkButton variant="ghost" color="neutral" asChild>
-            <As
-              component={Link}
-              href="/docs/theme-generator"
-              class={
-                isThemeGeneratorPath()
-                  ? "text-slate-900 dark:text-slate-50"
-                  : "text-slate-700 dark:text-slate-200"
-              }
-            >
-              Theme generator
-            </As>
-          </LinkButton>
-          <LinkButton variant="ghost" color="neutral" asChild>
-            <As
-              component={Link}
-              href={LATEST_CORE_CHANGELOG_URL}
-              class={
-                isChangelogPath()
-                  ? "text-slate-900 dark:text-slate-50"
-                  : "text-slate-700 dark:text-slate-200"
-              }
-            >
-              Changelog
-            </As>
-          </LinkButton>
+          <HeaderLink href="/docs/core/overview/introduction" isActive={!!isCorePath()}>
+            Documentation
+          </HeaderLink>
+          <HeaderLink href="/docs/theme-generator" isActive={!!isThemeGeneratorPath()}>
+            Theme generator
+          </HeaderLink>
+          <HeaderLink href={LATEST_CORE_CHANGELOG_URL} isActive={!!isChangelogPath()}>
+            Changelog
+          </HeaderLink>
         </div>
         <LinkIconButton variant="ghost" color="neutral" class="mr-2.5" asChild>
           <As
@@ -85,7 +78,7 @@ export function Header(props: HeaderProps) {
             <GitHubIcon class="h-5 w-5" />
           </As>
         </LinkIconButton>
-        <ThemeSelector />
+        <ColorSchemeSelector />
       </div>
     </header>
   );

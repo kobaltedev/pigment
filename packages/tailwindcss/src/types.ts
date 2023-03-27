@@ -679,12 +679,20 @@ export type TokenKey =
 
 export type VarsFn = (token: TokenKey) => string;
 
-export type ThemeOverride = (vars: VarsFn) => DeepPartial<Theme>;
+export type ThemeGetter = (vars: VarsFn) => Theme;
+
+export type PredefinedTheme = "base";
+
+export interface CustomTheme {
+  name: string;
+  extend: PredefinedTheme;
+  tokens: (vars: VarsFn) => DeepPartial<Theme>;
+}
 
 export interface PigmentOptions {
   /** The prefix to use in the generated css variables. */
   cssVarsPrefix?: string;
 
-  /** The overrides that will be merged with the base theme. */
-  theme?: ThemeOverride;
+  /** The themes available in the application. */
+  themes?: Array<PredefinedTheme | CustomTheme>;
 }

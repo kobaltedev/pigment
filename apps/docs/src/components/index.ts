@@ -9,4 +9,4 @@ export * from "./preview";
 export * from "./prose";
 export * from "./table-of-contents";
 export * from "./tabs-snippets";
-export * from "./theme-selector";
+export * from "./color-scheme-selector";

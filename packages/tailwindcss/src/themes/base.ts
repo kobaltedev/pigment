@@ -1,8 +1,8 @@
 import twDefaultTheme from "tailwindcss/defaultTheme";
 
-import { Theme, VarsFn } from "./types";
+import { Theme, VarsFn } from "../types";
 
-export function getDefaultTheme(vars: VarsFn): Theme {
+export function getBaseTheme(vars: VarsFn): Theme {
   return {
     common: {
       typography: {

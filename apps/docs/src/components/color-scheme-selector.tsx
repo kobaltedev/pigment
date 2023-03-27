@@ -8,13 +8,13 @@ import { createSignal, onMount, Show } from "solid-js";
 
 import { DesktopIcon, MoonIcon, SunIcon } from "./icons";
 
-const THEME_OPTIONS = [
+const COLOR_SCHEMES = [
   { value: "light", label: "Light", icon: () => <SunIcon class="h-4 w-4" /> },
   { value: "dark", label: "Dark", icon: () => <MoonIcon class="h-4 w-4" /> },
   { value: "system", label: "System", icon: () => <DesktopIcon class="h-4 w-4" /> },
 ];
 
-export function ThemeSelector() {
+export function ColorSchemeSelector() {
   const { colorScheme, setColorScheme } = useColorScheme();
 
   const [isMounted, setIsMounted] = createSignal(false);
@@ -26,7 +26,7 @@ export function ThemeSelector() {
   return (
     <Show when={isMounted()} fallback={<div class="h-9 w-9" />}>
       <Select
-        options={THEME_OPTIONS}
+        options={COLOR_SCHEMES}
         defaultValue={colorSchemeStorageManager.get("system")}
         onValueChange={value => setColorScheme(value as ColorSchemeWithSystem)}
         hasDropdownIcon={false}

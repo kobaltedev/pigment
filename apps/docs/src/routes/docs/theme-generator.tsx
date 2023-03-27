@@ -1,6 +1,6 @@
 import { Outlet } from "@solidjs/router";
 
-import { Footer, Header, Prose, TableOfContents } from "../../components";
+import { Footer, Header, Prose } from "../../components";
 
 export default function ThemeGeneratorLayout() {
   return (
@@ -22,7 +22,6 @@ export default function ThemeGeneratorLayout() {
           </article>
           <Footer />
         </div>
-        <TableOfContents />
       </div>
     </>
   );

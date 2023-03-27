@@ -19,13 +19,19 @@ module.exports = {
   },
   presets: [
     pigment({
-      theme: vars => ({
-        common: {
-          typography: {
-            fontFamilySans: `Inter, ${vars("typography.fontFamilyFallback")}`,
-          },
+      themes: [
+        {
+          name: "pigment-docs",
+          extend: "default",
+          tokens: vars => ({
+            common: {
+              typography: {
+                fontFamilySans: `Inter, ${vars("typography.fontFamilyFallback")}`,
+              },
+            },
+          }),
         },
-      }),
+      ],
     }),
   ],
   plugins: [require("@tailwindcss/typography")],
