@@ -1,59 +1,28 @@
 import kobaltePlugin from "@kobalte/tailwindcss";
+import { dset } from "dset/merge";
 import { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
 import animatePlugin from "tailwindcss-animate";
 
-import { defaultTheme } from "./themes/default";
+import { getDefaultTheme } from "./default-theme";
+import { PigmentOptions, Theme } from "./types";
+import { createVarsFn, DARK_DATA_ATTR_SELECTOR, flattenKebabCase, getCssVarsPrefix } from "./utils";
 
-function createPalette(color: string) {
+export default function preset(options: PigmentOptions | undefined = {}): Partial<Config> {
+  const cssVarsPrefix = getCssVarsPrefix(options);
+
+  const vars = createVarsFn(cssVarsPrefix);
+
+  const baseTheme = getDefaultTheme(vars);
+
   return {
-    50: `var(--pg-color-${color}-50)`,
-    100: `var(--pg-color-${color}-100)`,
-    200: `var(--pg-color-${color}-200)`,
-    300: `var(--pg-color-${color}-300)`,
-    400: `var(--pg-color-${color}-400)`,
-    500: `var(--pg-color-${color}-500)`,
-    600: `var(--pg-color-${color}-600)`,
-    700: `var(--pg-color-${color}-700)`,
-    800: `var(--pg-color-${color}-800)`,
-    900: `var(--pg-color-${color}-900)`,
-  };
-}
-
-function colorToken(suffix: string) {
-  return {
-    [suffix]: `var(--pg-color-${suffix})`,
-  };
-}
-
-function globalVariantTokens(variant: string, color: string) {
-  return {
-    ...colorToken(`${variant}-${color}-text`),
-    ...colorToken(`${variant}-${color}-icon`),
-    ...colorToken(`${variant}-${color}-bg`),
-    ...colorToken(`${variant}-${color}-border`),
-
-    ...colorToken(`${variant}-${color}-text-hover`),
-    ...colorToken(`${variant}-${color}-icon-hover`),
-    ...colorToken(`${variant}-${color}-bg-hover`),
-    ...colorToken(`${variant}-${color}-border-hover`),
-
-    ...colorToken(`${variant}-${color}-text-active`),
-    ...colorToken(`${variant}-${color}-icon-active`),
-    ...colorToken(`${variant}-${color}-bg-active`),
-    ...colorToken(`${variant}-${color}-border-active`),
-  };
-}
-
-export default function preset(): Partial<Config> {
-  return {
-    darkMode: ["class", "[data-pg-color-scheme='dark']"],
+    darkMode: ["class", DARK_DATA_ATTR_SELECTOR],
     theme: {
       extend: {
         fontFamily: {
-          sans: "var(--pg-font-family-sans)",
-          serif: "var(--pg-font-family-serif)",
-          mono: "var(--pg-font-family-mono)",
+          sans: vars("typography.fontFamilySans"),
+          serif: vars("typography.fontFamilySerif"),
+          mono: vars("typography.fontFamilyMono"),
         },
         fontSize: {
           "2xs": ["10px", "14px"],
@@ -62,113 +31,23 @@ export default function preset(): Partial<Config> {
           13: "3.25rem",
           15: "3.75rem",
         },
-        colors: {
-          neutral: {
-            0: "var(--pg-color-neutral-0)",
-            ...createPalette("neutral"),
-            950: "var(--pg-color-neutral-950)",
-            "100A": "var(--pg-color-neutral-100A)",
-            "200A": "var(--pg-color-neutral-200A)",
-            "300A": "var(--pg-color-neutral-300A)",
-            "400A": "var(--pg-color-neutral-400A)",
-            "500A": "var(--pg-color-neutral-500A)",
-          },
-          primary: createPalette("primary"),
-          info: createPalette("info"),
-          success: createPalette("success"),
-          warning: createPalette("warning"),
-          danger: createPalette("danger"),
-          help: createPalette("help"),
-
-          ...colorToken("text-bold"),
-          ...colorToken("text"),
-          ...colorToken("text-subtle"),
-          ...colorToken("text-subtler"),
-          ...colorToken("text-subtlest"),
-          ...colorToken("text-inverse"),
-          ...colorToken("text-warning-inverse"),
-          ...colorToken("text-success"),
-          ...colorToken("text-danger"),
-
-          ...colorToken("icon-bold"),
-          ...colorToken("icon"),
-          ...colorToken("icon-subtle"),
-          ...colorToken("icon-subtler"),
-          ...colorToken("icon-subtlest"),
-          ...colorToken("icon-inverse"),
-          ...colorToken("icon-warning-inverse"),
-          ...colorToken("icon-success"),
-          ...colorToken("icon-danger"),
-
-          ...colorToken("body-bg"),
-
-          ...colorToken("subtle-bg"),
-          ...colorToken("subtle-bg-hover"),
-          ...colorToken("subtle-bg-active"),
-
-          ...colorToken("surface-bg"),
-          ...colorToken("surface-bg-hover"),
-          ...colorToken("surface-bg-active"),
-          ...colorToken("surface-raised-bg"),
-          ...colorToken("surface-raised-bg-hover"),
-          ...colorToken("surface-raised-bg-active"),
-          ...colorToken("surface-overlay-bg"),
-          ...colorToken("surface-overlay-bg-hover"),
-          ...colorToken("surface-overlay-bg-active"),
-          ...colorToken("surface-sunken-bg"),
-
-          ...colorToken("border"),
-
-          ...colorToken("focus-ring"),
-          ...colorToken("backdrop"),
-
-          ...colorToken("disabled-text"),
-          ...colorToken("disabled-icon"),
-          ...colorToken("disabled-bg"),
-          ...colorToken("disabled-border"),
-
-          ...globalVariantTokens("solid", "selected"),
-          ...globalVariantTokens("soft", "selected"),
-
-          ...globalVariantTokens("soft", "input"),
-          ...globalVariantTokens("outlined", "input"),
-
-          ...globalVariantTokens("solid", "primary"),
-          ...globalVariantTokens("solid", "neutral"),
-          ...globalVariantTokens("solid", "success"),
-          ...globalVariantTokens("solid", "info"),
-          ...globalVariantTokens("solid", "warning"),
-          ...globalVariantTokens("solid", "danger"),
-          ...globalVariantTokens("solid", "help"),
-
-          ...globalVariantTokens("soft", "primary"),
-          ...globalVariantTokens("soft", "neutral"),
-          ...globalVariantTokens("soft", "success"),
-          ...globalVariantTokens("soft", "info"),
-          ...globalVariantTokens("soft", "warning"),
-          ...globalVariantTokens("soft", "danger"),
-          ...globalVariantTokens("soft", "help"),
-
-          ...globalVariantTokens("outlined", "primary"),
-          ...globalVariantTokens("outlined", "neutral"),
-          ...globalVariantTokens("outlined", "success"),
-          ...globalVariantTokens("outlined", "info"),
-          ...globalVariantTokens("outlined", "warning"),
-          ...globalVariantTokens("outlined", "danger"),
-          ...globalVariantTokens("outlined", "help"),
-
-          ...globalVariantTokens("ghost", "primary"),
-          ...globalVariantTokens("ghost", "neutral"),
-          ...globalVariantTokens("ghost", "success"),
-          ...globalVariantTokens("ghost", "info"),
-          ...globalVariantTokens("ghost", "warning"),
-          ...globalVariantTokens("ghost", "danger"),
-          ...globalVariantTokens("ghost", "help"),
-        },
-        boxShadow: {
-          "surface-raised": "var(--pg-shadow-surface-raised)",
-          "surface-overlay": "var(--pg-shadow-surface-overlay)",
-        },
+        colors: flattenKebabCase(
+          // The theme doesn't matter here, we only care about the object shape.
+          baseTheme.light.color,
+          // Don't support Tailwind opacity modifier since token value can be anything.
+          prefixedKey => `var(--${prefixedKey})`,
+          "",
+          `${cssVarsPrefix}color-`,
+          ""
+        ),
+        boxShadow: flattenKebabCase(
+          // The theme doesn't matter here, we only care about the object shape.
+          baseTheme.light.shadow,
+          prefixedKey => `var(--${prefixedKey})`,
+          "",
+          `${cssVarsPrefix}shadow-`,
+          ""
+        ),
         data: {
           "placeholder-shown": "placeholder-shown",
         },
@@ -178,6 +57,45 @@ export default function preset(): Partial<Config> {
       animatePlugin,
       kobaltePlugin,
       plugin(({ addBase, addUtilities, theme }) => {
+        let finalTheme: Theme = baseTheme;
+
+        if (options.theme != null) {
+          const mergedTheme = { value: baseTheme };
+
+          dset(mergedTheme, "value", options.theme(vars));
+
+          finalTheme = mergedTheme.value;
+        }
+
+        addBase({
+          ":root": {
+            ...flattenKebabCase(
+              finalTheme.common,
+              (_, value) => value,
+              `--${cssVarsPrefix}`,
+              cssVarsPrefix,
+              ""
+            ),
+            ...flattenKebabCase(
+              finalTheme.light,
+              (_, value) => value,
+              `--${cssVarsPrefix}`,
+              cssVarsPrefix,
+              ""
+            ),
+          },
+        });
+
+        addBase({
+          [`.dark, ${DARK_DATA_ATTR_SELECTOR}`]: flattenKebabCase(
+            finalTheme.dark,
+            (_, value) => value,
+            `--${cssVarsPrefix}`,
+            cssVarsPrefix,
+            ""
+          ),
+        });
+
         addBase({
           body: {
             // Use theme background and foreground colors.
@@ -185,8 +103,6 @@ export default function preset(): Partial<Config> {
             color: theme("colors.text"),
           },
         });
-
-        addBase(defaultTheme);
 
         addUtilities({
           ".reset-svg": {

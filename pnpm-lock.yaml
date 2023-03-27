@@ -242,10 +242,12 @@ importers:
   packages/tailwindcss:
     specifiers:
       '@kobalte/tailwindcss': ^0.5.0
+      dset: ^3.1.2
       tailwindcss: 3.2.7
       tailwindcss-animate: ^1.0.5
     dependencies:
       '@kobalte/tailwindcss': 0.5.0_tailwindcss@3.2.7
+      dset: 3.1.2
       tailwindcss-animate: 1.0.5_tailwindcss@3.2.7
     devDependencies:
       tailwindcss: 3.2.7_postcss@8.4.21
@@ -6909,6 +6911,11 @@ packages:
     resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
     engines: {node: '>=12'}
     dev: true
+
+  /dset/3.1.2:
+    resolution: {integrity: sha512-g/M9sqy3oHe477Ar4voQxWtaPIFw1jTdKZuomOjhCcBx9nHUNn0pu6NopuFFrTh/TRZIKEj+76vLWFu9BNKk+Q==}
+    engines: {node: '>=4'}
+    dev: false
 
   /eastasianwidth/0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
@@ -14684,7 +14691,7 @@ packages:
       merge-anything: 5.1.4
       solid-js: 1.6.15
       solid-refresh: 0.5.2_solid-js@1.6.15
-      vite: 3.2.5
+      vite: 3.2.5_@types+node@18.13.0
       vitefu: 0.2.4_vite@3.2.5
     transitivePeerDependencies:
       - supports-color
@@ -14765,7 +14772,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 3.2.5
+      vite: 3.2.5_@types+node@18.13.0
     dev: true
 
   /vscode-oniguruma/1.7.0:

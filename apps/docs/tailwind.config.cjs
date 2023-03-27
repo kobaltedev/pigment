@@ -1,4 +1,5 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
+const pigment = require("@kobalte/pigment-tailwindcss");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -9,7 +10,6 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: "var(--pg-font-family-sans)",
         display: ["Lexend", ...defaultTheme.fontFamily.sans],
       },
       maxWidth: {
@@ -17,6 +17,16 @@ module.exports = {
       },
     },
   },
-  presets: [require("@kobalte/pigment-tailwindcss")],
+  presets: [
+    pigment({
+      theme: vars => ({
+        common: {
+          typography: {
+            fontFamilySans: `Inter, ${vars("typography.fontFamilyFallback")}`,
+          },
+        },
+      }),
+    }),
+  ],
   plugins: [require("@tailwindcss/typography")],
 };

@@ -1,23 +1,23 @@
 import { As, LinkButton, LinkIconButton } from "@kobalte/pigment";
 import { Link, useMatch } from "@solidjs/router";
+import { JSX } from "solid-js";
 
-import { NavSection } from "../model/navigation";
 import { LATEST_CORE_CHANGELOG_URL, LATEST_CORE_VERSION_NAME } from "../VERSIONS";
 import { GitHubIcon } from "./icons";
 import { ThemeSelector } from "./theme-selector";
 
 interface HeaderProps {
-  navSections: NavSection[];
+  drawerContent: JSX.Element;
 }
 
 export function Header(props: HeaderProps) {
+  const isCorePath = useMatch(() => "/docs/core/*");
   const isChangelogPath = useMatch(() => "/docs/changelog/*");
+  const isThemeGeneratorPath = useMatch(() => "/docs/theme-generator/*");
 
   return (
     <header class="sticky top-0 z-50 flex flex-wrap items-center justify-between bg-body-bg border-b border-b-slate-200 dark:border-b-slate-800 px-4 transition duration-500 lg:px-4 ">
-      <div class="mr-6 flex lg:hidden">
-        {/*  <MobileNavigation sections={props.navSections} /> */}
-      </div>
+      {props.drawerContent}
       <div class="relative flex flex-grow basis-0 items-center space-x-2">
         <Link
           class="text-slate-800 dark:text-white/90 font-medium font-display text-xl leading-none"
@@ -39,12 +39,25 @@ export function Header(props: HeaderProps) {
               component={Link}
               href="/docs/core/overview/introduction"
               class={
-                !isChangelogPath()
+                isCorePath()
                   ? "text-slate-900 dark:text-slate-50"
                   : "text-slate-700 dark:text-slate-200"
               }
             >
               Documentation
+            </As>
+          </LinkButton>
+          <LinkButton variant="ghost" color="neutral" asChild>
+            <As
+              component={Link}
+              href="/docs/theme-generator"
+              class={
+                isThemeGeneratorPath()
+                  ? "text-slate-900 dark:text-slate-50"
+                  : "text-slate-700 dark:text-slate-200"
+              }
+            >
+              Theme generator
             </As>
           </LinkButton>
           <LinkButton variant="ghost" color="neutral" asChild>
