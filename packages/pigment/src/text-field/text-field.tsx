@@ -200,7 +200,7 @@ export function TextField(props: TextFieldProps) {
       <Show when={showDescription()}>
         <KTextField.Description
           class={cn(
-            "text-text-subtlest",
+            "text-text-subtler",
             textFieldSupportTextVariants(variantProps),
             textFieldStaticClass("description"),
             themeClasses.description,

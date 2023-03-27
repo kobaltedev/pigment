@@ -176,12 +176,12 @@ export const selectValueVariants = cva("inline-flex justify-start items-center g
     {
       variant: "soft",
       isDisabled: false,
-      class: "data-placeholder-shown:text-text-subtlest",
+      class: "data-placeholder-shown:text-text-subtler",
     },
     {
       variant: "outlined",
       isDisabled: false,
-      class: "data-placeholder-shown:text-text-dimmed",
+      class: "data-placeholder-shown:text-text-subtlest",
     },
   ],
 });
@@ -228,7 +228,7 @@ export const selectListboxVariants = cva("flex flex-col outline-none max-h-96 ov
   },
 });
 
-export const selectOptGroupVariants = cva("text-text-dimmed uppercase", {
+export const selectOptGroupVariants = cva("text-text-subtlest uppercase", {
   variants: {
     size: {
       sm: "px-2 pt-3 text-2xs",

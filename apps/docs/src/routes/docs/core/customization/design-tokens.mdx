@@ -1,3 +1,5 @@
+import { Alert } from "@kobalte/pigment";
+
 import { Preview } from "../../../../components";
 
 # Design tokens
@@ -15,6 +17,13 @@ For example, instead of choosing one of many shades of green for an icon, we can
 Pigment's design tokens are defined using CSS custom properties (aka CSS variables), meaning you can use them with any styling solution.
 
 Since Pigment is a Tailwind-first library and thanks to the Pigment preset, every token described on this page is available in Tailwind's utility classes.
+
+{/* <!-- prettier-ignore-start --> */}
+
+<Alert status="warning">
+  <span>Pigment's colors are not compatible with Tailwind's [opacity modifier syntax](https://tailwindcss.com/docs/upgrade-guide#new-opacity-modifier-syntax).</span>
+</Alert>
+{/* <!-- prettier-ignore-end --> */}
 
 ## Color tokens
 
@@ -385,11 +394,11 @@ Form tokens are used by form UI elements, such as text fields, select, checkboxe
 <Preview>
   <div class="flex items-center space-x-4 text-sm">
     <input
-      class="appearance-none rounded-md px-3 py-2 text-soft-input-text bg-soft-input-bg border border-solid border-soft-input-border placeholder-text-subtlest hover:text-soft-input-text-hover hover:bg-soft-input-bg-hover hover:border-soft-input-border-hover active:text-soft-input-text-active active:bg-soft-input-bg-active active:border-soft-input-border-active"
+      class="appearance-none rounded-md px-3 py-2 text-soft-input-text bg-soft-input-bg border border-solid border-soft-input-border placeholder-text-subtler hover:text-soft-input-text-hover hover:bg-soft-input-bg-hover hover:border-soft-input-border-hover active:text-soft-input-text-active active:bg-soft-input-bg-active active:border-soft-input-border-active"
       placeholder="Soft"
     />
     <input
-      class="appearance-none rounded-md px-3 py-2 text-outlined-input-text bg-outlined-input-bg border border-solid border-outlined-input-border placeholder-text-dimmed hover:text-outlined-input-text-hover hover:bg-outlined-input-bg-hover hover:border-outlined-input-border-hover active:text-outlined-input-text-active active:bg-outlined-input-bg-active active:border-outlined-input-border-active"
+      class="appearance-none rounded-md px-3 py-2 text-outlined-input-text bg-outlined-input-bg border border-solid border-outlined-input-border placeholder-text-subtlest hover:text-outlined-input-text-hover hover:bg-outlined-input-bg-hover hover:border-outlined-input-border-hover active:text-outlined-input-text-active active:bg-outlined-input-bg-active active:border-outlined-input-border-active"
       placeholder="Outlined"
     />
   </div>
@@ -398,11 +407,11 @@ Form tokens are used by form UI elements, such as text fields, select, checkboxe
 ```tsx
 <div class="flex items-center space-x-4 text-sm">
   <input
-    class="appearance-none rounded-md px-3 py-2 text-soft-input-text bg-soft-input-bg border border-solid border-soft-input-border placeholder-text-subtlest hover:text-soft-input-text-hover hover:bg-soft-input-bg-hover hover:border-soft-input-border-hover active:text-soft-input-text-active active:bg-soft-input-bg-active active:border-soft-input-border-active"
+    class="appearance-none rounded-md px-3 py-2 text-soft-input-text bg-soft-input-bg border border-solid border-soft-input-border placeholder-text-subtler hover:text-soft-input-text-hover hover:bg-soft-input-bg-hover hover:border-soft-input-border-hover active:text-soft-input-text-active active:bg-soft-input-bg-active active:border-soft-input-border-active"
     placeholder="Soft"
   />
   <input
-    class="appearance-none rounded-md px-3 py-2 text-outlined-input-text bg-outlined-input-bg border border-solid border-outlined-input-border placeholder-text-dimmed hover:text-outlined-input-text-hover hover:bg-outlined-input-bg-hover hover:border-outlined-input-border-hover active:text-outlined-input-text-active active:bg-outlined-input-bg-active active:border-outlined-input-border-active"
+    class="appearance-none rounded-md px-3 py-2 text-outlined-input-text bg-outlined-input-bg border border-solid border-outlined-input-border placeholder-text-subtlest hover:text-outlined-input-text-hover hover:bg-outlined-input-bg-hover hover:border-outlined-input-border-hover active:text-outlined-input-text-active active:bg-outlined-input-bg-active active:border-outlined-input-border-active"
     placeholder="Outlined"
   />
 </div>
@@ -512,12 +521,12 @@ State tokens are used to globally define look and feel of elements that share si
 
 ### Disabled
 
-| Token and description                                                                                                         | Light value                    | Dark value |
-| ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ---------- |
-| <span class="whitespace-nowrap">**--pg-color-disabled-text**</span> <br /> Use for text in a disabled state.                  | `var(--pg-color-neutral-400A)` |            |
-| <span class="whitespace-nowrap">**--pg-color-disabled-icon**</span> <br /> Use for icon in a disabled state.                  | `var(--pg-color-neutral-400A)` |            |
-| <span class="whitespace-nowrap">**--pg-color-disabled-bg**</span> <br /> Use for background of elements in a disabled state.  | `var(--pg-color-neutral-100A)` |            |
-| <span class="whitespace-nowrap">**--pg-color-disabled-border**</span> <br /> Use for borders of elements in a disabled state. | `var(--pg-color-neutral-200A)` |            |
+| Token and description                                                                                                         | Light value                    | Dark value                     |
+| ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ------------------------------ |
+| <span class="whitespace-nowrap">**--pg-color-disabled-text**</span> <br /> Use for text in a disabled state.                  | `var(--pg-color-neutral-400A)` | `var(--pg-color-neutral-400A)` |
+| <span class="whitespace-nowrap">**--pg-color-disabled-icon**</span> <br /> Use for icon in a disabled state.                  | `var(--pg-color-neutral-400A)` | `var(--pg-color-neutral-400A)` |
+| <span class="whitespace-nowrap">**--pg-color-disabled-bg**</span> <br /> Use for background of elements in a disabled state.  | `var(--pg-color-neutral-100A)` | `var(--pg-color-neutral-100A)` |
+| <span class="whitespace-nowrap">**--pg-color-disabled-border**</span> <br /> Use for borders of elements in a disabled state. | `var(--pg-color-neutral-200A)` | `var(--pg-color-neutral-200A)` |
 
 ## Shadow tokens
 
@@ -537,10 +546,10 @@ Tokens used for elements box shadow.
 </div>
 ```
 
-| Token and description                                                                                                                                                                                                                   | Light value                                                              | Dark value                                                                                              |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------- |
-| <span class="whitespace-nowrap">**--pg-shadow-surface-raised**</span> <br /> Use for the box shadow of raised elements. Combine with `--pg-color-surface-raised-bg`.                                                                    | `0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)`      | `0px 0px 0px rgba(0, 0, 0, 0),0px 1px 1px rgba(3, 4, 4, 0.5),0px 0px 1px rgba(3, 4, 4, 0.5)`            |
-| <span class="whitespace-nowrap">**--pg-shadow-surface-overlay**</span> <br /> Use for the box shadow of elements that sit on top of the UI, such as dialogs, dropdown menus, and popover. Combine with `--pg-color-surface-overlay-bg`. | `0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)` | `0px 0px 0px rgba(188, 214, 240, 0.04),0px 8px 12px rgba(3, 4, 4, 0.36),0px 0px 1px rgba(3, 4, 4, 0.5)` |
+| Token and description                                                                                                                                                                                                                                    | Light value                                                              | Dark value                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------- |
+| <span class="whitespace-nowrap">**--pg-shadow-surface-raised** <br /> Use for the box shadow of raised elements.<br />Combine with `--pg-color-surface-raised-bg`.</span>                                                                                | `0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)`      | `0px 0px 0px rgba(0, 0, 0, 0),0px 1px 1px rgba(3, 4, 4, 0.5),0px 0px 1px rgba(3, 4, 4, 0.5)`            |
+| <span class="whitespace-nowrap">**--pg-shadow-surface-overlay** <br /> Use for the box shadow of elements that sit on top of the UI,<br />such as dialogs, dropdown menus, select and popover.<br />Combine with `--pg-color-surface-overlay-bg`.</span> | `0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)` | `0px 0px 0px rgba(188, 214, 240, 0.04),0px 8px 12px rgba(3, 4, 4, 0.36),0px 0px 1px rgba(3, 4, 4, 0.5)` |
 
 ## Typography tokens
 
@@ -564,7 +573,7 @@ Tokens used for elements box shadow.
 
 | Token and description                                                                                 | Value                                                                                                                                                                                                             |
 | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span class="whitespace-nowrap">**--pg-font-family-fallback**</span> <br /> The fallback font to use. | `ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"` |
-| <span class="whitespace-nowrap">**--pg-font-family-sans**</span> <br /> The sans-serif font to use.   | `var(--pg-font-family-fallback)`                                                                                                                                                                                  |
-| <span class="whitespace-nowrap">**--pg-font-family-serif**</span> <br /> The serif font to use.       | `ui-serif, Georgia, Cambria, "Times New Roman", Times, serif`                                                                                                                                                     |
-| <span class="whitespace-nowrap">**--pg-font-family-mono**</span> <br /> The monospace font to use.    | `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`                                                                                                              |
+| <span class="whitespace-nowrap">**--pg-font-family-fallback** <br /> The fallback font to use.</span> | `ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"` |
+| <span class="whitespace-nowrap">**--pg-font-family-sans** <br /> The sans-serif font to use.</span>   | `var(--pg-font-family-fallback)`                                                                                                                                                                                  |
+| <span class="whitespace-nowrap">**--pg-font-family-serif** <br /> The serif font to use.</span>       | `ui-serif, Georgia, Cambria, "Times New Roman", Times, serif`                                                                                                                                                     |
+| <span class="whitespace-nowrap">**--pg-font-family-mono** <br /> The monospace font to use.</span>    | `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`                                                                                                              |

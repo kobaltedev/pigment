@@ -158,7 +158,7 @@ export function Checkbox(props: CheckboxProps) {
               <span
                 id={descriptionId}
                 class={cn(
-                  "text-text-subtlest",
+                  "text-text-subtler",
                   checkboxSupportTextVariants(variantProps),
                   checkboxStaticClass("description"),
                   themeClasses.description,

@@ -1,12 +1,12 @@
 /* @refresh reload */
 import "./index.css";
 
-import { extendTheme, ThemeProvider } from "@kobalte/pigment";
+import { createTheme, ThemeProvider } from "@kobalte/pigment";
 import { render } from "solid-js/web";
 
 import App from "./App";
 
-const theme = extendTheme({
+const theme = createTheme({
   components: {},
 });
 

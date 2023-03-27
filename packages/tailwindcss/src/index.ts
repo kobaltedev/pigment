@@ -5,6 +5,21 @@ import animatePlugin from "tailwindcss-animate";
 
 import { defaultTheme } from "./themes/default";
 
+function createPalette(color: string) {
+  return {
+    50: `var(--pg-color-${color}-50)`,
+    100: `var(--pg-color-${color}-100)`,
+    200: `var(--pg-color-${color}-200)`,
+    300: `var(--pg-color-${color}-300)`,
+    400: `var(--pg-color-${color}-400)`,
+    500: `var(--pg-color-${color}-500)`,
+    600: `var(--pg-color-${color}-600)`,
+    700: `var(--pg-color-${color}-700)`,
+    800: `var(--pg-color-${color}-800)`,
+    900: `var(--pg-color-${color}-900)`,
+  };
+}
+
 function colorToken(suffix: string) {
   return {
     [suffix]: `var(--pg-color-${suffix})`,
@@ -48,19 +63,38 @@ export default function preset(): Partial<Config> {
           15: "3.75rem",
         },
         colors: {
+          neutral: {
+            0: "var(--pg-color-neutral-0)",
+            ...createPalette("neutral"),
+            950: "var(--pg-color-neutral-950)",
+            "100A": "var(--pg-color-neutral-100A)",
+            "200A": "var(--pg-color-neutral-200A)",
+            "300A": "var(--pg-color-neutral-300A)",
+            "400A": "var(--pg-color-neutral-400A)",
+            "500A": "var(--pg-color-neutral-500A)",
+          },
+          primary: createPalette("primary"),
+          info: createPalette("info"),
+          success: createPalette("success"),
+          warning: createPalette("warning"),
+          danger: createPalette("danger"),
+          help: createPalette("help"),
+
+          ...colorToken("text-bold"),
           ...colorToken("text"),
           ...colorToken("text-subtle"),
+          ...colorToken("text-subtler"),
           ...colorToken("text-subtlest"),
-          ...colorToken("text-dimmed"),
           ...colorToken("text-inverse"),
           ...colorToken("text-warning-inverse"),
           ...colorToken("text-success"),
           ...colorToken("text-danger"),
 
+          ...colorToken("icon-bold"),
           ...colorToken("icon"),
           ...colorToken("icon-subtle"),
+          ...colorToken("icon-subtler"),
           ...colorToken("icon-subtlest"),
-          ...colorToken("icon-dimmed"),
           ...colorToken("icon-inverse"),
           ...colorToken("icon-warning-inverse"),
           ...colorToken("icon-success"),
@@ -71,10 +105,6 @@ export default function preset(): Partial<Config> {
           ...colorToken("subtle-bg"),
           ...colorToken("subtle-bg-hover"),
           ...colorToken("subtle-bg-active"),
-
-          ...colorToken("inverse-bg"),
-          ...colorToken("inverse-bg-hover"),
-          ...colorToken("inverse-bg-active"),
 
           ...colorToken("surface-bg"),
           ...colorToken("surface-bg-hover"),

@@ -92,12 +92,12 @@ export const textFieldControlVariants = cva(
       {
         variant: "soft",
         isDisabled: false,
-        class: "placeholder:text-text-subtlest",
+        class: "placeholder:text-text-subtler",
       },
       {
         variant: "outlined",
         isDisabled: false,
-        class: "placeholder:text-text-dimmed",
+        class: "placeholder:text-text-subtlest",
       },
     ],
   }
@@ -207,12 +207,12 @@ export const textFieldTextAreaVariants = cva(
       {
         variant: "soft",
         isDisabled: false,
-        class: "placeholder:text-text-subtlest",
+        class: "placeholder:text-text-subtler",
       },
       {
         variant: "outlined",
         isDisabled: false,
-        class: "placeholder:text-text-dimmed",
+        class: "placeholder:text-text-subtlest",
       },
     ],
   }

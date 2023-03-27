@@ -282,7 +282,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       <Show when={showDescription()}>
         <KSelect.Description
           class={cn(
-            "text-text-subtlest",
+            "text-text-subtler",
             selectSupportTextVariants(variantProps),
             selectStaticClass("description"),
             themeClasses.description,
