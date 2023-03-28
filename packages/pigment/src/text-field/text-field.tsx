@@ -12,23 +12,21 @@ import {
 } from "solid-js";
 
 import { ExclamationCircleIcon } from "../icons";
-import { mergeThemeProps, useThemeClasses } from "../theme/theme-context";
+import { mergeThemeProps, useThemeClasses } from "../theme";
 import { cn } from "../utils/cn";
 import { makeStaticClass } from "../utils/make-static-class";
 import { TextFieldProps, TextFieldSlots } from "./text-field.props";
 import {
+  textFieldControlVariants,
   textFieldInputVariants,
   textFieldLabelVariants,
   textFieldSupportTextVariants,
   textFieldTextAreaVariants,
-  textFieldControlVariants,
 } from "./text-field.styles";
 
 const textFieldStaticClass = makeStaticClass<TextFieldSlots>("text-field");
 
 export function TextField(props: TextFieldProps) {
-  let ref: HTMLInputElement | HTMLTextAreaElement | undefined;
-
   props = mergeThemeProps(
     "TextField",
     {
@@ -155,7 +153,7 @@ export function TextField(props: TextFieldProps) {
         fallback={
           <KTextField.TextArea
             {...(local.inputProps as ComponentProps<"textarea">)}
-            ref={mergeRefs(el => (ref = el), local.ref)}
+            ref={local.ref as HTMLTextAreaElement}
             id={local.id}
             placeholder={local.placeholder}
             //autoResize
@@ -180,7 +178,7 @@ export function TextField(props: TextFieldProps) {
           {leftDecorator()}
           <KTextField.Input
             {...(local.inputProps as ComponentProps<"input">)}
-            ref={mergeRefs(el => (ref = el), local.ref)}
+            ref={local.ref as HTMLInputElement}
             id={local.id}
             type={local.type}
             placeholder={local.placeholder}

@@ -2,7 +2,7 @@ import { Checkbox as KCheckbox, useLocale } from "@kobalte/core";
 import { createMemo, createUniqueId, Show, splitProps } from "solid-js";
 
 import { CheckIcon, ExclamationCircleIcon, MinusIcon } from "../icons";
-import { mergeThemeProps, useThemeClasses } from "../theme/theme-context";
+import { mergeThemeProps, useThemeClasses } from "../theme";
 import { cn } from "../utils/cn";
 import { makeStaticClass } from "../utils/make-static-class";
 import { CheckboxProps, CheckboxSlots } from "./checkbox.props";

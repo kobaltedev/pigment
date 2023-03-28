@@ -56,7 +56,7 @@ export function Header(props: HeaderProps) {
 
       <div class="relative flex items-center basis-0 justify-end h-14 md:flex-grow">
         <div id="docsearch" class="px-1 flex items-center justify-center" />
-        <div class="hidden lg:flex lg:gap-x-1 lg:mr-1">
+        <div class="hidden lg:flex lg:gap-x-1 lg:me-1">
           <HeaderLink href="/docs/core/overview/introduction" isActive={!!isCorePath()}>
             Documentation
           </HeaderLink>
@@ -67,7 +67,7 @@ export function Header(props: HeaderProps) {
             Changelog
           </HeaderLink>
         </div>
-        <LinkIconButton variant="ghost" color="neutral" class="mr-2.5" asChild>
+        <LinkIconButton variant="ghost" color="neutral" class="me-2.5" asChild>
           <As
             component={Link}
             href="https://github.com/kobaltedev/pigment"

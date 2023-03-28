@@ -18,7 +18,7 @@ export function Footer() {
               </Link>
             </div>
             <div class="text-sm text-gray-600">
-              <span class="text-sm text-slate-700 mr-4 dark:text-slate-400">
+              <span class="text-sm text-slate-700 me-4 dark:text-slate-400">
                 Made in 🇫🇷 by Fabien MARIE-LOUISE.
               </span>
             </div>

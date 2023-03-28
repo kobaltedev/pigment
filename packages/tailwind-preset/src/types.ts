@@ -45,6 +45,7 @@ export interface ColorTokens {
   primary700: string;
   primary800: string;
   primary900: string;
+  primary950: string;
 
   info50: string;
   info100: string;
@@ -56,6 +57,7 @@ export interface ColorTokens {
   info700: string;
   info800: string;
   info900: string;
+  info950: string;
 
   success50: string;
   success100: string;
@@ -67,6 +69,7 @@ export interface ColorTokens {
   success700: string;
   success800: string;
   success900: string;
+  success950: string;
 
   warning50: string;
   warning100: string;
@@ -78,6 +81,7 @@ export interface ColorTokens {
   warning700: string;
   warning800: string;
   warning900: string;
+  warning950: string;
 
   danger50: string;
   danger100: string;
@@ -89,6 +93,7 @@ export interface ColorTokens {
   danger700: string;
   danger800: string;
   danger900: string;
+  danger950: string;
 
   /* -------------------------------------------------------------------------------------------------
    * Color - Texts

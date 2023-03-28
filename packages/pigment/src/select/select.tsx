@@ -3,7 +3,7 @@ import { isFunction, isString } from "@kobalte/utils";
 import { createMemo, mergeProps, Show, splitProps } from "solid-js";
 
 import { CheckIcon, ExclamationCircleIcon, SelectorIcon } from "../icons";
-import { mergeThemeProps, useThemeClasses } from "../theme/theme-context";
+import { mergeThemeProps, useThemeClasses } from "../theme";
 import { cn } from "../utils/cn";
 import { makeStaticClass } from "../utils/make-static-class";
 import { SelectProps, SelectSlots } from "./select.props";

@@ -88,12 +88,12 @@ export function TableOfContents() {
   const currentSection = useCurrentSection(toc);
 
   return (
-    <div class="hidden xl:sticky xl:top-[4.5rem] xl:block xl:h-[calc(100vh-4.5rem)] xl:flex-none xl:overflow-y-auto xl:py-4 xl:pr-2">
+    <div class="hidden xl:sticky xl:top-[4.5rem] xl:block xl:h-[calc(100vh-4.5rem)] xl:flex-none xl:overflow-y-auto xl:py-4 xl:pe-2">
       <nav aria-labelledby="on-this-page-title" class="w-56">
         <Suspense>
           <h2
             id="on-this-page-title"
-            class="font-display text-sm font-medium ml-3 text-slate-900 dark:text-white/90"
+            class="font-display text-sm font-medium ms-3 text-slate-900 dark:text-white/90"
           >
             On this page
           </h2>
@@ -109,7 +109,7 @@ export function TableOfContents() {
                         section.slug === currentSection()
                           ? "text-slate-700 dark:text-slate-300"
                           : "text-slate-600 dark:text-slate-400",
-                        section.depth === 3 && "pl-6"
+                        section.depth === 3 && "ps-6"
                       )}
                     >
                       {section.text}

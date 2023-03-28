@@ -19,7 +19,7 @@ export function Navigation(props: NavigationProps) {
         <For each={local.sections}>
           {section => (
             <li>
-              <h2 class="font-display font-medium ml-3 text-slate-900 dark:text-white/90">
+              <h2 class="font-display font-medium ms-3 text-slate-900 dark:text-white/90">
                 {section.title}
               </h2>
               <ul class="mt-2 text-sm space-y-1">

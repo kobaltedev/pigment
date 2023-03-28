@@ -24,14 +24,14 @@ export function Layout(props: LayoutProps) {
     <>
       <Header
         drawerContent={
-          <div class="mr-6 flex lg:hidden">
+          <div class="me-6 flex lg:hidden">
             {/* <MobileNavigation sections={props.navSections} /> */}
           </div>
         }
       />
       <div class="relative flex justify-center">
         <div class="hidden lg:relative lg:block lg:flex-none">
-          <div class="sticky top-[61px] h-[calc(100vh-61px)] overflow-y-auto py-6 pl-2 pr-2">
+          <div class="sticky top-[61px] h-[calc(100vh-61px)] overflow-y-auto py-6 ps-2 pe-2">
             <Navigation sections={props.navSections} />
           </div>
         </div>
@@ -50,7 +50,7 @@ export function Layout(props: LayoutProps) {
                     href={previousPage().href}
                     class="text-base font-semibold text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
                   >
-                    <span aria-hidden="true" class="mr-1">
+                    <span aria-hidden="true" class="me-1">
                       &larr;
                     </span>
                     <span>{previousPage().title}</span>
@@ -59,7 +59,7 @@ export function Layout(props: LayoutProps) {
               </dl>
             </Show>
             <Show when={nextPage()}>
-              <dl class="ml-auto text-right">
+              <dl class="ms-auto text-right">
                 <dt class="font-display text-sm font-medium text-slate-900 dark:text-white">
                   Next
                 </dt>
@@ -69,7 +69,7 @@ export function Layout(props: LayoutProps) {
                     class="text-base font-semibold text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
                   >
                     <span>{nextPage().title}</span>
-                    <span aria-hidden="true" class="ml-1">
+                    <span aria-hidden="true" class="ms-1">
                       &rarr;
                     </span>
                   </Link>
