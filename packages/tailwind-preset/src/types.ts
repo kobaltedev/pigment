@@ -13,9 +13,8 @@ export interface TypographyTokens {
 
 export interface ColorTokens {
   /* -------------------------------------------------------------------------------------------------
-   * Reference tokens
+   * Color - Reference
    * -----------------------------------------------------------------------------------------------*/
-
   neutral0: string;
   neutral50: string;
   neutral100: string;
@@ -28,12 +27,6 @@ export interface ColorTokens {
   neutral800: string;
   neutral900: string;
   neutral950: string;
-
-  neutral100A: string;
-  neutral200A: string;
-  neutral300A: string;
-  neutral400A: string;
-  neutral500A: string;
 
   primary50: string;
   primary100: string;
@@ -94,6 +87,16 @@ export interface ColorTokens {
   danger800: string;
   danger900: string;
   danger950: string;
+
+  /* -------------------------------------------------------------------------------------------------
+   * Color - Neutral Alpha
+   * -----------------------------------------------------------------------------------------------*/
+
+  neutral100A: string;
+  neutral200A: string;
+  neutral300A: string;
+  neutral400A: string;
+  neutral500A: string;
 
   /* -------------------------------------------------------------------------------------------------
    * Color - Texts

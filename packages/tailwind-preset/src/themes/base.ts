@@ -16,7 +16,7 @@ export function getBaseTheme(vars: VarsFn): Theme {
     light: {
       colors: {
         /* -------------------------------------------------------------------------------------------------
-         * Reference tokens
+         * Color - Reference
          * -----------------------------------------------------------------------------------------------*/
 
         neutral0: twColors.white,
@@ -32,13 +32,6 @@ export function getBaseTheme(vars: VarsFn): Theme {
         neutral800: twColors.slate["800"],
         neutral900: twColors.slate["900"],
         neutral950: twColors.slate["950"],
-
-        /* Based on Tailwind - slate-950 */
-        neutral100A: "#02061708",
-        neutral200A: "#0206170f",
-        neutral300A: "#02061724",
-        neutral400A: "#0206174f",
-        neutral500A: "#0206177d",
 
         primary50: twColors.blue["50"],
         primary100: twColors.blue["100"],
@@ -99,6 +92,17 @@ export function getBaseTheme(vars: VarsFn): Theme {
         danger800: twColors.red["800"],
         danger900: twColors.red["900"],
         danger950: twColors.red["950"],
+
+        /* -------------------------------------------------------------------------------------------------
+         * Color - Neutral Alpha
+         * -----------------------------------------------------------------------------------------------*/
+
+        /* Based on Tailwind - slate-950 */
+        neutral100A: "#02061708",
+        neutral200A: "#0206170f",
+        neutral300A: "#02061724",
+        neutral400A: "#0206174f",
+        neutral500A: "#0206177d",
 
         /* -------------------------------------------------------------------------------------------------
          * Color - Texts
@@ -597,7 +601,7 @@ export function getBaseTheme(vars: VarsFn): Theme {
     dark: {
       colors: {
         /* -------------------------------------------------------------------------------------------------
-         * Color - Reference tokens
+         * Color - Neutral Alpha
          * -----------------------------------------------------------------------------------------------*/
 
         /* Based on Tailwind - slate-300 */
@@ -942,15 +946,15 @@ export function getBaseTheme(vars: VarsFn): Theme {
         outlinedNeutralText: vars("colors.neutral100"),
         outlinedNeutralIcon: vars("colors.neutral100"),
         outlinedNeutralBg: "transparent",
-        outlinedNeutralBorder: vars("colors.neutral300A"),
-        outlinedNeutralTextHover: vars("colors.neutral100"),
-        outlinedNeutralIconHover: vars("colors.neutral100"),
-        outlinedNeutralBgHover: vars("colors.neutral200A"),
-        outlinedNeutralBorderHover: vars("colors.neutral300A"),
-        outlinedNeutralTextActive: vars("colors.neutral100"),
-        outlinedNeutralIconActive: vars("colors.neutral100"),
-        outlinedNeutralBgActive: vars("colors.neutral300A"),
-        outlinedNeutralBorderActive: vars("colors.neutral300A"),
+        outlinedNeutralBorder: vars("colors.neutral500"),
+        outlinedNeutralTextHover: vars("colors.textInverse"),
+        outlinedNeutralIconHover: vars("colors.iconInverse"),
+        outlinedNeutralBgHover: vars("colors.neutral200"),
+        outlinedNeutralBorderHover: vars("colors.neutral200"),
+        outlinedNeutralTextActive: vars("colors.textInverse"),
+        outlinedNeutralIconActive: vars("colors.iconInverse"),
+        outlinedNeutralBgActive: vars("colors.neutral100"),
+        outlinedNeutralBorderActive: vars("colors.neutral100"),
 
         /* Success */
         outlinedSuccessText: vars("colors.success300"),
