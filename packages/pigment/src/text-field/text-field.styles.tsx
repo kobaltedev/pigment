@@ -87,18 +87,6 @@ export const textFieldControlVariants = cva(
         isDisabled: true,
         class: "ui-group-disabled:bg-transparent ui-group-disabled:border-disabled-border",
       },
-
-      // variant + not disabled
-      {
-        variant: "soft",
-        isDisabled: false,
-        class: "placeholder:text-text-subtler",
-      },
-      {
-        variant: "outlined",
-        isDisabled: false,
-        class: "placeholder:text-text-subtlest",
-      },
     ],
   }
 );
@@ -112,6 +100,10 @@ export const textFieldInputVariants = cva(
   ],
   {
     variants: {
+      variant: {
+        soft: "",
+        outlined: "",
+      },
       size: {
         sm: "text-sm",
         md: "text-base",
@@ -124,8 +116,24 @@ export const textFieldInputVariants = cva(
         true: "pr-0",
         false: "",
       },
+      isDisabled: {
+        true: "",
+        false: "",
+      },
     },
     compoundVariants: [
+      // variant + not disabled
+      {
+        variant: "soft",
+        isDisabled: false,
+        class: "placeholder:text-text-subtler",
+      },
+      {
+        variant: "outlined",
+        isDisabled: false,
+        class: "placeholder:text-text-subtlest",
+      },
+
       // size + no left decorator
       { size: "sm", hasLeftDecorator: false, class: "pl-2.5" },
       { size: "md", hasLeftDecorator: false, class: "pl-3.5" },

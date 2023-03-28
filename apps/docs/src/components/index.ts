@@ -1,3 +1,4 @@
+export * from "./color-scheme-selector";
 export * from "./footer";
 export * from "./header";
 export * from "./highlight";
@@ -9,4 +10,3 @@ export * from "./preview";
 export * from "./prose";
 export * from "./table-of-contents";
 export * from "./tabs-snippets";
-export * from "./color-scheme-selector";

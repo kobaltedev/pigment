@@ -97,12 +97,11 @@ export function getBaseTheme(vars: VarsFn): Theme {
          * Color - Neutral Alpha
          * -----------------------------------------------------------------------------------------------*/
 
-        /* Based on Tailwind - slate-950 */
-        neutral100A: "#02061708",
-        neutral200A: "#0206170f",
-        neutral300A: "#02061724",
-        neutral400A: "#0206174f",
-        neutral500A: "#0206177d",
+        neutral100A: `${twColors.slate["950"]}08`,
+        neutral200A: `${twColors.slate["950"]}0f`,
+        neutral300A: `${twColors.slate["950"]}24`,
+        neutral400A: `${twColors.slate["950"]}4f`,
+        neutral500A: `${twColors.slate["950"]}7d`,
 
         /* -------------------------------------------------------------------------------------------------
          * Color - Texts
@@ -604,12 +603,11 @@ export function getBaseTheme(vars: VarsFn): Theme {
          * Color - Neutral Alpha
          * -----------------------------------------------------------------------------------------------*/
 
-        /* Based on Tailwind - slate-300 */
-        neutral100A: "#cbd5e10a",
-        neutral200A: "#cbd5e114",
-        neutral300A: "#cbd5e129",
-        neutral400A: "#cbd5e147",
-        neutral500A: "#cbd5e180",
+        neutral100A: `${twColors.slate["300"]}0a`,
+        neutral200A: `${twColors.slate["300"]}14`,
+        neutral300A: `${twColors.slate["300"]}29`,
+        neutral400A: `${twColors.slate["300"]}47`,
+        neutral500A: `${twColors.slate["300"]}80`,
 
         /* -------------------------------------------------------------------------------------------------
          * Color - Texts

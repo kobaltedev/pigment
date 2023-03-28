@@ -56,6 +56,7 @@ module.exports = {
             },
           }),
         },
+        "base",
       ],
     }),
   ],
