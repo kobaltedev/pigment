@@ -155,8 +155,6 @@ The example below demonstrate how to reproduce GitHub primary button (in light m
 
 To use a theme (predefined or custom), add it to the Pigment preset in your `tailwind.config.cjs`.
 
-The first theme in the array will be used by default.
-
 ```js {13}
 // tailwind.config.cjs
 
@@ -177,7 +175,7 @@ module.exports = {
 };
 ```
 
-To apply a specific theme add the `[data-pg-theme]` attribute to any component in your DOM tree, and provide the theme name as value:
+The first theme in the array is applied by default, to apply a specific theme add the `[data-pg-theme]` attribute to any component in your DOM tree, and provide the theme name as value:
 
 ```tsx {2,4}
 export default function App() {
