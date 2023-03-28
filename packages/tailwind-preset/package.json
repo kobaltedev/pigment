@@ -51,10 +51,10 @@
     "tailwindcss-animate": "^1.0.5"
   },
   "devDependencies": {
-    "tailwindcss": "3.2.7"
+    "tailwindcss": "3.3.0"
   },
   "peerDependencies": {
-    "tailwindcss": "^3.2.7"
+    "tailwindcss": "^3.3.0"
   },
   "publishConfig": {
     "access": "public"
