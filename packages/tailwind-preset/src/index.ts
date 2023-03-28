@@ -62,34 +62,42 @@ export default function preset(options: PigmentOptions | undefined = {}): Partia
       animatePlugin,
       kobaltePlugin,
       plugin(({ addBase, addUtilities, theme }) => {
-        const themes: Record<PredefinedTheme | string, PartialTheme> = {};
+        const themes: Array<[PredefinedTheme | string, PartialTheme]> = [];
 
         if (options.themes != null && options?.themes.length > 0) {
           options?.themes.forEach(theme => {
             if (isString(theme)) {
               // Add the predefined theme.
-              themes[theme] = PREDEFINED_THEMES[theme](vars);
+              themes.push([theme, PREDEFINED_THEMES[theme](vars)]);
             } else if (theme.extend != null) {
               // Create a custom theme by extending a predefined theme.
               const mergedTheme = { value: PREDEFINED_THEMES[theme.extend](vars) };
               dset(mergedTheme, "value", theme.tokens(vars));
-              themes[theme.name] = mergedTheme.value;
+              themes.push([theme.name, mergedTheme.value]);
             } else {
               // Create a custom theme from scratch.
-              themes[theme.name] = theme.tokens(vars);
+              themes.push([theme.name, theme.tokens(vars)]);
             }
           });
         } else {
           // Fallback to base theme.
-          themes.base = PREDEFINED_THEMES.base(vars);
+          themes.push(["base", PREDEFINED_THEMES.base(vars)]);
         }
 
-        Object.keys(themes).forEach(key => {
-          const theme = themes[key];
-          const themeSelector = `[data-pg-theme='${key}']`;
+        themes.forEach(([name, theme], index) => {
+          const dataThemeSelector = `[data-pg-theme='${name}']`;
+
+          let lightThemeSelector = dataThemeSelector;
+          let darkThemeSelector = `${dataThemeSelector}.dark, ${dataThemeSelector}${DARK_DATA_ATTR_SELECTOR}`;
+
+          // Apply first theme by default.
+          if (index === 0) {
+            lightThemeSelector = `:root, ${lightThemeSelector}`;
+            darkThemeSelector = `.dark, ${DARK_DATA_ATTR_SELECTOR}, ${darkThemeSelector}`;
+          }
 
           addBase({
-            [themeSelector]: {
+            [lightThemeSelector]: {
               ...flattenKebabCase(
                 theme.common ?? {},
                 (_, value) => value,
@@ -108,10 +116,7 @@ export default function preset(options: PigmentOptions | undefined = {}): Partia
           });
 
           addBase({
-            [`${themeSelector}.dark,
-              ${themeSelector} .dark,
-              ${themeSelector}${DARK_DATA_ATTR_SELECTOR},
-              ${themeSelector} ${DARK_DATA_ATTR_SELECTOR}`]: flattenKebabCase(
+            [darkThemeSelector]: flattenKebabCase(
               theme.dark ?? {},
               (_, value) => value,
               `--${cssVarPrefix}`,

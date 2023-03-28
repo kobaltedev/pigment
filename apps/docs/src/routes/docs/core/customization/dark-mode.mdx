@@ -30,7 +30,7 @@ render(
 
 For a SolidStart application, you need to add it to the `root.tsx` file, and to prevent the UI from flickering, apply the `InitColorSchemeScript` before the main application script:
 
-```tsx {24,27}
+```tsx {25,28}
 // root.tsx
 
 import { InitColorSchemeScript, ColorSchemeProvider } from "@kobalte/pigment";
@@ -46,6 +46,7 @@ import {
   Scripts,
   Title,
 } from "solid-start";
+
 export default function Root() {
   return (
     <Html lang="en">
@@ -110,4 +111,19 @@ The Pigment preset for TailwindCSS ensure the correct selector is added to the T
 <div class="rounded p-4 bg-amber-400 text-slate-800 dark:bg-amber-800 dark:text-amber-300">
   This box's style will change based on the color scheme.
 </div>
+```
+
+## Forcing dark mode
+
+To force dark mode in specific area of your application use either Tailwind CSS `.dark` class or Pigment dark color scheme data attribute `[data-pg-color-scheme='dark']`.
+
+```tsx {2,4}
+export default function App() {
+  return (
+    <div data-pg-theme="slate" data-pg-color-scheme="dark">
+      This div will use the "slate" theme in dark mode.
+      <span data-pg-color-scheme="dark">This span will use the default theme in dark mode.</span>
+    </div>
+  );
+}
 ```

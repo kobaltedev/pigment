@@ -153,7 +153,9 @@ The example below demonstrate how to reproduce GitHub primary button (in light m
 
 ### Using a theme
 
-To use a theme (predefined or custom), add it to the Pigment preset in your `tailwind.config.cjs`:
+To use a theme (predefined or custom), add it to the Pigment preset in your `tailwind.config.cjs`.
+
+The first theme in the array will be used by default.
 
 ```js {13}
 // tailwind.config.cjs
@@ -169,63 +171,28 @@ module.exports = {
   theme: {},
   presets: [
     pigment({
-      themes: ["base"], // `base` is a predefined Pigment theme.
+      themes: ["base", "slate"], // `base` and `slate` are predefined Pigment themes.
     }),
   ],
 };
 ```
 
-Then add the `[data-pg-theme]` attribute to your root component and provide a theme name as value:
+To apply a specific theme add the `[data-pg-theme]` attribute to any component in your DOM tree, and provide the theme name as value:
 
-```tsx {1}
+```tsx {2,4}
 export default function App() {
-  return <div data-pg-theme="base">...</div>;
-}
-```
-
-For a SolidStart application, you will likely add it to the `Html` component in `root.tsx` file:
-
-```tsx {16}
-// root.tsx
-
-import { Suspense } from "solid-js";
-import {
-  Body,
-  ErrorBoundary,
-  FileRoutes,
-  Head,
-  Html,
-  Meta,
-  Routes,
-  Scripts,
-  Title,
-} from "solid-start";
-export default function Root() {
   return (
-    <Html lang="en" data-pg-theme="base">
-      <Head>
-        <Title>SolidStart - Bare</Title>
-        <Meta charset="utf-8" />
-        <Meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-      <Body>
-        <ErrorBoundary>
-          <Suspense>
-            <Routes>
-              <FileRoutes />
-            </Routes>
-          </Suspense>
-        </ErrorBoundary>
-        <Scripts />
-      </Body>
-    </Html>
+    <div data-pg-theme="slate">
+      This div will use the "slate" theme.
+      <span data-pg-theme="base">This span will use the "base" theme.</span>
+    </div>
   );
 }
 ```
 
 <Alert>
   <span>If no theme is provided in the Pigment preset, </span>
-  <span>the `base` theme will be available by default.</span>
+  <span>the `base` theme will be used by default.</span>
 </Alert>
 
 ### Creating a theme
