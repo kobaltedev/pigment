@@ -14,7 +14,7 @@ export default {
       control: { type: "select" },
     },
     status: {
-      options: ["neutral", "success", "info", "warning", "danger", "help"],
+      options: ["neutral", "success", "info", "warning", "danger"],
       control: { type: "select" },
     },
     hasIcon: {

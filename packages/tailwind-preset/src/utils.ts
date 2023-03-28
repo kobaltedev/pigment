@@ -14,9 +14,7 @@ export function tokenToKebabCase(token: string) {
   );
 }
 
-/**
- * Create a flatted object with kebab-case keys and custom value transformer.
- */
+/** Create a flatted object with kebab-case keys and custom value transformer. */
 export function flattenKebabCase(
   obj: Record<string, any>,
   transformValue: (prefixedKey: string, value: string) => any,
@@ -43,14 +41,14 @@ export function flattenKebabCase(
 }
 
 /** Create a function to get the css variable of a token with a given css vars prefix. */
-export function createVarsFn(cssVarsPrefix: string): VarsFn {
+export function createVarsFn(cssVarPrefix: string): VarsFn {
   return token => {
-    return `var(--${cssVarsPrefix}${tokenToKebabCase(token.replace(".", "-"))})`;
+    return `var(--${cssVarPrefix}${tokenToKebabCase(token.replace(".", "-"))})`;
   };
 }
 
 export function getCssVarsPrefix(options: PigmentOptions) {
-  return options.cssVarsPrefix ?? "pg-";
+  return options.cssVarPrefix ?? "pg-";
 }
 
 export function isString(value: any): value is string {

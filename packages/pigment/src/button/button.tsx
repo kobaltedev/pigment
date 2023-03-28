@@ -3,7 +3,7 @@ import { mergeDefaultProps } from "@kobalte/utils";
 import { createMemo, Show, splitProps } from "solid-js";
 
 import { LoaderIcon } from "../icons";
-import { mergeThemeProps, useThemeClasses } from "../theme/theme-context";
+import { mergeThemeProps, useThemeClasses } from "../theme";
 import { cn } from "../utils/cn";
 import { makeStaticClass } from "../utils/make-static-class";
 import {

@@ -24,7 +24,6 @@ export const buttonVariants = cva(
         info: "",
         warning: "",
         danger: "",
-        help: "",
       },
       size: {
         xs: "h-7 gap-1 rounded",
@@ -109,16 +108,6 @@ export const buttonVariants = cva(
           "border-solid-danger-border hover:border-solid-danger-border-hover active:border-solid-danger-border-active",
         ],
       },
-      {
-        variant: "solid",
-        color: "help",
-        isDisabled: false,
-        class: [
-          "text-solid-help-text hover:text-solid-help-text-hover active:text-solid-help-text-active",
-          "bg-solid-help-bg hover:bg-solid-help-bg-hover active:bg-solid-help-bg-active",
-          "border-solid-help-border hover:border-solid-help-border-hover active:border-solid-help-border-active",
-        ],
-      },
 
       // soft + colors
       {
@@ -179,16 +168,6 @@ export const buttonVariants = cva(
           "text-soft-danger-text hover:text-soft-danger-text-hover active:text-soft-danger-text-active",
           "bg-soft-danger-bg hover:bg-soft-danger-bg-hover active:bg-soft-danger-bg-active",
           "border-soft-danger-border hover:border-soft-danger-border-hover active:border-soft-danger-border-active",
-        ],
-      },
-      {
-        variant: "soft",
-        color: "help",
-        isDisabled: false,
-        class: [
-          "text-soft-help-text hover:text-soft-help-text-hover active:text-soft-help-text-active",
-          "bg-soft-help-bg hover:bg-soft-help-bg-hover active:bg-soft-help-bg-active",
-          "border-soft-help-border hover:border-soft-help-border-hover active:border-soft-help-border-active",
         ],
       },
 
@@ -253,16 +232,6 @@ export const buttonVariants = cva(
           "border-outlined-danger-border hover:border-outlined-danger-border-hover active:border-outlined-danger-border-active",
         ],
       },
-      {
-        variant: "outlined",
-        color: "help",
-        isDisabled: false,
-        class: [
-          "text-outlined-help-text hover:text-outlined-help-text-hover active:text-outlined-help-text-active",
-          "bg-outlined-help-bg hover:bg-outlined-help-bg-hover active:bg-outlined-help-bg-active",
-          "border-outlined-help-border hover:border-outlined-help-border-hover active:border-outlined-help-border-active",
-        ],
-      },
 
       // ghost + colors
       {
@@ -325,16 +294,6 @@ export const buttonVariants = cva(
           "border-ghost-danger-border hover:border-ghost-danger-border-hover active:border-ghost-danger-border-active",
         ],
       },
-      {
-        variant: "ghost",
-        color: "help",
-        isDisabled: false,
-        class: [
-          "text-ghost-help-text hover:text-ghost-help-text-hover active:text-ghost-help-text-active",
-          "bg-ghost-help-bg hover:bg-ghost-help-bg-hover active:bg-ghost-help-bg-active",
-          "border-ghost-help-border hover:border-ghost-help-border-hover active:border-ghost-help-border-active",
-        ],
-      },
 
       // disabled + variants
       {
@@ -393,7 +352,6 @@ export const buttonIconVariants = cva("reset-svg shrink-0 transition-colors", {
       info: "",
       warning: "",
       danger: "",
-      help: "",
     },
     size: {
       xs: "",
@@ -453,13 +411,6 @@ export const buttonIconVariants = cva("reset-svg shrink-0 transition-colors", {
       class:
         "text-solid-danger-icon group-hover:text-solid-danger-icon-hover group-active:text-solid-danger-icon-active",
     },
-    {
-      variant: "solid",
-      color: "help",
-      isDisabled: false,
-      class:
-        "text-solid-help-icon group-hover:text-solid-help-icon-hover group-active:text-solid-help-icon-active",
-    },
 
     // soft + colors
     {
@@ -503,13 +454,6 @@ export const buttonIconVariants = cva("reset-svg shrink-0 transition-colors", {
       isDisabled: false,
       class:
         "text-soft-danger-icon group-hover:text-soft-danger-icon-hover group-active:text-soft-danger-icon-active",
-    },
-    {
-      variant: "soft",
-      color: "help",
-      isDisabled: false,
-      class:
-        "text-soft-help-icon group-hover:text-soft-help-icon-hover group-active:text-soft-help-icon-active",
     },
 
     // outlined + colors
@@ -555,13 +499,6 @@ export const buttonIconVariants = cva("reset-svg shrink-0 transition-colors", {
       class:
         "text-outlined-danger-icon group-hover:text-outlined-danger-icon-hover group-active:text-outlined-danger-icon-active",
     },
-    {
-      variant: "outlined",
-      color: "help",
-      isDisabled: false,
-      class:
-        "text-outlined-help-icon group-hover:text-outlined-help-icon-hover group-active:text-outlined-help-icon-active",
-    },
 
     // ghost + colors
     {
@@ -605,13 +542,6 @@ export const buttonIconVariants = cva("reset-svg shrink-0 transition-colors", {
       isDisabled: false,
       class:
         "text-ghost-danger-icon group-hover:text-ghost-danger-icon-hover group-active:text-ghost-danger-icon-active",
-    },
-    {
-      variant: "ghost",
-      color: "help",
-      isDisabled: false,
-      class:
-        "text-ghost-help-icon group-hover:text-ghost-help-icon-hover group-active:text-ghost-help-icon-active",
     },
 
     // start, end and loading icons in rectangle button (e.g: Button)

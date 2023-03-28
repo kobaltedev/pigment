@@ -38,7 +38,7 @@ export const mods = /*#__PURE__*/ import.meta.glob<
 
 export default function Root() {
   return (
-    <Html lang="en" data-pg-theme="pigment-docs">
+    <Html lang="en" data-pg-theme="docs">
       <Head>
         <Title>Pigment</Title>
         <Meta charset="utf-8" />

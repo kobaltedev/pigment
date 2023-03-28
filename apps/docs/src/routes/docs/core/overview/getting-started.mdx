@@ -50,21 +50,21 @@ Install Pigment's Tailwind CSS preset as a dev dependency by running either of t
   <TabsSnippets.Content value="npm">
     {/* <!-- prettier-ignore-start --> */}
     ```bash
-    npm install -D @kobalte/pigment-tailwindcss
+    npm install -D @kobalte/pigment-tailwind-preset
     ```
     {/* <!-- prettier-ignore-end --> */}
   </TabsSnippets.Content>
   <TabsSnippets.Content value="yarn">
     {/* <!-- prettier-ignore-start --> */}
     ```bash
-    yarn add -D @kobalte/pigment-tailwindcss
+    yarn add -D @kobalte/pigment-tailwind-preset
     ```
     {/* <!-- prettier-ignore-end --> */}
   </TabsSnippets.Content>
   <TabsSnippets.Content value="pnpm">
     {/* <!-- prettier-ignore-start --> */}
     ```bash
-    pnpm add -D @kobalte/pigment-tailwindcss
+    pnpm add -D @kobalte/pigment-tailwind-preset
     ```
     {/* <!-- prettier-ignore-end --> */}
   </TabsSnippets.Content>
@@ -75,7 +75,7 @@ Install Pigment's Tailwind CSS preset as a dev dependency by running either of t
 Make sure that you have [Tailwind CSS](https://tailwindcss.com/docs/guides/solidjs) installed, then inside the `tailwind.config.cjs` file:
 
 1. Add Pigment in the `content` array, in order to get the classes applied to the components.
-2. Require Pigment as a preset.
+2. Require the preset for Tailwind CSS.
 
 ```js {2,6}
 module.exports = {
@@ -84,7 +84,7 @@ module.exports = {
     "./src/**/*.{html,js,jsx,ts,tsx,mdx}",
   ],
   theme: {},
-  presets: [require("@kobalte/pigment-tailwindcss")],
+  presets: [require("@kobalte/pigment-tailwind-preset")],
 };
 ```
 

@@ -67,27 +67,6 @@
 }
 
 /* -------------------------------------------------------------------------------------------------
- * Github theme
- * -----------------------------------------------------------------------------------------------*/
-
-[data-pg-theme="github"] {
-  --pg-typography-font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-
-  --pg-color-solid-primary-text: #ffffff;
-  --pg-color-solid-primary-bg: #2da44e;
-  --pg-color-solid-primary-border: #1a1e2326;
-
-  --pg-color-solid-primary-text-hover: #ffffff;
-  --pg-color-solid-primary-bg-hover: #2c974b;
-  --pg-color-solid-primary-border-hover: #1b1f2426;
-
-  --pg-color-solid-primary-text-active: #ffffff;
-  --pg-color-solid-primary-bg-active: #298e46;
-  --pg-color-solid-primary-border-active: #1b1f2426;
-}
-
-/* -------------------------------------------------------------------------------------------------
  * Shiki Twoslash CSS
  * -----------------------------------------------------------------------------------------------*/
 

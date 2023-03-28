@@ -1,5 +1,5 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
-const pigment = require("@kobalte/pigment-tailwindcss");
+const pigment = require("@kobalte/pigment-tailwind-preset");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -20,13 +20,38 @@ module.exports = {
   presets: [
     pigment({
       themes: [
+        /** @type {import('@kobalte/pigment-tailwind-preset').CustomTheme} */
         {
-          name: "pigment-docs",
-          extend: "default",
+          name: "docs",
+          extend: "base",
           tokens: vars => ({
             common: {
               typography: {
                 fontFamilySans: `Inter, ${vars("typography.fontFamilyFallback")}`,
+              },
+            },
+          }),
+        },
+        /** @type {import('@kobalte/pigment-tailwind-preset').CustomTheme} */
+        {
+          name: "github",
+          tokens: vars => ({
+            common: {
+              typography: {
+                fontFamilySans: vars("typography.fontFamilyFallback"),
+              },
+            },
+            light: {
+              colors: {
+                solidPrimaryText: "#ffffff",
+                solidPrimaryBg: "#2da44e",
+                solidPrimaryBorder: "#1a1e2326",
+                solidPrimaryTextHover: "#ffffff",
+                solidPrimaryBgHover: "#2c974b",
+                solidPrimaryBorderHover: "#1b1f2426",
+                solidPrimaryTextActive: "#ffffff",
+                solidPrimaryBgActive: "#298e46",
+                solidPrimaryBorderActive: "#1b1f2426",
               },
             },
           }),

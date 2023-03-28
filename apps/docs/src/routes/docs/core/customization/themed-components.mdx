@@ -2,11 +2,11 @@ import { Alert } from "@kobalte/pigment";
 
 # Themed components
 
-Learn how to apply custom styles to components at the theme level.
+Learn how to apply custom styles to components at global level.
 
 ## Component identifier
 
-To customize a specific component in the theme, specify the component identifier (import name) inside the `components` node.
+To customize a component globally, specify the component identifier (import name) inside the `components` prop of `ThemeProvider`.
 
 - Use `defaultProps` to change the default SolidJS props of the component.
 - Use `slotClasses` to apply CSS classes to each component parts (slots).
@@ -14,49 +14,42 @@ To customize a specific component in the theme, specify the component identifier
 
 Visit the [components.tsx](https://github.com/kobaltedev/pigment/blob/main/packages/pigment/src/theme/components.tsx#L17) file to see all component identifiers.
 
-```tsx
-import { cn, createTheme, ThemeProvider } from "@kobalte/pigment";
-
-const theme = createTheme({
-  components: {
-    Button: {
-      defaultProps: {
-        size: "md",
-      },
-      slotClasses: props => ({
-        root: cn("rounded-md", props.size === "md" && "h-8 px-4"),
-      }),
-    },
-  },
-});
+```tsx {6}
+import { cn, ThemeProvider } from "@kobalte/pigment";
 
 function App() {
-  return <ThemeProvider theme={theme}>...</ThemeProvider>;
+  return (
+    <ThemeProvider
+      components={{
+        Button: {},
+      }}
+    >
+      <Button>Button</Button>
+    </ThemeProvider>
+  );
 }
 ```
 
 ## Default props
 
-The values specified in the theme as `defaultProps` affect all instances of the component:
+The values specified as `defaultProps` affect all instances of the component:
 
-```tsx {5-9,18}
-import { createTheme, ThemeProvider } from "@kobalte/pigment";
-
-const theme = createTheme({
-  components: {
-    Button: {
-      defaultProps: {
-        variant: "solid",
-        color: "primary",
-        size: "md",
-      },
-    },
-  },
-});
+```tsx {7-11,16}
+import { ThemeProvider } from "@kobalte/pigment";
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider
+      components={{
+        Button: {
+          defaultProps: {
+            variant: "solid",
+            color: "primary",
+            size: "md",
+          },
+        },
+      }}
+    >
       {/* Same as: <Button variant="solid" color="primary" size="md"> */}
       <Button>Button</Button>
     </ThemeProvider>
@@ -68,18 +61,24 @@ function App() {
 
 To apply additional CSS classes based on a given prop, use a callback as value of the `slotClasses` node. The argument passed in contains the component `props`.
 
-```tsx {5-7}
+```tsx {7-9}
 import { cn, createTheme } from "@kobalte/pigment";
 
-const theme = createTheme({
-  components: {
-    Button: {
-      slotClasses: props => ({
-        root: cn("rounded-md", props.size === "md" && "h-8 px-4"),
-      }),
-    },
-  },
-});
+function App() {
+  return (
+    <ThemeProvider
+      components={{
+        Button: {
+          slotClasses: props => ({
+            root: cn("rounded-md", props.size === "md" && "h-8 px-4"),
+          }),
+        },
+      }}
+    >
+      <Button>Button</Button>
+    </ThemeProvider>
+  );
+}
 ```
 
 <Alert isMultiline>

@@ -14,7 +14,8 @@ export interface ComponentTheme<Props, Slots extends string> {
   slotClasses?: Partial<Record<Slots, string>> | ((props: Props) => Partial<Record<Slots, string>>);
 }
 
-export interface Components {
+/** Components configuration. */
+export interface ComponentsConfig {
   // alphabetical order
   Alert?: ComponentTheme<AlertProps, AlertSlots>;
   Badge?: ComponentTheme<BadgeProps, BadgeSlots>;

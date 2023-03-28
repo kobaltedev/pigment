@@ -14,16 +14,9 @@ For example, instead of choosing one of many shades of green for an icon, we can
 
 ## How to use them ?
 
-Pigment's design tokens are defined using CSS custom properties (aka CSS variables), meaning you can use them with any styling solution.
+Pigment's design tokens are defined in the preset for Tailwind CSS and exposed as CSS custom properties (aka CSS variables), meaning you can use them with any styling solution.
 
-Since Pigment is a Tailwind-first library and thanks to the Pigment preset, every token described on this page is available in Tailwind's utility classes.
-
-{/* <!-- prettier-ignore-start --> */}
-
-<Alert status="warning">
-  <span>Pigment's colors are not compatible with Tailwind's [opacity modifier syntax](https://tailwindcss.com/docs/upgrade-guide#new-opacity-modifier-syntax).</span>
-</Alert>
-{/* <!-- prettier-ignore-end --> */}
+Since Pigment is a Tailwind-first library, all the tokens described on this page are available in Tailwind's utility classes.
 
 ## Color tokens
 
@@ -110,9 +103,6 @@ Each variant conveys a different level of importance in the user interface:
     <div class="rounded-md px-3 py-2 text-solid-danger-text bg-solid-danger-bg border border-solid border-solid-danger-border hover:text-solid-danger-text-hover hover:bg-solid-danger-bg-hover hover:border-solid-danger-border-hover active:text-solid-danger-text-active active:bg-solid-danger-bg-active active:border-solid-danger-border-active">
       Danger
     </div>
-    <div class="rounded-md px-3 py-2 text-solid-help-text bg-solid-help-bg border border-solid border-solid-help-border hover:text-solid-help-text-hover hover:bg-solid-help-bg-hover hover:border-solid-help-border-hover active:text-solid-help-text-active active:bg-solid-help-bg-active active:border-solid-help-border-active">
-      Help
-    </div>
   </div>
 </Preview>
 
@@ -135,9 +125,6 @@ Each variant conveys a different level of importance in the user interface:
   </div>
   <div class="rounded-md px-3 py-2 text-solid-danger-text bg-solid-danger-bg border border-solid border-solid-danger-border hover:text-solid-danger-text-hover hover:bg-solid-danger-bg-hover hover:border-solid-danger-border-hover active:text-solid-danger-text-active active:bg-solid-danger-bg-active active:border-solid-danger-border-active">
     Danger
-  </div>
-  <div class="rounded-md px-3 py-2 text-solid-help-text bg-solid-help-bg border border-solid border-solid-help-border hover:text-solid-help-text-hover hover:bg-solid-help-bg-hover hover:border-solid-help-border-hover active:text-solid-help-text-active active:bg-solid-help-bg-active active:border-solid-help-border-active">
-    Help
   </div>
 </div>
 ```
@@ -169,8 +156,6 @@ Each variant conveys a different level of importance in the user interface:
 
 #### Danger
 
-#### Help
-
 ### Soft
 
 <Preview>
@@ -192,9 +177,6 @@ Each variant conveys a different level of importance in the user interface:
     </div>
     <div class="rounded-md px-3 py-2 text-soft-danger-text bg-soft-danger-bg border border-solid border-soft-danger-border hover:text-soft-danger-text-hover hover:bg-soft-danger-bg-hover hover:border-soft-danger-border-hover active:text-soft-danger-text-active active:bg-soft-danger-bg-active active:border-soft-danger-border-active">
       Danger
-    </div>
-    <div class="rounded-md px-3 py-2 text-soft-help-text bg-soft-help-bg border border-solid border-soft-help-border hover:text-soft-help-text-hover hover:bg-soft-help-bg-hover hover:border-soft-help-border-hover active:text-soft-help-text-active active:bg-soft-help-bg-active active:border-soft-help-border-active">
-      Help
     </div>
   </div>
 </Preview>
@@ -219,9 +201,6 @@ Each variant conveys a different level of importance in the user interface:
   <div class="rounded-md px-3 py-2 text-soft-danger-text bg-soft-danger-bg border border-solid border-soft-danger-border hover:text-soft-danger-text-hover hover:bg-soft-danger-bg-hover hover:border-soft-danger-border-hover active:text-soft-danger-text-active active:bg-soft-danger-bg-active active:border-soft-danger-border-active">
     Danger
   </div>
-  <div class="rounded-md px-3 py-2 text-soft-help-text bg-soft-help-bg border border-solid border-soft-help-border hover:text-soft-help-text-hover hover:bg-soft-help-bg-hover hover:border-soft-help-border-hover active:text-soft-help-text-active active:bg-soft-help-bg-active active:border-soft-help-border-active">
-    Help
-  </div>
 </div>
 ```
 
@@ -236,8 +215,6 @@ Each variant conveys a different level of importance in the user interface:
 #### Warning
 
 #### Danger
-
-#### Help
 
 | Token and description                                         | Light value | Dark value |
 | ------------------------------------------------------------- | ----------- | ---------- |
@@ -265,9 +242,6 @@ Each variant conveys a different level of importance in the user interface:
     <div class="rounded-md px-3 py-2 text-outlined-danger-text bg-outlined-danger-bg border border-solid border-outlined-danger-border hover:text-outlined-danger-text-hover hover:bg-outlined-danger-bg-hover hover:border-outlined-danger-border-hover active:text-outlined-danger-text-active active:bg-outlined-danger-bg-active active:border-outlined-danger-border-active">
       Danger
     </div>
-    <div class="rounded-md px-3 py-2 text-outlined-help-text bg-outlined-help-bg border border-solid border-outlined-help-border hover:text-outlined-help-text-hover hover:bg-outlined-help-bg-hover hover:border-outlined-help-border-hover active:text-outlined-help-text-active active:bg-outlined-help-bg-active active:border-outlined-help-border-active">
-      Help
-    </div>
   </div>
 </Preview>
 
@@ -291,9 +265,6 @@ Each variant conveys a different level of importance in the user interface:
   <div class="rounded-md px-3 py-2 text-outlined-danger-text bg-outlined-danger-bg border border-solid border-outlined-danger-border hover:text-outlined-danger-text-hover hover:bg-outlined-danger-bg-hover hover:border-outlined-danger-border-hover active:text-outlined-danger-text-active active:bg-outlined-danger-bg-active active:border-outlined-danger-border-active">
     Danger
   </div>
-  <div class="rounded-md px-3 py-2 text-outlined-help-text bg-outlined-help-bg border border-solid border-outlined-help-border hover:text-outlined-help-text-hover hover:bg-outlined-help-bg-hover hover:border-outlined-help-border-hover active:text-outlined-help-text-active active:bg-outlined-help-bg-active active:border-outlined-help-border-active">
-    Help
-  </div>
 </div>
 ```
 
@@ -308,8 +279,6 @@ Each variant conveys a different level of importance in the user interface:
 #### Warning
 
 #### Danger
-
-#### Help
 
 | Token and description                                         | Light value | Dark value |
 | ------------------------------------------------------------- | ----------- | ---------- |
@@ -337,9 +306,6 @@ Each variant conveys a different level of importance in the user interface:
     <div class="rounded-md px-3 py-2 text-ghost-danger-text bg-ghost-danger-bg border border-solid border-ghost-danger-border hover:text-ghost-danger-text-hover hover:bg-ghost-danger-bg-hover hover:border-ghost-danger-border-hover active:text-ghost-danger-text-active active:bg-ghost-danger-bg-active active:border-ghost-danger-border-active">
       Danger
     </div>
-    <div class="rounded-md px-3 py-2 text-ghost-help-text bg-ghost-help-bg border border-solid border-ghost-help-border hover:text-ghost-help-text-hover hover:bg-ghost-help-bg-hover hover:border-ghost-help-border-hover active:text-ghost-help-text-active active:bg-ghost-help-bg-active active:border-ghost-help-border-active">
-      Help
-    </div>
   </div>
 </Preview>
 
@@ -363,9 +329,6 @@ Each variant conveys a different level of importance in the user interface:
   <div class="rounded-md px-3 py-2 text-ghost-danger-text bg-ghost-danger-bg border border-solid border-ghost-danger-border hover:text-ghost-danger-text-hover hover:bg-ghost-danger-bg-hover hover:border-ghost-danger-border-hover active:text-ghost-danger-text-active active:bg-ghost-danger-bg-active active:border-ghost-danger-border-active">
     Danger
   </div>
-  <div class="rounded-md px-3 py-2 text-ghost-help-text bg-ghost-help-bg border border-solid border-ghost-help-border hover:text-ghost-help-text-hover hover:bg-ghost-help-bg-hover hover:border-ghost-help-border-hover active:text-ghost-help-text-active active:bg-ghost-help-bg-active active:border-ghost-help-border-active">
-    Help
-  </div>
 </div>
 ```
 
@@ -380,8 +343,6 @@ Each variant conveys a different level of importance in the user interface:
 #### Warning
 
 #### Danger
-
-#### Help
 
 | Token and description                                         | Light value | Dark value |
 | ------------------------------------------------------------- | ----------- | ---------- |

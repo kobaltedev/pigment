@@ -46,7 +46,7 @@ export function WithPlayground() {
         label="Status"
         value={status()!}
         onValueChange={setStatus}
-        options={["neutral", "success", "info", "warning", "danger", "help"]}
+        options={["neutral", "success", "info", "warning", "danger"]}
       />
       <Checkbox
         label="Dismissible"
@@ -96,9 +96,6 @@ export function WithStatuses() {
       </Alert>
       <Alert variant="soft" status="danger" title="Something went wrong.">
         There was an error processing your request.
-      </Alert>
-      <Alert variant="soft" status="help" title="What's new in 1.0.">
-        Learn about the exciting new features in the next major release.
       </Alert>
     </div>
   );

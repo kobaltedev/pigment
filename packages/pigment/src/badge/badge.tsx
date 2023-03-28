@@ -1,11 +1,11 @@
 import { Polymorphic } from "@kobalte/core";
 import { splitProps } from "solid-js";
 
-import { mergeThemeProps, useThemeClasses } from "../theme/theme-context";
+import { mergeThemeProps, useThemeClasses } from "../theme";
 import { cn } from "../utils/cn";
+import { makeStaticClass } from "../utils/make-static-class";
 import { BadgeProps, BadgeSlots } from "./badge.props";
 import { badgeVariants } from "./badge.styles";
-import { makeStaticClass } from "../utils/make-static-class";
 
 const badgeStaticClass = makeStaticClass<BadgeSlots>("badge");
 

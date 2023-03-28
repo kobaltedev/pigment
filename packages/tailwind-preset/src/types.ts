@@ -11,10 +11,6 @@ export interface TypographyTokens {
   fontFamilyMono: string;
 }
 
-export interface CommonTokens {
-  typography: TypographyTokens;
-}
-
 export interface ColorTokens {
   /* -------------------------------------------------------------------------------------------------
    * Reference tokens
@@ -93,17 +89,6 @@ export interface ColorTokens {
   danger700: string;
   danger800: string;
   danger900: string;
-
-  help50: string;
-  help100: string;
-  help200: string;
-  help300: string;
-  help400: string;
-  help500: string;
-  help600: string;
-  help700: string;
-  help800: string;
-  help900: string;
 
   /* -------------------------------------------------------------------------------------------------
    * Color - Texts
@@ -330,20 +315,6 @@ export interface ColorTokens {
   solidDangerBgActive: string;
   solidDangerBorderActive: string;
 
-  /* Help */
-  solidHelpText: string;
-  solidHelpIcon: string;
-  solidHelpBg: string;
-  solidHelpBorder: string;
-  solidHelpTextHover: string;
-  solidHelpIconHover: string;
-  solidHelpBgHover: string;
-  solidHelpBorderHover: string;
-  solidHelpTextActive: string;
-  solidHelpIconActive: string;
-  solidHelpBgActive: string;
-  solidHelpBorderActive: string;
-
   /* -------------------------------------------------------------------------------------------------
    * Color - Global variants - Soft
    * -----------------------------------------------------------------------------------------------*/
@@ -431,20 +402,6 @@ export interface ColorTokens {
   softDangerIconActive: string;
   softDangerBgActive: string;
   softDangerBorderActive: string;
-
-  /* Help */
-  softHelpText: string;
-  softHelpIcon: string;
-  softHelpBg: string;
-  softHelpBorder: string;
-  softHelpTextHover: string;
-  softHelpIconHover: string;
-  softHelpBgHover: string;
-  softHelpBorderHover: string;
-  softHelpTextActive: string;
-  softHelpIconActive: string;
-  softHelpBgActive: string;
-  softHelpBorderActive: string;
 
   /* -------------------------------------------------------------------------------------------------
    * Color - Global variants - Outlined
@@ -534,20 +491,6 @@ export interface ColorTokens {
   outlinedDangerBgActive: string;
   outlinedDangerBorderActive: string;
 
-  /* Help */
-  outlinedHelpText: string;
-  outlinedHelpIcon: string;
-  outlinedHelpBg: string;
-  outlinedHelpBorder: string;
-  outlinedHelpTextHover: string;
-  outlinedHelpIconHover: string;
-  outlinedHelpBgHover: string;
-  outlinedHelpBorderHover: string;
-  outlinedHelpTextActive: string;
-  outlinedHelpIconActive: string;
-  outlinedHelpBgActive: string;
-  outlinedHelpBorderActive: string;
-
   /* -------------------------------------------------------------------------------------------------
    * Color - Global variants - Ghost
    * -----------------------------------------------------------------------------------------------*/
@@ -635,20 +578,6 @@ export interface ColorTokens {
   ghostDangerIconActive: string;
   ghostDangerBgActive: string;
   ghostDangerBorderActive: string;
-
-  /* Help */
-  ghostHelpText: string;
-  ghostHelpIcon: string;
-  ghostHelpBg: string;
-  ghostHelpBorder: string;
-  ghostHelpTextHover: string;
-  ghostHelpIconHover: string;
-  ghostHelpBgHover: string;
-  ghostHelpBorderHover: string;
-  ghostHelpTextActive: string;
-  ghostHelpIconActive: string;
-  ghostHelpBgActive: string;
-  ghostHelpBorderActive: string;
 }
 
 export interface ShadowTokens {
@@ -656,9 +585,13 @@ export interface ShadowTokens {
   surfaceOverlay: string;
 }
 
+export interface CommonTokens {
+  typography: TypographyTokens;
+}
+
 export interface ColorSchemeTokens {
-  color: ColorTokens;
-  shadow: ShadowTokens;
+  colors: ColorTokens;
+  shadows: ShadowTokens;
 }
 
 export interface Theme {
@@ -672,26 +605,34 @@ export interface Theme {
   dark: DeepPartial<ColorSchemeTokens>;
 }
 
+export type PartialTheme = DeepPartial<Theme>;
+
+export type PredefinedTheme = "base";
+
 export type TokenKey =
   | Prefixed<"typography.", keyof CommonTokens["typography"]>
-  | Prefixed<"color.", keyof ColorSchemeTokens["color"]>
-  | Prefixed<"shadow.", keyof ColorSchemeTokens["shadow"]>;
+  | Prefixed<"colors.", keyof ColorSchemeTokens["colors"]>
+  | Prefixed<"shadows.", keyof ColorSchemeTokens["shadows"]>;
 
+/** A function to get the css variable of a token. */
 export type VarsFn = (token: TokenKey) => string;
 
 export type ThemeGetter = (vars: VarsFn) => Theme;
 
-export type PredefinedTheme = "base";
-
 export interface CustomTheme {
+  /** The name of the custom theme. */
   name: string;
-  extend: PredefinedTheme;
-  tokens: (vars: VarsFn) => DeepPartial<Theme>;
+
+  /** If provided, the custom theme will be merged with the predefined theme. */
+  extend?: PredefinedTheme;
+
+  /** A function that return the design tokens of the custom theme. */
+  tokens: (vars: VarsFn) => PartialTheme;
 }
 
 export interface PigmentOptions {
   /** The prefix to use in the generated css variables. */
-  cssVarsPrefix?: string;
+  cssVarPrefix?: string;
 
   /** The themes available in the application. */
   themes?: Array<PredefinedTheme | CustomTheme>;

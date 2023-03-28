@@ -1,4 +1,5 @@
 import { Alert as KAlert } from "@kobalte/core";
+import { isFunction } from "@kobalte/utils";
 import { children, createMemo, Show, splitProps } from "solid-js";
 
 import { CloseButton } from "../close-button";
@@ -8,14 +9,12 @@ import {
   ExclamationTriangleIcon,
   InfoCircleIcon,
   LifeBuoyIcon,
-  QuestionMarkCircleIcon,
 } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme/theme-context";
 import { cn } from "../utils/cn";
 import { makeStaticClass } from "../utils/make-static-class";
 import { AlertProps, AlertSlots } from "./alert.props";
 import { alertContentVariants, alertIconVariants, alertVariants } from "./alert.styles";
-import { isFunction } from "@kobalte/utils";
 
 const alertStaticClass = makeStaticClass<AlertSlots>("alert");
 
@@ -62,8 +61,6 @@ export function Alert(props: AlertProps) {
         return () => <ExclamationTriangleIcon />;
       case "danger":
         return () => <ExclamationCircleIcon />;
-      case "help":
-        return () => <QuestionMarkCircleIcon />;
     }
   };
 

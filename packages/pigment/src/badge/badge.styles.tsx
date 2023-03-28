@@ -16,7 +16,6 @@ export const badgeVariants = cva(
         info: "",
         warning: "",
         danger: "",
-        help: "",
       },
       size: {
         xs: "h-5 px-2 text-xs",
@@ -56,11 +55,6 @@ export const badgeVariants = cva(
         color: "danger",
         class: "text-solid-danger-text bg-solid-danger-bg border-solid-danger-border",
       },
-      {
-        variant: "solid",
-        color: "help",
-        class: "text-solid-help-text bg-solid-help-bg border-solid-help-border",
-      },
 
       // soft + colors
       {
@@ -93,11 +87,6 @@ export const badgeVariants = cva(
         color: "danger",
         class: "text-soft-danger-text bg-soft-danger-bg border-soft-danger-border",
       },
-      {
-        variant: "soft",
-        color: "help",
-        class: "text-soft-help-text bg-soft-help-bg border-soft-help-border",
-      },
 
       // outlined + colors
       {
@@ -129,11 +118,6 @@ export const badgeVariants = cva(
         variant: "outlined",
         color: "danger",
         class: "text-outlined-danger-text bg-outlined-danger-bg border-outlined-danger-border",
-      },
-      {
-        variant: "outlined",
-        color: "help",
-        class: "text-outlined-help-text bg-outlined-help-bg border-outlined-help-border",
       },
     ],
   }

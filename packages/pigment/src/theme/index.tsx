@@ -1,4 +1,3 @@
-export * from "./components";
-export * from "./create-theme";
+export * from "./components-config";
 export * from "./theme-context";
 export * from "./theme-provider";

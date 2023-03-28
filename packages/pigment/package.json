@@ -61,7 +61,7 @@
     "tailwind-merge": "^1.10.0"
   },
   "devDependencies": {
-    "@kobalte/pigment-tailwindcss": "0.0.0",
+    "@kobalte/pigment-tailwind-preset": "0.0.0",
     "@storybook/addon-a11y": "7.0.0-beta.43",
     "@storybook/addon-essentials": "7.0.0-beta.43",
     "@storybook/addon-interactions": "7.0.0-beta.43",

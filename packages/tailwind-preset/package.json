@@ -1,5 +1,5 @@
 {
-  "name": "@kobalte/pigment-tailwindcss",
+  "name": "@kobalte/pigment-tailwind-preset",
   "version": "0.0.0",
   "private": false,
   "description": "Pigment preset for TailwindCSS.",
@@ -13,7 +13,7 @@
     "kobalte",
     "tailwindcss"
   ],
-  "homepage": "https://github.com/kobaltedev/pigment/tree/main/packages/tailwindcss#readme",
+  "homepage": "https://github.com/kobaltedev/pigment/tree/main/packages/tailwind-preset#readme",
   "bugs": {
     "url": "https://github.com/kobaltedev/pigment/issues"
   },

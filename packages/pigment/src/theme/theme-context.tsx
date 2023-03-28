@@ -1,22 +1,21 @@
 import { isFunction } from "@kobalte/utils";
 import { createContext, mergeProps, useContext } from "solid-js";
 
-import { Components } from "./components";
+import { ComponentsConfig } from "./components-config";
 
-export interface Theme {
-  components?: Components;
-}
+export const ThemeContext = createContext<ComponentsConfig | undefined>();
 
-export const ThemeContext = createContext<Theme | undefined>();
-
-function useComponentTheme<T extends keyof Components>(component: T) {
-  return useContext(ThemeContext)?.components?.[component] ?? undefined;
+function useComponentTheme<T extends keyof ComponentsConfig>(component: T) {
+  return useContext(ThemeContext)?.[component] ?? undefined;
 }
 
 /**
  * Resolve the `slotClasses` provided in the component theme configuration.
  */
-export function useThemeClasses<Slots extends string>(component: keyof Components, props: any) {
+export function useThemeClasses<Slots extends string>(
+  component: keyof ComponentsConfig,
+  props: any
+) {
   const classes = useComponentTheme(component)?.slotClasses ?? {};
 
   return (isFunction(classes) ? classes(props) : classes) as Partial<Record<Slots, string>>;
@@ -31,7 +30,7 @@ export function useThemeClasses<Slots extends string>(component: keyof Component
  * // mergedProps = defaultProps <== themeProps <== props
  */
 export function mergeThemeProps<T extends Record<string, any>>(
-  component: keyof Components,
+  component: keyof ComponentsConfig,
   defaultProps: Partial<T>,
   props: T
 ): T {

@@ -91,14 +91,6 @@ export const ExclamationCircleIcon = createLucideIcon(() => (
   </>
 ));
 
-export const QuestionMarkCircleIcon = createLucideIcon(() => (
-  <>
-    <circle cx="12" cy="12" r="10"></circle>
-    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-    <line x1="12" y1="17" x2="12.01" y2="17"></line>
-  </>
-));
-
 export const EyeIcon = createLucideIcon(() => (
   <>
     <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>

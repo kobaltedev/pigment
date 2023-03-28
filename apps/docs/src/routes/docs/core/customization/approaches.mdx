@@ -37,14 +37,19 @@ Supported by every Pigment components, it allows you to apply CSS classes to int
 </Alert>
 ```
 
+<Alert>
+  <span>To know which slots are available checkout the </span>
+  <span>_"Slots"_ section in each component documentation.</span>
+</Alert>
+
 ## Theming
 
 To ensure every instance of a given component looks the same across you app, use Pigment's theming API.
 
 Theming in Pigment is done in two places:
 
-- **Your style sheet**: define your design tokens such as color schemes, typography, and shadows using CSS custom properties.
-- **The theme object**: define how each component, and their different variants and states, uses the design tokens.
+- **`tailwind.config.cjs`**: define your design tokens such as color schemes, typography, and shadows using the Pigment preset for Tailwind CSS.
+- **`ThemeProvider`**: define how each component, and their different variants and states, uses the design tokens.
 
 The example below demonstrate how to reproduce GitHub primary button (in light mode):
 
@@ -55,130 +60,322 @@ The example below demonstrate how to reproduce GitHub primary button (in light m
 <TabsSnippets>
   <TabsSnippets.List>
     <TabsSnippets.Trigger value="index.tsx">index.tsx</TabsSnippets.Trigger>
-    <TabsSnippets.Trigger value="style.css">style.css</TabsSnippets.Trigger>
+    <TabsSnippets.Trigger value="tailwind.config.cjs">tailwind.config.cjs</TabsSnippets.Trigger>
   </TabsSnippets.List>
   {/* <!-- prettier-ignore-start --> */}
   <TabsSnippets.Content value="index.tsx">
-    ```tsx
-    import { Button, cn, createTheme, ThemeProvider } from "@kobalte/pigment";
-    import "./style.css";
-
-    const githubTheme = createTheme({
-      components: {
-        Button: {
-          defaultProps: {
-            variant: "solid",
-            color: "primary",
-            size: "md",
-          },
-          slotClasses: props => ({
-            root: cn(
-              "text-sm font-sans font-medium",
-              "rounded-md",
-              "shadow-[0_1px_0_0_rgba(27,31,35,0.04),inset_0_1px_0_rgba(255,255,255,0.03)]",
-              "duration-75",
-              "ease-[cubic-bezier(0.33,1,0.68,1)]",
-              "transition-[color,background-color,box-shadow,border-color]",
-              props.size === "md" && "h-8 px-4",
-              props.variant === "solid" && props.color === "primary" && "border border-solid"
-            ),
-          }),
-        },
-      },
-    });
+    ```tsx {4,6-28}
+    import { Button, cn, ThemeProvider } from "@kobalte/pigment";
 
     function App() {
       return (
-        <ThemeProvider theme={githubTheme}>
-          <Button>New pull request</Button>
-        </ThemeProvider>
+        <div data-pg-theme="github">
+          <ThemeProvider
+            components={{
+              Button: {
+                defaultProps: {
+                  variant: "solid",
+                  color: "primary",
+                  size: "md",
+                },
+                slotClasses: props => ({
+                  root: cn(
+                    "font-sans",
+                    "rounded-md",
+                    "shadow-[0_1px_0_0_rgba(27,31,35,0.04),inset_0_1px_0_rgba(255,255,255,0.03)]",
+                    "duration-75",
+                    "ease-[cubic-bezier(0.33,1,0.68,1)]",
+                    "transition-[color,background-color,box-shadow,border-color]",
+                    "font-medium",
+                    "text-sm",
+                    props.size === "md" && "h-8 px-4",
+                    props.variant === "solid" && props.color === "primary" && "border border-solid"
+                  ),
+                }),
+              },
+            }}
+          >
+            <Button>New pull request</Button>
+          </ThemeProvider>
+        </div>
       );
     }
     ```
 
   </TabsSnippets.Content>
-  <TabsSnippets.Content value="style.css">
-    ```css
-    :root {
-      --pg-font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-      sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  <TabsSnippets.Content value="tailwind.config.cjs">
+    ```js {0,10-37}
+    const pigment = require("@kobalte/pigment-tailwind-preset");
 
-      --pg-color-solid-primary-text: #ffffff;
-      --pg-color-solid-primary-bg: #2da44e;
-      --pg-color-solid-primary-border: #1a1e2326;
-
-      --pg-color-solid-primary-text-hover: #ffffff;
-      --pg-color-solid-primary-bg-hover: #2c974b;
-      --pg-color-solid-primary-border-hover: #1b1f2426;
-
-      --pg-color-solid-primary-text-active: #ffffff;
-      --pg-color-solid-primary-bg-active: #298e46;
-      --pg-color-solid-primary-border-active: #1b1f2426;
-    }
+    /** @type {import('tailwindcss').Config} */
+    module.exports = {
+      content: [
+        "./node_modules/@kobalte/pigment/dist/**/*.{js,cjs,mjs}",
+        "./src/**/*.{html,js,jsx,ts,tsx,mdx}",
+      ],
+      theme: {},
+      presets: [
+        pigment({
+          themes: [
+            /** @type {import('@kobalte/pigment-tailwind-preset').CustomTheme} */
+            {
+              name: "github",
+              tokens: vars => ({
+                common: {
+                  typography: {
+                    fontFamilySans: vars("typography.fontFamilyFallback"),
+                  },
+                },
+                light: {
+                  colors: {
+                    solidPrimaryText: "#ffffff",
+                    solidPrimaryBg: "#2da44e",
+                    solidPrimaryBorder: "#1a1e2326",
+                    solidPrimaryTextHover: "#ffffff",
+                    solidPrimaryBgHover: "#2c974b",
+                    solidPrimaryBorderHover: "#1b1f2426",
+                    solidPrimaryTextActive: "#ffffff",
+                    solidPrimaryBgActive: "#298e46",
+                    solidPrimaryBorderActive: "#1b1f2426",
+                  },
+                },
+              }),
+            },
+          ],
+        }),
+      ],
+    };
     ```
 
   </TabsSnippets.Content>
   {/* <!-- prettier-ignore-end -->*/}
 </TabsSnippets>
 
-### Customizing design tokens
+### Using a theme
 
-Design tokens are a single source of truth to name and store design decisions for Pigment components.
+To use a theme (predefined or custom), add it to the Pigment preset in your `tailwind.config.cjs`:
 
-For example, instead of choosing one of many shades of gray for a background color, we can apply a design token that is consistent with all similar usages across the application.
+```js {13}
+// tailwind.config.cjs
 
-To print your own design language into Pigment components, start by customizing these tokens first, as every component uses them.
+const pigment = require("@kobalte/pigment-tailwind-preset");
 
-To do that, override Pigment's CSS custom properties in your style sheet.
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./node_modules/@kobalte/pigment/dist/**/*.{js,cjs,mjs}",
+    "./src/**/*.{html,js,jsx,ts,tsx,mdx}",
+  ],
+  theme: {},
+  presets: [
+    pigment({
+      themes: ["base"], // `base` is a predefined Pigment theme.
+    }),
+  ],
+};
+```
 
-```css
-/* style.css */
+Then add the `[data-pg-theme]` attribute to your root component and provide a theme name as value:
 
-:root {
-  --pg-font-family-sans: Inter, var(--pg-font-family-fallback);
-
-  /* affects all Pigment components that has `color="primary"` prop. */
-  --pg-color-primary-50: #eff6ff;
-  --pg-color-primary-100: #dbeafe;
-  --pg-color-primary-200: #bfdbfe;
-  --pg-color-primary-300: #93c5fd;
-  --pg-color-primary-400: #60a5fa;
-  --pg-color-primary-500: #3b82f6;
-  --pg-color-primary-600: #2563eb;
-  --pg-color-primary-700: #1d4ed8;
-  --pg-color-primary-800: #1e40af;
-  --pg-color-primary-900: #1e3a8a;
+```tsx {1}
+export default function App() {
+  return <div data-pg-theme="base">...</div>;
 }
 ```
 
-Under the hood, the Pigment preset for Tailwind CSS will add them to the theme, enabling you to use them in Tailwind's utility classes.
+For a SolidStart application, you will likely add it to the `Html` component in `root.tsx` file:
+
+```tsx {16}
+// root.tsx
+
+import { Suspense } from "solid-js";
+import {
+  Body,
+  ErrorBoundary,
+  FileRoutes,
+  Head,
+  Html,
+  Meta,
+  Routes,
+  Scripts,
+  Title,
+} from "solid-start";
+export default function Root() {
+  return (
+    <Html lang="en" data-pg-theme="base">
+      <Head>
+        <Title>SolidStart - Bare</Title>
+        <Meta charset="utf-8" />
+        <Meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <Body>
+        <ErrorBoundary>
+          <Suspense>
+            <Routes>
+              <FileRoutes />
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
+        <Scripts />
+      </Body>
+    </Html>
+  );
+}
+```
+
+<Alert>
+  <span>If no theme is provided in the Pigment preset, </span>
+  <span>the `base` theme will be available by default.</span>
+</Alert>
+
+### Creating a theme
+
+Pigment uses the concept of design tokens to name and store design decisions. A theme is just a named set of design tokens.
+
+To print your own design language into Pigment components, start by customizing these tokens first, as every component uses them.
+
+To do that, create or extend a theme in the Pigment preset of your `tailwind.config.cjs`:
+
+```js
+// tailwind.config.cjs
+
+const pigment = require("@kobalte/pigment-tailwind-preset");
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./node_modules/@kobalte/pigment/dist/**/*.{js,cjs,mjs}",
+    "./src/**/*.{html,js,jsx,ts,tsx,mdx}",
+  ],
+  theme: {},
+  presets: [
+    pigment({
+      themes: [
+        /** @type {import('@kobalte/pigment-tailwind-preset').CustomTheme} */
+        {
+          // The name of your theme, used in the data attribute (ex: `data-pg-theme="my-theme"`).
+          name: "my-theme",
+
+          // Extend Pigment "base" theme, or omit to create a theme from scratch.
+          extend: "base",
+
+          // Your custom design tokens.
+          tokens: vars => ({
+            // Color scheme independent tokens.
+            common: {
+              typography: {
+                // use the `vars()` function to pick a value from the theme.
+                fontFamilySans: `Inter, ${vars("typography.fontFamilyFallback")}`,
+              },
+            },
+            // Light mode tokens.
+            light: {
+              colors: {
+                primary50: "#eff6ff",
+                primary100: "#dbeafe",
+                primary200: "#bfdbfe",
+                primary300: "#93c5fd",
+                primary400: "#60a5fa",
+                primary500: "#3b82f6",
+                primary600: "#2563eb",
+                primary700: "#1d4ed8",
+                primary800: "#1e40af",
+                primary900: "#1e3a8a",
+                //...
+              },
+            },
+            // Dark mode tokens.
+            dark: {
+              //...
+            },
+          }),
+        },
+      ],
+    }),
+  ],
+};
+```
+
+Under the hood, the Pigment preset will add the tokens to the Tailwind theme, allowing you to use them in utility classes.
 
 ```tsx
 <button class="font-sans bg-primary-500">Button</button>
 ```
 
+{/* <!-- prettier-ignore-start --> */}
+
+<Alert status="warning">
+  <span>Colors defined in Pigment themes are not compatible with Tailwind [opacity modifier syntax](https://tailwindcss.com/docs/upgrade-guide#new-opacity-modifier-syntax).</span>
+</Alert>
+{/* <!-- prettier-ignore-end --> */}
+
+### Custom CSS variables prefix
+
+Each design token of a Pigment theme will generate a CSS variable prefixed with `pg-` by default. If you want to change the prefix to something else, provide the `cssVarPrefix` to the Pigment preset:
+
+```js {13}
+// tailwind.config.cjs
+
+const pigment = require("@kobalte/pigment-tailwind-preset");
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./node_modules/@kobalte/pigment/dist/**/*.{js,cjs,mjs}",
+    "./src/**/*.{html,js,jsx,ts,tsx,mdx}",
+  ],
+  theme: {},
+  presets: [
+    pigment({
+      cssVarPrefix: "app-",
+      themes: [
+        {
+          name: "my-theme",
+          extend: "base",
+          tokens: vars => ({
+            light: {
+              colors: {
+                primary500: "#3b82f6",
+                solidPrimaryBg: vars("colors.primary500"),
+              },
+            },
+          }),
+        },
+      ],
+    }),
+  ],
+};
+```
+
+The generated CSS variables will be:
+
+```css
+[data-pg-theme="my-theme"] {
+  --app-colors-primary-500: #3b82f6;
+  --app-colors-solid-primary-bg: var(--app-colors-primary-500);
+}
+```
+
 ### Customizing components
 
-Each Pigment component uses a pre-defined set of design tokens. To change that while ensuring that every instance has the same styles, do it targeting the component directly from the theme.
+Each Pigment component uses a pre-defined set of design tokens. To change that while ensuring that every instance has the same styles, do it targeting the component directly from the `ThemeProvider`.
 
 Here's a preview of how you'd change the button's primary background color:
 
-```tsx {4-8}
-import { Button, cn, createTheme, ThemeProvider } from "@kobalte/pigment";
-
-const theme = createTheme({
-  components: {
-    Button: {
-      slotClasses: props => ({
-        root: cn(props.variant === "solid" && props.color === "primary" && "bg-primary-600"),
-      }),
-    },
-  },
-});
+```tsx {5-11}
+import { Button, cn, ThemeProvider } from "@kobalte/pigment";
 
 export function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider
+      components={{
+        Button: {
+          slotClasses: props => ({
+            root: cn(props.variant === "solid" && props.color === "primary" && "bg-primary-600"),
+          }),
+        },
+      }}
+    >
       <Button>Button</Button>
     </ThemeProvider>
   );

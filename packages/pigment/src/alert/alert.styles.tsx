@@ -12,7 +12,6 @@ export const alertVariants = cva(["flex space-x-1.5 py-3 border border-solid rou
       info: "",
       warning: "",
       danger: "",
-      help: "",
     },
     hasIcon: {
       true: "pl-2",
@@ -54,11 +53,6 @@ export const alertVariants = cva(["flex space-x-1.5 py-3 border border-solid rou
       status: "danger",
       class: "text-solid-danger-text bg-solid-danger-bg border-solid-danger-border",
     },
-    {
-      variant: "solid",
-      status: "help",
-      class: ["text-solid-help-text bg-solid-help-bg border-solid-help-border"],
-    },
 
     // soft + colors
     {
@@ -86,11 +80,6 @@ export const alertVariants = cva(["flex space-x-1.5 py-3 border border-solid rou
       status: "danger",
       class: "text-soft-danger-text bg-soft-danger-bg border-soft-danger-border",
     },
-    {
-      variant: "soft",
-      status: "help",
-      class: "text-soft-help-text bg-soft-help-bg border-soft-help-border",
-    },
   ],
 });
 
@@ -117,7 +106,6 @@ export const alertIconVariants = cva(
         info: "",
         warning: "",
         danger: "",
-        help: "",
       },
     },
     compoundVariants: [
@@ -127,7 +115,6 @@ export const alertIconVariants = cva(
       { variant: "solid", status: "info", class: "text-solid-info-icon" },
       { variant: "solid", status: "warning", class: "text-solid-warning-icon" },
       { variant: "solid", status: "danger", class: "text-solid-danger-icon" },
-      { variant: "solid", status: "help", class: ["text-solid-help-icon"] },
 
       // soft + colors
       { variant: "soft", status: "neutral", class: "text-soft-neutral-icon" },
@@ -135,7 +122,6 @@ export const alertIconVariants = cva(
       { variant: "soft", status: "info", class: "text-soft-info-icon" },
       { variant: "soft", status: "warning", class: "text-soft-warning-icon" },
       { variant: "soft", status: "danger", class: "text-soft-danger-icon" },
-      { variant: "soft", status: "help", class: "text-soft-help-icon" },
     ],
   }
 );

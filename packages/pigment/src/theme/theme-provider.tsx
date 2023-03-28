@@ -1,12 +1,13 @@
 import { ParentProps } from "solid-js";
 
-import { Theme, ThemeContext } from "./theme-context";
+import { ComponentsConfig } from "./components-config";
+import { ThemeContext } from "./theme-context";
 
 export interface ThemeProviderProps extends ParentProps {
-  /** The theme to use. */
-  theme?: Theme;
+  /** A custom components configuration to use. */
+  components?: ComponentsConfig;
 }
 
 export function ThemeProvider(props: ThemeProviderProps) {
-  return <ThemeContext.Provider value={props.theme}>{props.children}</ThemeContext.Provider>;
+  return <ThemeContext.Provider value={props.components}>{props.children}</ThemeContext.Provider>;
 }
