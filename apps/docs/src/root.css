@@ -43,6 +43,10 @@
     @apply bg-transparent dark:bg-transparent p-0 text-blue-600 dark:text-blue-300 whitespace-nowrap;
   }
 
+  .pg-table td {
+    vertical-align: top !important;
+  }
+
   .pg-tabs-snippets pre.shiki {
     margin: 0;
     border: none;

@@ -90,9 +90,9 @@ export default function preset(options: PigmentOptions | undefined = {}): Partia
           let lightThemeSelector = dataThemeSelector;
           let darkThemeSelector = `${dataThemeSelector}.dark, ${dataThemeSelector}${DARK_DATA_ATTR_SELECTOR}`;
 
-          // Apply first theme by default.
+          // Allow applying the first theme without the need to set a `[data-pg-theme]` attribute.
           if (index === 0) {
-            lightThemeSelector = `:root, ${lightThemeSelector}`;
+            lightThemeSelector = `:root, .light, ${lightThemeSelector}`;
             darkThemeSelector = `.dark, ${DARK_DATA_ATTR_SELECTOR}, ${darkThemeSelector}`;
           }
 

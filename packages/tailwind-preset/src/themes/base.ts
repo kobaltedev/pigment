@@ -19,8 +19,6 @@ export function getBaseTheme(vars: VarsFn): Theme {
          * Color - Reference
          * -----------------------------------------------------------------------------------------------*/
 
-        neutral0: twColors.white,
-
         neutral50: twColors.slate["50"],
         neutral100: twColors.slate["100"],
         neutral200: twColors.slate["200"],
@@ -112,7 +110,7 @@ export function getBaseTheme(vars: VarsFn): Theme {
         textSubtle: vars("colors.neutral700"),
         textSubtler: vars("colors.neutral600"),
         textSubtlest: vars("colors.neutral500"),
-        textInverse: vars("colors.neutral0"),
+        textInverse: twColors.white,
         textWarningInverse: "#1c1917",
         textSuccess: vars("colors.success600"),
         textDanger: vars("colors.danger600"),
@@ -126,7 +124,7 @@ export function getBaseTheme(vars: VarsFn): Theme {
         iconSubtle: vars("colors.neutral700"),
         iconSubtler: vars("colors.neutral600"),
         iconSubtlest: vars("colors.neutral500"),
-        iconInverse: vars("colors.neutral0"),
+        iconInverse: twColors.white,
         iconWarningInverse: "#292524",
         iconSuccess: vars("colors.success600"),
         iconDanger: vars("colors.danger600"),
@@ -135,24 +133,24 @@ export function getBaseTheme(vars: VarsFn): Theme {
          * Color - Backgrounds
          * -----------------------------------------------------------------------------------------------*/
 
-        bodyBg: vars("colors.neutral0"),
+        bodyBg: twColors.white,
+
+        /* Surface */
+        surfaceBg: twColors.white,
+        surfaceBgHover: vars("colors.neutral100"),
+        surfaceBgActive: vars("colors.neutral200"),
+        surfaceRaisedBg: twColors.white,
+        surfaceRaisedBgHover: vars("colors.neutral100"),
+        surfaceRaisedBgActive: vars("colors.neutral200"),
+        surfaceOverlayBg: twColors.white,
+        surfaceOverlayBgHover: vars("colors.neutral100"),
+        surfaceOverlayBgActive: vars("colors.neutral200"),
+        surfaceSunkenBg: vars("colors.neutral50"),
 
         /* Subtle */
         subtleBg: "transparent",
         subtleBgHover: vars("colors.neutral200A"),
         subtleBgActive: vars("colors.neutral300A"),
-
-        /* Surface */
-        surfaceBg: vars("colors.neutral0"),
-        surfaceBgHover: vars("colors.neutral100"),
-        surfaceBgActive: vars("colors.neutral200"),
-        surfaceRaisedBg: vars("colors.neutral0"),
-        surfaceRaisedBgHover: vars("colors.neutral100"),
-        surfaceRaisedBgActive: vars("colors.neutral200"),
-        surfaceOverlayBg: vars("colors.neutral0"),
-        surfaceOverlayBgHover: vars("colors.neutral100"),
-        surfaceOverlayBgActive: vars("colors.neutral200"),
-        surfaceSunkenBg: vars("colors.neutral50"),
 
         /* -------------------------------------------------------------------------------------------------
          * Color - Border
@@ -643,11 +641,6 @@ export function getBaseTheme(vars: VarsFn): Theme {
 
         bodyBg: vars("colors.neutral950"),
 
-        /* Subtle */
-        subtleBg: "transparent",
-        subtleBgHover: vars("colors.neutral200A"),
-        subtleBgActive: vars("colors.neutral300A"),
-
         /* Surface */
         surfaceBg: vars("colors.neutral950"),
         surfaceBgHover: vars("colors.neutral900"),
@@ -659,6 +652,11 @@ export function getBaseTheme(vars: VarsFn): Theme {
         surfaceOverlayBgHover: vars("colors.neutral700"),
         surfaceOverlayBgActive: vars("colors.neutral600"),
         surfaceSunkenBg: "#121212",
+
+        /* Subtle */
+        subtleBg: "transparent",
+        subtleBgHover: vars("colors.neutral200A"),
+        subtleBgActive: vars("colors.neutral300A"),
 
         /* -------------------------------------------------------------------------------------------------
          * Color - Border

@@ -1,3 +1,4 @@
+export * from "./color-preview";
 export * from "./color-scheme-selector";
 export * from "./footer";
 export * from "./header";

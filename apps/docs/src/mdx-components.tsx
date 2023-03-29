@@ -67,8 +67,8 @@ export const mdxComponents = {
     const [local, others] = splitProps(props, ["class"]);
 
     return (
-      <div style={{ "overflow-x": "auto" }}>
-        <table class={cn(local.class, "pg-table")} {...others} />
+      <div style={{ "overflow-x": "auto" }} class="mb-10">
+        <table class={cn(local.class, "pg-table !my-0")} {...others} />
       </div>
     );
   },

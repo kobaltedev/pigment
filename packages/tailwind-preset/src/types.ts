@@ -15,7 +15,6 @@ export interface ColorTokens {
   /* -------------------------------------------------------------------------------------------------
    * Color - Reference
    * -----------------------------------------------------------------------------------------------*/
-  neutral0: string;
   neutral50: string;
   neutral100: string;
   neutral200: string;
@@ -132,11 +131,6 @@ export interface ColorTokens {
 
   bodyBg: string;
 
-  /* Subtle */
-  subtleBg: string;
-  subtleBgHover: string;
-  subtleBgActive: string;
-
   /* Surface */
   surfaceBg: string;
   surfaceBgHover: string;
@@ -148,6 +142,11 @@ export interface ColorTokens {
   surfaceOverlayBgHover: string;
   surfaceOverlayBgActive: string;
   surfaceSunkenBg: string;
+
+  /* Subtle */
+  subtleBg: string;
+  subtleBgHover: string;
+  subtleBgActive: string;
 
   /* -------------------------------------------------------------------------------------------------
    * Color - Border
