@@ -27,7 +27,7 @@ export const checkboxControlVariants = cva(
         false: "",
       },
       isDisabled: {
-        true: "ui-group-disabled:text-disabled-text",
+        true: "ui-group-disabled:text-disabled-text ui-group-disabled:cursor-not-allowed",
         false: "",
       },
     },
@@ -113,7 +113,7 @@ export const checkboxLabelWrapperVariants = cva("flex flex-col grow shrink", {
 });
 
 export const checkboxLabelVariants = cva(
-  "text-outlined-input-text ui-group-disabled:text-disabled-text",
+  "text-outlined-input-text ui-group-disabled:text-disabled-text ui-group-disabled:cursor-not-allowed",
   {
     variants: {
       size: {

@@ -104,7 +104,7 @@ export const selectButtonVariants = cva(
 export const selectIconVariants = cva(
   [
     "reset-svg flex justify-center items-center grow-0 shrink-0",
-    "leading-none ui-not-disabled:cursor-pointer",
+    "leading-none",
     "bg-transparent bg-border-transparent",
   ],
   {
@@ -126,7 +126,8 @@ export const selectIconVariants = cva(
         false: "",
       },
       isDisabled: {
-        true: "ui-disabled:text-disabled-icon ui-disabled:cursor-not-allowed",
+        true: "ui-group-disabled:text-disabled-icon ui-group-disabled:cursor-not-allowed",
+        false: "cursor-pointer",
       },
     },
     compoundVariants: [
@@ -241,6 +242,8 @@ export const selectOptionVariants = cva(
   [
     "group flex justify-between items-center rounded select-none outline-none ui-not-disabled:cursor-pointer",
     "bg-subtle-bg ui-highlighted:bg-subtle-bg-hover ui-highlighted:active:bg-subtle-bg-active",
+    "ui-selected:bg-soft-selected-bg ui-selected:ui-highlighted:bg-soft-selected-bg-hover ui-selected:ui-highlighted:active:bg-soft-selected-bg-active",
+    "ui-selected:text-soft-selected-text ui-selected:ui-highlighted:text-soft-selected-text-hover ui-selected:ui-highlighted:active:text-soft-selected-text-active",
     "ui-selected:font-medium",
     "ui-disabled:text-disabled-text",
   ],

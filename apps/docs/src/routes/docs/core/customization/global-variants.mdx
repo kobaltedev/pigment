@@ -15,19 +15,67 @@ Each variant conveys a different level of importance in the user interface:
 - `solid` is best suited for primary elements and the most important actions on the page.
 - `soft`, `outlined`, and `ghost` are better for secondary and tertiary actions.
 
+<Preview isRounded>
+  <div class="flex items-center space-x-4">
+    <Button variant="solid">Solid</Button>
+    <Button variant="soft">Soft</Button>
+    <Button variant="outlined">Outlined</Button>
+    <Button variant="ghost">Ghost</Button>
+  </div>
+</Preview>
+
 ## Input variants
 
-In addition to the main variants, the `soft-input` and `outlined-input` variants are designed specifically for form UI elements such as text fields, select, checkboxes and radio buttons.
+In addition to the main variants, the `soft` and `outlined` input variants are designed specifically for form UI elements such as text fields, select, checkboxes and radio buttons.
 
-## Selection variants
+<Preview isRounded>
+  <div class="flex flex-col space-y-2">
+    <div class="flex items-center space-x-4">
+      <TextField class="w-44" variant="soft" placeholder="TextField" />
+      <TextField class="w-44" variant="outlined" placeholder="TextField" />
+    </div>
+    <div class="flex items-center space-x-4">
+      <Select
+        class="w-44"
+        variant="soft"
+        options={["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"]}
+        placeholder="Select"
+      />
+      <Select
+        class="w-44"
+        variant="outlined"
+        options={["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"]}
+        placeholder="Select"
+      />
+    </div>
+    <div class="flex items-center space-x-4">
+      <Checkbox variant="soft" label="Checkbox" />
+      <Checkbox variant="outlined" label="Checkbox" />
+    </div>
+  </div>
+</Preview>
 
-Pigment's selection variants are intended for elements in a selected or checked state.
+## Selected variants
 
-## Disabled variant
+Pigment's `solid` and `soft` selected variants are intended for elements in a selected or checked state, such as select options, menu items, checkboxes, switches and radio buttons.
 
-The disabled variant is intended for elements in a disabled state.
+<Preview isRounded>
+  <div class="flex items-center space-x-4">
+    <Select
+      class="w-44"
+      options={["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"]}
+      placeholder="Select"
+      defaultValue="Apple"
+    />
+    <Checkbox label="Checkbox" defaultIsChecked />
+  </div>
+</Preview>
 
-<Preview>
+## Disabled state variant
+
+The `disabled` state variant is intended for elements in a disabled state.
+
+<Preview isRounded>
   <div class="flex flex-col space-y-2">
     <div class="flex items-center space-x-4">
       <Button variant="solid" isDisabled>
@@ -44,12 +92,12 @@ The disabled variant is intended for elements in a disabled state.
       </Button>
     </div>
     <div class="flex items-center space-x-4">
-      <TextField variant="soft" placeholder="TextField" isDisabled />
-      <TextField variant="outlined" placeholder="TextField" isDisabled />
+      <TextField class="w-44" variant="soft" placeholder="TextField" isDisabled />
+      <TextField class="w-44" variant="outlined" placeholder="TextField" isDisabled />
     </div>
     <div class="flex items-center space-x-4">
-      <Select variant="soft" placeholder="Select" isDisabled />
-      <Select variant="outlined" placeholder="Select" isDisabled />
+      <Select class="w-44" variant="soft" placeholder="Select" isDisabled />
+      <Select class="w-44" variant="outlined" placeholder="Select" isDisabled />
     </div>
     <div class="flex items-center space-x-4">
       <Checkbox variant="soft" label="Checkbox" isDisabled />
