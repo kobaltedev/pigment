@@ -3,6 +3,7 @@ import twDefaultTheme from "tailwindcss/defaultTheme";
 
 import { Theme, VarsFn } from "../types";
 
+/** Pigment base/default theme. */
 export function getBaseTheme(vars: VarsFn): Theme {
   return {
     common: {

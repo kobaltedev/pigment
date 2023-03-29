@@ -126,7 +126,7 @@ export const selectIconVariants = cva(
         false: "",
       },
       isDisabled: {
-        true: "text-disabled-icon",
+        true: "ui-disabled:text-disabled-icon ui-disabled:cursor-not-allowed",
       },
     },
     compoundVariants: [

@@ -33,8 +33,8 @@ const CORE_NAV_SECTIONS: NavSection[] = [
         href: "/docs/core/customization/approaches",
       },
       {
-        title: "Design tokens",
-        href: "/docs/core/customization/design-tokens",
+        title: "Global variants",
+        href: "/docs/core/customization/global-variants",
       },
       {
         title: "Themed components",
@@ -43,6 +43,10 @@ const CORE_NAV_SECTIONS: NavSection[] = [
       {
         title: "Dark mode",
         href: "/docs/core/customization/dark-mode",
+      },
+      {
+        title: "Design tokens",
+        href: "/docs/core/customization/design-tokens",
       },
     ],
   },

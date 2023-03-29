@@ -169,7 +169,7 @@ module.exports = {
   theme: {},
   presets: [
     pigment({
-      themes: ["base", "slate"], // `base` and `slate` are predefined Pigment themes.
+      themes: ["base"], // `base` is a predefined Pigment theme.
     }),
   ],
 };
@@ -180,8 +180,8 @@ The first theme in the array is applied by default, to apply a specific theme ad
 ```tsx {2,4}
 export default function App() {
   return (
-    <div data-pg-theme="slate">
-      This div will use the "slate" theme.
+    <div data-pg-theme="custom">
+      This div will use the "custom" theme.
       <span data-pg-theme="base">This span will use the "base" theme.</span>
     </div>
   );

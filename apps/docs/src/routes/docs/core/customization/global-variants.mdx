@@ -1,0 +1,59 @@
+import { Button, Checkbox, Select, TextField } from "@kobalte/pigment";
+
+import { Preview } from "../../../../components";
+
+# Global Variants
+
+Pigment uses the concept of global variants inspired by [Joy UI](https://mui.com/joy-ui/main-features/global-variants/) which aim to improve consistency across every component in the library.
+
+## Main variants
+
+Pigment provides four main variants: `solid`, `soft`, `outlined`, and `ghost`. These variants are intended to cover the majority of use cases in modern web design.
+
+Each variant conveys a different level of importance in the user interface:
+
+- `solid` is best suited for primary elements and the most important actions on the page.
+- `soft`, `outlined`, and `ghost` are better for secondary and tertiary actions.
+
+## Input variants
+
+In addition to the main variants, the `soft-input` and `outlined-input` variants are designed specifically for form UI elements such as text fields, select, checkboxes and radio buttons.
+
+## Selection variants
+
+Pigment's selection variants are intended for elements in a selected or checked state.
+
+## Disabled variant
+
+The disabled variant is intended for elements in a disabled state.
+
+<Preview>
+  <div class="flex flex-col space-y-2">
+    <div class="flex items-center space-x-4">
+      <Button variant="solid" isDisabled>
+        Button
+      </Button>
+      <Button variant="soft" isDisabled>
+        Button
+      </Button>
+      <Button variant="outlined" isDisabled>
+        Button
+      </Button>
+      <Button variant="ghost" isDisabled>
+        Button
+      </Button>
+    </div>
+    <div class="flex items-center space-x-4">
+      <TextField variant="soft" placeholder="TextField" isDisabled />
+      <TextField variant="outlined" placeholder="TextField" isDisabled />
+    </div>
+    <div class="flex items-center space-x-4">
+      <Select variant="soft" placeholder="Select" isDisabled />
+      <Select variant="outlined" placeholder="Select" isDisabled />
+    </div>
+    <div class="flex items-center space-x-4">
+      <Checkbox variant="soft" label="Checkbox" isDisabled />
+      <Checkbox variant="outlined" label="Checkbox" isDisabled />
+    </div>
+  </div>
+</Preview>
