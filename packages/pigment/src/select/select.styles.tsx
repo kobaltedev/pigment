@@ -3,7 +3,6 @@ import { cva, VariantProps } from "class-variance-authority";
 export const selectButtonVariants = cva(
   [
     "appearance-none flex items-center grow border border-solid transition-colors",
-    "ui-disabled:cursor-not-allowed ui-disabled:select-none",
     "outline-none focus-visible:border-focus-ring",
   ],
   {
@@ -34,7 +33,7 @@ export const selectButtonVariants = cva(
         false: "",
       },
       isDisabled: {
-        true: "ui-disabled:text-disabled-text",
+        true: "ui-disabled:text-disabled-text ui-disabled:cursor-not-allowed ui-disabled:select-none",
         false: "",
       },
     },
