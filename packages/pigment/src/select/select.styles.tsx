@@ -3,7 +3,6 @@ import { cva, VariantProps } from "class-variance-authority";
 export const selectButtonVariants = cva(
   [
     "appearance-none flex items-center grow border border-solid transition-colors",
-    "ui-disabled:cursor-not-allowed ui-disabled:select-none",
     "outline-none focus-visible:border-focus-ring",
   ],
   {
@@ -34,7 +33,7 @@ export const selectButtonVariants = cva(
         false: "",
       },
       isDisabled: {
-        true: "ui-group-disabled:text-disabled-text",
+        true: "ui-disabled:text-disabled-text ui-disabled:cursor-not-allowed ui-disabled:select-none",
         false: "",
       },
     },
@@ -82,12 +81,12 @@ export const selectButtonVariants = cva(
       {
         variant: "soft",
         isDisabled: true,
-        class: "ui-group-disabled:bg-disabled-bg ui-group-disabled:border-transparent",
+        class: "ui-disabled:bg-disabled-bg ui-disabled:border-transparent",
       },
       {
         variant: "outlined",
         isDisabled: true,
-        class: "ui-group-disabled:bg-transparent ui-group-disabled:border-disabled-border",
+        class: "ui-disabled:bg-transparent ui-disabled:border-disabled-border",
       },
 
       // size + no left decorator
@@ -269,4 +268,4 @@ export const selectOptionIndicatorVariants = cva(
   }
 );
 
-export type SelectControlVariants = VariantProps<typeof selectButtonVariants>;
+export type SelectButtonVariants = VariantProps<typeof selectButtonVariants>;

@@ -3,11 +3,11 @@ import { Link, useMatch } from "@solidjs/router";
 import { JSX, ParentProps } from "solid-js";
 
 import { LATEST_CORE_CHANGELOG_URL, LATEST_CORE_VERSION_NAME } from "../VERSIONS";
-import { GitHubIcon } from "./icons";
 import { ColorSchemeSelector } from "./color-scheme-selector";
+import { GitHubIcon } from "./icons";
 
 interface HeaderProps {
-  drawerContent: JSX.Element;
+  drawerContent?: JSX.Element;
 }
 
 interface HeaderLink extends ParentProps {

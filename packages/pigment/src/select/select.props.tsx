@@ -1,8 +1,8 @@
 import { Select as KSelect } from "@kobalte/core";
-import { Accessor, ComponentProps, JSX } from "solid-js";
+import { ComponentProps, JSX } from "solid-js";
 
 import { SlotProp } from "../utils/slot";
-import { SelectControlVariants } from "./select.styles";
+import { SelectButtonVariants } from "./select.styles";
 
 export type SelectSlots =
   | "root"
@@ -44,7 +44,7 @@ export interface SelectProps<Option, OptGroup = never>
       | "isReadOnly"
       | "sameWidth"
     >,
-    Omit<SelectControlVariants, "isFocused" | "isDisabled">,
+    Omit<SelectButtonVariants, "isFocused" | "isDisabled">,
     SlotProp<SelectSlots> {
   /** Property name or getter function to use as the label of an option. */
   optionLabel?: keyof Option | ((option: Option) => string);
@@ -96,4 +96,7 @@ export interface SelectProps<Option, OptGroup = never>
 
   /** The trailing adornment of the select. */
   endDecorator?: JSX.Element;
+
+  // TODO: replace with the one from `Select.Content` when kobalte v0.9.0 release
+  onInteractOutside?: (event: Event) => void;
 }

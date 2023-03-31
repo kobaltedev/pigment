@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@kobalte/pigment": "0.0.0",
-    "solid-js": "1.6.16"
+    "solid-js": "1.7.0"
   },
   "devDependencies": {
     "@kobalte/pigment-tailwind-preset": "0.0.0",

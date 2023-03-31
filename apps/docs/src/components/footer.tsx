@@ -1,10 +1,12 @@
 import { Link } from "@solidjs/router";
 
 import { DiscordIcon, GitHubIcon, OpenCollectiveIcon, TwitterIcon } from "./icons";
+import { ComponentProps } from "solid-js";
+import { cn } from "@kobalte/pigment";
 
-export function Footer() {
+export function Footer(props: ComponentProps<"footer">) {
   return (
-    <footer class="mt-6 border-t border-slate-200 dark:border-slate-800">
+    <footer class={cn("mt-6 border-t border-slate-200 dark:border-slate-800", props.class)}>
       <div class="max-w-4xl mx-auto px-4">
         <div class="flex flex-col sm:flex-row items-baseline justify-between gap-4 py-8 md:py-12">
           <div>

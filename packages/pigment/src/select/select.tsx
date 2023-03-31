@@ -1,6 +1,6 @@
 import { Select as KSelect, useLocale } from "@kobalte/core";
 import { isFunction, isString } from "@kobalte/utils";
-import { createMemo, mergeProps, Show, splitProps } from "solid-js";
+import { createMemo, JSX, mergeProps, Show, splitProps } from "solid-js";
 
 import { CheckIcon, ExclamationCircleIcon, SelectorIcon } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme";
@@ -42,8 +42,8 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       optionDisabled: "disabled" as any,
       optionGroupLabel: "label" as any,
       optionGroupChildren: "options" as any,
-      dropdownIcon: () => <SelectorIcon />,
-      errorIcon: () => <ExclamationCircleIcon />,
+      dropdownIcon: (() => <SelectorIcon />) as unknown as JSX.Element,
+      errorIcon: (() => <ExclamationCircleIcon />) as unknown as JSX.Element,
     },
     props
   );
@@ -72,6 +72,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       "valueTemplate",
       "optionTemplate",
       "optionGroupTemplate",
+      "onInteractOutside",
     ],
     [
       "defaultIsOpen",
@@ -231,7 +232,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       )}
       {...rootProps}
     >
-      <KSelect.HiddenSelect />
+      <KSelect.HiddenSelect {...local.inputProps} />
       <Show when={label()}>
         <KSelect.Label
           class={cn(
@@ -326,6 +327,8 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
             themeClasses.dropdown,
             local.slotClasses?.dropdown
           )}
+          // TODO: remove the object spread when kobalte v0.9.0 is released
+          {...({ onInteractOutside: local.onInteractOutside } as any)}
         >
           <KSelect.Listbox
             class={cn(
