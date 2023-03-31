@@ -1,6 +1,6 @@
 import { Alert as KAlert } from "@kobalte/core";
 import { isFunction } from "@kobalte/utils";
-import { children, createMemo, Show, splitProps } from "solid-js";
+import { children, createMemo, JSX, Show, splitProps } from "solid-js";
 
 import { CloseButton } from "../close-button";
 import {
@@ -85,7 +85,7 @@ export function Alert(props: AlertProps) {
           )}
           aria-hidden="true"
         >
-          {icon()}
+          {icon() as unknown as JSX.Element}
         </div>
       </Show>
       <div

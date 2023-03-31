@@ -31,6 +31,7 @@
   "dependencies": {
     "@kobalte/core": "0.8.2",
     "@kobalte/pigment": "0.0.0",
+    "@solid-primitives/media": "^2.1.5",
     "@solidjs/meta": "0.28.2",
     "@solidjs/router": "0.8.2",
     "highlight.js": "11.7.0",
