@@ -3,7 +3,7 @@ import {
   COMMON_INTL_MESSAGES,
   createLocalizedStringFormatter,
 } from "@kobalte/core";
-import { splitProps } from "solid-js";
+import { JSX, splitProps } from "solid-js";
 
 import { CrossIcon } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme";
@@ -21,7 +21,7 @@ export function CloseButton(props: CloseButtonProps) {
       size: "sm",
       inheritTextColor: false,
       isDisabled: false,
-      children: () => <CrossIcon />,
+      children: (() => <CrossIcon />) as unknown as JSX.Element,
     },
     props
   );

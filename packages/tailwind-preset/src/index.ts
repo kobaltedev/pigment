@@ -127,10 +127,13 @@ export default function preset(options: PigmentOptions | undefined = {}): Partia
         });
 
         addBase({
+          html: {
+            WebkitTapHighlightColor: "transparent",
+          },
           body: {
             // Use theme background and foreground colors.
-            backgroundColor: theme("colors.body-bg"),
-            color: theme("colors.text"),
+            backgroundColor: theme("colors.body"),
+            color: theme("colors.content"),
           },
         });
 

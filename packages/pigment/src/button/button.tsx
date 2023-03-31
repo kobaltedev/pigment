@@ -1,6 +1,6 @@
 import { Button as KButton, Link as KLink, useLocale } from "@kobalte/core";
 import { mergeDefaultProps } from "@kobalte/utils";
-import { createMemo, Show, splitProps } from "solid-js";
+import { createMemo, JSX, Show, splitProps } from "solid-js";
 
 import { LoaderIcon } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme";
@@ -43,7 +43,7 @@ function ButtonIcon(props: ButtonIconProps) {
 function ButtonLoadingIcon(props: ButtonIconProps) {
   props = mergeDefaultProps(
     {
-      children: () => <LoaderIcon class="animate-spin" />,
+      children: (() => <LoaderIcon class="animate-spin" />) as unknown as JSX.Element,
     },
     props
   );

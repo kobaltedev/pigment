@@ -8,9 +8,9 @@ export const selectButtonVariants = cva(
   {
     variants: {
       variant: {
-        soft: "bg-soft-input-bg hover:bg-soft-input-bg-hover active:bg-soft-input-bg-active",
+        soft: "bg-soft-input-surface hover:bg-soft-input-surface-hover active:bg-soft-input-surface-active",
         outlined:
-          "bg-outlined-input-bg hover:bg-outlined-input-bg-hover active:bg-outlined-input-bg-active",
+          "bg-outlined-input-surface hover:bg-outlined-input-surface-hover active:bg-outlined-input-surface-active",
       },
       size: {
         sm: "h-9 rounded-md text-sm",
@@ -33,7 +33,7 @@ export const selectButtonVariants = cva(
         false: "",
       },
       isDisabled: {
-        true: "ui-disabled:text-disabled-text ui-disabled:cursor-not-allowed ui-disabled:select-none",
+        true: "ui-disabled:text-content-disabled ui-disabled:cursor-not-allowed ui-disabled:select-none",
         false: "",
       },
     },
@@ -44,14 +44,14 @@ export const selectButtonVariants = cva(
         isInvalid: false,
         isDisabled: false,
         class:
-          "text-soft-input-text hover:text-soft-input-text-hover active:text-soft-input-text-active",
+          "text-soft-input-content hover:text-soft-input-content-hover active:text-soft-input-content-active",
       },
       {
         variant: "outlined",
         isInvalid: false,
         isDisabled: false,
         class:
-          "text-outlined-input-text hover:text-outlined-input-text-hover active:text-outlined-input-text-active",
+          "text-outlined-input-content hover:text-outlined-input-content-hover active:text-outlined-input-content-active",
       },
 
       // variant + border colors
@@ -60,33 +60,33 @@ export const selectButtonVariants = cva(
         isInvalid: false,
         isDisabled: false,
         class:
-          "border-soft-input-border hover:border-soft-input-border-hover active:border-soft-input-border-active",
+          "border-soft-input-line hover:border-soft-input-line-hover active:border-soft-input-line-active",
       },
       {
         variant: "outlined",
         isInvalid: false,
         isDisabled: false,
         class:
-          "border-outlined-input-border hover:border-outlined-input-border-hover active:border-outlined-input-border-active",
+          "border-outlined-input-line hover:border-outlined-input-line-hover active:border-outlined-input-line-active",
       },
 
       // all variants + invalid colors
       {
         isInvalid: true,
         isDisabled: false,
-        class: "text-text-danger border-solid-danger-border",
+        class: "text-content-danger border-solid-danger-line",
       },
 
       // variant + disabled
       {
         variant: "soft",
         isDisabled: true,
-        class: "ui-disabled:bg-disabled-bg ui-disabled:border-transparent",
+        class: "ui-disabled:bg-surface-disabled ui-disabled:border-transparent",
       },
       {
         variant: "outlined",
         isDisabled: true,
-        class: "ui-disabled:bg-transparent ui-disabled:border-disabled-border",
+        class: "ui-disabled:bg-transparent ui-disabled:border-line-disabled",
       },
 
       // size + no left decorator
@@ -104,7 +104,7 @@ export const selectIconVariants = cva(
   [
     "reset-svg flex justify-center items-center grow-0 shrink-0",
     "leading-none",
-    "bg-transparent bg-border-transparent",
+    "bg-transparent bg-line-transparent",
   ],
   {
     variants: {
@@ -125,7 +125,7 @@ export const selectIconVariants = cva(
         false: "",
       },
       isDisabled: {
-        true: "ui-group-disabled:text-disabled-icon ui-group-disabled:cursor-not-allowed",
+        true: "ui-group-disabled:text-content-disabled ui-group-disabled:cursor-not-allowed",
         false: "cursor-pointer",
       },
     },
@@ -176,18 +176,18 @@ export const selectValueVariants = cva("inline-flex justify-start items-center g
     {
       variant: "soft",
       isDisabled: false,
-      class: "data-placeholder-shown:text-text-subtler",
+      class: "data-placeholder-shown:text-content-subtler",
     },
     {
       variant: "outlined",
       isDisabled: false,
-      class: "data-placeholder-shown:text-text-subtlest",
+      class: "data-placeholder-shown:text-content-subtlest",
     },
   ],
 });
 
 export const selectLabelVariants = cva(
-  "grow-0 font-medium text-text-subtle ui-group-disabled:text-disabled-text",
+  "grow-0 font-medium text-content-subtle ui-group-disabled:text-content-disabled",
   {
     variants: {
       size: {
@@ -198,7 +198,7 @@ export const selectLabelVariants = cva(
   }
 );
 
-export const selectSupportTextVariants = cva("grow-0 ui-group-disabled:text-disabled-text", {
+export const selectSupportTextVariants = cva("grow-0 ui-group-disabled:text-content-disabled", {
   variants: {
     size: {
       sm: "mt-1.5 text-xs",
@@ -208,12 +208,12 @@ export const selectSupportTextVariants = cva("grow-0 ui-group-disabled:text-disa
 });
 
 export const selectDropdownVariants = cva(
-  "bg-surface-overlay-bg border border-solid shadow-surface-overlay rounded-md",
+  "bg-overlay-surface border border-solid shadow-overlay rounded-md z-30",
   {
     variants: {
       variant: {
-        soft: "border-soft-input-border",
-        outlined: "border-outlined-input-border",
+        soft: "border-soft-input-line",
+        outlined: "border-outlined-input-line",
       },
     },
   }
@@ -228,7 +228,7 @@ export const selectListboxVariants = cva("flex flex-col outline-none max-h-96 ov
   },
 });
 
-export const selectOptGroupVariants = cva("text-text-subtlest uppercase", {
+export const selectOptGroupVariants = cva("text-content-subtlest uppercase", {
   variants: {
     size: {
       sm: "px-2 pt-3 text-2xs",
@@ -240,11 +240,11 @@ export const selectOptGroupVariants = cva("text-text-subtlest uppercase", {
 export const selectOptionVariants = cva(
   [
     "group flex justify-between items-center rounded select-none outline-none ui-not-disabled:cursor-pointer",
-    "bg-subtle-bg ui-highlighted:bg-subtle-bg-hover ui-highlighted:active:bg-subtle-bg-active",
-    "ui-selected:bg-soft-selected-bg ui-selected:ui-highlighted:bg-soft-selected-bg-hover ui-selected:ui-highlighted:active:bg-soft-selected-bg-active",
-    "ui-selected:text-soft-selected-text ui-selected:ui-highlighted:text-soft-selected-text-hover ui-selected:ui-highlighted:active:text-soft-selected-text-active",
+    "bg-subtle-surface ui-highlighted:bg-subtle-surface-hover ui-highlighted:active:bg-subtle-surface-active",
+    "ui-selected:bg-soft-selected-surface ui-selected:ui-highlighted:bg-soft-selected-surface-hover ui-selected:ui-highlighted:active:bg-soft-selected-surface-active",
+    "ui-selected:text-soft-selected-content ui-selected:ui-highlighted:text-soft-selected-content-hover ui-selected:ui-highlighted:active:text-soft-selected-content-active",
     "ui-selected:font-medium",
-    "ui-disabled:text-disabled-text",
+    "ui-disabled:text-content-disabled",
   ],
   {
     variants: {

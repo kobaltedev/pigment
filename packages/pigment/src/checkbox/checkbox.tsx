@@ -1,5 +1,5 @@
 import { Checkbox as KCheckbox, useLocale } from "@kobalte/core";
-import { createMemo, createUniqueId, Show, splitProps } from "solid-js";
+import { createMemo, createUniqueId, JSX, Show, splitProps } from "solid-js";
 
 import { CheckIcon, ExclamationCircleIcon, MinusIcon } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme";
@@ -30,9 +30,9 @@ export function Checkbox(props: CheckboxProps) {
       isDisabled: false,
       hasErrorIcon: true,
       inputProps: {},
-      errorIcon: () => <ExclamationCircleIcon />,
-      checkedIcon: () => <CheckIcon />,
-      indeterminateIcon: () => <MinusIcon />,
+      errorIcon: (() => <ExclamationCircleIcon />) as unknown as JSX.Element,
+      checkedIcon: (() => <CheckIcon />) as unknown as JSX.Element,
+      indeterminateIcon: (() => <MinusIcon />) as unknown as JSX.Element,
     },
     props
   );
@@ -158,7 +158,7 @@ export function Checkbox(props: CheckboxProps) {
               <span
                 id={descriptionId}
                 class={cn(
-                  "text-text-subtler",
+                  "text-content-subtler",
                   checkboxSupportTextVariants(variantProps),
                   checkboxStaticClass("description"),
                   themeClasses.description,
@@ -172,7 +172,7 @@ export function Checkbox(props: CheckboxProps) {
               <span
                 id={errorId}
                 class={cn(
-                  "inline-flex items-center gap-x-1 text-text-danger",
+                  "inline-flex items-center gap-x-1 text-content-danger",
                   checkboxSupportTextVariants(variantProps),
                   checkboxStaticClass("error"),
                   themeClasses.error,
@@ -183,7 +183,7 @@ export function Checkbox(props: CheckboxProps) {
                   <span
                     aria-hidden="true"
                     class={cn(
-                      "reset-svg text-sm text-icon-danger ui-group-disabled:text-disabled-icon",
+                      "reset-svg text-sm",
                       checkboxStaticClass("errorIcon"),
                       themeClasses.errorIcon,
                       local.slotClasses?.errorIcon

@@ -35,7 +35,6 @@ export function ColorSchemeSelector() {
         slotClasses={{
           button: "border-none hover:bg-ghost-neutral-bg-hover px-2",
           value: "reset-svg text-xl",
-          dropdown: "z-50",
           listbox: "w-32",
         }}
         valueTemplate={() => (

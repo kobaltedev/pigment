@@ -5,7 +5,7 @@ export const closeButtonVariants = cva(
     "appearance-none relative inline-flex justify-center items-center p-0",
     "reset-svg font-medium leading-none no-underline",
     "transition-colors cursor-pointer",
-    "bg-subtle-bg hover:bg-subtle-bg-hover active:bg-subtle-bg-active",
+    "bg-subtle-surface hover:bg-subtle-surface-hover active:bg-subtle-surface-active",
     "border border-solid border-transparent",
     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring",
   ],
@@ -20,10 +20,10 @@ export const closeButtonVariants = cva(
       },
       inheritTextColor: {
         true: "text-current",
-        false: "text-icon-subtle",
+        false: "text-content-subtle",
       },
       isDisabled: {
-        true: "ui-disabled:text-disabled-icon ui-disabled:bg-transparent ui-disabled:border-transparent ui-disabled:cursor-not-allowed ui-disabled:select-none",
+        true: "ui-disabled:text-content-disabled ui-disabled:bg-transparent ui-disabled:border-transparent ui-disabled:cursor-not-allowed ui-disabled:select-none",
         false: "active:scale-95",
       },
     },

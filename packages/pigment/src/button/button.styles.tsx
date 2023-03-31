@@ -43,7 +43,7 @@ export const buttonVariants = cva(
         true: "opacity-80 select-none pointer-events-none",
       },
       isDisabled: {
-        true: "ui-disabled:text-disabled-text ui-disabled:cursor-not-allowed ui-disabled:select-none",
+        true: "ui-disabled:text-content-disabled ui-disabled:cursor-not-allowed ui-disabled:select-none",
       },
     },
     compoundVariants: [
@@ -53,9 +53,9 @@ export const buttonVariants = cva(
         color: "primary",
         isDisabled: false,
         class: [
-          "text-solid-primary-text hover:text-solid-primary-text-hover active:text-solid-primary-text-active",
-          "bg-solid-primary-bg hover:bg-solid-primary-bg-hover active:bg-solid-primary-bg-active",
-          "border-solid-primary-border hover:border-solid-primary-border-hover active:border-solid-primary-border-active",
+          "text-solid-primary-content hover:text-solid-primary-content-hover active:text-solid-primary-content-active",
+          "bg-solid-primary-surface hover:bg-solid-primary-surface-hover active:bg-solid-primary-surface-active",
+          "border-solid-primary-line hover:border-solid-primary-line-hover active:border-solid-primary-line-active",
         ],
       },
       {
@@ -63,9 +63,9 @@ export const buttonVariants = cva(
         color: "neutral",
         isDisabled: false,
         class: [
-          "text-solid-neutral-text hover:text-solid-neutral-text-hover active:text-solid-neutral-text-active",
-          "bg-solid-neutral-bg hover:bg-solid-neutral-bg-hover active:bg-solid-neutral-bg-active",
-          "border-solid-neutral-border hover:border-solid-neutral-border-hover active:border-solid-neutral-border-active",
+          "text-solid-neutral-content hover:text-solid-neutral-content-hover active:text-solid-neutral-content-active",
+          "bg-solid-neutral-surface hover:bg-solid-neutral-surface-hover active:bg-solid-neutral-surface-active",
+          "border-solid-neutral-line hover:border-solid-neutral-line-hover active:border-solid-neutral-line-active",
         ],
       },
       {
@@ -73,9 +73,9 @@ export const buttonVariants = cva(
         color: "success",
         isDisabled: false,
         class: [
-          "text-solid-success-text hover:text-solid-success-text-hover active:text-solid-success-text-active",
-          "bg-solid-success-bg hover:bg-solid-success-bg-hover active:bg-solid-success-bg-active",
-          "border-solid-success-border hover:border-solid-success-border-hover active:border-solid-success-border-active",
+          "text-solid-success-content hover:text-solid-success-content-hover active:text-solid-success-content-active",
+          "bg-solid-success-surface hover:bg-solid-success-surface-hover active:bg-solid-success-surface-active",
+          "border-solid-success-line hover:border-solid-success-line-hover active:border-solid-success-line-active",
         ],
       },
       {
@@ -83,9 +83,9 @@ export const buttonVariants = cva(
         color: "info",
         isDisabled: false,
         class: [
-          "text-solid-info-text hover:text-solid-info-text-hover active:text-solid-info-text-active",
-          "bg-solid-info-bg hover:bg-solid-info-bg-hover active:bg-solid-info-bg-active",
-          "border-solid-info-border hover:border-solid-info-border-hover active:border-solid-info-border-active",
+          "text-solid-info-content hover:text-solid-info-content-hover active:text-solid-info-content-active",
+          "bg-solid-info-surface hover:bg-solid-info-surface-hover active:bg-solid-info-surface-active",
+          "border-solid-info-line hover:border-solid-info-line-hover active:border-solid-info-line-active",
         ],
       },
       {
@@ -93,9 +93,9 @@ export const buttonVariants = cva(
         color: "warning",
         isDisabled: false,
         class: [
-          "text-solid-warning-text hover:text-solid-warning-text-hover active:text-solid-warning-text-active",
-          "bg-solid-warning-bg hover:bg-solid-warning-bg-hover active:bg-solid-warning-bg-active",
-          "border-solid-warning-border hover:border-solid-warning-border-hover active:border-solid-warning-border-active",
+          "text-solid-warning-content hover:text-solid-warning-content-hover active:text-solid-warning-content-active",
+          "bg-solid-warning-surface hover:bg-solid-warning-surface-hover active:bg-solid-warning-surface-active",
+          "border-solid-warning-line hover:border-solid-warning-line-hover active:border-solid-warning-line-active",
         ],
       },
       {
@@ -103,9 +103,9 @@ export const buttonVariants = cva(
         color: "danger",
         isDisabled: false,
         class: [
-          "text-solid-danger-text hover:text-solid-danger-text-hover active:text-solid-danger-text-active",
-          "bg-solid-danger-bg hover:bg-solid-danger-bg-hover active:bg-solid-danger-bg-active",
-          "border-solid-danger-border hover:border-solid-danger-border-hover active:border-solid-danger-border-active",
+          "text-solid-danger-content hover:text-solid-danger-content-hover active:text-solid-danger-content-active",
+          "bg-solid-danger-surface hover:bg-solid-danger-surface-hover active:bg-solid-danger-surface-active",
+          "border-solid-danger-line hover:border-solid-danger-line-hover active:border-solid-danger-line-active",
         ],
       },
 
@@ -115,9 +115,9 @@ export const buttonVariants = cva(
         color: "primary",
         isDisabled: false,
         class: [
-          "text-soft-primary-text hover:text-soft-primary-text-hover active:text-soft-primary-text-active",
-          "bg-soft-primary-bg hover:bg-soft-primary-bg-hover active:bg-soft-primary-bg-active",
-          "border-soft-primary-border hover:border-soft-primary-border-hover active:border-soft-primary-border-active",
+          "text-soft-primary-content hover:text-soft-primary-content-hover active:text-soft-primary-content-active",
+          "bg-soft-primary-surface hover:bg-soft-primary-surface-hover active:bg-soft-primary-surface-active",
+          "border-soft-primary-line hover:border-soft-primary-line-hover active:border-soft-primary-line-active",
         ],
       },
       {
@@ -125,9 +125,9 @@ export const buttonVariants = cva(
         color: "neutral",
         isDisabled: false,
         class: [
-          "text-soft-neutral-text hover:text-soft-neutral-text-hover active:text-soft-neutral-text-active",
-          "bg-soft-neutral-bg hover:bg-soft-neutral-bg-hover active:bg-soft-neutral-bg-active",
-          "border-soft-neutral-border hover:border-soft-neutral-border-hover active:border-soft-neutral-border-active",
+          "text-soft-neutral-content hover:text-soft-neutral-content-hover active:text-soft-neutral-content-active",
+          "bg-soft-neutral-surface hover:bg-soft-neutral-surface-hover active:bg-soft-neutral-surface-active",
+          "border-soft-neutral-line hover:border-soft-neutral-line-hover active:border-soft-neutral-line-active",
         ],
       },
       {
@@ -135,9 +135,9 @@ export const buttonVariants = cva(
         color: "success",
         isDisabled: false,
         class: [
-          "text-soft-success-text hover:text-soft-success-text-hover active:text-soft-success-text-active",
-          "bg-soft-success-bg hover:bg-soft-success-bg-hover active:bg-soft-success-bg-active",
-          "border-soft-success-border hover:border-soft-success-border-hover active:border-soft-success-border-active",
+          "text-soft-success-content hover:text-soft-success-content-hover active:text-soft-success-content-active",
+          "bg-soft-success-surface hover:bg-soft-success-surface-hover active:bg-soft-success-surface-active",
+          "border-soft-success-line hover:border-soft-success-line-hover active:border-soft-success-line-active",
         ],
       },
       {
@@ -145,9 +145,9 @@ export const buttonVariants = cva(
         color: "info",
         isDisabled: false,
         class: [
-          "text-soft-info-text hover:text-soft-info-text-hover active:text-soft-info-text-active",
-          "bg-soft-info-bg hover:bg-soft-info-bg-hover active:bg-soft-info-bg-active",
-          "border-soft-info-border hover:border-soft-info-border-hover active:border-soft-info-border-active",
+          "text-soft-info-content hover:text-soft-info-content-hover active:text-soft-info-content-active",
+          "bg-soft-info-surface hover:bg-soft-info-surface-hover active:bg-soft-info-surface-active",
+          "border-soft-info-line hover:border-soft-info-line-hover active:border-soft-info-line-active",
         ],
       },
       {
@@ -155,9 +155,9 @@ export const buttonVariants = cva(
         color: "warning",
         isDisabled: false,
         class: [
-          "text-soft-warning-text hover:text-soft-warning-text-hover active:text-soft-warning-text-active",
-          "bg-soft-warning-bg hover:bg-soft-warning-bg-hover active:bg-soft-warning-bg-active",
-          "border-soft-warning-border hover:border-soft-warning-border-hover active:border-soft-warning-border-active",
+          "text-soft-warning-content hover:text-soft-warning-content-hover active:text-soft-warning-content-active",
+          "bg-soft-warning-surface hover:bg-soft-warning-surface-hover active:bg-soft-warning-surface-active",
+          "border-soft-warning-line hover:border-soft-warning-line-hover active:border-soft-warning-line-active",
         ],
       },
       {
@@ -165,9 +165,9 @@ export const buttonVariants = cva(
         color: "danger",
         isDisabled: false,
         class: [
-          "text-soft-danger-text hover:text-soft-danger-text-hover active:text-soft-danger-text-active",
-          "bg-soft-danger-bg hover:bg-soft-danger-bg-hover active:bg-soft-danger-bg-active",
-          "border-soft-danger-border hover:border-soft-danger-border-hover active:border-soft-danger-border-active",
+          "text-soft-danger-content hover:text-soft-danger-content-hover active:text-soft-danger-content-active",
+          "bg-soft-danger-surface hover:bg-soft-danger-surface-hover active:bg-soft-danger-surface-active",
+          "border-soft-danger-line hover:border-soft-danger-line-hover active:border-soft-danger-line-active",
         ],
       },
 
@@ -177,9 +177,9 @@ export const buttonVariants = cva(
         color: "primary",
         isDisabled: false,
         class: [
-          "text-outlined-primary-text hover:text-outlined-primary-text-hover active:text-outlined-primary-text-active",
-          "bg-outlined-primary-bg hover:bg-outlined-primary-bg-hover active:bg-outlined-primary-bg-active",
-          "border-outlined-primary-border hover:border-outlined-primary-border-hover active:border-outlined-primary-border-active",
+          "text-outlined-primary-content hover:text-outlined-primary-content-hover active:text-outlined-primary-content-active",
+          "bg-outlined-primary-surface hover:bg-outlined-primary-surface-hover active:bg-outlined-primary-surface-active",
+          "border-outlined-primary-line hover:border-outlined-primary-line-hover active:border-outlined-primary-line-active",
         ],
       },
       {
@@ -187,9 +187,9 @@ export const buttonVariants = cva(
         color: "neutral",
         isDisabled: false,
         class: [
-          "text-outlined-neutral-text hover:text-outlined-neutral-text-hover active:text-outlined-neutral-text-active",
-          "bg-outlined-neutral-bg hover:bg-outlined-neutral-bg-hover active:bg-outlined-neutral-bg-active",
-          "border-outlined-neutral-border hover:border-outlined-neutral-border-hover active:border-outlined-neutral-border-active",
+          "text-outlined-neutral-content hover:text-outlined-neutral-content-hover active:text-outlined-neutral-content-active",
+          "bg-outlined-neutral-surface hover:bg-outlined-neutral-surface-hover active:bg-outlined-neutral-surface-active",
+          "border-outlined-neutral-line hover:border-outlined-neutral-line-hover active:border-outlined-neutral-line-active",
         ],
       },
       {
@@ -197,9 +197,9 @@ export const buttonVariants = cva(
         color: "success",
         isDisabled: false,
         class: [
-          "text-outlined-success-text hover:text-outlined-success-text-hover active:text-outlined-success-text-active",
-          "bg-outlined-success-bg hover:bg-outlined-success-bg-hover active:bg-outlined-success-bg-active",
-          "border-outlined-success-border hover:border-outlined-success-border-hover active:border-outlined-success-border-active",
+          "text-outlined-success-content hover:text-outlined-success-content-hover active:text-outlined-success-content-active",
+          "bg-outlined-success-surface hover:bg-outlined-success-surface-hover active:bg-outlined-success-surface-active",
+          "border-outlined-success-line hover:border-outlined-success-line-hover active:border-outlined-success-line-active",
         ],
       },
       {
@@ -207,9 +207,9 @@ export const buttonVariants = cva(
         color: "info",
         isDisabled: false,
         class: [
-          "text-outlined-info-text hover:text-outlined-info-text-hover active:text-outlined-info-text-active",
-          "bg-outlined-info-bg hover:bg-outlined-info-bg-hover active:bg-outlined-info-bg-active",
-          "border-outlined-info-border hover:border-outlined-info-border-hover active:border-outlined-info-border-active",
+          "text-outlined-info-content hover:text-outlined-info-content-hover active:text-outlined-info-content-active",
+          "bg-outlined-info-surface hover:bg-outlined-info-surface-hover active:bg-outlined-info-surface-active",
+          "border-outlined-info-line hover:border-outlined-info-line-hover active:border-outlined-info-line-active",
         ],
       },
       {
@@ -217,9 +217,9 @@ export const buttonVariants = cva(
         color: "warning",
         isDisabled: false,
         class: [
-          "text-outlined-warning-text hover:text-outlined-warning-text-hover active:text-outlined-warning-text-active",
-          "bg-outlined-warning-bg hover:bg-outlined-warning-bg-hover active:bg-outlined-warning-bg-active",
-          "border-outlined-warning-border hover:border-outlined-warning-border-hover active:border-outlined-warning-border-active",
+          "text-outlined-warning-content hover:text-outlined-warning-content-hover active:text-outlined-warning-content-active",
+          "bg-outlined-warning-surface hover:bg-outlined-warning-surface-hover active:bg-outlined-warning-surface-active",
+          "border-outlined-warning-line hover:border-outlined-warning-line-hover active:border-outlined-warning-line-active",
         ],
       },
       {
@@ -227,9 +227,9 @@ export const buttonVariants = cva(
         color: "danger",
         isDisabled: false,
         class: [
-          "text-outlined-danger-text hover:text-outlined-danger-text-hover active:text-outlined-danger-text-active",
-          "bg-outlined-danger-bg hover:bg-outlined-danger-bg-hover active:bg-outlined-danger-bg-active",
-          "border-outlined-danger-border hover:border-outlined-danger-border-hover active:border-outlined-danger-border-active",
+          "text-outlined-danger-content hover:text-outlined-danger-content-hover active:text-outlined-danger-content-active",
+          "bg-outlined-danger-surface hover:bg-outlined-danger-surface-hover active:bg-outlined-danger-surface-active",
+          "border-outlined-danger-line hover:border-outlined-danger-line-hover active:border-outlined-danger-line-active",
         ],
       },
 
@@ -239,9 +239,9 @@ export const buttonVariants = cva(
         color: "primary",
         isDisabled: false,
         class: [
-          "text-ghost-primary-text hover:text-ghost-primary-text-hover active:text-ghost-primary-text-active",
-          "bg-ghost-primary-bg hover:bg-ghost-primary-bg-hover active:bg-ghost-primary-bg-active",
-          "border-ghost-primary-border hover:border-ghost-primary-border-hover active:border-ghost-primary-border-active",
+          "text-ghost-primary-content hover:text-ghost-primary-content-hover active:text-ghost-primary-content-active",
+          "bg-ghost-primary-surface hover:bg-ghost-primary-surface-hover active:bg-ghost-primary-surface-active",
+          "border-ghost-primary-line hover:border-ghost-primary-line-hover active:border-ghost-primary-line-active",
         ],
       },
       {
@@ -249,9 +249,9 @@ export const buttonVariants = cva(
         color: "neutral",
         isDisabled: false,
         class: [
-          "text-ghost-neutral-text hover:text-ghost-neutral-text-hover active:text-ghost-neutral-text-active",
-          "bg-ghost-neutral-bg hover:bg-ghost-neutral-bg-hover active:bg-ghost-neutral-bg-active",
-          "border-ghost-neutral-border hover:border-ghost-neutral-border-hover active:border-ghost-neutral-border-active",
+          "text-ghost-neutral-content hover:text-ghost-neutral-content-hover active:text-ghost-neutral-content-active",
+          "bg-ghost-neutral-surface hover:bg-ghost-neutral-surface-hover active:bg-ghost-neutral-surface-active",
+          "border-ghost-neutral-line hover:border-ghost-neutral-line-hover active:border-ghost-neutral-line-active",
         ],
       },
       {
@@ -259,9 +259,9 @@ export const buttonVariants = cva(
         color: "success",
         isDisabled: false,
         class: [
-          "text-ghost-success-text hover:text-ghost-success-text-hover active:text-ghost-success-text-active",
-          "bg-ghost-success-bg hover:bg-ghost-success-bg-hover active:bg-ghost-success-bg-active",
-          "border-ghost-success-border hover:border-ghost-success-border-hover active:border-ghost-success-border-active",
+          "text-ghost-success-content hover:text-ghost-success-content-hover active:text-ghost-success-content-active",
+          "bg-ghost-success-surface hover:bg-ghost-success-surface-hover active:bg-ghost-success-surface-active",
+          "border-ghost-success-line hover:border-ghost-success-line-hover active:border-ghost-success-line-active",
         ],
       },
       {
@@ -269,9 +269,9 @@ export const buttonVariants = cva(
         color: "info",
         isDisabled: false,
         class: [
-          "text-ghost-info-text hover:text-ghost-info-text-hover active:text-ghost-info-text-active",
-          "bg-ghost-info-bg hover:bg-ghost-info-bg-hover active:bg-ghost-info-bg-active",
-          "border-ghost-info-border hover:border-ghost-info-border-hover active:border-ghost-info-border-active",
+          "text-ghost-info-content hover:text-ghost-info-content-hover active:text-ghost-info-content-active",
+          "bg-ghost-info-surface hover:bg-ghost-info-surface-hover active:bg-ghost-info-surface-active",
+          "border-ghost-info-line hover:border-ghost-info-line-hover active:border-ghost-info-line-active",
         ],
       },
       {
@@ -279,9 +279,9 @@ export const buttonVariants = cva(
         color: "warning",
         isDisabled: false,
         class: [
-          "text-ghost-warning-text hover:text-ghost-warning-text-hover active:text-ghost-warning-text-active",
-          "bg-ghost-warning-bg hover:bg-ghost-warning-bg-hover active:bg-ghost-warning-bg-active",
-          "border-ghost-warning-border hover:border-ghost-warning-border-hover active:border-ghost-warning-border-active",
+          "text-ghost-warning-content hover:text-ghost-warning-content-hover active:text-ghost-warning-content-active",
+          "bg-ghost-warning-surface hover:bg-ghost-warning-surface-hover active:bg-ghost-warning-surface-active",
+          "border-ghost-warning-line hover:border-ghost-warning-line-hover active:border-ghost-warning-line-active",
         ],
       },
       {
@@ -289,9 +289,9 @@ export const buttonVariants = cva(
         color: "danger",
         isDisabled: false,
         class: [
-          "text-ghost-danger-text hover:text-ghost-danger-text-hover active:text-ghost-danger-text-active",
-          "bg-ghost-danger-bg hover:bg-ghost-danger-bg-hover active:bg-ghost-danger-bg-active",
-          "border-ghost-danger-border hover:border-ghost-danger-border-hover active:border-ghost-danger-border-active",
+          "text-ghost-danger-content hover:text-ghost-danger-content-hover active:text-ghost-danger-content-active",
+          "bg-ghost-danger-surface hover:bg-ghost-danger-surface-hover active:bg-ghost-danger-surface-active",
+          "border-ghost-danger-line hover:border-ghost-danger-line-hover active:border-ghost-danger-line-active",
         ],
       },
 
@@ -299,12 +299,12 @@ export const buttonVariants = cva(
       {
         variant: ["solid", "soft"],
         isDisabled: true,
-        class: "ui-disabled:bg-disabled-bg ui-disabled:border-transparent",
+        class: "ui-disabled:bg-surface-disabled ui-disabled:border-transparent",
       },
       {
         variant: "outlined",
         isDisabled: true,
-        class: "ui-disabled:bg-transparent ui-disabled:border-disabled-border",
+        class: "ui-disabled:bg-transparent ui-disabled:border-line-disabled",
       },
       {
         variant: "ghost",
@@ -337,22 +337,8 @@ export const buttonVariants = cva(
   }
 );
 
-export const buttonIconVariants = cva("reset-svg shrink-0 transition-colors", {
+export const buttonIconVariants = cva("reset-svg shrink-0", {
   variants: {
-    variant: {
-      solid: "",
-      soft: "",
-      outlined: "",
-      ghost: "",
-    },
-    color: {
-      primary: "",
-      neutral: "",
-      success: "",
-      info: "",
-      warning: "",
-      danger: "",
-    },
     size: {
       xs: "",
       sm: "",
@@ -363,187 +349,8 @@ export const buttonIconVariants = cva("reset-svg shrink-0 transition-colors", {
     isIconOnly: {
       true: "",
     },
-    isDisabled: {
-      true: "text-disabled-icon",
-    },
   },
   compoundVariants: [
-    // solid + colors
-    {
-      variant: "solid",
-      color: "primary",
-      isDisabled: false,
-      class:
-        "text-solid-primary-icon group-hover:text-solid-primary-icon-hover group-active:text-solid-primary-icon-active",
-    },
-    {
-      variant: "solid",
-      color: "neutral",
-      isDisabled: false,
-      class:
-        "text-solid-neutral-icon group-hover:text-solid-neutral-icon-hover group-active:text-solid-neutral-icon-active",
-    },
-    {
-      variant: "solid",
-      color: "success",
-      isDisabled: false,
-      class:
-        "text-solid-success-icon group-hover:text-solid-success-icon-hover group-active:text-solid-success-icon-active",
-    },
-    {
-      variant: "solid",
-      color: "info",
-      isDisabled: false,
-      class:
-        "text-solid-info-icon group-hover:text-solid-info-icon-hover group-active:text-solid-info-icon-active",
-    },
-    {
-      variant: "solid",
-      color: "warning",
-      isDisabled: false,
-      class:
-        "text-solid-warning-icon group-hover:text-solid-warning-icon-hover group-active:text-solid-warning-icon-active",
-    },
-    {
-      variant: "solid",
-      color: "danger",
-      isDisabled: false,
-      class:
-        "text-solid-danger-icon group-hover:text-solid-danger-icon-hover group-active:text-solid-danger-icon-active",
-    },
-
-    // soft + colors
-    {
-      variant: "soft",
-      color: "primary",
-      isDisabled: false,
-      class:
-        "text-soft-primary-icon group-hover:text-soft-primary-icon-hover group-active:text-soft-primary-icon-active",
-    },
-    {
-      variant: "soft",
-      color: "neutral",
-      isDisabled: false,
-      class:
-        "text-soft-neutral-icon group-hover:text-soft-neutral-icon-hover group-active:text-soft-neutral-icon-active",
-    },
-    {
-      variant: "soft",
-      color: "success",
-      isDisabled: false,
-      class:
-        "text-soft-success-icon group-hover:text-soft-success-icon-hover group-active:text-soft-success-icon-active",
-    },
-    {
-      variant: "soft",
-      color: "info",
-      isDisabled: false,
-      class:
-        "text-soft-info-icon group-hover:text-soft-info-icon-hover group-active:text-soft-info-icon-active",
-    },
-    {
-      variant: "soft",
-      color: "warning",
-      isDisabled: false,
-      class:
-        "text-soft-warning-icon group-hover:text-soft-warning-icon-hover group-active:text-soft-warning-icon-active",
-    },
-    {
-      variant: "soft",
-      color: "danger",
-      isDisabled: false,
-      class:
-        "text-soft-danger-icon group-hover:text-soft-danger-icon-hover group-active:text-soft-danger-icon-active",
-    },
-
-    // outlined + colors
-    {
-      variant: "outlined",
-      color: "primary",
-      isDisabled: false,
-      class:
-        "text-outlined-primary-icon group-hover:text-outlined-primary-icon-hover group-active:text-outlined-primary-icon-active",
-    },
-    {
-      variant: "outlined",
-      color: "neutral",
-      isDisabled: false,
-      class:
-        "text-outlined-neutral-icon group-hover:text-outlined-neutral-icon-hover group-active:text-outlined-neutral-icon-active",
-    },
-    {
-      variant: "outlined",
-      color: "success",
-      isDisabled: false,
-      class:
-        "text-outlined-success-icon group-hover:text-outlined-success-icon-hover group-active:text-outlined-success-icon-active",
-    },
-    {
-      variant: "outlined",
-      color: "info",
-      isDisabled: false,
-      class:
-        "text-outlined-info-icon group-hover:text-outlined-info-icon-hover group-active:text-outlined-info-icon-active",
-    },
-    {
-      variant: "outlined",
-      color: "warning",
-      isDisabled: false,
-      class:
-        "text-outlined-warning-icon group-hover:text-outlined-warning-icon-hover group-active:text-outlined-warning-icon-active",
-    },
-    {
-      variant: "outlined",
-      color: "danger",
-      isDisabled: false,
-      class:
-        "text-outlined-danger-icon group-hover:text-outlined-danger-icon-hover group-active:text-outlined-danger-icon-active",
-    },
-
-    // ghost + colors
-    {
-      variant: "ghost",
-      color: "primary",
-      isDisabled: false,
-      class:
-        "text-ghost-primary-icon group-hover:text-ghost-primary-icon-hover group-active:text-ghost-primary-icon-active",
-    },
-    {
-      variant: "ghost",
-      color: "neutral",
-      isDisabled: false,
-      class:
-        "text-ghost-neutral-icon group-hover:text-ghost-neutral-icon-hover group-active:text-ghost-neutral-icon-active",
-    },
-    {
-      variant: "ghost",
-      color: "success",
-      isDisabled: false,
-      class:
-        "text-ghost-success-icon group-hover:text-ghost-success-icon-hover group-active:text-ghost-success-icon-active",
-    },
-    {
-      variant: "ghost",
-      color: "info",
-      isDisabled: false,
-      class:
-        "text-ghost-info-icon group-hover:text-ghost-info-icon-hover group-active:text-ghost-info-icon-active",
-    },
-    {
-      variant: "ghost",
-      color: "warning",
-      isDisabled: false,
-      class:
-        "text-ghost-warning-icon group-hover:text-ghost-warning-icon-hover group-active:text-ghost-warning-icon-active",
-    },
-    {
-      variant: "ghost",
-      color: "danger",
-      isDisabled: false,
-      class:
-        "text-ghost-danger-icon group-hover:text-ghost-danger-icon-hover group-active:text-ghost-danger-icon-active",
-    },
-
     // start, end and loading icons in rectangle button (e.g: Button)
     { size: "xs", isIconOnly: false, class: "text-base" },
     { size: "sm", isIconOnly: false, class: "text-base" },

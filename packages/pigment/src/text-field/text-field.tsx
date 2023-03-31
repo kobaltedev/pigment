@@ -1,6 +1,5 @@
 import { TextField as KTextField, useLocale } from "@kobalte/core";
 import { callHandler } from "@kobalte/utils";
-import { mergeRefs } from "@solid-primitives/refs";
 import {
   ComponentProps,
   createMemo,
@@ -38,7 +37,7 @@ export function TextField(props: TextFieldProps) {
       isInvalid: false,
       isDisabled: false,
       inputProps: {},
-      errorIcon: () => <ExclamationCircleIcon />,
+      errorIcon: (() => <ExclamationCircleIcon />) as unknown as JSX.Element,
     },
     props
   );
@@ -110,13 +109,13 @@ export function TextField(props: TextFieldProps) {
     partialVariantProps
   );
 
-  const onInputFocus: JSX.EventHandlerUnion<HTMLInputElement, FocusEvent> = e => {
-    callHandler<any, FocusEvent>(e, local.inputProps?.onFocus);
+  const onInputFocus: JSX.FocusEventHandlerUnion<HTMLInputElement, FocusEvent> = e => {
+    callHandler<any, FocusEvent>(e, local.inputProps?.onFocus as any);
     setIsFocused(true);
   };
 
-  const onInputBlur: JSX.EventHandlerUnion<HTMLInputElement, FocusEvent> = e => {
-    callHandler<any, FocusEvent>(e, local.inputProps?.onBlur);
+  const onInputBlur: JSX.FocusEventHandlerUnion<HTMLInputElement, FocusEvent> = e => {
+    callHandler<any, FocusEvent>(e, local.inputProps?.onBlur as any);
     setIsFocused(false);
   };
 
@@ -144,7 +143,9 @@ export function TextField(props: TextFieldProps) {
         >
           {label()}
           <Show when={local.hasRequiredIndicator && others.isRequired}>
-            <span class="text-text-danger ui-group-disabled:text-disabled-text ml-0.5">*</span>
+            <span class="text-content-danger ui-group-disabled:text-content-disabled ml-0.5">
+              *
+            </span>
           </Show>
         </KTextField.Label>
       </Show>
@@ -198,7 +199,7 @@ export function TextField(props: TextFieldProps) {
       <Show when={showDescription()}>
         <KTextField.Description
           class={cn(
-            "text-text-subtler",
+            "text-content-subtler",
             textFieldSupportTextVariants(variantProps),
             textFieldStaticClass("description"),
             themeClasses.description,
@@ -211,7 +212,7 @@ export function TextField(props: TextFieldProps) {
       <Show when={showError()}>
         <KTextField.ErrorMessage
           class={cn(
-            "flex items-center gap-x-1 text-text-danger",
+            "flex items-center gap-x-1 text-content-danger",
             textFieldSupportTextVariants(variantProps),
             textFieldStaticClass("error"),
             themeClasses.error,
@@ -222,7 +223,7 @@ export function TextField(props: TextFieldProps) {
             <span
               aria-hidden="true"
               class={cn(
-                "reset-svg text-sm text-icon-danger ui-group-disabled:text-disabled-icon",
+                "reset-svg text-sm",
                 textFieldStaticClass("errorIcon"),
                 themeClasses.errorIcon,
                 local.slotClasses?.errorIcon

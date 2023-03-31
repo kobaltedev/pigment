@@ -1,28 +1,25 @@
 import { Alert, As, Button, Checkbox, LinkButton, Select, TextField } from "@kobalte/pigment";
-import { createBreakpoints } from "@solid-primitives/media";
 import { Link } from "@solidjs/router";
 
 import { Footer, GitHubIcon, Header, SearchIcon } from "../components";
 
 export default function Index() {
-  const matches = createBreakpoints({ lg: "1024px" });
-
   return (
     <>
       <Header />
       <div class="flex flex-col gap-6">
-        <section class="relative flex flex-col justify-center h-[calc(100vh-55px)]">
+        <section class="h-screen flex flex-col justify-center">
           <div class="flex flex-row justify-center px-4 md:gap-24">
             <div class="flex max-w-3xl flex-col gap-4 sm:gap-0 sm:pb-24">
               <div class="flex flex-col gap-5 mb-5">
-                <h1 class="text-[40px] font-bold text-text-bold leading-tight sm:text-5xl lg:text-6xl">
+                <h1 class="text-[40px] font-bold leading-tight sm:text-5xl lg:text-6xl">
                   <span>UI components for the </span>
-                  <span class="text-[40px] font-bold leading-none text-solid-primary-bg sm:text-5xl lg:text-6xl">
+                  <span class="text-[40px] font-bold leading-none text-solid-primary-surface sm:text-5xl lg:text-6xl">
                     SolidJS
                   </span>
                   <span> era</span>
                 </h1>
-                <p class="pr-10 text-base text-content2">
+                <p class="pr-10 text-base text-content-subtle">
                   Pigment is a full-featured UI library for SolidJS built with Kobalte and Tailwind
                   CSS. It provides ready to use components for building web applications with a
                   consistent look and feel.
@@ -43,7 +40,7 @@ export default function Index() {
             </div>
             <div class="hidden w-full max-w-sm flex-col items-center gap-3 -mt-8 lg:flex">
               <TextField
-                startDecorator={<SearchIcon class="h-4 w-4 mx-1.5 text-outlined-input-icon" />}
+                startDecorator={<SearchIcon class="h-4 w-4 mx-1.5 text-outlined-input-content" />}
                 placeholder="Search"
               />
               <Alert
@@ -57,40 +54,21 @@ export default function Index() {
               </Alert>
               <div class="flex w-full justify-center items-start gap-2">
                 <Select
-                  isOpen={matches.lg}
                   class="w-full max-w-[200px]"
-                  defaultValue="Soft"
                   options={["Solid", "Soft", "Outlined", "Ghost"]}
-                  placeholder="Select"
-                  onInteractOutside={e => e.preventDefault()}
+                  placeholder="Select a variant"
                 />
                 <div class="flex flex-col space-y-2">
                   <Button>Button</Button>
-                  <Checkbox label="Checkbox" isChecked />
+                  <Checkbox label="Checkbox" defaultIsChecked />
                 </div>
               </div>
             </div>
           </div>
-          <div class="absolute left-1/2 bottom-8 flex items-end justify-center text-text-subtler">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <polyline points="7 13 12 18 17 13"></polyline>
-              <polyline points="7 6 12 11 17 6"></polyline>
-            </svg>
-          </div>
         </section>
-        <section class="h-[calc(100vh-55px)] flex flex-col justify-center gap-10 px-4 md:gap-12 lg:py-28 xl:px-0">
+        <section class="h-screen flex flex-col justify-center gap-10 px-4 md:gap-12 lg:py-28 xl:px-0">
           <div class="flex flex-col items-center gap-3">
-            <span class="text-center text-lg font-semibold text-primary-600 uppercase">
+            <span class="text-center text-base font-semibold text-solid-primary-surface uppercase">
               Iterate fast
             </span>
             <div class="max-w-lg">
@@ -100,8 +78,8 @@ export default function Index() {
             </div>
           </div>
           <div class="mx-auto flex w-full max-w-7xl flex-wrap justify-center justify-items-start gap-4">
-            <div class="flex flex-col gap-3 max-w-sm w-full bg-surface-sunken-bg p-6 rounded-md">
-              <div class="flex h-fit w-fit flex-col items-center justify-center rounded-full bg-primary-100 text-primary-600 p-2">
+            <div class="flex flex-col gap-4 max-w-sm w-full bg-raised-surface shadow-raised p-6 rounded-md">
+              <div class="flex h-fit w-fit flex-col items-center justify-center rounded-full bg-soft-primary-surface text-soft-primary-content p-3">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -119,13 +97,15 @@ export default function Index() {
                   <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
                 </svg>
               </div>
-              <div class="flex flex-col gap-3">
+              <div class="flex flex-col gap-2">
                 <span class="text-2xl font-semibold">Simple</span>
-                <p>Designed to expose a minimalist API that help you speed up your development.</p>
+                <p>
+                  Designed to expose a minimalist API so that you can quickly build what you want.
+                </p>
               </div>
             </div>
-            <div class="flex flex-col gap-3 max-w-sm w-full bg-surface-sunken-bg p-6 rounded-md">
-              <div class="flex h-fit w-fit flex-col items-center justify-center rounded-full bg-primary-100 text-primary-600 p-2">
+            <div class="flex flex-col gap-4 max-w-sm w-full bg-raised-surface shadow-raised p-6 rounded-md">
+              <div class="flex h-fit w-fit flex-col items-center justify-center rounded-full bg-soft-primary-surface text-soft-primary-content p-3">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -144,14 +124,16 @@ export default function Index() {
                   <path d="M13.76 17.52c.19-.58.27-1.2.23-1.84a5 5 0 0 0-5.31-4.67c-.65.04-1.25.2-1.8.46"></path>
                 </svg>
               </div>
-              <span class="text-2xl font-semibold">Accessible</span>
-              <p>
-                Built on top of Kobalte a UI toolkit for building accessible web apps and design
-                systems with SolidJS.
-              </p>
+              <div class="flex flex-col gap-2">
+                <span class="text-2xl font-semibold">Accessible</span>
+                <p>
+                  Built on top of Kobalte a UI toolkit for building accessible web apps and design
+                  systems with SolidJS.
+                </p>
+              </div>
             </div>
-            <div class="flex flex-col gap-3 max-w-sm w-full bg-surface-sunken-bg p-6 rounded-md">
-              <div class="flex h-fit w-fit flex-col items-center justify-center rounded-full bg-primary-100 text-primary-600 p-2">
+            <div class="flex flex-col gap-4 max-w-sm w-full bg-raised-surface shadow-raised p-6 rounded-md">
+              <div class="flex h-fit w-fit flex-col items-center justify-center rounded-full bg-soft-primary-surface text-soft-primary-content p-3">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -170,7 +152,7 @@ export default function Index() {
                   <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
                 </svg>
               </div>
-              <div class="flex flex-col gap-3">
+              <div class="flex flex-col gap-2">
                 <span class="text-2xl font-semibold">Consistent</span>
                 <p>
                   Comes with predefined themes with support for light and dark modes that ensures a

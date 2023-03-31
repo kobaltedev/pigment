@@ -87,8 +87,8 @@ export const WithDecorator: Story = {
     description: "Choose wisely.",
     error: "Please select a fruit.",
     options: ["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"],
-    startDecorator: () => <InfoCircleIcon class="h-4 w-4 mx-2.5" />,
-    endDecorator: () => (
+    startDecorator: <InfoCircleIcon class="h-4 w-4 mx-2.5" />,
+    endDecorator: (
       <Badge size="sm" variant="soft" color="danger" class="mx-2.5">
         +5
       </Badge>

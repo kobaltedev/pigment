@@ -14,9 +14,9 @@ export const checkboxControlVariants = cva(
   {
     variants: {
       variant: {
-        soft: "bg-soft-input-bg hover:bg-soft-input-bg-hover active:bg-soft-input-bg-active",
+        soft: "bg-soft-input-surface hover:bg-soft-input-surface-hover active:bg-soft-input-surface-active",
         outlined:
-          "bg-outlined-input-bg hover:bg-outlined-input-bg-hover active:bg-outlined-input-bg-active",
+          "bg-outlined-input-surface hover:bg-outlined-input-surface-hover active:bg-outlined-input-surface-active",
       },
       size: {
         sm: "h-4 w-4 rounded text-base",
@@ -27,7 +27,7 @@ export const checkboxControlVariants = cva(
         false: "",
       },
       isDisabled: {
-        true: "ui-group-disabled:text-disabled-text ui-group-disabled:cursor-not-allowed",
+        true: "ui-group-disabled:text-content-disabled ui-group-disabled:cursor-not-allowed",
         false: "",
       },
     },
@@ -38,14 +38,14 @@ export const checkboxControlVariants = cva(
         isInvalid: false,
         isDisabled: false,
         class:
-          "border-soft-input-border hover:border-soft-input-border-hover active:border-soft-input-border-active",
+          "border-soft-input-line hover:border-soft-input-line-hover active:border-soft-input-line-active",
       },
       {
         variant: "outlined",
         isInvalid: false,
         isDisabled: false,
         class:
-          "border-outlined-input-border hover:border-outlined-input-border-hover active:border-outlined-input-border-active",
+          "border-outlined-input-line hover:border-outlined-input-line-hover active:border-outlined-input-line-active",
       },
 
       // all variants + colors
@@ -54,13 +54,13 @@ export const checkboxControlVariants = cva(
         isDisabled: false,
         class: [
           // safe to put text colors here because `KCheckbox.Indicator` is only rendered when checked or indeterminate
-          "text-solid-selected-text hover:text-solid-selected-text-hover active:text-solid-selected-text-active",
+          "text-solid-selected-content hover:text-solid-selected-content-hover active:text-solid-selected-content-active",
           // checked
-          "peer-checked:bg-solid-selected-bg peer-checked:hover:bg-solid-selected-bg-hover peer-checked:active:bg-solid-selected-bg-active",
-          "peer-checked:border-solid-selected-border peer-checked:hover:border-solid-selected-border-hover peer-checked:active:border-solid-selected-border-active",
+          "peer-checked:bg-solid-selected-surface peer-checked:hover:bg-solid-selected-surface-hover peer-checked:active:bg-solid-selected-surface-active",
+          "peer-checked:border-solid-selected-line peer-checked:hover:border-solid-selected-line-hover peer-checked:active:border-solid-selected-line-active",
           // indeterminate
-          "peer-indeterminate:bg-solid-selected-bg peer-indeterminate:hover:bg-solid-selected-bg-hover peer-indeterminate:active:bg-solid-selected-bg-active",
-          "peer-indeterminate:border-solid-selected-border peer-indeterminate:hover:border-solid-selected-border-hover peer-indeterminate:active:border-solid-selected-border-active",
+          "peer-indeterminate:bg-solid-selected-surface peer-indeterminate:hover:bg-solid-selected-surface-hover peer-indeterminate:active:bg-solid-selected-surface-active",
+          "peer-indeterminate:border-solid-selected-line peer-indeterminate:hover:border-solid-selected-line-hover peer-indeterminate:active:border-solid-selected-line-active",
         ],
       },
 
@@ -69,14 +69,14 @@ export const checkboxControlVariants = cva(
         isInvalid: true,
         isDisabled: false,
         class: [
-          "text-solid-danger-text hover:text-solid-danger-text-hover active:text-solid-danger-text-active",
-          "border-solid-danger-border hover:border-solid-danger-border-hover active:border-solid-danger-border-active",
+          "text-solid-danger-content hover:text-solid-danger-content-hover active:text-solid-danger-content-active",
+          "border-solid-danger-line hover:border-solid-danger-line-hover active:border-solid-danger-line-active",
           // checked
-          "peer-checked:bg-solid-danger-bg peer-checked:hover:bg-solid-danger-bg-hover peer-checked:active:bg-solid-danger-bg-active",
-          "peer-checked:border-solid-danger-border peer-checked:hover:border-solid-danger-border-hover peer-checked:active:border-solid-danger-border-active",
+          "peer-checked:bg-solid-danger-surface peer-checked:hover:bg-solid-danger-surface-hover peer-checked:active:bg-solid-danger-surface-active",
+          "peer-checked:border-solid-danger-line peer-checked:hover:border-solid-danger-line-hover peer-checked:active:border-solid-danger-line-active",
           // indeterminate
-          "peer-indeterminate:bg-solid-danger-bg peer-indeterminate:hover:bg-solid-danger-bg-hover peer-indeterminate:active:bg-solid-danger-bg-active",
-          "peer-indeterminate:border-solid-danger-border peer-indeterminate:hover:border-solid-danger-border-hover peer-indeterminate:active:border-solid-danger-border-active",
+          "peer-indeterminate:bg-solid-danger-surface peer-indeterminate:hover:bg-solid-danger-surface-hover peer-indeterminate:active:bg-solid-danger-surface-active",
+          "peer-indeterminate:border-solid-danger-line peer-indeterminate:hover:border-solid-danger-line-hover peer-indeterminate:active:border-solid-danger-line-active",
         ],
       },
 
@@ -92,12 +92,12 @@ export const checkboxControlVariants = cva(
       {
         variant: "soft",
         isDisabled: true,
-        class: "ui-group-disabled:bg-disabled-bg ui-group-disabled:border-transparent",
+        class: "ui-group-disabled:bg-surface-disabled ui-group-disabled:border-transparent",
       },
       {
         variant: "outlined",
         isDisabled: true,
-        class: "ui-group-disabled:bg-transparent ui-group-disabled:border-disabled-border",
+        class: "ui-group-disabled:bg-transparent ui-group-disabled:border-line-disabled",
       },
     ],
   }
@@ -113,7 +113,7 @@ export const checkboxLabelWrapperVariants = cva("flex flex-col grow shrink", {
 });
 
 export const checkboxLabelVariants = cva(
-  "text-outlined-input-text ui-group-disabled:text-disabled-text ui-group-disabled:cursor-not-allowed",
+  "text-outlined-input-content ui-group-disabled:text-content-disabled ui-group-disabled:cursor-not-allowed",
   {
     variants: {
       size: {
@@ -124,7 +124,7 @@ export const checkboxLabelVariants = cva(
   }
 );
 
-export const checkboxSupportTextVariants = cva("ui-group-disabled:text-disabled-text", {
+export const checkboxSupportTextVariants = cva("ui-group-disabled:text-content-disabled", {
   variants: {
     size: {
       sm: "text-xs",

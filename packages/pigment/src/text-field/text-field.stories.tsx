@@ -79,8 +79,8 @@ export const WithDecorator: Story = {
     label: "E-mail",
     description: "We will never share your email.",
     error: "Please enter a valid email address.",
-    startDecorator: () => <InfoCircleIcon class="h-4 w-4 mx-2.5" />,
-    endDecorator: () => (
+    startDecorator: <InfoCircleIcon class="h-4 w-4 mx-2.5" />,
+    endDecorator: (
       <Button size="sm" variant="solid" color="neutral" class="rounded-l-none z-10 ml-2.5">
         Search
       </Button>
