@@ -534,7 +534,7 @@ export function getBaseTheme(vars: VarsFn): Theme {
         overlaySurfaceHover: vars("colors.neutral700"),
         overlaySurfaceActive: vars("colors.neutral600"),
 
-        sunkenSurface: "#121212",
+        sunkenSurface: "#01040e",
 
         subtleSurface: "transparent",
         subtleSurfaceHover: vars("colors.neutral200A"),
