@@ -15,7 +15,7 @@ export function Badge(props: BadgeProps) {
     {
       variant: "soft",
       color: "neutral",
-      size: "sm",
+      size: "md",
     },
     props
   );

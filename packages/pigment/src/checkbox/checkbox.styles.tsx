@@ -3,8 +3,9 @@ import { cva, VariantProps } from "class-variance-authority";
 export const checkboxRootVariants = cva("group inline-flex", {
   variants: {
     size: {
-      sm: "gap-x-2",
-      md: "gap-x-3",
+      sm: "gap-x-1.5",
+      md: "gap-x-2",
+      lg: "gap-x-2.5",
     },
   },
 });
@@ -21,6 +22,7 @@ export const checkboxControlVariants = cva(
       size: {
         sm: "h-4 w-4 rounded text-base",
         md: "h-5 w-5 rounded text-xl",
+        lg: "h-6 w-6 rounded text-2xl",
       },
       isInvalid: {
         true: "",
@@ -108,6 +110,7 @@ export const checkboxLabelWrapperVariants = cva("flex flex-col grow shrink", {
     size: {
       sm: "gap-y-0.5",
       md: "gap-y-1",
+      lg: "gap-y-1.5",
     },
   },
 });
@@ -119,6 +122,7 @@ export const checkboxLabelVariants = cva(
       size: {
         sm: "text-sm",
         md: "text-base",
+        lg: "text-lg",
       },
     },
   }
@@ -129,6 +133,7 @@ export const checkboxSupportTextVariants = cva("ui-group-disabled:text-content-d
     size: {
       sm: "text-xs",
       md: "text-sm",
+      lg: "text-base",
     },
   },
 });

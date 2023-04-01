@@ -24,7 +24,7 @@ export function Checkbox(props: CheckboxProps) {
     "Checkbox",
     {
       variant: "outlined",
-      size: "sm",
+      size: "md",
       labelPlacement: "end",
       isInvalid: false,
       isDisabled: false,
@@ -183,7 +183,7 @@ export function Checkbox(props: CheckboxProps) {
                   <span
                     aria-hidden="true"
                     class={cn(
-                      "reset-svg text-sm",
+                      "reset-svg",
                       checkboxStaticClass("errorIcon"),
                       themeClasses.errorIcon,
                       local.slotClasses?.errorIcon

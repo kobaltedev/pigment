@@ -10,8 +10,9 @@ export const textFieldControlVariants = cva(
           "bg-outlined-input-surface hover:bg-outlined-input-surface-hover active:bg-outlined-input-surface-active",
       },
       size: {
-        sm: "h-9 rounded-md text-sm",
-        md: "h-11 rounded-md text-base",
+        sm: "h-7 rounded text-xs",
+        md: "h-9 rounded-md text-sm",
+        lg: "h-11 rounded-md text-base",
       },
       isFocused: {
         true: "",
@@ -105,8 +106,9 @@ export const textFieldInputVariants = cva(
         outlined: "",
       },
       size: {
-        sm: "text-sm",
-        md: "text-base",
+        sm: "",
+        md: "",
+        lg: "",
       },
       hasLeftDecorator: {
         true: "pl-0",
@@ -135,12 +137,14 @@ export const textFieldInputVariants = cva(
       },
 
       // size + no left decorator
-      { size: "sm", hasLeftDecorator: false, class: "pl-2.5" },
-      { size: "md", hasLeftDecorator: false, class: "pl-3.5" },
+      { size: "sm", hasLeftDecorator: false, class: "pl-2" },
+      { size: "md", hasLeftDecorator: false, class: "pl-3" },
+      { size: "lg", hasLeftDecorator: false, class: "pl-4" },
 
       // size + no right decorator
-      { size: "sm", hasRightDecorator: false, class: "pr-2.5" },
-      { size: "md", hasRightDecorator: false, class: "pr-3.5" },
+      { size: "sm", hasRightDecorator: false, class: "pr-2" },
+      { size: "md", hasRightDecorator: false, class: "pr-3" },
+      { size: "lg", hasRightDecorator: false, class: "pr-4" },
     ],
   }
 );
@@ -159,8 +163,9 @@ export const textFieldTextAreaVariants = cva(
           "bg-outlined-input-surface hover:bg-outlined-input-surface-hover active:bg-outlined-input-surface-active",
       },
       size: {
-        sm: "px-2.5 py-2.5 rounded-md text-sm",
-        md: "px-3.5 py-3.5 rounded-md text-base",
+        sm: "p-2 rounded text-xs",
+        md: "p-3 rounded-md text-sm",
+        lg: "p-4 rounded-md text-base",
       },
       isInvalid: {
         true: "",
@@ -231,8 +236,9 @@ export const textFieldLabelVariants = cva(
   {
     variants: {
       size: {
-        sm: "mb-1 text-sm",
-        md: "mb-1.5 text-base",
+        sm: "mb-0.5 text-xs",
+        md: "mb-1 text-sm",
+        lg: "mb-1.5 text-base",
       },
     },
   }
@@ -241,8 +247,9 @@ export const textFieldLabelVariants = cva(
 export const textFieldSupportTextVariants = cva("grow-0 ui-group-disabled:text-content-disabled", {
   variants: {
     size: {
-      sm: "mt-1.5 text-xs",
-      md: "mt-2 text-sm",
+      sm: "mt-1 text-xs",
+      md: "mt-1.5 text-sm",
+      lg: "mt-2 text-base",
     },
   },
 });

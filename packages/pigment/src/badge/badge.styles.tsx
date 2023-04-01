@@ -18,9 +18,9 @@ export const badgeVariants = cva(
         danger: "",
       },
       size: {
-        xs: "h-5 px-2 text-xs",
-        sm: "h-6 px-2.5 text-sm",
-        md: "h-7 px-3 text-sm",
+        sm: "h-5 px-2 text-xs",
+        md: "h-6 px-2.5 text-sm",
+        lg: "h-7 px-3 text-base",
       },
     },
     compoundVariants: [

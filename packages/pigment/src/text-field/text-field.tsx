@@ -33,7 +33,7 @@ export function TextField(props: TextFieldProps) {
       hasRequiredIndicator: true,
       hasErrorIcon: true,
       variant: "outlined",
-      size: "sm",
+      size: "md",
       isInvalid: false,
       isDisabled: false,
       inputProps: {},
@@ -223,7 +223,7 @@ export function TextField(props: TextFieldProps) {
             <span
               aria-hidden="true"
               class={cn(
-                "reset-svg text-sm",
+                "reset-svg",
                 textFieldStaticClass("errorIcon"),
                 themeClasses.errorIcon,
                 local.slotClasses?.errorIcon

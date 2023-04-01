@@ -17,7 +17,7 @@ export default {
       control: { type: "select" },
     },
     size: {
-      options: ["sm", "md"],
+      options: ["sm", "md", "lg"],
       control: { type: "select" },
     },
     hasDropdownIcon: {
@@ -57,7 +57,7 @@ export default {
 export const Default: Story = {
   args: {
     variant: "outlined",
-    size: "sm",
+    size: "md",
     hasDropdownIcon: true,
     hasErrorIcon: true,
     isInvalid: false,
@@ -75,7 +75,7 @@ export const Default: Story = {
 export const WithDecorator: Story = {
   args: {
     variant: "outlined",
-    size: "sm",
+    size: "md",
     hasDropdownIcon: true,
     hasErrorIcon: true,
     isInvalid: false,
@@ -99,7 +99,7 @@ export const WithDecorator: Story = {
 export const WithObject: Story = {
   args: {
     variant: "outlined",
-    size: "sm",
+    size: "md",
     hasDropdownIcon: true,
     hasErrorIcon: true,
     isInvalid: false,
@@ -123,7 +123,7 @@ export const WithObject: Story = {
 export const WithOptionGroup: Story = {
   args: {
     variant: "outlined",
-    size: "sm",
+    size: "md",
     hasDropdownIcon: true,
     hasErrorIcon: true,
     isInvalid: false,
@@ -141,7 +141,7 @@ export const WithOptionGroup: Story = {
           { value: "apple", label: "Apple", disabled: false },
           { value: "banana", label: "Banana", disabled: false },
           { value: "blueberry", label: "Blueberry", disabled: false },
-          { value: "grapes", label: "Grapes", disabled: true },
+          { value: "grapes", label: "Grapes", disabled: false },
           { value: "pineapple", label: "Pineapple", disabled: false },
         ],
       },

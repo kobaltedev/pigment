@@ -10,7 +10,7 @@ export default {
   title: "CloseButton",
   argTypes: {
     size: {
-      options: ["xs", "sm", "md", "lg", "xl"],
+      options: ["sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
     isDisabled: {
@@ -22,7 +22,7 @@ export default {
 
 export const Default: Story = {
   args: {
-    size: "sm",
+    size: "md",
     isDisabled: false,
   },
 };

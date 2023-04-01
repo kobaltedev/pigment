@@ -43,13 +43,7 @@ export default function Index() {
                 startDecorator={<SearchIcon class="h-4 w-4 mx-1.5 text-outlined-input-content" />}
                 placeholder="Search"
               />
-              <Alert
-                variant="soft"
-                color="primary"
-                title="Software update"
-                isMultiline
-                class="w-full"
-              >
+              <Alert title="Software update" isMultiline class="w-full">
                 A new software update is available.
               </Alert>
               <div class="flex w-full justify-center items-start gap-2">

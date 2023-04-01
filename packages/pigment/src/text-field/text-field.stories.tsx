@@ -16,7 +16,7 @@ export default {
       control: { type: "select" },
     },
     size: {
-      options: ["sm", "md"],
+      options: ["sm", "md", "lg"],
       control: { type: "select" },
     },
     hasErrorIcon: {
@@ -53,7 +53,7 @@ export default {
 export const Default: Story = {
   args: {
     variant: "outlined",
-    size: "sm",
+    size: "md",
     hasErrorIcon: true,
     isInvalid: false,
     isRequired: false,
@@ -69,7 +69,7 @@ export const Default: Story = {
 export const WithDecorator: Story = {
   args: {
     variant: "outlined",
-    size: "sm",
+    size: "md",
     hasErrorIcon: true,
     isInvalid: false,
     isRequired: false,
@@ -81,7 +81,7 @@ export const WithDecorator: Story = {
     error: "Please enter a valid email address.",
     startDecorator: <InfoCircleIcon class="h-4 w-4 mx-2.5" />,
     endDecorator: (
-      <Button size="sm" variant="solid" color="neutral" class="rounded-l-none z-10 ml-2.5">
+      <Button size="md" variant="solid" color="neutral" class="rounded-l-none z-10 ml-2.5">
         Search
       </Button>
     ),

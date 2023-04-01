@@ -468,10 +468,10 @@ export function getBaseTheme(vars: VarsFn): Theme {
         softInputLine: vars("colors.neutral200"),
         softInputContentHover: vars("colors.neutral800"),
         softInputSurfaceHover: vars("colors.neutral100"),
-        softInputLineHover: vars("colors.neutral200"),
+        softInputLineHover: vars("colors.neutral300"),
         softInputContentActive: vars("colors.neutral800"),
         softInputSurfaceActive: vars("colors.neutral100"),
-        softInputLineActive: vars("colors.neutral200"),
+        softInputLineActive: vars("colors.focusRing"),
 
         /* Outlined */
         outlinedInputContent: vars("colors.neutral800"),
@@ -479,10 +479,10 @@ export function getBaseTheme(vars: VarsFn): Theme {
         outlinedInputLine: vars("colors.neutral300A"),
         outlinedInputContentHover: vars("colors.neutral800"),
         outlinedInputSurfaceHover: "transparent",
-        outlinedInputLineHover: vars("colors.neutral300A"),
+        outlinedInputLineHover: vars("colors.neutral400A"),
         outlinedInputContentActive: vars("colors.neutral800"),
         outlinedInputSurfaceActive: "transparent",
-        outlinedInputLineActive: vars("colors.neutral300A"),
+        outlinedInputLineActive: vars("colors.focusRing"),
       },
       shadows: {
         raised: "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)",
@@ -867,10 +867,10 @@ export function getBaseTheme(vars: VarsFn): Theme {
         softInputLine: vars("colors.neutral700"),
         softInputContentHover: vars("colors.neutral100"),
         softInputSurfaceHover: vars("colors.neutral800"),
-        softInputLineHover: vars("colors.neutral700"),
+        softInputLineHover: vars("colors.neutral600"),
         softInputContentActive: vars("colors.neutral100"),
         softInputSurfaceActive: vars("colors.neutral800"),
-        softInputLineActive: vars("colors.neutral700"),
+        softInputLineActive: vars("colors.focusRing"),
 
         /* Outlined */
         outlinedInputContent: vars("colors.neutral100"),
@@ -878,10 +878,10 @@ export function getBaseTheme(vars: VarsFn): Theme {
         outlinedInputLine: vars("colors.neutral300A"),
         outlinedInputContentHover: vars("colors.neutral100"),
         outlinedInputSurfaceHover: "transparent",
-        outlinedInputLineHover: vars("colors.neutral300A"),
+        outlinedInputLineHover: vars("colors.neutral400A"),
         outlinedInputContentActive: vars("colors.neutral100"),
         outlinedInputSurfaceActive: "transparent",
-        outlinedInputLineActive: vars("colors.neutral300A"),
+        outlinedInputLineActive: vars("colors.focusRing"),
       },
       shadows: {
         raised:

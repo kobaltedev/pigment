@@ -31,7 +31,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       hasSelectedIcon: true,
       hasErrorIcon: true,
       variant: "outlined",
-      size: "sm",
+      size: "md",
       isInvalid: false,
       isDisabled: false,
       allowEmptySelection: false,
@@ -135,6 +135,17 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
     partialVariantProps
   );
 
+  const dropdownGutter = () => {
+    switch (variantProps.size) {
+      case "sm":
+        return 4;
+      case "md":
+        return 6;
+      case "lg":
+        return 8;
+    }
+  };
+
   const getOptionLabel = (option: Option) => {
     if (isString(option)) {
       return option;
@@ -199,6 +210,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       )}
       validationState={variantProps.isInvalid ? "invalid" : undefined}
       disallowEmptySelection={!local.allowEmptySelection}
+      gutter={dropdownGutter()}
       valueComponent={props => (
         <Show when={local.valueTemplate} fallback={getOptionLabel(props.item.rawValue)}>
           {local.valueTemplate?.(props.item.rawValue)}
@@ -308,7 +320,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
             <span
               aria-hidden="true"
               class={cn(
-                "reset-svg text-sm",
+                "reset-svg",
                 selectStaticClass("errorIcon"),
                 themeClasses.errorIcon,
                 local.slotClasses?.errorIcon

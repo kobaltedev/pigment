@@ -3,7 +3,7 @@ import { cva, VariantProps } from "class-variance-authority";
 export const selectButtonVariants = cva(
   [
     "appearance-none flex items-center grow border border-solid transition-colors",
-    "outline-none focus-visible:border-focus-ring",
+    "outline-none focus:border-focus-ring",
   ],
   {
     variants: {
@@ -13,8 +13,9 @@ export const selectButtonVariants = cva(
           "bg-outlined-input-surface hover:bg-outlined-input-surface-hover active:bg-outlined-input-surface-active",
       },
       size: {
-        sm: "h-9 rounded-md text-sm",
-        md: "h-11 rounded-md text-base",
+        sm: "h-7 rounded text-xs",
+        md: "h-9 rounded-md text-sm",
+        lg: "h-11 rounded-md text-base",
       },
       hasDropdownIcon: {
         true: "pr-0",
@@ -90,12 +91,14 @@ export const selectButtonVariants = cva(
       },
 
       // size + no left decorator
-      { size: "sm", hasLeftDecorator: false, class: "pl-2.5" },
-      { size: "md", hasLeftDecorator: false, class: "pl-3.5" },
+      { size: "sm", hasLeftDecorator: false, class: "pl-2" },
+      { size: "md", hasLeftDecorator: false, class: "pl-3" },
+      { size: "lg", hasLeftDecorator: false, class: "pl-4" },
 
       // size + no right decorator + no dropdown icon
-      { size: "sm", hasRightDecorator: false, hasDropdownIcon: false, class: "pr-2.5" },
-      { size: "md", hasRightDecorator: false, hasDropdownIcon: false, class: "pr-3.5" },
+      { size: "sm", hasRightDecorator: false, hasDropdownIcon: false, class: "pr-2" },
+      { size: "md", hasRightDecorator: false, hasDropdownIcon: false, class: "pr-3" },
+      { size: "lg", hasRightDecorator: false, hasDropdownIcon: false, class: "pr-4" },
     ],
   }
 );
@@ -113,15 +116,12 @@ export const selectIconVariants = cva(
         outlined: "",
       },
       size: {
-        sm: "pr-2.5 text-base",
-        md: "pr-3.5 text-lg",
+        sm: "pr-2 text-sm",
+        md: "pr-3 text-base",
+        lg: "pr-4 text-lg",
       },
       hasRightDecorator: {
         true: "pl-0",
-        false: "",
-      },
-      isInvalid: {
-        true: "",
         false: "",
       },
       isDisabled: {
@@ -130,32 +130,10 @@ export const selectIconVariants = cva(
       },
     },
     compoundVariants: [
-      // variant + colors
-      {
-        variant: "soft",
-        isInvalid: false,
-        isDisabled: false,
-        class:
-          "text-soft-input-icon hover:text-soft-input-icon-hover active:text-soft-input-icon-active",
-      },
-      {
-        variant: "outlined",
-        isInvalid: false,
-        isDisabled: false,
-        class:
-          "text-outlined-input-icon hover:text-outlined-input-icon-hover active:text-outlined-input-icon-active",
-      },
-
-      // invalid color
-      {
-        isInvalid: true,
-        isDisabled: false,
-        class: "text-icon-danger",
-      },
-
       // size + no right decorator
-      { size: "sm", hasRightDecorator: false, class: "pl-2.5" },
-      { size: "md", hasRightDecorator: false, class: "pl-3.5" },
+      { size: "sm", hasRightDecorator: false, class: "pl-2" },
+      { size: "md", hasRightDecorator: false, class: "pl-3" },
+      { size: "lg", hasRightDecorator: false, class: "pl-4" },
     ],
   }
 );
@@ -191,8 +169,9 @@ export const selectLabelVariants = cva(
   {
     variants: {
       size: {
-        sm: "mb-1 text-sm",
-        md: "mb-1.5 text-base",
+        sm: "mb-0.5 text-xs",
+        md: "mb-1 text-sm",
+        lg: "mb-1.5 text-base",
       },
     },
   }
@@ -201,8 +180,9 @@ export const selectLabelVariants = cva(
 export const selectSupportTextVariants = cva("grow-0 ui-group-disabled:text-content-disabled", {
   variants: {
     size: {
-      sm: "mt-1.5 text-xs",
-      md: "mt-2 text-sm",
+      sm: "mt-1 text-xs",
+      md: "mt-1.5 text-sm",
+      lg: "mt-2 text-base",
     },
   },
 });
@@ -222,24 +202,26 @@ export const selectDropdownVariants = cva(
 export const selectListboxVariants = cva("flex flex-col outline-none max-h-96 overflow-y-auto", {
   variants: {
     size: {
-      sm: "gap-y-0.5 p-1.5 text-sm",
-      md: "gap-y-1 p-2 text-base",
+      sm: "p-0.5 gap-y-0.5 text-xs",
+      md: "p-1 gap-y-1 text-sm",
+      lg: "p-1.5 gap-y-1.5 text-base",
     },
   },
 });
 
-export const selectOptGroupVariants = cva("text-content-subtlest uppercase", {
+export const selectOptGroupVariants = cva("shrink-0 text-content-subtlest font-medium", {
   variants: {
     size: {
-      sm: "px-2 pt-3 text-2xs",
-      md: "px-2.5 pt-3.5 text-xs",
+      sm: "px-1.5 [&:not(:first-child)]:pt-1.5 -mb-px text-2xs",
+      md: "px-2 [&:not(:first-child)]:pt-2 -mb-0.5 text-xs",
+      lg: "px-2.5 [&:not(:first-child)]:pt-3 -mb-1 text-sm",
     },
   },
 });
 
 export const selectOptionVariants = cva(
   [
-    "group flex justify-between items-center rounded select-none outline-none ui-not-disabled:cursor-pointer",
+    "group flex shrink-0 justify-between items-center rounded select-none outline-none ui-not-disabled:cursor-pointer",
     "bg-subtle-surface ui-highlighted:bg-subtle-surface-hover ui-highlighted:active:bg-subtle-surface-active",
     "ui-selected:bg-soft-selected-surface ui-selected:ui-highlighted:bg-soft-selected-surface-hover ui-selected:ui-highlighted:active:bg-soft-selected-surface-active",
     "ui-selected:text-soft-selected-content ui-selected:ui-highlighted:text-soft-selected-content-hover ui-selected:ui-highlighted:active:text-soft-selected-content-active",
@@ -249,20 +231,22 @@ export const selectOptionVariants = cva(
   {
     variants: {
       size: {
-        sm: "p-2 gap-x-2",
-        md: "p-2.5 gap-x-2.5",
+        sm: "h-7 px-1.5 gap-x-1.5",
+        md: "h-9 px-2 gap-x-2",
+        lg: "h-11 px-2.5 gap-x-2.5",
       },
     },
   }
 );
 
 export const selectOptionIndicatorVariants = cva(
-  "reset-svg flex justify-center items-center shrink-0 leading-none pointer-events-none text-soft-selected-icon",
+  "reset-svg flex justify-center items-center shrink-0 leading-none pointer-events-none",
   {
     variants: {
       size: {
-        sm: "text-base",
-        md: "text-lg",
+        sm: "text-sm",
+        md: "text-base",
+        lg: "text-lg",
       },
     },
   }
