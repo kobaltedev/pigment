@@ -99,7 +99,7 @@ function ButtonBase(props: ButtonBaseProps) {
     {
       variant: "solid",
       color: "primary",
-      size: "sm",
+      size: "md",
       isIconOnly: false,
       isFullWidth: false,
       isDisabled: false,
@@ -217,7 +217,7 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
     {
       variant: "solid",
       color: "primary",
-      size: "sm",
+      size: "md",
       isIconOnly: false,
       isFullWidth: false,
       isDisabled: false,

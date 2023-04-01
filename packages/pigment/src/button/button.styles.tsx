@@ -26,11 +26,10 @@ export const buttonVariants = cva(
         danger: "",
       },
       size: {
-        xs: "h-7 gap-1 rounded",
-        sm: "h-9 gap-2 rounded-md",
-        md: "h-11 gap-2 rounded-md",
-        lg: "h-13 gap-2.5 rounded-md",
-        xl: "h-15 gap-3 rounded-md",
+        sm: "h-7 gap-1.5 rounded",
+        md: "h-9 gap-2 rounded-md",
+        lg: "h-11 gap-2.5 rounded-md",
+        xl: "h-13 gap-3 rounded-md",
       },
       isIconOnly: {
         true: "reset-svg p-0 leading-none",
@@ -321,18 +320,16 @@ export const buttonVariants = cva(
 
       // rectangle button (e.g: Button)
       { isIconOnly: false, isFullWidth: false, class: "w-auto" },
-      { size: "xs", isIconOnly: false, class: "px-2.5 text-sm" },
-      { size: "sm", isIconOnly: false, class: "px-4 text-sm" },
-      { size: "md", isIconOnly: false, class: "px-5 text-base" },
-      { size: "lg", isIconOnly: false, class: "px-7 text-lg" },
-      { size: "xl", isIconOnly: false, class: "px-8 text-xl" },
+      { size: "sm", isIconOnly: false, class: "px-2.5 text-xs" },
+      { size: "md", isIconOnly: false, class: "px-4 text-sm" },
+      { size: "lg", isIconOnly: false, class: "px-6 text-base" },
+      { size: "xl", isIconOnly: false, class: "px-8 text-lg" },
 
       // square button (e.g: IconButton)
-      { size: "xs", isIconOnly: true, isFullWidth: false, class: "w-7 text-xl" },
-      { size: "sm", isIconOnly: true, isFullWidth: false, class: "w-9 text-2xl" },
-      { size: "md", isIconOnly: true, isFullWidth: false, class: "w-11 text-3xl" },
-      { size: "lg", isIconOnly: true, isFullWidth: false, class: "w-13 text-4xl" },
-      { size: "xl", isIconOnly: true, isFullWidth: false, class: "w-15 text-5xl" },
+      { size: "sm", isIconOnly: true, isFullWidth: false, class: "w-7 text-lg" },
+      { size: "md", isIconOnly: true, isFullWidth: false, class: "w-9 text-2xl" },
+      { size: "lg", isIconOnly: true, isFullWidth: false, class: "w-11 text-3xl" },
+      { size: "xl", isIconOnly: true, isFullWidth: false, class: "w-13 text-4xl" },
     ],
   }
 );
@@ -340,7 +337,6 @@ export const buttonVariants = cva(
 export const buttonIconVariants = cva("reset-svg shrink-0", {
   variants: {
     size: {
-      xs: "",
       sm: "",
       md: "",
       lg: "",
@@ -352,26 +348,23 @@ export const buttonIconVariants = cva("reset-svg shrink-0", {
   },
   compoundVariants: [
     // start, end and loading icons in rectangle button (e.g: Button)
-    { size: "xs", isIconOnly: false, class: "text-base" },
     { size: "sm", isIconOnly: false, class: "text-base" },
     { size: "md", isIconOnly: false, class: "text-lg" },
     { size: "lg", isIconOnly: false, class: "text-xl" },
     { size: "xl", isIconOnly: false, class: "text-2xl" },
 
     // only loading icon in square button (e.g: IconButton)
-    { size: "xs", isIconOnly: true, class: "text-xl" },
-    { size: "sm", isIconOnly: true, class: "text-2xl" },
-    { size: "md", isIconOnly: true, class: "text-3xl" },
-    { size: "lg", isIconOnly: true, class: "text-4xl" },
-    { size: "xl", isIconOnly: true, class: "text-5xl" },
+    { size: "sm", isIconOnly: true, class: "text-lg" },
+    { size: "md", isIconOnly: true, class: "text-2xl" },
+    { size: "lg", isIconOnly: true, class: "text-3xl" },
+    { size: "xl", isIconOnly: true, class: "text-4xl" },
   ],
 });
 
 export const loadingContentVariants = cva("inline-flex items-center justify-center opacity-0", {
   variants: {
     size: {
-      xs: "gap-1",
-      sm: "gap-2",
+      sm: "gap-1.5",
       md: "gap-2",
       lg: "gap-2.5",
       xl: "gap-3",
