@@ -19,7 +19,7 @@ export default {
       control: { type: "select" },
     },
     size: {
-      options: ["xs", "sm", "md", "lg", "xl"],
+      options: ["sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
     isDisabled: {
@@ -36,9 +36,9 @@ export const Default: Story = {
   args: {
     variant: "solid",
     color: "primary",
-    size: "sm",
+    size: "md",
     isDisabled: false,
     href: "https://kobalte.dev",
-    children: () => <InfoCircleIcon />,
+    children: <InfoCircleIcon />,
   },
 };

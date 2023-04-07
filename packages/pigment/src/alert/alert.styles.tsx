@@ -31,54 +31,54 @@ export const alertVariants = cva(["flex space-x-1.5 py-3 border border-solid rou
     {
       variant: "solid",
       status: "neutral",
-      class: "text-solid-neutral-text bg-solid-neutral-bg border-solid-neutral-border",
+      class: "text-solid-neutral-content bg-solid-neutral-surface border-solid-neutral-line",
     },
     {
       variant: "solid",
       status: "success",
-      class: "text-solid-success-text bg-solid-success-bg border-solid-success-border",
+      class: "text-solid-success-content bg-solid-success-surface border-solid-success-line",
     },
     {
       variant: "solid",
       status: "info",
-      class: "text-solid-info-text bg-solid-info-bg border-solid-info-border",
+      class: "text-solid-info-content bg-solid-info-surface border-solid-info-line",
     },
     {
       variant: "solid",
       status: "warning",
-      class: "text-solid-warning-text bg-solid-warning-bg border-solid-warning-border",
+      class: "text-solid-warning-content bg-solid-warning-surface border-solid-warning-line",
     },
     {
       variant: "solid",
       status: "danger",
-      class: "text-solid-danger-text bg-solid-danger-bg border-solid-danger-border",
+      class: "text-solid-danger-content bg-solid-danger-surface border-solid-danger-line",
     },
 
     // soft + colors
     {
       variant: "soft",
       status: "neutral",
-      class: "text-soft-neutral-text bg-soft-neutral-bg border-soft-neutral-border",
+      class: "text-soft-neutral-content bg-soft-neutral-surface border-soft-neutral-line",
     },
     {
       variant: "soft",
       status: "success",
-      class: "text-soft-success-text bg-soft-success-bg border-soft-success-border",
+      class: "text-soft-success-content bg-soft-success-surface border-soft-success-line",
     },
     {
       variant: "soft",
       status: "info",
-      class: "text-soft-info-text bg-soft-info-bg border-soft-info-border",
+      class: "text-soft-info-content bg-soft-info-surface border-soft-info-line",
     },
     {
       variant: "soft",
       status: "warning",
-      class: "text-soft-warning-text bg-soft-warning-bg border-soft-warning-border",
+      class: "text-soft-warning-content bg-soft-warning-surface border-soft-warning-line",
     },
     {
       variant: "soft",
       status: "danger",
-      class: "text-soft-danger-text bg-soft-danger-bg border-soft-danger-border",
+      class: "text-soft-danger-content bg-soft-danger-surface border-soft-danger-line",
     },
   ],
 });
@@ -91,39 +91,5 @@ export const alertContentVariants = cva("flex grow", {
     },
   },
 });
-
-export const alertIconVariants = cva(
-  "flex justify-center items-center shrink-0 reset-svg h-7 w-7 text-xl leading-none",
-  {
-    variants: {
-      variant: {
-        solid: "",
-        soft: "",
-      },
-      status: {
-        neutral: "",
-        success: "",
-        info: "",
-        warning: "",
-        danger: "",
-      },
-    },
-    compoundVariants: [
-      // solid + colors
-      { variant: "solid", status: "neutral", class: "text-solid-neutral-icon" },
-      { variant: "solid", status: "success", class: "text-solid-success-icon" },
-      { variant: "solid", status: "info", class: "text-solid-info-icon" },
-      { variant: "solid", status: "warning", class: "text-solid-warning-icon" },
-      { variant: "solid", status: "danger", class: "text-solid-danger-icon" },
-
-      // soft + colors
-      { variant: "soft", status: "neutral", class: "text-soft-neutral-icon" },
-      { variant: "soft", status: "success", class: "text-soft-success-icon" },
-      { variant: "soft", status: "info", class: "text-soft-info-icon" },
-      { variant: "soft", status: "warning", class: "text-soft-warning-icon" },
-      { variant: "soft", status: "danger", class: "text-soft-danger-icon" },
-    ],
-  }
-);
 
 export type AlertVariants = VariantProps<typeof alertVariants>;

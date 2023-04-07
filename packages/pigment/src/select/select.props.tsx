@@ -96,7 +96,4 @@ export interface SelectProps<Option, OptGroup = never>
 
   /** The trailing adornment of the select. */
   endDecorator?: JSX.Element;
-
-  // TODO: replace with the one from `Select.Content` when kobalte v0.9.0 release
-  onInteractOutside?: (event: Event) => void;
 }

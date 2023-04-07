@@ -14,7 +14,7 @@ import { mergeThemeProps, useThemeClasses } from "../theme";
 import { cn } from "../utils/cn";
 import { makeStaticClass } from "../utils/make-static-class";
 import { AlertProps, AlertSlots } from "./alert.props";
-import { alertContentVariants, alertIconVariants, alertVariants } from "./alert.styles";
+import { alertContentVariants, alertVariants } from "./alert.styles";
 
 const alertStaticClass = makeStaticClass<AlertSlots>("alert");
 
@@ -78,7 +78,7 @@ export function Alert(props: AlertProps) {
       <Show when={variantProps.hasIcon}>
         <div
           class={cn(
-            alertIconVariants(variantProps),
+            "flex justify-center items-center shrink-0 reset-svg h-7 w-7 text-xl leading-none",
             alertStaticClass("icon"),
             themeClasses.icon,
             local.slotClasses?.icon

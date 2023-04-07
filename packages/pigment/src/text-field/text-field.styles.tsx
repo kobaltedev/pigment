@@ -5,13 +5,14 @@ export const textFieldControlVariants = cva(
   {
     variants: {
       variant: {
-        soft: "bg-soft-input-bg hover:bg-soft-input-bg-hover active:bg-soft-input-bg-active",
+        soft: "bg-soft-input-surface hover:bg-soft-input-surface-hover active:bg-soft-input-surface-active",
         outlined:
-          "bg-outlined-input-bg hover:bg-outlined-input-bg-hover active:bg-outlined-input-bg-active",
+          "bg-outlined-input-surface hover:bg-outlined-input-surface-hover active:bg-outlined-input-surface-active",
       },
       size: {
-        sm: "h-9 rounded-md text-sm",
-        md: "h-11 rounded-md text-base",
+        sm: "h-7 rounded text-xs",
+        md: "h-9 rounded-md text-sm",
+        lg: "h-11 rounded-md text-base",
       },
       isFocused: {
         true: "",
@@ -22,7 +23,7 @@ export const textFieldControlVariants = cva(
         false: "",
       },
       isDisabled: {
-        true: "ui-group-disabled:text-disabled-text",
+        true: "ui-group-disabled:text-content-disabled",
         false: "",
       },
     },
@@ -33,14 +34,14 @@ export const textFieldControlVariants = cva(
         isInvalid: false,
         isDisabled: false,
         class:
-          "text-soft-input-text hover:text-soft-input-text-hover active:text-soft-input-text-active",
+          "text-soft-input-content hover:text-soft-input-content-hover active:text-soft-input-content-active",
       },
       {
         variant: "outlined",
         isInvalid: false,
         isDisabled: false,
         class:
-          "text-outlined-input-text hover:text-outlined-input-text-hover active:text-outlined-input-text-active",
+          "text-outlined-input-content hover:text-outlined-input-content-hover active:text-outlined-input-content-active",
       },
 
       // variant + border colors
@@ -50,7 +51,7 @@ export const textFieldControlVariants = cva(
         isInvalid: false,
         isDisabled: false,
         class:
-          "border-soft-input-border hover:border-soft-input-border-hover active:border-soft-input-border-active",
+          "border-soft-input-line hover:border-soft-input-line-hover active:border-soft-input-line-active",
       },
       {
         variant: "outlined",
@@ -58,7 +59,7 @@ export const textFieldControlVariants = cva(
         isInvalid: false,
         isDisabled: false,
         class:
-          "border-outlined-input-border hover:border-outlined-input-border-hover active:border-outlined-input-border-active",
+          "border-outlined-input-line hover:border-outlined-input-line-hover active:border-outlined-input-line-active",
       },
 
       // all variants + focus colors
@@ -73,19 +74,19 @@ export const textFieldControlVariants = cva(
       {
         isInvalid: true,
         isDisabled: false,
-        class: "text-text-danger border-solid-danger-border",
+        class: "text-content-danger border-solid-danger-line",
       },
 
       // variant + disabled
       {
         variant: "soft",
         isDisabled: true,
-        class: "ui-group-disabled:bg-disabled-bg ui-group-disabled:border-transparent",
+        class: "ui-group-disabled:bg-surface-disabled ui-group-disabled:border-transparent",
       },
       {
         variant: "outlined",
         isDisabled: true,
-        class: "ui-group-disabled:bg-transparent ui-group-disabled:border-disabled-border",
+        class: "ui-group-disabled:bg-transparent ui-group-disabled:border-line-disabled",
       },
     ],
   }
@@ -96,7 +97,7 @@ export const textFieldInputVariants = cva(
     "appearance-none grow h-full m-0 py-0",
     "border-none bg-transparent text-current",
     "outline-none",
-    "ui-disabled:placeholder:text-disabled-text ui-disabled:cursor-not-allowed ui-disabled:select-none",
+    "ui-disabled:placeholder:text-content-disabled ui-disabled:cursor-not-allowed ui-disabled:select-none",
   ],
   {
     variants: {
@@ -105,8 +106,9 @@ export const textFieldInputVariants = cva(
         outlined: "",
       },
       size: {
-        sm: "text-sm",
-        md: "text-base",
+        sm: "",
+        md: "",
+        lg: "",
       },
       hasLeftDecorator: {
         true: "pl-0",
@@ -126,21 +128,23 @@ export const textFieldInputVariants = cva(
       {
         variant: "soft",
         isDisabled: false,
-        class: "placeholder:text-text-subtler",
+        class: "placeholder:text-content-subtler",
       },
       {
         variant: "outlined",
         isDisabled: false,
-        class: "placeholder:text-text-subtlest",
+        class: "placeholder:text-content-subtlest",
       },
 
       // size + no left decorator
-      { size: "sm", hasLeftDecorator: false, class: "pl-2.5" },
-      { size: "md", hasLeftDecorator: false, class: "pl-3.5" },
+      { size: "sm", hasLeftDecorator: false, class: "pl-2" },
+      { size: "md", hasLeftDecorator: false, class: "pl-3" },
+      { size: "lg", hasLeftDecorator: false, class: "pl-4" },
 
       // size + no right decorator
-      { size: "sm", hasRightDecorator: false, class: "pr-2.5" },
-      { size: "md", hasRightDecorator: false, class: "pr-3.5" },
+      { size: "sm", hasRightDecorator: false, class: "pr-2" },
+      { size: "md", hasRightDecorator: false, class: "pr-3" },
+      { size: "lg", hasRightDecorator: false, class: "pr-4" },
     ],
   }
 );
@@ -154,20 +158,21 @@ export const textFieldTextAreaVariants = cva(
   {
     variants: {
       variant: {
-        soft: "bg-soft-input-bg hover:bg-soft-input-bg-hover active:bg-soft-input-bg-active",
+        soft: "bg-soft-input-surface hover:bg-soft-input-surface-hover active:bg-soft-input-surface-active",
         outlined:
-          "bg-outlined-input-bg hover:bg-outlined-input-bg-hover active:bg-outlined-input-bg-active",
+          "bg-outlined-input-surface hover:bg-outlined-input-surface-hover active:bg-outlined-input-surface-active",
       },
       size: {
-        sm: "px-2.5 py-2.5 rounded-md text-sm",
-        md: "px-3.5 py-3.5 rounded-md text-base",
+        sm: "p-2 rounded text-xs",
+        md: "p-3 rounded-md text-sm",
+        lg: "p-4 rounded-md text-base",
       },
       isInvalid: {
         true: "",
         false: "",
       },
       isDisabled: {
-        true: "ui-disabled:placeholder:text-disabled-text ui-disabled:cursor-not-allowed ui-disabled:select-none",
+        true: "ui-disabled:placeholder:text-content-disabled ui-disabled:cursor-not-allowed ui-disabled:select-none",
         false: "",
       },
     },
@@ -178,8 +183,8 @@ export const textFieldTextAreaVariants = cva(
         isInvalid: false,
         isDisabled: false,
         class: [
-          "text-soft-input-text hover:text-soft-input-text-hover active:text-soft-input-text-active",
-          "border-soft-input-border hover:border-soft-input-border-hover active:border-soft-input-border-active",
+          "text-soft-input-content hover:text-soft-input-content-hover active:text-soft-input-content-active",
+          "border-soft-input-line hover:border-soft-input-line-hover active:border-soft-input-line-active",
         ],
       },
       {
@@ -187,8 +192,8 @@ export const textFieldTextAreaVariants = cva(
         isInvalid: false,
         isDisabled: false,
         class: [
-          "text-outlined-input-text hover:text-outlined-input-text-hover active:text-outlined-input-text-active",
-          "border-outlined-input-border hover:border-outlined-input-border-hover active:border-outlined-input-border-active",
+          "text-outlined-input-content hover:text-outlined-input-content-hover active:text-outlined-input-content-active",
+          "border-outlined-input-line hover:border-outlined-input-line-hover active:border-outlined-input-line-active",
         ],
       },
 
@@ -196,53 +201,55 @@ export const textFieldTextAreaVariants = cva(
       {
         isInvalid: true,
         isDisabled: false,
-        class: "text-text-danger border-solid-danger-border",
+        class: "text-content-danger border-solid-danger-line",
       },
 
       // variant + disabled
       {
         variant: "soft",
         isDisabled: true,
-        class: "ui-group-disabled:bg-disabled-bg ui-group-disabled:border-transparent",
+        class: "ui-group-disabled:bg-surface-disabled ui-group-disabled:border-transparent",
       },
       {
         variant: "outlined",
         isDisabled: true,
-        class: "ui-group-disabled:bg-transparent ui-group-disabled:border-disabled-border",
+        class: "ui-group-disabled:bg-transparent ui-group-disabled:border-line-disabled",
       },
 
       // variant + not disabled
       {
         variant: "soft",
         isDisabled: false,
-        class: "placeholder:text-text-subtler",
+        class: "placeholder:text-content-subtler",
       },
       {
         variant: "outlined",
         isDisabled: false,
-        class: "placeholder:text-text-subtlest",
+        class: "placeholder:text-content-subtlest",
       },
     ],
   }
 );
 
 export const textFieldLabelVariants = cva(
-  "grow-0 font-medium text-text-subtle ui-group-disabled:text-disabled-text",
+  "grow-0 font-medium text-content-subtle ui-group-disabled:text-content-disabled",
   {
     variants: {
       size: {
-        sm: "mb-1 text-sm",
-        md: "mb-1.5 text-base",
+        sm: "mb-0.5 text-xs",
+        md: "mb-1 text-sm",
+        lg: "mb-1.5 text-base",
       },
     },
   }
 );
 
-export const textFieldSupportTextVariants = cva("grow-0 ui-group-disabled:text-disabled-text", {
+export const textFieldSupportTextVariants = cva("grow-0 ui-group-disabled:text-content-disabled", {
   variants: {
     size: {
-      sm: "mt-1.5 text-xs",
-      md: "mt-2 text-sm",
+      sm: "mt-1 text-xs",
+      md: "mt-1.5 text-sm",
+      lg: "mt-2 text-base",
     },
   },
 });

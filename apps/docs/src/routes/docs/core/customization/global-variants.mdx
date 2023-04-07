@@ -16,7 +16,7 @@ Each variant conveys a different level of importance in the user interface:
 - `soft`, `outlined`, and `ghost` are better for secondary and tertiary actions.
 
 <Preview isRounded>
-  <div class="flex items-center space-x-4">
+  <div class="flex items-center gap-2.5 flex-wrap">
     <Button variant="solid">Solid</Button>
     <Button variant="soft">Soft</Button>
     <Button variant="outlined">Outlined</Button>
@@ -29,45 +29,37 @@ Each variant conveys a different level of importance in the user interface:
 In addition to the main variants, the `soft` and `outlined` input variants are designed specifically for form UI elements such as text fields, select, checkboxes and radio buttons.
 
 <Preview isRounded>
-  <div class="flex flex-col space-y-2">
-    <div class="flex items-center space-x-4">
-      <TextField class="w-44" variant="soft" placeholder="TextField" />
-      <TextField class="w-44" variant="outlined" placeholder="TextField" />
-    </div>
-    <div class="flex items-center space-x-4">
-      <Select
-        class="w-44"
-        variant="soft"
-        options={["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"]}
-        placeholder="Select"
-      />
-      <Select
-        class="w-44"
-        variant="outlined"
-        options={["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"]}
-        placeholder="Select"
-      />
-    </div>
-    <div class="flex items-center space-x-4">
-      <Checkbox variant="soft" label="Checkbox" />
-      <Checkbox variant="outlined" label="Checkbox" />
-    </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+    <TextField variant="soft" placeholder="TextField" />
+    <TextField variant="outlined" placeholder="TextField" />
+    <Select
+      variant="soft"
+      options={["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"]}
+      placeholder="Select"
+    />
+    <Select
+      variant="outlined"
+      options={["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"]}
+      placeholder="Select"
+    />
+    <Checkbox variant="soft" label="Checkbox" />
+    <Checkbox variant="outlined" label="Checkbox" />
   </div>
 </Preview>
 
-## Selected variants
+## Selection variants
 
-Pigment's `solid` and `soft` selected variants are intended for elements in a selected or checked state, such as select options, menu items, checkboxes, switches and radio buttons.
+Pigment's `solid` and `soft` selection variants are intended for elements in a selected or checked state, such as select options, menu items, checkboxes, switches and radio buttons.
 
 <Preview isRounded>
-  <div class="flex items-center space-x-4">
+  <div class="space-y-2.5">
     <Select
-      class="w-44"
+      class="w-[177px]"
+      defaultValue="Apple"
       options={["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"]}
       placeholder="Select"
-      defaultValue="Apple"
     />
-    <Checkbox label="Checkbox" defaultIsChecked />
+    <Checkbox label="Checkbox" defaultIsChecked class="self-center" />
   </div>
 </Preview>
 
@@ -76,32 +68,28 @@ Pigment's `solid` and `soft` selected variants are intended for elements in a se
 The `disabled` state variant is intended for elements in a disabled state.
 
 <Preview isRounded>
-  <div class="flex flex-col space-y-2">
-    <div class="flex items-center space-x-4">
-      <Button variant="solid" isDisabled>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+    <div class="flex items-center gap-2.5">
+      <Button variant="solid" isDisabled class="grow">
         Button
       </Button>
-      <Button variant="soft" isDisabled>
-        Button
-      </Button>
-      <Button variant="outlined" isDisabled>
-        Button
-      </Button>
-      <Button variant="ghost" isDisabled>
+      <Button variant="soft" isDisabled class="grow">
         Button
       </Button>
     </div>
-    <div class="flex items-center space-x-4">
-      <TextField class="w-44" variant="soft" placeholder="TextField" isDisabled />
-      <TextField class="w-44" variant="outlined" placeholder="TextField" isDisabled />
+    <div class="flex items-center gap-2.5">
+      <Button variant="outlined" isDisabled class="grow">
+        Button
+      </Button>
+      <Button variant="ghost" isDisabled class="grow">
+        Button
+      </Button>
     </div>
-    <div class="flex items-center space-x-4">
-      <Select class="w-44" variant="soft" placeholder="Select" isDisabled />
-      <Select class="w-44" variant="outlined" placeholder="Select" isDisabled />
-    </div>
-    <div class="flex items-center space-x-4">
-      <Checkbox variant="soft" label="Checkbox" isDisabled />
-      <Checkbox variant="outlined" label="Checkbox" isDisabled />
-    </div>
+    <TextField variant="soft" placeholder="TextField" isDisabled />
+    <TextField variant="outlined" placeholder="TextField" isDisabled />
+    <Select variant="soft" placeholder="Select" isDisabled />
+    <Select variant="outlined" placeholder="Select" isDisabled />
+    <Checkbox variant="soft" label="Checkbox" isDisabled />
+    <Checkbox variant="outlined" label="Checkbox" isDisabled />
   </div>
 </Preview>

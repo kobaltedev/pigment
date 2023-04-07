@@ -25,7 +25,7 @@ Supported by every Pigment components, it allows you to apply CSS classes to int
   isDismissible
   title="Software update."
   slotClasses={{
-    root: "rounded-md bg-blue-50 border-blue-300 w-96 dark:bg-blue-900 dark:border-blue-700",
+    root: "rounded-md bg-blue-50 border-blue-300 w-full max-w-sm dark:bg-blue-900 dark:border-blue-700",
     content: "gap-y-1 text-slate-800 dark:text-slate-100",
     icon: "text-blue-500 text-2xl mt-0.5 dark:text-blue-400",
     title: "text-base font-normal italic",
@@ -128,15 +128,15 @@ The example below demonstrate how to reproduce GitHub primary button (in light m
                 },
                 light: {
                   colors: {
-                    solidPrimaryText: "#ffffff",
-                    solidPrimaryBg: "#2da44e",
-                    solidPrimaryBorder: "#1a1e2326",
-                    solidPrimaryTextHover: "#ffffff",
-                    solidPrimaryBgHover: "#2c974b",
-                    solidPrimaryBorderHover: "#1b1f2426",
-                    solidPrimaryTextActive: "#ffffff",
-                    solidPrimaryBgActive: "#298e46",
-                    solidPrimaryBorderActive: "#1b1f2426",
+                    solidPrimaryContent: "#ffffff",
+                    solidPrimarySurface: "#2da44e",
+                    solidPrimaryLine: "#1a1e2326",
+                    solidPrimaryContentHover: "#ffffff",
+                    solidPrimarySurfaceHover: "#2c974b",
+                    solidPrimaryLineHover: "#1b1f2426",
+                    solidPrimaryContentActive: "#ffffff",
+                    solidPrimarySurfaceActive: "#298e46",
+                    solidPrimaryLineActive: "#1b1f2426",
                   },
                 },
               }),
@@ -301,7 +301,7 @@ module.exports = {
             light: {
               colors: {
                 primary500: "#3b82f6",
-                solidPrimaryBg: vars("colors.primary500"),
+                solidPrimarySurface: vars("colors.primary500"),
               },
             },
           }),
@@ -317,7 +317,7 @@ The generated CSS variables will be:
 ```css
 [data-pg-theme="my-theme"] {
   --app-colors-primary-500: #3b82f6;
-  --app-colors-solid-primary-bg: var(--app-colors-primary-500);
+  --app-colors-solid-primary-surface: var(--app-colors-primary-500);
 }
 ```
 

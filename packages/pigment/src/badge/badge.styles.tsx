@@ -18,9 +18,9 @@ export const badgeVariants = cva(
         danger: "",
       },
       size: {
-        xs: "h-5 px-2 text-xs",
-        sm: "h-6 px-2.5 text-sm",
-        md: "h-7 px-3 text-sm",
+        sm: "h-5 px-2 text-xs",
+        md: "h-6 px-2.5 text-sm",
+        lg: "h-7 px-3 text-base",
       },
     },
     compoundVariants: [
@@ -28,96 +28,101 @@ export const badgeVariants = cva(
       {
         variant: "solid",
         color: "primary",
-        class: "text-solid-primary-text bg-solid-primary-bg border-solid-primary-border",
+        class: "text-solid-primary-content bg-solid-primary-surface border-solid-primary-line",
       },
       {
         variant: "solid",
         color: "neutral",
-        class: "text-solid-neutral-text bg-solid-neutral-bg border-solid-neutral-border",
+        class: "text-solid-neutral-content bg-solid-neutral-surface border-solid-neutral-line",
       },
       {
         variant: "solid",
         color: "success",
-        class: "text-solid-success-text bg-solid-success-bg border-solid-success-border",
+        class: "text-solid-success-content bg-solid-success-surface border-solid-success-line",
       },
       {
         variant: "solid",
         color: "info",
-        class: "text-solid-info-text bg-solid-info-bg border-solid-info-border",
+        class: "text-solid-info-content bg-solid-info-surface border-solid-info-line",
       },
       {
         variant: "solid",
         color: "warning",
-        class: "text-solid-warning-text bg-solid-warning-bg border-solid-warning-border",
+        class: "text-solid-warning-content bg-solid-warning-surface border-solid-warning-line",
       },
       {
         variant: "solid",
         color: "danger",
-        class: "text-solid-danger-text bg-solid-danger-bg border-solid-danger-border",
+        class: "text-solid-danger-content bg-solid-danger-surface border-solid-danger-line",
       },
 
       // soft + colors
       {
         variant: "soft",
         color: "primary",
-        class: "text-soft-primary-text bg-soft-primary-bg border-soft-primary-border",
+        class: "text-soft-primary-content bg-soft-primary-surface border-soft-primary-line",
       },
       {
         variant: "soft",
         color: "neutral",
-        class: "text-soft-neutral-text bg-soft-neutral-bg border-soft-neutral-border",
+        class: "text-soft-neutral-content bg-soft-neutral-surface border-soft-neutral-line",
       },
       {
         variant: "soft",
         color: "success",
-        class: "text-soft-success-text bg-soft-success-bg border-soft-success-border",
+        class: "text-soft-success-content bg-soft-success-surface border-soft-success-line",
       },
       {
         variant: "soft",
         color: "info",
-        class: "text-soft-info-text bg-soft-info-bg border-soft-info-border",
+        class: "text-soft-info-content bg-soft-info-surface border-soft-info-line",
       },
       {
         variant: "soft",
         color: "warning",
-        class: "text-soft-warning-text bg-soft-warning-bg border-soft-warning-border",
+        class: "text-soft-warning-content bg-soft-warning-surface border-soft-warning-line",
       },
       {
         variant: "soft",
         color: "danger",
-        class: "text-soft-danger-text bg-soft-danger-bg border-soft-danger-border",
+        class: "text-soft-danger-content bg-soft-danger-surface border-soft-danger-line",
       },
 
       // outlined + colors
       {
         variant: "outlined",
         color: "primary",
-        class: "text-outlined-primary-text bg-outlined-primary-bg border-outlined-primary-border",
+        class:
+          "text-outlined-primary-content bg-outlined-primary-surface border-outlined-primary-line",
       },
       {
         variant: "outlined",
         color: "neutral",
-        class: "text-outlined-neutral-text bg-outlined-neutral-bg border-outlined-neutral-border",
+        class:
+          "text-outlined-neutral-content bg-outlined-neutral-surface border-outlined-neutral-line",
       },
       {
         variant: "outlined",
         color: "success",
-        class: "text-outlined-success-text bg-outlined-success-bg border-outlined-success-border",
+        class:
+          "text-outlined-success-content bg-outlined-success-surface border-outlined-success-line",
       },
       {
         variant: "outlined",
         color: "info",
-        class: "text-outlined-info-text bg-outlined-info-bg border-outlined-info-border",
+        class: "text-outlined-info-content bg-outlined-info-surface border-outlined-info-line",
       },
       {
         variant: "outlined",
         color: "warning",
-        class: "text-outlined-warning-text bg-outlined-warning-bg border-outlined-warning-border",
+        class:
+          "text-outlined-warning-content bg-outlined-warning-surface border-outlined-warning-line",
       },
       {
         variant: "outlined",
         color: "danger",
-        class: "text-outlined-danger-text bg-outlined-danger-bg border-outlined-danger-border",
+        class:
+          "text-outlined-danger-content bg-outlined-danger-surface border-outlined-danger-line",
       },
     ],
   }

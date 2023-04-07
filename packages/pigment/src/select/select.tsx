@@ -31,7 +31,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       hasSelectedIcon: true,
       hasErrorIcon: true,
       variant: "outlined",
-      size: "sm",
+      size: "md",
       isInvalid: false,
       isDisabled: false,
       allowEmptySelection: false,
@@ -72,7 +72,6 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       "valueTemplate",
       "optionTemplate",
       "optionGroupTemplate",
-      "onInteractOutside",
     ],
     [
       "defaultIsOpen",
@@ -135,6 +134,17 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
     },
     partialVariantProps
   );
+
+  const dropdownGutter = () => {
+    switch (variantProps.size) {
+      case "sm":
+        return 4;
+      case "md":
+        return 6;
+      case "lg":
+        return 8;
+    }
+  };
 
   const getOptionLabel = (option: Option) => {
     if (isString(option)) {
@@ -200,6 +210,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       )}
       validationState={variantProps.isInvalid ? "invalid" : undefined}
       disallowEmptySelection={!local.allowEmptySelection}
+      gutter={dropdownGutter()}
       valueComponent={props => (
         <Show when={local.valueTemplate} fallback={getOptionLabel(props.item.rawValue)}>
           {local.valueTemplate?.(props.item.rawValue)}
@@ -244,7 +255,9 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
         >
           {label()}
           <Show when={local.hasRequiredIndicator && rootProps.isRequired}>
-            <span class="text-text-danger ui-group-disabled:text-disabled-text ml-0.5">*</span>
+            <span class="text-content-danger ui-group-disabled:text-content-disabled ml-0.5">
+              *
+            </span>
           </Show>
         </KSelect.Label>
       </Show>
@@ -283,7 +296,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       <Show when={showDescription()}>
         <KSelect.Description
           class={cn(
-            "text-text-subtler",
+            "text-content-subtler",
             selectSupportTextVariants(variantProps),
             selectStaticClass("description"),
             themeClasses.description,
@@ -296,7 +309,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       <Show when={showError()}>
         <KSelect.ErrorMessage
           class={cn(
-            "flex items-center gap-x-1 text-text-danger",
+            "flex items-center gap-x-1 text-content-danger",
             selectSupportTextVariants(variantProps),
             selectStaticClass("error"),
             themeClasses.error,
@@ -307,7 +320,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
             <span
               aria-hidden="true"
               class={cn(
-                "reset-svg text-sm text-icon-danger ui-group-disabled:text-disabled-icon",
+                "reset-svg",
                 selectStaticClass("errorIcon"),
                 themeClasses.errorIcon,
                 local.slotClasses?.errorIcon
@@ -327,8 +340,6 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
             themeClasses.dropdown,
             local.slotClasses?.dropdown
           )}
-          // TODO: remove the object spread when kobalte v0.9.0 is released
-          {...({ onInteractOutside: local.onInteractOutside } as any)}
         >
           <KSelect.Listbox
             class={cn(
