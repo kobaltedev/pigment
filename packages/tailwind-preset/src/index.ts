@@ -34,10 +34,6 @@ export default function preset(options: PigmentOptions | undefined = {}): Partia
         fontSize: {
           "2xs": ["10px", "14px"],
         },
-        spacing: {
-          13: "3.25rem",
-          15: "3.75rem",
-        },
         colors: flattenKebabCase(
           themeShape.light.colors,
           // Don't support Tailwind opacity modifier since token value can be anything.

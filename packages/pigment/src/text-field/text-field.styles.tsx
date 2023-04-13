@@ -10,9 +10,11 @@ export const textFieldControlVariants = cva(
           "bg-outlined-input-surface hover:bg-outlined-input-surface-hover active:bg-outlined-input-surface-active",
       },
       size: {
-        sm: "h-7 rounded text-xs",
-        md: "h-9 rounded-md text-sm",
-        lg: "h-11 rounded-md text-base",
+        xs: "h-6 rounded text-xs",
+        sm: "h-8 rounded text-sm",
+        md: "h-10 rounded-md text-base",
+        lg: "h-12 rounded-md text-lg",
+        xl: "h-14 rounded-md text-xl",
       },
       isFocused: {
         true: "",
@@ -106,9 +108,11 @@ export const textFieldInputVariants = cva(
         outlined: "",
       },
       size: {
+        xs: "",
         sm: "",
         md: "",
         lg: "",
+        xl: "",
       },
       hasLeftDecorator: {
         true: "pl-0",
@@ -137,14 +141,18 @@ export const textFieldInputVariants = cva(
       },
 
       // size + no left decorator
+      { size: "xs", hasLeftDecorator: false, class: "pl-1.5" },
       { size: "sm", hasLeftDecorator: false, class: "pl-2" },
-      { size: "md", hasLeftDecorator: false, class: "pl-3" },
-      { size: "lg", hasLeftDecorator: false, class: "pl-4" },
+      { size: "md", hasLeftDecorator: false, class: "pl-2.5" },
+      { size: "lg", hasLeftDecorator: false, class: "pl-3" },
+      { size: "xl", hasLeftDecorator: false, class: "pl-3.5" },
 
       // size + no right decorator
+      { size: "xs", hasRightDecorator: false, class: "pr-1.5" },
       { size: "sm", hasRightDecorator: false, class: "pr-2" },
-      { size: "md", hasRightDecorator: false, class: "pr-3" },
-      { size: "lg", hasRightDecorator: false, class: "pr-4" },
+      { size: "md", hasRightDecorator: false, class: "pr-2.5" },
+      { size: "lg", hasRightDecorator: false, class: "pr-3" },
+      { size: "xl", hasRightDecorator: false, class: "pr-3.5" },
     ],
   }
 );
@@ -163,9 +171,11 @@ export const textFieldTextAreaVariants = cva(
           "bg-outlined-input-surface hover:bg-outlined-input-surface-hover active:bg-outlined-input-surface-active",
       },
       size: {
-        sm: "p-2 rounded text-xs",
-        md: "p-3 rounded-md text-sm",
-        lg: "p-4 rounded-md text-base",
+        xs: "p-1.5 rounded text-xs",
+        sm: "p-2 rounded text-sm",
+        md: "p-2.5 rounded-md text-base",
+        lg: "p-3 rounded-md text-lg",
+        xl: "p-3.5 rounded-md text-xl",
       },
       isInvalid: {
         true: "",
@@ -236,9 +246,11 @@ export const textFieldLabelVariants = cva(
   {
     variants: {
       size: {
+        xs: "mb-0.5 text-xs",
         sm: "mb-0.5 text-xs",
         md: "mb-1 text-sm",
         lg: "mb-1.5 text-base",
+        xl: "mb-2 text-lg",
       },
     },
   }
@@ -247,9 +259,11 @@ export const textFieldLabelVariants = cva(
 export const textFieldSupportTextVariants = cva("grow-0 ui-group-disabled:text-content-disabled", {
   variants: {
     size: {
+      xs: "mt-1 text-xs",
       sm: "mt-1 text-xs",
       md: "mt-1.5 text-sm",
       lg: "mt-2 text-base",
+      xl: "mt-2.5 text-lg",
     },
   },
 });

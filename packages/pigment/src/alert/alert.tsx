@@ -1,6 +1,6 @@
 import { Alert as KAlert } from "@kobalte/core";
 import { isFunction } from "@kobalte/utils";
-import { children, createMemo, JSX, Show, splitProps } from "solid-js";
+import { children, createMemo, Show, splitProps } from "solid-js";
 
 import { CloseButton } from "../close-button";
 import {
@@ -13,6 +13,7 @@ import {
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { cn } from "../utils/cn";
 import { makeStaticClass } from "../utils/make-static-class";
+import { runIfFn } from "../utils/run-if-fn";
 import { AlertProps, AlertSlots } from "./alert.props";
 import { alertContentVariants, alertVariants } from "./alert.styles";
 
@@ -52,15 +53,15 @@ export function Alert(props: AlertProps) {
 
     switch (variantProps.status) {
       case "neutral":
-        return () => <LifeBuoyIcon />;
+        return LifeBuoyIcon;
       case "success":
-        return () => <CheckCircleIcon />;
+        return CheckCircleIcon;
       case "info":
-        return () => <InfoCircleIcon />;
+        return InfoCircleIcon;
       case "warning":
-        return () => <ExclamationTriangleIcon />;
+        return ExclamationTriangleIcon;
       case "danger":
-        return () => <ExclamationCircleIcon />;
+        return ExclamationCircleIcon;
     }
   };
 
@@ -85,7 +86,7 @@ export function Alert(props: AlertProps) {
           )}
           aria-hidden="true"
         >
-          {icon() as unknown as JSX.Element}
+          {runIfFn(icon())}
         </div>
       </Show>
       <div

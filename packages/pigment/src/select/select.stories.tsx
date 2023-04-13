@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 
-import { Button } from "../button";
+import { Badge } from "../badge";
 import { InfoCircleIcon } from "../icons";
 import { Select } from "./select";
 import { SelectProps } from "./select.props";
-import { Badge } from "../badge";
 
 type Story = StoryObj<SelectProps<any, any>>;
 
@@ -17,7 +16,7 @@ export default {
       control: { type: "select" },
     },
     size: {
-      options: ["sm", "md", "lg"],
+      options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
     hasDropdownIcon: {
@@ -87,8 +86,8 @@ export const WithDecorator: Story = {
     description: "Choose wisely.",
     error: "Please select a fruit.",
     options: ["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"],
-    startDecorator: <InfoCircleIcon class="h-4 w-4 mx-2.5" />,
-    endDecorator: (
+    startDecorator: () => <InfoCircleIcon class="h-4 w-4 mx-2.5" />,
+    endDecorator: () => (
       <Badge size="sm" variant="soft" color="danger" class="mx-2.5">
         +5
       </Badge>

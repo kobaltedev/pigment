@@ -33,13 +33,13 @@ export interface TextFieldProps
   isMultiline?: boolean;
 
   /** The label that gives the user information on the text field. */
-  label?: JSX.Element;
+  label?: JSX.Element | (() => JSX.Element);
 
   /** The description that gives the user more information on the text field. */
-  description?: JSX.Element;
+  description?: JSX.Element | (() => JSX.Element);
 
   /** The error message that gives the user information about how to fix a validation error on the text field. */
-  error?: JSX.Element;
+  error?: JSX.Element | (() => JSX.Element);
 
   /** Whether an asterisk should appear next to the label when the text field is required. */
   hasRequiredIndicator?: boolean;
@@ -48,11 +48,11 @@ export interface TextFieldProps
   hasErrorIcon?: boolean;
 
   /** The icon to show next to the error message. */
-  errorIcon?: JSX.Element;
+  errorIcon?: JSX.Element | (() => JSX.Element);
 
   /** The leading adornment of the text field. */
-  startDecorator?: JSX.Element;
+  startDecorator?: JSX.Element | (() => JSX.Element);
 
   /** The trailing adornment of the text field. */
-  endDecorator?: JSX.Element;
+  endDecorator?: JSX.Element | (() => JSX.Element);
 }

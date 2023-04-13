@@ -28,23 +28,23 @@ export interface CheckboxProps
   labelPlacement?: "start" | "end";
 
   /** The label that gives the user information on the checkbox. */
-  label?: JSX.Element;
+  label?: JSX.Element | (() => JSX.Element);
 
   /** The description that gives the user more information on the checkbox. */
-  description?: JSX.Element;
+  description?: JSX.Element | (() => JSX.Element);
 
   /** The error message that gives the user information about how to fix a validation error on the checkbox. */
-  error?: JSX.Element;
+  error?: JSX.Element | (() => JSX.Element);
 
   /** Whether an icon should appear next to the error message. */
   hasErrorIcon?: boolean;
 
   /** The icon to show next to the error message. */
-  errorIcon?: JSX.Element;
+  errorIcon?: JSX.Element | (() => JSX.Element);
 
   /** The icon to show when the checkbox is in a checked state. */
-  checkedIcon?: JSX.Element;
+  checkedIcon?: JSX.Element | (() => JSX.Element);
 
   /** The icon to show when the checkbox is in an indeterminate state. */
-  indeterminateIcon?: JSX.Element;
+  indeterminateIcon?: JSX.Element | (() => JSX.Element);
 }

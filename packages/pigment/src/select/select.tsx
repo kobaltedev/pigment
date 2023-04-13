@@ -1,11 +1,12 @@
 import { Select as KSelect, useLocale } from "@kobalte/core";
-import { isFunction, isString } from "@kobalte/utils";
+import { isFunction, isString, mergeRefs } from "@kobalte/utils";
 import { createMemo, JSX, mergeProps, Show, splitProps } from "solid-js";
 
 import { CheckIcon, ExclamationCircleIcon, SelectorIcon } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { cn } from "../utils/cn";
 import { makeStaticClass } from "../utils/make-static-class";
+import { runIfFn } from "../utils/run-if-fn";
 import { SelectProps, SelectSlots } from "./select.props";
 import {
   selectButtonVariants,
@@ -23,6 +24,8 @@ import {
 const selectStaticClass = makeStaticClass<SelectSlots>("select");
 
 export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptGroup>) {
+  let triggerRef: HTMLButtonElement | undefined;
+
   props = mergeThemeProps(
     "Select",
     {
@@ -53,6 +56,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
   const [local, rootProps, partialVariantProps, others] = splitProps(
     props,
     [
+      "ref",
       "class",
       "slotClasses",
       "inputProps",
@@ -102,10 +106,10 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
 
   const isRtl = () => direction() === "rtl";
 
-  const label = createMemo(() => local.label);
-  const description = createMemo(() => local.description);
-  const error = createMemo(() => local.error);
-  const errorIcon = createMemo(() => local.errorIcon);
+  const label = createMemo(() => runIfFn(local.label));
+  const description = createMemo(() => runIfFn(local.description));
+  const error = createMemo(() => runIfFn(local.error));
+  const errorIcon = createMemo(() => runIfFn(local.errorIcon));
 
   const showDescription = () => {
     return !variantProps.isInvalid && description();
@@ -116,11 +120,11 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
   };
 
   const leftDecorator = createMemo(() => {
-    return isRtl() ? local.endDecorator : local.startDecorator;
+    return runIfFn(isRtl() ? local.endDecorator : local.startDecorator);
   });
 
   const rightDecorator = createMemo(() => {
-    return isRtl() ? local.startDecorator : local.endDecorator;
+    return runIfFn(isRtl() ? local.startDecorator : local.endDecorator);
   });
 
   const variantProps = mergeProps(
@@ -137,12 +141,16 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
 
   const dropdownGutter = () => {
     switch (variantProps.size) {
-      case "sm":
+      case "xs":
         return 4;
-      case "md":
+      case "sm":
         return 6;
-      case "lg":
+      case "md":
         return 8;
+      case "lg":
+        return 10;
+      case "xl":
+        return 12;
     }
   };
 
@@ -243,7 +251,9 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       )}
       {...rootProps}
     >
-      <KSelect.HiddenSelect {...local.inputProps} />
+      <Show when={triggerRef?.closest("form") != null}>
+        <KSelect.HiddenSelect {...local.inputProps} />
+      </Show>
       <Show when={label()}>
         <KSelect.Label
           class={cn(
@@ -262,6 +272,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
         </KSelect.Label>
       </Show>
       <KSelect.Trigger
+        ref={mergeRefs(el => (triggerRef = el), local.ref)}
         class={cn(
           selectButtonVariants(variantProps),
           selectStaticClass("button"),
@@ -289,7 +300,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
               local.slotClasses?.icon
             )}
           >
-            {local.dropdownIcon}
+            {runIfFn(local.dropdownIcon)}
           </KSelect.Icon>
         </Show>
       </KSelect.Trigger>

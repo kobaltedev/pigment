@@ -39,7 +39,7 @@ export default function Index() {
           </div>
           <div class="hidden w-full max-w-sm flex-col items-center gap-3 -mt-8 lg:flex">
             <TextField
-              startDecorator={<SearchIcon class="h-4 w-4 mx-1.5 text-outlined-input-content" />}
+              startDecorator={<SearchIcon class="h-4 w-4 mx-2.5 text-outlined-input-content" />}
               placeholder="Search"
             />
             <Alert title="Software update" isMultiline class="w-full">

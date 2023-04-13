@@ -12,10 +12,11 @@ export const closeButtonVariants = cva(
   {
     variants: {
       size: {
-        sm: "h-7 w-7 rounded text-lg",
-        md: "h-9 w-9 rounded-md text-2xl",
-        lg: "h-11 w-11 rounded-md text-3xl",
-        xl: "h-13 w-13 rounded-md text-4xl",
+        xs: "h-6 w-6 rounded text-xl",
+        sm: "h-8 w-8 rounded text-2xl",
+        md: "h-10 w-10 rounded-md text-3xl",
+        lg: "h-12 w-12 rounded-md text-4xl",
+        xl: "h-14 w-14 rounded-md text-5xl",
       },
       inheritTextColor: {
         true: "text-current",

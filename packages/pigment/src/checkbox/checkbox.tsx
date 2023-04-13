@@ -5,6 +5,7 @@ import { CheckIcon, ExclamationCircleIcon, MinusIcon } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { cn } from "../utils/cn";
 import { makeStaticClass } from "../utils/make-static-class";
+import { runIfFn } from "../utils/run-if-fn";
 import { CheckboxProps, CheckboxSlots } from "./checkbox.props";
 import {
   checkboxControlVariants,
@@ -63,10 +64,10 @@ export function Checkbox(props: CheckboxProps) {
 
   const isRtl = () => direction() === "rtl";
 
-  const label = createMemo(() => local.label);
-  const description = createMemo(() => local.description);
-  const error = createMemo(() => local.error);
-  const errorIcon = createMemo(() => local.errorIcon);
+  const label = createMemo(() => runIfFn(local.label));
+  const description = createMemo(() => runIfFn(local.description));
+  const error = createMemo(() => runIfFn(local.error));
+  const errorIcon = createMemo(() => runIfFn(local.errorIcon));
 
   const showError = () => {
     return variantProps.isInvalid && error();
@@ -129,8 +130,8 @@ export function Checkbox(props: CheckboxProps) {
                 local.slotClasses?.indicator
               )}
             >
-              <Show when={state.isIndeterminate()} fallback={local.checkedIcon}>
-                {local.indeterminateIcon}
+              <Show when={state.isIndeterminate()} fallback={runIfFn(local.checkedIcon)}>
+                {runIfFn(local.indeterminateIcon)}
               </Show>
             </KCheckbox.Indicator>
           </KCheckbox.Control>

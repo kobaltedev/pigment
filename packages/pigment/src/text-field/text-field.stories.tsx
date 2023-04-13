@@ -16,7 +16,7 @@ export default {
       control: { type: "select" },
     },
     size: {
-      options: ["sm", "md", "lg"],
+      options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
     hasErrorIcon: {
@@ -47,7 +47,7 @@ export default {
       control: { type: "text" },
     },
   },
-  render: props => <TextField {...props} />,
+  render: props => <TextField class="w-full max-w-xs" {...props} />,
 } as Meta<ComponentProps<typeof TextField>>;
 
 export const Default: Story = {
@@ -79,8 +79,8 @@ export const WithDecorator: Story = {
     label: "E-mail",
     description: "We will never share your email.",
     error: "Please enter a valid email address.",
-    startDecorator: <InfoCircleIcon class="h-4 w-4 mx-2.5" />,
-    endDecorator: (
+    startDecorator: () => <InfoCircleIcon class="h-4 w-4 mx-2.5" />,
+    endDecorator: () => (
       <Button size="md" variant="solid" color="neutral" class="rounded-l-none z-10 ml-2.5">
         Search
       </Button>

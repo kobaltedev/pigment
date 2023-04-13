@@ -19,7 +19,7 @@ export default {
       control: { type: "select" },
     },
     size: {
-      options: ["sm", "md", "lg", "xl"],
+      options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
     isLoading: {
@@ -29,7 +29,11 @@ export default {
       control: { type: "boolean" },
     },
   },
-  render: props => <IconButton {...props} aria-label="example" />,
+  render: props => (
+    <IconButton {...props} aria-label="example">
+      <InfoCircleIcon />
+    </IconButton>
+  ),
 } as Meta<ComponentProps<typeof IconButton>>;
 
 export const Default: Story = {
@@ -39,6 +43,5 @@ export const Default: Story = {
     size: "md",
     isLoading: false,
     isDisabled: false,
-    children: <InfoCircleIcon />,
   },
 };

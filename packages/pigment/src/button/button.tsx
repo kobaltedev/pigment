@@ -6,6 +6,7 @@ import { LoaderIcon } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { cn } from "../utils/cn";
 import { makeStaticClass } from "../utils/make-static-class";
+import { runIfFn } from "../utils/run-if-fn";
 import {
   ButtonBaseProps,
   ButtonContentProps,
@@ -55,11 +56,11 @@ function ButtonContent(props: ButtonContentProps) {
   const [iconProps] = splitProps(props, ["variant", "color", "size", "isDisabled"]);
 
   const leftIcon = createMemo(() => {
-    return props.isRtl ? props.endIcon : props.startIcon;
+    return runIfFn(props.isRtl ? props.endIcon : props.startIcon);
   });
 
   const rightIcon = createMemo(() => {
-    return props.isRtl ? props.startIcon : props.endIcon;
+    return runIfFn(props.isRtl ? props.startIcon : props.endIcon);
   });
 
   const leftIconClass = () => {

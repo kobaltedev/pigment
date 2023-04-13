@@ -19,7 +19,7 @@ export default {
       control: { type: "select" },
     },
     size: {
-      options: ["sm", "md", "lg", "xl"],
+      options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
     isDisabled: {
@@ -29,7 +29,11 @@ export default {
       control: { type: "text" },
     },
   },
-  render: props => <LinkIconButton {...props} aria-label="Go to Kobalte website" />,
+  render: props => (
+    <LinkIconButton {...props} aria-label="Go to Kobalte website">
+      <InfoCircleIcon />
+    </LinkIconButton>
+  ),
 } as Meta<ComponentProps<typeof LinkIconButton>>;
 
 export const Default: Story = {
@@ -39,6 +43,5 @@ export const Default: Story = {
     size: "md",
     isDisabled: false,
     href: "https://kobalte.dev",
-    children: <InfoCircleIcon />,
   },
 };

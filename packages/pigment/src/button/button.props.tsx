@@ -19,7 +19,7 @@ export interface ButtonBaseProps
   loadingText?: string;
 
   /** The icon to show when the button is in a loading state. */
-  loadingIcon?: JSX.Element;
+  loadingIcon?: JSX.Element | (() => JSX.Element);
 
   /**
    * The placement of the loading icon when the button is in a loading state
@@ -28,10 +28,10 @@ export interface ButtonBaseProps
   loadingIconPlacement?: "start" | "end";
 
   /** The icon to show before the button content. */
-  startIcon?: JSX.Element;
+  startIcon?: JSX.Element | (() => JSX.Element);
 
   /** The icon to show after the button content. */
-  endIcon?: JSX.Element;
+  endIcon?: JSX.Element | (() => JSX.Element);
 }
 
 export interface ButtonContentProps
@@ -71,10 +71,10 @@ export interface LinkButtonBaseProps
     Omit<ButtonVariants, "isLoading" | "isDisabled">,
     SlotProp<LinkButtonSlots> {
   /** The icon to show before the link button content. */
-  startIcon?: JSX.Element;
+  startIcon?: JSX.Element | (() => JSX.Element);
 
   /** The icon to show after the link button content. */
-  endIcon?: JSX.Element;
+  endIcon?: JSX.Element | (() => JSX.Element);
 }
 
 export interface LinkButtonProps extends Omit<LinkButtonBaseProps, "isIconOnly"> {}

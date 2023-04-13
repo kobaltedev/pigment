@@ -10,7 +10,7 @@ export default {
   title: "CloseButton",
   argTypes: {
     size: {
-      options: ["sm", "md", "lg", "xl"],
+      options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
     isDisabled: {

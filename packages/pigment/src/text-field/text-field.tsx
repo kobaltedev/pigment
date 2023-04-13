@@ -14,6 +14,7 @@ import { ExclamationCircleIcon } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { cn } from "../utils/cn";
 import { makeStaticClass } from "../utils/make-static-class";
+import { runIfFn } from "../utils/run-if-fn";
 import { TextFieldProps, TextFieldSlots } from "./text-field.props";
 import {
   textFieldControlVariants,
@@ -73,10 +74,10 @@ export function TextField(props: TextFieldProps) {
 
   const [isFocused, setIsFocused] = createSignal(false);
 
-  const label = createMemo(() => local.label);
-  const description = createMemo(() => local.description);
-  const error = createMemo(() => local.error);
-  const errorIcon = createMemo(() => local.errorIcon);
+  const label = createMemo(() => runIfFn(local.label));
+  const description = createMemo(() => runIfFn(local.description));
+  const error = createMemo(() => runIfFn(local.error));
+  const errorIcon = createMemo(() => runIfFn(local.errorIcon));
 
   const showDescription = () => {
     return !variantProps.isInvalid && description();
@@ -87,11 +88,11 @@ export function TextField(props: TextFieldProps) {
   };
 
   const leftDecorator = createMemo(() => {
-    return isRtl() ? local.endDecorator : local.startDecorator;
+    return runIfFn(isRtl() ? local.endDecorator : local.startDecorator);
   });
 
   const rightDecorator = createMemo(() => {
-    return isRtl() ? local.startDecorator : local.endDecorator;
+    return runIfFn(isRtl() ? local.startDecorator : local.endDecorator);
   });
 
   const variantProps = mergeProps(

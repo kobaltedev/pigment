@@ -19,7 +19,7 @@ export default {
       control: { type: "select" },
     },
     size: {
-      options: ["sm", "md", "lg", "xl"],
+      options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
     isFullWidth: {
@@ -70,7 +70,7 @@ export const WithIcon: Story = {
     loadingText: "",
     loadingIconPlacement: "start",
     children: "Button",
-    startIcon: <InfoCircleIcon />,
-    endIcon: <InfoCircleIcon />,
+    startIcon: () => <InfoCircleIcon />,
+    endIcon: () => <InfoCircleIcon />,
   },
 };
