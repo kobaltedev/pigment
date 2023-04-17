@@ -9,5 +9,13 @@ export interface ThemeProviderProps extends ParentProps {
 }
 
 export function ThemeProvider(props: ThemeProviderProps) {
-  return <ThemeContext.Provider value={props.components}>{props.children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider
+      value={{
+        components: props.components ?? {},
+      }}
+    >
+      {props.children}
+    </ThemeContext.Provider>
+  );
 }
