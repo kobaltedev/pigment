@@ -5,50 +5,56 @@ import plugin from "tailwindcss/plugin";
 import animatePlugin from "tailwindcss-animate";
 
 import { PREDEFINED_THEMES } from "./themes";
-import { PartialTheme, PigmentOptions, PredefinedTheme } from "./types";
+import {
+  PartialTheme,
+  PigmentOptions,
+  PredefinedTheme,
+  themeTokensShapeValue,
+  TokenKey,
+} from "./types";
 import {
   createVarsFn,
   DARK_DATA_ATTR_SELECTOR,
-  flattenKebabCase,
+  flatten,
   getCssVarsPrefix,
+  isHexColor,
   isString,
+  removeDefaultSuffix,
+  rgbColorChannel,
+  toKebabCase,
 } from "./utils";
 
-export default function preset(options: PigmentOptions | undefined = {}): Partial<Config> {
+export function pigmentPreset(options: PigmentOptions | undefined = {}): Partial<Config> {
   const cssVarPrefix = getCssVarsPrefix(options);
 
   const vars = createVarsFn(cssVarPrefix);
-
-  // The theme doesn't matter here, we only care about the object shape.
-  const themeShape = PREDEFINED_THEMES.base(vars);
 
   return {
     darkMode: ["class", DARK_DATA_ATTR_SELECTOR],
     theme: {
       extend: {
         fontFamily: {
-          sans: vars("typography.fontFamilySans"),
-          serif: vars("typography.fontFamilySerif"),
-          mono: vars("typography.fontFamilyMono"),
+          body: vars("typography.fontFamily.body"),
+          display: vars("typography.fontFamily.display"),
+          code: vars("typography.fontFamily.code"),
         },
         fontSize: {
           "2xs": ["10px", "14px"],
         },
-        colors: flattenKebabCase(
-          themeShape.light.colors,
-          // Don't support Tailwind opacity modifier since token value can be anything.
-          prefixedKey => `var(--${prefixedKey})`,
-          "",
-          `${cssVarPrefix}colors-`,
-          ""
-        ),
-        boxShadow: flattenKebabCase(
-          themeShape.light.shadows,
-          prefixedKey => `var(--${prefixedKey})`,
-          "",
-          `${cssVarPrefix}shadows-`,
-          ""
-        ),
+        colors: {
+          ...Object.keys(flatten(themeTokensShapeValue.colors, "-")).reduce((acc, key) => {
+            const formattedKey = toKebabCase(removeDefaultSuffix(key));
+            acc[formattedKey] = `rgb(${vars(`colors-${key}` as TokenKey)} / <alpha-value>)`;
+            return acc;
+          }, {} as any),
+        },
+        boxShadow: {
+          ...Object.keys(flatten(themeTokensShapeValue.shadows, "-")).reduce((acc, key) => {
+            const formattedKey = toKebabCase(removeDefaultSuffix(key));
+            acc[formattedKey] = vars(`shadows-${key}` as TokenKey);
+            return acc;
+          }, {} as any),
+        },
         data: {
           "placeholder-shown": "placeholder-shown",
         },
@@ -57,8 +63,12 @@ export default function preset(options: PigmentOptions | undefined = {}): Partia
     plugins: [
       animatePlugin,
       kobaltePlugin,
-      plugin(({ addBase, addUtilities, theme }) => {
+      plugin(({ addBase, addUtilities }) => {
         const themes: Array<[PredefinedTheme | string, PartialTheme]> = [];
+
+        const cssVarName = (key: string) => {
+          return `--${cssVarPrefix}${toKebabCase(removeDefaultSuffix(key))}`;
+        };
 
         if (options.themes != null && options?.themes.length > 0) {
           options?.themes.forEach(theme => {
@@ -94,31 +104,31 @@ export default function preset(options: PigmentOptions | undefined = {}): Partia
 
           addBase({
             [lightThemeSelector]: {
-              ...flattenKebabCase(
-                theme.common ?? {},
-                (_, value) => value,
-                `--${cssVarPrefix}`,
-                cssVarPrefix,
-                ""
-              ),
-              ...flattenKebabCase(
-                theme.light ?? {},
-                (_, value) => value,
-                `--${cssVarPrefix}`,
-                cssVarPrefix,
-                ""
-              ),
+              ...(
+                Object.entries(flatten(theme.common ?? {}, "-")) as Array<[string, string]>
+              ).reduce((acc, [key, value]) => {
+                acc[cssVarName(key)] = value;
+                return acc;
+              }, {} as any),
+              ...(
+                Object.entries(flatten(theme.light ?? {}, "-")) as Array<[string, string]>
+              ).reduce((acc, [key, value]) => {
+                acc[cssVarName(key)] = isHexColor(value) ? rgbColorChannel(value) : value;
+                return acc;
+              }, {} as any),
             },
           });
 
           addBase({
-            [darkThemeSelector]: flattenKebabCase(
-              theme.dark ?? {},
-              (_, value) => value,
-              `--${cssVarPrefix}`,
-              cssVarPrefix,
-              ""
-            ),
+            [darkThemeSelector]: {
+              ...(Object.entries(flatten(theme.dark ?? {}, "-")) as Array<[string, string]>).reduce(
+                (acc, [key, value]) => {
+                  acc[cssVarName(key)] = isHexColor(value) ? rgbColorChannel(value) : value;
+                  return acc;
+                },
+                {} as any
+              ),
+            },
           });
         });
 
@@ -128,8 +138,8 @@ export default function preset(options: PigmentOptions | undefined = {}): Partia
           },
           body: {
             // Use theme background and foreground colors.
-            backgroundColor: theme("colors.body"),
-            color: theme("colors.content"),
+            backgroundColor: `rgb(${vars("colors.surface.body")})`,
+            color: `rgb(${vars("colors.content.DEFAULT")})`,
           },
         });
 
@@ -148,4 +158,5 @@ export default function preset(options: PigmentOptions | undefined = {}): Partia
   };
 }
 
-export * from "./types";
+export { PIGMENT_COLORS } from "./colors";
+export type { CustomTheme, PigmentOptions } from "./types";

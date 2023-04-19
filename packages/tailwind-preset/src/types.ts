@@ -1,116 +1,137 @@
+export type FlattenObjectKeys<T extends Record<string, unknown>, Key = keyof T> = Key extends string
+  ? T[Key] extends Record<string, unknown>
+    ? `${Key}.${FlattenObjectKeys<T[Key]>}`
+    : `${Key}`
+  : never;
+
 export type DeepPartial<T> = {
   [P in keyof T]?: DeepPartial<T[P]>;
 };
 
-export type Prefixed<K extends string, T> = `${K}${Extract<T, boolean | number | string>}`;
+const semanticColorValues = [
+  "neutral",
+  "primary",
+  "accent",
+  "success",
+  "info",
+  "warning",
+  "danger",
+] as const;
 
-type ReferenceColor = "neutral" | "primary" | "success" | "info" | "warning" | "danger";
-type ReferenceColorScale =
-  | "50"
-  | "100"
-  | "200"
-  | "300"
-  | "400"
-  | "500"
-  | "600"
-  | "700"
-  | "800"
-  | "900"
-  | "950";
-type ReferenceColorTokens = Record<Prefixed<ReferenceColor, ReferenceColorScale>, string>;
+export type SemanticColor = (typeof semanticColorValues)[number];
 
-type GlobalVariant = "solid" | "soft" | "outlined" | "ghost";
-type GlobalVariantColor = "Neutral" | "Primary" | "Success" | "Info" | "Warning" | "Danger";
-type GlobalVariantKey =
-  | "Content"
-  | "Surface"
-  | "Line"
-  | "ContentHover"
-  | "SurfaceHover"
-  | "LineHover"
-  | "ContentActive"
-  | "SurfaceActive"
-  | "LineActive";
-type GlobalVariantTokens = Record<
-  Prefixed<GlobalVariant, Prefixed<GlobalVariantColor, GlobalVariantKey>>,
-  string
->;
-type InputVariantTokens = Record<Prefixed<"softInput" | "outlinedInput", GlobalVariantKey>, string>;
-type SelectionVariantTokens = Record<
-  Prefixed<"solidSelected" | "softSelected", GlobalVariantKey>,
-  string
->;
+const paletteRangeValues = [
+  "50",
+  "100",
+  "200",
+  "300",
+  "400",
+  "500",
+  "600",
+  "700",
+  "800",
+  "900",
+  "950",
+] as const;
 
-export interface ColorTokens
-  extends ReferenceColorTokens,
-    GlobalVariantTokens,
-    InputVariantTokens,
-    SelectionVariantTokens {
-  neutral100A: string;
-  neutral200A: string;
-  neutral300A: string;
-  neutral400A: string;
-  neutral500A: string;
+export type PaletteRange = (typeof paletteRangeValues)[number];
 
-  content: string;
-  contentSubtle: string;
-  contentSubtler: string;
-  contentSubtlest: string;
-  contentDisabled: string;
-  contentInverse: string;
-  contentWarningInverse: string;
-  contentSuccess: string;
-  contentDanger: string;
-
-  body: string;
-
-  surface: string;
-  surfaceHover: string;
-  surfaceActive: string;
-  surfaceDisabled: string;
-
-  raisedSurface: string;
-  raisedSurfaceHover: string;
-  raisedSurfaceActive: string;
-
-  overlaySurface: string;
-  overlaySurfaceHover: string;
-  overlaySurfaceActive: string;
-
-  sunkenSurface: string;
-
-  subtleSurface: string;
-  subtleSurfaceHover: string;
-  subtleSurfaceActive: string;
-
-  line: string;
-  lineDisabled: string;
-
-  focusRing: string;
-  backdrop: string;
-  tooltip: string;
+function getGlobalVariantTokenShape<T extends string>(properties: T[]) {
+  return semanticColorValues.reduce((acc, color) => {
+    acc[color] = properties.reduce((acc, key) => {
+      acc[key] = "";
+      return acc;
+    }, {} as Record<T, string>);
+    return acc;
+  }, {} as Record<SemanticColor, Record<T, string>>);
 }
 
-export interface ShadowTokens {
-  raised: string;
-  overlay: string;
-}
+export const themeTokensShapeValue = {
+  colors: {
+    ...semanticColorValues.reduce((acc, color) => {
+      acc[color] = paletteRangeValues.reduce((acc, scale) => {
+        acc[scale] = "";
+        return acc;
+      }, {} as Record<PaletteRange, string>);
+      return acc;
+    }, {} as Record<SemanticColor, Record<PaletteRange, string>>),
 
-export interface TypographyTokens {
-  fontFamilyFallback: string;
-  fontFamilySans: string;
-  fontFamilySerif: string;
-  fontFamilyMono: string;
-}
+    ring: "",
+    backdrop: "",
+    tooltip: "",
 
-export interface CommonTokens {
-  typography: TypographyTokens;
-}
+    content: {
+      DEFAULT: "",
+      subtle: "",
+      subtler: "",
+      subtlest: "",
+      disabled: "",
+      inverse: "",
+      warningInverse: "",
+      primary: "",
+      accent: "",
+      success: "",
+      info: "",
+      warning: "",
+      danger: "",
+    },
 
-export interface ColorSchemeTokens {
-  colors: ColorTokens;
-  shadows: ShadowTokens;
-}
+    surface: {
+      body: "",
+
+      DEFAULT: "",
+      hover: "",
+      active: "",
+      disabled: "",
+
+      raised: "",
+      raisedHover: "",
+      raisedActive: "",
+
+      overlay: "",
+      overlayHover: "",
+      overlayActive: "",
+
+      sunken: "",
+
+      highlightedHover: "",
+      highlightedActive: "",
+    },
+
+    line: {
+      DEFAULT: "",
+      disabled: "",
+    },
+
+    solid: getGlobalVariantTokenShape(["content", "surface", "surfaceHover", "surfaceActive"]),
+    soft: getGlobalVariantTokenShape(["content", "surface", "surfaceHover", "surfaceActive"]),
+    outlined: getGlobalVariantTokenShape([
+      "content",
+      "line",
+      "surfaceHover",
+      "lineHover",
+      "surfaceActive",
+      "lineActive",
+    ]),
+    ghost: getGlobalVariantTokenShape(["content", "surfaceHover", "surfaceActive"]),
+  },
+  shadows: {
+    raised: "",
+    overlay: "",
+  },
+  typography: {
+    fontFamily: {
+      fallback: "",
+      body: "",
+      display: "",
+      code: "",
+    },
+  },
+};
+
+export type ColorSchemeTokens = Pick<typeof themeTokensShapeValue, "colors" | "shadows">;
+
+export type CommonTokens = Pick<typeof themeTokensShapeValue, "typography">;
 
 export interface Theme {
   /** Color scheme independent tokens. */
@@ -127,10 +148,7 @@ export type PartialTheme = DeepPartial<Theme>;
 
 export type PredefinedTheme = "base";
 
-export type TokenKey =
-  | Prefixed<"typography.", keyof CommonTokens["typography"]>
-  | Prefixed<"colors.", keyof ColorSchemeTokens["colors"]>
-  | Prefixed<"shadows.", keyof ColorSchemeTokens["shadows"]>;
+export type TokenKey = FlattenObjectKeys<ColorSchemeTokens> | FlattenObjectKeys<CommonTokens>;
 
 /** A function to get the css variable of a token. */
 export type VarsFn = (token: TokenKey) => string;

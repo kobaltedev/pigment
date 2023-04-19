@@ -1,5 +1,4 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
-const pigment = require("@kobalte/pigment-tailwind-preset");
+const { pigmentPreset } = require("@kobalte/pigment-tailwind-preset");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -9,16 +8,13 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        display: ["Lexend", ...defaultTheme.fontFamily.sans],
-      },
       maxWidth: {
         "8xl": "88rem",
       },
     },
   },
   presets: [
-    pigment({
+    pigmentPreset({
       themes: [
         /** @type {import('@kobalte/pigment-tailwind-preset').CustomTheme} */
         {
@@ -27,7 +23,10 @@ module.exports = {
           tokens: vars => ({
             common: {
               typography: {
-                fontFamilySans: `Inter, ${vars("typography.fontFamilyFallback")}`,
+                fontFamily: {
+                  body: `Inter, ${vars("typography.fontFamily.fallback")}`,
+                  display: `Lexend, ${vars("typography.fontFamily.fallback")}`,
+                }
               },
             },
           }),
@@ -38,20 +37,21 @@ module.exports = {
           tokens: vars => ({
             common: {
               typography: {
-                fontFamilySans: vars("typography.fontFamilyFallback"),
+                fontFamily: {
+                  body: vars("typography.fontFamily.fallback"),
+                }
               },
             },
             light: {
               colors: {
-                solidPrimaryContent: "#ffffff",
-                solidPrimarySurface: "#2da44e",
-                solidPrimaryLine: "#1a1e2326",
-                solidPrimaryContentHover: "#ffffff",
-                solidPrimarySurfaceHover: "#2c974b",
-                solidPrimaryLineHover: "#1b1f2426",
-                solidPrimaryContentActive: "#ffffff",
-                solidPrimarySurfaceActive: "#298e46",
-                solidPrimaryLineActive: "#1b1f2426",
+                solid: {
+                  primary: {
+                    content: "#ffffff",
+                    surface: "#2da44e",
+                    surfaceHover: "#2c974b",
+                    surfaceActive: "#298e46",
+                  }
+                }
               },
             },
           }),

@@ -1,31 +1,19 @@
-export type Color =
-  | "gray"
-  | "mauve"
-  | "slate"
-  | "sage"
-  | "olive"
-  | "sand"
-  | "maroon"
-  | "orange"
-  | "amber"
-  | "yellow"
-  | "lime"
-  | "green"
-  | "emerald"
-  | "teal"
-  | "cyan"
-  | "sky"
-  | "blue"
-  | "indigo"
-  | "violet"
-  | "purple"
-  | "fuchsia"
-  | "pink"
-  | "rose"
-  | "red";
+export type SemanticColor =
+  | "neutral"
+  | "primary"
+  | "accent"
+  | "success"
+  | "info"
+  | "warning"
+  | "danger";
 
-export type GlobalVariant = "solid" | "soft" | "outlined" | "ghost";
+export type StateVariant = "base" | "hover" | "active";
 
-export type StateVariant = "base" | "hover" | "active" | "disabled";
+export interface GlobalVariants {
+  solid: Record<SemanticColor, Record<StateVariant, string>>;
+  soft: Record<SemanticColor | "input", Record<StateVariant, string>>;
+  outlined: Record<SemanticColor | "input", Record<StateVariant, string>>;
+  ghost: Record<SemanticColor, Record<StateVariant, string>>;
+}
 
-export type GlobalVariantMap = Record<GlobalVariant, Record<Color, Record<StateVariant, string>>>;
+export type GlobalVariant = keyof GlobalVariants;
