@@ -15,9 +15,8 @@ export const checkboxControlVariants = cva(
   {
     variants: {
       variant: {
-        soft: "bg-soft-input-surface hover:bg-soft-input-surface-hover active:bg-soft-input-surface-active",
-        outlined:
-          "bg-outlined-input-surface hover:bg-outlined-input-surface-hover active:bg-outlined-input-surface-active",
+        filled: "",
+        outlined: "bg-transparent",
       },
       size: {
         sm: "h-4 w-4 rounded text-base",
@@ -34,72 +33,73 @@ export const checkboxControlVariants = cva(
       },
     },
     compoundVariants: [
-      // variant + colors
       {
-        variant: "soft",
+        variant: "filled",
         isInvalid: false,
         isDisabled: false,
-        class:
-          "border-soft-input-line hover:border-soft-input-line-hover active:border-soft-input-line-active",
+        class: [
+          "bg-input-filled-surface hover:bg-input-filled-surface-hover active:bg-input-filled-surface-active",
+          "border-input-filled-line hover:border-input-filled-line-hover active:border-input-filled-line-active",
+        ],
       },
       {
         variant: "outlined",
         isInvalid: false,
         isDisabled: false,
         class:
-          "border-outlined-input-line hover:border-outlined-input-line-hover active:border-outlined-input-line-active",
+          "border-input-outlined-line hover:border-input-outlined-line-hover active:border-input-outlined-line-active",
       },
 
-      // all variants + colors
+      // variant + checked
       {
         isInvalid: false,
         isDisabled: false,
         class: [
           // safe to put text colors here because `KCheckbox.Indicator` is only rendered when checked or indeterminate
-          "text-solid-selected-content hover:text-solid-selected-content-hover active:text-solid-selected-content-active",
+          "text-solid-accent-content",
           // checked
-          "peer-checked:bg-solid-selected-surface peer-checked:hover:bg-solid-selected-surface-hover peer-checked:active:bg-solid-selected-surface-active",
-          "peer-checked:border-solid-selected-line peer-checked:hover:border-solid-selected-line-hover peer-checked:active:border-solid-selected-line-active",
+          "peer-checked:bg-solid-accent-surface peer-checked:hover:bg-solid-accent-surface-hover peer-checked:active:bg-solid-accent-surface-active",
+          "peer-checked:border-solid-accent-surface peer-checked:hover:border-solid-accent-surface-hover peer-checked:active:border-solid-accent-surface-active",
           // indeterminate
-          "peer-indeterminate:bg-solid-selected-surface peer-indeterminate:hover:bg-solid-selected-surface-hover peer-indeterminate:active:bg-solid-selected-surface-active",
-          "peer-indeterminate:border-solid-selected-line peer-indeterminate:hover:border-solid-selected-line-hover peer-indeterminate:active:border-solid-selected-line-active",
+          "peer-indeterminate:bg-solid-accent-surface peer-indeterminate:hover:bg-solid-accent-surface-hover peer-indeterminate:active:bg-solid-accent-surface-active",
+          "peer-indeterminate:border-solid-accent-surface peer-indeterminate:hover:border-solid-accent-surface-hover peer-indeterminate:active:border-solid-accent-surface-active",
         ],
       },
 
-      // all variants + invalid + colors
+      // variant + checked + invalid
       {
         isInvalid: true,
         isDisabled: false,
         class: [
-          "text-solid-danger-content hover:text-solid-danger-content-hover active:text-solid-danger-content-active",
-          "border-solid-danger-line hover:border-solid-danger-line-hover active:border-solid-danger-line-active",
+          "text-solid-danger-content",
+          "border-solid-danger-surface hover:border-solid-danger-surface-hover active:border-solid-danger-surface-active",
           // checked
           "peer-checked:bg-solid-danger-surface peer-checked:hover:bg-solid-danger-surface-hover peer-checked:active:bg-solid-danger-surface-active",
-          "peer-checked:border-solid-danger-line peer-checked:hover:border-solid-danger-line-hover peer-checked:active:border-solid-danger-line-active",
+          "peer-checked:border-solid-danger-surface peer-checked:hover:border-solid-danger-surface-hover peer-checked:active:border-solid-danger-surface-active",
           // indeterminate
           "peer-indeterminate:bg-solid-danger-surface peer-indeterminate:hover:bg-solid-danger-surface-hover peer-indeterminate:active:bg-solid-danger-surface-active",
-          "peer-indeterminate:border-solid-danger-line peer-indeterminate:hover:border-solid-danger-line-hover peer-indeterminate:active:border-solid-danger-line-active",
+          "peer-indeterminate:border-solid-danger-surface peer-indeterminate:hover:border-solid-danger-surface-hover peer-indeterminate:active:border-solid-danger-surface-active",
         ],
       },
 
-      // all variants focus
+      // variant + focused
       {
         isInvalid: false,
         isDisabled: false,
         class:
-          "peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-focus-ring",
+          "peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-ring",
       },
 
       // variant + disabled
       {
-        variant: "soft",
+        variant: "filled",
         isDisabled: true,
-        class: "ui-group-disabled:bg-surface-disabled ui-group-disabled:border-transparent",
+        class: "ui-group-disabled:bg-surface-disabled ui-group-disabled:border-surface-disabled",
       },
       {
         variant: "outlined",
         isDisabled: true,
-        class: "ui-group-disabled:bg-transparent ui-group-disabled:border-line-disabled",
+        class: "ui-group-disabled:border-line-disabled",
       },
     ],
   }
@@ -116,7 +116,7 @@ export const checkboxLabelWrapperVariants = cva("flex flex-col grow shrink", {
 });
 
 export const checkboxLabelVariants = cva(
-  "text-outlined-input-content ui-group-disabled:text-content-disabled ui-group-disabled:cursor-not-allowed",
+  "text-content ui-group-disabled:text-content-disabled ui-group-disabled:cursor-not-allowed",
   {
     variants: {
       size: {

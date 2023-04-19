@@ -1,7 +1,7 @@
 import { Alert, As, Button, Checkbox, LinkButton, Select, TextField } from "@kobalte/pigment";
 import { Link } from "@solidjs/router";
 
-import { Footer, GitHubIcon, Header, SearchIcon } from "../components";
+import { Footer, GitHubIcon, Header, RocketIcon, SearchIcon } from "../components";
 
 export default function Index() {
   return (
@@ -30,7 +30,13 @@ export default function Index() {
                   Get started
                 </As>
               </LinkButton>
-              <LinkButton size="xl" color="neutral" startIcon={<GitHubIcon />} asChild>
+              <LinkButton
+                size="xl"
+                color="neutral"
+                variant="soft"
+                startIcon={<GitHubIcon />}
+                asChild
+              >
                 <As component={Link} target="_blank" href="https://github.com/kobaltedev/pigment">
                   GitHub
                 </As>
@@ -42,7 +48,14 @@ export default function Index() {
               startDecorator={<SearchIcon class="h-4 w-4 mx-2.5 text-outlined-input-content" />}
               placeholder="Search"
             />
-            <Alert title="Software update" isMultiline class="w-full">
+            <Alert
+              title="Software update"
+              isMultiline
+              variant="soft"
+              color="primary"
+              class="w-full"
+              icon={<RocketIcon />}
+            >
               A new software update is available.
             </Alert>
             <div class="flex w-full justify-center items-start gap-2">
@@ -59,7 +72,7 @@ export default function Index() {
           </div>
         </div>
       </section>
-      <section class="bg-sunken-surface min-h-[calc(100vh-57px)] flex flex-col justify-center gap-10 md:gap-12 p-4 xl:px-0">
+      <section class="bg-surface-sunken min-h-[calc(100vh-57px)] flex flex-col justify-center gap-10 md:gap-12 p-4 xl:px-0">
         <div class="flex flex-col items-center gap-3">
           <span class="text-center text-base font-semibold text-solid-primary-surface uppercase">
             Iterate fast

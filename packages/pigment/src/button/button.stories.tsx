@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 
 import { InfoCircleIcon } from "../icons";
-import { COLOR_VARIANTS, VARIANT_VARIANTS } from "../theme/variants";
+import { SEMANTIC_COLOR_VARIANTS, VARIANT_VARIANTS } from "../theme/variants";
 import { Button } from "./button";
 import { ButtonProps } from "./button.props";
 
@@ -16,7 +16,7 @@ export default {
       control: { type: "select" },
     },
     color: {
-      options: Object.keys(COLOR_VARIANTS),
+      options: Object.keys(SEMANTIC_COLOR_VARIANTS),
       control: { type: "select" },
     },
     size: {

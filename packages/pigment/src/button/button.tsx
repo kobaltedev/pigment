@@ -19,7 +19,7 @@ import {
   LinkButtonSlots,
   LinkIconButtonProps,
 } from "./button.props";
-import { buttonIconVariants, buttonVariants, loadingContentVariants } from "./button.styles";
+import { buttonIconVariants, buttonStyles, loadingContentVariants } from "./button.styles";
 
 /* -------------------------------------------------------------------------------------------------
  * Common
@@ -164,7 +164,7 @@ function ButtonBase(props: ButtonBaseProps) {
   return (
     <KButton.Root
       class={cn(
-        buttonVariants(variantProps),
+        buttonStyles(variantProps),
         buttonStaticClass("root"),
         themeClasses.root,
         local.slotClasses?.root,
@@ -240,7 +240,7 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
   return (
     <KLink.Root
       class={cn(
-        buttonVariants(variantProps),
+        buttonStyles(variantProps),
         linkButtonStaticClass("root"),
         themeClasses.root,
         local.slotClasses?.root,

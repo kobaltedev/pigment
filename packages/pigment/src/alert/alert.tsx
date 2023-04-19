@@ -8,14 +8,13 @@ import {
   ExclamationCircleIcon,
   ExclamationTriangleIcon,
   InfoCircleIcon,
-  LifeBuoyIcon,
 } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { cn } from "../utils/cn";
 import { makeStaticClass } from "../utils/make-static-class";
 import { runIfFn } from "../utils/run-if-fn";
 import { AlertProps, AlertSlots } from "./alert.props";
-import { alertContentVariants, alertVariants } from "./alert.styles";
+import { alertContentVariants, alertStyles } from "./alert.styles";
 
 const alertStaticClass = makeStaticClass<AlertSlots>("alert");
 
@@ -23,8 +22,8 @@ export function Alert(props: AlertProps) {
   props = mergeThemeProps(
     "Alert",
     {
-      variant: "soft",
-      status: "info",
+      variant: "solid",
+      color: "primary",
       hasIcon: true,
       isDismissible: false,
       isMultiline: false,
@@ -37,7 +36,7 @@ export function Alert(props: AlertProps) {
   const [local, variantProps, others] = splitProps(
     props,
     ["class", "children", "slotClasses", "icon", "title", "dismissButtonLabel", "onDismiss"],
-    ["variant", "status", "hasIcon", "isDismissible", "isMultiline"]
+    ["variant", "color", "hasIcon", "isDismissible", "isMultiline"]
   );
 
   const iconProp = createMemo(() => local.icon);
@@ -48,12 +47,10 @@ export function Alert(props: AlertProps) {
     const icon = iconProp();
 
     if (icon) {
-      return isFunction(icon) ? icon(variantProps.status) : icon;
+      return isFunction(icon) ? icon(variantProps.color) : icon;
     }
 
-    switch (variantProps.status) {
-      case "neutral":
-        return LifeBuoyIcon;
+    switch (variantProps.color) {
       case "success":
         return CheckCircleIcon;
       case "info":
@@ -62,13 +59,15 @@ export function Alert(props: AlertProps) {
         return ExclamationTriangleIcon;
       case "danger":
         return ExclamationCircleIcon;
+      default:
+        return undefined;
     }
   };
 
   return (
     <KAlert.Root
       class={cn(
-        alertVariants(variantProps),
+        alertStyles(variantProps),
         alertStaticClass("root"),
         themeClasses.root,
         local.slotClasses?.root,

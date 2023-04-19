@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 
 import { InfoCircleIcon } from "../icons";
+import { SEMANTIC_COLOR_VARIANTS, VARIANT_VARIANTS } from "../theme/variants";
 import { LinkButton } from "./button";
 import { LinkButtonProps } from "./button.props";
 
@@ -11,11 +12,11 @@ export default {
   title: "LinkButton",
   argTypes: {
     variant: {
-      options: ["solid", "soft", "outlined", "ghost"],
+      options: ["default", ...Object.keys(VARIANT_VARIANTS)],
       control: { type: "select" },
     },
     color: {
-      options: ["primary", "neutral", "success", "info", "warning", "danger"],
+      options: Object.keys(SEMANTIC_COLOR_VARIANTS),
       control: { type: "select" },
     },
     size: {

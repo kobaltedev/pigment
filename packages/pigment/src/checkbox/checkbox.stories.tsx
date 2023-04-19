@@ -10,7 +10,7 @@ export default {
   title: "Checkbox",
   argTypes: {
     variant: {
-      options: ["soft", "outlined"],
+      options: ["filled", "outlined"],
       control: { type: "select" },
     },
     size: {

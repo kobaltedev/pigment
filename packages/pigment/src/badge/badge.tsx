@@ -5,7 +5,7 @@ import { mergeThemeProps, useThemeClasses } from "../theme";
 import { cn } from "../utils/cn";
 import { makeStaticClass } from "../utils/make-static-class";
 import { BadgeProps, BadgeSlots } from "./badge.props";
-import { badgeVariants } from "./badge.styles";
+import { badgeStyles } from "./badge.styles";
 
 const badgeStaticClass = makeStaticClass<BadgeSlots>("badge");
 
@@ -13,8 +13,8 @@ export function Badge(props: BadgeProps) {
   props = mergeThemeProps(
     "Badge",
     {
-      variant: "soft",
-      color: "neutral",
+      variant: "solid",
+      color: "primary",
       size: "md",
     },
     props
@@ -32,7 +32,7 @@ export function Badge(props: BadgeProps) {
     <Polymorphic
       fallback="span"
       class={cn(
-        badgeVariants(variantProps),
+        badgeStyles(variantProps),
         badgeStaticClass("root"),
         themeClasses.root,
         local.slotClasses?.root,

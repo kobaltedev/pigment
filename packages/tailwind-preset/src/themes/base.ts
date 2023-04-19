@@ -18,13 +18,27 @@ export function getBaseTheme(vars: VarsFn): Theme {
     },
     light: {
       colors: {
-        neutral: PIGMENT_COLORS.slate,
-        primary: PIGMENT_COLORS.slate,
-        accent: PIGMENT_COLORS.slate,
-        success: PIGMENT_COLORS.green,
-        info: PIGMENT_COLORS.blue,
-        warning: PIGMENT_COLORS.amber,
-        danger: PIGMENT_COLORS.red,
+        neutral: {
+          ...PIGMENT_COLORS.slate,
+        },
+        primary: {
+          ...PIGMENT_COLORS.slate,
+        },
+        accent: {
+          ...PIGMENT_COLORS.slate,
+        },
+        success: {
+          ...PIGMENT_COLORS.green,
+        },
+        info: {
+          ...PIGMENT_COLORS.blue,
+        },
+        warning: {
+          ...PIGMENT_COLORS.amber,
+        },
+        danger: {
+          ...PIGMENT_COLORS.red,
+        },
 
         ring: vars("colors.accent.500"),
         tooltip: vars("colors.neutral.900"),
@@ -150,7 +164,7 @@ export function getBaseTheme(vars: VarsFn): Theme {
             surfaceActive: vars("colors.info.200"),
           },
           warning: {
-            content: PIGMENT_COLORS.sand["900"],
+            content: vars("colors.warning.900"),
             surface: vars("colors.warning.100"),
             surfaceHover: vars("colors.warning.200"),
             surfaceActive: vars("colors.warning.200"),
@@ -189,7 +203,7 @@ export function getBaseTheme(vars: VarsFn): Theme {
             lineActive: vars("colors.accent.600"),
           },
           success: {
-            content: vars("colors.success.900"),
+            content: vars("colors.success.700"),
             line: vars("colors.success.600"),
             surfaceHover: vars("colors.success.50"),
             lineHover: vars("colors.success.600"),
@@ -197,7 +211,7 @@ export function getBaseTheme(vars: VarsFn): Theme {
             lineActive: vars("colors.success.600"),
           },
           info: {
-            content: vars("colors.info.900"),
+            content: vars("colors.info.700"),
             line: vars("colors.info.600"),
             surfaceHover: vars("colors.info.50"),
             lineHover: vars("colors.info.600"),
@@ -205,7 +219,7 @@ export function getBaseTheme(vars: VarsFn): Theme {
             lineActive: vars("colors.info.600"),
           },
           warning: {
-            content: PIGMENT_COLORS.sand["900"],
+            content: vars("colors.warning.700"),
             line: vars("colors.warning.600"),
             surfaceHover: vars("colors.warning.50"),
             lineHover: vars("colors.warning.600"),
@@ -213,7 +227,7 @@ export function getBaseTheme(vars: VarsFn): Theme {
             lineActive: vars("colors.warning.600"),
           },
           danger: {
-            content: vars("colors.danger.900"),
+            content: vars("colors.danger.700"),
             line: vars("colors.danger.600"),
             surfaceHover: vars("colors.danger.50"),
             lineHover: vars("colors.danger.600"),
@@ -239,24 +253,42 @@ export function getBaseTheme(vars: VarsFn): Theme {
             surfaceActive: vars("colors.accent.50"),
           },
           success: {
-            content: vars("colors.success.900"),
+            content: vars("colors.success.700"),
             surfaceHover: vars("colors.success.50"),
             surfaceActive: vars("colors.success.50"),
           },
           info: {
-            content: vars("colors.info.900"),
+            content: vars("colors.info.700"),
             surfaceHover: vars("colors.info.50"),
             surfaceActive: vars("colors.info.50"),
           },
           warning: {
-            content: PIGMENT_COLORS.sand["900"],
+            content: vars("colors.warning.700"),
             surfaceHover: vars("colors.warning.50"),
             surfaceActive: vars("colors.warning.50"),
           },
           danger: {
-            content: vars("colors.danger.900"),
+            content: vars("colors.danger.700"),
             surfaceHover: vars("colors.danger.50"),
             surfaceActive: vars("colors.danger.50"),
+          },
+        },
+
+        input: {
+          filled: {
+            content: vars("colors.neutral.900"),
+            surface: vars("colors.neutral.200"),
+            line: vars("colors.neutral.200"),
+            surfaceHover: vars("colors.neutral.200"),
+            lineHover: vars("colors.neutral.200"),
+            surfaceActive: vars("colors.neutral.200"),
+            lineActive: vars("colors.neutral.200"),
+          },
+          outlined: {
+            content: vars("colors.neutral.900"),
+            line: vars("colors.neutral.300"),
+            lineHover: vars("colors.neutral.300"),
+            lineActive: vars("colors.neutral.300"),
           },
         },
       },

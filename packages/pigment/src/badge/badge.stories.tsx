@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 
+import { SEMANTIC_COLOR_VARIANTS } from "../theme/variants";
 import { Badge } from "./badge";
 import { BadgeProps } from "./badge.props";
 
@@ -14,7 +15,7 @@ export default {
       control: { type: "select" },
     },
     color: {
-      options: ["primary", "neutral", "success", "info", "warning", "danger"],
+      options: Object.keys(SEMANTIC_COLOR_VARIANTS),
       control: { type: "select" },
     },
     size: {
@@ -36,8 +37,8 @@ export default {
 
 export const Default: Story = {
   args: {
-    variant: "soft",
-    color: "neutral",
+    variant: "solid",
+    color: "primary",
     size: "sm",
   },
 };

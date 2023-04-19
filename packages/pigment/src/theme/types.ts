@@ -9,11 +9,9 @@ export type SemanticColor =
 
 export type StateVariant = "base" | "hover" | "active";
 
-export interface GlobalVariants {
-  solid: Record<SemanticColor, Record<StateVariant, string>>;
-  soft: Record<SemanticColor | "input", Record<StateVariant, string>>;
-  outlined: Record<SemanticColor | "input", Record<StateVariant, string>>;
-  ghost: Record<SemanticColor, Record<StateVariant, string>>;
-}
+export type GlobalVariant = "solid" | "soft" | "outlined" | "ghost";
 
-export type GlobalVariant = keyof GlobalVariants;
+export type GlobalVariants = Record<
+  GlobalVariant,
+  Record<SemanticColor, Record<StateVariant, string>>
+>;

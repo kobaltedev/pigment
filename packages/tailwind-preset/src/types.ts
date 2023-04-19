@@ -114,6 +114,24 @@ export const themeTokensShapeValue = {
       "lineActive",
     ]),
     ghost: getGlobalVariantTokenShape(["content", "surfaceHover", "surfaceActive"]),
+
+    input: {
+      filled: {
+        content: "",
+        surface: "",
+        line: "",
+        surfaceHover: "",
+        lineHover: "",
+        surfaceActive: "",
+        lineActive: "",
+      },
+      outlined: {
+        content: "",
+        line: "",
+        lineHover: "",
+        lineActive: "",
+      },
+    },
   },
   shadows: {
     raised: "",

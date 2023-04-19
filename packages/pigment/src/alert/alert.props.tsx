@@ -7,14 +7,14 @@ import { AlertVariants } from "./alert.styles";
 export type AlertSlots = "root" | "icon" | "content" | "title" | "description" | "dismissButton";
 
 export interface AlertProps
-  extends Omit<KAlert.AlertRootProps, "title">,
+  extends Omit<KAlert.AlertRootProps, "title" | "color">,
     AlertVariants,
     SlotProp<AlertSlots> {
   /** The title of the alert. */
   title?: JSX.Element;
 
   /** The icon displayed next to the title. */
-  icon?: ((status: AlertVariants["status"]) => JSX.Element) | JSX.Element;
+  icon?: ((color: AlertVariants["color"]) => JSX.Element) | JSX.Element;
 
   /** An accessible label for the dismiss button. */
   dismissButtonLabel?: string;

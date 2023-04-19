@@ -4,7 +4,7 @@ import { ComponentsConfig } from "./components-config";
 import { ThemeContext } from "./theme-context";
 
 export interface ThemeProviderProps extends ParentProps {
-  /** A custom components configuration to use. */
+  /** Custom components configuration such as default props and additional CSS classes. */
   components?: ComponentsConfig;
 }
 

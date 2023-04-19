@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 
+import { SEMANTIC_COLOR_VARIANTS } from "../theme/variants";
 import { Alert } from "./alert";
 import { AlertProps } from "./alert.props";
 
@@ -13,8 +14,8 @@ export default {
       options: ["solid", "soft"],
       control: { type: "select" },
     },
-    status: {
-      options: ["neutral", "success", "info", "warning", "danger"],
+    color: {
+      options: Object.keys(SEMANTIC_COLOR_VARIANTS),
       control: { type: "select" },
     },
     hasIcon: {
@@ -38,8 +39,8 @@ export default {
 
 export const Default: Story = {
   args: {
-    variant: "soft",
-    status: "info",
+    variant: "solid",
+    color: "primary",
     title: "Announcement",
     hasIcon: true,
     isDismissible: true,

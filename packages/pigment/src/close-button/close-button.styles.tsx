@@ -5,9 +5,9 @@ export const closeButtonVariants = cva(
     "appearance-none relative inline-flex justify-center items-center p-0",
     "reset-svg font-medium leading-none no-underline",
     "transition-colors cursor-pointer",
-    "bg-subtle-surface hover:bg-subtle-surface-hover active:bg-subtle-surface-active",
+    "bg-transparent hover:bg-surface-highlighted-hover active:bg-surface-highlighted-active",
     "border border-solid border-transparent",
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring",
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
   ],
   {
     variants: {
@@ -23,8 +23,7 @@ export const closeButtonVariants = cva(
         false: "text-content-subtle",
       },
       isDisabled: {
-        true: "ui-disabled:text-content-disabled ui-disabled:bg-transparent ui-disabled:border-transparent ui-disabled:cursor-not-allowed ui-disabled:select-none",
-        false: "active:scale-95",
+        true: "ui-disabled:text-content-disabled ui-disabled:cursor-not-allowed ui-disabled:select-none",
       },
     },
   }

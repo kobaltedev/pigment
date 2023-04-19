@@ -1,23 +1,31 @@
 import { cva, VariantProps } from "class-variance-authority";
 
 import { GlobalVariant, SemanticColor } from "../theme/types";
-import { COLOR_VARIANTS, getGlobalVariantClasses, VARIANT_VARIANTS } from "../theme/variants";
+import {
+  SEMANTIC_COLOR_VARIANTS,
+  getGlobalVariantClasses,
+  VARIANT_VARIANTS,
+} from "../theme/variants";
 
-export const buttonVariants = cva(
+export const buttonStyles = cva(
   [
     "group",
     "appearance-none relative justify-center items-center",
     "border border-solid",
     "transition-colors cursor-pointer no-underline",
-    // TODO: focus state
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-surface",
   ],
   {
     variants: {
       variant: {
         ...VARIANT_VARIANTS,
-        default: [],
+        default: [
+          "text-content bg-surface border-line shadow-sm dark:shadow-none",
+          "hover:bg-surface-hover",
+          "active:bg-surface-active",
+        ],
       },
-      color: COLOR_VARIANTS,
+      color: SEMANTIC_COLOR_VARIANTS,
       size: {
         xs: "h-6 gap-1 rounded",
         sm: "h-8 gap-1.5 rounded",
@@ -42,7 +50,7 @@ export const buttonVariants = cva(
     compoundVariants: [
       // variant + color
       ...(Object.keys(VARIANT_VARIANTS) as GlobalVariant[]).flatMap(variant =>
-        (Object.keys(COLOR_VARIANTS) as SemanticColor[]).map(color => {
+        (Object.keys(SEMANTIC_COLOR_VARIANTS) as SemanticColor[]).map(color => {
           const variantClasses = getGlobalVariantClasses(variant, color);
 
           return {
@@ -131,4 +139,4 @@ export const loadingContentVariants = cva("inline-flex items-center justify-cent
   },
 });
 
-export type ButtonVariants = VariantProps<typeof buttonVariants>;
+export type ButtonVariants = VariantProps<typeof buttonStyles>;
