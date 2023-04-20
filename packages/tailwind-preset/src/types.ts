@@ -28,15 +28,32 @@ const paletteRangeValues = [
 
 export type PaletteRange = (typeof paletteRangeValues)[number];
 
-function getGlobalVariantTokenShape<T extends string>(properties: T[]) {
-  return semanticColorValues.reduce((acc, color) => {
+function getGlobalVariantTokenShape<T extends string, U extends string>(
+  variants: readonly T[],
+  properties: readonly U[]
+) {
+  return variants.reduce((acc, color) => {
     acc[color] = properties.reduce((acc, key) => {
       acc[key] = "";
       return acc;
-    }, {} as Record<T, string>);
+    }, {} as Record<U, string>);
     return acc;
-  }, {} as Record<SemanticColor, Record<T, string>>);
+  }, {} as Record<T, Record<U, string>>);
 }
+
+const ghostVariantProperties = [
+  "content",
+  "contentHover",
+  "surfaceHover",
+  "lineHover",
+  "contentActive",
+  "surfaceActive",
+  "lineActive",
+] as const;
+
+const outlinedVariantProperties = [...ghostVariantProperties, "line"] as const;
+
+const solidVariantProperties = [...outlinedVariantProperties, "surface"] as const;
 
 export const themeTokensShapeValue = {
   colors: {
@@ -72,32 +89,21 @@ export const themeTokensShapeValue = {
       body: "",
       raised: "",
       overlay: "",
+      sunken: "",
     },
 
-    solid: getGlobalVariantTokenShape(["content", "surface", "surfaceHover", "surfaceActive"]),
-    soft: getGlobalVariantTokenShape(["content", "surface", "surfaceHover", "surfaceActive"]),
-    outlined: getGlobalVariantTokenShape([
-      "content",
-      "line",
-      "surfaceHover",
-      "lineHover",
-      "surfaceActive",
-      "lineActive",
-    ]),
-    ghost: getGlobalVariantTokenShape(["content", "surfaceHover", "surfaceActive"]),
+    solid: getGlobalVariantTokenShape(semanticColorValues, solidVariantProperties),
+    soft: getGlobalVariantTokenShape(semanticColorValues, solidVariantProperties),
+    outlined: getGlobalVariantTokenShape(semanticColorValues, outlinedVariantProperties),
+    ghost: getGlobalVariantTokenShape(semanticColorValues, ghostVariantProperties),
+
+    accent: getGlobalVariantTokenShape(["solid", "soft"], solidVariantProperties),
 
     input: {
-      filled: {
-        content: "",
-        surface: "",
-        line: "",
-        surfaceHover: "",
-        lineHover: "",
-        surfaceActive: "",
-        lineActive: "",
-      },
+      ...getGlobalVariantTokenShape(["soft"], solidVariantProperties),
       outlined: {
         content: "",
+
         line: "",
         lineHover: "",
         lineActive: "",
@@ -142,7 +148,7 @@ export type VarsFn = (token: TokenKey) => string;
 
 export type ThemeTokensGetter = (vars: VarsFn) => ThemeTokens;
 
-export type PredefinedTheme = "base" | "violet" | "scarlet" | "sun" | "moon" | "emerald";
+export type PredefinedTheme = "sapphire" | "emerald" | "sun" | "moon" | "scarlet" | "violet";
 
 export interface ExtendedTheme {
   /** The name of the extended theme. */

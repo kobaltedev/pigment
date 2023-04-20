@@ -21,12 +21,12 @@ module.exports = {
   presets: [
     pigmentPreset({
       themes: [
-        "base",
-        "violet",
-        "scarlet",
+        "sapphire",
+        "emerald",
         "sun",
         "moon",
-        "emerald",
+        "scarlet",
+        "violet",
         /** @type {import('@kobalte/pigment-tailwind-preset').CustomTheme} */
         {
           name: "github",

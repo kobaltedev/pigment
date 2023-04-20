@@ -6,7 +6,6 @@ export const closeButtonVariants = cva(
     "reset-svg font-medium leading-none no-underline",
     "transition-colors cursor-pointer",
     "bg-transparent hover:bg-surface-highlighted-hover active:bg-surface-highlighted-active",
-    "border border-solid border-transparent",
     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
   ],
   {

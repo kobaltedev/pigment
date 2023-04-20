@@ -12,7 +12,7 @@ export default function ThemeGeneratorLayout() {
         drawerContent={<div class="me-6 flex lg:hidden">{/* TODO: theming form responsive */}</div>}
       />
       <div class="relative flex justify-center">
-        <div class="hidden lg:relative lg:block lg:flex-none lg:border-solid lg:border-r lg:border-r-slate-200">
+        <div class="hidden lg:relative lg:block lg:flex-none lg:border-solid lg:border-r lg:border-r-neutral-200">
           <div class="sticky top-[61px] h-[calc(100vh-61px)] overflow-y-auto py-6 ps-2 pe-2">
             <div class="w-72 px-3"></div>
           </div>

@@ -1,6 +1,6 @@
 export const PIGMENT_COLORS = {
   white: "#ffffff",
-  black: "#121212", // Do not use pure black.
+  black: "#000000",
 
   /* Based on Tailwind neutral - for pure gray. */
   gray: {

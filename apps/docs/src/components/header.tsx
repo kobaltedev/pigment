@@ -24,8 +24,8 @@ function HeaderLink(props: HeaderLink) {
         href={props.href}
         class={
           props.isActive
-            ? "text-slate-900 dark:text-slate-50"
-            : "font-normal text-slate-700 dark:text-slate-200"
+            ? "text-neutral-900 dark:text-neutral-50"
+            : "font-normal text-neutral-700 dark:text-neutral-200"
         }
       >
         {props.children}
@@ -40,17 +40,17 @@ export function Header(props: HeaderProps) {
   const isThemeGeneratorPath = useMatch(() => "/docs/theme-generator/*");
 
   return (
-    <header class="sticky top-0 z-10 flex flex-wrap items-center justify-between bg-surface-body border-b border-b-slate-200 dark:border-b-slate-800 px-4 transition duration-500 lg:px-4 ">
+    <header class="sticky top-0 z-10 flex flex-wrap items-center justify-between bg-surface-body border-b border-b-neutral-200 dark:border-b-neutral-900 px-4 transition duration-500 lg:px-4 ">
       {props.drawerContent}
       <div class="relative flex flex-grow basis-0 items-center space-x-2">
         <Link
-          class="text-slate-800 dark:text-white/90 font-medium font-display text-xl leading-none"
+          class="text-neutral-800 dark:text-white/90 font-medium font-display text-xl leading-none"
           href="/"
         >
           Pigment
-          <span class="text-3xl leading-[0] text-blue-600">.</span>
+          <span class="text-3xl leading-[0] text-primary-600">.</span>
         </Link>
-        <span class="rounded bg-slate-100 px-1.5 py-1 text-sm leading-none dark:bg-slate-800 dark:text-slate-300">
+        <span class="rounded bg-neutral-100 px-1.5 py-1 text-sm leading-none dark:bg-neutral-800 dark:text-neutral-300">
           {LATEST_CORE_VERSION_NAME}
         </span>
       </div>

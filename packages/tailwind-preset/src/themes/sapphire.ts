@@ -1,10 +1,10 @@
-import twDefaultColors from "tailwindcss/colors";
 import twDefaultTheme from "tailwindcss/defaultTheme";
 
 import { PIGMENT_COLORS } from "../colors";
 import { ThemeTokens, VarsFn } from "../types";
 
-export function getMoonThemeTokens(vars: VarsFn): ThemeTokens {
+/** Pigment default theme tokens. */
+export function getSapphireThemeTokens(vars: VarsFn): ThemeTokens {
   return {
     common: {
       typography: {
@@ -22,13 +22,13 @@ export function getMoonThemeTokens(vars: VarsFn): ThemeTokens {
           ...PIGMENT_COLORS.slate,
         },
         primary: {
-          ...twDefaultColors.slate,
+          ...PIGMENT_COLORS.blue,
         },
         success: {
           ...PIGMENT_COLORS.green,
         },
         info: {
-          ...PIGMENT_COLORS.blue,
+          ...PIGMENT_COLORS.sky,
         },
         warning: {
           ...PIGMENT_COLORS.yellow,

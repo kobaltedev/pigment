@@ -1,7 +1,7 @@
 import { cn, Select } from "@kobalte/pigment";
-import { ComponentProps, createSignal, onCleanup, onMount, splitProps } from "solid-js";
+import { ComponentProps, createSignal, splitProps } from "solid-js";
 
-function PrimaryColorIndicator(props: ComponentProps<"span">) {
+function ColorIndicator(props: ComponentProps<"span">) {
   const [local, others] = splitProps(props, ["class"]);
 
   return (
@@ -10,19 +10,15 @@ function PrimaryColorIndicator(props: ComponentProps<"span">) {
 }
 
 const THEMES = [
-  { value: "base", label: "Base", icon: () => <PrimaryColorIndicator class="bg-blue-600" /> },
-  { value: "violet", label: "Violet", icon: () => <PrimaryColorIndicator class="bg-violet-600" /> },
-  { value: "scarlet", label: "Scarlet", icon: () => <PrimaryColorIndicator class="bg-pink-600" /> },
-  { value: "sun", label: "Sun", icon: () => <PrimaryColorIndicator class="bg-amber-600" /> },
-  { value: "moon", label: "Moon", icon: () => <PrimaryColorIndicator class="bg-slate-800" /> },
-  {
-    value: "emerald",
-    label: "Emerald",
-    icon: () => <PrimaryColorIndicator class="bg-emerald-600" />,
-  },
+  { value: "sapphire", label: "Sapphire", icon: () => <ColorIndicator class="bg-blue-600" /> },
+  { value: "emerald", label: "Emerald", icon: () => <ColorIndicator class="bg-emerald-600" /> },
+  { value: "sun", label: "Sun", icon: () => <ColorIndicator class="bg-amber-600" /> },
+  { value: "moon", label: "Moon", icon: () => <ColorIndicator class="bg-neutral-800" /> },
+  { value: "scarlet", label: "Scarlet", icon: () => <ColorIndicator class="bg-pink-600" /> },
+  { value: "violet", label: "Violet", icon: () => <ColorIndicator class="bg-violet-600" /> },
 ];
 
-const [theme, setTheme] = createSignal("base");
+const [theme, setTheme] = createSignal("sapphire");
 
 export function ThemeSelector() {
   const updateTheme = (value: string) => {

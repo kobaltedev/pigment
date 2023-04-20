@@ -8,8 +8,7 @@ export const selectButtonVariants = cva(
   {
     variants: {
       variant: {
-        filled:
-          "bg-input-filled-surface hover:bg-input-filled-surface-hover active:bg-input-filled-surface-active",
+        soft: "bg-input-soft-surface hover:bg-input-soft-surface-hover active:bg-input-soft-surface-active",
         outlined: "bg-transparent",
       },
       size: {
@@ -43,12 +42,12 @@ export const selectButtonVariants = cva(
     compoundVariants: [
       // variant + color
       {
-        variant: "filled",
+        variant: "soft",
         isInvalid: false,
         isDisabled: false,
         class: [
-          "text-input-filled-content",
-          "border-input-filled-line hover:border-input-filled-line-hover active:border-input-filled-line-active",
+          "text-input-soft-content hover:text-input-soft-content-hover active:text-input-soft-content-active",
+          "border-input-soft-line hover:border-input-soft-line-hover active:border-input-soft-line-active",
         ],
       },
       {
@@ -61,18 +60,18 @@ export const selectButtonVariants = cva(
         ],
       },
 
-      // variants + invalid
+      // variant + invalid
       {
         isInvalid: true,
         isDisabled: false,
-        class: "text-content-danger border-solid-danger-surface",
+        class: "text-content-danger border-solid-danger-line",
       },
 
       // variant + disabled
       {
-        variant: "filled",
+        variant: "soft",
         isDisabled: true,
-        class: "ui-disabled:bg-surface-disabled ui-disabled:border-surface-disabled",
+        class: "ui-disabled:bg-surface-disabled ui-disabled:border-transparent",
       },
       {
         variant: "outlined",
@@ -106,7 +105,7 @@ export const selectIconVariants = cva(
   {
     variants: {
       variant: {
-        filled: "",
+        soft: "",
         outlined: "",
       },
       size: {
@@ -138,28 +137,11 @@ export const selectIconVariants = cva(
 
 export const selectValueVariants = cva("inline-flex justify-start items-center grow shrink", {
   variants: {
-    variant: {
-      filled: "",
-      outlined: "",
-    },
     isDisabled: {
       true: "",
-      false: "",
+      false: "data-placeholder-shown:text-content-subtlest",
     },
   },
-  compoundVariants: [
-    // variant + not disabled
-    {
-      variant: "filled",
-      isDisabled: false,
-      class: "data-placeholder-shown:text-content-subtler",
-    },
-    {
-      variant: "outlined",
-      isDisabled: false,
-      class: "data-placeholder-shown:text-content-subtlest",
-    },
-  ],
 });
 
 export const selectLabelVariants = cva(
@@ -194,7 +176,7 @@ export const selectDropdownVariants = cva(
   {
     variants: {
       variant: {
-        filled: "border-input-filled-line",
+        soft: "border-input-soft-line",
         outlined: "border-input-outlined-line",
       },
       size: {
@@ -236,8 +218,8 @@ export const selectOptionVariants = cva(
   [
     "group flex shrink-0 justify-between items-center select-none outline-none ui-not-disabled:cursor-pointer",
     "bg-transparent ui-highlighted:bg-surface-highlighted-hover ui-highlighted:active:bg-surface-highlighted-active",
-    "ui-selected:bg-soft-primary-surface ui-selected:ui-highlighted:bg-soft-primary-surface-hover ui-selected:ui-highlighted:active:bg-soft-primary-surface-active",
-    "ui-selected:text-soft-primary-content ui-selected:ui-highlighted:text-soft-primary-content-hover ui-selected:ui-highlighted:active:text-soft-primary-content-active",
+    "ui-selected:text-accent-soft-content ui-selected:ui-highlighted:text-accent-soft-content-hover ui-selected:ui-highlighted:active:text-accent-soft-content-active",
+    "ui-selected:bg-accent-soft-surface ui-selected:ui-highlighted:bg-accent-soft-surface-hover ui-selected:ui-highlighted:active:bg-accent-soft-surface-active",
     "ui-selected:font-medium",
     "ui-disabled:text-content-disabled",
   ],

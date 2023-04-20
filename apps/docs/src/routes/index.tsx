@@ -72,7 +72,7 @@ export default function Index() {
           </div>
         </div>
       </section>
-      <section class="bg-surface-sunken min-h-[calc(100vh-57px)] flex flex-col justify-center gap-10 md:gap-12 p-4 xl:px-0">
+      <section class="bg-surface-sunken dark:bg-neutral-800/10 min-h-[calc(100vh-57px)] flex flex-col justify-center gap-10 md:gap-12 p-4 xl:px-0">
         <div class="flex flex-col items-center gap-3">
           <span class="text-center text-base font-semibold text-solid-primary-surface uppercase">
             Iterate fast
@@ -84,7 +84,7 @@ export default function Index() {
           </div>
         </div>
         <div class="mx-auto flex w-full max-w-7xl flex-wrap justify-center justify-items-start gap-4">
-          <div class="flex flex-col gap-4 max-w-sm w-full bg-raised-surface shadow-raised p-6 rounded-md">
+          <div class="flex flex-col gap-4 max-w-sm w-full bg-surface-raised shadow-raised p-6 rounded-md">
             <div class="flex h-fit w-fit flex-col items-center justify-center rounded-full bg-soft-primary-surface text-soft-primary-content p-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -111,7 +111,7 @@ export default function Index() {
               </p>
             </div>
           </div>
-          <div class="flex flex-col gap-4 max-w-sm w-full bg-raised-surface shadow-raised p-6 rounded-md">
+          <div class="flex flex-col gap-4 max-w-sm w-full bg-surface-raised shadow-raised p-6 rounded-md">
             <div class="flex h-fit w-fit flex-col items-center justify-center rounded-full bg-soft-primary-surface text-soft-primary-content p-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -138,7 +138,7 @@ export default function Index() {
               </p>
             </div>
           </div>
-          <div class="flex flex-col gap-4 max-w-sm w-full bg-raised-surface shadow-raised p-6 rounded-md">
+          <div class="flex flex-col gap-4 max-w-sm w-full bg-surface-raised shadow-raised p-6 rounded-md">
             <div class="flex h-fit w-fit flex-col items-center justify-center rounded-full bg-soft-primary-surface text-soft-primary-content p-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

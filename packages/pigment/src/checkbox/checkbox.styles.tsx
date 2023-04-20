@@ -15,7 +15,7 @@ export const checkboxControlVariants = cva(
   {
     variants: {
       variant: {
-        filled: "",
+        soft: "",
         outlined: "bg-transparent",
       },
       size: {
@@ -33,13 +33,14 @@ export const checkboxControlVariants = cva(
       },
     },
     compoundVariants: [
+      // variant + color
       {
-        variant: "filled",
+        variant: "soft",
         isInvalid: false,
         isDisabled: false,
         class: [
-          "bg-input-filled-surface hover:bg-input-filled-surface-hover active:bg-input-filled-surface-active",
-          "border-input-filled-line hover:border-input-filled-line-hover active:border-input-filled-line-active",
+          "bg-input-soft-surface hover:bg-input-soft-surface-hover active:bg-input-soft-surface-active",
+          "border-input-soft-line hover:border-input-soft-line-hover active:border-input-soft-line-active",
         ],
       },
       {
@@ -56,13 +57,13 @@ export const checkboxControlVariants = cva(
         isDisabled: false,
         class: [
           // safe to put text colors here because `KCheckbox.Indicator` is only rendered when checked or indeterminate
-          "text-solid-primary-content",
+          "text-accent-solid-content hover:text-accent-solid-content-hover active:text-accent-solid-content-active",
           // checked
-          "peer-checked:bg-solid-primary-surface peer-checked:hover:bg-solid-primary-surface-hover peer-checked:active:bg-solid-primary-surface-active",
-          "peer-checked:border-solid-primary-surface peer-checked:hover:border-solid-primary-surface-hover peer-checked:active:border-solid-primary-surface-active",
+          "peer-checked:bg-accent-solid-surface peer-checked:hover:bg-accent-solid-surface-hover peer-checked:active:bg-accent-solid-surface-active",
+          "peer-checked:border-accent-solid-line peer-checked:hover:border-accent-solid-line-hover peer-checked:active:border-accent-solid-line-active",
           // indeterminate
-          "peer-indeterminate:bg-solid-primary-surface peer-indeterminate:hover:bg-solid-primary-surface-hover peer-indeterminate:active:bg-solid-primary-surface-active",
-          "peer-indeterminate:border-solid-primary-surface peer-indeterminate:hover:border-solid-primary-surface-hover peer-indeterminate:active:border-solid-primary-surface-active",
+          "peer-indeterminate:bg-accent-solid-surface peer-indeterminate:hover:bg-accent-solid-surface-hover peer-indeterminate:active:bg-accent-solid-surface-active",
+          "peer-indeterminate:border-accent-solid-line peer-indeterminate:hover:border-accent-solid-line-hover peer-indeterminate:active:border-accent-solid-line-active",
         ],
       },
 
@@ -71,14 +72,15 @@ export const checkboxControlVariants = cva(
         isInvalid: true,
         isDisabled: false,
         class: [
+          // safe to put text colors here because `KCheckbox.Indicator` is only rendered when checked or indeterminate
           "text-solid-danger-content",
-          "border-solid-danger-surface hover:border-solid-danger-surface-hover active:border-solid-danger-surface-active",
+          "border-solid-danger-line",
           // checked
-          "peer-checked:bg-solid-danger-surface peer-checked:hover:bg-solid-danger-surface-hover peer-checked:active:bg-solid-danger-surface-active",
-          "peer-checked:border-solid-danger-surface peer-checked:hover:border-solid-danger-surface-hover peer-checked:active:border-solid-danger-surface-active",
+          "peer-checked:bg-solid-danger-surface",
+          "peer-checked:border-solid-danger-line",
           // indeterminate
-          "peer-indeterminate:bg-solid-danger-surface peer-indeterminate:hover:bg-solid-danger-surface-hover peer-indeterminate:active:bg-solid-danger-surface-active",
-          "peer-indeterminate:border-solid-danger-surface peer-indeterminate:hover:border-solid-danger-surface-hover peer-indeterminate:active:border-solid-danger-surface-active",
+          "peer-indeterminate:bg-solid-danger-surface",
+          "peer-indeterminate:border-solid-danger-line",
         ],
       },
 
@@ -92,7 +94,7 @@ export const checkboxControlVariants = cva(
 
       // variant + disabled
       {
-        variant: "filled",
+        variant: "soft",
         isDisabled: true,
         class: "ui-group-disabled:bg-surface-disabled ui-group-disabled:border-surface-disabled",
       },

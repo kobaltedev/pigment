@@ -4,7 +4,7 @@ import { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
 import animatePlugin from "tailwindcss-animate";
 
-import { createThemeResolver, isValidTheme } from "./themes";
+import { createThemeResolver, DEFAULT_THEME_NAME, isValidTheme } from "./themes";
 import {
   PigmentOptions,
   PredefinedTheme,
@@ -13,9 +13,9 @@ import {
   TokenKey,
 } from "./types";
 import {
+  ALPHA_COLOR_CSS_VAR_SUFFIX,
   createVarsFn,
   DARK_DATA_ATTR_SELECTOR,
-  ALPHA_COLOR_CSS_VAR_SUFFIX,
   flatten,
   getCssVarsPrefix,
   isHexColor,
@@ -102,8 +102,8 @@ export function pigmentPreset(options: PigmentOptions | undefined = {}): Partial
             }
           });
         } else {
-          // Fallback to base theme.
-          themes.push(["base", resolveTheme("base")]);
+          // Fallback to default theme.
+          themes.push([DEFAULT_THEME_NAME, resolveTheme(DEFAULT_THEME_NAME)]);
         }
 
         themes.forEach(([name, theme], index) => {

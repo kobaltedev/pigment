@@ -7,6 +7,7 @@ import {
   CheckCircleIcon,
   ExclamationCircleIcon,
   ExclamationTriangleIcon,
+  HelpCircleIcon,
   InfoCircleIcon,
 } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme";
@@ -60,7 +61,7 @@ export function Alert(props: AlertProps) {
       case "danger":
         return ExclamationCircleIcon;
       default:
-        return undefined;
+        return HelpCircleIcon;
     }
   };
 
