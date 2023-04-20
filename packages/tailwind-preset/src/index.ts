@@ -4,23 +4,25 @@ import { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
 import animatePlugin from "tailwindcss-animate";
 
-import { PREDEFINED_THEMES } from "./themes";
+import { createThemeResolver, isValidTheme } from "./themes";
 import {
-  PartialTheme,
   PigmentOptions,
   PredefinedTheme,
+  ThemeTokens,
   themeTokensShapeValue,
   TokenKey,
 } from "./types";
 import {
   createVarsFn,
   DARK_DATA_ATTR_SELECTOR,
+  ALPHA_COLOR_CSS_VAR_SUFFIX,
   flatten,
   getCssVarsPrefix,
   isHexColor,
   isString,
   removeDefaultSuffix,
   rgbColorChannel,
+  runIfFn,
   toKebabCase,
 } from "./utils";
 
@@ -28,6 +30,7 @@ export function pigmentPreset(options: PigmentOptions | undefined = {}): Partial
   const cssVarPrefix = getCssVarsPrefix(options);
 
   const vars = createVarsFn(cssVarPrefix);
+  const resolveTheme = createThemeResolver(vars);
 
   return {
     darkMode: ["class", DARK_DATA_ATTR_SELECTOR],
@@ -47,6 +50,15 @@ export function pigmentPreset(options: PigmentOptions | undefined = {}): Partial
             acc[formattedKey] = `rgb(${vars(`colors-${key}` as TokenKey)} / <alpha-value>)`;
             return acc;
           }, {} as any),
+          "content-disabled": vars(ALPHA_COLOR_CSS_VAR_SUFFIX.contentDisabled as TokenKey),
+          "surface-disabled": vars(ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceDisabled as TokenKey),
+          "line-disabled": vars(ALPHA_COLOR_CSS_VAR_SUFFIX.lineDisabled as TokenKey),
+          "surface-highlighted-hover": vars(
+            ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceHighlightedHover as TokenKey
+          ),
+          "surface-highlighted-active": vars(
+            ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceHighlightedActive as TokenKey
+          ),
         },
         boxShadow: {
           ...Object.keys(flatten(themeTokensShapeValue.shadows, "-")).reduce((acc, key) => {
@@ -64,7 +76,7 @@ export function pigmentPreset(options: PigmentOptions | undefined = {}): Partial
       animatePlugin,
       kobaltePlugin,
       plugin(({ addBase, addUtilities }) => {
-        const themes: Array<[PredefinedTheme | string, PartialTheme]> = [];
+        const themes: Array<[PredefinedTheme | string, ThemeTokens]> = [];
 
         const cssVarName = (key: string) => {
           return `--${cssVarPrefix}${toKebabCase(removeDefaultSuffix(key))}`;
@@ -73,21 +85,25 @@ export function pigmentPreset(options: PigmentOptions | undefined = {}): Partial
         if (options.themes != null && options?.themes.length > 0) {
           options?.themes.forEach(theme => {
             if (isString(theme)) {
-              // Add the predefined theme.
-              themes.push([theme, PREDEFINED_THEMES[theme](vars)]);
-            } else if (theme.extend != null) {
+              // Add the predefined theme if exists.
+              if (isValidTheme(theme)) {
+                themes.push([theme, resolveTheme(theme)]);
+              }
+            } else if ("extend" in theme) {
               // Create a custom theme by extending a predefined theme.
-              const mergedTheme = { value: PREDEFINED_THEMES[theme.extend](vars) };
-              dset(mergedTheme, "value", theme.tokens(vars));
-              themes.push([theme.name, mergedTheme.value]);
+              if (isValidTheme(theme.extend)) {
+                const mergedTheme = { value: resolveTheme(theme.extend) };
+                dset(mergedTheme, "value", runIfFn(theme.tokens, vars));
+                themes.push([theme.name, mergedTheme.value]);
+              }
             } else {
               // Create a custom theme from scratch.
-              themes.push([theme.name, theme.tokens(vars)]);
+              themes.push([theme.name, runIfFn(theme.tokens, vars)]);
             }
           });
         } else {
           // Fallback to base theme.
-          themes.push(["base", PREDEFINED_THEMES.base(vars)]);
+          themes.push(["base", resolveTheme("base")]);
         }
 
         themes.forEach(([name, theme], index) => {
@@ -116,6 +132,21 @@ export function pigmentPreset(options: PigmentOptions | undefined = {}): Partial
                 acc[cssVarName(key)] = isHexColor(value) ? rgbColorChannel(value) : value;
                 return acc;
               }, {} as any),
+              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.contentDisabled)]: `rgb(${vars(
+                "colors.neutral.950"
+              )} / 0.3)`,
+              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceDisabled)]: `rgb(${vars(
+                "colors.neutral.950"
+              )} / 0.03)`,
+              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.lineDisabled)]: `rgb(${vars(
+                "colors.neutral.950"
+              )} / 0.06)`,
+              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceHighlightedHover)]: `rgb(${vars(
+                "colors.neutral.950"
+              )} / 0.06)`,
+              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceHighlightedActive)]: `rgb(${vars(
+                "colors.neutral.950"
+              )} / 0.14)`,
             },
           });
 
@@ -128,6 +159,21 @@ export function pigmentPreset(options: PigmentOptions | undefined = {}): Partial
                 },
                 {} as any
               ),
+              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.contentDisabled)]: `rgb(${vars(
+                "colors.neutral.300"
+              )} / 0.3)`,
+              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceDisabled)]: `rgb(${vars(
+                "colors.neutral.300"
+              )} / 0.04)`,
+              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.lineDisabled)]: `rgb(${vars(
+                "colors.neutral.300"
+              )} / 0.08)`,
+              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceHighlightedHover)]: `rgb(${vars(
+                "colors.neutral.300"
+              )} / 0.08)`,
+              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceHighlightedActive)]: `rgb(${vars(
+                "colors.neutral.300"
+              )} / 0.16)`,
             },
           });
         });

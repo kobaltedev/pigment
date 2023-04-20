@@ -8,15 +8,7 @@ export type DeepPartial<T> = {
   [P in keyof T]?: DeepPartial<T[P]>;
 };
 
-const semanticColorValues = [
-  "neutral",
-  "primary",
-  "accent",
-  "success",
-  "info",
-  "warning",
-  "danger",
-] as const;
+const semanticColorValues = ["neutral", "primary", "success", "info", "warning", "danger"] as const;
 
 export type SemanticColor = (typeof semanticColorValues)[number];
 
@@ -57,6 +49,7 @@ export const themeTokensShapeValue = {
     }, {} as Record<SemanticColor, Record<PaletteRange, string>>),
 
     ring: "",
+    line: "",
     backdrop: "",
     tooltip: "",
 
@@ -65,11 +58,9 @@ export const themeTokensShapeValue = {
       subtle: "",
       subtler: "",
       subtlest: "",
-      disabled: "",
       inverse: "",
       warningInverse: "",
       primary: "",
-      accent: "",
       success: "",
       info: "",
       warning: "",
@@ -77,30 +68,10 @@ export const themeTokensShapeValue = {
     },
 
     surface: {
+      DEFAULT: "",
       body: "",
-
-      DEFAULT: "",
-      hover: "",
-      active: "",
-      disabled: "",
-
       raised: "",
-      raisedHover: "",
-      raisedActive: "",
-
       overlay: "",
-      overlayHover: "",
-      overlayActive: "",
-
-      sunken: "",
-
-      highlightedHover: "",
-      highlightedActive: "",
-    },
-
-    line: {
-      DEFAULT: "",
-      disabled: "",
     },
 
     solid: getGlobalVariantTokenShape(["content", "surface", "surfaceHover", "surfaceActive"]),
@@ -151,7 +122,7 @@ export type ColorSchemeTokens = Pick<typeof themeTokensShapeValue, "colors" | "s
 
 export type CommonTokens = Pick<typeof themeTokensShapeValue, "typography">;
 
-export interface Theme {
+export interface ThemeTokens {
   /** Color scheme independent tokens. */
   common: CommonTokens;
 
@@ -162,26 +133,34 @@ export interface Theme {
   dark: DeepPartial<ColorSchemeTokens>;
 }
 
-export type PartialTheme = DeepPartial<Theme>;
-
-export type PredefinedTheme = "base";
+export type PartialThemeTokens = DeepPartial<ThemeTokens>;
 
 export type TokenKey = FlattenObjectKeys<ColorSchemeTokens> | FlattenObjectKeys<CommonTokens>;
 
 /** A function to get the css variable of a token. */
 export type VarsFn = (token: TokenKey) => string;
 
-export type ThemeGetter = (vars: VarsFn) => Theme;
+export type ThemeTokensGetter = (vars: VarsFn) => ThemeTokens;
+
+export type PredefinedTheme = "base" | "violet" | "scarlet" | "sun" | "moon" | "emerald";
+
+export interface ExtendedTheme {
+  /** The name of the extended theme. */
+  name: string;
+
+  /** The predefined theme to extend. */
+  extend: PredefinedTheme;
+
+  /** The design tokens of the extended theme. */
+  tokens: PartialThemeTokens | ((vars: VarsFn) => PartialThemeTokens);
+}
 
 export interface CustomTheme {
   /** The name of the custom theme. */
   name: string;
 
-  /** If provided, the custom theme will be merged with the predefined theme. */
-  extend?: PredefinedTheme;
-
-  /** A function that return the design tokens of the custom theme. */
-  tokens: (vars: VarsFn) => PartialTheme;
+  /** The design tokens of the custom theme. */
+  tokens: ThemeTokens | ((vars: VarsFn) => ThemeTokens);
 }
 
 export interface PigmentOptions {
@@ -189,5 +168,5 @@ export interface PigmentOptions {
   cssVarPrefix?: string;
 
   /** The themes available in the application. */
-  themes?: Array<PredefinedTheme | CustomTheme>;
+  themes?: Array<PredefinedTheme | ExtendedTheme | CustomTheme>;
 }

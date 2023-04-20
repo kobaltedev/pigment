@@ -1,11 +1,4 @@
-export type SemanticColor =
-  | "neutral"
-  | "primary"
-  | "accent"
-  | "success"
-  | "info"
-  | "warning"
-  | "danger";
+export type SemanticColor = "neutral" | "primary" | "success" | "info" | "warning" | "danger";
 
 export type StateVariant = "base" | "hover" | "active";
 

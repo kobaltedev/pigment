@@ -41,34 +41,24 @@ export const selectButtonVariants = cva(
       },
     },
     compoundVariants: [
-      // variant + text
+      // variant + color
       {
         variant: "filled",
         isInvalid: false,
         isDisabled: false,
-        class: "text-input-filled-content",
-      },
-      {
-        variant: "outlined",
-        isInvalid: false,
-        isDisabled: false,
-        class: "text-input-outlined-content",
-      },
-
-      // variant + border
-      {
-        variant: "filled",
-        isInvalid: false,
-        isDisabled: false,
-        class:
+        class: [
+          "text-input-filled-content",
           "border-input-filled-line hover:border-input-filled-line-hover active:border-input-filled-line-active",
+        ],
       },
       {
         variant: "outlined",
         isInvalid: false,
         isDisabled: false,
-        class:
+        class: [
+          "text-input-outlined-content",
           "border-input-outlined-line hover:border-input-outlined-line-hover active:border-input-outlined-line-active",
+        ],
       },
 
       // variants + invalid
@@ -82,7 +72,7 @@ export const selectButtonVariants = cva(
       {
         variant: "filled",
         isDisabled: true,
-        class: "ui-disabled:bg-surface-disabled ui-disabled:bg-surface-disabled",
+        class: "ui-disabled:bg-surface-disabled ui-disabled:border-surface-disabled",
       },
       {
         variant: "outlined",
@@ -246,8 +236,8 @@ export const selectOptionVariants = cva(
   [
     "group flex shrink-0 justify-between items-center select-none outline-none ui-not-disabled:cursor-pointer",
     "bg-transparent ui-highlighted:bg-surface-highlighted-hover ui-highlighted:active:bg-surface-highlighted-active",
-    "ui-selected:bg-soft-accent-surface ui-selected:ui-highlighted:bg-soft-accent-surface-hover ui-selected:ui-highlighted:active:bg-soft-accent-surface-active",
-    "ui-selected:text-soft-accent-content ui-selected:ui-highlighted:text-soft-accent-content-hover ui-selected:ui-highlighted:active:text-soft-accent-content-active",
+    "ui-selected:bg-soft-primary-surface ui-selected:ui-highlighted:bg-soft-primary-surface-hover ui-selected:ui-highlighted:active:bg-soft-primary-surface-active",
+    "ui-selected:text-soft-primary-content ui-selected:ui-highlighted:text-soft-primary-content-hover ui-selected:ui-highlighted:active:text-soft-primary-content-active",
     "ui-selected:font-medium",
     "ui-disabled:text-content-disabled",
   ],

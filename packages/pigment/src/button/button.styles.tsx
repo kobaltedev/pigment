@@ -2,8 +2,8 @@ import { cva, VariantProps } from "class-variance-authority";
 
 import { GlobalVariant, SemanticColor } from "../theme/types";
 import {
-  SEMANTIC_COLOR_VARIANTS,
   getGlobalVariantClasses,
+  SEMANTIC_COLOR_VARIANTS,
   VARIANT_VARIANTS,
 } from "../theme/variants";
 
@@ -20,9 +20,9 @@ export const buttonStyles = cva(
       variant: {
         ...VARIANT_VARIANTS,
         default: [
-          "text-content bg-surface border-line shadow-sm dark:shadow-none",
-          "hover:bg-surface-hover",
-          "active:bg-surface-active",
+          "text-content bg-surface border-line shadow-sm dark:bg-neutral-100/5 dark:shadow-none",
+          "hover:bg-neutral-900/5 dark:hover:bg-neutral-100/10",
+          "active:bg-neutral-900/5 dark:active:bg-neutral-100/10",
         ],
       },
       color: SEMANTIC_COLOR_VARIANTS,
@@ -44,7 +44,7 @@ export const buttonStyles = cva(
         true: "opacity-80 select-none pointer-events-none",
       },
       isDisabled: {
-        true: "ui-disabled:text-content-disabled ui-disabled:cursor-not-allowed ui-disabled:select-none",
+        true: "ui-disabled:text-content-disabled ui-disabled:cursor-not-allowed ui-disabled:select-none ui-disabled:shadow-none",
       },
     },
     compoundVariants: [
@@ -69,7 +69,7 @@ export const buttonStyles = cva(
         class: "ui-disabled:bg-surface-disabled ui-disabled:border-transparent",
       },
       {
-        variant: "outlined",
+        variant: ["default", "outlined"],
         isDisabled: true,
         class: "ui-disabled:bg-transparent ui-disabled:border-line-disabled",
       },

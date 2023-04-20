@@ -12,11 +12,6 @@ const globalVariants: GlobalVariants = {
       hover: "hover:bg-solid-primary-surface-hover hover:border-solid-primary-surface-hover",
       active: "active:bg-solid-primary-surface-active active:border-solid-primary-surface-active",
     },
-    accent: {
-      base: "text-solid-accent-content bg-solid-accent-surface border-solid-accent-surface",
-      hover: "hover:bg-solid-accent-surface-hover hover:border-solid-accent-surface-hover",
-      active: "active:bg-solid-accent-surface-active active:border-solid-accent-surface-active",
-    },
     success: {
       base: "text-solid-success-content bg-solid-success-surface border-solid-success-surface",
       hover: "hover:bg-solid-success-surface-hover hover:border-solid-success-surface-hover",
@@ -48,11 +43,6 @@ const globalVariants: GlobalVariants = {
       base: "text-soft-primary-content bg-soft-primary-surface border-soft-primary-surface",
       hover: "hover:bg-soft-primary-surface-hover hover:border-soft-primary-surface-hover",
       active: "active:bg-soft-primary-surface-active active:border-soft-primary-surface-active",
-    },
-    accent: {
-      base: "text-soft-accent-content bg-soft-accent-surface border-soft-accent-surface",
-      hover: "hover:bg-soft-accent-surface-hover hover:border-soft-accent-surface-hover",
-      active: "active:bg-soft-accent-surface-active active:border-soft-accent-surface-active",
     },
     success: {
       base: "text-soft-success-content bg-soft-success-surface border-soft-success-surface",
@@ -88,11 +78,6 @@ const globalVariants: GlobalVariants = {
       active:
         "active:bg-outlined-primary-surface-active active:border-outlined-primary-line-active",
     },
-    accent: {
-      base: "text-outlined-accent-content bg-transparent border-outlined-accent-line",
-      hover: "hover:bg-outlined-accent-surface-hover hover:border-outlined-accent-line-hover",
-      active: "active:bg-outlined-accent-surface-active active:border-outlined-accent-line-active",
-    },
     success: {
       base: "text-outlined-success-content bg-transparent border-outlined-success-line",
       hover: "hover:bg-outlined-success-surface-hover hover:border-outlined-success-line-hover",
@@ -127,11 +112,6 @@ const globalVariants: GlobalVariants = {
       hover: "hover:bg-ghost-primary-surface-hover hover:border-ghost-primary-surface-hover",
       active: "active:bg-ghost-primary-surface-active active:border-ghost-primary-surface-active",
     },
-    accent: {
-      base: "text-ghost-accent-content bg-transparent border-transparent",
-      hover: "hover:bg-ghost-accent-surface-hover hover:border-ghost-accent-surface-hover",
-      active: "active:bg-ghost-accent-surface-active active:border-ghost-accent-surface-active",
-    },
     success: {
       base: "text-ghost-success-content bg-transparent border-transparent",
       hover: "hover:bg-ghost-success-surface-hover hover:border-ghost-success-surface-hover",
@@ -163,7 +143,6 @@ export function getGlobalVariantClasses(variant: GlobalVariant, color: SemanticC
 export const SEMANTIC_COLOR_VARIANTS: Record<SemanticColor, ""> = {
   neutral: "",
   primary: "",
-  accent: "",
   success: "",
   info: "",
   warning: "",

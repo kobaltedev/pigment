@@ -5,6 +5,7 @@ import { JSX, ParentProps } from "solid-js";
 import { LATEST_CORE_CHANGELOG_URL, LATEST_CORE_VERSION_NAME } from "../VERSIONS";
 import { ColorSchemeSelector } from "./color-scheme-selector";
 import { GitHubIcon } from "./icons";
+import { ThemeSelector } from "./theme-selector";
 
 interface HeaderProps {
   drawerContent?: JSX.Element;
@@ -39,7 +40,7 @@ export function Header(props: HeaderProps) {
   const isThemeGeneratorPath = useMatch(() => "/docs/theme-generator/*");
 
   return (
-    <header class="sticky top-0 z-10 flex flex-wrap items-center justify-between bg-body border-b border-b-slate-200 dark:border-b-slate-800 px-4 transition duration-500 lg:px-4 ">
+    <header class="sticky top-0 z-10 flex flex-wrap items-center justify-between bg-surface-body border-b border-b-slate-200 dark:border-b-slate-800 px-4 transition duration-500 lg:px-4 ">
       {props.drawerContent}
       <div class="relative flex flex-grow basis-0 items-center space-x-2">
         <Link
@@ -58,7 +59,7 @@ export function Header(props: HeaderProps) {
         <div id="docsearch" class="px-1 flex items-center justify-center" />
         <div class="hidden lg:flex lg:gap-x-1 lg:me-1">
           <HeaderLink href="/docs/core/overview/introduction" isActive={!!isCorePath()}>
-            Documentation
+            Components
           </HeaderLink>
           <HeaderLink href="/docs/theme-generator" isActive={!!isThemeGeneratorPath()}>
             Theme generator
@@ -66,6 +67,7 @@ export function Header(props: HeaderProps) {
           <HeaderLink href={LATEST_CORE_CHANGELOG_URL} isActive={!!isChangelogPath()}>
             Changelog
           </HeaderLink>
+          <ThemeSelector />
         </div>
         <LinkIconButton variant="ghost" color="neutral" class="me-2.5" asChild>
           <As

@@ -1,18 +1,18 @@
 import { Alert, AlertProps, Checkbox, Select } from "@kobalte/pigment";
 import { createMemo, createSignal } from "solid-js";
 
-import { Playground, RocketIcon } from "../components";
+import { BuoyIcon, Playground, RocketIcon } from "../components";
 
 export function WithPlayground() {
   const [variant, setVariant] = createSignal<AlertProps["variant"]>("soft");
-  const [status, setStatus] = createSignal<AlertProps["status"]>("info");
+  const [color, setColor] = createSignal<AlertProps["color"]>("info");
   const [isDismissible, setIsDismissible] = createSignal(false);
   const [isMultiline, setIsMultiline] = createSignal(false);
 
   const snippet = createMemo(() => {
     return `<Alert
   variant="${variant()}"
-  status="${status()}"
+  color="${color()}"
   isDismissible={${isDismissible()}}
   isMultiline={${isMultiline()}}
   title="Software update."
@@ -26,10 +26,17 @@ export function WithPlayground() {
       preview={
         <Alert
           variant={variant()}
-          status={status()}
+          color={color()}
           isDismissible={isDismissible()}
           isMultiline={isMultiline()}
           title="Software update."
+          icon={
+            color() === "primary" ? (
+              <RocketIcon />
+            ) : color() === "neutral" ? (
+              <BuoyIcon />
+            ) : undefined
+          }
         >
           A new software update is available.
         </Alert>
@@ -43,10 +50,10 @@ export function WithPlayground() {
         options={["solid", "soft"]}
       />
       <Select
-        label="Status"
-        value={status()!}
-        onValueChange={setStatus}
-        options={["neutral", "success", "info", "warning", "danger"]}
+        label="Color"
+        value={color()!}
+        onValueChange={setColor}
+        options={["neutral", "primary", "success", "info", "warning", "danger"]}
       />
       <Checkbox
         label="Dismissible"
@@ -60,7 +67,7 @@ export function WithPlayground() {
 
 export function WithMultiline() {
   return (
-    <Alert variant="soft" status="info" title="Software update" isMultiline>
+    <Alert variant="soft" color="info" title="Software update" isMultiline>
       A new software update is available.
     </Alert>
   );
@@ -69,10 +76,10 @@ export function WithMultiline() {
 export function WithVariants() {
   return (
     <div class="flex flex-col space-y-4">
-      <Alert variant="solid" status="info" title="Software update.">
+      <Alert variant="solid" color="info" title="Software update.">
         A new software update is available.
       </Alert>
-      <Alert variant="soft" status="info" title="Software update.">
+      <Alert variant="soft" color="info" title="Software update.">
         A new software update is available.
       </Alert>
     </div>
@@ -82,19 +89,27 @@ export function WithVariants() {
 export function WithStatuses() {
   return (
     <div class="flex flex-col space-y-4">
-      <Alert variant="soft" status="neutral" title="Service temporarily unavailable.">
+      <Alert
+        variant="soft"
+        color="neutral"
+        title="Service temporarily unavailable."
+        icon={<BuoyIcon />}
+      >
         We are currently migrating our infrastructure.
       </Alert>
-      <Alert variant="soft" status="success" title="Well done.">
+      <Alert variant="soft" color="primary" title="Announcement." icon={<RocketIcon />}>
+        Pigment is going live soon, get ready!.
+      </Alert>
+      <Alert variant="soft" color="success" title="Well done.">
         The data has been successfully saved on our server.
       </Alert>
-      <Alert variant="soft" status="info" title="Software update.">
+      <Alert variant="soft" color="info" title="Software update.">
         A new software update is available.
       </Alert>
-      <Alert variant="soft" status="warning" title="Attention needed.">
+      <Alert variant="soft" color="warning" title="Attention needed.">
         Your registration token is about to expire.
       </Alert>
-      <Alert variant="soft" status="danger" title="Something went wrong.">
+      <Alert variant="soft" color="danger" title="Something went wrong.">
         There was an error processing your request.
       </Alert>
     </div>
@@ -103,7 +118,7 @@ export function WithStatuses() {
 
 export function WithCustomIcon() {
   return (
-    <Alert variant="soft" status="info" title="Software update" icon={<RocketIcon />}>
+    <Alert variant="soft" color="info" title="Software update" icon={<RocketIcon />}>
       A new software update is available.
     </Alert>
   );
@@ -113,7 +128,7 @@ export function WithDismissButton() {
   return (
     <Alert
       variant="soft"
-      status="info"
+      color="info"
       title="Software update."
       isDismissible
       dismissButtonLabel="Close"

@@ -33,7 +33,7 @@ export function ColorSchemeSelector() {
         hasSelectedIcon={false}
         sameWidth={false}
         slotClasses={{
-          button: "border-none hover:bg-ghost-neutral-bg-hover px-2",
+          button: "border-none hover:bg-ghost-neutral-surface-hover px-2",
           value: "reset-svg text-xl",
           listbox: "w-32",
         }}

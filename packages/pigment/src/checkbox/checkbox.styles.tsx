@@ -56,13 +56,13 @@ export const checkboxControlVariants = cva(
         isDisabled: false,
         class: [
           // safe to put text colors here because `KCheckbox.Indicator` is only rendered when checked or indeterminate
-          "text-solid-accent-content",
+          "text-solid-primary-content",
           // checked
-          "peer-checked:bg-solid-accent-surface peer-checked:hover:bg-solid-accent-surface-hover peer-checked:active:bg-solid-accent-surface-active",
-          "peer-checked:border-solid-accent-surface peer-checked:hover:border-solid-accent-surface-hover peer-checked:active:border-solid-accent-surface-active",
+          "peer-checked:bg-solid-primary-surface peer-checked:hover:bg-solid-primary-surface-hover peer-checked:active:bg-solid-primary-surface-active",
+          "peer-checked:border-solid-primary-surface peer-checked:hover:border-solid-primary-surface-hover peer-checked:active:border-solid-primary-surface-active",
           // indeterminate
-          "peer-indeterminate:bg-solid-accent-surface peer-indeterminate:hover:bg-solid-accent-surface-hover peer-indeterminate:active:bg-solid-accent-surface-active",
-          "peer-indeterminate:border-solid-accent-surface peer-indeterminate:hover:border-solid-accent-surface-hover peer-indeterminate:active:border-solid-accent-surface-active",
+          "peer-indeterminate:bg-solid-primary-surface peer-indeterminate:hover:bg-solid-primary-surface-hover peer-indeterminate:active:bg-solid-primary-surface-active",
+          "peer-indeterminate:border-solid-primary-surface peer-indeterminate:hover:border-solid-primary-surface-hover peer-indeterminate:active:border-solid-primary-surface-active",
         ],
       },
 

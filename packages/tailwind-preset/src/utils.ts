@@ -2,6 +2,14 @@ import { PigmentOptions, VarsFn } from "./types";
 
 export const DARK_DATA_ATTR_SELECTOR = "[data-pg-color-scheme='dark']";
 
+export const ALPHA_COLOR_CSS_VAR_SUFFIX = {
+  contentDisabled: "colors-content-disabled",
+  surfaceDisabled: "colors-surface-disabled",
+  lineDisabled: "colors-line-disabled",
+  surfaceHighlightedHover: "colors-surface-highlighted-hover",
+  surfaceHighlightedActive: "colors-surface-highlighted-active",
+};
+
 export function isString(value: any): value is string {
   return Object.prototype.toString.call(value) === "[object String]";
 }
@@ -60,6 +68,14 @@ export function createVarsFn(cssVarPrefix: string): VarsFn {
 
 export function getCssVarsPrefix(options: PigmentOptions) {
   return options.cssVarPrefix ?? "pg-";
+}
+
+function isFunction<T extends Function = Function>(value: any): value is T {
+  return typeof value === "function";
+}
+
+export function runIfFn<T, U>(valueOrFn: T | ((...fnArgs: U[]) => T), ...args: U[]): T {
+  return isFunction(valueOrFn) ? valueOrFn(...args) : valueOrFn;
 }
 
 export function isHexColor(hex: string): boolean {

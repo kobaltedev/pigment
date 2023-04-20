@@ -3,8 +3,7 @@ import twDefaultTheme from "tailwindcss/defaultTheme";
 import { PIGMENT_COLORS } from "../colors";
 import { ThemeTokens, VarsFn } from "../types";
 
-/** Pigment base/default theme tokens. */
-export function getBaseThemeTokens(vars: VarsFn): ThemeTokens {
+export function getScarletThemeTokens(vars: VarsFn): ThemeTokens {
   return {
     common: {
       typography: {
@@ -19,16 +18,16 @@ export function getBaseThemeTokens(vars: VarsFn): ThemeTokens {
     light: {
       colors: {
         neutral: {
-          ...PIGMENT_COLORS.slate,
+          ...PIGMENT_COLORS.maroon,
         },
         primary: {
-          ...PIGMENT_COLORS.blue,
+          ...PIGMENT_COLORS.pink,
         },
         success: {
           ...PIGMENT_COLORS.green,
         },
         info: {
-          ...PIGMENT_COLORS.sky,
+          ...PIGMENT_COLORS.blue,
         },
         warning: {
           ...PIGMENT_COLORS.yellow,
@@ -249,213 +248,7 @@ export function getBaseThemeTokens(vars: VarsFn): ThemeTokens {
       },
     },
     dark: {
-      colors: {
-        ring: vars("colors.primary.500"),
-        line: vars("colors.neutral.700"),
-        tooltip: vars("colors.neutral.50"),
-        backdrop: vars("colors.neutral.100"),
-
-        content: {
-          DEFAULT: vars("colors.neutral.100"),
-          subtle: vars("colors.neutral.300"),
-          subtler: vars("colors.neutral.400"),
-          subtlest: vars("colors.neutral.500"),
-          inverse: vars("colors.neutral.950"),
-          warningInverse: PIGMENT_COLORS.sand["950"],
-          primary: vars("colors.primary.400"),
-          success: vars("colors.success.400"),
-          info: vars("colors.info.400"),
-          warning: vars("colors.warning.200"),
-          danger: vars("colors.danger.400"),
-        },
-
-        surface: {
-          DEFAULT: vars("colors.neutral.950"),
-          body: vars("colors.neutral.950"),
-          raised: vars("colors.neutral.900"),
-          overlay: vars("colors.neutral.900"),
-        },
-
-        solid: {
-          neutral: {
-            content: vars("colors.content.inverse"),
-            surface: vars("colors.neutral.200"),
-            surfaceHover: vars("colors.neutral.100"),
-            surfaceActive: vars("colors.neutral.100"),
-          },
-          primary: {
-            content: vars("colors.content.inverse"),
-            surface: vars("colors.primary.400"),
-            surfaceHover: vars("colors.primary.300"),
-            surfaceActive: vars("colors.primary.300"),
-          },
-          success: {
-            content: vars("colors.content.inverse"),
-            surface: vars("colors.success.400"),
-            surfaceHover: vars("colors.success.300"),
-            surfaceActive: vars("colors.success.300"),
-          },
-          info: {
-            content: vars("colors.content.inverse"),
-            surface: vars("colors.info.400"),
-            surfaceHover: vars("colors.info.300"),
-            surfaceActive: vars("colors.info.300"),
-          },
-          warning: {
-            content: vars("colors.content.warningInverse"),
-            surface: vars("colors.warning.600"),
-            surfaceHover: vars("colors.warning.500"),
-            surfaceActive: vars("colors.warning.500"),
-          },
-          danger: {
-            content: vars("colors.content.inverse"),
-            surface: vars("colors.danger.400"),
-            surfaceHover: vars("colors.danger.300"),
-            surfaceActive: vars("colors.danger.300"),
-          },
-        },
-
-        soft: {
-          neutral: {
-            content: vars("colors.neutral.100"),
-            surface: vars("colors.neutral.900"),
-            surfaceHover: vars("colors.neutral.800"),
-            surfaceActive: vars("colors.neutral.800"),
-          },
-          primary: {
-            content: vars("colors.primary.100"),
-            surface: vars("colors.primary.900"),
-            surfaceHover: vars("colors.primary.800"),
-            surfaceActive: vars("colors.primary.800"),
-          },
-          success: {
-            content: vars("colors.success.100"),
-            surface: vars("colors.success.900"),
-            surfaceHover: vars("colors.success.800"),
-            surfaceActive: vars("colors.success.800"),
-          },
-          info: {
-            content: vars("colors.info.100"),
-            surface: vars("colors.info.900"),
-            surfaceHover: vars("colors.info.800"),
-            surfaceActive: vars("colors.info.800"),
-          },
-          warning: {
-            content: vars("colors.warning.100"),
-            surface: vars("colors.warning.900"),
-            surfaceHover: vars("colors.warning.800"),
-            surfaceActive: vars("colors.warning.800"),
-          },
-          danger: {
-            content: vars("colors.danger.100"),
-            surface: vars("colors.danger.900"),
-            surfaceHover: vars("colors.danger.800"),
-            surfaceActive: vars("colors.danger.800"),
-          },
-        },
-
-        outlined: {
-          neutral: {
-            content: vars("colors.neutral.100"),
-            line: vars("colors.neutral.400"),
-            surfaceHover: vars("colors.neutral.900"),
-            lineHover: vars("colors.neutral.400"),
-            surfaceActive: vars("colors.neutral.900"),
-            lineActive: vars("colors.neutral.400"),
-          },
-          primary: {
-            content: vars("colors.primary.300"),
-            line: vars("colors.primary.400"),
-            surfaceHover: vars("colors.primary.900"),
-            lineHover: vars("colors.primary.400"),
-            surfaceActive: vars("colors.primary.900"),
-            lineActive: vars("colors.primary.400"),
-          },
-          success: {
-            content: vars("colors.success.300"),
-            line: vars("colors.success.400"),
-            surfaceHover: vars("colors.success.900"),
-            lineHover: vars("colors.success.400"),
-            surfaceActive: vars("colors.success.900"),
-            lineActive: vars("colors.success.400"),
-          },
-          info: {
-            content: vars("colors.info.300"),
-            line: vars("colors.info.400"),
-            surfaceHover: vars("colors.info.900"),
-            lineHover: vars("colors.info.400"),
-            surfaceActive: vars("colors.info.900"),
-            lineActive: vars("colors.info.400"),
-          },
-          warning: {
-            content: vars("colors.warning.300"),
-            line: vars("colors.warning.400"),
-            surfaceHover: vars("colors.warning.900"),
-            lineHover: vars("colors.warning.400"),
-            surfaceActive: vars("colors.warning.900"),
-            lineActive: vars("colors.warning.400"),
-          },
-          danger: {
-            content: vars("colors.danger.300"),
-            line: vars("colors.danger.400"),
-            surfaceHover: vars("colors.danger.900"),
-            lineHover: vars("colors.danger.400"),
-            surfaceActive: vars("colors.danger.900"),
-            lineActive: vars("colors.danger.400"),
-          },
-        },
-
-        ghost: {
-          neutral: {
-            content: vars("colors.neutral.100"),
-            surfaceHover: vars("colors.neutral.900"),
-            surfaceActive: vars("colors.neutral.900"),
-          },
-          primary: {
-            content: vars("colors.primary.300"),
-            surfaceHover: vars("colors.primary.900"),
-            surfaceActive: vars("colors.primary.900"),
-          },
-          success: {
-            content: vars("colors.success.300"),
-            surfaceHover: vars("colors.success.900"),
-            surfaceActive: vars("colors.success.900"),
-          },
-          info: {
-            content: vars("colors.info.300"),
-            surfaceHover: vars("colors.info.900"),
-            surfaceActive: vars("colors.info.900"),
-          },
-          warning: {
-            content: vars("colors.warning.300"),
-            surfaceHover: vars("colors.warning.900"),
-            surfaceActive: vars("colors.warning.900"),
-          },
-          danger: {
-            content: vars("colors.danger.300"),
-            surfaceHover: vars("colors.danger.900"),
-            surfaceActive: vars("colors.danger.900"),
-          },
-        },
-
-        input: {
-          filled: {
-            content: vars("colors.neutral.100"),
-            surface: vars("colors.neutral.800"),
-            line: vars("colors.neutral.800"),
-            surfaceHover: vars("colors.neutral.800"),
-            lineHover: vars("colors.neutral.800"),
-            surfaceActive: vars("colors.neutral.800"),
-            lineActive: vars("colors.neutral.800"),
-          },
-          outlined: {
-            content: vars("colors.neutral.100"),
-            line: vars("colors.neutral.700"),
-            lineHover: vars("colors.neutral.700"),
-            lineActive: vars("colors.neutral.700"),
-          },
-        },
-      },
+      colors: {},
       shadows: {
         raised:
           "0px 0px 0px rgba(0, 0, 0, 0),0px 1px 1px rgba(3, 4, 4, 0.5),0px 0px 1px rgba(3, 4, 4, 0.5)",
