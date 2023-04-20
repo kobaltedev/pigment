@@ -2,7 +2,7 @@ import { cva, VariantProps } from "class-variance-authority";
 
 export const selectButtonVariants = cva(
   [
-    "appearance-none flex items-center grow border border-solid transition-colors",
+    "appearance-none flex items-center grow rounded-input border border-solid transition-colors",
     "outline-none focus:border-ring",
   ],
   {
@@ -12,11 +12,11 @@ export const selectButtonVariants = cva(
         outlined: "bg-transparent",
       },
       size: {
-        xs: "h-6 rounded text-xs",
-        sm: "h-8 rounded text-sm",
-        md: "h-10 rounded-md text-base",
-        lg: "h-12 rounded-md text-lg",
-        xl: "h-14 rounded-md text-xl",
+        xs: "h-6 text-xs",
+        sm: "h-8 text-sm",
+        md: "h-10 text-base",
+        lg: "h-12 text-lg",
+        xl: "h-14 text-xl",
       },
       hasDropdownIcon: {
         true: "pr-0",
@@ -172,19 +172,12 @@ export const selectSupportTextVariants = cva("grow-0 ui-group-disabled:text-cont
 });
 
 export const selectDropdownVariants = cva(
-  "bg-surface-overlay border border-solid shadow-overlay z-30",
+  "bg-surface-overlay border border-solid shadow-overlay rounded-overlay z-30",
   {
     variants: {
       variant: {
         soft: "border-input-soft-line",
         outlined: "border-input-outlined-line",
-      },
-      size: {
-        xs: "rounded",
-        sm: "rounded",
-        md: "rounded-md",
-        lg: "rounded-md",
-        xl: "rounded-md",
       },
     },
   }
@@ -216,7 +209,7 @@ export const selectOptGroupVariants = cva("shrink-0 text-content-subtlest font-m
 
 export const selectOptionVariants = cva(
   [
-    "group flex shrink-0 justify-between items-center select-none outline-none ui-not-disabled:cursor-pointer",
+    "group flex shrink-0 justify-between items-center rounded-overlay select-none outline-none ui-not-disabled:cursor-pointer",
     "bg-transparent ui-highlighted:bg-surface-highlighted-hover ui-highlighted:active:bg-surface-highlighted-active",
     "ui-selected:text-accent-soft-content ui-selected:ui-highlighted:text-accent-soft-content-hover ui-selected:ui-highlighted:active:text-accent-soft-content-active",
     "ui-selected:bg-accent-soft-surface ui-selected:ui-highlighted:bg-accent-soft-surface-hover ui-selected:ui-highlighted:active:bg-accent-soft-surface-active",
@@ -226,11 +219,11 @@ export const selectOptionVariants = cva(
   {
     variants: {
       size: {
-        xs: "h-6 px-1.5 gap-x-1.5 rounded",
-        sm: "h-8 px-2 gap-x-2 rounded",
-        md: "h-10 px-2.5 gap-x-2.5 rounded-md",
-        lg: "h-12 px-3 gap-x-3 rounded-md",
-        xl: "h-14 px-3.5 gap-x-3.5 rounded-md",
+        xs: "h-6 px-1.5 gap-x-1.5",
+        sm: "h-8 px-2 gap-x-2",
+        md: "h-10 px-2.5 gap-x-2.5",
+        lg: "h-12 px-3 gap-x-3",
+        xl: "h-14 px-3.5 gap-x-3.5",
       },
     },
   }

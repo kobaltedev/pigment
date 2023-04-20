@@ -1,7 +1,7 @@
 import { cva, VariantProps } from "class-variance-authority";
 
 export const textFieldControlVariants = cva(
-  "flex items-center grow border border-solid transition-colors",
+  "flex items-center grow rounded-input border border-solid transition-colors",
   {
     variants: {
       variant: {
@@ -9,11 +9,11 @@ export const textFieldControlVariants = cva(
         outlined: "bg-transparent",
       },
       size: {
-        xs: "h-6 rounded text-xs",
-        sm: "h-8 rounded text-sm",
-        md: "h-10 rounded-md text-base",
-        lg: "h-12 rounded-md text-lg",
-        xl: "h-14 rounded-md text-xl",
+        xs: "h-6 text-xs",
+        sm: "h-8 text-sm",
+        md: "h-10 text-base",
+        lg: "h-12 text-lg",
+        xl: "h-14 text-xl",
       },
       isFocused: {
         true: "",
@@ -145,7 +145,7 @@ export const textFieldInputVariants = cva(
 
 export const textFieldTextAreaVariants = cva(
   [
-    "appearance-none grow h-full m-0 resize",
+    "appearance-none grow h-full m-0 resize rounded-textarea",
     "border border-solid transition-colors",
     "outline-none focus-visible:border-ring",
   ],
@@ -156,11 +156,11 @@ export const textFieldTextAreaVariants = cva(
         outlined: "bg-transparent",
       },
       size: {
-        xs: "p-1.5 rounded text-xs",
-        sm: "p-2 rounded text-sm",
-        md: "p-2.5 rounded-md text-base",
-        lg: "p-3 rounded-md text-lg",
-        xl: "p-3.5 rounded-md text-xl",
+        xs: "p-1.5 text-xs",
+        sm: "p-2 text-sm",
+        md: "p-2.5 text-base",
+        lg: "p-3 text-lg",
+        xl: "p-3.5 text-xl",
       },
       isInvalid: {
         true: "",

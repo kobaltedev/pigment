@@ -67,6 +67,13 @@ export function pigmentPreset(options: PigmentOptions | undefined = {}): Partial
             return acc;
           }, {} as any),
         },
+        borderRadius: {
+          ...Object.keys(flatten(themeTokensShapeValue.radii, "-")).reduce((acc, key) => {
+            const formattedKey = toKebabCase(removeDefaultSuffix(key));
+            acc[formattedKey] = vars(`radii-${key}` as TokenKey);
+            return acc;
+          }, {} as any),
+        },
         data: {
           "placeholder-shown": "placeholder-shown",
         },
@@ -205,4 +212,5 @@ export function pigmentPreset(options: PigmentOptions | undefined = {}): Partial
 }
 
 export { PIGMENT_COLORS } from "./colors";
+export { PIGMENT_RADII } from "./radii";
 export type { CustomTheme, PigmentOptions } from "./types";

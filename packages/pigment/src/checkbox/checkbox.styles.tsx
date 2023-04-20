@@ -11,7 +11,7 @@ export const checkboxRootVariants = cva("group inline-flex", {
 });
 
 export const checkboxControlVariants = cva(
-  "inline-flex justify-center items-center grow-0 shrink-0 mt-0.5 border border-solid transition-colors",
+  "inline-flex justify-center items-center grow-0 shrink-0 mt-0.5 rounded-checkbox border border-solid transition-colors",
   {
     variants: {
       variant: {
@@ -19,9 +19,9 @@ export const checkboxControlVariants = cva(
         outlined: "bg-transparent",
       },
       size: {
-        sm: "h-4 w-4 rounded text-base",
-        md: "h-5 w-5 rounded text-xl",
-        lg: "h-6 w-6 rounded text-2xl",
+        sm: "h-4 w-4 text-base",
+        md: "h-5 w-5 text-xl",
+        lg: "h-6 w-6 text-2xl",
       },
       isInvalid: {
         true: "",

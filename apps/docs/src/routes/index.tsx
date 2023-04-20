@@ -13,7 +13,7 @@ export default function Index() {
             <div class="flex flex-col gap-5 mb-5">
               <h1 class="text-[40px] font-bold leading-tight sm:text-5xl lg:text-6xl">
                 <span>UI components for the </span>
-                <span class="text-[40px] font-bold leading-none text-solid-primary-surface sm:text-5xl lg:text-6xl">
+                <span class="text-[40px] font-bold leading-none pg-headline-keyword sm:text-5xl lg:text-6xl">
                   SolidJS
                 </span>
                 <span> era</span>

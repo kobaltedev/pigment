@@ -10,7 +10,7 @@ import {
 export const buttonStyles = cva(
   [
     "group",
-    "appearance-none relative justify-center items-center",
+    "appearance-none relative justify-center items-center rounded-button",
     "border border-solid",
     "transition-colors cursor-pointer no-underline",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-surface",
@@ -27,11 +27,11 @@ export const buttonStyles = cva(
       },
       color: SEMANTIC_COLOR_VARIANTS,
       size: {
-        xs: "h-6 gap-1 rounded",
-        sm: "h-8 gap-1.5 rounded",
-        md: "h-10 gap-2 rounded-md",
-        lg: "h-12 gap-2.5 rounded-md",
-        xl: "h-14 gap-3 rounded-md",
+        xs: "h-6 gap-1",
+        sm: "h-8 gap-1.5",
+        md: "h-10 gap-2",
+        lg: "h-12 gap-2.5",
+        xl: "h-14 gap-3",
       },
       isIconOnly: {
         true: "reset-svg p-0 leading-none",

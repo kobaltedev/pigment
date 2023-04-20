@@ -56,6 +56,23 @@ const outlinedVariantProperties = [...ghostVariantProperties, "line"] as const;
 const solidVariantProperties = [...outlinedVariantProperties, "surface"] as const;
 
 export const themeTokensShapeValue = {
+  typography: {
+    fontFamily: {
+      fallback: "",
+      body: "",
+      display: "",
+      code: "",
+    },
+  },
+  radii: {
+    alert: "",
+    badge: "",
+    button: "",
+    checkbox: "",
+    input: "",
+    textarea: "",
+    overlay: "",
+  },
   colors: {
     ...semanticColorValues.reduce((acc, color) => {
       acc[color] = paletteRangeValues.reduce((acc, scale) => {
@@ -114,19 +131,11 @@ export const themeTokensShapeValue = {
     raised: "",
     overlay: "",
   },
-  typography: {
-    fontFamily: {
-      fallback: "",
-      body: "",
-      display: "",
-      code: "",
-    },
-  },
 };
 
 export type ColorSchemeTokens = Pick<typeof themeTokensShapeValue, "colors" | "shadows">;
 
-export type CommonTokens = Pick<typeof themeTokensShapeValue, "typography">;
+export type CommonTokens = Pick<typeof themeTokensShapeValue, "typography" | "radii">;
 
 export interface ThemeTokens {
   /** Color scheme independent tokens. */

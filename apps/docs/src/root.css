@@ -61,6 +61,14 @@
     border-top-left-radius: 0;
   }
 
+  .pg-headline-keyword {
+    @apply text-content-primary;
+  }
+
+  [data-pg-theme='moon'] .pg-headline-keyword {
+    @apply text-primary-500;
+  }
+
   pre.pg-hljs .pg-copy-btn {
     opacity: 0;
   }
@@ -68,6 +76,8 @@
   pre.pg-hljs:hover .pg-copy-btn {
     opacity: 1;
   }
+
+
 }
 
 /* -------------------------------------------------------------------------------------------------

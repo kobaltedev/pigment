@@ -1,6 +1,7 @@
 import twDefaultTheme from "tailwindcss/defaultTheme";
 
 import { PIGMENT_COLORS } from "../colors";
+import { PIGMENT_RADII } from "../radii";
 import { ThemeTokens, VarsFn } from "../types";
 
 export function getSunThemeTokens(vars: VarsFn): ThemeTokens {
@@ -13,6 +14,15 @@ export function getSunThemeTokens(vars: VarsFn): ThemeTokens {
           display: vars("typography.fontFamily.body"),
           code: twDefaultTheme.fontFamily.mono.join(", "),
         },
+      },
+      radii: {
+        alert: PIGMENT_RADII.xl,
+        badge: PIGMENT_RADII.xl,
+        button: PIGMENT_RADII.xl,
+        checkbox: PIGMENT_RADII.md,
+        input: PIGMENT_RADII.xl,
+        textarea: PIGMENT_RADII.xl,
+        overlay: PIGMENT_RADII.xl,
       },
     },
     light: {

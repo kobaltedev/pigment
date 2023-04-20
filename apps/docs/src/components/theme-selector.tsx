@@ -10,12 +10,12 @@ function ColorIndicator(props: ComponentProps<"span">) {
 }
 
 const THEMES = [
+  { value: "moon", label: "Moon", icon: () => <ColorIndicator class="bg-neutral-800" /> },
+  { value: "violet", label: "Violet", icon: () => <ColorIndicator class="bg-violet-600" /> },
   { value: "sapphire", label: "Sapphire", icon: () => <ColorIndicator class="bg-blue-600" /> },
   { value: "emerald", label: "Emerald", icon: () => <ColorIndicator class="bg-emerald-600" /> },
   { value: "sun", label: "Sun", icon: () => <ColorIndicator class="bg-amber-600" /> },
-  { value: "moon", label: "Moon", icon: () => <ColorIndicator class="bg-neutral-800" /> },
   { value: "scarlet", label: "Scarlet", icon: () => <ColorIndicator class="bg-pink-600" /> },
-  { value: "violet", label: "Violet", icon: () => <ColorIndicator class="bg-violet-600" /> },
 ];
 
 const [theme, setTheme] = createSignal("sapphire");

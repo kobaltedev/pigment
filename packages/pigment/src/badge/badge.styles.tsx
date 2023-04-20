@@ -7,7 +7,7 @@ import { SemanticColor } from "../theme/types";
 const badgeVariants = ["solid", "soft", "outlined"] as const;
 
 export const badgeStyles = cva(
-  "inline-flex justify-center items-center rounded-full border border-solid font-medium",
+  "inline-flex justify-center items-center rounded-badge border border-solid font-medium",
   {
     variants: {
       variant: emptyObject(badgeVariants),

@@ -2,6 +2,7 @@ import twDefaultColors from "tailwindcss/colors";
 import twDefaultTheme from "tailwindcss/defaultTheme";
 
 import { PIGMENT_COLORS } from "../colors";
+import { PIGMENT_RADII } from "../radii";
 import { ThemeTokens, VarsFn } from "../types";
 
 export function getMoonThemeTokens(vars: VarsFn): ThemeTokens {
@@ -14,6 +15,15 @@ export function getMoonThemeTokens(vars: VarsFn): ThemeTokens {
           display: vars("typography.fontFamily.body"),
           code: twDefaultTheme.fontFamily.mono.join(", "),
         },
+      },
+      radii: {
+        alert: PIGMENT_RADII.xs,
+        badge: PIGMENT_RADII.xs,
+        button: PIGMENT_RADII.xs,
+        checkbox: PIGMENT_RADII.xs,
+        input: PIGMENT_RADII.xs,
+        textarea: PIGMENT_RADII.xs,
+        overlay: PIGMENT_RADII.xs,
       },
     },
     light: {
@@ -37,7 +47,7 @@ export function getMoonThemeTokens(vars: VarsFn): ThemeTokens {
           ...PIGMENT_COLORS.red,
         },
 
-        ring: vars("colors.primary.500"),
+        ring: vars("colors.primary.900"),
         line: vars("colors.neutral.300"),
         tooltip: vars("colors.neutral.900"),
         backdrop: vars("colors.neutral.950"),
@@ -49,7 +59,7 @@ export function getMoonThemeTokens(vars: VarsFn): ThemeTokens {
           subtlest: vars("colors.neutral.500"),
           inverse: PIGMENT_COLORS.white,
           warningInverse: PIGMENT_COLORS.sand["900"],
-          primary: vars("colors.primary.600"),
+          primary: vars("colors.primary.900"),
           success: vars("colors.success.600"),
           info: vars("colors.info.600"),
           warning: vars("colors.warning.700"),
@@ -80,16 +90,16 @@ export function getMoonThemeTokens(vars: VarsFn): ThemeTokens {
           },
           primary: {
             content: vars("colors.content.inverse"),
-            surface: vars("colors.primary.600"),
-            line: vars("colors.primary.600"),
+            surface: vars("colors.primary.800"),
+            line: vars("colors.primary.800"),
 
             contentHover: vars("colors.content.inverse"),
-            surfaceHover: vars("colors.primary.700"),
-            lineHover: vars("colors.primary.700"),
+            surfaceHover: vars("colors.primary.900"),
+            lineHover: vars("colors.primary.900"),
 
             contentActive: vars("colors.content.inverse"),
-            surfaceActive: vars("colors.primary.700"),
-            lineActive: vars("colors.primary.700"),
+            surfaceActive: vars("colors.primary.900"),
+            lineActive: vars("colors.primary.900"),
           },
           success: {
             content: vars("colors.content.inverse"),
@@ -240,14 +250,14 @@ export function getMoonThemeTokens(vars: VarsFn): ThemeTokens {
             lineActive: vars("colors.neutral.600"),
           },
           primary: {
-            content: vars("colors.primary.700"),
+            content: vars("colors.primary.900"),
             line: vars("colors.primary.600"),
 
-            contentHover: vars("colors.primary.700"),
+            contentHover: vars("colors.primary.900"),
             surfaceHover: vars("colors.primary.50"),
             lineHover: vars("colors.primary.600"),
 
-            contentActive: vars("colors.primary.700"),
+            contentActive: vars("colors.primary.900"),
             surfaceActive: vars("colors.primary.50"),
             lineActive: vars("colors.primary.600"),
           },
@@ -314,13 +324,13 @@ export function getMoonThemeTokens(vars: VarsFn): ThemeTokens {
             lineActive: vars("colors.neutral.50"),
           },
           primary: {
-            content: vars("colors.primary.700"),
+            content: vars("colors.primary.900"),
 
-            contentHover: vars("colors.primary.700"),
+            contentHover: vars("colors.primary.900"),
             surfaceHover: vars("colors.primary.50"),
             lineHover: vars("colors.primary.50"),
 
-            contentActive: vars("colors.primary.700"),
+            contentActive: vars("colors.primary.900"),
             surfaceActive: vars("colors.primary.50"),
             lineActive: vars("colors.primary.50"),
           },
@@ -373,16 +383,16 @@ export function getMoonThemeTokens(vars: VarsFn): ThemeTokens {
         accent: {
           solid: {
             content: vars("colors.content.inverse"),
-            surface: vars("colors.primary.600"),
-            line: vars("colors.primary.600"),
+            surface: vars("colors.primary.800"),
+            line: vars("colors.primary.800"),
 
             contentHover: vars("colors.content.inverse"),
-            surfaceHover: vars("colors.primary.700"),
-            lineHover: vars("colors.primary.700"),
+            surfaceHover: vars("colors.primary.900"),
+            lineHover: vars("colors.primary.900"),
 
             contentActive: vars("colors.content.inverse"),
-            surfaceActive: vars("colors.primary.700"),
-            lineActive: vars("colors.primary.700"),
+            surfaceActive: vars("colors.primary.900"),
+            lineActive: vars("colors.primary.900"),
           },
           soft: {
             content: vars("colors.primary.900"),
@@ -429,7 +439,7 @@ export function getMoonThemeTokens(vars: VarsFn): ThemeTokens {
     },
     dark: {
       colors: {
-        ring: vars("colors.primary.500"),
+        ring: vars("colors.primary.100"),
         line: vars("colors.neutral.700"),
         tooltip: vars("colors.neutral.50"),
         backdrop: vars("colors.neutral.100"),
@@ -441,7 +451,7 @@ export function getMoonThemeTokens(vars: VarsFn): ThemeTokens {
           subtlest: vars("colors.neutral.500"),
           inverse: vars("colors.neutral.950"),
           warningInverse: PIGMENT_COLORS.sand["900"],
-          primary: vars("colors.primary.500"),
+          primary: vars("colors.primary.100"),
           success: vars("colors.success.500"),
           info: vars("colors.info.500"),
           warning: vars("colors.warning.500"),
@@ -472,16 +482,16 @@ export function getMoonThemeTokens(vars: VarsFn): ThemeTokens {
           },
           primary: {
             content: vars("colors.content.inverse"),
-            surface: vars("colors.primary.400"),
-            line: vars("colors.primary.400"),
+            surface: vars("colors.primary.200"),
+            line: vars("colors.primary.200"),
 
             contentHover: vars("colors.content.inverse"),
-            surfaceHover: vars("colors.primary.300"),
-            lineHover: vars("colors.primary.300"),
+            surfaceHover: vars("colors.primary.100"),
+            lineHover: vars("colors.primary.100"),
 
             contentActive: vars("colors.content.inverse"),
-            surfaceActive: vars("colors.primary.300"),
-            lineActive: vars("colors.primary.300"),
+            surfaceActive: vars("colors.primary.100"),
+            lineActive: vars("colors.primary.100"),
           },
           success: {
             content: vars("colors.content.inverse"),
@@ -632,15 +642,15 @@ export function getMoonThemeTokens(vars: VarsFn): ThemeTokens {
             lineActive: vars("colors.neutral.600"),
           },
           primary: {
-            content: vars("colors.primary.500"),
+            content: vars("colors.primary.300"),
             line: vars("colors.primary.600"),
 
-            contentHover: vars("colors.primary.500"),
-            surfaceHover: vars("colors.primary.950"),
+            contentHover: vars("colors.primary.300"),
+            surfaceHover: vars("colors.primary.800"),
             lineHover: vars("colors.primary.600"),
 
-            contentActive: vars("colors.primary.500"),
-            surfaceActive: vars("colors.primary.950"),
+            contentActive: vars("colors.primary.300"),
+            surfaceActive: vars("colors.primary.800"),
             lineActive: vars("colors.primary.600"),
           },
           success: {
@@ -706,15 +716,15 @@ export function getMoonThemeTokens(vars: VarsFn): ThemeTokens {
             lineActive: vars("colors.neutral.800"),
           },
           primary: {
-            content: vars("colors.primary.500"),
+            content: vars("colors.primary.300"),
 
-            contentHover: vars("colors.primary.500"),
-            surfaceHover: vars("colors.primary.950"),
-            lineHover: vars("colors.primary.950"),
+            contentHover: vars("colors.primary.300"),
+            surfaceHover: vars("colors.primary.800"),
+            lineHover: vars("colors.primary.800"),
 
-            contentActive: vars("colors.primary.500"),
-            surfaceActive: vars("colors.primary.950"),
-            lineActive: vars("colors.primary.950"),
+            contentActive: vars("colors.primary.300"),
+            surfaceActive: vars("colors.primary.800"),
+            lineActive: vars("colors.primary.800"),
           },
           success: {
             content: vars("colors.success.500"),
@@ -765,16 +775,16 @@ export function getMoonThemeTokens(vars: VarsFn): ThemeTokens {
         accent: {
           solid: {
             content: vars("colors.content.inverse"),
-            surface: vars("colors.primary.400"),
-            line: vars("colors.primary.400"),
+            surface: vars("colors.primary.200"),
+            line: vars("colors.primary.200"),
 
             contentHover: vars("colors.content.inverse"),
-            surfaceHover: vars("colors.primary.300"),
-            lineHover: vars("colors.primary.300"),
+            surfaceHover: vars("colors.primary.100"),
+            lineHover: vars("colors.primary.100"),
 
             contentActive: vars("colors.content.inverse"),
-            surfaceActive: vars("colors.primary.300"),
-            lineActive: vars("colors.primary.300"),
+            surfaceActive: vars("colors.primary.100"),
+            lineActive: vars("colors.primary.100"),
           },
           soft: {
             content: vars("colors.primary.100"),
