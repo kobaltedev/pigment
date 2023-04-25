@@ -13,7 +13,7 @@ export type ButtonSlots = "root" | "startIcon" | "endIcon" | "loadingIcon";
 
 export interface ButtonBaseProps
   extends Omit<KButton.ButtonRootProps, "asChild" | "color">,
-    Omit<ButtonVariants, "isDisabled">,
+    Omit<ButtonVariants, "disabled">,
     SlotProp<ButtonSlots> {
   /** The label to show when the button is in a loading state. */
   loadingText?: string;
@@ -37,9 +37,9 @@ export interface ButtonBaseProps
 export interface ButtonContentProps
   extends Pick<
     ButtonBaseProps,
-    "variant" | "color" | "size" | "isDisabled" | "startIcon" | "endIcon" | "children"
+    "variant" | "color" | "size" | "disabled" | "startIcon" | "endIcon" | "children"
   > {
-  isRtl?: boolean;
+  rtl?: boolean;
 
   startIconClass?: string;
 
@@ -49,15 +49,15 @@ export interface ButtonContentProps
 export interface ButtonIconProps
   extends OverrideComponentProps<
     "span",
-    Pick<ButtonBaseProps, "variant" | "color" | "size" | "isIconOnly" | "isDisabled">
+    Pick<ButtonBaseProps, "variant" | "color" | "size" | "iconOnly" | "disabled">
   > {}
 
-export interface ButtonProps extends Omit<ButtonBaseProps, "isIconOnly"> {}
+export interface ButtonProps extends Omit<ButtonBaseProps, "iconOnly"> {}
 
 export interface IconButtonProps
   extends Omit<
     ButtonBaseProps,
-    "isIconOnly" | "loadingText" | "loadingIconPlacement" | "startIcon" | "endIcon" | "isFullWidth"
+    "iconOnly" | "loadingText" | "loadingIconPlacement" | "startIcon" | "endIcon" | "fullWidth"
   > {}
 
 /* -------------------------------------------------------------------------------------------------
@@ -68,7 +68,7 @@ export type LinkButtonSlots = "root" | "startIcon" | "endIcon";
 
 export interface LinkButtonBaseProps
   extends Omit<KLink.LinkRootProps, "color">,
-    Omit<ButtonVariants, "isLoading" | "isDisabled">,
+    Omit<ButtonVariants, "loading" | "disabled">,
     SlotProp<LinkButtonSlots> {
   /** The icon to show before the link button content. */
   startIcon?: JSX.Element | (() => JSX.Element);
@@ -77,7 +77,7 @@ export interface LinkButtonBaseProps
   endIcon?: JSX.Element | (() => JSX.Element);
 }
 
-export interface LinkButtonProps extends Omit<LinkButtonBaseProps, "isIconOnly"> {}
+export interface LinkButtonProps extends Omit<LinkButtonBaseProps, "iconOnly"> {}
 
 export interface LinkIconButtonProps
-  extends Omit<LinkButtonBaseProps, "isIconOnly" | "startIcon" | "endIcon" | "isFullWidth"> {}
+  extends Omit<LinkButtonBaseProps, "iconOnly" | "startIcon" | "endIcon" | "fullWidth"> {}

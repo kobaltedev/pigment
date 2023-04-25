@@ -21,7 +21,7 @@ export const closeButtonVariants = cva(
         true: "text-current",
         false: "text-content-subtle",
       },
-      isDisabled: {
+      disabled: {
         true: "ui-disabled:text-content-disabled ui-disabled:cursor-not-allowed ui-disabled:select-none",
       },
     },

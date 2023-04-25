@@ -19,19 +19,19 @@ export default {
       options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
-    hasErrorIcon: {
+    withErrorIcon: {
       control: { type: "boolean" },
     },
-    isInvalid: {
+    invalid: {
       control: { type: "boolean" },
     },
-    isRequired: {
+    required: {
       control: { type: "boolean" },
     },
-    isDisabled: {
+    disabled: {
       control: { type: "boolean" },
     },
-    isMultiline: {
+    multiline: {
       control: { type: "boolean" },
     },
     placeholder: {
@@ -54,11 +54,11 @@ export const Default: Story = {
   args: {
     variant: "outlined",
     size: "md",
-    hasErrorIcon: true,
-    isInvalid: false,
-    isRequired: false,
-    isDisabled: false,
-    isMultiline: false,
+    withErrorIcon: true,
+    invalid: false,
+    required: false,
+    disabled: false,
+    multiline: false,
     placeholder: "example@acme.com",
     label: "E-mail",
     description: "We will never share your email.",
@@ -70,11 +70,11 @@ export const WithDecorator: Story = {
   args: {
     variant: "outlined",
     size: "md",
-    hasErrorIcon: true,
-    isInvalid: false,
-    isRequired: false,
-    isDisabled: false,
-    isMultiline: false,
+    withErrorIcon: true,
+    invalid: false,
+    required: false,
+    disabled: false,
+    multiline: false,
     placeholder: "example@acme.com",
     label: "E-mail",
     description: "We will never share your email.",

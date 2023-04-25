@@ -23,10 +23,10 @@ export default {
       options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
-    isLoading: {
+    loading: {
       control: { type: "boolean" },
     },
-    isDisabled: {
+    disabled: {
       control: { type: "boolean" },
     },
   },
@@ -42,7 +42,7 @@ export const Default: Story = {
     variant: "solid",
     color: "primary",
     size: "md",
-    isLoading: false,
-    isDisabled: false,
+    loading: false,
+    disabled: false,
   },
 };

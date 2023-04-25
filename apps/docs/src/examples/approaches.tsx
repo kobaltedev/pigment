@@ -4,13 +4,13 @@ export function SlotClassesExample() {
   return (
     <Alert
       variant="soft"
-      status="info"
-      isMultiline
-      isDismissible
+      color="info"
+      multiline
+      dismissible
       title="Software update."
       slotClasses={{
         root: "rounded-md bg-primary-50 border-primary-300 w-full max-w-sm dark:bg-primary-900 dark:border-primary-700",
-        contentDisabled: "gap-y-1 text-neutral-800 dark:text-neutral-100",
+        content: "gap-y-1 text-neutral-800 dark:text-neutral-100",
         icon: "text-primary-500 text-2xl mt-0.5 dark:text-primary-400",
         title: "text-base font-normal italic",
         description: "text-sm",

@@ -23,10 +23,10 @@ export default {
       options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
-    isFullWidth: {
+    fullWidth: {
       control: { type: "boolean" },
     },
-    isDisabled: {
+    disabled: {
       control: { type: "boolean" },
     },
     href: {
@@ -44,8 +44,8 @@ export const Default: Story = {
     variant: "solid",
     color: "primary",
     size: "md",
-    isFullWidth: false,
-    isDisabled: false,
+    fullWidth: false,
+    disabled: false,
     href: "https://kobalte.dev",
     children: "Link",
   },
@@ -56,8 +56,8 @@ export const WithIcon: Story = {
     variant: "solid",
     color: "primary",
     size: "md",
-    isFullWidth: false,
-    isDisabled: false,
+    fullWidth: false,
+    disabled: false,
     href: "https://kobalte.dev",
     children: "Link",
     startIcon: () => <InfoCircleIcon />,

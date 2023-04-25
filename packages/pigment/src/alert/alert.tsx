@@ -25,9 +25,9 @@ export function Alert(props: AlertProps) {
     {
       variant: "solid",
       color: "primary",
-      hasIcon: true,
-      isDismissible: false,
-      isMultiline: false,
+      withIcon: true,
+      dismissible: false,
+      multiline: false,
     },
     props
   );
@@ -37,7 +37,7 @@ export function Alert(props: AlertProps) {
   const [local, variantProps, others] = splitProps(
     props,
     ["class", "children", "slotClasses", "icon", "title", "dismissButtonLabel", "onDismiss"],
-    ["variant", "color", "hasIcon", "isDismissible", "isMultiline"]
+    ["variant", "color", "withIcon", "dismissible", "multiline"]
   );
 
   const iconProp = createMemo(() => local.icon);
@@ -76,7 +76,7 @@ export function Alert(props: AlertProps) {
       )}
       {...others}
     >
-      <Show when={variantProps.hasIcon}>
+      <Show when={variantProps.withIcon}>
         <div
           class={cn(
             "flex justify-center items-center shrink-0 reset-svg h-7 w-7 text-xl leading-none",
@@ -122,7 +122,7 @@ export function Alert(props: AlertProps) {
           </div>
         </Show>
       </div>
-      <Show when={variantProps.isDismissible}>
+      <Show when={variantProps.dismissible}>
         <CloseButton
           inheritTextColor
           size="xs"

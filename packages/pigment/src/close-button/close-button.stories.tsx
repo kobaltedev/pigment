@@ -13,7 +13,7 @@ export default {
       options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
-    isDisabled: {
+    disabled: {
       control: { type: "boolean" },
     },
   },
@@ -23,6 +23,6 @@ export default {
 export const Default: Story = {
   args: {
     size: "md",
-    isDisabled: false,
+    disabled: false,
   },
 };

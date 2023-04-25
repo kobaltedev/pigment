@@ -4,11 +4,17 @@ import {
   Select,
   useColorScheme,
 } from "@kobalte/pigment";
-import { createSignal, onMount, Show } from "solid-js";
+import { createSignal, JSX, onMount, Show } from "solid-js";
 
 import { DesktopIcon, MoonIcon, SunIcon } from "./icons";
 
-const COLOR_SCHEMES = [
+interface ColorSchemeOption {
+  value: ColorSchemeWithSystem;
+  label: string;
+  icon: () => JSX.Element;
+}
+
+const COLOR_SCHEMES: ColorSchemeOption[] = [
   { value: "light", label: "Light", icon: () => <SunIcon class="h-4 w-4" /> },
   { value: "dark", label: "Dark", icon: () => <MoonIcon class="h-4 w-4" /> },
   { value: "system", label: "System", icon: () => <DesktopIcon class="h-4 w-4" /> },
@@ -27,10 +33,13 @@ export function ColorSchemeSelector() {
     <Show when={isMounted()} fallback={<div class="h-9 w-9" />}>
       <Select
         options={COLOR_SCHEMES}
-        defaultValue={colorSchemeStorageManager.get("system")}
-        onValueChange={value => setColorScheme(value as ColorSchemeWithSystem)}
-        hasDropdownIcon={false}
-        hasSelectedIcon={false}
+        optionValue="value"
+        defaultValue={COLOR_SCHEMES.find(
+          option => option.value === colorSchemeStorageManager.get("system")
+        )}
+        onChange={(value: ColorSchemeOption) => setColorScheme(value.value)}
+        withDropdownIcon={false}
+        withSelectionIcon={false}
         sameWidth={false}
         slotClasses={{
           button: "border-none hover:bg-ghost-neutral-surface-hover px-2",

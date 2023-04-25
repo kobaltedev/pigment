@@ -21,16 +21,16 @@ export default {
       options: ["start", "end"],
       control: { type: "select" },
     },
-    hasErrorIcon: {
+    withErrorIcon: {
       control: { type: "boolean" },
     },
-    isIndeterminate: {
+    indeterminate: {
       control: { type: "boolean" },
     },
-    isInvalid: {
+    invalid: {
       control: { type: "boolean" },
     },
-    isDisabled: {
+    disabled: {
       control: { type: "boolean" },
     },
     label: {
@@ -51,10 +51,10 @@ export const Default: Story = {
     variant: "outlined",
     size: "md",
     labelPlacement: "end",
-    hasErrorIcon: true,
-    isIndeterminate: false,
-    isInvalid: false,
-    isDisabled: false,
+    withErrorIcon: true,
+    indeterminate: false,
+    invalid: false,
+    disabled: false,
     label: "Remember me",
     error: "Please check the box.",
   },
@@ -65,10 +65,10 @@ export const WithDescription: Story = {
     variant: "outlined",
     size: "md",
     labelPlacement: "end",
-    hasErrorIcon: true,
-    isIndeterminate: false,
-    isInvalid: false,
-    isDisabled: false,
+    withErrorIcon: true,
+    indeterminate: false,
+    invalid: false,
+    disabled: false,
     label: "Comments",
     description: "Get notified when someones posts a comment on a posting.",
     error: "Please check the box.",

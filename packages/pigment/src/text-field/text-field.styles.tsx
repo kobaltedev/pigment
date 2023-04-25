@@ -15,15 +15,15 @@ export const textFieldControlVariants = cva(
         lg: "h-12 text-lg",
         xl: "h-14 text-xl",
       },
-      isFocused: {
+      focused: {
         true: "",
         false: "",
       },
-      isInvalid: {
+      invalid: {
         true: "",
         false: "",
       },
-      isDisabled: {
+      disabled: {
         true: "ui-group-disabled:text-content-disabled",
         false: "",
       },
@@ -32,60 +32,60 @@ export const textFieldControlVariants = cva(
       // variant + text
       {
         variant: "soft",
-        isInvalid: false,
-        isDisabled: false,
+        invalid: false,
+        disabled: false,
         class:
           "text-input-soft-content hover:text-input-soft-content-hover active:text-input-soft-content-active",
       },
       {
         variant: "outlined",
-        isInvalid: false,
-        isDisabled: false,
+        invalid: false,
+        disabled: false,
         class: "text-input-outlined-content",
       },
 
       // variant + border
       {
         variant: "soft",
-        isFocused: false,
-        isInvalid: false,
-        isDisabled: false,
+        focused: false,
+        invalid: false,
+        disabled: false,
         class:
           "border-input-soft-line hover:border-input-soft-line-hover active:border-input-soft-line-active",
       },
       {
         variant: "outlined",
-        isFocused: false,
-        isInvalid: false,
-        isDisabled: false,
+        focused: false,
+        invalid: false,
+        disabled: false,
         class:
           "border-input-outlined-line hover:border-input-outlined-line-hover active:border-input-outlined-line-active",
       },
 
       // variant + border + focused
       {
-        isFocused: true,
-        isInvalid: false,
-        isDisabled: false,
+        focused: true,
+        invalid: false,
+        disabled: false,
         class: "border-ring",
       },
 
       // variant + invalid color
       {
-        isInvalid: true,
-        isDisabled: false,
+        invalid: true,
+        disabled: false,
         class: "text-content-danger border-solid-danger-line",
       },
 
       // variant + disabled
       {
         variant: "soft",
-        isDisabled: true,
+        disabled: true,
         class: "ui-group-disabled:bg-surface-disabled ui-group-disabled:border-transparent",
       },
       {
         variant: "outlined",
-        isDisabled: true,
+        disabled: true,
         class: "ui-group-disabled:border-line-disabled",
       },
     ],
@@ -112,33 +112,33 @@ export const textFieldInputVariants = cva(
         lg: "",
         xl: "",
       },
-      hasLeftDecorator: {
+      withLeftDecorator: {
         true: "pl-0",
         false: "",
       },
-      hasRightDecorator: {
+      withRightDecorator: {
         true: "pr-0",
         false: "",
       },
-      isDisabled: {
+      disabled: {
         true: "",
         false: "placeholder:text-content-subtlest",
       },
     },
     compoundVariants: [
       // size + no left decorator
-      { size: "xs", hasLeftDecorator: false, class: "pl-1.5" },
-      { size: "sm", hasLeftDecorator: false, class: "pl-2" },
-      { size: "md", hasLeftDecorator: false, class: "pl-2.5" },
-      { size: "lg", hasLeftDecorator: false, class: "pl-3" },
-      { size: "xl", hasLeftDecorator: false, class: "pl-3.5" },
+      { size: "xs", withLeftDecorator: false, class: "pl-1.5" },
+      { size: "sm", withLeftDecorator: false, class: "pl-2" },
+      { size: "md", withLeftDecorator: false, class: "pl-2.5" },
+      { size: "lg", withLeftDecorator: false, class: "pl-3" },
+      { size: "xl", withLeftDecorator: false, class: "pl-3.5" },
 
       // size + no right decorator
-      { size: "xs", hasRightDecorator: false, class: "pr-1.5" },
-      { size: "sm", hasRightDecorator: false, class: "pr-2" },
-      { size: "md", hasRightDecorator: false, class: "pr-2.5" },
-      { size: "lg", hasRightDecorator: false, class: "pr-3" },
-      { size: "xl", hasRightDecorator: false, class: "pr-3.5" },
+      { size: "xs", withRightDecorator: false, class: "pr-1.5" },
+      { size: "sm", withRightDecorator: false, class: "pr-2" },
+      { size: "md", withRightDecorator: false, class: "pr-2.5" },
+      { size: "lg", withRightDecorator: false, class: "pr-3" },
+      { size: "xl", withRightDecorator: false, class: "pr-3.5" },
     ],
   }
 );
@@ -162,11 +162,11 @@ export const textFieldTextAreaVariants = cva(
         lg: "p-3 text-lg",
         xl: "p-3.5 text-xl",
       },
-      isInvalid: {
+      invalid: {
         true: "",
         false: "",
       },
-      isDisabled: {
+      disabled: {
         true: "ui-disabled:placeholder:text-content-disabled ui-disabled:cursor-not-allowed ui-disabled:select-none",
         false: "placeholder:text-content-subtlest",
       },
@@ -175,8 +175,8 @@ export const textFieldTextAreaVariants = cva(
       // variant + color
       {
         variant: "soft",
-        isInvalid: false,
-        isDisabled: false,
+        invalid: false,
+        disabled: false,
         class: [
           "text-input-soft-content hover:text-input-soft-content-hover active:text-input-soft-content-active",
           "border-input-soft-line hover:border-input-soft-line-hover active:border-input-soft-line-active",
@@ -184,8 +184,8 @@ export const textFieldTextAreaVariants = cva(
       },
       {
         variant: "outlined",
-        isInvalid: false,
-        isDisabled: false,
+        invalid: false,
+        disabled: false,
         class: [
           "text-input-outlined-content",
           "border-input-outlined-line hover:border-input-outlined-line-hover active:border-input-outlined-line-active",
@@ -194,20 +194,20 @@ export const textFieldTextAreaVariants = cva(
 
       // variant + invalid
       {
-        isInvalid: true,
-        isDisabled: false,
+        invalid: true,
+        disabled: false,
         class: "text-content-danger border-solid-danger-line",
       },
 
       // variant + disabled
       {
         variant: "soft",
-        isDisabled: true,
+        disabled: true,
         class: "ui-group-disabled:bg-surface-disabled ui-group-disabled:border-transparent",
       },
       {
         variant: "outlined",
-        isDisabled: true,
+        disabled: true,
         class: "ui-group-disabled:border-line-disabled",
       },
     ],

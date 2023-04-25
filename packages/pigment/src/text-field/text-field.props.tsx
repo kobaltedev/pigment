@@ -15,7 +15,7 @@ export type TextFieldSlots =
 
 export interface TextFieldProps
   extends Omit<KTextField.TextFieldRootProps, "ref" | "validationState">,
-    Omit<TextFieldControlVariants, "isFocused" | "isDisabled">,
+    Omit<TextFieldControlVariants, "focused" | "disabled">,
     SlotProp<TextFieldSlots> {
   /** A ref to the inner `<input>` or `<textarea>` element. */
   ref?: Ref<HTMLInputElement | HTMLTextAreaElement>;
@@ -30,7 +30,7 @@ export interface TextFieldProps
   inputProps?: ComponentProps<"input"> | ComponentProps<"textarea">;
 
   /** Whether the text field should render a `<textarea>` instead of an `<input>`. */
-  isMultiline?: boolean;
+  multiline?: boolean;
 
   /** The label that gives the user information on the text field. */
   label?: JSX.Element | (() => JSX.Element);
@@ -42,10 +42,10 @@ export interface TextFieldProps
   error?: JSX.Element | (() => JSX.Element);
 
   /** Whether an asterisk should appear next to the label when the text field is required. */
-  hasRequiredIndicator?: boolean;
+  withRequiredIndicator?: boolean;
 
   /** Whether an icon should appear next to the error message. */
-  hasErrorIcon?: boolean;
+  withErrorIcon?: boolean;
 
   /** The icon to show next to the error message. */
   errorIcon?: JSX.Element | (() => JSX.Element);

@@ -1,8 +1,8 @@
+import { cn } from "@kobalte/pigment";
 import { Link } from "@solidjs/router";
+import { ComponentProps } from "solid-js";
 
 import { DiscordIcon, GitHubIcon, OpenCollectiveIcon, TwitterIcon } from "./icons";
-import { ComponentProps } from "solid-js";
-import { cn } from "@kobalte/pigment";
 
 export function Footer(props: ComponentProps<"footer">) {
   return (

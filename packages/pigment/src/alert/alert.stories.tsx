@@ -21,10 +21,10 @@ export default {
     hasIcon: {
       control: { type: "boolean" },
     },
-    isDismissible: {
+    dismissible: {
       control: { type: "boolean" },
     },
-    isMultiline: {
+    multiline: {
       control: { type: "boolean" },
     },
     title: {
@@ -42,9 +42,9 @@ export const Default: Story = {
     variant: "solid",
     color: "primary",
     title: "Announcement",
-    hasIcon: true,
-    isDismissible: true,
-    isMultiline: false,
+    withIcon: true,
+    dismissible: true,
+    multiline: false,
     children: "Pigment is going live soon, get ready!",
   },
 };

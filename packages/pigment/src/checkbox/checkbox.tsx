@@ -27,9 +27,9 @@ export function Checkbox(props: CheckboxProps) {
       variant: "outlined",
       size: "md",
       labelPlacement: "end",
-      isInvalid: false,
-      isDisabled: false,
-      hasErrorIcon: true,
+      invalid: false,
+      disabled: false,
+      withErrorIcon: true,
       inputProps: {},
       errorIcon: (() => <ExclamationCircleIcon />) as unknown as JSX.Element,
       checkedIcon: (() => <CheckIcon />) as unknown as JSX.Element,
@@ -52,12 +52,12 @@ export function Checkbox(props: CheckboxProps) {
       "label",
       "description",
       "error",
-      "hasErrorIcon",
+      "withErrorIcon",
       "errorIcon",
       "checkedIcon",
       "indeterminateIcon",
     ],
-    ["variant", "size", "isInvalid", "isDisabled"]
+    ["variant", "size", "invalid", "disabled"]
   );
 
   const { direction } = useLocale();
@@ -70,7 +70,7 @@ export function Checkbox(props: CheckboxProps) {
   const errorIcon = createMemo(() => runIfFn(local.errorIcon));
 
   const showError = () => {
-    return variantProps.isInvalid && error();
+    return variantProps.invalid && error();
   };
 
   const ariaDescribedBy = () => {
@@ -101,8 +101,8 @@ export function Checkbox(props: CheckboxProps) {
         local.slotClasses?.root,
         local.class
       )}
-      validationState={variantProps.isInvalid ? "invalid" : undefined}
-      isDisabled={variantProps.isDisabled}
+      validationState={variantProps.invalid ? "invalid" : undefined}
+      disabled={variantProps.disabled}
       {...others}
     >
       {state => (
@@ -130,7 +130,7 @@ export function Checkbox(props: CheckboxProps) {
                 local.slotClasses?.indicator
               )}
             >
-              <Show when={state.isIndeterminate()} fallback={runIfFn(local.checkedIcon)}>
+              <Show when={state.indeterminate()} fallback={runIfFn(local.checkedIcon)}>
                 {runIfFn(local.indeterminateIcon)}
               </Show>
             </KCheckbox.Indicator>
@@ -180,7 +180,7 @@ export function Checkbox(props: CheckboxProps) {
                   local.slotClasses?.error
                 )}
               >
-                <Show when={local.hasErrorIcon} fallback={error()}>
+                <Show when={local.withErrorIcon} fallback={error()}>
                   <span
                     aria-hidden="true"
                     class={cn(

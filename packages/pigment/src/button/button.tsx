@@ -29,7 +29,7 @@ function ButtonIcon(props: ButtonIconProps) {
   const [local, variantProps, others] = splitProps(
     props,
     ["class"],
-    ["variant", "color", "size", "isIconOnly", "isDisabled"]
+    ["variant", "color", "size", "iconOnly", "disabled"]
   );
 
   return (
@@ -53,34 +53,34 @@ function ButtonLoadingIcon(props: ButtonIconProps) {
 }
 
 function ButtonContent(props: ButtonContentProps) {
-  const [iconProps] = splitProps(props, ["variant", "color", "size", "isDisabled"]);
+  const [iconProps] = splitProps(props, ["variant", "color", "size", "disabled"]);
 
   const leftIcon = createMemo(() => {
-    return runIfFn(props.isRtl ? props.endIcon : props.startIcon);
+    return runIfFn(props.rtl ? props.endIcon : props.startIcon);
   });
 
   const rightIcon = createMemo(() => {
-    return runIfFn(props.isRtl ? props.startIcon : props.endIcon);
+    return runIfFn(props.rtl ? props.startIcon : props.endIcon);
   });
 
   const leftIconClass = () => {
-    return props.isRtl ? props.endIconClass : props.startIconClass;
+    return props.rtl ? props.endIconClass : props.startIconClass;
   };
 
   const rightIconClass = () => {
-    return props.isRtl ? props.startIconClass : props.endIconClass;
+    return props.rtl ? props.startIconClass : props.endIconClass;
   };
 
   return (
     <>
       <Show when={leftIcon()}>
-        <ButtonIcon class={leftIconClass()} isIconOnly={false} {...iconProps}>
+        <ButtonIcon class={leftIconClass()} iconOnly={false} {...iconProps}>
           {leftIcon()}
         </ButtonIcon>
       </Show>
       {props.children}
       <Show when={rightIcon()}>
-        <ButtonIcon class={rightIconClass()} isIconOnly={false} {...iconProps}>
+        <ButtonIcon class={rightIconClass()} iconOnly={false} {...iconProps}>
           {rightIcon()}
         </ButtonIcon>
       </Show>
@@ -101,9 +101,9 @@ function ButtonBase(props: ButtonBaseProps) {
       variant: "solid",
       color: "primary",
       size: "md",
-      isIconOnly: false,
-      isFullWidth: false,
-      isDisabled: false,
+      iconOnly: false,
+      fullWidth: false,
+      disabled: false,
       loadingIconPlacement: "start",
     },
     props
@@ -114,10 +114,10 @@ function ButtonBase(props: ButtonBaseProps) {
   const [local, variantProps, contentProps, loadingIconProps, loadingContentProps, others] =
     splitProps(
       props,
-      ["class", "slotClasses", "isLoading", "loadingText", "loadingIcon", "loadingIconPlacement"],
-      ["variant", "color", "size", "isIconOnly", "isFullWidth", "isLoading", "isDisabled"],
-      ["variant", "color", "size", "isDisabled", "startIcon", "endIcon", "children"],
-      ["variant", "color", "size", "isIconOnly", "isDisabled"],
+      ["class", "slotClasses", "loading", "loadingText", "loadingIcon", "loadingIconPlacement"],
+      ["variant", "color", "size", "iconOnly", "fullWidth", "loading", "disabled"],
+      ["variant", "color", "size", "disabled", "startIcon", "endIcon", "children"],
+      ["variant", "color", "size", "iconOnly", "disabled"],
       ["size"]
     );
 
@@ -145,7 +145,7 @@ function ButtonBase(props: ButtonBaseProps) {
   const content = () => {
     return (
       <ButtonContent
-        isRtl={direction() === "rtl"}
+        rtl={direction() === "rtl"}
         startIconClass={cn(
           buttonStaticClass("startIcon"),
           themeClasses.startIcon,
@@ -170,16 +170,16 @@ function ButtonBase(props: ButtonBaseProps) {
         local.slotClasses?.root,
         local.class
       )}
-      isDisabled={variantProps.isDisabled}
+      disabled={variantProps.disabled}
       {...others}
     >
-      <Show when={local.isLoading} fallback={content()}>
+      <Show when={local.loading} fallback={content()}>
         <Show
           when={local.loadingText}
           fallback={
             <>
               <ButtonLoadingIcon class={loadingIconClass("absolute")} {...loadingIconProps} />
-              <Show when={!variantProps.isIconOnly}>
+              <Show when={!variantProps.iconOnly}>
                 <span class={loadingContentVariants(loadingContentProps)}>{content()}</span>
               </Show>
             </>
@@ -199,11 +199,11 @@ function ButtonBase(props: ButtonBaseProps) {
 }
 
 export function Button(props: ButtonProps) {
-  return <ButtonBase isIconOnly={false} {...props} />;
+  return <ButtonBase iconOnly={false} {...props} />;
 }
 
 export function IconButton(props: IconButtonProps) {
-  return <ButtonBase isIconOnly {...props} />;
+  return <ButtonBase iconOnly {...props} />;
 }
 
 /* -------------------------------------------------------------------------------------------------
@@ -219,9 +219,9 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
       variant: "solid",
       color: "primary",
       size: "md",
-      isIconOnly: false,
-      isFullWidth: false,
-      isDisabled: false,
+      iconOnly: false,
+      fullWidth: false,
+      disabled: false,
     },
     props
   );
@@ -231,8 +231,8 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
   const [local, variantProps, contentProps, others] = splitProps(
     props,
     ["class", "slotClasses"],
-    ["variant", "color", "size", "isIconOnly", "isFullWidth", "isDisabled"],
-    ["variant", "color", "size", "isDisabled", "startIcon", "endIcon", "children"]
+    ["variant", "color", "size", "iconOnly", "fullWidth", "disabled"],
+    ["variant", "color", "size", "disabled", "startIcon", "endIcon", "children"]
   );
 
   const { direction } = useLocale();
@@ -246,11 +246,11 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
         local.slotClasses?.root,
         local.class
       )}
-      isDisabled={variantProps.isDisabled}
+      disabled={variantProps.disabled}
       {...others}
     >
       <ButtonContent
-        isRtl={direction() === "rtl"}
+        rtl={direction() === "rtl"}
         startIconClass={cn(
           linkButtonStaticClass("startIcon"),
           themeClasses.startIcon,
@@ -268,9 +268,9 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
 }
 
 export function LinkButton(props: LinkButtonProps) {
-  return <LinkButtonBase isIconOnly={false} {...props} />;
+  return <LinkButtonBase iconOnly={false} {...props} />;
 }
 
 export function LinkIconButton(props: LinkIconButtonProps) {
-  return <LinkButtonBase isIconOnly {...props} />;
+  return <LinkButtonBase iconOnly {...props} />;
 }

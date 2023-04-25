@@ -31,12 +31,12 @@ export function TextField(props: TextFieldProps) {
     "TextField",
     {
       type: "text",
-      hasRequiredIndicator: true,
-      hasErrorIcon: true,
+      withRequiredIndicator: true,
+      withErrorIcon: true,
       variant: "outlined",
       size: "md",
-      isInvalid: false,
-      isDisabled: false,
+      invalid: false,
+      disabled: false,
       inputProps: {},
       errorIcon: (() => <ExclamationCircleIcon />) as unknown as JSX.Element,
     },
@@ -55,17 +55,17 @@ export function TextField(props: TextFieldProps) {
       "type",
       "placeholder",
       "inputProps",
-      "isMultiline",
+      "multiline",
       "label",
       "description",
       "error",
-      "hasRequiredIndicator",
-      "hasErrorIcon",
+      "withRequiredIndicator",
+      "withErrorIcon",
       "errorIcon",
       "startDecorator",
       "endDecorator",
     ],
-    ["variant", "size", "isInvalid", "isDisabled"]
+    ["variant", "size", "invalid", "disabled"]
   );
 
   const { direction } = useLocale();
@@ -80,11 +80,11 @@ export function TextField(props: TextFieldProps) {
   const errorIcon = createMemo(() => runIfFn(local.errorIcon));
 
   const showDescription = () => {
-    return !variantProps.isInvalid && description();
+    return !variantProps.invalid && description();
   };
 
   const showError = () => {
-    return variantProps.isInvalid && error();
+    return variantProps.invalid && error();
   };
 
   const leftDecorator = createMemo(() => {
@@ -97,13 +97,13 @@ export function TextField(props: TextFieldProps) {
 
   const variantProps = mergeProps(
     {
-      get hasLeftDecorator() {
+      get withLeftDecorator() {
         return leftDecorator() != null;
       },
-      get hasRightDecorator() {
+      get withRightDecorator() {
         return rightDecorator() != null;
       },
-      get isFocused() {
+      get focused() {
         return isFocused();
       },
     },
@@ -129,8 +129,8 @@ export function TextField(props: TextFieldProps) {
         local.slotClasses?.root,
         local.class
       )}
-      validationState={variantProps.isInvalid ? "invalid" : undefined}
-      isDisabled={variantProps.isDisabled}
+      validationState={variantProps.invalid ? "invalid" : undefined}
+      disabled={variantProps.disabled}
       {...others}
     >
       <Show when={label()}>
@@ -143,7 +143,7 @@ export function TextField(props: TextFieldProps) {
           )}
         >
           {label()}
-          <Show when={local.hasRequiredIndicator && others.isRequired}>
+          <Show when={local.withRequiredIndicator && others.required}>
             <span class="text-content-danger ui-group-disabled:text-content-disabled ml-0.5">
               *
             </span>
@@ -151,7 +151,7 @@ export function TextField(props: TextFieldProps) {
         </KTextField.Label>
       </Show>
       <Show
-        when={!local.isMultiline}
+        when={!local.multiline}
         fallback={
           <KTextField.TextArea
             {...(local.inputProps as ComponentProps<"textarea">)}
@@ -220,7 +220,7 @@ export function TextField(props: TextFieldProps) {
             local.slotClasses?.error
           )}
         >
-          <Show when={local.hasErrorIcon} fallback={error()}>
+          <Show when={local.withErrorIcon} fallback={error()}>
             <span
               aria-hidden="true"
               class={cn(

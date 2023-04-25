@@ -24,9 +24,3 @@ export function Prose(props: ComponentProps<"div">) {
     />
   );
 }
-
-/*
-
-
-
-*/

@@ -50,7 +50,7 @@ export default function Index() {
             />
             <Alert
               title="Software update"
-              isMultiline
+              multiline
               variant="soft"
               color="primary"
               class="w-full"
@@ -66,7 +66,7 @@ export default function Index() {
               />
               <div class="flex flex-col space-y-2">
                 <Button>Button</Button>
-                <Checkbox label="Checkbox" defaultIsChecked />
+                <Checkbox label="Checkbox" defaultChecked />
               </div>
             </div>
           </div>

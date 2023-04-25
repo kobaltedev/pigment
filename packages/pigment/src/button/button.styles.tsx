@@ -33,17 +33,17 @@ export const buttonStyles = cva(
         lg: "h-12 gap-2.5",
         xl: "h-14 gap-3",
       },
-      isIconOnly: {
+      iconOnly: {
         true: "reset-svg p-0 leading-none",
       },
-      isFullWidth: {
+      fullWidth: {
         true: "flex w-full",
         false: "inline-flex",
       },
-      isLoading: {
+      loading: {
         true: "opacity-80 select-none pointer-events-none",
       },
-      isDisabled: {
+      disabled: {
         true: "ui-disabled:text-content-disabled ui-disabled:cursor-not-allowed ui-disabled:select-none ui-disabled:shadow-none",
       },
     },
@@ -56,7 +56,7 @@ export const buttonStyles = cva(
           return {
             variant,
             color,
-            isDisabled: false,
+            disabled: false,
             class: [variantClasses.base, variantClasses.hover, variantClasses.active],
           };
         })
@@ -65,34 +65,34 @@ export const buttonStyles = cva(
       // variant + disabled
       {
         variant: ["solid", "soft"],
-        isDisabled: true,
+        disabled: true,
         class: "ui-disabled:bg-surface-disabled ui-disabled:border-transparent",
       },
       {
         variant: ["default", "outlined"],
-        isDisabled: true,
+        disabled: true,
         class: "ui-disabled:bg-transparent ui-disabled:border-line-disabled",
       },
       {
         variant: "ghost",
-        isDisabled: true,
+        disabled: true,
         class: "ui-disabled:bg-transparent ui-disabled:border-transparent",
       },
 
       // rectangle button (e.g: Button)
-      { isIconOnly: false, isFullWidth: false, class: "w-auto" },
-      { size: "xs", isIconOnly: false, class: "px-2 text-xs" },
-      { size: "sm", isIconOnly: false, class: "px-2.5 text-sm" },
-      { size: "md", isIconOnly: false, class: "px-4 text-base" },
-      { size: "lg", isIconOnly: false, class: "px-6 text-lg" },
-      { size: "xl", isIconOnly: false, class: "px-8 text-xl" },
+      { iconOnly: false, fullWidth: false, class: "w-auto" },
+      { size: "xs", iconOnly: false, class: "px-2 text-xs" },
+      { size: "sm", iconOnly: false, class: "px-2.5 text-sm" },
+      { size: "md", iconOnly: false, class: "px-4 text-base" },
+      { size: "lg", iconOnly: false, class: "px-6 text-lg" },
+      { size: "xl", iconOnly: false, class: "px-8 text-xl" },
 
       // square button (e.g: IconButton)
-      { size: "xs", isIconOnly: true, isFullWidth: false, class: "w-6 text-base" },
-      { size: "sm", isIconOnly: true, isFullWidth: false, class: "w-8 text-lg" },
-      { size: "md", isIconOnly: true, isFullWidth: false, class: "w-10 text-2xl" },
-      { size: "lg", isIconOnly: true, isFullWidth: false, class: "w-12 text-3xl" },
-      { size: "xl", isIconOnly: true, isFullWidth: false, class: "w-14 text-4xl" },
+      { size: "xs", iconOnly: true, fullWidth: false, class: "w-6 text-base" },
+      { size: "sm", iconOnly: true, fullWidth: false, class: "w-8 text-lg" },
+      { size: "md", iconOnly: true, fullWidth: false, class: "w-10 text-2xl" },
+      { size: "lg", iconOnly: true, fullWidth: false, class: "w-12 text-3xl" },
+      { size: "xl", iconOnly: true, fullWidth: false, class: "w-14 text-4xl" },
     ],
   }
 );
@@ -106,24 +106,24 @@ export const buttonIconVariants = cva("reset-svg shrink-0", {
       lg: "",
       xl: "",
     },
-    isIconOnly: {
+    iconOnly: {
       true: "",
     },
   },
   compoundVariants: [
     // start, end and loading icons in rectangle button (e.g: Button)
-    { size: "xs", isIconOnly: false, class: "text-sm" },
-    { size: "sm", isIconOnly: false, class: "text-base" },
-    { size: "md", isIconOnly: false, class: "text-lg" },
-    { size: "lg", isIconOnly: false, class: "text-xl" },
-    { size: "xl", isIconOnly: false, class: "text-2xl" },
+    { size: "xs", iconOnly: false, class: "text-sm" },
+    { size: "sm", iconOnly: false, class: "text-base" },
+    { size: "md", iconOnly: false, class: "text-lg" },
+    { size: "lg", iconOnly: false, class: "text-xl" },
+    { size: "xl", iconOnly: false, class: "text-2xl" },
 
     // only loading icon in square button (e.g: IconButton)
-    { size: "xs", isIconOnly: true, class: "text-base" },
-    { size: "sm", isIconOnly: true, class: "text-lg" },
-    { size: "md", isIconOnly: true, class: "text-2xl" },
-    { size: "lg", isIconOnly: true, class: "text-3xl" },
-    { size: "xl", isIconOnly: true, class: "text-4xl" },
+    { size: "xs", iconOnly: true, class: "text-base" },
+    { size: "sm", iconOnly: true, class: "text-lg" },
+    { size: "md", iconOnly: true, class: "text-2xl" },
+    { size: "lg", iconOnly: true, class: "text-3xl" },
+    { size: "xl", iconOnly: true, class: "text-4xl" },
   ],
 });
 

@@ -23,7 +23,7 @@ export default {
       options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
-    isDisabled: {
+    disabled: {
       control: { type: "boolean" },
     },
     href: {
@@ -42,7 +42,7 @@ export const Default: Story = {
     variant: "solid",
     color: "primary",
     size: "md",
-    isDisabled: false,
+    disabled: false,
     href: "https://kobalte.dev",
   },
 };

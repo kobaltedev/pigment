@@ -18,23 +18,23 @@ export const selectButtonVariants = cva(
         lg: "h-12 text-lg",
         xl: "h-14 text-xl",
       },
-      hasDropdownIcon: {
+      withDropdownIcon: {
         true: "pr-0",
         false: "",
       },
-      hasLeftDecorator: {
+      withLeftDecorator: {
         true: "pl-0",
         false: "",
       },
-      hasRightDecorator: {
+      withRightDecorator: {
         true: "",
         false: "",
       },
-      isInvalid: {
+      invalid: {
         true: "",
         false: "",
       },
-      isDisabled: {
+      disabled: {
         true: "ui-disabled:text-content-disabled ui-disabled:cursor-not-allowed ui-disabled:select-none",
         false: "",
       },
@@ -43,8 +43,8 @@ export const selectButtonVariants = cva(
       // variant + color
       {
         variant: "soft",
-        isInvalid: false,
-        isDisabled: false,
+        invalid: false,
+        disabled: false,
         class: [
           "text-input-soft-content hover:text-input-soft-content-hover active:text-input-soft-content-active",
           "border-input-soft-line hover:border-input-soft-line-hover active:border-input-soft-line-active",
@@ -52,8 +52,8 @@ export const selectButtonVariants = cva(
       },
       {
         variant: "outlined",
-        isInvalid: false,
-        isDisabled: false,
+        invalid: false,
+        disabled: false,
         class: [
           "text-input-outlined-content",
           "border-input-outlined-line hover:border-input-outlined-line-hover active:border-input-outlined-line-active",
@@ -62,36 +62,36 @@ export const selectButtonVariants = cva(
 
       // variant + invalid
       {
-        isInvalid: true,
-        isDisabled: false,
+        invalid: true,
+        disabled: false,
         class: "text-content-danger border-solid-danger-line",
       },
 
       // variant + disabled
       {
         variant: "soft",
-        isDisabled: true,
+        disabled: true,
         class: "ui-disabled:bg-surface-disabled ui-disabled:border-transparent",
       },
       {
         variant: "outlined",
-        isDisabled: true,
+        disabled: true,
         class: "ui-disabled:border-line-disabled",
       },
 
       // size + no left decorator
-      { size: "xs", hasLeftDecorator: false, class: "pl-1.5" },
-      { size: "sm", hasLeftDecorator: false, class: "pl-2" },
-      { size: "md", hasLeftDecorator: false, class: "pl-2.5" },
-      { size: "lg", hasLeftDecorator: false, class: "pl-3" },
-      { size: "xl", hasLeftDecorator: false, class: "pl-3.5" },
+      { size: "xs", withLeftDecorator: false, class: "pl-1.5" },
+      { size: "sm", withLeftDecorator: false, class: "pl-2" },
+      { size: "md", withLeftDecorator: false, class: "pl-2.5" },
+      { size: "lg", withLeftDecorator: false, class: "pl-3" },
+      { size: "xl", withLeftDecorator: false, class: "pl-3.5" },
 
       // size + no right decorator + no dropdown icon
-      { size: "xs", hasRightDecorator: false, hasDropdownIcon: false, class: "pr-1.5" },
-      { size: "sm", hasRightDecorator: false, hasDropdownIcon: false, class: "pr-2" },
-      { size: "md", hasRightDecorator: false, hasDropdownIcon: false, class: "pr-2.5" },
-      { size: "lg", hasRightDecorator: false, hasDropdownIcon: false, class: "pr-3" },
-      { size: "xl", hasRightDecorator: false, hasDropdownIcon: false, class: "pr-3.5" },
+      { size: "xs", withRightDecorator: false, withDropdownIcon: false, class: "pr-1.5" },
+      { size: "sm", withRightDecorator: false, withDropdownIcon: false, class: "pr-2" },
+      { size: "md", withRightDecorator: false, withDropdownIcon: false, class: "pr-2.5" },
+      { size: "lg", withRightDecorator: false, withDropdownIcon: false, class: "pr-3" },
+      { size: "xl", withRightDecorator: false, withDropdownIcon: false, class: "pr-3.5" },
     ],
   }
 );
@@ -115,29 +115,29 @@ export const selectIconVariants = cva(
         lg: "pr-3 text-lg",
         xl: "pr-3.5 text-xl",
       },
-      hasRightDecorator: {
+      withRightDecorator: {
         true: "pl-0",
         false: "",
       },
-      isDisabled: {
+      disabled: {
         true: "ui-group-disabled:text-content-disabled ui-group-disabled:cursor-not-allowed",
         false: "cursor-pointer",
       },
     },
     compoundVariants: [
       // size + no right decorator
-      { size: "xs", hasRightDecorator: false, class: "pl-1.5" },
-      { size: "sm", hasRightDecorator: false, class: "pl-2" },
-      { size: "md", hasRightDecorator: false, class: "pl-2.5" },
-      { size: "lg", hasRightDecorator: false, class: "pl-3" },
-      { size: "xl", hasRightDecorator: false, class: "pl-3.5" },
+      { size: "xs", withRightDecorator: false, class: "pl-1.5" },
+      { size: "sm", withRightDecorator: false, class: "pl-2" },
+      { size: "md", withRightDecorator: false, class: "pl-2.5" },
+      { size: "lg", withRightDecorator: false, class: "pl-3" },
+      { size: "xl", withRightDecorator: false, class: "pl-3.5" },
     ],
   }
 );
 
 export const selectValueVariants = cva("inline-flex justify-start items-center grow shrink", {
   variants: {
-    isDisabled: {
+    disabled: {
       true: "",
       false: "data-placeholder-shown:text-content-subtlest",
     },

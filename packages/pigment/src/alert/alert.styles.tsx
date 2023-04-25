@@ -12,15 +12,15 @@ export const alertStyles = cva(
     variants: {
       variant: emptyObject(alertVariants),
       color: SEMANTIC_COLOR_VARIANTS,
-      hasIcon: {
+      withIcon: {
         true: "pl-2",
         false: "pl-4",
       },
-      isDismissible: {
+      dismissible: {
         true: "pr-2",
         false: "pr-4",
       },
-      isMultiline: {
+      multiline: {
         true: "items-start",
         false: "items-center",
       },
@@ -39,7 +39,7 @@ export const alertStyles = cva(
 
 export const alertContentVariants = cva("flex grow", {
   variants: {
-    isMultiline: {
+    multiline: {
       true: "flex-col space-y-1 py-1",
       false: "flex-row items-center space-x-1",
     },

@@ -16,7 +16,7 @@ export type CheckboxSlots =
 
 export interface CheckboxProps
   extends Omit<KCheckbox.CheckboxRootProps, "ref" | "validationState">,
-    Omit<CheckboxControlVariants, "isDisabled">,
+    Omit<CheckboxControlVariants, "disabled">,
     SlotProp<CheckboxSlots> {
   /** A ref to the inner `<input>` element. */
   ref?: Ref<HTMLInputElement>;
@@ -37,7 +37,7 @@ export interface CheckboxProps
   error?: JSX.Element | (() => JSX.Element);
 
   /** Whether an icon should appear next to the error message. */
-  hasErrorIcon?: boolean;
+  withErrorIcon?: boolean;
 
   /** The icon to show next to the error message. */
   errorIcon?: JSX.Element | (() => JSX.Element);

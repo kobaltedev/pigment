@@ -19,19 +19,19 @@ export default {
       options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
-    hasDropdownIcon: {
+    withDropdownIcon: {
       control: { type: "boolean" },
     },
     hasErrorIcon: {
       control: { type: "boolean" },
     },
-    isInvalid: {
+    invalid: {
       control: { type: "boolean" },
     },
-    isRequired: {
+    required: {
       control: { type: "boolean" },
     },
-    isDisabled: {
+    disabled: {
       control: { type: "boolean" },
     },
     disallowEmptySelection: {
@@ -57,11 +57,11 @@ export const Default: Story = {
   args: {
     variant: "outlined",
     size: "md",
-    hasDropdownIcon: true,
-    hasErrorIcon: true,
-    isInvalid: false,
-    isRequired: false,
-    isDisabled: false,
+    withDropdownIcon: true,
+    withErrorIcon: true,
+    invalid: false,
+    required: false,
+    disabled: false,
     allowEmptySelection: false,
     placeholder: "Select a fruit",
     label: "Fruit",
@@ -75,11 +75,11 @@ export const WithDecorator: Story = {
   args: {
     variant: "outlined",
     size: "md",
-    hasDropdownIcon: true,
-    hasErrorIcon: true,
-    isInvalid: false,
-    isRequired: false,
-    isDisabled: false,
+    withDropdownIcon: true,
+    withErrorIcon: true,
+    invalid: false,
+    required: false,
+    disabled: false,
     allowEmptySelection: false,
     placeholder: "Select a fruit",
     label: "Fruit",
@@ -99,11 +99,11 @@ export const WithObject: Story = {
   args: {
     variant: "outlined",
     size: "md",
-    hasDropdownIcon: true,
-    hasErrorIcon: true,
-    isInvalid: false,
-    isRequired: false,
-    isDisabled: false,
+    withDropdownIcon: true,
+    withErrorIcon: true,
+    invalid: false,
+    required: false,
+    disabled: false,
     allowEmptySelection: false,
     placeholder: "Select a fruit",
     label: "Fruit",
@@ -123,11 +123,11 @@ export const WithOptionGroup: Story = {
   args: {
     variant: "outlined",
     size: "md",
-    hasDropdownIcon: true,
-    hasErrorIcon: true,
-    isInvalid: false,
-    isRequired: false,
-    isDisabled: false,
+    withDropdownIcon: true,
+    withErrorIcon: true,
+    invalid: false,
+    required: false,
+    disabled: false,
     allowEmptySelection: false,
     placeholder: "Select a food",
     label: "Food",

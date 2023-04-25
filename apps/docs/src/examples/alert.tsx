@@ -6,15 +6,15 @@ import { BuoyIcon, Playground, RocketIcon } from "../components";
 export function WithPlayground() {
   const [variant, setVariant] = createSignal<AlertProps["variant"]>("soft");
   const [color, setColor] = createSignal<AlertProps["color"]>("info");
-  const [isDismissible, setIsDismissible] = createSignal(false);
-  const [isMultiline, setIsMultiline] = createSignal(false);
+  const [dismissible, setDismissible] = createSignal(false);
+  const [multiline, setMultiline] = createSignal(false);
 
   const snippet = createMemo(() => {
     return `<Alert
   variant="${variant()}"
   color="${color()}"
-  isDismissible={${isDismissible()}}
-  isMultiline={${isMultiline()}}
+  dismissible={${dismissible()}}
+  multiline={${multiline()}}
   title="Software update."
 >
   A new software update is available.
@@ -27,8 +27,8 @@ export function WithPlayground() {
         <Alert
           variant={variant()}
           color={color()}
-          isDismissible={isDismissible()}
-          isMultiline={isMultiline()}
+          dismissible={dismissible()}
+          multiline={multiline()}
           title="Software update."
           icon={
             color() === "primary" ? (
@@ -46,28 +46,24 @@ export function WithPlayground() {
       <Select
         label="Variant"
         value={variant()!}
-        onValueChange={setVariant}
+        onChange={setVariant}
         options={["solid", "soft"]}
       />
       <Select
         label="Color"
         value={color()!}
-        onValueChange={setColor}
+        onChange={setColor}
         options={["neutral", "primary", "success", "info", "warning", "danger"]}
       />
-      <Checkbox
-        label="Dismissible"
-        isChecked={isDismissible()}
-        onCheckedChange={setIsDismissible}
-      />
-      <Checkbox label="Multiline" isChecked={isMultiline()} onCheckedChange={setIsMultiline} />
+      <Checkbox label="Dismissible" checked={dismissible()} onChange={setDismissible} />
+      <Checkbox label="Multiline" checked={multiline()} onChange={setMultiline} />
     </Playground>
   );
 }
 
 export function WithMultiline() {
   return (
-    <Alert variant="soft" color="info" title="Software update" isMultiline>
+    <Alert variant="soft" color="info" title="Software update" multiline>
       A new software update is available.
     </Alert>
   );
@@ -130,7 +126,7 @@ export function WithDismissButton() {
       variant="soft"
       color="info"
       title="Software update."
-      isDismissible
+      dismissible
       dismissButtonLabel="Close"
       onDismiss={() => alert("dismissed")}
     >

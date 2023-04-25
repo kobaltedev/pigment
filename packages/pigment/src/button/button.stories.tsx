@@ -23,13 +23,13 @@ export default {
       options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
-    isFullWidth: {
+    fullWidth: {
       control: { type: "boolean" },
     },
-    isLoading: {
+    loading: {
       control: { type: "boolean" },
     },
-    isDisabled: {
+    disabled: {
       control: { type: "boolean" },
     },
     loadingText: {
@@ -51,9 +51,9 @@ export const Default: Story = {
     variant: "solid",
     color: "primary",
     size: "md",
-    isFullWidth: false,
-    isLoading: false,
-    isDisabled: false,
+    fullWidth: false,
+    loading: false,
+    disabled: false,
     loadingText: "",
     loadingIconPlacement: "start",
     children: "Button",
@@ -65,9 +65,9 @@ export const WithIcon: Story = {
     variant: "solid",
     color: "primary",
     size: "md",
-    isFullWidth: false,
-    isLoading: false,
-    isDisabled: false,
+    fullWidth: false,
+    loading: false,
+    disabled: false,
     loadingText: "",
     loadingIconPlacement: "start",
     children: "Button",

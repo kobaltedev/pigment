@@ -23,11 +23,11 @@ export const checkboxControlVariants = cva(
         md: "h-5 w-5 text-xl",
         lg: "h-6 w-6 text-2xl",
       },
-      isInvalid: {
+      invalid: {
         true: "",
         false: "",
       },
-      isDisabled: {
+      disabled: {
         true: "ui-group-disabled:text-content-disabled ui-group-disabled:cursor-not-allowed",
         false: "",
       },
@@ -36,8 +36,8 @@ export const checkboxControlVariants = cva(
       // variant + color
       {
         variant: "soft",
-        isInvalid: false,
-        isDisabled: false,
+        invalid: false,
+        disabled: false,
         class: [
           "bg-input-soft-surface hover:bg-input-soft-surface-hover active:bg-input-soft-surface-active",
           "border-input-soft-line hover:border-input-soft-line-hover active:border-input-soft-line-active",
@@ -45,16 +45,16 @@ export const checkboxControlVariants = cva(
       },
       {
         variant: "outlined",
-        isInvalid: false,
-        isDisabled: false,
+        invalid: false,
+        disabled: false,
         class:
           "border-input-outlined-line hover:border-input-outlined-line-hover active:border-input-outlined-line-active",
       },
 
       // variant + checked
       {
-        isInvalid: false,
-        isDisabled: false,
+        invalid: false,
+        disabled: false,
         class: [
           // safe to put text colors here because `KCheckbox.Indicator` is only rendered when checked or indeterminate
           "text-accent-solid-content hover:text-accent-solid-content-hover active:text-accent-solid-content-active",
@@ -69,8 +69,8 @@ export const checkboxControlVariants = cva(
 
       // variant + checked + invalid
       {
-        isInvalid: true,
-        isDisabled: false,
+        invalid: true,
+        disabled: false,
         class: [
           // safe to put text colors here because `KCheckbox.Indicator` is only rendered when checked or indeterminate
           "text-solid-danger-content",
@@ -86,8 +86,8 @@ export const checkboxControlVariants = cva(
 
       // variant + focused
       {
-        isInvalid: false,
-        isDisabled: false,
+        invalid: false,
+        disabled: false,
         class:
           "peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-ring",
       },
@@ -95,12 +95,12 @@ export const checkboxControlVariants = cva(
       // variant + disabled
       {
         variant: "soft",
-        isDisabled: true,
+        disabled: true,
         class: "ui-group-disabled:bg-surface-disabled ui-group-disabled:border-surface-disabled",
       },
       {
         variant: "outlined",
-        isDisabled: true,
+        disabled: true,
         class: "ui-group-disabled:border-line-disabled",
       },
     ],

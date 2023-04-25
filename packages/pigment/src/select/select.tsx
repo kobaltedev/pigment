@@ -29,14 +29,14 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
   props = mergeThemeProps(
     "Select",
     {
-      hasRequiredIndicator: true,
-      hasDropdownIcon: true,
-      hasSelectedIcon: true,
-      hasErrorIcon: true,
+      withRequiredIndicator: true,
+      withDropdownIcon: true,
+      withSelectionIcon: true,
+      withErrorIcon: true,
       variant: "outlined",
       size: "md",
-      isInvalid: false,
-      isDisabled: false,
+      invalid: false,
+      disabled: false,
       allowEmptySelection: false,
       inputProps: {},
       optionValue: "value" as any,
@@ -46,6 +46,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       optionGroupLabel: "label" as any,
       optionGroupChildren: "options" as any,
       dropdownIcon: (() => <SelectorIcon />) as unknown as JSX.Element,
+      selectionIcon: (() => <CheckIcon />) as unknown as JSX.Element,
       errorIcon: (() => <ExclamationCircleIcon />) as unknown as JSX.Element,
     },
     props
@@ -59,15 +60,20 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       "ref",
       "class",
       "slotClasses",
+      "value",
+      "defaultValue",
+      "onChange",
+      "multiple",
       "inputProps",
       "allowEmptySelection",
       "label",
       "description",
       "error",
-      "hasRequiredIndicator",
-      "hasSelectedIcon",
-      "hasErrorIcon",
+      "withRequiredIndicator",
+      "withSelectionIcon",
+      "withErrorIcon",
       "dropdownIcon",
+      "selectionIcon",
       "errorIcon",
       "startDecorator",
       "endDecorator",
@@ -78,28 +84,24 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       "optionGroupTemplate",
     ],
     [
-      "defaultIsOpen",
-      "isOpen",
+      "open",
+      "defaultOpen",
       "onOpenChange",
-      "defaultValue",
-      "value",
-      "onValueChange",
       "options",
       "optionValue",
       "optionTextValue",
       "optionDisabled",
       "optionGroupChildren",
-      "isOptionGroup",
-      "isModal",
+      "modal",
       "placeholder",
       "id",
       "name",
-      "isRequired",
-      "isDisabled",
-      "isReadOnly",
+      "required",
+      "disabled",
+      "readOnly",
       "sameWidth",
     ],
-    ["variant", "size", "hasDropdownIcon", "isInvalid", "isDisabled"]
+    ["variant", "size", "withDropdownIcon", "invalid", "disabled"]
   );
 
   const { direction } = useLocale();
@@ -112,11 +114,11 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
   const errorIcon = createMemo(() => runIfFn(local.errorIcon));
 
   const showDescription = () => {
-    return !variantProps.isInvalid && description();
+    return !variantProps.invalid && description();
   };
 
   const showError = () => {
-    return variantProps.isInvalid && error();
+    return variantProps.invalid && error();
   };
 
   const leftDecorator = createMemo(() => {
@@ -129,10 +131,10 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
 
   const variantProps = mergeProps(
     {
-      get hasLeftDecorator() {
+      get withLeftDecorator() {
         return leftDecorator() != null;
       },
-      get hasRightDecorator() {
+      get withRightDecorator() {
         return rightDecorator() != null;
       },
     },
@@ -183,7 +185,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
         >
           {local.optionTemplate?.(option)}
         </Show>
-        <Show when={local.hasSelectedIcon}>
+        <Show when={local.withSelectionIcon}>
           <KSelect.ItemIndicator
             class={cn(
               selectOptionIndicatorVariants(variantProps),
@@ -192,7 +194,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
               local.slotClasses?.optionIndicator
             )}
           >
-            <CheckIcon />
+            {runIfFn(local.selectionIcon)}
           </KSelect.ItemIndicator>
         </Show>
       </>
@@ -208,7 +210,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
   };
 
   return (
-    <KSelect.Root
+    <KSelect.Root<Option, OptGroup>
       class={cn(
         "group flex flex-col",
         selectStaticClass("root"),
@@ -216,14 +218,13 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
         local.slotClasses?.root,
         local.class
       )}
-      validationState={variantProps.isInvalid ? "invalid" : undefined}
+      value={local.value as any}
+      defaultValue={local.defaultValue as any}
+      onChange={local.onChange as any}
+      multiple={local.multiple as any}
+      validationState={variantProps.invalid ? "invalid" : undefined}
       disallowEmptySelection={!local.allowEmptySelection}
       gutter={dropdownGutter()}
-      valueComponent={props => (
-        <Show when={local.valueTemplate} fallback={getOptionLabel(props.item.rawValue)}>
-          {local.valueTemplate?.(props.item.rawValue)}
-        </Show>
-      )}
       itemComponent={props => (
         <KSelect.Item
           item={props.item}
@@ -264,7 +265,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
           )}
         >
           {label()}
-          <Show when={local.hasRequiredIndicator && rootProps.isRequired}>
+          <Show when={local.withRequiredIndicator && rootProps.required}>
             <span class="text-content-danger ui-group-disabled:text-content-disabled ml-0.5">
               *
             </span>
@@ -282,16 +283,22 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
         {...others}
       >
         {leftDecorator()}
-        <KSelect.Value
+        <KSelect.Value<Option>
           class={cn(
             selectValueVariants(variantProps),
             selectStaticClass("value"),
             themeClasses.value,
             local.slotClasses?.value
           )}
-        />
+        >
+          {state => (
+            <Show when={local.valueTemplate} fallback={getOptionLabel(state.selectedOption())}>
+              {local.valueTemplate?.(state.selectedOption())}
+            </Show>
+          )}
+        </KSelect.Value>
         {rightDecorator()}
-        <Show when={variantProps.hasDropdownIcon}>
+        <Show when={variantProps.withDropdownIcon}>
           <KSelect.Icon
             class={cn(
               selectIconVariants(variantProps),
@@ -327,7 +334,7 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
             local.slotClasses?.error
           )}
         >
-          <Show when={local.hasErrorIcon} fallback={error()}>
+          <Show when={local.withErrorIcon} fallback={error()}>
             <span
               aria-hidden="true"
               class={cn(
