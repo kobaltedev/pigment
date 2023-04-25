@@ -61,9 +61,6 @@ export function Header(props: HeaderProps) {
           <HeaderLink href="/docs/core/overview/introduction" isActive={!!isCorePath()}>
             Components
           </HeaderLink>
-          <HeaderLink href="/docs/theme-generator" isActive={!!isThemeGeneratorPath()}>
-            Theme generator
-          </HeaderLink>
           <HeaderLink href={LATEST_CORE_CHANGELOG_URL} isActive={!!isChangelogPath()}>
             Changelog
           </HeaderLink>

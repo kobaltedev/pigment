@@ -48,6 +48,27 @@ export const CrossIcon = createLucideIcon(() => (
   </>
 ));
 
+export const RocketIcon = createLucideIcon(() => (
+  <>
+    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+    <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+  </>
+));
+
+export const LifeBuoyIcon = createLucideIcon(() => (
+  <>
+    <circle cx="12" cy="12" r="10" />
+    <circle cx="12" cy="12" r="4" />
+    <line x1="4.93" x2="9.17" y1="4.93" y2="9.17" />
+    <line x1="14.83" x2="19.07" y1="14.83" y2="19.07" />
+    <line x1="14.83" x2="19.07" y1="9.17" y2="4.93" />
+    <line x1="14.83" x2="18.36" y1="9.17" y2="5.64" />
+    <line x1="4.93" x2="9.17" y1="19.07" y2="14.83" />
+  </>
+));
+
 export const CheckCircleIcon = createLucideIcon(() => (
   <>
     <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />

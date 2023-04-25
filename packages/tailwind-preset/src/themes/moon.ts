@@ -1,4 +1,4 @@
-import twDefaultColors from "tailwindcss/colors";
+import twColors from "tailwindcss/colors";
 import twDefaultTheme from "tailwindcss/defaultTheme";
 
 import { PIGMENT_COLORS } from "../colors";
@@ -29,10 +29,10 @@ export function getMoonThemeTokens(vars: VarsFn): ThemeTokens {
     light: {
       colors: {
         neutral: {
-          ...PIGMENT_COLORS.slate,
+          ...twColors.gray,
         },
         primary: {
-          ...twDefaultColors.slate,
+          ...twColors.slate,
         },
         success: {
           ...PIGMENT_COLORS.green,

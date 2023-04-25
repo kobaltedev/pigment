@@ -25,6 +25,7 @@ import {
   runIfFn,
   toKebabCase,
 } from "./utils";
+import { PIGMENT_COLORS } from "./colors";
 
 export function pigmentPreset(options: PigmentOptions | undefined = {}): Partial<Config> {
   const cssVarPrefix = getCssVarsPrefix(options);
@@ -45,6 +46,7 @@ export function pigmentPreset(options: PigmentOptions | undefined = {}): Partial
           "2xs": ["10px", "14px"],
         },
         colors: {
+          ...PIGMENT_COLORS,
           ...Object.keys(flatten(themeTokensShapeValue.colors, "-")).reduce((acc, key) => {
             const formattedKey = toKebabCase(removeDefaultSuffix(key));
             acc[formattedKey] = `rgb(${vars(`colors-${key}` as TokenKey)} / <alpha-value>)`;

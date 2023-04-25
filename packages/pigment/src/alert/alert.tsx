@@ -1,5 +1,4 @@
 import { Alert as KAlert } from "@kobalte/core";
-import { isFunction } from "@kobalte/utils";
 import { children, createMemo, Show, splitProps } from "solid-js";
 
 import { CloseButton } from "../close-button";
@@ -9,6 +8,8 @@ import {
   ExclamationTriangleIcon,
   HelpCircleIcon,
   InfoCircleIcon,
+  LifeBuoyIcon,
+  RocketIcon,
 } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { cn } from "../utils/cn";
@@ -48,10 +49,14 @@ export function Alert(props: AlertProps) {
     const icon = iconProp();
 
     if (icon) {
-      return isFunction(icon) ? icon(variantProps.color) : icon;
+      return runIfFn(icon, variantProps.color);
     }
 
     switch (variantProps.color) {
+      case "primary":
+        return RocketIcon;
+      case "neutral":
+        return LifeBuoyIcon;
       case "success":
         return CheckCircleIcon;
       case "info":

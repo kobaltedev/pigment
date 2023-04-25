@@ -16,6 +16,7 @@ export function Badge(props: BadgeProps) {
       variant: "solid",
       color: "primary",
       size: "md",
+      circle: false,
     },
     props
   );
@@ -25,12 +26,12 @@ export function Badge(props: BadgeProps) {
   const [local, variantProps, others] = splitProps(
     props,
     ["class", "slotClasses"],
-    ["variant", "color", "size"]
+    ["variant", "color", "size", "circle"]
   );
 
   return (
     <Polymorphic
-      fallback="span"
+      as="span"
       class={cn(
         badgeStyles(variantProps),
         badgeStaticClass("root"),

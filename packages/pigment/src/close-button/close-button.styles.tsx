@@ -5,8 +5,8 @@ export const closeButtonVariants = cva(
     "appearance-none relative inline-flex justify-center items-center p-0 rounded-button",
     "reset-svg font-medium leading-none no-underline",
     "transition-colors cursor-pointer",
-    "bg-transparent hover:bg-surface-highlighted-hover active:bg-surface-highlighted-active",
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
+    "bg-transparent",
+    "outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
   ],
   {
     variants: {
@@ -23,6 +23,7 @@ export const closeButtonVariants = cva(
       },
       disabled: {
         true: "ui-disabled:text-content-disabled ui-disabled:cursor-not-allowed ui-disabled:select-none",
+        false: "hover:bg-surface-highlighted-hover active:bg-surface-highlighted-active",
       },
     },
   }

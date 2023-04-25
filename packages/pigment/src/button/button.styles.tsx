@@ -13,7 +13,7 @@ export const buttonStyles = cva(
     "appearance-none relative justify-center items-center rounded-button",
     "border border-solid",
     "transition-colors cursor-pointer no-underline",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-surface",
+    "outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
   ],
   {
     variants: {

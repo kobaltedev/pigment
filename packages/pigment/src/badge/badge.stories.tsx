@@ -19,26 +19,22 @@ export default {
       control: { type: "select" },
     },
     size: {
-      options: ["sm", "md", "lg"],
+      options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
+    circle: {
+      control: { type: "boolean" },
+    },
   },
-  render: props => (
-    <div class="flex items-center space-x-2">
-      <Badge {...props}>Badge</Badge>
-      <Badge {...props}>1</Badge>
-      <Badge {...props}>10</Badge>
-      <Badge {...props}>100</Badge>
-      <Badge {...props}>1000</Badge>
-      <Badge {...props}>+1000</Badge>
-    </div>
-  ),
+  render: props => <Badge {...props} />,
 } as Meta<ComponentProps<typeof Badge>>;
 
 export const Default: Story = {
   args: {
     variant: "solid",
     color: "primary",
-    size: "sm",
+    size: "md",
+    circle: false,
+    children: "Badge",
   },
 };

@@ -18,7 +18,7 @@ export default {
       options: Object.keys(SEMANTIC_COLOR_VARIANTS),
       control: { type: "select" },
     },
-    hasIcon: {
+    withIcon: {
       control: { type: "boolean" },
     },
     dismissible: {
