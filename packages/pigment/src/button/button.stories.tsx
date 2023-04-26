@@ -23,6 +23,10 @@ export default {
       options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
+    rounded: {
+      options: ["xs", "sm", "md", "lg", "xl"],
+      control: { type: "select" },
+    },
     fullWidth: {
       control: { type: "boolean" },
     },
@@ -43,7 +47,15 @@ export default {
       control: { type: "text" },
     },
   },
-  render: props => <Button {...props} />,
+  render: props => (
+    <div class="flex items-center space-x-4">
+      <Button {...props} size="xs" />
+      <Button {...props} size="sm" />
+      <Button {...props} size="md" />
+      <Button {...props} size="lg" />
+      <Button {...props} size="xl" />
+    </div>
+  ),
 } as Meta<ComponentProps<typeof Button>>;
 
 export const Default: Story = {
@@ -51,6 +63,7 @@ export const Default: Story = {
     variant: "solid",
     color: "primary",
     size: "md",
+    rounded: "md",
     fullWidth: false,
     loading: false,
     disabled: false,
@@ -65,6 +78,7 @@ export const WithIcon: Story = {
     variant: "solid",
     color: "primary",
     size: "md",
+    rounded: "md",
     fullWidth: false,
     loading: false,
     disabled: false,

@@ -26,9 +26,26 @@ export const alertStyles = tv({
       warning: {},
       danger: {},
     },
+    rounded: {
+      xs: {
+        root: "rounded-sm",
+      },
+      sm: {
+        root: "rounded-md",
+      },
+      md: {
+        root: "rounded-lg",
+      },
+      lg: {
+        root: "rounded-xl",
+      },
+      xl: {
+        root: "rounded-2xl",
+      },
+    },
     withIcon: {
       true: {
-        root: "pl-2",
+        root: "pl-3",
       },
       false: {
         root: "pl-4",
@@ -36,7 +53,7 @@ export const alertStyles = tv({
     },
     dismissible: {
       true: {
-        root: "pr-2",
+        root: "pr-3",
       },
       false: {
         root: "pr-4",

@@ -39,13 +39,18 @@ export const badgeStyles = tv({
         root: "h-9 text-base",
       },
     },
+    rounded: {
+      xs: {},
+      sm: {},
+      md: {},
+      lg: {},
+      xl: {},
+    },
     circle: {
       true: {
-        root: "rounded-full",
+        root: "p-0 rounded-full",
       },
-      false: {
-        root: "rounded-badge",
-      },
+      false: {},
     },
   },
   compoundVariants: [
@@ -59,19 +64,26 @@ export const badgeStyles = tv({
       }))
     ),
 
-    // size + circle
-    { size: "xs", circle: true, class: { root: "w-5" } },
-    { size: "sm", circle: true, class: { root: "w-6" } },
-    { size: "md", circle: true, class: { root: "w-7" } },
-    { size: "lg", circle: true, class: { root: "w-8" } },
-    { size: "xl", circle: true, class: { root: "w-9" } },
+    // not circle + rounded
+    { circle: false, rounded: "xs", class: { root: "rounded-sm" } },
+    { circle: false, rounded: "sm", class: { root: "rounded" } },
+    { circle: false, rounded: "md", class: { root: "rounded-md" } },
+    { circle: false, rounded: "lg", class: { root: "rounded-lg" } },
+    { circle: false, rounded: "xl", class: { root: "rounded-full" } },
 
-    // size + not circle
+    // size + not circle + padding
     { size: "xs", circle: false, class: { root: "px-1.5" } },
     { size: "sm", circle: false, class: { root: "px-2" } },
     { size: "md", circle: false, class: { root: "px-2.5" } },
     { size: "lg", circle: false, class: { root: "px-3" } },
     { size: "xl", circle: false, class: { root: "px-3.5" } },
+
+    // size + circle + width
+    { size: "xs", circle: true, class: { root: "w-5" } },
+    { size: "sm", circle: true, class: { root: "w-6" } },
+    { size: "md", circle: true, class: { root: "w-7" } },
+    { size: "lg", circle: true, class: { root: "w-8" } },
+    { size: "xl", circle: true, class: { root: "w-9" } },
   ],
 });
 

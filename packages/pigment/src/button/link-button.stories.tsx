@@ -23,6 +23,10 @@ export default {
       options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
+    rounded: {
+      options: ["xs", "sm", "md", "lg", "xl"],
+      control: { type: "select" },
+    },
     fullWidth: {
       control: { type: "boolean" },
     },
@@ -44,6 +48,7 @@ export const Default: Story = {
     variant: "solid",
     color: "primary",
     size: "md",
+    rounded: "md",
     fullWidth: false,
     disabled: false,
     href: "https://kobalte.dev",
@@ -56,6 +61,7 @@ export const WithIcon: Story = {
     variant: "solid",
     color: "primary",
     size: "md",
+    rounded: "md",
     fullWidth: false,
     disabled: false,
     href: "https://kobalte.dev",

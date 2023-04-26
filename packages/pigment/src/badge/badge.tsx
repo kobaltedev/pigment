@@ -15,6 +15,7 @@ export function Badge(props: BadgeProps) {
       variant: "solid",
       color: "primary",
       size: "md",
+      rounded: "md",
       circle: false,
     },
     props
@@ -25,7 +26,7 @@ export function Badge(props: BadgeProps) {
   const [local, variantProps, others] = splitProps(
     props,
     ["class", "slotClasses"],
-    ["variant", "color", "size", "circle"]
+    ["variant", "color", "size", "rounded", "circle"]
   );
 
   const styles = createMemo(() => badgeStyles(variantProps));

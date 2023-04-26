@@ -25,6 +25,7 @@ export function Alert(props: AlertProps) {
     {
       variant: "solid",
       color: "primary",
+      rounded: "md",
       withIcon: true,
       dismissible: false,
       multiline: false,
@@ -37,7 +38,7 @@ export function Alert(props: AlertProps) {
   const [local, variantProps, others] = splitProps(
     props,
     ["class", "children", "slotClasses", "icon", "title", "dismissButtonLabel", "onDismiss"],
-    ["variant", "color", "withIcon", "dismissible", "multiline"]
+    ["variant", "color", "rounded", "withIcon", "dismissible", "multiline"]
   );
 
   const styles = createMemo(() => alertStyles(variantProps));
@@ -119,7 +120,8 @@ export function Alert(props: AlertProps) {
       <Show when={variantProps.dismissible}>
         <CloseButton
           inheritTextColor
-          size="xs"
+          size="sm"
+          rounded={variantProps.rounded}
           aria-label={local.dismissButtonLabel}
           class={styles().dismissButton({
             class: [

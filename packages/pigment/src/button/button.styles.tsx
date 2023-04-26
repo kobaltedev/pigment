@@ -10,7 +10,7 @@ export const buttonStyles = tv({
   slots: {
     root: [
       "group",
-      "appearance-none relative justify-center items-center rounded-button",
+      "appearance-none relative justify-center items-center",
       "border border-solid",
       "transition-colors cursor-pointer no-underline",
       "outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
@@ -60,6 +60,17 @@ export const buttonStyles = tv({
       xl: {
         root: "h-14 gap-3",
         loadingContent: "gap-3",
+      },
+    },
+    rounded: {
+      xs: {
+        root: "rounded-sm",
+      },
+      sm: {},
+      md: {},
+      lg: {},
+      xl: {
+        root: "rounded-full",
       },
     },
     iconOnly: {
@@ -148,6 +159,27 @@ export const buttonStyles = tv({
     { size: "md", iconOnly: true, class: { icon: "text-2xl" } },
     { size: "lg", iconOnly: true, class: { icon: "text-3xl" } },
     { size: "xl", iconOnly: true, class: { icon: "text-4xl" } },
+
+    // size + rounded sm
+    { size: "xs", rounded: "sm", class: { root: "rounded" } },
+    { size: "sm", rounded: "sm", class: { root: "rounded" } },
+    { size: "md", rounded: "sm", class: { root: "rounded-md" } },
+    { size: "lg", rounded: "sm", class: { root: "rounded-md" } },
+    { size: "xl", rounded: "sm", class: { root: "rounded-lg" } },
+
+    // size + rounded md
+    { size: "xs", rounded: "md", class: { root: "rounded-md" } },
+    { size: "sm", rounded: "md", class: { root: "rounded-md" } },
+    { size: "md", rounded: "md", class: { root: "rounded-lg" } },
+    { size: "lg", rounded: "md", class: { root: "rounded-lg" } },
+    { size: "xl", rounded: "md", class: { root: "rounded-xl" } },
+
+    // size + rounded lg
+    { size: "xs", rounded: "lg", class: { root: "rounded-lg" } },
+    { size: "sm", rounded: "lg", class: { root: "rounded-lg" } },
+    { size: "md", rounded: "lg", class: { root: "rounded-xl" } },
+    { size: "lg", rounded: "lg", class: { root: "rounded-xl" } },
+    { size: "xl", rounded: "lg", class: { root: "rounded-2xl" } },
   ],
 });
 

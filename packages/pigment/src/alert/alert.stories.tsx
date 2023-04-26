@@ -18,6 +18,10 @@ export default {
       options: SEMANTIC_COLOR_VARIANTS,
       control: { type: "select" },
     },
+    rounded: {
+      options: ["xs", "sm", "md", "lg", "xl"],
+      control: { type: "select" },
+    },
     withIcon: {
       control: { type: "boolean" },
     },
@@ -41,6 +45,7 @@ export const Default: Story = {
   args: {
     variant: "solid",
     color: "primary",
+    rounded: "md",
     title: "Announcement",
     withIcon: true,
     dismissible: true,

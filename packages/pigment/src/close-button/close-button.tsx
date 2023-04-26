@@ -14,6 +14,7 @@ export function CloseButton(props: CloseButtonProps) {
     "CloseButton",
     {
       size: "md",
+      rounded: "md",
       inheritTextColor: false,
       disabled: false,
       children: (() => <CrossIcon />) as unknown as JSX.Element,
@@ -26,7 +27,7 @@ export function CloseButton(props: CloseButtonProps) {
   const [local, variantProps, others] = splitProps(
     props,
     ["class", "slotClasses", "aria-label"],
-    ["size", "inheritTextColor", "disabled"]
+    ["size", "rounded", "inheritTextColor", "disabled"]
   );
 
   const styles = createMemo(() => {

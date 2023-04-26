@@ -81,6 +81,7 @@ function ButtonBase(props: ButtonBaseProps) {
       variant: "solid",
       color: "primary",
       size: "md",
+      rounded: "md",
       iconOnly: false,
       fullWidth: false,
       disabled: false,
@@ -103,7 +104,7 @@ function ButtonBase(props: ButtonBaseProps) {
       "startIcon",
       "endIcon",
     ],
-    ["variant", "color", "size", "iconOnly", "fullWidth", "loading", "disabled"]
+    ["variant", "color", "size", "rounded", "iconOnly", "fullWidth", "loading", "disabled"]
   );
 
   const styles = createMemo(() => buttonStyles(variantProps));
@@ -207,6 +208,7 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
       variant: "solid",
       color: "primary",
       size: "md",
+      rounded: "md",
       iconOnly: false,
       fullWidth: false,
       disabled: false,
@@ -219,7 +221,7 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
   const [local, variantProps, others] = splitProps(
     props,
     ["class", "slotClasses", "children", "startIcon", "endIcon"],
-    ["variant", "color", "size", "iconOnly", "fullWidth", "disabled"]
+    ["variant", "color", "size", "rounded", "iconOnly", "fullWidth", "disabled"]
   );
 
   const { direction } = useLocale();
