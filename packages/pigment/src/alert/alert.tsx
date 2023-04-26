@@ -12,11 +12,10 @@ import {
   RocketIcon,
 } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme";
-import { cn } from "../utils/cn";
 import { makeStaticClass } from "../utils/make-static-class";
 import { runIfFn } from "../utils/run-if-fn";
 import { AlertProps, AlertSlots } from "./alert.props";
-import { alertContentVariants, alertStyles } from "./alert.styles";
+import { alertStyles } from "./alert.styles";
 
 const alertStaticClass = makeStaticClass<AlertSlots>("alert");
 
@@ -40,6 +39,8 @@ export function Alert(props: AlertProps) {
     ["class", "children", "slotClasses", "icon", "title", "dismissButtonLabel", "onDismiss"],
     ["variant", "color", "withIcon", "dismissible", "multiline"]
   );
+
+  const styles = createMemo(() => alertStyles(variantProps));
 
   const iconProp = createMemo(() => local.icon);
   const title = createMemo(() => local.title);
@@ -72,56 +73,44 @@ export function Alert(props: AlertProps) {
 
   return (
     <KAlert.Root
-      class={cn(
-        alertStyles(variantProps),
-        alertStaticClass("root"),
-        themeClasses.root,
-        local.slotClasses?.root,
-        local.class
-      )}
+      class={styles().root({
+        class: [alertStaticClass("root"), themeClasses.root, local.slotClasses?.root, local.class],
+      })}
       {...others}
     >
       <Show when={variantProps.withIcon}>
         <div
-          class={cn(
-            "flex justify-center items-center shrink-0 reset-svg h-7 w-7 text-xl leading-none",
-            alertStaticClass("icon"),
-            themeClasses.icon,
-            local.slotClasses?.icon
-          )}
+          class={styles().icon({
+            class: [alertStaticClass("icon"), themeClasses.icon, local.slotClasses?.icon],
+          })}
           aria-hidden="true"
         >
           {runIfFn(icon())}
         </div>
       </Show>
       <div
-        class={cn(
-          alertContentVariants(variantProps),
-          alertStaticClass("content"),
-          themeClasses.content,
-          local.slotClasses?.content
-        )}
+        class={styles().content({
+          class: [alertStaticClass("content"), themeClasses.content, local.slotClasses?.content],
+        })}
       >
         <Show when={title()}>
           <div
-            class={cn(
-              "font-semibold",
-              alertStaticClass("title"),
-              themeClasses.title,
-              local.slotClasses?.title
-            )}
+            class={styles().title({
+              class: [alertStaticClass("title"), themeClasses.title, local.slotClasses?.title],
+            })}
           >
             {title()}
           </div>
         </Show>
         <Show when={description()}>
           <div
-            class={cn(
-              "grow",
-              alertStaticClass("description"),
-              themeClasses.description,
-              local.slotClasses?.description
-            )}
+            class={styles().description({
+              class: [
+                alertStaticClass("description"),
+                themeClasses.description,
+                local.slotClasses?.description,
+              ],
+            })}
           >
             {description()}
           </div>
@@ -132,12 +121,13 @@ export function Alert(props: AlertProps) {
           inheritTextColor
           size="xs"
           aria-label={local.dismissButtonLabel}
-          class={cn(
-            "shrink-0",
-            alertStaticClass("dismissButton"),
-            themeClasses.dismissButton,
-            local.slotClasses?.dismissButton
-          )}
+          class={styles().dismissButton({
+            class: [
+              alertStaticClass("dismissButton"),
+              themeClasses.dismissButton,
+              local.slotClasses?.dismissButton,
+            ],
+          })}
           onClick={local.onDismiss}
         />
       </Show>

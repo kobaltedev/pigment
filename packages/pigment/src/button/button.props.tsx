@@ -1,5 +1,4 @@
 import { Button as KButton, Link as KLink } from "@kobalte/core";
-import { OverrideComponentProps } from "@kobalte/utils";
 import { JSX } from "solid-js";
 
 import { SlotProp } from "../utils/slot";
@@ -35,22 +34,13 @@ export interface ButtonBaseProps
 }
 
 export interface ButtonContentProps
-  extends Pick<
-    ButtonBaseProps,
-    "variant" | "color" | "size" | "disabled" | "startIcon" | "endIcon" | "children"
-  > {
+  extends Pick<ButtonBaseProps, "startIcon" | "endIcon" | "children"> {
   rtl?: boolean;
 
   startIconClass?: string;
 
   endIconClass?: string;
 }
-
-export interface ButtonIconProps
-  extends OverrideComponentProps<
-    "span",
-    Pick<ButtonBaseProps, "variant" | "color" | "size" | "iconOnly" | "disabled">
-  > {}
 
 export interface ButtonProps extends Omit<ButtonBaseProps, "iconOnly"> {}
 

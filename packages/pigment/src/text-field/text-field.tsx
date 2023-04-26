@@ -12,17 +12,10 @@ import {
 
 import { ExclamationCircleIcon } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme";
-import { cn } from "../utils/cn";
 import { makeStaticClass } from "../utils/make-static-class";
 import { runIfFn } from "../utils/run-if-fn";
 import { TextFieldProps, TextFieldSlots } from "./text-field.props";
-import {
-  textFieldControlVariants,
-  textFieldInputVariants,
-  textFieldLabelVariants,
-  textFieldSupportTextVariants,
-  textFieldTextAreaVariants,
-} from "./text-field.styles";
+import { textFieldStyles } from "./text-field.styles";
 
 const textFieldStaticClass = makeStaticClass<TextFieldSlots>("text-field");
 
@@ -110,6 +103,8 @@ export function TextField(props: TextFieldProps) {
     partialVariantProps
   );
 
+  const styles = createMemo(() => textFieldStyles(variantProps));
+
   const onInputFocus: JSX.FocusEventHandlerUnion<HTMLInputElement, FocusEvent> = e => {
     callHandler<any, FocusEvent>(e, local.inputProps?.onFocus as any);
     setIsFocused(true);
@@ -122,25 +117,23 @@ export function TextField(props: TextFieldProps) {
 
   return (
     <KTextField.Root
-      class={cn(
-        "group flex flex-col",
-        textFieldStaticClass("root"),
-        themeClasses.root,
-        local.slotClasses?.root,
-        local.class
-      )}
+      class={styles().root({
+        class: [
+          textFieldStaticClass("root"),
+          themeClasses.root,
+          local.slotClasses?.root,
+          local.class,
+        ],
+      })}
       validationState={variantProps.invalid ? "invalid" : undefined}
       disabled={variantProps.disabled}
       {...others}
     >
       <Show when={label()}>
         <KTextField.Label
-          class={cn(
-            textFieldLabelVariants(variantProps),
-            textFieldStaticClass("label"),
-            themeClasses.label,
-            local.slotClasses?.label
-          )}
+          class={styles().label({
+            class: [textFieldStaticClass("label"), themeClasses.label, local.slotClasses?.label],
+          })}
         >
           {label()}
           <Show when={local.withRequiredIndicator && others.required}>
@@ -158,24 +151,26 @@ export function TextField(props: TextFieldProps) {
             ref={local.ref as HTMLTextAreaElement}
             id={local.id}
             placeholder={local.placeholder}
-            //autoResize
-            class={cn(
-              textFieldTextAreaVariants(variantProps),
-              textFieldStaticClass("input"),
-              themeClasses.input,
-              local.slotClasses?.input,
-              local.inputProps?.class
-            )}
+            autoResize
+            class={styles().textArea({
+              class: [
+                textFieldStaticClass("input"),
+                themeClasses.input,
+                local.slotClasses?.input,
+                local.inputProps?.class,
+              ],
+            })}
           />
         }
       >
         <div
-          class={cn(
-            textFieldControlVariants(variantProps),
-            textFieldStaticClass("control"),
-            themeClasses.control,
-            local.slotClasses?.control
-          )}
+          class={styles().control({
+            class: [
+              textFieldStaticClass("control"),
+              themeClasses.control,
+              local.slotClasses?.control,
+            ],
+          })}
         >
           {leftDecorator()}
           <KTextField.Input
@@ -184,13 +179,14 @@ export function TextField(props: TextFieldProps) {
             id={local.id}
             type={local.type}
             placeholder={local.placeholder}
-            class={cn(
-              textFieldInputVariants(variantProps),
-              textFieldStaticClass("input"),
-              themeClasses.input,
-              local.slotClasses?.input,
-              local.inputProps?.class
-            )}
+            class={styles().input({
+              class: [
+                textFieldStaticClass("input"),
+                themeClasses.input,
+                local.slotClasses?.input,
+                local.inputProps?.class,
+              ],
+            })}
             onFocus={onInputFocus}
             onBlur={onInputBlur}
           />
@@ -199,36 +195,39 @@ export function TextField(props: TextFieldProps) {
       </Show>
       <Show when={showDescription()}>
         <KTextField.Description
-          class={cn(
-            "text-content-subtler",
-            textFieldSupportTextVariants(variantProps),
-            textFieldStaticClass("description"),
-            themeClasses.description,
-            local.slotClasses?.description
-          )}
+          class={styles().supportText({
+            class: [
+              "text-content-subtler",
+              textFieldStaticClass("description"),
+              themeClasses.description,
+              local.slotClasses?.description,
+            ],
+          })}
         >
           {description()}
         </KTextField.Description>
       </Show>
       <Show when={showError()}>
         <KTextField.ErrorMessage
-          class={cn(
-            "flex items-center gap-x-1 text-content-danger",
-            textFieldSupportTextVariants(variantProps),
-            textFieldStaticClass("error"),
-            themeClasses.error,
-            local.slotClasses?.error
-          )}
+          class={styles().supportText({
+            class: [
+              "flex items-center gap-x-1 text-content-danger",
+              textFieldStaticClass("error"),
+              themeClasses.error,
+              local.slotClasses?.error,
+            ],
+          })}
         >
           <Show when={local.withErrorIcon} fallback={error()}>
             <span
               aria-hidden="true"
-              class={cn(
-                "reset-svg",
-                textFieldStaticClass("errorIcon"),
-                themeClasses.errorIcon,
-                local.slotClasses?.errorIcon
-              )}
+              class={styles().errorIcon({
+                class: [
+                  textFieldStaticClass("errorIcon"),
+                  themeClasses.errorIcon,
+                  local.slotClasses?.errorIcon,
+                ],
+              })}
             >
               {errorIcon()}
             </span>

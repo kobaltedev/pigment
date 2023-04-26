@@ -1,49 +1,69 @@
-import { cva, VariantProps } from "class-variance-authority";
+import { tv, VariantProps } from "tailwind-variants";
 
-import { SemanticColor } from "../theme/types";
 import { getGlobalVariantClasses, SEMANTIC_COLOR_VARIANTS } from "../theme/variants";
-import { emptyObject } from "../utils/empty-object";
 
 const alertVariants = ["solid", "soft"] as const;
 
-export const alertStyles = cva(
-  ["flex space-x-1.5 py-3 border border-solid rounded-alert text-sm"],
-  {
-    variants: {
-      variant: emptyObject(alertVariants),
-      color: SEMANTIC_COLOR_VARIANTS,
-      withIcon: {
-        true: "pl-2",
-        false: "pl-4",
+export const alertStyles = tv({
+  slots: {
+    root: "flex space-x-1.5 py-3 border border-solid rounded-alert text-sm",
+    content: "flex grow",
+    icon: "flex justify-center items-center shrink-0 reset-svg h-7 w-7 text-xl leading-none",
+    title: "font-semibold",
+    description: "grow",
+    dismissButton: "shrink-0",
+  },
+  variants: {
+    variant: {
+      solid: {},
+      soft: {},
+    },
+    color: {
+      primary: {},
+      neutral: {},
+      success: {},
+      info: {},
+      warning: {},
+      danger: {},
+    },
+    withIcon: {
+      true: {
+        root: "pl-2",
       },
-      dismissible: {
-        true: "pr-2",
-        false: "pr-4",
-      },
-      multiline: {
-        true: "items-start",
-        false: "items-center",
+      false: {
+        root: "pl-4",
       },
     },
-    compoundVariants: [
-      ...alertVariants.flatMap(variant =>
-        (Object.keys(SEMANTIC_COLOR_VARIANTS) as SemanticColor[]).map(color => ({
-          variant,
-          color,
-          class: getGlobalVariantClasses(variant, color).base,
-        }))
-      ),
-    ],
-  }
-);
-
-export const alertContentVariants = cva("flex grow", {
-  variants: {
+    dismissible: {
+      true: {
+        root: "pr-2",
+      },
+      false: {
+        root: "pr-4",
+      },
+    },
     multiline: {
-      true: "flex-col space-y-1 py-1",
-      false: "flex-row items-center space-x-1",
+      true: {
+        root: "items-start",
+        content: "flex-col space-y-1 py-1",
+      },
+      false: {
+        root: "items-center",
+        content: "flex-row items-center space-x-1",
+      },
     },
   },
+  compoundVariants: [
+    ...alertVariants.flatMap(variant =>
+      SEMANTIC_COLOR_VARIANTS.map(color => ({
+        variant,
+        color,
+        class: {
+          root: getGlobalVariantClasses(variant, color).base,
+        },
+      }))
+    ),
+  ],
 });
 
 export type AlertVariants = VariantProps<typeof alertStyles>;

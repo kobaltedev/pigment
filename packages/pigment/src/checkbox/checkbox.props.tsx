@@ -2,7 +2,7 @@ import { Checkbox as KCheckbox } from "@kobalte/core";
 import { JSX, Ref } from "solid-js";
 
 import { SlotProp } from "../utils/slot";
-import { CheckboxControlVariants } from "./checkbox.styles";
+import { CheckboxVariants } from "./checkbox.styles";
 
 export type CheckboxSlots =
   | "root"
@@ -16,7 +16,7 @@ export type CheckboxSlots =
 
 export interface CheckboxProps
   extends Omit<KCheckbox.CheckboxRootProps, "ref" | "validationState">,
-    Omit<CheckboxControlVariants, "disabled">,
+    Omit<CheckboxVariants, "disabled">,
     SlotProp<CheckboxSlots> {
   /** A ref to the inner `<input>` element. */
   ref?: Ref<HTMLInputElement>;

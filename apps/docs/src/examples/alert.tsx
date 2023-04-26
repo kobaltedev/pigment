@@ -30,13 +30,6 @@ export function WithPlayground() {
           dismissible={dismissible()}
           multiline={multiline()}
           title="Software update."
-          icon={
-            color() === "primary" ? (
-              <RocketIcon />
-            ) : color() === "neutral" ? (
-              <BuoyIcon />
-            ) : undefined
-          }
         >
           A new software update is available.
         </Alert>

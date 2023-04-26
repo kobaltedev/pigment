@@ -4,6 +4,7 @@ import { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
 import animatePlugin from "tailwindcss-animate";
 
+import { PIGMENT_COLORS } from "./colors";
 import { createThemeResolver, DEFAULT_THEME_NAME, isValidTheme } from "./themes";
 import {
   PigmentOptions,
@@ -25,7 +26,6 @@ import {
   runIfFn,
   toKebabCase,
 } from "./utils";
-import { PIGMENT_COLORS } from "./colors";
 
 export function pigmentPreset(options: PigmentOptions | undefined = {}): Partial<Config> {
   const cssVarPrefix = getCssVarsPrefix(options);
@@ -66,13 +66,6 @@ export function pigmentPreset(options: PigmentOptions | undefined = {}): Partial
           ...Object.keys(flatten(themeTokensShapeValue.shadows, "-")).reduce((acc, key) => {
             const formattedKey = toKebabCase(removeDefaultSuffix(key));
             acc[formattedKey] = vars(`shadows-${key}` as TokenKey);
-            return acc;
-          }, {} as any),
-        },
-        borderRadius: {
-          ...Object.keys(flatten(themeTokensShapeValue.radii, "-")).reduce((acc, key) => {
-            const formattedKey = toKebabCase(removeDefaultSuffix(key));
-            acc[formattedKey] = vars(`radii-${key}` as TokenKey);
             return acc;
           }, {} as any),
         },
@@ -214,5 +207,4 @@ export function pigmentPreset(options: PigmentOptions | undefined = {}): Partial
 }
 
 export { PIGMENT_COLORS } from "./colors";
-export { PIGMENT_RADII } from "./radii";
 export type { CustomTheme, PigmentOptions } from "./types";

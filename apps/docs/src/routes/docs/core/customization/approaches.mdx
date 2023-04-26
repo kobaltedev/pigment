@@ -37,7 +37,7 @@ Supported by every Pigment components, it allows you to apply CSS classes to int
 </Alert>
 ```
 
-<Alert>
+<Alert color="info" variant="soft">
   <span>To know which slots are available checkout the </span>
   <span>_"Slots"_ section in each component documentation.</span>
 </Alert>
@@ -169,7 +169,7 @@ module.exports = {
   theme: {},
   presets: [
     pigment({
-      themes: ["base"], // `base` is a predefined Pigment theme.
+      themes: ["sapphire"], // `base` is a predefined Pigment theme.
     }),
   ],
 };
@@ -182,15 +182,15 @@ export default function App() {
   return (
     <div data-pg-theme="custom">
       This div will use the "custom" theme.
-      <span data-pg-theme="base">This span will use the "base" theme.</span>
+      <span data-pg-theme="sapphire">This span will use the "sapphire" theme.</span>
     </div>
   );
 }
 ```
 
-<Alert>
+<Alert color="info" variant="soft">
   <span>If no theme is provided in the Pigment preset, </span>
-  <span>the `base` theme will be used by default.</span>
+  <span>the `sapphire` theme will be used by default.</span>
 </Alert>
 
 ### Creating a theme
@@ -267,13 +267,6 @@ Under the hood, the Pigment preset will add the tokens to the Tailwind theme, al
 <button class="font-sans bg-primary-500">Button</button>
 ```
 
-{/* <!-- prettier-ignore-start --> */}
-
-<Alert status="warning">
-  <span>Colors defined in Pigment themes are not compatible with Tailwind [opacity modifier syntax](https://tailwindcss.com/docs/upgrade-guide#new-opacity-modifier-syntax).</span>
-</Alert>
-{/* <!-- prettier-ignore-end --> */}
-
 ### Custom CSS variables prefix
 
 Each design token of a Pigment theme will generate a CSS variable prefixed with `pg-` by default. If you want to change the prefix to something else, provide the `cssVarPrefix` to the Pigment preset:
@@ -296,7 +289,7 @@ module.exports = {
       themes: [
         {
           name: "my-theme",
-          extend: "base",
+          extend: "sapphire",
           tokens: vars => ({
             light: {
               colors: {
@@ -347,7 +340,7 @@ export function App() {
 }
 ```
 
-<Alert isMultiline>
+<Alert color="info" variant="soft" multiline>
   <span>The `cn` utility function, built on top of [clsx](https://github.com/lukeed/clsx) </span>
   <span>and [tailwind-merge](https://github.com/dcastil/tailwind-merge) </span>
   <span>allows you to construct `className` strings conditionally.</span>

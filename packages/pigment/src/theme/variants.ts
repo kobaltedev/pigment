@@ -183,20 +183,15 @@ export function getGlobalVariantClasses(variant: GlobalVariant, color: SemanticC
   return globalVariants[variant][color];
 }
 
-/** Color variants object used in `cva` of several components. */
-export const SEMANTIC_COLOR_VARIANTS: Record<SemanticColor, ""> = {
-  neutral: "",
-  primary: "",
-  success: "",
-  info: "",
-  warning: "",
-  danger: "",
-};
+/** Semantic color variants object used in `cva` of several components. */
+export const SEMANTIC_COLOR_VARIANTS = [
+  "neutral",
+  "primary",
+  "success",
+  "info",
+  "warning",
+  "danger",
+] as const;
 
 /** Variant variants object used in `cva` of several components. */
-export const VARIANT_VARIANTS: Record<GlobalVariant, ""> = {
-  solid: "",
-  soft: "",
-  outlined: "",
-  ghost: "",
-};
+export const VARIANT_VARIANTS = ["solid", "soft", "outlined", "ghost"] as const;

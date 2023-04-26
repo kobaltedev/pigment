@@ -1,25 +1,13 @@
 import { Select as KSelect, useLocale } from "@kobalte/core";
-import { isFunction, isString, mergeRefs } from "@kobalte/utils";
+import { isFunction, mergeRefs } from "@kobalte/utils";
 import { createMemo, JSX, mergeProps, Show, splitProps } from "solid-js";
 
 import { CheckIcon, ExclamationCircleIcon, SelectorIcon } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme";
-import { cn } from "../utils/cn";
 import { makeStaticClass } from "../utils/make-static-class";
 import { runIfFn } from "../utils/run-if-fn";
 import { SelectProps, SelectSlots } from "./select.props";
-import {
-  selectButtonVariants,
-  selectDropdownVariants,
-  selectIconVariants,
-  selectLabelVariants,
-  selectListboxVariants,
-  selectOptGroupVariants,
-  selectOptionIndicatorVariants,
-  selectOptionVariants,
-  selectSupportTextVariants,
-  selectValueVariants,
-} from "./select.styles";
+import { selectStyles } from "./select.styles";
 
 const selectStaticClass = makeStaticClass<SelectSlots>("select");
 
@@ -39,12 +27,6 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       disabled: false,
       allowEmptySelection: false,
       inputProps: {},
-      optionValue: "value" as any,
-      optionTextValue: "label" as any,
-      optionLabel: "label" as any,
-      optionDisabled: "disabled" as any,
-      optionGroupLabel: "label" as any,
-      optionGroupChildren: "options" as any,
       dropdownIcon: (() => <SelectorIcon />) as unknown as JSX.Element,
       selectionIcon: (() => <CheckIcon />) as unknown as JSX.Element,
       errorIcon: (() => <ExclamationCircleIcon />) as unknown as JSX.Element,
@@ -141,6 +123,8 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
     partialVariantProps
   );
 
+  const styles = createMemo(() => selectStyles(variantProps));
+
   const dropdownGutter = () => {
     switch (variantProps.size) {
       case "xs":
@@ -156,19 +140,20 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
     }
   };
 
-  const getOptionLabel = (option: Option) => {
-    if (isString(option)) {
-      return option;
+  const getOptionLabel = (option: Option): string => {
+    if (local.optionLabel == null) {
+      // The option itself is the label (ex: a string[] of options)
+      return String(option);
     }
 
     if (isFunction(local.optionLabel)) {
       return local.optionLabel(option);
     }
 
-    return option[local.optionLabel!] as string;
+    return String(option[local.optionLabel!]);
   };
 
-  const getOptionGroupLabel = (optGroup: OptGroup) => {
+  const getOptionGroupLabel = (optGroup: OptGroup): string => {
     if (isFunction(local.optionGroupLabel)) {
       return local.optionGroupLabel(optGroup);
     }
@@ -187,12 +172,13 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
         </Show>
         <Show when={local.withSelectionIcon}>
           <KSelect.ItemIndicator
-            class={cn(
-              selectOptionIndicatorVariants(variantProps),
-              selectStaticClass("optionIndicator"),
-              themeClasses.optionIndicator,
-              local.slotClasses?.optionIndicator
-            )}
+            class={styles().optionIndicator({
+              class: [
+                selectStaticClass("optionIndicator"),
+                themeClasses.optionIndicator,
+                local.slotClasses?.optionIndicator,
+              ],
+            })}
           >
             {runIfFn(local.selectionIcon)}
           </KSelect.ItemIndicator>
@@ -211,13 +197,9 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
 
   return (
     <KSelect.Root<Option, OptGroup>
-      class={cn(
-        "group flex flex-col",
-        selectStaticClass("root"),
-        themeClasses.root,
-        local.slotClasses?.root,
-        local.class
-      )}
+      class={styles().root({
+        class: [selectStaticClass("root"), themeClasses.root, local.slotClasses?.root, local.class],
+      })}
       value={local.value as any}
       defaultValue={local.defaultValue as any}
       onChange={local.onChange as any}
@@ -228,24 +210,22 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       itemComponent={props => (
         <KSelect.Item
           item={props.item}
-          class={cn(
-            selectOptionVariants(variantProps),
-            selectStaticClass("option"),
-            themeClasses.option,
-            local.slotClasses?.option
-          )}
+          class={styles().option({
+            class: [selectStaticClass("option"), themeClasses.option, local.slotClasses?.option],
+          })}
         >
           {optionTemplate(props.item.rawValue)}
         </KSelect.Item>
       )}
       sectionComponent={props => (
         <KSelect.Section
-          class={cn(
-            selectOptGroupVariants(variantProps),
-            selectStaticClass("optionGroup"),
-            themeClasses.optionGroup,
-            local.slotClasses?.optionGroup
-          )}
+          class={styles().optionGroup({
+            class: [
+              selectStaticClass("optionGroup"),
+              themeClasses.optionGroup,
+              local.slotClasses?.optionGroup,
+            ],
+          })}
         >
           {optionGroupTemplate(props.section.rawValue)}
         </KSelect.Section>
@@ -257,12 +237,9 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       </Show>
       <Show when={label()}>
         <KSelect.Label
-          class={cn(
-            selectLabelVariants(variantProps),
-            selectStaticClass("label"),
-            themeClasses.label,
-            local.slotClasses?.label
-          )}
+          class={styles().label({
+            class: [selectStaticClass("label"), themeClasses.label, local.slotClasses?.label],
+          })}
         >
           {label()}
           <Show when={local.withRequiredIndicator && rootProps.required}>
@@ -274,22 +251,16 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       </Show>
       <KSelect.Trigger
         ref={mergeRefs(el => (triggerRef = el), local.ref)}
-        class={cn(
-          selectButtonVariants(variantProps),
-          selectStaticClass("button"),
-          themeClasses.button,
-          local.slotClasses?.button
-        )}
+        class={styles().trigger({
+          class: [selectStaticClass("trigger"), themeClasses.trigger, local.slotClasses?.trigger],
+        })}
         {...others}
       >
         {leftDecorator()}
         <KSelect.Value<Option>
-          class={cn(
-            selectValueVariants(variantProps),
-            selectStaticClass("value"),
-            themeClasses.value,
-            local.slotClasses?.value
-          )}
+          class={styles().value({
+            class: [selectStaticClass("value"), themeClasses.value, local.slotClasses?.value],
+          })}
         >
           {state => (
             <Show when={local.valueTemplate} fallback={getOptionLabel(state.selectedOption())}>
@@ -300,12 +271,9 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
         {rightDecorator()}
         <Show when={variantProps.withDropdownIcon}>
           <KSelect.Icon
-            class={cn(
-              selectIconVariants(variantProps),
-              selectStaticClass("icon"),
-              themeClasses.icon,
-              local.slotClasses?.icon
-            )}
+            class={styles().icon({
+              class: [selectStaticClass("icon"), themeClasses.icon, local.slotClasses?.icon],
+            })}
           >
             {runIfFn(local.dropdownIcon)}
           </KSelect.Icon>
@@ -313,36 +281,39 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       </KSelect.Trigger>
       <Show when={showDescription()}>
         <KSelect.Description
-          class={cn(
-            "text-content-subtler",
-            selectSupportTextVariants(variantProps),
-            selectStaticClass("description"),
-            themeClasses.description,
-            local.slotClasses?.description
-          )}
+          class={styles().supportText({
+            class: [
+              "text-content-subtler",
+              selectStaticClass("description"),
+              themeClasses.description,
+              local.slotClasses?.description,
+            ],
+          })}
         >
           {description()}
         </KSelect.Description>
       </Show>
       <Show when={showError()}>
         <KSelect.ErrorMessage
-          class={cn(
-            "flex items-center gap-x-1 text-content-danger",
-            selectSupportTextVariants(variantProps),
-            selectStaticClass("error"),
-            themeClasses.error,
-            local.slotClasses?.error
-          )}
+          class={styles().supportText({
+            class: [
+              "flex items-center gap-x-1 text-content-danger",
+              selectStaticClass("error"),
+              themeClasses.error,
+              local.slotClasses?.error,
+            ],
+          })}
         >
           <Show when={local.withErrorIcon} fallback={error()}>
             <span
               aria-hidden="true"
-              class={cn(
-                "reset-svg",
-                selectStaticClass("errorIcon"),
-                themeClasses.errorIcon,
-                local.slotClasses?.errorIcon
-              )}
+              class={styles().errorIcon({
+                class: [
+                  selectStaticClass("errorIcon"),
+                  themeClasses.errorIcon,
+                  local.slotClasses?.errorIcon,
+                ],
+              })}
             >
               {errorIcon()}
             </span>
@@ -352,20 +323,22 @@ export function Select<Option, OptGroup = never>(props: SelectProps<Option, OptG
       </Show>
       <KSelect.Portal>
         <KSelect.Content
-          class={cn(
-            selectDropdownVariants(variantProps),
-            selectStaticClass("dropdown"),
-            themeClasses.dropdown,
-            local.slotClasses?.dropdown
-          )}
+          class={styles().dropdown({
+            class: [
+              selectStaticClass("dropdown"),
+              themeClasses.dropdown,
+              local.slotClasses?.dropdown,
+            ],
+          })}
         >
           <KSelect.Listbox
-            class={cn(
-              selectListboxVariants(variantProps),
-              selectStaticClass("listbox"),
-              themeClasses.listbox,
-              local.slotClasses?.listbox
-            )}
+            class={styles().listbox({
+              class: [
+                selectStaticClass("listbox"),
+                themeClasses.listbox,
+                local.slotClasses?.listbox,
+              ],
+            })}
           />
         </KSelect.Content>
       </KSelect.Portal>

@@ -2,12 +2,12 @@ import { Select as KSelect } from "@kobalte/core";
 import { ComponentProps, JSX } from "solid-js";
 
 import { SlotProp } from "../utils/slot";
-import { SelectButtonVariants } from "./select.styles";
+import { SelectVariants } from "./select.styles";
 
 export type SelectSlots =
   | "root"
   | "label"
-  | "button"
+  | "trigger"
   | "value"
   | "icon"
   | "description"
@@ -44,7 +44,7 @@ export interface SelectProps<Option, OptGroup = never>
       | "readOnly"
       | "sameWidth"
     >,
-    Omit<SelectButtonVariants, "disabled">,
+    Omit<SelectVariants, "disabled">,
     SlotProp<SelectSlots> {
   /** Property name or getter function to use as the label of an option. */
   optionLabel?: keyof Option | ((option: Option) => string);

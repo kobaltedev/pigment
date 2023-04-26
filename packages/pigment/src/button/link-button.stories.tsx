@@ -12,11 +12,11 @@ export default {
   title: "LinkButton",
   argTypes: {
     variant: {
-      options: ["default", ...Object.keys(VARIANT_VARIANTS)],
+      options: ["default", ...VARIANT_VARIANTS],
       control: { type: "select" },
     },
     color: {
-      options: Object.keys(SEMANTIC_COLOR_VARIANTS),
+      options: SEMANTIC_COLOR_VARIANTS,
       control: { type: "select" },
     },
     size: {

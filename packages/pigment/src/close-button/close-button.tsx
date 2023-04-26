@@ -1,12 +1,11 @@
 import { Button as KButton, COMMON_INTL_MESSAGES, createMessageFormatter } from "@kobalte/core";
-import { JSX, splitProps } from "solid-js";
+import { createMemo, JSX, splitProps } from "solid-js";
 
 import { CrossIcon } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme";
-import { cn } from "../utils/cn";
 import { makeStaticClass } from "../utils/make-static-class";
 import { CloseButtonProps, CloseButtonSlots } from "./close-button.props";
-import { closeButtonVariants } from "./close-button.styles";
+import { closeButtonStyles } from "./close-button.styles";
 
 const closeButtonStaticClass = makeStaticClass<CloseButtonSlots>("close-button");
 
@@ -30,17 +29,23 @@ export function CloseButton(props: CloseButtonProps) {
     ["size", "inheritTextColor", "disabled"]
   );
 
+  const styles = createMemo(() => {
+    return closeButtonStyles({
+      ...variantProps,
+      class: [
+        closeButtonStaticClass("root"),
+        themeClasses.root,
+        local.slotClasses?.root,
+        local.class,
+      ],
+    });
+  });
+
   const messageFormatter = createMessageFormatter(() => COMMON_INTL_MESSAGES);
 
   return (
     <KButton.Root
-      class={cn(
-        closeButtonVariants(variantProps),
-        closeButtonStaticClass("root"),
-        themeClasses.root,
-        local.slotClasses?.root,
-        local.class
-      )}
+      class={styles()}
       aria-label={local["aria-label"] || messageFormatter().format("dismiss")}
       disabled={variantProps.disabled}
       {...others}

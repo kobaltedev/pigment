@@ -15,7 +15,7 @@ export default {
       control: { type: "select" },
     },
     color: {
-      options: Object.keys(SEMANTIC_COLOR_VARIANTS),
+      options: SEMANTIC_COLOR_VARIANTS,
       control: { type: "select" },
     },
     withIcon: {

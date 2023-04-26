@@ -64,15 +64,6 @@ export const themeTokensShapeValue = {
       code: "",
     },
   },
-  radii: {
-    alert: "",
-    badge: "",
-    button: "",
-    checkbox: "",
-    input: "",
-    textarea: "",
-    overlay: "",
-  },
   colors: {
     ...semanticColorValues.reduce((acc, color) => {
       acc[color] = paletteRangeValues.reduce((acc, scale) => {
@@ -135,7 +126,7 @@ export const themeTokensShapeValue = {
 
 export type ColorSchemeTokens = Pick<typeof themeTokensShapeValue, "colors" | "shadows">;
 
-export type CommonTokens = Pick<typeof themeTokensShapeValue, "typography" | "radii">;
+export type CommonTokens = Pick<typeof themeTokensShapeValue, "typography">;
 
 export interface ThemeTokens {
   /** Color scheme independent tokens. */

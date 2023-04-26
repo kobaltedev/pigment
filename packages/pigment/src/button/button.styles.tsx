@@ -1,142 +1,154 @@
-import { cva, VariantProps } from "class-variance-authority";
+import { tv, VariantProps } from "tailwind-variants";
 
-import { GlobalVariant, SemanticColor } from "../theme/types";
 import {
   getGlobalVariantClasses,
   SEMANTIC_COLOR_VARIANTS,
   VARIANT_VARIANTS,
 } from "../theme/variants";
 
-export const buttonStyles = cva(
-  [
-    "group",
-    "appearance-none relative justify-center items-center rounded-button",
-    "border border-solid",
-    "transition-colors cursor-pointer no-underline",
-    "outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
-  ],
-  {
-    variants: {
-      variant: {
-        ...VARIANT_VARIANTS,
-        default: [
+export const buttonStyles = tv({
+  slots: {
+    root: [
+      "group",
+      "appearance-none relative justify-center items-center rounded-button",
+      "border border-solid",
+      "transition-colors cursor-pointer no-underline",
+      "outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
+    ],
+    icon: "reset-svg shrink-0",
+    loadingContent: "inline-flex items-center justify-center opacity-0",
+  },
+  variants: {
+    variant: {
+      solid: {},
+      soft: {},
+      outlined: {},
+      ghost: {},
+      default: {
+        root: [
           "text-content bg-surface border-line shadow-sm dark:bg-neutral-100/5 dark:shadow-none",
           "hover:bg-neutral-900/5 dark:hover:bg-neutral-100/10",
           "active:bg-neutral-900/5 dark:active:bg-neutral-100/10",
         ],
       },
-      color: SEMANTIC_COLOR_VARIANTS,
-      size: {
-        xs: "h-6 gap-1",
-        sm: "h-8 gap-1.5",
-        md: "h-10 gap-2",
-        lg: "h-12 gap-2.5",
-        xl: "h-14 gap-3",
-      },
-      iconOnly: {
-        true: "reset-svg p-0 leading-none",
-      },
-      fullWidth: {
-        true: "flex w-full",
-        false: "inline-flex",
-      },
-      loading: {
-        true: "opacity-80 select-none pointer-events-none",
-      },
-      disabled: {
-        true: "ui-disabled:text-content-disabled ui-disabled:cursor-not-allowed ui-disabled:select-none ui-disabled:shadow-none",
-      },
     },
-    compoundVariants: [
-      // variant + color
-      ...(Object.keys(VARIANT_VARIANTS) as GlobalVariant[]).flatMap(variant =>
-        (Object.keys(SEMANTIC_COLOR_VARIANTS) as SemanticColor[]).map(color => {
-          const variantClasses = getGlobalVariantClasses(variant, color);
-
-          return {
-            variant,
-            color,
-            disabled: false,
-            class: [variantClasses.base, variantClasses.hover, variantClasses.active],
-          };
-        })
-      ),
-
-      // variant + disabled
-      {
-        variant: ["solid", "soft"],
-        disabled: true,
-        class: "ui-disabled:bg-surface-disabled ui-disabled:border-transparent",
-      },
-      {
-        variant: ["default", "outlined"],
-        disabled: true,
-        class: "ui-disabled:bg-transparent ui-disabled:border-line-disabled",
-      },
-      {
-        variant: "ghost",
-        disabled: true,
-        class: "ui-disabled:bg-transparent ui-disabled:border-transparent",
-      },
-
-      // rectangle button (e.g: Button)
-      { iconOnly: false, fullWidth: false, class: "w-auto" },
-      { size: "xs", iconOnly: false, class: "px-2 text-xs" },
-      { size: "sm", iconOnly: false, class: "px-2.5 text-sm" },
-      { size: "md", iconOnly: false, class: "px-4 text-base" },
-      { size: "lg", iconOnly: false, class: "px-6 text-lg" },
-      { size: "xl", iconOnly: false, class: "px-8 text-xl" },
-
-      // square button (e.g: IconButton)
-      { size: "xs", iconOnly: true, fullWidth: false, class: "w-6 text-base" },
-      { size: "sm", iconOnly: true, fullWidth: false, class: "w-8 text-lg" },
-      { size: "md", iconOnly: true, fullWidth: false, class: "w-10 text-2xl" },
-      { size: "lg", iconOnly: true, fullWidth: false, class: "w-12 text-3xl" },
-      { size: "xl", iconOnly: true, fullWidth: false, class: "w-14 text-4xl" },
-    ],
-  }
-);
-
-export const buttonIconVariants = cva("reset-svg shrink-0", {
-  variants: {
+    color: {
+      primary: {},
+      neutral: {},
+      success: {},
+      info: {},
+      warning: {},
+      danger: {},
+    },
     size: {
-      xs: "",
-      sm: "",
-      md: "",
-      lg: "",
-      xl: "",
+      xs: {
+        root: "h-6 gap-1",
+        loadingContent: "gap-1",
+      },
+      sm: {
+        root: "h-8 gap-1.5",
+        loadingContent: "gap-1.5",
+      },
+      md: {
+        root: "h-10 gap-2",
+        loadingContent: "gap-2",
+      },
+      lg: {
+        root: "h-12 gap-2.5",
+        loadingContent: "gap-2.5",
+      },
+      xl: {
+        root: "h-14 gap-3",
+        loadingContent: "gap-3",
+      },
     },
     iconOnly: {
-      true: "",
+      true: {
+        root: "reset-svg p-0 leading-none",
+      },
+    },
+    fullWidth: {
+      true: {
+        root: "flex w-full",
+      },
+      false: {
+        root: "inline-flex",
+      },
+    },
+    loading: {
+      true: {
+        root: "opacity-80 select-none pointer-events-none",
+      },
+    },
+    disabled: {
+      true: {
+        root: "ui-disabled:text-content-disabled ui-disabled:cursor-not-allowed ui-disabled:select-none ui-disabled:shadow-none",
+      },
     },
   },
   compoundVariants: [
-    // start, end and loading icons in rectangle button (e.g: Button)
-    { size: "xs", iconOnly: false, class: "text-sm" },
-    { size: "sm", iconOnly: false, class: "text-base" },
-    { size: "md", iconOnly: false, class: "text-lg" },
-    { size: "lg", iconOnly: false, class: "text-xl" },
-    { size: "xl", iconOnly: false, class: "text-2xl" },
+    // variant + color
+    ...VARIANT_VARIANTS.flatMap(variant =>
+      SEMANTIC_COLOR_VARIANTS.map(color => {
+        const variantClasses = getGlobalVariantClasses(variant, color);
+
+        return {
+          variant,
+          color,
+          disabled: false,
+          class: {
+            root: [variantClasses.base, variantClasses.hover, variantClasses.active],
+          },
+        };
+      })
+    ),
+
+    // variant + disabled
+    {
+      variant: ["solid", "soft"],
+      disabled: true,
+      class: {
+        root: "ui-disabled:bg-surface-disabled ui-disabled:border-transparent",
+      },
+    },
+    {
+      variant: ["default", "outlined"],
+      disabled: true,
+      class: {
+        root: "ui-disabled:bg-transparent ui-disabled:border-line-disabled",
+      },
+    },
+    {
+      variant: "ghost",
+      disabled: true,
+      class: {
+        root: "ui-disabled:bg-transparent ui-disabled:border-transparent",
+      },
+    },
+
+    // rectangle button (e.g: Button)
+    // and start, end and loading icons in rectangle button (e.g: Button)
+    { iconOnly: false, fullWidth: false, class: { root: "w-auto" } },
+    { size: "xs", iconOnly: false, class: { root: "px-2 text-xs", icon: "text-sm" } },
+    { size: "sm", iconOnly: false, class: { root: "px-2.5 text-sm", icon: "text-base" } },
+    { size: "md", iconOnly: false, class: { root: "px-4 text-base", icon: "text-lg" } },
+    { size: "lg", iconOnly: false, class: { root: "px-6 text-lg", icon: "text-xl" } },
+    { size: "xl", iconOnly: false, class: { root: "px-8 text-xl", icon: "text-2xl" } },
+
+    // square button (e.g: IconButton)
+    { size: "xs", iconOnly: true, fullWidth: false, class: { root: "w-6 text-base" } },
+    { size: "sm", iconOnly: true, fullWidth: false, class: { root: "w-8 text-lg" } },
+    { size: "md", iconOnly: true, fullWidth: false, class: { root: "w-10 text-2xl" } },
+    { size: "lg", iconOnly: true, fullWidth: false, class: { root: "w-12 text-3xl" } },
+    { size: "xl", iconOnly: true, fullWidth: false, class: { root: "w-14 text-4xl" } },
 
     // only loading icon in square button (e.g: IconButton)
-    { size: "xs", iconOnly: true, class: "text-base" },
-    { size: "sm", iconOnly: true, class: "text-lg" },
-    { size: "md", iconOnly: true, class: "text-2xl" },
-    { size: "lg", iconOnly: true, class: "text-3xl" },
-    { size: "xl", iconOnly: true, class: "text-4xl" },
+    { size: "xs", iconOnly: true, class: { icon: "text-base" } },
+    { size: "sm", iconOnly: true, class: { icon: "text-lg" } },
+    { size: "md", iconOnly: true, class: { icon: "text-2xl" } },
+    { size: "lg", iconOnly: true, class: { icon: "text-3xl" } },
+    { size: "xl", iconOnly: true, class: { icon: "text-4xl" } },
   ],
-});
-
-export const loadingContentVariants = cva("inline-flex items-center justify-center opacity-0", {
-  variants: {
-    size: {
-      xs: "gap-1",
-      sm: "gap-1.5",
-      md: "gap-2",
-      lg: "gap-2.5",
-      xl: "gap-3",
-    },
-  },
 });
 
 export type ButtonVariants = VariantProps<typeof buttonStyles>;

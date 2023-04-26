@@ -2,7 +2,7 @@ import { TextField as KTextField } from "@kobalte/core";
 import { ComponentProps, JSX, Ref } from "solid-js";
 
 import { SlotProp } from "../utils/slot";
-import { TextFieldControlVariants } from "./text-field.styles";
+import { TextFieldVariants } from "./text-field.styles";
 
 export type TextFieldSlots =
   | "root"
@@ -15,7 +15,7 @@ export type TextFieldSlots =
 
 export interface TextFieldProps
   extends Omit<KTextField.TextFieldRootProps, "ref" | "validationState">,
-    Omit<TextFieldControlVariants, "focused" | "disabled">,
+    Omit<TextFieldVariants, "focused" | "disabled">,
     SlotProp<TextFieldSlots> {
   /** A ref to the inner `<input>` or `<textarea>` element. */
   ref?: Ref<HTMLInputElement | HTMLTextAreaElement>;

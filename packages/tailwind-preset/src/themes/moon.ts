@@ -2,7 +2,6 @@ import twColors from "tailwindcss/colors";
 import twDefaultTheme from "tailwindcss/defaultTheme";
 
 import { PIGMENT_COLORS } from "../colors";
-import { PIGMENT_RADII } from "../radii";
 import { ThemeTokens, VarsFn } from "../types";
 
 export function getMoonThemeTokens(vars: VarsFn): ThemeTokens {
@@ -15,15 +14,6 @@ export function getMoonThemeTokens(vars: VarsFn): ThemeTokens {
           display: vars("typography.fontFamily.body"),
           code: twDefaultTheme.fontFamily.mono.join(", "),
         },
-      },
-      radii: {
-        alert: PIGMENT_RADII.xs,
-        badge: PIGMENT_RADII.xs,
-        button: PIGMENT_RADII.xs,
-        checkbox: PIGMENT_RADII.xs,
-        input: PIGMENT_RADII.xs,
-        textarea: PIGMENT_RADII.xs,
-        overlay: PIGMENT_RADII.xs,
       },
     },
     light: {
