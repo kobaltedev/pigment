@@ -16,22 +16,22 @@ export default {
       control: { type: "select" },
     },
     size: {
-      options: ["sm", "md", "lg"],
+      options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
-    hasErrorIcon: {
+    withErrorIcon: {
       control: { type: "boolean" },
     },
-    isInvalid: {
+    invalid: {
       control: { type: "boolean" },
     },
-    isRequired: {
+    required: {
       control: { type: "boolean" },
     },
-    isDisabled: {
+    disabled: {
       control: { type: "boolean" },
     },
-    isMultiline: {
+    multiline: {
       control: { type: "boolean" },
     },
     placeholder: {
@@ -47,18 +47,18 @@ export default {
       control: { type: "text" },
     },
   },
-  render: props => <TextField {...props} />,
+  render: props => <TextField class="w-full max-w-xs" {...props} />,
 } as Meta<ComponentProps<typeof TextField>>;
 
 export const Default: Story = {
   args: {
     variant: "outlined",
     size: "md",
-    hasErrorIcon: true,
-    isInvalid: false,
-    isRequired: false,
-    isDisabled: false,
-    isMultiline: false,
+    withErrorIcon: true,
+    invalid: false,
+    required: false,
+    disabled: false,
+    multiline: false,
     placeholder: "example@acme.com",
     label: "E-mail",
     description: "We will never share your email.",
@@ -70,17 +70,17 @@ export const WithDecorator: Story = {
   args: {
     variant: "outlined",
     size: "md",
-    hasErrorIcon: true,
-    isInvalid: false,
-    isRequired: false,
-    isDisabled: false,
-    isMultiline: false,
+    withErrorIcon: true,
+    invalid: false,
+    required: false,
+    disabled: false,
+    multiline: false,
     placeholder: "example@acme.com",
     label: "E-mail",
     description: "We will never share your email.",
     error: "Please enter a valid email address.",
-    startDecorator: <InfoCircleIcon class="h-4 w-4 mx-2.5" />,
-    endDecorator: (
+    startDecorator: () => <InfoCircleIcon class="h-4 w-4 mx-2.5" />,
+    endDecorator: () => (
       <Button size="md" variant="solid" color="neutral" class="rounded-l-none z-10 ml-2.5">
         Search
       </Button>

@@ -1,141 +1,145 @@
-import { cva, VariantProps } from "class-variance-authority";
+import { tv, VariantProps } from "tailwind-variants";
 
-export const checkboxRootVariants = cva("group inline-flex", {
+export const checkboxStyles = tv({
+  slots: {
+    root: "group inline-flex",
+    input: "peer",
+    control:
+      "inline-flex justify-center items-center grow-0 shrink-0 mt-0.5 rounded-checkbox border border-solid transition-colors",
+    indicator: "reset-svg inline-flex justify-center items-center",
+    labelWrapper: "flex flex-col grow shrink",
+    label:
+      "text-content ui-group-disabled:text-content-disabled ui-group-disabled:cursor-not-allowed",
+    supportText: "ui-group-disabled:text-content-disabled",
+    errorIcon: "reset-svg",
+  },
   variants: {
+    variant: {
+      soft: {},
+      outlined: {
+        control: "bg-transparent",
+      },
+    },
     size: {
-      sm: "gap-x-1.5",
-      md: "gap-x-2",
-      lg: "gap-x-2.5",
+      sm: {
+        root: "gap-x-1.5",
+        control: "h-4 w-4 text-base",
+        labelWrapper: "gap-y-0.5",
+        label: "text-sm",
+        supportText: "text-xs",
+      },
+      md: {
+        root: "gap-x-2",
+        control: "h-5 w-5 text-xl",
+        label: "text-base",
+        labelWrapper: "gap-y-1",
+        supportText: "text-sm",
+      },
+      lg: {
+        root: "gap-x-2.5",
+        control: "h-6 w-6 text-2xl",
+        labelWrapper: "gap-y-1.5",
+        label: "text-lg",
+        supportText: "text-base",
+      },
+    },
+    invalid: {
+      true: {},
+      false: {},
+    },
+    disabled: {
+      true: {
+        control: "ui-group-disabled:text-content-disabled ui-group-disabled:cursor-not-allowed",
+      },
+      false: {},
     },
   },
-});
-
-export const checkboxControlVariants = cva(
-  "inline-flex justify-center items-center grow-0 shrink-0 mt-0.5 border border-solid transition-colors",
-  {
-    variants: {
-      variant: {
-        soft: "bg-soft-input-surface hover:bg-soft-input-surface-hover active:bg-soft-input-surface-active",
-        outlined:
-          "bg-outlined-input-surface hover:bg-outlined-input-surface-hover active:bg-outlined-input-surface-active",
-      },
-      size: {
-        sm: "h-4 w-4 rounded text-base",
-        md: "h-5 w-5 rounded text-xl",
-        lg: "h-6 w-6 rounded text-2xl",
-      },
-      isInvalid: {
-        true: "",
-        false: "",
-      },
-      isDisabled: {
-        true: "ui-group-disabled:text-content-disabled ui-group-disabled:cursor-not-allowed",
-        false: "",
+  compoundVariants: [
+    // variant + color
+    {
+      variant: "soft",
+      invalid: false,
+      disabled: false,
+      class: {
+        control: [
+          "bg-input-soft-surface hover:bg-input-soft-surface-hover active:bg-input-soft-surface-active",
+          "border-input-soft-line hover:border-input-soft-line-hover active:border-input-soft-line-active",
+        ],
       },
     },
-    compoundVariants: [
-      // variant + colors
-      {
-        variant: "soft",
-        isInvalid: false,
-        isDisabled: false,
-        class:
-          "border-soft-input-line hover:border-soft-input-line-hover active:border-soft-input-line-active",
+    {
+      variant: "outlined",
+      invalid: false,
+      disabled: false,
+      class: {
+        control:
+          "border-input-outlined-line hover:border-input-outlined-line-hover active:border-input-outlined-line-active",
       },
-      {
-        variant: "outlined",
-        isInvalid: false,
-        isDisabled: false,
-        class:
-          "border-outlined-input-line hover:border-outlined-input-line-hover active:border-outlined-input-line-active",
-      },
+    },
 
-      // all variants + colors
-      {
-        isInvalid: false,
-        isDisabled: false,
-        class: [
+    // variant + checked
+    {
+      invalid: false,
+      disabled: false,
+      class: {
+        control: [
           // safe to put text colors here because `KCheckbox.Indicator` is only rendered when checked or indeterminate
-          "text-solid-selected-content hover:text-solid-selected-content-hover active:text-solid-selected-content-active",
+          "text-accent-solid-content hover:text-accent-solid-content-hover active:text-accent-solid-content-active",
           // checked
-          "peer-checked:bg-solid-selected-surface peer-checked:hover:bg-solid-selected-surface-hover peer-checked:active:bg-solid-selected-surface-active",
-          "peer-checked:border-solid-selected-line peer-checked:hover:border-solid-selected-line-hover peer-checked:active:border-solid-selected-line-active",
+          "peer-checked:bg-accent-solid-surface peer-checked:hover:bg-accent-solid-surface-hover peer-checked:active:bg-accent-solid-surface-active",
+          "peer-checked:border-accent-solid-line peer-checked:hover:border-accent-solid-line-hover peer-checked:active:border-accent-solid-line-active",
           // indeterminate
-          "peer-indeterminate:bg-solid-selected-surface peer-indeterminate:hover:bg-solid-selected-surface-hover peer-indeterminate:active:bg-solid-selected-surface-active",
-          "peer-indeterminate:border-solid-selected-line peer-indeterminate:hover:border-solid-selected-line-hover peer-indeterminate:active:border-solid-selected-line-active",
+          "peer-indeterminate:bg-accent-solid-surface peer-indeterminate:hover:bg-accent-solid-surface-hover peer-indeterminate:active:bg-accent-solid-surface-active",
+          "peer-indeterminate:border-accent-solid-line peer-indeterminate:hover:border-accent-solid-line-hover peer-indeterminate:active:border-accent-solid-line-active",
         ],
       },
+    },
 
-      // all variants + invalid + colors
-      {
-        isInvalid: true,
-        isDisabled: false,
-        class: [
-          "text-solid-danger-content hover:text-solid-danger-content-hover active:text-solid-danger-content-active",
-          "border-solid-danger-line hover:border-solid-danger-line-hover active:border-solid-danger-line-active",
+    // variant + checked + invalid
+    {
+      invalid: true,
+      disabled: false,
+      class: {
+        control: [
+          // safe to put text colors here because `KCheckbox.Indicator` is only rendered when checked or indeterminate
+          "text-solid-danger-content",
+          "border-solid-danger-line",
           // checked
-          "peer-checked:bg-solid-danger-surface peer-checked:hover:bg-solid-danger-surface-hover peer-checked:active:bg-solid-danger-surface-active",
-          "peer-checked:border-solid-danger-line peer-checked:hover:border-solid-danger-line-hover peer-checked:active:border-solid-danger-line-active",
+          "peer-checked:bg-solid-danger-surface",
+          "peer-checked:border-solid-danger-line",
           // indeterminate
-          "peer-indeterminate:bg-solid-danger-surface peer-indeterminate:hover:bg-solid-danger-surface-hover peer-indeterminate:active:bg-solid-danger-surface-active",
-          "peer-indeterminate:border-solid-danger-line peer-indeterminate:hover:border-solid-danger-line-hover peer-indeterminate:active:border-solid-danger-line-active",
+          "peer-indeterminate:bg-solid-danger-surface",
+          "peer-indeterminate:border-solid-danger-line",
         ],
       },
-
-      // all variants focus
-      {
-        isInvalid: false,
-        isDisabled: false,
-        class:
-          "peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-focus-ring",
-      },
-
-      // variant + disabled
-      {
-        variant: "soft",
-        isDisabled: true,
-        class: "ui-group-disabled:bg-surface-disabled ui-group-disabled:border-transparent",
-      },
-      {
-        variant: "outlined",
-        isDisabled: true,
-        class: "ui-group-disabled:bg-transparent ui-group-disabled:border-line-disabled",
-      },
-    ],
-  }
-);
-
-export const checkboxLabelWrapperVariants = cva("flex flex-col grow shrink", {
-  variants: {
-    size: {
-      sm: "gap-y-0.5",
-      md: "gap-y-1",
-      lg: "gap-y-1.5",
     },
-  },
+
+    // variant + focused
+    {
+      invalid: false,
+      disabled: false,
+      class: {
+        control:
+          "peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-ring",
+      },
+    },
+
+    // variant + disabled
+    {
+      variant: "soft",
+      disabled: true,
+      class: {
+        control: "ui-group-disabled:bg-surface-disabled ui-group-disabled:border-surface-disabled",
+      },
+    },
+    {
+      variant: "outlined",
+      disabled: true,
+      class: {
+        control: "ui-group-disabled:border-line-disabled",
+      },
+    },
+  ],
 });
 
-export const checkboxLabelVariants = cva(
-  "text-outlined-input-content ui-group-disabled:text-content-disabled ui-group-disabled:cursor-not-allowed",
-  {
-    variants: {
-      size: {
-        sm: "text-sm",
-        md: "text-base",
-        lg: "text-lg",
-      },
-    },
-  }
-);
-
-export const checkboxSupportTextVariants = cva("ui-group-disabled:text-content-disabled", {
-  variants: {
-    size: {
-      sm: "text-xs",
-      md: "text-sm",
-      lg: "text-base",
-    },
-  },
-});
-
-export type CheckboxControlVariants = VariantProps<typeof checkboxControlVariants>;
+export type CheckboxVariants = VariantProps<typeof checkboxStyles>;

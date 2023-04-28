@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 
 import { InfoCircleIcon } from "../icons";
+import { SEMANTIC_COLOR_VARIANTS, VARIANT_VARIANTS } from "../theme/variants";
 import { IconButton } from "./button";
 import { IconButtonProps } from "./button.props";
 
@@ -11,25 +12,33 @@ export default {
   title: "IconButton",
   argTypes: {
     variant: {
-      options: ["solid", "soft", "outlined", "ghost"],
+      options: ["default", ...VARIANT_VARIANTS],
       control: { type: "select" },
     },
     color: {
-      options: ["primary", "neutral", "success", "info", "warning", "danger"],
+      options: SEMANTIC_COLOR_VARIANTS,
       control: { type: "select" },
     },
     size: {
-      options: ["sm", "md", "lg", "xl"],
+      options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
-    isLoading: {
+    rounded: {
+      options: ["xs", "sm", "md", "lg", "xl"],
+      control: { type: "select" },
+    },
+    loading: {
       control: { type: "boolean" },
     },
-    isDisabled: {
+    disabled: {
       control: { type: "boolean" },
     },
   },
-  render: props => <IconButton {...props} aria-label="example" />,
+  render: props => (
+    <IconButton {...props} aria-label="example">
+      <InfoCircleIcon />
+    </IconButton>
+  ),
 } as Meta<ComponentProps<typeof IconButton>>;
 
 export const Default: Story = {
@@ -37,8 +46,8 @@ export const Default: Story = {
     variant: "solid",
     color: "primary",
     size: "md",
-    isLoading: false,
-    isDisabled: false,
-    children: <InfoCircleIcon />,
+    rounded: "md",
+    loading: false,
+    disabled: false,
   },
 };

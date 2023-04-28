@@ -2,12 +2,12 @@ import { Select as KSelect } from "@kobalte/core";
 import { ComponentProps, JSX } from "solid-js";
 
 import { SlotProp } from "../utils/slot";
-import { SelectButtonVariants } from "./select.styles";
+import { SelectVariants } from "./select.styles";
 
 export type SelectSlots =
   | "root"
   | "label"
-  | "button"
+  | "trigger"
   | "value"
   | "icon"
   | "description"
@@ -20,31 +20,31 @@ export type SelectSlots =
   | "optionGroup";
 
 export interface SelectProps<Option, OptGroup = never>
-  extends KSelect.SelectTriggerProps,
+  extends Omit<KSelect.SelectTriggerProps, "value" | "onChange">,
     Pick<
       KSelect.SelectRootProps<Option, OptGroup>,
-      | "defaultIsOpen"
-      | "isOpen"
+      | "defaultOpen"
+      | "open"
       | "onOpenChange"
       | "defaultValue"
       | "value"
-      | "onValueChange"
+      | "onChange"
       | "options"
       | "optionValue"
       | "optionTextValue"
       | "optionDisabled"
       | "optionGroupChildren"
-      | "isOptionGroup"
-      | "isModal"
+      | "multiple"
+      | "modal"
       | "placeholder"
       | "id"
       | "name"
-      | "isRequired"
-      | "isDisabled"
-      | "isReadOnly"
+      | "required"
+      | "disabled"
+      | "readOnly"
       | "sameWidth"
     >,
-    Omit<SelectButtonVariants, "isFocused" | "isDisabled">,
+    Omit<SelectVariants, "disabled">,
     SlotProp<SelectSlots> {
   /** Property name or getter function to use as the label of an option. */
   optionLabel?: keyof Option | ((option: Option) => string);
@@ -68,32 +68,35 @@ export interface SelectProps<Option, OptGroup = never>
   allowEmptySelection?: boolean;
 
   /** The label that gives the user information on the select. */
-  label?: JSX.Element;
+  label?: JSX.Element | (() => JSX.Element);
 
   /** The description that gives the user more information on the select. */
-  description?: JSX.Element;
+  description?: JSX.Element | (() => JSX.Element);
 
   /** The error message that gives the user information about how to fix a validation error on the select. */
-  error?: JSX.Element;
+  error?: JSX.Element | (() => JSX.Element);
 
   /** Whether an asterisk should appear next to the label when the select is required. */
-  hasRequiredIndicator?: boolean;
+  withRequiredIndicator?: boolean;
 
   /** Whether an icon should appear next to the selected option in the listbox. */
-  hasSelectedIcon?: boolean;
+  withSelectionIcon?: boolean;
 
   /** Whether an icon should appear next to the error message. */
-  hasErrorIcon?: boolean;
+  withErrorIcon?: boolean;
 
   /** The icon to show next to the error message. */
-  errorIcon?: JSX.Element;
+  errorIcon?: JSX.Element | (() => JSX.Element);
 
   /** The icon to show next to the value as a visual affordance for the fact it can be open. */
-  dropdownIcon?: JSX.Element;
+  dropdownIcon?: JSX.Element | (() => JSX.Element);
+
+  /** The icon to show next to the selected option in the listbox. */
+  selectionIcon?: JSX.Element | (() => JSX.Element);
 
   /** The leading adornment of the select. */
-  startDecorator?: JSX.Element;
+  startDecorator?: JSX.Element | (() => JSX.Element);
 
   /** The trailing adornment of the select. */
-  endDecorator?: JSX.Element;
+  endDecorator?: JSX.Element | (() => JSX.Element);
 }

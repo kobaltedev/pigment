@@ -3,7 +3,6 @@ export { As, I18nProvider, useLocale } from "@kobalte/core";
 
 // utils
 export * from "./color-scheme";
-export * from "./utils/cn";
 
 // theme
 export * from "./theme";

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 
+import { SEMANTIC_COLOR_VARIANTS } from "../theme/variants";
 import { Alert } from "./alert";
 import { AlertProps } from "./alert.props";
 
@@ -13,17 +14,21 @@ export default {
       options: ["solid", "soft"],
       control: { type: "select" },
     },
-    status: {
-      options: ["neutral", "success", "info", "warning", "danger"],
+    color: {
+      options: SEMANTIC_COLOR_VARIANTS,
       control: { type: "select" },
     },
-    hasIcon: {
+    rounded: {
+      options: ["xs", "sm", "md", "lg", "xl"],
+      control: { type: "select" },
+    },
+    withIcon: {
       control: { type: "boolean" },
     },
-    isDismissible: {
+    dismissible: {
       control: { type: "boolean" },
     },
-    isMultiline: {
+    multiline: {
       control: { type: "boolean" },
     },
     title: {
@@ -38,12 +43,13 @@ export default {
 
 export const Default: Story = {
   args: {
-    variant: "soft",
-    status: "info",
+    variant: "solid",
+    color: "primary",
+    rounded: "md",
     title: "Announcement",
-    hasIcon: true,
-    isDismissible: true,
-    isMultiline: false,
+    withIcon: true,
+    dismissible: true,
+    multiline: false,
     children: "Pigment is going live soon, get ready!",
   },
 };

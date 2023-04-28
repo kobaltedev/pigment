@@ -1,7 +1,7 @@
 import { Alert, As, Button, Checkbox, LinkButton, Select, TextField } from "@kobalte/pigment";
 import { Link } from "@solidjs/router";
 
-import { Footer, GitHubIcon, Header, SearchIcon } from "../components";
+import { Footer, GitHubIcon, Header, RocketIcon, SearchIcon } from "../components";
 
 export default function Index() {
   return (
@@ -13,7 +13,7 @@ export default function Index() {
             <div class="flex flex-col gap-5 mb-5">
               <h1 class="text-[40px] font-bold leading-tight sm:text-5xl lg:text-6xl">
                 <span>UI components for the </span>
-                <span class="text-[40px] font-bold leading-none text-solid-primary-surface sm:text-5xl lg:text-6xl">
+                <span class="text-[40px] font-bold leading-none pg-headline-keyword sm:text-5xl lg:text-6xl">
                   SolidJS
                 </span>
                 <span> era</span>
@@ -30,7 +30,13 @@ export default function Index() {
                   Get started
                 </As>
               </LinkButton>
-              <LinkButton size="xl" color="neutral" startIcon={<GitHubIcon />} asChild>
+              <LinkButton
+                size="xl"
+                color="neutral"
+                variant="soft"
+                startIcon={<GitHubIcon />}
+                asChild
+              >
                 <As component={Link} target="_blank" href="https://github.com/kobaltedev/pigment">
                   GitHub
                 </As>
@@ -39,10 +45,17 @@ export default function Index() {
           </div>
           <div class="hidden w-full max-w-sm flex-col items-center gap-3 -mt-8 lg:flex">
             <TextField
-              startDecorator={<SearchIcon class="h-4 w-4 mx-1.5 text-outlined-input-content" />}
+              startDecorator={<SearchIcon class="h-4 w-4 mx-2.5 text-outlined-input-content" />}
               placeholder="Search"
             />
-            <Alert title="Software update" isMultiline class="w-full">
+            <Alert
+              title="Software update"
+              multiline
+              variant="soft"
+              color="primary"
+              class="w-full"
+              icon={<RocketIcon />}
+            >
               A new software update is available.
             </Alert>
             <div class="flex w-full justify-center items-start gap-2">
@@ -53,13 +66,13 @@ export default function Index() {
               />
               <div class="flex flex-col space-y-2">
                 <Button>Button</Button>
-                <Checkbox label="Checkbox" defaultIsChecked />
+                <Checkbox label="Checkbox" defaultChecked />
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section class="bg-sunken-surface min-h-[calc(100vh-57px)] flex flex-col justify-center gap-10 md:gap-12 p-4 xl:px-0">
+      <section class="bg-surface-sunken dark:bg-neutral-800/10 min-h-[calc(100vh-57px)] flex flex-col justify-center gap-10 md:gap-12 p-4 xl:px-0">
         <div class="flex flex-col items-center gap-3">
           <span class="text-center text-base font-semibold text-solid-primary-surface uppercase">
             Iterate fast
@@ -71,7 +84,7 @@ export default function Index() {
           </div>
         </div>
         <div class="mx-auto flex w-full max-w-7xl flex-wrap justify-center justify-items-start gap-4">
-          <div class="flex flex-col gap-4 max-w-sm w-full bg-raised-surface shadow-raised p-6 rounded-md">
+          <div class="flex flex-col gap-4 max-w-sm w-full bg-surface-raised shadow-raised p-6 rounded-md">
             <div class="flex h-fit w-fit flex-col items-center justify-center rounded-full bg-soft-primary-surface text-soft-primary-content p-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +111,7 @@ export default function Index() {
               </p>
             </div>
           </div>
-          <div class="flex flex-col gap-4 max-w-sm w-full bg-raised-surface shadow-raised p-6 rounded-md">
+          <div class="flex flex-col gap-4 max-w-sm w-full bg-surface-raised shadow-raised p-6 rounded-md">
             <div class="flex h-fit w-fit flex-col items-center justify-center rounded-full bg-soft-primary-surface text-soft-primary-content p-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -125,7 +138,7 @@ export default function Index() {
               </p>
             </div>
           </div>
-          <div class="flex flex-col gap-4 max-w-sm w-full bg-raised-surface shadow-raised p-6 rounded-md">
+          <div class="flex flex-col gap-4 max-w-sm w-full bg-surface-raised shadow-raised p-6 rounded-md">
             <div class="flex h-fit w-fit flex-col items-center justify-center rounded-full bg-soft-primary-surface text-soft-primary-content p-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

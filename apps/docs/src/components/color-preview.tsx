@@ -13,11 +13,11 @@ export function ColorPreviewItem(props: { class: string; name?: string; value: s
         ></div>
         <div class="px-0.5">
           <Show when={props.name}>
-            <div class="w-6 font-medium text-xs text-slate-900 2xl:w-full dark:text-white">
+            <div class="w-6 font-medium text-xs text-neutral-900 2xl:w-full dark:text-white">
               {props.name}
             </div>
           </Show>
-          <div class="text-slate-500 text-xs font-mono dark:text-slate-400 sm:text-[0.625rem] md:text-xs lg:text-[0.625rem] 2xl:text-xs">
+          <div class="text-neutral-500 text-xs font-mono dark:text-neutral-400 sm:text-[0.625rem] md:text-xs lg:text-[0.625rem] 2xl:text-xs">
             {props.value}
           </div>
         </div>
@@ -29,7 +29,7 @@ export function ColorPreviewItem(props: { class: string; name?: string; value: s
 export function ColorPreviewSection(props: ParentProps<{ name: string }>) {
   return (
     <div class="2xl:contents">
-      <div class="text-sm font-semibold text-slate-900 dark:text-slate-200 2xl:col-end-1 2xl:pt-2.5">
+      <div class="text-sm font-semibold text-neutral-900 dark:text-neutral-200 2xl:col-end-1 2xl:pt-2.5">
         {props.name}
       </div>
       <div class="grid mt-3 grid-cols-1 sm:grid-cols-11 gap-y-3 gap-x-2 sm:mt-2 2xl:mt-0">

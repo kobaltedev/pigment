@@ -1,118 +1,134 @@
+export type FlattenObjectKeys<T extends Record<string, unknown>, Key = keyof T> = Key extends string
+  ? T[Key] extends Record<string, unknown>
+    ? `${Key}.${FlattenObjectKeys<T[Key]>}`
+    : `${Key}`
+  : never;
+
 export type DeepPartial<T> = {
   [P in keyof T]?: DeepPartial<T[P]>;
 };
 
-export type Prefixed<K extends string, T> = `${K}${Extract<T, boolean | number | string>}`;
+const semanticColorValues = ["neutral", "primary", "success", "info", "warning", "danger"] as const;
 
-type ReferenceColor = "neutral" | "primary" | "success" | "info" | "warning" | "danger";
-type ReferenceColorScale =
-  | "50"
-  | "100"
-  | "200"
-  | "300"
-  | "400"
-  | "500"
-  | "600"
-  | "700"
-  | "800"
-  | "900"
-  | "950";
-type ReferenceColorTokens = Record<Prefixed<ReferenceColor, ReferenceColorScale>, string>;
+export type SemanticColor = (typeof semanticColorValues)[number];
 
-type GlobalVariant = "solid" | "soft" | "outlined" | "ghost";
-type GlobalVariantColor = "Neutral" | "Primary" | "Success" | "Info" | "Warning" | "Danger";
-type GlobalVariantKey =
-  | "Content"
-  | "Surface"
-  | "Line"
-  | "ContentHover"
-  | "SurfaceHover"
-  | "LineHover"
-  | "ContentActive"
-  | "SurfaceActive"
-  | "LineActive";
-type GlobalVariantTokens = Record<
-  Prefixed<GlobalVariant, Prefixed<GlobalVariantColor, GlobalVariantKey>>,
-  string
->;
-type InputVariantTokens = Record<Prefixed<"softInput" | "outlinedInput", GlobalVariantKey>, string>;
-type SelectionVariantTokens = Record<
-  Prefixed<"solidSelected" | "softSelected", GlobalVariantKey>,
-  string
->;
+const paletteRangeValues = [
+  "50",
+  "100",
+  "200",
+  "300",
+  "400",
+  "500",
+  "600",
+  "700",
+  "800",
+  "900",
+  "950",
+] as const;
 
-export interface ColorTokens
-  extends ReferenceColorTokens,
-    GlobalVariantTokens,
-    InputVariantTokens,
-    SelectionVariantTokens {
-  neutral100A: string;
-  neutral200A: string;
-  neutral300A: string;
-  neutral400A: string;
-  neutral500A: string;
+export type PaletteRange = (typeof paletteRangeValues)[number];
 
-  content: string;
-  contentSubtle: string;
-  contentSubtler: string;
-  contentSubtlest: string;
-  contentDisabled: string;
-  contentInverse: string;
-  contentWarningInverse: string;
-  contentSuccess: string;
-  contentDanger: string;
-
-  body: string;
-
-  surface: string;
-  surfaceHover: string;
-  surfaceActive: string;
-  surfaceDisabled: string;
-
-  raisedSurface: string;
-  raisedSurfaceHover: string;
-  raisedSurfaceActive: string;
-
-  overlaySurface: string;
-  overlaySurfaceHover: string;
-  overlaySurfaceActive: string;
-
-  sunkenSurface: string;
-
-  subtleSurface: string;
-  subtleSurfaceHover: string;
-  subtleSurfaceActive: string;
-
-  line: string;
-  lineDisabled: string;
-
-  focusRing: string;
-  backdrop: string;
-  tooltip: string;
+function getGlobalVariantTokenShape<T extends string, U extends string>(
+  variants: readonly T[],
+  properties: readonly U[]
+) {
+  return variants.reduce((acc, color) => {
+    acc[color] = properties.reduce((acc, key) => {
+      acc[key] = "";
+      return acc;
+    }, {} as Record<U, string>);
+    return acc;
+  }, {} as Record<T, Record<U, string>>);
 }
 
-export interface ShadowTokens {
-  raised: string;
-  overlay: string;
-}
+const ghostVariantProperties = [
+  "content",
+  "contentHover",
+  "surfaceHover",
+  "lineHover",
+  "contentActive",
+  "surfaceActive",
+  "lineActive",
+] as const;
 
-export interface TypographyTokens {
-  fontFamilyFallback: string;
-  fontFamilySans: string;
-  fontFamilySerif: string;
-  fontFamilyMono: string;
-}
+const outlinedVariantProperties = [...ghostVariantProperties, "line"] as const;
 
-export interface CommonTokens {
-  typography: TypographyTokens;
-}
+const solidVariantProperties = [...outlinedVariantProperties, "surface"] as const;
 
-export interface ColorSchemeTokens {
-  colors: ColorTokens;
-  shadows: ShadowTokens;
-}
+export const themeTokensShapeValue = {
+  typography: {
+    fontFamily: {
+      fallback: "",
+      body: "",
+      display: "",
+      code: "",
+    },
+  },
+  colors: {
+    ...semanticColorValues.reduce((acc, color) => {
+      acc[color] = paletteRangeValues.reduce((acc, scale) => {
+        acc[scale] = "";
+        return acc;
+      }, {} as Record<PaletteRange, string>);
+      return acc;
+    }, {} as Record<SemanticColor, Record<PaletteRange, string>>),
 
-export interface Theme {
+    ring: "",
+    line: "",
+    backdrop: "",
+    tooltip: "",
+
+    content: {
+      DEFAULT: "",
+      subtle: "",
+      subtler: "",
+      subtlest: "",
+      inverse: "",
+      warningInverse: "",
+      primary: "",
+      success: "",
+      info: "",
+      warning: "",
+      danger: "",
+    },
+
+    surface: {
+      DEFAULT: "",
+      body: "",
+      raised: "",
+      overlay: "",
+      sunken: "",
+    },
+
+    solid: getGlobalVariantTokenShape(semanticColorValues, solidVariantProperties),
+    soft: getGlobalVariantTokenShape(semanticColorValues, solidVariantProperties),
+    outlined: getGlobalVariantTokenShape(semanticColorValues, outlinedVariantProperties),
+    ghost: getGlobalVariantTokenShape(semanticColorValues, ghostVariantProperties),
+
+    accent: getGlobalVariantTokenShape(["solid", "soft"], solidVariantProperties),
+
+    input: {
+      ...getGlobalVariantTokenShape(["soft"], solidVariantProperties),
+      outlined: {
+        content: "",
+
+        line: "",
+        lineHover: "",
+        lineActive: "",
+      },
+    },
+  },
+  shadows: {
+    raised: "",
+    overlay: "",
+  },
+};
+
+export type ColorSchemeTokens = Pick<typeof themeTokensShapeValue, "colors" | "shadows">;
+
+export type CommonTokens = Pick<typeof themeTokensShapeValue, "typography">;
+
+export interface ThemeTokens {
   /** Color scheme independent tokens. */
   common: CommonTokens;
 
@@ -123,29 +139,34 @@ export interface Theme {
   dark: DeepPartial<ColorSchemeTokens>;
 }
 
-export type PartialTheme = DeepPartial<Theme>;
+export type PartialThemeTokens = DeepPartial<ThemeTokens>;
 
-export type PredefinedTheme = "base";
-
-export type TokenKey =
-  | Prefixed<"typography.", keyof CommonTokens["typography"]>
-  | Prefixed<"colors.", keyof ColorSchemeTokens["colors"]>
-  | Prefixed<"shadows.", keyof ColorSchemeTokens["shadows"]>;
+export type TokenKey = FlattenObjectKeys<ColorSchemeTokens> | FlattenObjectKeys<CommonTokens>;
 
 /** A function to get the css variable of a token. */
 export type VarsFn = (token: TokenKey) => string;
 
-export type ThemeGetter = (vars: VarsFn) => Theme;
+export type ThemeTokensGetter = (vars: VarsFn) => ThemeTokens;
+
+export type PredefinedTheme = "sapphire" | "emerald" | "sun" | "moon" | "scarlet" | "violet";
+
+export interface ExtendedTheme {
+  /** The name of the extended theme. */
+  name: string;
+
+  /** The predefined theme to extend. */
+  extend: PredefinedTheme;
+
+  /** The design tokens of the extended theme. */
+  tokens: PartialThemeTokens | ((vars: VarsFn) => PartialThemeTokens);
+}
 
 export interface CustomTheme {
   /** The name of the custom theme. */
   name: string;
 
-  /** If provided, the custom theme will be merged with the predefined theme. */
-  extend?: PredefinedTheme;
-
-  /** A function that return the design tokens of the custom theme. */
-  tokens: (vars: VarsFn) => PartialTheme;
+  /** The design tokens of the custom theme. */
+  tokens: ThemeTokens | ((vars: VarsFn) => ThemeTokens);
 }
 
 export interface PigmentOptions {
@@ -153,5 +174,5 @@ export interface PigmentOptions {
   cssVarPrefix?: string;
 
   /** The themes available in the application. */
-  themes?: Array<PredefinedTheme | CustomTheme>;
+  themes?: Array<PredefinedTheme | ExtendedTheme | CustomTheme>;
 }

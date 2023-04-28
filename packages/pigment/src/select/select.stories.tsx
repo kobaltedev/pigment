@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 
-import { Button } from "../button";
+import { Badge } from "../badge";
 import { InfoCircleIcon } from "../icons";
 import { Select } from "./select";
 import { SelectProps } from "./select.props";
-import { Badge } from "../badge";
 
 type Story = StoryObj<SelectProps<any, any>>;
 
@@ -17,22 +16,22 @@ export default {
       control: { type: "select" },
     },
     size: {
-      options: ["sm", "md", "lg"],
+      options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
-    hasDropdownIcon: {
+    withDropdownIcon: {
       control: { type: "boolean" },
     },
     hasErrorIcon: {
       control: { type: "boolean" },
     },
-    isInvalid: {
+    invalid: {
       control: { type: "boolean" },
     },
-    isRequired: {
+    required: {
       control: { type: "boolean" },
     },
-    isDisabled: {
+    disabled: {
       control: { type: "boolean" },
     },
     disallowEmptySelection: {
@@ -58,11 +57,11 @@ export const Default: Story = {
   args: {
     variant: "outlined",
     size: "md",
-    hasDropdownIcon: true,
-    hasErrorIcon: true,
-    isInvalid: false,
-    isRequired: false,
-    isDisabled: false,
+    withDropdownIcon: true,
+    withErrorIcon: true,
+    invalid: false,
+    required: false,
+    disabled: false,
     allowEmptySelection: false,
     placeholder: "Select a fruit",
     label: "Fruit",
@@ -76,19 +75,19 @@ export const WithDecorator: Story = {
   args: {
     variant: "outlined",
     size: "md",
-    hasDropdownIcon: true,
-    hasErrorIcon: true,
-    isInvalid: false,
-    isRequired: false,
-    isDisabled: false,
+    withDropdownIcon: true,
+    withErrorIcon: true,
+    invalid: false,
+    required: false,
+    disabled: false,
     allowEmptySelection: false,
     placeholder: "Select a fruit",
     label: "Fruit",
     description: "Choose wisely.",
     error: "Please select a fruit.",
     options: ["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"],
-    startDecorator: <InfoCircleIcon class="h-4 w-4 mx-2.5" />,
-    endDecorator: (
+    startDecorator: () => <InfoCircleIcon class="h-4 w-4 mx-2.5" />,
+    endDecorator: () => (
       <Badge size="sm" variant="soft" color="danger" class="mx-2.5">
         +5
       </Badge>
@@ -100,11 +99,11 @@ export const WithObject: Story = {
   args: {
     variant: "outlined",
     size: "md",
-    hasDropdownIcon: true,
-    hasErrorIcon: true,
-    isInvalid: false,
-    isRequired: false,
-    isDisabled: false,
+    withDropdownIcon: true,
+    withErrorIcon: true,
+    invalid: false,
+    required: false,
+    disabled: false,
     allowEmptySelection: false,
     placeholder: "Select a fruit",
     label: "Fruit",
@@ -124,11 +123,11 @@ export const WithOptionGroup: Story = {
   args: {
     variant: "outlined",
     size: "md",
-    hasDropdownIcon: true,
-    hasErrorIcon: true,
-    isInvalid: false,
-    isRequired: false,
-    isDisabled: false,
+    withDropdownIcon: true,
+    withErrorIcon: true,
+    invalid: false,
+    required: false,
+    disabled: false,
     allowEmptySelection: false,
     placeholder: "Select a food",
     label: "Food",

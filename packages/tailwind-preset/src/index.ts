@@ -4,55 +4,71 @@ import { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
 import animatePlugin from "tailwindcss-animate";
 
-import { PREDEFINED_THEMES } from "./themes";
-import { PartialTheme, PigmentOptions, PredefinedTheme } from "./types";
+import { PIGMENT_COLORS } from "./colors";
+import { createThemeResolver, DEFAULT_THEME_NAME, isValidTheme } from "./themes";
 import {
+  PigmentOptions,
+  PredefinedTheme,
+  ThemeTokens,
+  themeTokensShapeValue,
+  TokenKey,
+} from "./types";
+import {
+  ALPHA_COLOR_CSS_VAR_SUFFIX,
   createVarsFn,
   DARK_DATA_ATTR_SELECTOR,
-  flattenKebabCase,
+  flatten,
   getCssVarsPrefix,
+  isHexColor,
   isString,
+  removeDefaultSuffix,
+  rgbColorChannel,
+  runIfFn,
+  toKebabCase,
 } from "./utils";
 
-export default function preset(options: PigmentOptions | undefined = {}): Partial<Config> {
+export function pigmentPreset(options: PigmentOptions | undefined = {}): Partial<Config> {
   const cssVarPrefix = getCssVarsPrefix(options);
 
   const vars = createVarsFn(cssVarPrefix);
-
-  // The theme doesn't matter here, we only care about the object shape.
-  const themeShape = PREDEFINED_THEMES.base(vars);
+  const resolveTheme = createThemeResolver(vars);
 
   return {
     darkMode: ["class", DARK_DATA_ATTR_SELECTOR],
     theme: {
       extend: {
         fontFamily: {
-          sans: vars("typography.fontFamilySans"),
-          serif: vars("typography.fontFamilySerif"),
-          mono: vars("typography.fontFamilyMono"),
+          body: vars("typography.fontFamily.body"),
+          display: vars("typography.fontFamily.display"),
+          code: vars("typography.fontFamily.code"),
         },
         fontSize: {
           "2xs": ["10px", "14px"],
         },
-        spacing: {
-          13: "3.25rem",
-          15: "3.75rem",
+        colors: {
+          ...PIGMENT_COLORS,
+          ...Object.keys(flatten(themeTokensShapeValue.colors, "-")).reduce((acc, key) => {
+            const formattedKey = toKebabCase(removeDefaultSuffix(key));
+            acc[formattedKey] = `rgb(${vars(`colors-${key}` as TokenKey)} / <alpha-value>)`;
+            return acc;
+          }, {} as any),
+          "content-disabled": vars(ALPHA_COLOR_CSS_VAR_SUFFIX.contentDisabled as TokenKey),
+          "surface-disabled": vars(ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceDisabled as TokenKey),
+          "line-disabled": vars(ALPHA_COLOR_CSS_VAR_SUFFIX.lineDisabled as TokenKey),
+          "surface-highlighted-hover": vars(
+            ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceHighlightedHover as TokenKey
+          ),
+          "surface-highlighted-active": vars(
+            ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceHighlightedActive as TokenKey
+          ),
         },
-        colors: flattenKebabCase(
-          themeShape.light.colors,
-          // Don't support Tailwind opacity modifier since token value can be anything.
-          prefixedKey => `var(--${prefixedKey})`,
-          "",
-          `${cssVarPrefix}colors-`,
-          ""
-        ),
-        boxShadow: flattenKebabCase(
-          themeShape.light.shadows,
-          prefixedKey => `var(--${prefixedKey})`,
-          "",
-          `${cssVarPrefix}shadows-`,
-          ""
-        ),
+        boxShadow: {
+          ...Object.keys(flatten(themeTokensShapeValue.shadows, "-")).reduce((acc, key) => {
+            const formattedKey = toKebabCase(removeDefaultSuffix(key));
+            acc[formattedKey] = vars(`shadows-${key}` as TokenKey);
+            return acc;
+          }, {} as any),
+        },
         data: {
           "placeholder-shown": "placeholder-shown",
         },
@@ -61,27 +77,35 @@ export default function preset(options: PigmentOptions | undefined = {}): Partia
     plugins: [
       animatePlugin,
       kobaltePlugin,
-      plugin(({ addBase, addUtilities, theme }) => {
-        const themes: Array<[PredefinedTheme | string, PartialTheme]> = [];
+      plugin(({ addBase, addUtilities }) => {
+        const themes: Array<[PredefinedTheme | string, ThemeTokens]> = [];
+
+        const cssVarName = (key: string) => {
+          return `--${cssVarPrefix}${toKebabCase(removeDefaultSuffix(key))}`;
+        };
 
         if (options.themes != null && options?.themes.length > 0) {
           options?.themes.forEach(theme => {
             if (isString(theme)) {
-              // Add the predefined theme.
-              themes.push([theme, PREDEFINED_THEMES[theme](vars)]);
-            } else if (theme.extend != null) {
+              // Add the predefined theme if exists.
+              if (isValidTheme(theme)) {
+                themes.push([theme, resolveTheme(theme)]);
+              }
+            } else if ("extend" in theme) {
               // Create a custom theme by extending a predefined theme.
-              const mergedTheme = { value: PREDEFINED_THEMES[theme.extend](vars) };
-              dset(mergedTheme, "value", theme.tokens(vars));
-              themes.push([theme.name, mergedTheme.value]);
+              if (isValidTheme(theme.extend)) {
+                const mergedTheme = { value: resolveTheme(theme.extend) };
+                dset(mergedTheme, "value", runIfFn(theme.tokens, vars));
+                themes.push([theme.name, mergedTheme.value]);
+              }
             } else {
               // Create a custom theme from scratch.
-              themes.push([theme.name, theme.tokens(vars)]);
+              themes.push([theme.name, runIfFn(theme.tokens, vars)]);
             }
           });
         } else {
-          // Fallback to base theme.
-          themes.push(["base", PREDEFINED_THEMES.base(vars)]);
+          // Fallback to default theme.
+          themes.push([DEFAULT_THEME_NAME, resolveTheme(DEFAULT_THEME_NAME)]);
         }
 
         themes.forEach(([name, theme], index) => {
@@ -98,31 +122,61 @@ export default function preset(options: PigmentOptions | undefined = {}): Partia
 
           addBase({
             [lightThemeSelector]: {
-              ...flattenKebabCase(
-                theme.common ?? {},
-                (_, value) => value,
-                `--${cssVarPrefix}`,
-                cssVarPrefix,
-                ""
-              ),
-              ...flattenKebabCase(
-                theme.light ?? {},
-                (_, value) => value,
-                `--${cssVarPrefix}`,
-                cssVarPrefix,
-                ""
-              ),
+              ...(
+                Object.entries(flatten(theme.common ?? {}, "-")) as Array<[string, string]>
+              ).reduce((acc, [key, value]) => {
+                acc[cssVarName(key)] = value;
+                return acc;
+              }, {} as any),
+              ...(
+                Object.entries(flatten(theme.light ?? {}, "-")) as Array<[string, string]>
+              ).reduce((acc, [key, value]) => {
+                acc[cssVarName(key)] = isHexColor(value) ? rgbColorChannel(value) : value;
+                return acc;
+              }, {} as any),
+              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.contentDisabled)]: `rgb(${vars(
+                "colors.neutral.950"
+              )} / 0.3)`,
+              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceDisabled)]: `rgb(${vars(
+                "colors.neutral.950"
+              )} / 0.03)`,
+              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.lineDisabled)]: `rgb(${vars(
+                "colors.neutral.950"
+              )} / 0.06)`,
+              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceHighlightedHover)]: `rgb(${vars(
+                "colors.neutral.950"
+              )} / 0.06)`,
+              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceHighlightedActive)]: `rgb(${vars(
+                "colors.neutral.950"
+              )} / 0.14)`,
             },
           });
 
           addBase({
-            [darkThemeSelector]: flattenKebabCase(
-              theme.dark ?? {},
-              (_, value) => value,
-              `--${cssVarPrefix}`,
-              cssVarPrefix,
-              ""
-            ),
+            [darkThemeSelector]: {
+              ...(Object.entries(flatten(theme.dark ?? {}, "-")) as Array<[string, string]>).reduce(
+                (acc, [key, value]) => {
+                  acc[cssVarName(key)] = isHexColor(value) ? rgbColorChannel(value) : value;
+                  return acc;
+                },
+                {} as any
+              ),
+              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.contentDisabled)]: `rgb(${vars(
+                "colors.neutral.300"
+              )} / 0.3)`,
+              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceDisabled)]: `rgb(${vars(
+                "colors.neutral.300"
+              )} / 0.04)`,
+              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.lineDisabled)]: `rgb(${vars(
+                "colors.neutral.300"
+              )} / 0.08)`,
+              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceHighlightedHover)]: `rgb(${vars(
+                "colors.neutral.300"
+              )} / 0.08)`,
+              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceHighlightedActive)]: `rgb(${vars(
+                "colors.neutral.300"
+              )} / 0.16)`,
+            },
           });
         });
 
@@ -132,8 +186,8 @@ export default function preset(options: PigmentOptions | undefined = {}): Partia
           },
           body: {
             // Use theme background and foreground colors.
-            backgroundColor: theme("colors.body"),
-            color: theme("colors.content"),
+            backgroundColor: `rgb(${vars("colors.surface.body")})`,
+            color: `rgb(${vars("colors.content.DEFAULT")})`,
           },
         });
 
@@ -152,4 +206,5 @@ export default function preset(options: PigmentOptions | undefined = {}): Partia
   };
 }
 
-export * from "./types";
+export { PIGMENT_COLORS } from "./colors";
+export type { CustomTheme, PigmentOptions } from "./types";

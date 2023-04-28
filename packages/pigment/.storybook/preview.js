@@ -6,6 +6,8 @@ import { themes } from "@storybook/theming";
 
 import { render } from "solid-js/web";
 
+import { ThemeProvider } from "../src";
+
 let disposeStory;
 
 export const decorators = [
@@ -14,7 +16,7 @@ export const decorators = [
 
     const solidRoot = document.createElement("div");
 
-    disposeStory = render(Story, solidRoot);
+    disposeStory = render(() => ThemeProvider({ children: Story }), solidRoot);
 
     return solidRoot;
   },

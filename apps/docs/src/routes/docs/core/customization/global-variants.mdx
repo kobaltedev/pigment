@@ -59,7 +59,7 @@ Pigment's `solid` and `soft` selection variants are intended for elements in a s
       options={["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"]}
       placeholder="Select"
     />
-    <Checkbox label="Checkbox" defaultIsChecked class="self-center" />
+    <Checkbox label="Checkbox" defaultChecked class="self-center" />
   </div>
 </Preview>
 
@@ -70,26 +70,26 @@ The `disabled` state variant is intended for elements in a disabled state.
 <Preview isRounded>
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
     <div class="flex items-center gap-2.5">
-      <Button variant="solid" isDisabled class="grow">
+      <Button variant="solid" disabled class="grow">
         Button
       </Button>
-      <Button variant="soft" isDisabled class="grow">
+      <Button variant="soft" disabled class="grow">
         Button
       </Button>
     </div>
     <div class="flex items-center gap-2.5">
-      <Button variant="outlined" isDisabled class="grow">
+      <Button variant="outlined" disabled class="grow">
         Button
       </Button>
-      <Button variant="ghost" isDisabled class="grow">
+      <Button variant="ghost" disabled class="grow">
         Button
       </Button>
     </div>
-    <TextField variant="soft" placeholder="TextField" isDisabled />
-    <TextField variant="outlined" placeholder="TextField" isDisabled />
-    <Select variant="soft" placeholder="Select" isDisabled />
-    <Select variant="outlined" placeholder="Select" isDisabled />
-    <Checkbox variant="soft" label="Checkbox" isDisabled />
-    <Checkbox variant="outlined" label="Checkbox" isDisabled />
+    <TextField variant="soft" placeholder="TextField" disabled />
+    <TextField variant="outlined" placeholder="TextField" disabled />
+    <Select variant="soft" placeholder="Select" disabled />
+    <Select variant="outlined" placeholder="Select" disabled />
+    <Checkbox variant="soft" label="Checkbox" disabled />
+    <Checkbox variant="outlined" label="Checkbox" disabled />
   </div>
 </Preview>

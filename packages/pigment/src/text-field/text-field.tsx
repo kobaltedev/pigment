@@ -12,16 +12,10 @@ import {
 
 import { ExclamationCircleIcon } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme";
-import { cn } from "../utils/cn";
 import { makeStaticClass } from "../utils/make-static-class";
+import { runIfFn } from "../utils/run-if-fn";
 import { TextFieldProps, TextFieldSlots } from "./text-field.props";
-import {
-  textFieldControlVariants,
-  textFieldInputVariants,
-  textFieldLabelVariants,
-  textFieldSupportTextVariants,
-  textFieldTextAreaVariants,
-} from "./text-field.styles";
+import { textFieldStyles } from "./text-field.styles";
 
 const textFieldStaticClass = makeStaticClass<TextFieldSlots>("text-field");
 
@@ -30,12 +24,12 @@ export function TextField(props: TextFieldProps) {
     "TextField",
     {
       type: "text",
-      hasRequiredIndicator: true,
-      hasErrorIcon: true,
+      withRequiredIndicator: true,
+      withErrorIcon: true,
       variant: "outlined",
       size: "md",
-      isInvalid: false,
-      isDisabled: false,
+      invalid: false,
+      disabled: false,
       inputProps: {},
       errorIcon: (() => <ExclamationCircleIcon />) as unknown as JSX.Element,
     },
@@ -54,17 +48,17 @@ export function TextField(props: TextFieldProps) {
       "type",
       "placeholder",
       "inputProps",
-      "isMultiline",
+      "multiline",
       "label",
       "description",
       "error",
-      "hasRequiredIndicator",
-      "hasErrorIcon",
+      "withRequiredIndicator",
+      "withErrorIcon",
       "errorIcon",
       "startDecorator",
       "endDecorator",
     ],
-    ["variant", "size", "isInvalid", "isDisabled"]
+    ["variant", "size", "invalid", "disabled"]
   );
 
   const { direction } = useLocale();
@@ -73,41 +67,43 @@ export function TextField(props: TextFieldProps) {
 
   const [isFocused, setIsFocused] = createSignal(false);
 
-  const label = createMemo(() => local.label);
-  const description = createMemo(() => local.description);
-  const error = createMemo(() => local.error);
-  const errorIcon = createMemo(() => local.errorIcon);
+  const label = createMemo(() => runIfFn(local.label));
+  const description = createMemo(() => runIfFn(local.description));
+  const error = createMemo(() => runIfFn(local.error));
+  const errorIcon = createMemo(() => runIfFn(local.errorIcon));
 
   const showDescription = () => {
-    return !variantProps.isInvalid && description();
+    return !variantProps.invalid && description();
   };
 
   const showError = () => {
-    return variantProps.isInvalid && error();
+    return variantProps.invalid && error();
   };
 
   const leftDecorator = createMemo(() => {
-    return isRtl() ? local.endDecorator : local.startDecorator;
+    return runIfFn(isRtl() ? local.endDecorator : local.startDecorator);
   });
 
   const rightDecorator = createMemo(() => {
-    return isRtl() ? local.startDecorator : local.endDecorator;
+    return runIfFn(isRtl() ? local.startDecorator : local.endDecorator);
   });
 
   const variantProps = mergeProps(
     {
-      get hasLeftDecorator() {
+      get withLeftDecorator() {
         return leftDecorator() != null;
       },
-      get hasRightDecorator() {
+      get withRightDecorator() {
         return rightDecorator() != null;
       },
-      get isFocused() {
+      get focused() {
         return isFocused();
       },
     },
     partialVariantProps
   );
+
+  const styles = createMemo(() => textFieldStyles(variantProps));
 
   const onInputFocus: JSX.FocusEventHandlerUnion<HTMLInputElement, FocusEvent> = e => {
     callHandler<any, FocusEvent>(e, local.inputProps?.onFocus as any);
@@ -121,28 +117,26 @@ export function TextField(props: TextFieldProps) {
 
   return (
     <KTextField.Root
-      class={cn(
-        "group flex flex-col",
-        textFieldStaticClass("root"),
-        themeClasses.root,
-        local.slotClasses?.root,
-        local.class
-      )}
-      validationState={variantProps.isInvalid ? "invalid" : undefined}
-      isDisabled={variantProps.isDisabled}
+      class={styles().root({
+        class: [
+          textFieldStaticClass("root"),
+          themeClasses.root,
+          local.slotClasses?.root,
+          local.class,
+        ],
+      })}
+      validationState={variantProps.invalid ? "invalid" : undefined}
+      disabled={variantProps.disabled}
       {...others}
     >
       <Show when={label()}>
         <KTextField.Label
-          class={cn(
-            textFieldLabelVariants(variantProps),
-            textFieldStaticClass("label"),
-            themeClasses.label,
-            local.slotClasses?.label
-          )}
+          class={styles().label({
+            class: [textFieldStaticClass("label"), themeClasses.label, local.slotClasses?.label],
+          })}
         >
           {label()}
-          <Show when={local.hasRequiredIndicator && others.isRequired}>
+          <Show when={local.withRequiredIndicator && others.required}>
             <span class="text-content-danger ui-group-disabled:text-content-disabled ml-0.5">
               *
             </span>
@@ -150,31 +144,33 @@ export function TextField(props: TextFieldProps) {
         </KTextField.Label>
       </Show>
       <Show
-        when={!local.isMultiline}
+        when={!local.multiline}
         fallback={
           <KTextField.TextArea
             {...(local.inputProps as ComponentProps<"textarea">)}
             ref={local.ref as HTMLTextAreaElement}
             id={local.id}
             placeholder={local.placeholder}
-            //autoResize
-            class={cn(
-              textFieldTextAreaVariants(variantProps),
-              textFieldStaticClass("input"),
-              themeClasses.input,
-              local.slotClasses?.input,
-              local.inputProps?.class
-            )}
+            autoResize
+            class={styles().textArea({
+              class: [
+                textFieldStaticClass("input"),
+                themeClasses.input,
+                local.slotClasses?.input,
+                local.inputProps?.class,
+              ],
+            })}
           />
         }
       >
         <div
-          class={cn(
-            textFieldControlVariants(variantProps),
-            textFieldStaticClass("control"),
-            themeClasses.control,
-            local.slotClasses?.control
-          )}
+          class={styles().control({
+            class: [
+              textFieldStaticClass("control"),
+              themeClasses.control,
+              local.slotClasses?.control,
+            ],
+          })}
         >
           {leftDecorator()}
           <KTextField.Input
@@ -183,13 +179,14 @@ export function TextField(props: TextFieldProps) {
             id={local.id}
             type={local.type}
             placeholder={local.placeholder}
-            class={cn(
-              textFieldInputVariants(variantProps),
-              textFieldStaticClass("input"),
-              themeClasses.input,
-              local.slotClasses?.input,
-              local.inputProps?.class
-            )}
+            class={styles().input({
+              class: [
+                textFieldStaticClass("input"),
+                themeClasses.input,
+                local.slotClasses?.input,
+                local.inputProps?.class,
+              ],
+            })}
             onFocus={onInputFocus}
             onBlur={onInputBlur}
           />
@@ -198,36 +195,39 @@ export function TextField(props: TextFieldProps) {
       </Show>
       <Show when={showDescription()}>
         <KTextField.Description
-          class={cn(
-            "text-content-subtler",
-            textFieldSupportTextVariants(variantProps),
-            textFieldStaticClass("description"),
-            themeClasses.description,
-            local.slotClasses?.description
-          )}
+          class={styles().supportText({
+            class: [
+              "text-content-subtler",
+              textFieldStaticClass("description"),
+              themeClasses.description,
+              local.slotClasses?.description,
+            ],
+          })}
         >
           {description()}
         </KTextField.Description>
       </Show>
       <Show when={showError()}>
         <KTextField.ErrorMessage
-          class={cn(
-            "flex items-center gap-x-1 text-content-danger",
-            textFieldSupportTextVariants(variantProps),
-            textFieldStaticClass("error"),
-            themeClasses.error,
-            local.slotClasses?.error
-          )}
+          class={styles().supportText({
+            class: [
+              "flex items-center gap-x-1 text-content-danger",
+              textFieldStaticClass("error"),
+              themeClasses.error,
+              local.slotClasses?.error,
+            ],
+          })}
         >
-          <Show when={local.hasErrorIcon} fallback={error()}>
+          <Show when={local.withErrorIcon} fallback={error()}>
             <span
               aria-hidden="true"
-              class={cn(
-                "reset-svg",
-                textFieldStaticClass("errorIcon"),
-                themeClasses.errorIcon,
-                local.slotClasses?.errorIcon
-              )}
+              class={styles().errorIcon({
+                class: [
+                  textFieldStaticClass("errorIcon"),
+                  themeClasses.errorIcon,
+                  local.slotClasses?.errorIcon,
+                ],
+              })}
             >
               {errorIcon()}
             </span>

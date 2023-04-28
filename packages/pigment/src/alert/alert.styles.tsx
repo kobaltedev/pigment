@@ -1,95 +1,86 @@
-import { cva, VariantProps } from "class-variance-authority";
+import { tv, VariantProps } from "tailwind-variants";
 
-export const alertVariants = cva(["flex space-x-1.5 py-3 border border-solid rounded-md text-sm"], {
+import { getGlobalVariantClasses, SEMANTIC_COLOR_VARIANTS } from "../theme/variants";
+
+const alertVariants = ["solid", "soft"] as const;
+
+export const alertStyles = tv({
+  slots: {
+    root: "flex space-x-1.5 py-3 border border-solid rounded-alert text-sm",
+    content: "flex grow",
+    icon: "flex justify-center items-center shrink-0 reset-svg h-7 w-7 text-xl leading-none",
+    title: "font-semibold",
+    description: "grow",
+    dismissButton: "shrink-0",
+  },
   variants: {
     variant: {
-      solid: "",
-      soft: "",
+      solid: {},
+      soft: {},
     },
-    status: {
-      neutral: "",
-      success: "",
-      info: "",
-      warning: "",
-      danger: "",
+    color: {
+      primary: {},
+      neutral: {},
+      success: {},
+      info: {},
+      warning: {},
+      danger: {},
     },
-    hasIcon: {
-      true: "pl-2",
-      false: "pl-4",
+    rounded: {
+      xs: {
+        root: "rounded-sm",
+      },
+      sm: {
+        root: "rounded-md",
+      },
+      md: {
+        root: "rounded-lg",
+      },
+      lg: {
+        root: "rounded-xl",
+      },
+      xl: {
+        root: "rounded-2xl",
+      },
     },
-    isDismissible: {
-      true: "pr-2",
-      false: "pr-4",
+    withIcon: {
+      true: {
+        root: "pl-3",
+      },
+      false: {
+        root: "pl-4",
+      },
     },
-    isMultiline: {
-      true: "items-start",
-      false: "items-center",
+    dismissible: {
+      true: {
+        root: "pr-3",
+      },
+      false: {
+        root: "pr-4",
+      },
+    },
+    multiline: {
+      true: {
+        root: "items-start",
+        content: "flex-col space-y-1 py-1",
+      },
+      false: {
+        root: "items-center",
+        content: "flex-row items-center space-x-1",
+      },
     },
   },
   compoundVariants: [
-    // solid + colors
-    {
-      variant: "solid",
-      status: "neutral",
-      class: "text-solid-neutral-content bg-solid-neutral-surface border-solid-neutral-line",
-    },
-    {
-      variant: "solid",
-      status: "success",
-      class: "text-solid-success-content bg-solid-success-surface border-solid-success-line",
-    },
-    {
-      variant: "solid",
-      status: "info",
-      class: "text-solid-info-content bg-solid-info-surface border-solid-info-line",
-    },
-    {
-      variant: "solid",
-      status: "warning",
-      class: "text-solid-warning-content bg-solid-warning-surface border-solid-warning-line",
-    },
-    {
-      variant: "solid",
-      status: "danger",
-      class: "text-solid-danger-content bg-solid-danger-surface border-solid-danger-line",
-    },
-
-    // soft + colors
-    {
-      variant: "soft",
-      status: "neutral",
-      class: "text-soft-neutral-content bg-soft-neutral-surface border-soft-neutral-line",
-    },
-    {
-      variant: "soft",
-      status: "success",
-      class: "text-soft-success-content bg-soft-success-surface border-soft-success-line",
-    },
-    {
-      variant: "soft",
-      status: "info",
-      class: "text-soft-info-content bg-soft-info-surface border-soft-info-line",
-    },
-    {
-      variant: "soft",
-      status: "warning",
-      class: "text-soft-warning-content bg-soft-warning-surface border-soft-warning-line",
-    },
-    {
-      variant: "soft",
-      status: "danger",
-      class: "text-soft-danger-content bg-soft-danger-surface border-soft-danger-line",
-    },
+    ...alertVariants.flatMap(variant =>
+      SEMANTIC_COLOR_VARIANTS.map(color => ({
+        variant,
+        color,
+        class: {
+          root: getGlobalVariantClasses(variant, color).base,
+        },
+      }))
+    ),
   ],
 });
 
-export const alertContentVariants = cva("flex grow", {
-  variants: {
-    isMultiline: {
-      true: "flex-col space-y-1 py-1",
-      false: "flex-row items-center space-x-1",
-    },
-  },
-});
-
-export type AlertVariants = VariantProps<typeof alertVariants>;
+export type AlertVariants = VariantProps<typeof alertStyles>;

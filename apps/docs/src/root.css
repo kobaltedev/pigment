@@ -40,7 +40,7 @@
   }
 
   .pg-table .pg-code {
-    @apply bg-transparent dark:bg-transparent p-0 text-blue-600 dark:text-blue-300 whitespace-nowrap;
+    @apply bg-transparent dark:bg-transparent p-0 text-primary-600 dark:text-primary-300 whitespace-nowrap;
   }
 
   .pg-table td {
@@ -61,6 +61,14 @@
     border-top-left-radius: 0;
   }
 
+  .pg-headline-keyword {
+    @apply text-content-primary;
+  }
+
+  [data-pg-theme='moon'] .pg-headline-keyword {
+    @apply text-primary-500;
+  }
+
   pre.pg-hljs .pg-copy-btn {
     opacity: 0;
   }
@@ -68,6 +76,8 @@
   pre.pg-hljs:hover .pg-copy-btn {
     opacity: 1;
   }
+
+
 }
 
 /* -------------------------------------------------------------------------------------------------

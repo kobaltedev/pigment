@@ -2,7 +2,7 @@ import { TextField as KTextField } from "@kobalte/core";
 import { ComponentProps, JSX, Ref } from "solid-js";
 
 import { SlotProp } from "../utils/slot";
-import { TextFieldControlVariants } from "./text-field.styles";
+import { TextFieldVariants } from "./text-field.styles";
 
 export type TextFieldSlots =
   | "root"
@@ -15,7 +15,7 @@ export type TextFieldSlots =
 
 export interface TextFieldProps
   extends Omit<KTextField.TextFieldRootProps, "ref" | "validationState">,
-    Omit<TextFieldControlVariants, "isFocused" | "isDisabled">,
+    Omit<TextFieldVariants, "focused" | "disabled">,
     SlotProp<TextFieldSlots> {
   /** A ref to the inner `<input>` or `<textarea>` element. */
   ref?: Ref<HTMLInputElement | HTMLTextAreaElement>;
@@ -30,29 +30,29 @@ export interface TextFieldProps
   inputProps?: ComponentProps<"input"> | ComponentProps<"textarea">;
 
   /** Whether the text field should render a `<textarea>` instead of an `<input>`. */
-  isMultiline?: boolean;
+  multiline?: boolean;
 
   /** The label that gives the user information on the text field. */
-  label?: JSX.Element;
+  label?: JSX.Element | (() => JSX.Element);
 
   /** The description that gives the user more information on the text field. */
-  description?: JSX.Element;
+  description?: JSX.Element | (() => JSX.Element);
 
   /** The error message that gives the user information about how to fix a validation error on the text field. */
-  error?: JSX.Element;
+  error?: JSX.Element | (() => JSX.Element);
 
   /** Whether an asterisk should appear next to the label when the text field is required. */
-  hasRequiredIndicator?: boolean;
+  withRequiredIndicator?: boolean;
 
   /** Whether an icon should appear next to the error message. */
-  hasErrorIcon?: boolean;
+  withErrorIcon?: boolean;
 
   /** The icon to show next to the error message. */
-  errorIcon?: JSX.Element;
+  errorIcon?: JSX.Element | (() => JSX.Element);
 
   /** The leading adornment of the text field. */
-  startDecorator?: JSX.Element;
+  startDecorator?: JSX.Element | (() => JSX.Element);
 
   /** The trailing adornment of the text field. */
-  endDecorator?: JSX.Element;
+  endDecorator?: JSX.Element | (() => JSX.Element);
 }

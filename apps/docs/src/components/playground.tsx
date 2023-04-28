@@ -15,18 +15,18 @@ export function Playground(props: PlaygroundProps) {
     <div class="not-prose flex flex-col rounded-lg">
       <div
         class={cn(
-          "not-prose flex flex-col lg:flex-row rounded-t-lg overflow-y-auto mt-4 border border-solid border-slate-200 dark:border-slate-700 dark:bg-[#121212]",
+          "not-prose flex flex-col lg:flex-row rounded-t-lg overflow-y-auto mt-4 border border-solid border-neutral-200 dark:border-neutral-700 dark:bg-[#121212]",
           local.class
         )}
         {...others}
       >
         <div class="flex items-center justify-center grow shrink p-4">{local.preview}</div>
-        <div class="flex flex-col space-y-4 border-solid border-slate-200 dark:border-slate-700 border-t lg:border-t-0 lg:border-l w-full lg:w-64 p-4">
+        <div class="flex flex-col space-y-4 border-solid border-neutral-200 dark:border-neutral-700 border-t lg:border-t-0 lg:border-l w-full lg:w-64 p-4">
           {local.children}
         </div>
       </div>
       <Highlight
-        class="rounded-b-lg dark:border dark:border-t-0 dark:border-solid dark:border-slate-700"
+        class="rounded-b-lg dark:border dark:border-t-0 dark:border-solid dark:border-neutral-700"
         language="tsx"
         code={local.snippet}
       />

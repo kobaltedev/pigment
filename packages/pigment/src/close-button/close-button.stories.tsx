@@ -10,19 +10,32 @@ export default {
   title: "CloseButton",
   argTypes: {
     size: {
-      options: ["sm", "md", "lg", "xl"],
+      options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
-    isDisabled: {
+    rounded: {
+      options: ["xs", "sm", "md", "lg", "xl"],
+      control: { type: "select" },
+    },
+    disabled: {
       control: { type: "boolean" },
     },
   },
-  render: props => <CloseButton {...props} />,
+  render: props => (
+    <div class="flex items-center space-x-4">
+      <CloseButton {...props} size="xs" />
+      <CloseButton {...props} size="sm" />
+      <CloseButton {...props} size="md" />
+      <CloseButton {...props} size="lg" />
+      <CloseButton {...props} size="xl" />
+    </div>
+  ),
 } as Meta<ComponentProps<typeof CloseButton>>;
 
 export const Default: Story = {
   args: {
     size: "md",
-    isDisabled: false,
+    rounded: "md",
+    disabled: false,
   },
 };

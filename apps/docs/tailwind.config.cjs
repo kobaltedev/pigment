@@ -1,5 +1,5 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
-const pigment = require("@kobalte/pigment-tailwind-preset");
+const twTheme = require('tailwindcss/defaultTheme')
+const { pigmentPreset } = require("@kobalte/pigment-tailwind-preset");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -10,7 +10,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        display: ["Lexend", ...defaultTheme.fontFamily.sans],
+        body: ["Inter", ...twTheme.fontFamily.sans],
+        display: ["Lexend", ...twTheme.fontFamily.sans],
       },
       maxWidth: {
         "8xl": "88rem",
@@ -18,45 +19,32 @@ module.exports = {
     },
   },
   presets: [
-    pigment({
+    pigmentPreset({
       themes: [
-        /** @type {import('@kobalte/pigment-tailwind-preset').CustomTheme} */
-        {
-          name: "docs",
-          extend: "base",
-          tokens: vars => ({
-            common: {
-              typography: {
-                fontFamilySans: `Inter, ${vars("typography.fontFamilyFallback")}`,
-              },
-            },
-          }),
-        },
+        "sapphire",
+        "emerald",
+        "sun",
+        "moon",
+        "scarlet",
+        "violet",
         /** @type {import('@kobalte/pigment-tailwind-preset').CustomTheme} */
         {
           name: "github",
-          tokens: vars => ({
-            common: {
-              typography: {
-                fontFamilySans: vars("typography.fontFamilyFallback"),
-              },
-            },
+          tokens: {
             light: {
               colors: {
-                solidPrimaryContent: "#ffffff",
-                solidPrimarySurface: "#2da44e",
-                solidPrimaryLine: "#1a1e2326",
-                solidPrimaryContentHover: "#ffffff",
-                solidPrimarySurfaceHover: "#2c974b",
-                solidPrimaryLineHover: "#1b1f2426",
-                solidPrimaryContentActive: "#ffffff",
-                solidPrimarySurfaceActive: "#298e46",
-                solidPrimaryLineActive: "#1b1f2426",
+                solid: {
+                  primary: {
+                    content: "#ffffff",
+                    surface: "#2da44e",
+                    surfaceHover: "#2c974b",
+                    surfaceActive: "#298e46",
+                  }
+                }
               },
             },
-          }),
+          },
         },
-        "base",
       ],
     }),
   ],

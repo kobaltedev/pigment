@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 
 import { InfoCircleIcon } from "../icons";
+import { SEMANTIC_COLOR_VARIANTS, VARIANT_VARIANTS } from "../theme/variants";
 import { LinkIconButton } from "./button";
 import { LinkIconButtonProps } from "./button.props";
 
@@ -11,25 +12,33 @@ export default {
   title: "LinkIconButton",
   argTypes: {
     variant: {
-      options: ["solid", "soft", "outlined", "ghost"],
+      options: ["default", ...VARIANT_VARIANTS],
       control: { type: "select" },
     },
     color: {
-      options: ["primary", "neutral", "success", "info", "warning", "danger"],
+      options: SEMANTIC_COLOR_VARIANTS,
       control: { type: "select" },
     },
     size: {
-      options: ["sm", "md", "lg", "xl"],
+      options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
-    isDisabled: {
+    rounded: {
+      options: ["xs", "sm", "md", "lg", "xl"],
+      control: { type: "select" },
+    },
+    disabled: {
       control: { type: "boolean" },
     },
     href: {
       control: { type: "text" },
     },
   },
-  render: props => <LinkIconButton {...props} aria-label="Go to Kobalte website" />,
+  render: props => (
+    <LinkIconButton {...props} aria-label="Go to Kobalte website">
+      <InfoCircleIcon />
+    </LinkIconButton>
+  ),
 } as Meta<ComponentProps<typeof LinkIconButton>>;
 
 export const Default: Story = {
@@ -37,8 +46,8 @@ export const Default: Story = {
     variant: "solid",
     color: "primary",
     size: "md",
-    isDisabled: false,
+    rounded: "md",
+    disabled: false,
     href: "https://kobalte.dev",
-    children: <InfoCircleIcon />,
   },
 };

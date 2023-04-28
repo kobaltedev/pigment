@@ -24,8 +24,8 @@ export const LoaderIcon = createLucideIcon(() => <path d="M21 12a9 9 0 1 1-6.219
 
 export const SelectorIcon = createLucideIcon(() => (
   <>
-    <path d="m7 15 5 5 5-5"></path>
-    <path d="m7 9 5-5 5 5"></path>
+    <path d="m7 15 5 5 5-5" />
+    <path d="m7 9 5-5 5 5" />
   </>
 ));
 
@@ -48,15 +48,24 @@ export const CrossIcon = createLucideIcon(() => (
   </>
 ));
 
+export const RocketIcon = createLucideIcon(() => (
+  <>
+    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+    <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+  </>
+));
+
 export const LifeBuoyIcon = createLucideIcon(() => (
   <>
-    <circle cx="12" cy="12" r="10"></circle>
-    <circle cx="12" cy="12" r="4"></circle>
-    <line x1="4.93" y1="4.93" x2="9.17" y2="9.17"></line>
-    <line x1="14.83" y1="14.83" x2="19.07" y2="19.07"></line>
-    <line x1="14.83" y1="9.17" x2="19.07" y2="4.93"></line>
-    <line x1="14.83" y1="9.17" x2="18.36" y2="5.64"></line>
-    <line x1="4.93" y1="19.07" x2="9.17" y2="14.83"></line>
+    <circle cx="12" cy="12" r="10" />
+    <circle cx="12" cy="12" r="4" />
+    <line x1="4.93" x2="9.17" y1="4.93" y2="9.17" />
+    <line x1="14.83" x2="19.07" y1="14.83" y2="19.07" />
+    <line x1="14.83" x2="19.07" y1="9.17" y2="4.93" />
+    <line x1="14.83" x2="18.36" y1="9.17" y2="5.64" />
+    <line x1="4.93" x2="9.17" y1="19.07" y2="14.83" />
   </>
 ));
 
@@ -85,24 +94,32 @@ export const ExclamationTriangleIcon = createLucideIcon(() => (
 
 export const ExclamationCircleIcon = createLucideIcon(() => (
   <>
-    <circle cx="12" cy="12" r="10"></circle>
-    <line x1="12" y1="8" x2="12" y2="12"></line>
-    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+    <circle cx="12" cy="12" r="10" />
+    <line x1="12" y1="8" x2="12" y2="12" />
+    <line x1="12" y1="16" x2="12.01" y2="16" />
+  </>
+));
+
+export const HelpCircleIcon = createLucideIcon(() => (
+  <>
+    <circle cx="12" cy="12" r="10" />
+    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+    <line x1="12" x2="12.01" y1="17" y2="17" />
   </>
 ));
 
 export const EyeIcon = createLucideIcon(() => (
   <>
-    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
-    <circle cx="12" cy="12" r="3"></circle>
+    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+    <circle cx="12" cy="12" r="3" />
   </>
 ));
 
 export const EyeOffIcon = createLucideIcon(() => (
   <>
-    <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
-    <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
-    <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
-    <line x1="2" y1="2" x2="22" y2="22"></line>
+    <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24" />
+    <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68" />
+    <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61" />
+    <line x1="2" y1="2" x2="22" y2="22" />
   </>
 ));

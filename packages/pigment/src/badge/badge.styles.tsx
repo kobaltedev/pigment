@@ -1,131 +1,90 @@
-import { cva, VariantProps } from "class-variance-authority";
+import { tv, VariantProps } from "tailwind-variants";
 
-export const badgeVariants = cva(
-  "inline-flex justify-center items-center rounded-full border border-solid font-medium",
-  {
-    variants: {
-      variant: {
-        solid: "",
-        soft: "",
-        outlined: "",
+import { getGlobalVariantClasses, SEMANTIC_COLOR_VARIANTS } from "../theme/variants";
+
+const badgeVariants = ["solid", "soft", "outlined"] as const;
+
+export const badgeStyles = tv({
+  slots: {
+    root: "inline-flex justify-center items-center border border-solid font-medium",
+  },
+  variants: {
+    variant: {
+      solid: {},
+      soft: {},
+      outlined: {},
+    },
+    color: {
+      primary: {},
+      neutral: {},
+      success: {},
+      info: {},
+      warning: {},
+      danger: {},
+    },
+    size: {
+      xs: {
+        root: "h-5 text-xs",
       },
-      color: {
-        primary: "",
-        neutral: "",
-        success: "",
-        info: "",
-        warning: "",
-        danger: "",
+      sm: {
+        root: "h-6 text-xs",
       },
-      size: {
-        sm: "h-5 px-2 text-xs",
-        md: "h-6 px-2.5 text-sm",
-        lg: "h-7 px-3 text-base",
+      md: {
+        root: "h-7 text-sm",
+      },
+      lg: {
+        root: "h-8 text-sm",
+      },
+      xl: {
+        root: "h-9 text-base",
       },
     },
-    compoundVariants: [
-      // solid + colors
-      {
-        variant: "solid",
-        color: "primary",
-        class: "text-solid-primary-content bg-solid-primary-surface border-solid-primary-line",
+    rounded: {
+      xs: {},
+      sm: {},
+      md: {},
+      lg: {},
+      xl: {},
+    },
+    circle: {
+      true: {
+        root: "p-0 rounded-full",
       },
-      {
-        variant: "solid",
-        color: "neutral",
-        class: "text-solid-neutral-content bg-solid-neutral-surface border-solid-neutral-line",
-      },
-      {
-        variant: "solid",
-        color: "success",
-        class: "text-solid-success-content bg-solid-success-surface border-solid-success-line",
-      },
-      {
-        variant: "solid",
-        color: "info",
-        class: "text-solid-info-content bg-solid-info-surface border-solid-info-line",
-      },
-      {
-        variant: "solid",
-        color: "warning",
-        class: "text-solid-warning-content bg-solid-warning-surface border-solid-warning-line",
-      },
-      {
-        variant: "solid",
-        color: "danger",
-        class: "text-solid-danger-content bg-solid-danger-surface border-solid-danger-line",
-      },
+      false: {},
+    },
+  },
+  compoundVariants: [
+    ...badgeVariants.flatMap(variant =>
+      SEMANTIC_COLOR_VARIANTS.map(color => ({
+        variant,
+        color,
+        class: {
+          root: getGlobalVariantClasses(variant, color).base,
+        },
+      }))
+    ),
 
-      // soft + colors
-      {
-        variant: "soft",
-        color: "primary",
-        class: "text-soft-primary-content bg-soft-primary-surface border-soft-primary-line",
-      },
-      {
-        variant: "soft",
-        color: "neutral",
-        class: "text-soft-neutral-content bg-soft-neutral-surface border-soft-neutral-line",
-      },
-      {
-        variant: "soft",
-        color: "success",
-        class: "text-soft-success-content bg-soft-success-surface border-soft-success-line",
-      },
-      {
-        variant: "soft",
-        color: "info",
-        class: "text-soft-info-content bg-soft-info-surface border-soft-info-line",
-      },
-      {
-        variant: "soft",
-        color: "warning",
-        class: "text-soft-warning-content bg-soft-warning-surface border-soft-warning-line",
-      },
-      {
-        variant: "soft",
-        color: "danger",
-        class: "text-soft-danger-content bg-soft-danger-surface border-soft-danger-line",
-      },
+    // not circle + rounded
+    { circle: false, rounded: "xs", class: { root: "rounded-sm" } },
+    { circle: false, rounded: "sm", class: { root: "rounded" } },
+    { circle: false, rounded: "md", class: { root: "rounded-md" } },
+    { circle: false, rounded: "lg", class: { root: "rounded-lg" } },
+    { circle: false, rounded: "xl", class: { root: "rounded-full" } },
 
-      // outlined + colors
-      {
-        variant: "outlined",
-        color: "primary",
-        class:
-          "text-outlined-primary-content bg-outlined-primary-surface border-outlined-primary-line",
-      },
-      {
-        variant: "outlined",
-        color: "neutral",
-        class:
-          "text-outlined-neutral-content bg-outlined-neutral-surface border-outlined-neutral-line",
-      },
-      {
-        variant: "outlined",
-        color: "success",
-        class:
-          "text-outlined-success-content bg-outlined-success-surface border-outlined-success-line",
-      },
-      {
-        variant: "outlined",
-        color: "info",
-        class: "text-outlined-info-content bg-outlined-info-surface border-outlined-info-line",
-      },
-      {
-        variant: "outlined",
-        color: "warning",
-        class:
-          "text-outlined-warning-content bg-outlined-warning-surface border-outlined-warning-line",
-      },
-      {
-        variant: "outlined",
-        color: "danger",
-        class:
-          "text-outlined-danger-content bg-outlined-danger-surface border-outlined-danger-line",
-      },
-    ],
-  }
-);
+    // size + not circle + padding
+    { size: "xs", circle: false, class: { root: "px-1.5" } },
+    { size: "sm", circle: false, class: { root: "px-2" } },
+    { size: "md", circle: false, class: { root: "px-2.5" } },
+    { size: "lg", circle: false, class: { root: "px-3" } },
+    { size: "xl", circle: false, class: { root: "px-3.5" } },
 
-export type BadgeVariants = VariantProps<typeof badgeVariants>;
+    // size + circle + width
+    { size: "xs", circle: true, class: { root: "w-5" } },
+    { size: "sm", circle: true, class: { root: "w-6" } },
+    { size: "md", circle: true, class: { root: "w-7" } },
+    { size: "lg", circle: true, class: { root: "w-8" } },
+    { size: "xl", circle: true, class: { root: "w-9" } },
+  ],
+});
+
+export type BadgeVariants = VariantProps<typeof badgeStyles>;

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 
+import { SEMANTIC_COLOR_VARIANTS } from "../theme/variants";
 import { Badge } from "./badge";
 import { BadgeProps } from "./badge.props";
 
@@ -14,30 +15,39 @@ export default {
       control: { type: "select" },
     },
     color: {
-      options: ["primary", "neutral", "success", "info", "warning", "danger"],
+      options: SEMANTIC_COLOR_VARIANTS,
       control: { type: "select" },
     },
     size: {
-      options: ["sm", "md", "lg"],
+      options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
+    },
+    rounded: {
+      options: ["xs", "sm", "md", "lg", "xl"],
+      control: { type: "select" },
+    },
+    circle: {
+      control: { type: "boolean" },
     },
   },
   render: props => (
-    <div class="flex items-center space-x-2">
-      <Badge {...props}>Badge</Badge>
-      <Badge {...props}>1</Badge>
-      <Badge {...props}>10</Badge>
-      <Badge {...props}>100</Badge>
-      <Badge {...props}>1000</Badge>
-      <Badge {...props}>+1000</Badge>
+    <div class="flex items-center space-x-4">
+      <Badge {...props} size="xs" />
+      <Badge {...props} size="sm" />
+      <Badge {...props} size="md" />
+      <Badge {...props} size="lg" />
+      <Badge {...props} size="xl" />
     </div>
   ),
 } as Meta<ComponentProps<typeof Badge>>;
 
 export const Default: Story = {
   args: {
-    variant: "soft",
-    color: "neutral",
-    size: "sm",
+    variant: "solid",
+    color: "primary",
+    size: "md",
+    rounded: "md",
+    circle: false,
+    children: "Badge",
   },
 };

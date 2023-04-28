@@ -1,11 +1,10 @@
 import { Polymorphic } from "@kobalte/core";
-import { splitProps } from "solid-js";
+import { createMemo, splitProps } from "solid-js";
 
 import { mergeThemeProps, useThemeClasses } from "../theme";
-import { cn } from "../utils/cn";
 import { makeStaticClass } from "../utils/make-static-class";
 import { BadgeProps, BadgeSlots } from "./badge.props";
-import { badgeVariants } from "./badge.styles";
+import { badgeStyles } from "./badge.styles";
 
 const badgeStaticClass = makeStaticClass<BadgeSlots>("badge");
 
@@ -13,9 +12,11 @@ export function Badge(props: BadgeProps) {
   props = mergeThemeProps(
     "Badge",
     {
-      variant: "soft",
-      color: "neutral",
+      variant: "solid",
+      color: "primary",
       size: "md",
+      rounded: "md",
+      circle: false,
     },
     props
   );
@@ -25,19 +26,17 @@ export function Badge(props: BadgeProps) {
   const [local, variantProps, others] = splitProps(
     props,
     ["class", "slotClasses"],
-    ["variant", "color", "size"]
+    ["variant", "color", "size", "rounded", "circle"]
   );
+
+  const styles = createMemo(() => badgeStyles(variantProps));
 
   return (
     <Polymorphic
-      fallback="span"
-      class={cn(
-        badgeVariants(variantProps),
-        badgeStaticClass("root"),
-        themeClasses.root,
-        local.slotClasses?.root,
-        local.class
-      )}
+      as="span"
+      class={styles().root({
+        class: [badgeStaticClass("root"), themeClasses.root, local.slotClasses?.root, local.class],
+      })}
       {...others}
     />
   );

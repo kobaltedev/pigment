@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 
 import { InfoCircleIcon } from "../icons";
+import { SEMANTIC_COLOR_VARIANTS, VARIANT_VARIANTS } from "../theme/variants";
 import { Button } from "./button";
 import { ButtonProps } from "./button.props";
 
@@ -11,24 +12,28 @@ export default {
   title: "Button",
   argTypes: {
     variant: {
-      options: ["solid", "soft", "outlined", "ghost"],
+      options: ["default", ...VARIANT_VARIANTS],
       control: { type: "select" },
     },
     color: {
-      options: ["primary", "neutral", "success", "info", "warning", "danger"],
+      options: SEMANTIC_COLOR_VARIANTS,
       control: { type: "select" },
     },
     size: {
-      options: ["sm", "md", "lg", "xl"],
+      options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "select" },
     },
-    isFullWidth: {
+    rounded: {
+      options: ["xs", "sm", "md", "lg", "xl"],
+      control: { type: "select" },
+    },
+    fullWidth: {
       control: { type: "boolean" },
     },
-    isLoading: {
+    loading: {
       control: { type: "boolean" },
     },
-    isDisabled: {
+    disabled: {
       control: { type: "boolean" },
     },
     loadingText: {
@@ -42,7 +47,15 @@ export default {
       control: { type: "text" },
     },
   },
-  render: props => <Button {...props} />,
+  render: props => (
+    <div class="flex items-center space-x-4">
+      <Button {...props} size="xs" />
+      <Button {...props} size="sm" />
+      <Button {...props} size="md" />
+      <Button {...props} size="lg" />
+      <Button {...props} size="xl" />
+    </div>
+  ),
 } as Meta<ComponentProps<typeof Button>>;
 
 export const Default: Story = {
@@ -50,9 +63,10 @@ export const Default: Story = {
     variant: "solid",
     color: "primary",
     size: "md",
-    isFullWidth: false,
-    isLoading: false,
-    isDisabled: false,
+    rounded: "md",
+    fullWidth: false,
+    loading: false,
+    disabled: false,
     loadingText: "",
     loadingIconPlacement: "start",
     children: "Button",
@@ -64,13 +78,14 @@ export const WithIcon: Story = {
     variant: "solid",
     color: "primary",
     size: "md",
-    isFullWidth: false,
-    isLoading: false,
-    isDisabled: false,
+    rounded: "md",
+    fullWidth: false,
+    loading: false,
+    disabled: false,
     loadingText: "",
     loadingIconPlacement: "start",
     children: "Button",
-    startIcon: <InfoCircleIcon />,
-    endIcon: <InfoCircleIcon />,
+    startIcon: () => <InfoCircleIcon />,
+    endIcon: () => <InfoCircleIcon />,
   },
 };

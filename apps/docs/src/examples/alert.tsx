@@ -1,20 +1,20 @@
 import { Alert, AlertProps, Checkbox, Select } from "@kobalte/pigment";
 import { createMemo, createSignal } from "solid-js";
 
-import { Playground } from "../components";
+import { BuoyIcon, Playground, RocketIcon } from "../components";
 
 export function WithPlayground() {
   const [variant, setVariant] = createSignal<AlertProps["variant"]>("soft");
-  const [status, setStatus] = createSignal<AlertProps["status"]>("info");
-  const [isDismissible, setIsDismissible] = createSignal(false);
-  const [isMultiline, setIsMultiline] = createSignal(false);
+  const [color, setColor] = createSignal<AlertProps["color"]>("info");
+  const [dismissible, setDismissible] = createSignal(false);
+  const [multiline, setMultiline] = createSignal(false);
 
   const snippet = createMemo(() => {
     return `<Alert
   variant="${variant()}"
-  status="${status()}"
-  isDismissible={${isDismissible()}}
-  isMultiline={${isMultiline()}}
+  color="${color()}"
+  dismissible={${dismissible()}}
+  multiline={${multiline()}}
   title="Software update."
 >
   A new software update is available.
@@ -26,9 +26,9 @@ export function WithPlayground() {
       preview={
         <Alert
           variant={variant()}
-          status={status()}
-          isDismissible={isDismissible()}
-          isMultiline={isMultiline()}
+          color={color()}
+          dismissible={dismissible()}
+          multiline={multiline()}
           title="Software update."
         >
           A new software update is available.
@@ -39,28 +39,24 @@ export function WithPlayground() {
       <Select
         label="Variant"
         value={variant()!}
-        onValueChange={setVariant}
+        onChange={setVariant}
         options={["solid", "soft"]}
       />
       <Select
-        label="Status"
-        value={status()!}
-        onValueChange={setStatus}
-        options={["neutral", "success", "info", "warning", "danger"]}
+        label="Color"
+        value={color()!}
+        onChange={setColor}
+        options={["neutral", "primary", "success", "info", "warning", "danger"]}
       />
-      <Checkbox
-        label="Dismissible"
-        isChecked={isDismissible()}
-        onCheckedChange={setIsDismissible}
-      />
-      <Checkbox label="Multiline" isChecked={isMultiline()} onCheckedChange={setIsMultiline} />
+      <Checkbox label="Dismissible" checked={dismissible()} onChange={setDismissible} />
+      <Checkbox label="Multiline" checked={multiline()} onChange={setMultiline} />
     </Playground>
   );
 }
 
 export function WithMultiline() {
   return (
-    <Alert variant="soft" status="info" title="Software update" isMultiline>
+    <Alert variant="soft" color="info" title="Software update" multiline>
       A new software update is available.
     </Alert>
   );
@@ -69,10 +65,10 @@ export function WithMultiline() {
 export function WithVariants() {
   return (
     <div class="flex flex-col space-y-4">
-      <Alert variant="solid" status="info" title="Software update.">
+      <Alert variant="solid" color="info" title="Software update.">
         A new software update is available.
       </Alert>
-      <Alert variant="soft" status="info" title="Software update.">
+      <Alert variant="soft" color="info" title="Software update.">
         A new software update is available.
       </Alert>
     </div>
@@ -82,49 +78,36 @@ export function WithVariants() {
 export function WithStatuses() {
   return (
     <div class="flex flex-col space-y-4">
-      <Alert variant="soft" status="neutral" title="Service temporarily unavailable.">
+      <Alert
+        variant="soft"
+        color="neutral"
+        title="Service temporarily unavailable."
+        icon={<BuoyIcon />}
+      >
         We are currently migrating our infrastructure.
       </Alert>
-      <Alert variant="soft" status="success" title="Well done.">
+      <Alert variant="soft" color="primary" title="Announcement." icon={<RocketIcon />}>
+        Pigment is going live soon, get ready!.
+      </Alert>
+      <Alert variant="soft" color="success" title="Well done.">
         The data has been successfully saved on our server.
       </Alert>
-      <Alert variant="soft" status="info" title="Software update.">
+      <Alert variant="soft" color="info" title="Software update.">
         A new software update is available.
       </Alert>
-      <Alert variant="soft" status="warning" title="Attention needed.">
+      <Alert variant="soft" color="warning" title="Attention needed.">
         Your registration token is about to expire.
       </Alert>
-      <Alert variant="soft" status="danger" title="Something went wrong.">
+      <Alert variant="soft" color="danger" title="Something went wrong.">
         There was an error processing your request.
       </Alert>
     </div>
   );
 }
 
-function RocketIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
-      <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
-      <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
-      <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
-    </svg>
-  );
-}
-
 export function WithCustomIcon() {
   return (
-    <Alert variant="soft" status="info" title="Software update" icon={<RocketIcon />}>
+    <Alert variant="soft" color="info" title="Software update" icon={<RocketIcon />}>
       A new software update is available.
     </Alert>
   );
@@ -134,9 +117,9 @@ export function WithDismissButton() {
   return (
     <Alert
       variant="soft"
-      status="info"
+      color="info"
       title="Software update."
-      isDismissible
+      dismissible
       dismissButtonLabel="Close"
       onDismiss={() => alert("dismissed")}
     >
