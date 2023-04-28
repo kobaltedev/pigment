@@ -1,6 +1,6 @@
 # @kobalte/pigment
 
-Ready to use UI components built with Kobalte and TailwindCSS.
+SolidJS implementation of Pigment, Kobalte's design language.
 
 ## Installation
 

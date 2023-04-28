@@ -2,7 +2,7 @@
   "name": "kobalte-pigment-monorepo",
   "version": "0.0.0",
   "private": true,
-  "description": "Ready to use UI components built with Kobalte and TailwindCSS.",
+  "description": "SolidJS implementation of Pigment, Kobalte's design language.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kobaltedev/pigment.git"

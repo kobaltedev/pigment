@@ -2,7 +2,7 @@
   "name": "@kobalte/pigment",
   "version": "0.0.0",
   "private": false,
-  "description": "Ready to use UI components built with Kobalte and TailwindCSS.",
+  "description": "SolidJS implementation of Pigment, Kobalte's design language.",
   "keywords": [
     "solid",
     "solidjs",

@@ -14,7 +14,7 @@
 
 > :warning: Pigment is not available yet on `npm`.
 
-Ready to use UI components built with Kobalte and TailwindCSS.
+SolidJS implementation of Pigment, Kobalte's design language.
 
 ## Documentation
 
