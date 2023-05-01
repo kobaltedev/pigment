@@ -14,9 +14,8 @@ export function CloseButton(props: CloseButtonProps) {
     "CloseButton",
     {
       size: "md",
-      rounded: "md",
       inheritTextColor: false,
-      disabled: false,
+      onSubtleBackground: false,
       children: (() => <TablerX />) as unknown as JSX.Element,
     },
     props
@@ -27,7 +26,7 @@ export function CloseButton(props: CloseButtonProps) {
   const [local, variantProps, others] = splitProps(
     props,
     ["class", "slotClasses", "aria-label"],
-    ["size", "rounded", "inheritTextColor", "disabled"]
+    ["size", "inheritTextColor", "onSubtleBackground"]
   );
 
   const styles = createMemo(() => {
@@ -48,7 +47,6 @@ export function CloseButton(props: CloseButtonProps) {
     <KButton.Root
       class={styles()}
       aria-label={local["aria-label"] || messageFormatter().format("dismiss")}
-      disabled={variantProps.disabled}
       {...others}
     />
   );

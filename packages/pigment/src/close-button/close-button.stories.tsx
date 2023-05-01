@@ -10,11 +10,7 @@ export default {
   title: "CloseButton",
   argTypes: {
     size: {
-      options: ["xs", "sm", "md", "lg", "xl"],
-      control: { type: "select" },
-    },
-    rounded: {
-      options: ["xs", "sm", "md", "lg", "xl"],
+      options: ["sm", "md"],
       control: { type: "select" },
     },
     disabled: {
@@ -22,12 +18,32 @@ export default {
     },
   },
   render: props => (
-    <div class="flex items-center space-x-4">
-      <CloseButton {...props} size="xs" />
-      <CloseButton {...props} size="sm" />
-      <CloseButton {...props} size="md" />
-      <CloseButton {...props} size="lg" />
-      <CloseButton {...props} size="xl" />
+    <div class="flex flex-col gap-4">
+      <div class="flex items-center space-x-4">
+        <CloseButton {...props} size="sm" />
+        <CloseButton {...props} size="md" />
+        <CloseButton {...props} size="lg" />
+      </div>
+      <div class="flex items-center space-x-4 text-content-on-danger bg-surface-danger">
+        <CloseButton {...props} size="sm" inheritTextColor />
+        <CloseButton {...props} size="md" inheritTextColor />
+        <CloseButton {...props} size="lg" inheritTextColor />
+      </div>
+      <div class="flex items-center space-x-4 text-content-on-danger-subtle bg-surface-danger-subtle">
+        <CloseButton {...props} size="sm" inheritTextColor onSubtleBackground />
+        <CloseButton {...props} size="md" inheritTextColor onSubtleBackground />
+        <CloseButton {...props} size="lg" inheritTextColor onSubtleBackground />
+      </div>
+      <div class="flex items-center space-x-4 text-content-on-warning bg-surface-warning">
+        <CloseButton {...props} size="sm" inheritTextColor />
+        <CloseButton {...props} size="md" inheritTextColor />
+        <CloseButton {...props} size="lg" inheritTextColor />
+      </div>
+      <div class="flex items-center space-x-4 text-content-on-warning-subtle bg-surface-warning-subtle">
+        <CloseButton {...props} size="sm" inheritTextColor onSubtleBackground />
+        <CloseButton {...props} size="md" inheritTextColor onSubtleBackground />
+        <CloseButton {...props} size="lg" inheritTextColor onSubtleBackground />
+      </div>
     </div>
   ),
 } as Meta<ComponentProps<typeof CloseButton>>;
@@ -35,7 +51,6 @@ export default {
 export const Default: Story = {
   args: {
     size: "md",
-    rounded: "md",
     disabled: false,
   },
 };

@@ -7,5 +7,5 @@ export type CloseButtonSlots = "root";
 
 export interface CloseButtonProps
   extends KButton.ButtonRootProps,
-    Omit<CloseButtonVariants, "disabled">,
+    CloseButtonVariants,
     SlotProp<CloseButtonSlots> {}
