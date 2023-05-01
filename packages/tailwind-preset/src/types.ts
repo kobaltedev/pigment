@@ -9,12 +9,6 @@ export type DeepPartial<T> = {
 };
 
 export const themeTokensShapeValue = {
-  typography: {
-    fontFamily: {
-      sans: "",
-      mono: "",
-    },
-  },
   colors: {
     content: {
       DEFAULT: "",
@@ -127,12 +121,7 @@ export const themeTokensShapeValue = {
 
 export type ColorSchemeTokens = Pick<typeof themeTokensShapeValue, "colors">;
 
-export type CommonTokens = Pick<typeof themeTokensShapeValue, "typography">;
-
 export interface ThemeTokens {
-  /** Color scheme independent tokens. */
-  common: CommonTokens;
-
   /** Light mode specific tokens. */
   light: ColorSchemeTokens;
 
@@ -142,7 +131,7 @@ export interface ThemeTokens {
 
 export type PartialThemeTokens = DeepPartial<ThemeTokens>;
 
-export type TokenKey = FlattenObjectKeys<ColorSchemeTokens> | FlattenObjectKeys<CommonTokens>;
+export type TokenKey = FlattenObjectKeys<ColorSchemeTokens>;
 
 /** A function to get the css variable of a token. */
 export type VarsFn = (token: TokenKey) => string;

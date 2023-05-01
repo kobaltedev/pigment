@@ -14,8 +14,6 @@ export function CloseButton(props: CloseButtonProps) {
     "CloseButton",
     {
       size: "md",
-      inheritTextColor: false,
-      onSubtleBackground: false,
       children: (() => <TablerX />) as unknown as JSX.Element,
     },
     props
@@ -26,7 +24,7 @@ export function CloseButton(props: CloseButtonProps) {
   const [local, variantProps, others] = splitProps(
     props,
     ["class", "slotClasses", "aria-label"],
-    ["size", "inheritTextColor", "onSubtleBackground"]
+    ["size"]
   );
 
   const styles = createMemo(() => {

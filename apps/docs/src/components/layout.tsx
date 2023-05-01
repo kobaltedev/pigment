@@ -39,16 +39,16 @@ export function Layout(props: LayoutProps) {
           <article>
             <Prose>{props.children}</Prose>
           </article>
-          <div class="mt-12 flex border-t border-neutral-200 pt-6 dark:border-neutral-800">
+          <div class="mt-12 flex border-t border-slate-200 pt-6 dark:border-slate-800">
             <Show when={previousPage()}>
               <dl>
-                <dt class="font-display text-sm font-medium text-neutral-900 dark:text-white">
+                <dt class="font-display text-sm font-medium text-slate-900 dark:text-white">
                   Previous
                 </dt>
                 <dd class="mt-1">
                   <Link
                     href={previousPage().href}
-                    class="text-base font-semibold text-neutral-500 hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-300"
+                    class="text-base font-semibold text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
                   >
                     <span aria-hidden="true" class="me-1">
                       &larr;
@@ -60,13 +60,13 @@ export function Layout(props: LayoutProps) {
             </Show>
             <Show when={nextPage()}>
               <dl class="ms-auto text-right">
-                <dt class="font-display text-sm font-medium text-neutral-900 dark:text-white">
+                <dt class="font-display text-sm font-medium text-slate-900 dark:text-white">
                   Next
                 </dt>
                 <dd class="mt-1">
                   <Link
                     href={nextPage().href}
-                    class="text-base font-semibold text-neutral-500 hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-300"
+                    class="text-base font-semibold text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
                   >
                     <span>{nextPage().title}</span>
                     <span aria-hidden="true" class="ms-1">

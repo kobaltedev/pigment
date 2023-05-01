@@ -35,10 +35,6 @@ export function pigment(options: PigmentOptions | undefined = {}): Partial<Confi
     darkMode: ["class", DARK_DATA_ATTR_SELECTOR],
     theme: {
       extend: {
-        fontFamily: {
-          sans: vars("typography.fontFamily.sans"),
-          mono: vars("typography.fontFamily.mono"),
-        },
         fontSize: {
           "2xs": ["10px", "14px"],
         },
@@ -103,12 +99,6 @@ export function pigment(options: PigmentOptions | undefined = {}): Partial<Confi
 
           addBase({
             [lightThemeSelector]: {
-              ...(
-                Object.entries(flatten(theme.common ?? {}, "-")) as Array<[string, string]>
-              ).reduce((acc, [key, value]) => {
-                acc[cssVarName(key)] = value;
-                return acc;
-              }, {} as any),
               ...(
                 Object.entries(flatten(theme.light ?? {}, "-")) as Array<[string, string]>
               ).reduce((acc, [key, value]) => {

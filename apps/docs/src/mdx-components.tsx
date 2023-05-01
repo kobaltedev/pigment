@@ -1,8 +1,9 @@
-import { cn, IconButton } from "@kobalte/pigment";
+import { IconButton } from "@kobalte/pigment";
 import { Title as MetaTitle } from "@solidjs/meta";
+import { clsx } from "clsx";
 import { ComponentProps, createSignal, Show, splitProps } from "solid-js";
 
-import { CheckIcon, CopyIcon } from "./components";
+import { TablerCheck, TablerClipboard } from "./components";
 
 export const mdxComponents = {
   h1: (props: ComponentProps<"h1">) => {
@@ -19,9 +20,9 @@ export const mdxComponents = {
     const [local, others] = splitProps(props, ["class"]);
 
     return (
-      <span class={cn(local.class, "not-prose")}>
+      <span class={clsx(local.class, "not-prose")}>
         <code
-          class="pg-code rounded text-neutral-800 bg-neutral-100 px-[0.4em] py-[0.2em] text-[0.9em] font-mono break-words dark:text-neutral-300 dark:bg-neutral-900/60"
+          class="pg-code rounded text-slate-800 bg-slate-100 px-[0.4em] py-[0.2em] text-[0.9em] font-mono break-words dark:text-slate-300 dark:bg-slate-900/60"
           {...others}
         />
       </span>
@@ -49,14 +50,13 @@ export const mdxComponents = {
       <pre ref={domRef} onMouseLeave={reset} {...others}>
         <IconButton
           aria-label="copy to clipboard"
-          variant="ghost"
-          color={isCopied() ? "success" : "neutral"}
+          variant="text"
           size="xs"
           class="pg-copy-btn absolute top-2 right-2 z-10"
           onClick={copyToClipboard}
         >
-          <Show when={isCopied()} fallback={<CopyIcon />}>
-            <CheckIcon />
+          <Show when={isCopied()} fallback={<TablerClipboard />}>
+            <TablerCheck />
           </Show>
         </IconButton>
         {local.children}
@@ -68,7 +68,7 @@ export const mdxComponents = {
 
     return (
       <div style={{ "overflow-x": "auto" }} class="mb-10">
-        <table class={cn(local.class, "pg-table !my-0")} {...others} />
+        <table class={clsx(local.class, "pg-table !my-0")} {...others} />
       </div>
     );
   },

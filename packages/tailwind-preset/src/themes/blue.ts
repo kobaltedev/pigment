@@ -1,18 +1,8 @@
-import twDefaultTheme from "tailwindcss/defaultTheme";
-
 import { colors } from "../colors";
 import { ThemeTokens } from "../types";
 
 /** Pigment default theme tokens. */
 export const blueTheme: ThemeTokens = {
-  common: {
-    typography: {
-      fontFamily: {
-        sans: twDefaultTheme.fontFamily.sans.join(", "),
-        mono: twDefaultTheme.fontFamily.mono.join(", "),
-      },
-    },
-  },
   light: {
     colors: {
       content: {
