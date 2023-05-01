@@ -1,7 +1,7 @@
 import { Button as KButton, COMMON_INTL_MESSAGES, createMessageFormatter } from "@kobalte/core";
 import { createMemo, JSX, splitProps } from "solid-js";
 
-import { CrossIcon } from "../icons";
+import { TablerX } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
 import { CloseButtonProps, CloseButtonSlots } from "./close-button.props";
@@ -17,7 +17,7 @@ export function CloseButton(props: CloseButtonProps) {
       rounded: "md",
       inheritTextColor: false,
       disabled: false,
-      children: (() => <CrossIcon />) as unknown as JSX.Element,
+      children: (() => <TablerX />) as unknown as JSX.Element,
     },
     props
   );

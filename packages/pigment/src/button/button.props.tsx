@@ -12,7 +12,7 @@ export type ButtonSlots = "root" | "startIcon" | "endIcon" | "loadingIcon";
 
 export interface ButtonBaseProps
   extends Omit<KButton.ButtonRootProps, "asChild" | "color">,
-    Omit<ButtonVariants, "disabled">,
+    ButtonVariants,
     SlotProp<ButtonSlots> {
   /** The label to show when the button is in a loading state. */
   loadingText?: string;
@@ -47,7 +47,7 @@ export interface ButtonProps extends Omit<ButtonBaseProps, "iconOnly"> {}
 export interface IconButtonProps
   extends Omit<
     ButtonBaseProps,
-    "iconOnly" | "loadingText" | "loadingIconPlacement" | "startIcon" | "endIcon" | "fullWidth"
+    "iconOnly" | "loadingText" | "loadingIconPlacement" | "startIcon" | "endIcon"
   > {}
 
 /* -------------------------------------------------------------------------------------------------
@@ -58,7 +58,7 @@ export type LinkButtonSlots = "root" | "startIcon" | "endIcon";
 
 export interface LinkButtonBaseProps
   extends Omit<KLink.LinkRootProps, "color">,
-    Omit<ButtonVariants, "loading" | "disabled">,
+    Omit<ButtonVariants, "loading">,
     SlotProp<LinkButtonSlots> {
   /** The icon to show before the link button content. */
   startIcon?: JSX.Element | (() => JSX.Element);
@@ -70,4 +70,4 @@ export interface LinkButtonBaseProps
 export interface LinkButtonProps extends Omit<LinkButtonBaseProps, "iconOnly"> {}
 
 export interface LinkIconButtonProps
-  extends Omit<LinkButtonBaseProps, "iconOnly" | "startIcon" | "endIcon" | "fullWidth"> {}
+  extends Omit<LinkButtonBaseProps, "iconOnly" | "startIcon" | "endIcon"> {}

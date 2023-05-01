@@ -8,123 +8,124 @@ export type DeepPartial<T> = {
   [P in keyof T]?: DeepPartial<T[P]>;
 };
 
-const semanticColorValues = ["neutral", "primary", "success", "info", "warning", "danger"] as const;
-
-export type SemanticColor = (typeof semanticColorValues)[number];
-
-const paletteRangeValues = [
-  "50",
-  "100",
-  "200",
-  "300",
-  "400",
-  "500",
-  "600",
-  "700",
-  "800",
-  "900",
-  "950",
-] as const;
-
-export type PaletteRange = (typeof paletteRangeValues)[number];
-
-function getGlobalVariantTokenShape<T extends string, U extends string>(
-  variants: readonly T[],
-  properties: readonly U[]
-) {
-  return variants.reduce((acc, color) => {
-    acc[color] = properties.reduce((acc, key) => {
-      acc[key] = "";
-      return acc;
-    }, {} as Record<U, string>);
-    return acc;
-  }, {} as Record<T, Record<U, string>>);
-}
-
-const ghostVariantProperties = [
-  "content",
-  "contentHover",
-  "surfaceHover",
-  "lineHover",
-  "contentActive",
-  "surfaceActive",
-  "lineActive",
-] as const;
-
-const outlinedVariantProperties = [...ghostVariantProperties, "line"] as const;
-
-const solidVariantProperties = [...outlinedVariantProperties, "surface"] as const;
-
 export const themeTokensShapeValue = {
   typography: {
     fontFamily: {
-      fallback: "",
-      body: "",
-      display: "",
-      code: "",
+      sans: "",
+      mono: "",
     },
   },
   colors: {
-    ...semanticColorValues.reduce((acc, color) => {
-      acc[color] = paletteRangeValues.reduce((acc, scale) => {
-        acc[scale] = "";
-        return acc;
-      }, {} as Record<PaletteRange, string>);
-      return acc;
-    }, {} as Record<SemanticColor, Record<PaletteRange, string>>),
-
-    ring: "",
-    line: "",
-    backdrop: "",
-    tooltip: "",
-
     content: {
       DEFAULT: "",
       subtle: "",
       subtler: "",
       subtlest: "",
-      inverse: "",
-      warningInverse: "",
+      disabled: "",
+      link: "",
+
       primary: "",
       success: "",
       info: "",
       warning: "",
       danger: "",
+      discovery: "",
+
+      onPrimary: "",
+      onNeutral: "",
+      onSuccess: "",
+      onInfo: "",
+      onWarning: "",
+      onDanger: "",
+      onDiscovery: "",
+
+      onPrimarySubtle: "",
+      onNeutralSubtle: "",
+      onSuccessSubtle: "",
+      onInfoSubtle: "",
+      onWarningSubtle: "",
+      onDangerSubtle: "",
+      onDiscoverySubtle: "",
     },
 
     surface: {
       DEFAULT: "",
       body: "",
-      raised: "",
       overlay: "",
-      sunken: "",
-    },
+      disabled: "",
+      tooltip: "",
 
-    solid: getGlobalVariantTokenShape(semanticColorValues, solidVariantProperties),
-    soft: getGlobalVariantTokenShape(semanticColorValues, solidVariantProperties),
-    outlined: getGlobalVariantTokenShape(semanticColorValues, outlinedVariantProperties),
-    ghost: getGlobalVariantTokenShape(semanticColorValues, ghostVariantProperties),
+      subtle: {
+        DEFAULT: "",
+        hover: "",
+        active: "",
+      },
 
-    accent: getGlobalVariantTokenShape(["solid", "soft"], solidVariantProperties),
-
-    input: {
-      ...getGlobalVariantTokenShape(["soft"], solidVariantProperties),
-      outlined: {
-        content: "",
-
-        line: "",
-        lineHover: "",
-        lineActive: "",
+      primary: {
+        DEFAULT: "",
+        hover: "",
+        active: "",
+        subtle: {
+          DEFAULT: "",
+          hover: "",
+          active: "",
+        },
+      },
+      neutral: {
+        DEFAULT: "",
+        hover: "",
+        active: "",
+        subtle: "",
+      },
+      success: {
+        DEFAULT: "",
+        hover: "",
+        active: "",
+        subtle: "",
+      },
+      info: {
+        DEFAULT: "",
+        hover: "",
+        active: "",
+        subtle: "",
+      },
+      warning: {
+        DEFAULT: "",
+        hover: "",
+        active: "",
+        subtle: "",
+      },
+      danger: {
+        DEFAULT: "",
+        hover: "",
+        active: "",
+        subtle: "",
+      },
+      discovery: {
+        DEFAULT: "",
+        hover: "",
+        active: "",
+        subtle: "",
       },
     },
-  },
-  shadows: {
-    raised: "",
-    overlay: "",
+
+    line: {
+      DEFAULT: "",
+      disabled: "",
+      primary: "",
+      neutral: "",
+      success: "",
+      info: "",
+      warning: "",
+      danger: "",
+      discovery: "",
+    },
+
+    ring: "",
   },
 };
 
-export type ColorSchemeTokens = Pick<typeof themeTokensShapeValue, "colors" | "shadows">;
+export type ColorSchemeTokens = Pick<typeof themeTokensShapeValue, "colors">;
 
 export type CommonTokens = Pick<typeof themeTokensShapeValue, "typography">;
 
@@ -146,9 +147,7 @@ export type TokenKey = FlattenObjectKeys<ColorSchemeTokens> | FlattenObjectKeys<
 /** A function to get the css variable of a token. */
 export type VarsFn = (token: TokenKey) => string;
 
-export type ThemeTokensGetter = (vars: VarsFn) => ThemeTokens;
-
-export type PredefinedTheme = "sapphire" | "emerald" | "sun" | "moon" | "scarlet" | "violet";
+export type PredefinedTheme = "blue";
 
 export interface ExtendedTheme {
   /** The name of the extended theme. */
@@ -158,7 +157,7 @@ export interface ExtendedTheme {
   extend: PredefinedTheme;
 
   /** The design tokens of the extended theme. */
-  tokens: PartialThemeTokens | ((vars: VarsFn) => PartialThemeTokens);
+  tokens: PartialThemeTokens;
 }
 
 export interface CustomTheme {
@@ -166,7 +165,7 @@ export interface CustomTheme {
   name: string;
 
   /** The design tokens of the custom theme. */
-  tokens: ThemeTokens | ((vars: VarsFn) => ThemeTokens);
+  tokens: ThemeTokens;
 }
 
 export interface PigmentOptions {

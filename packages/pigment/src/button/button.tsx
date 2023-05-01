@@ -2,7 +2,7 @@ import { Button as KButton, Link as KLink, useLocale } from "@kobalte/core";
 import { mergeDefaultProps } from "@kobalte/utils";
 import { ComponentProps, createMemo, JSX, Show, splitProps } from "solid-js";
 
-import { LoaderIcon } from "../icons";
+import { TablerLoader2 } from "../icons";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
 import { runIfFn } from "../utils/run-if-fn";
@@ -30,7 +30,7 @@ function ButtonIcon(props: ComponentProps<"span">) {
 function ButtonLoadingIcon(props: ComponentProps<"span">) {
   props = mergeDefaultProps(
     {
-      children: (() => <LoaderIcon class="animate-spin" />) as unknown as JSX.Element,
+      children: (() => <TablerLoader2 class="animate-spin" />) as unknown as JSX.Element,
     },
     props
   );
@@ -78,10 +78,8 @@ function ButtonBase(props: ButtonBaseProps) {
   props = mergeThemeProps(
     "Button",
     {
-      variant: "solid",
-      color: "primary",
+      variant: "default",
       size: "md",
-      rounded: "md",
       iconOnly: false,
       fullWidth: false,
       disabled: false,
@@ -104,7 +102,7 @@ function ButtonBase(props: ButtonBaseProps) {
       "startIcon",
       "endIcon",
     ],
-    ["variant", "color", "size", "rounded", "iconOnly", "fullWidth", "loading", "disabled"]
+    ["variant", "size", "iconOnly", "fullWidth", "loading"]
   );
 
   const styles = createMemo(() => buttonStyles(variantProps));
@@ -159,7 +157,6 @@ function ButtonBase(props: ButtonBaseProps) {
       class={styles().root({
         class: [buttonStaticClass("root"), themeClasses.root, local.slotClasses?.root, local.class],
       })}
-      disabled={variantProps.disabled}
       {...others}
     >
       <Show when={variantProps.loading} fallback={content()}>
@@ -205,10 +202,8 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
   props = mergeThemeProps(
     "LinkButton",
     {
-      variant: "solid",
-      color: "primary",
+      variant: "default",
       size: "md",
-      rounded: "md",
       iconOnly: false,
       fullWidth: false,
       disabled: false,
@@ -221,7 +216,7 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
   const [local, variantProps, others] = splitProps(
     props,
     ["class", "slotClasses", "children", "startIcon", "endIcon"],
-    ["variant", "color", "size", "rounded", "iconOnly", "fullWidth", "disabled"]
+    ["variant", "size", "iconOnly", "fullWidth"]
   );
 
   const { direction } = useLocale();
@@ -238,7 +233,6 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
           local.class,
         ],
       })}
-      disabled={variantProps.disabled}
       {...others}
     >
       <ButtonContent

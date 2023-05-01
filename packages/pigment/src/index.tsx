@@ -8,10 +8,10 @@ export * from "./color-scheme";
 export * from "./theme";
 
 // components
-export * from "./alert";
-export * from "./badge";
+//export * from "./alert";
+//export * from "./badge";
 export * from "./button";
-export * from "./checkbox";
+//export * from "./checkbox";
 export * from "./close-button";
-export * from "./select";
-export * from "./text-field";
+//export * from "./select";
+//export * from "./text-field";

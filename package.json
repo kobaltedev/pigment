@@ -2,7 +2,7 @@
   "name": "kobalte-pigment-monorepo",
   "version": "0.0.0",
   "private": true,
-  "description": "SolidJS implementation of Pigment, Kobalte's design language.",
+  "description": "An open source design system for building SolidJS application.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kobaltedev/pigment.git"

@@ -1,6 +1,6 @@
 # @kobalte/pigment
 
-SolidJS implementation of Pigment, Kobalte's design language.
+An open source design system for building SolidJS application.
 
 ## Installation
 
