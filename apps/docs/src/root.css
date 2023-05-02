@@ -131,9 +131,9 @@ pre.shiki {
   align-items: center;
 
   border-radius: 8px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid theme("colors.slate.200");
 
-  background-color: #f8fafc !important;
+  background-color: theme("colors.slate.50") !important;
 
   padding: 12px;
 
@@ -142,8 +142,8 @@ pre.shiki {
 }
 
 [data-pg-color-scheme="dark"] pre.shiki {
-  border-color: theme("colors.slate.700");
-  background-color: theme("colors.slate.800") !important;
+  border-color: theme("colors.slate.800");
+  background-color: theme("colors.slate.900") !important;
 }
 
 /* Reset mdx-components `code`. */

@@ -133,17 +133,6 @@ export function pigment(options: PigmentOptions | undefined = {}): Partial<Confi
             MozOsxFontSmoothing: "grayscale",
           },
         });
-
-        addUtilities({
-          ".reset-svg": {
-            "> svg": {
-              width: "1em",
-              height: "1em",
-              color: "currentColor",
-              lineHeight: "1em",
-            },
-          },
-        });
       }),
     ],
   };

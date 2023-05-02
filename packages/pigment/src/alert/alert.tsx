@@ -8,7 +8,7 @@ import {
   TablerHelpHexagon,
   TablerInfoSquareRounded,
   TablerLifebuoy,
-} from "../icons";
+} from "../icon";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
 import { runIfFn } from "../utils/run-if-fn";

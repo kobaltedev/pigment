@@ -2,7 +2,7 @@ import { Button as KButton, Link as KLink, useLocale } from "@kobalte/core";
 import { mergeDefaultProps } from "@kobalte/utils";
 import { ComponentProps, createMemo, JSX, Match, Show, splitProps, Switch } from "solid-js";
 
-import { TablerLoader2 } from "../icons";
+import { TablerLoader2 } from "../icon";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { getLogicalPlacement } from "../utils/get-logical-direction";
 import { makeStaticClass } from "../utils/make-static-class";

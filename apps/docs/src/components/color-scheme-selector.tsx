@@ -18,6 +18,7 @@ export function ColorSchemeSelector() {
       <IconButton
         as={KToggleButton.Root}
         variant="text"
+        size="sm"
         aria-label="Toggle color scheme"
         value={colorScheme()}
         onChange={toggleColorScheme}

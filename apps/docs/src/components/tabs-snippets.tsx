@@ -15,7 +15,7 @@ export const TabsSnippets: ParentComponent<ComponentProps<typeof Tabs.Root>> &
   return (
     <Tabs.Root
       class={clsx(
-        "pg-tabs-snippets not-prose my-6 overflow-y-auto rounded-lg border border-solid border-slate-200 bg-[#fafafa] dark:bg-[#27272a] dark:border-[#3f3f46]",
+        "pg-tabs-snippets not-prose my-6 overflow-y-auto rounded-lg border border-solid border-slate-200 bg-slate-50 dark:bg-slate-950 dark:border-slate-800",
         local.class
       )}
       {...others}
@@ -43,7 +43,7 @@ TabsSnippets.Trigger = (props: ComponentProps<typeof Tabs.Trigger>) => {
   return (
     <Tabs.Trigger
       class={clsx(
-        "outline-none text-sm px-3 py-2 text-slate-700 ui-selected:font-medium focus-visible:bg-slate-200 dark:text-white/80 dark:focus-visible:bg-slate-700",
+        "outline-none text-sm px-3 py-2 text-slate-700 ui-selected:font-medium focus-visible:bg-slate-200 dark:text-white/80 dark:focus-visible:bg-slate-800",
         local.class
       )}
       {...others}

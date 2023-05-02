@@ -3,7 +3,7 @@ import { JSX, splitProps } from "solid-js";
 import { cnBase } from "tailwind-variants";
 
 import { IconButton } from "../button";
-import { TablerX } from "../icons";
+import { TablerX } from "../icon";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
 import { CloseButtonProps, CloseButtonSlots } from "./close-button.props";

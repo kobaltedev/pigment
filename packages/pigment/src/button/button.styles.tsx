@@ -14,7 +14,7 @@ export const buttonStyles = tv({
       "ui-disabled:text-content-disabled ui-disabled:opacity-50 ui-disabled:pointer-events-none ui-disabled:shadow-none",
       "outline-none focus-visible:outline-ring focus-visible:outline-2 focus-visible:outline-offset-2",
     ],
-    decorator: "reset-svg shrink-0",
+    decorator: "shrink-0",
     loadingContent: "inline-flex items-center justify-center opacity-0",
   },
   variants: {
@@ -57,8 +57,8 @@ export const buttonStyles = tv({
       },
       link: {
         root: [
-          "text-content-link border-transparent !h-auto !p-0 underline underline-offset-4",
-          "ui-not-disabled:hover:text-content-link-hover",
+          "text-content-link border-transparent !h-auto !p-0 underline-offset-4",
+          "ui-not-disabled:hover:text-content-link-hover ui-not-disabled:hover:underline ui-not-disabled:focus:underline",
           "ui-not-disabled:active:text-content-link-active",
         ],
       },
@@ -96,7 +96,7 @@ export const buttonStyles = tv({
     },
     iconOnly: {
       true: {
-        root: "reset-svg p-0 leading-none",
+        root: "p-0 leading-none",
       },
     },
     fullWidth: {

@@ -17,7 +17,7 @@ interface HeaderLink extends ParentProps {
 
 function HeaderLink(props: HeaderLink) {
   return (
-    <LinkButton variant="text" asChild>
+    <LinkButton variant="text" size="sm" asChild>
       <As
         component={Link}
         href={props.href}
@@ -63,13 +63,12 @@ export function Header(props: HeaderProps) {
             Changelog
           </HeaderLink>
         </div>
-        <LinkIconButton variant="text" class="me-2.5" asChild>
+        <LinkIconButton variant="text" size="sm" class="me-2.5" aria-label="GitHub" asChild>
           <As
             component={Link}
             href="https://github.com/kobaltedev/pigment"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="GitHub"
           >
             <GitHubIcon class="h-5 w-5" />
           </As>
