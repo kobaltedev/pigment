@@ -1,5 +1,3 @@
-import { Alert } from "@kobalte/pigment";
-
 # Themed components
 
 Learn how to apply custom styles to components at global level.
@@ -12,10 +10,10 @@ To customize a component globally, specify the component identifier (import name
 - Use `slotClasses` to apply CSS classes to each component parts (slots).
   - Every Pigment component contains the `root` slot.
 
-Visit the [components.tsx](https://github.com/kobaltedev/pigment/blob/main/packages/pigment/src/theme/components.tsx#L17) file to see all component identifiers.
+Visit the [components-config.tsx](https://github.com/kobaltedev/pigment/blob/main/packages/pigment/src/theme/components-config.tsx#L18) file to see all component identifiers.
 
 ```tsx {6}
-import { cn, ThemeProvider } from "@kobalte/pigment";
+import { ThemeProvider } from "@kobalte/pigment";
 
 function App() {
   return (
@@ -34,7 +32,7 @@ function App() {
 
 The values specified as `defaultProps` affect all instances of the component:
 
-```tsx {7-11}
+```tsx {7-10}
 import { ThemeProvider } from "@kobalte/pigment";
 
 function App() {
@@ -43,14 +41,13 @@ function App() {
       components={{
         Button: {
           defaultProps: {
-            variant: "solid",
-            color: "primary",
+            variant: "primary",
             size: "md",
           },
         },
       }}
     >
-      {/* Same as: <Button variant="solid" color="primary" size="md"> */}
+      {/* Same as: <Button variant="primary" size="md"> */}
       <Button>Button</Button>
     </ThemeProvider>
   );
@@ -61,8 +58,9 @@ function App() {
 
 To apply additional CSS classes based on a given prop, use a callback as value of the `slotClasses` node. The argument passed in contains the component `props`.
 
-```tsx {7-9}
-import { cn, createTheme } from "@kobalte/pigment";
+```tsx {8-10}
+import { clsx } from "clsx";
+import { createTheme } from "@kobalte/pigment";
 
 function App() {
   return (
@@ -70,7 +68,7 @@ function App() {
       components={{
         Button: {
           slotClasses: props => ({
-            root: cn("rounded-md", props.size === "md" && "h-8 px-4"),
+            root: clsx("rounded-md", props.size === "md" && "h-8 px-4"),
           }),
         },
       }}
@@ -80,9 +78,3 @@ function App() {
   );
 }
 ```
-
-<Alert color="info" variant="soft" multiline>
-  <span>The `cn` utility function, built on top of [clsx](https://github.com/lukeed/clsx) </span>
-  <span>and [tailwind-merge](https://github.com/dcastil/tailwind-merge) </span>
-  <span>allows you to construct `className` strings conditionally.</span>
-</Alert>

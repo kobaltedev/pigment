@@ -14,7 +14,7 @@
 
 > :warning: Pigment is not available yet on `npm`.
 
-SolidJS implementation of Pigment, Kobalte's design language.
+An open source design system for building SolidJS application.
 
 ## Documentation
 

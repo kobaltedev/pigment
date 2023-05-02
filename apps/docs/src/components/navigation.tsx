@@ -1,5 +1,5 @@
-import { cn } from "@kobalte/pigment";
 import { Link, useLocation } from "@solidjs/router";
+import { clsx } from "clsx";
 import { ComponentProps, For, Match, splitProps, Switch } from "solid-js";
 
 import { NavSection } from "../model/navigation";
@@ -14,12 +14,12 @@ export function Navigation(props: NavigationProps) {
   const location = useLocation();
 
   return (
-    <nav class={cn("text-base lg:text-sm w-52", local.class)} {...others}>
-      <ul class="space-y-9">
+    <nav class={clsx("text-base lg:text-sm w-52", local.class)} {...others}>
+      <ul class="space-y-6">
         <For each={local.sections}>
           {section => (
             <li>
-              <h2 class="font-display font-medium ms-3 text-neutral-900 dark:text-white/90">
+              <h2 class="font-display font-medium ms-3 text-slate-900 dark:text-white/90">
                 {section.title}
               </h2>
               <ul class="mt-2 text-sm space-y-1">
@@ -28,17 +28,17 @@ export function Navigation(props: NavigationProps) {
                     <li class="relative group">
                       <Link
                         href={link.href}
-                        class={cn(
-                          "flex items-center justify-between w-full font-sans transition font-normal rounded px-3 py-2 hover:bg-neutral-50 dark:hover:bg-neutral-700/20",
+                        class={clsx(
+                          "flex items-center justify-between w-full font-sans transition font-normal rounded px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-700/20",
                           link.href === location.pathname
-                            ? "text-neutral-700 dark:text-neutral-300"
-                            : "text-neutral-600 dark:text-neutral-400"
+                            ? "text-slate-900 dark:text-slate-300"
+                            : "text-slate-600 dark:text-slate-400"
                         )}
                       >
                         <span>{link.title}</span>
                         <Switch>
                           <Match when={link.status === "new"}>
-                            <span class="inline-flex items-center font-medium leading-none uppercase px-1.5 py-1 text-[12px] rounded text-white bg-neutral-600">
+                            <span class="inline-flex items-center font-medium leading-none uppercase px-1.5 py-1 text-[12px] rounded text-white bg-slate-600">
                               new
                             </span>
                           </Match>

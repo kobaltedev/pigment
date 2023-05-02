@@ -1,5 +1,5 @@
-const twTheme = require('tailwindcss/defaultTheme')
-const { pigmentPreset } = require("@kobalte/pigment-tailwind-preset");
+const twTheme = require("tailwindcss/defaultTheme");
+const { pigment } = require("@kobalte/pigment-tailwind-preset");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        body: ["Inter", ...twTheme.fontFamily.sans],
+        sans: ["Inter", ...twTheme.fontFamily.sans],
         display: ["Lexend", ...twTheme.fontFamily.sans],
       },
       maxWidth: {
@@ -19,33 +19,8 @@ module.exports = {
     },
   },
   presets: [
-    pigmentPreset({
-      themes: [
-        "sapphire",
-        "emerald",
-        "sun",
-        "moon",
-        "scarlet",
-        "violet",
-        /** @type {import('@kobalte/pigment-tailwind-preset').CustomTheme} */
-        {
-          name: "github",
-          tokens: {
-            light: {
-              colors: {
-                solid: {
-                  primary: {
-                    content: "#ffffff",
-                    surface: "#2da44e",
-                    surfaceHover: "#2c974b",
-                    surfaceActive: "#298e46",
-                  }
-                }
-              },
-            },
-          },
-        },
-      ],
+    pigment({
+      themes: ["blue"],
     }),
   ],
   plugins: [require("@tailwindcss/typography")],

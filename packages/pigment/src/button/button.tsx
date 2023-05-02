@@ -1,9 +1,10 @@
 import { Button as KButton, Link as KLink, useLocale } from "@kobalte/core";
 import { mergeDefaultProps } from "@kobalte/utils";
-import { ComponentProps, createMemo, JSX, Show, splitProps } from "solid-js";
+import { ComponentProps, createMemo, JSX, Match, Show, splitProps, Switch } from "solid-js";
 
-import { LoaderIcon } from "../icons";
+import { TablerLoader2 } from "../icon";
 import { mergeThemeProps, useThemeClasses } from "../theme";
+import { getLogicalPlacement } from "../utils/get-logical-direction";
 import { makeStaticClass } from "../utils/make-static-class";
 import { runIfFn } from "../utils/run-if-fn";
 import {
@@ -30,7 +31,7 @@ function ButtonIcon(props: ComponentProps<"span">) {
 function ButtonLoadingIcon(props: ComponentProps<"span">) {
   props = mergeDefaultProps(
     {
-      children: (() => <LoaderIcon class="animate-spin" />) as unknown as JSX.Element,
+      children: (() => <TablerLoader2 class="animate-spin" />) as unknown as JSX.Element,
     },
     props
   );
@@ -40,19 +41,19 @@ function ButtonLoadingIcon(props: ComponentProps<"span">) {
 
 function ButtonContent(props: ButtonContentProps) {
   const leftIcon = createMemo(() => {
-    return runIfFn(props.rtl ? props.endIcon : props.startIcon);
+    return runIfFn(props.rtl ? props.endDecorator : props.startDecorator);
   });
 
   const rightIcon = createMemo(() => {
-    return runIfFn(props.rtl ? props.startIcon : props.endIcon);
+    return runIfFn(props.rtl ? props.startDecorator : props.endDecorator);
   });
 
   const leftIconClass = () => {
-    return props.rtl ? props.endIconClass : props.startIconClass;
+    return props.rtl ? props.endDecoratorClass : props.startDecoratorClass;
   };
 
   const rightIconClass = () => {
-    return props.rtl ? props.startIconClass : props.endIconClass;
+    return props.rtl ? props.startDecoratorClass : props.endDecoratorClass;
   };
 
   return (
@@ -78,14 +79,13 @@ function ButtonBase(props: ButtonBaseProps) {
   props = mergeThemeProps(
     "Button",
     {
-      variant: "solid",
+      variant: "default",
       color: "primary",
       size: "md",
-      rounded: "md",
       iconOnly: false,
       fullWidth: false,
       disabled: false,
-      loadingIconPlacement: "start",
+      loadingPlacement: "center",
     },
     props
   );
@@ -98,36 +98,29 @@ function ButtonBase(props: ButtonBaseProps) {
       "class",
       "slotClasses",
       "children",
-      "loadingText",
-      "loadingIcon",
-      "loadingIconPlacement",
-      "startIcon",
-      "endIcon",
+      "loadingIndicator",
+      "loadingPlacement",
+      "startDecorator",
+      "endDecorator",
     ],
-    ["variant", "color", "size", "rounded", "iconOnly", "fullWidth", "loading", "disabled"]
+    ["variant", "color", "size", "iconOnly", "fullWidth", "loading"]
   );
 
   const styles = createMemo(() => buttonStyles(variantProps));
 
   const { direction } = useLocale();
 
-  const isRtl = () => direction() === "rtl";
+  const logicalLoadingPlacement = createMemo(() => {
+    return getLogicalPlacement(direction(), local.loadingPlacement ?? "center");
+  });
 
-  const isLoadingIconLeft = () => {
-    if (isRtl()) {
-      return local.loadingIconPlacement === "end";
-    } else {
-      return local.loadingIconPlacement === "start";
-    }
-  };
-
-  const loadingIconClass = (additionalClasses?: string) => {
-    return styles().icon({
+  const loadingIndicatorClass = (additionalClasses?: string) => {
+    return styles().decorator({
       class: [
         additionalClasses,
-        buttonStaticClass("loadingIcon"),
-        themeClasses.loadingIcon,
-        local.slotClasses?.loadingIcon,
+        buttonStaticClass("loadingIndicator"),
+        themeClasses.loadingIndicator,
+        local.slotClasses?.loadingIndicator,
       ],
     });
   };
@@ -136,18 +129,22 @@ function ButtonBase(props: ButtonBaseProps) {
     return (
       <ButtonContent
         rtl={direction() === "rtl"}
-        startIconClass={styles().icon({
+        startDecoratorClass={styles().decorator({
           class: [
-            buttonStaticClass("startIcon"),
-            themeClasses.startIcon,
-            local.slotClasses?.startIcon,
+            buttonStaticClass("startDecorator"),
+            themeClasses.startDecorator,
+            local.slotClasses?.startDecorator,
           ],
         })}
-        endIconClass={styles().icon({
-          class: [buttonStaticClass("endIcon"), themeClasses.endIcon, local.slotClasses?.endIcon],
+        endDecoratorClass={styles().decorator({
+          class: [
+            buttonStaticClass("endDecorator"),
+            themeClasses.endDecorator,
+            local.slotClasses?.endDecorator,
+          ],
         })}
-        startIcon={local.startIcon}
-        endIcon={local.endIcon}
+        startDecorator={local.startDecorator}
+        endDecorator={local.endDecorator}
       >
         {local.children}
       </ButtonContent>
@@ -159,29 +156,25 @@ function ButtonBase(props: ButtonBaseProps) {
       class={styles().root({
         class: [buttonStaticClass("root"), themeClasses.root, local.slotClasses?.root, local.class],
       })}
-      disabled={variantProps.disabled}
       {...others}
     >
       <Show when={variantProps.loading} fallback={content()}>
-        <Show
-          when={local.loadingText}
-          fallback={
-            <>
-              <ButtonLoadingIcon class={loadingIconClass("absolute")} />
-              <Show when={!variantProps.iconOnly}>
-                <span class={styles().loadingContent()}>{content()}</span>
-              </Show>
-            </>
-          }
-        >
-          <Show when={isLoadingIconLeft()}>
-            <ButtonLoadingIcon class={loadingIconClass()} />
-          </Show>
-          {local.loadingText}
-          <Show when={!isLoadingIconLeft()}>
-            <ButtonLoadingIcon class={loadingIconClass()} />
-          </Show>
-        </Show>
+        <Switch>
+          <Match when={logicalLoadingPlacement() === "center"}>
+            <ButtonLoadingIcon class={loadingIndicatorClass("absolute")} />
+            <Show when={!variantProps.iconOnly}>
+              <span class={styles().loadingContent()}>{content()}</span>
+            </Show>
+          </Match>
+          <Match when={logicalLoadingPlacement() === "left"}>
+            <ButtonLoadingIcon class={loadingIndicatorClass()} />
+            {content()}
+          </Match>
+          <Match when={logicalLoadingPlacement() === "right"}>
+            {content()}
+            <ButtonLoadingIcon class={loadingIndicatorClass()} />
+          </Match>
+        </Switch>
       </Show>
     </KButton.Root>
   );
@@ -205,10 +198,8 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
   props = mergeThemeProps(
     "LinkButton",
     {
-      variant: "solid",
-      color: "primary",
+      variant: "default",
       size: "md",
-      rounded: "md",
       iconOnly: false,
       fullWidth: false,
       disabled: false,
@@ -220,8 +211,8 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
 
   const [local, variantProps, others] = splitProps(
     props,
-    ["class", "slotClasses", "children", "startIcon", "endIcon"],
-    ["variant", "color", "size", "rounded", "iconOnly", "fullWidth", "disabled"]
+    ["class", "slotClasses", "children", "startDecorator", "endDecorator"],
+    ["variant", "size", "iconOnly", "fullWidth"]
   );
 
   const { direction } = useLocale();
@@ -238,27 +229,26 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
           local.class,
         ],
       })}
-      disabled={variantProps.disabled}
       {...others}
     >
       <ButtonContent
         rtl={direction() === "rtl"}
-        startIconClass={styles().icon({
+        startDecoratorClass={styles().decorator({
           class: [
-            linkButtonStaticClass("startIcon"),
-            themeClasses.startIcon,
-            local.slotClasses?.startIcon,
+            linkButtonStaticClass("startDecorator"),
+            themeClasses.startDecorator,
+            local.slotClasses?.startDecorator,
           ],
         })}
-        endIconClass={styles().icon({
+        endDecoratorClass={styles().decorator({
           class: [
-            linkButtonStaticClass("endIcon"),
-            themeClasses.endIcon,
-            local.slotClasses?.endIcon,
+            linkButtonStaticClass("endDecorator"),
+            themeClasses.endDecorator,
+            local.slotClasses?.endDecorator,
           ],
         })}
-        startIcon={local.startIcon}
-        endIcon={local.endIcon}
+        startDecorator={local.startDecorator}
+        endDecorator={local.endDecorator}
       >
         {local.children}
       </ButtonContent>

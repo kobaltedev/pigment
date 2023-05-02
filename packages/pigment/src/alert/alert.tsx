@@ -1,16 +1,14 @@
-import { Alert as KAlert } from "@kobalte/core";
-import { children, createMemo, Show, splitProps } from "solid-js";
+import { Alert as KAlert, useLocale } from "@kobalte/core";
+import { createMemo, Match, Show, splitProps, Switch } from "solid-js";
 
-import { CloseButton } from "../close-button";
 import {
-  CheckCircleIcon,
-  ExclamationCircleIcon,
-  ExclamationTriangleIcon,
-  HelpCircleIcon,
-  InfoCircleIcon,
-  LifeBuoyIcon,
-  RocketIcon,
-} from "../icons";
+  TablerAlertOctagon,
+  TablerAlertTriangle,
+  TablerCircleCheck,
+  TablerHelpHexagon,
+  TablerInfoSquareRounded,
+  TablerLifebuoy,
+} from "../icon";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
 import { runIfFn } from "../utils/run-if-fn";
@@ -19,16 +17,15 @@ import { alertStyles } from "./alert.styles";
 
 const alertStaticClass = makeStaticClass<AlertSlots>("alert");
 
+const DEFAULT_ICON_CLASSES = "h-6 w-6";
+
 export function Alert(props: AlertProps) {
   props = mergeThemeProps(
     "Alert",
     {
       variant: "solid",
-      color: "primary",
-      rounded: "md",
-      withIcon: true,
-      dismissible: false,
-      multiline: false,
+      status: "info",
+      withDefaultStartDecorator: false,
     },
     props
   );
@@ -37,40 +34,84 @@ export function Alert(props: AlertProps) {
 
   const [local, variantProps, others] = splitProps(
     props,
-    ["class", "children", "slotClasses", "icon", "title", "dismissButtonLabel", "onDismiss"],
-    ["variant", "color", "rounded", "withIcon", "dismissible", "multiline"]
+    [
+      "class",
+      "children",
+      "slotClasses",
+      "withDefaultStartDecorator",
+      "startDecorator",
+      "endDecorator",
+    ],
+    ["variant", "status"]
   );
+
+  const { direction } = useLocale();
+
+  const isRTL = () => direction() == "rtl";
 
   const styles = createMemo(() => alertStyles(variantProps));
 
-  const iconProp = createMemo(() => local.icon);
-  const title = createMemo(() => local.title);
-  const description = children(() => local.children);
-
-  const icon = () => {
-    const icon = iconProp();
-
-    if (icon) {
-      return runIfFn(icon, variantProps.color);
-    }
-
-    switch (variantProps.color) {
-      case "primary":
-        return RocketIcon;
-      case "neutral":
-        return LifeBuoyIcon;
-      case "success":
-        return CheckCircleIcon;
-      case "info":
-        return InfoCircleIcon;
-      case "warning":
-        return ExclamationTriangleIcon;
-      case "danger":
-        return ExclamationCircleIcon;
-      default:
-        return HelpCircleIcon;
-    }
+  const defaultStartDecorator = () => {
+    return (
+      <Show when={local.withDefaultStartDecorator}>
+        <Switch>
+          <Match when={variantProps.status === "neutral"}>
+            <TablerLifebuoy aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
+          </Match>
+          <Match when={variantProps.status === "success"}>
+            <TablerCircleCheck aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
+          </Match>
+          <Match when={variantProps.status === "info"}>
+            <TablerInfoSquareRounded aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
+          </Match>
+          <Match when={variantProps.status === "warning"}>
+            <TablerAlertTriangle aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
+          </Match>
+          <Match when={variantProps.status === "danger"}>
+            <TablerAlertOctagon aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
+          </Match>
+          <Match when={variantProps.status === "discovery"}>
+            <TablerHelpHexagon aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
+          </Match>
+        </Switch>
+      </Show>
+    );
   };
+
+  const decorators = createMemo(() => {
+    const start = runIfFn(local.startDecorator ?? defaultStartDecorator(), variantProps.status!);
+
+    const end = runIfFn(local.endDecorator, variantProps.status!);
+
+    return {
+      left: isRTL() ? end : start,
+      right: isRTL() ? start : end,
+    };
+  });
+
+  const decoratorClasses = createMemo(() => {
+    const start = styles().startDecorator({
+      class: [
+        alertStaticClass("startDecorator"),
+        themeClasses.startDecorator,
+        local.slotClasses?.startDecorator,
+      ],
+    });
+
+    const end = styles().endDecorator({
+      class: [
+        alertStaticClass("endDecorator"),
+        themeClasses.endDecorator,
+        local.slotClasses?.endDecorator,
+        isRTL() ? "mr-auto" : "ml-auto",
+      ],
+    });
+
+    return {
+      left: isRTL() ? end : start,
+      right: isRTL() ? start : end,
+    };
+  });
 
   return (
     <KAlert.Root
@@ -79,59 +120,12 @@ export function Alert(props: AlertProps) {
       })}
       {...others}
     >
-      <Show when={variantProps.withIcon}>
-        <div
-          class={styles().icon({
-            class: [alertStaticClass("icon"), themeClasses.icon, local.slotClasses?.icon],
-          })}
-          aria-hidden="true"
-        >
-          {runIfFn(icon())}
-        </div>
+      <Show when={decorators().left}>
+        <span class={decoratorClasses().left}>{decorators().left}</span>
       </Show>
-      <div
-        class={styles().content({
-          class: [alertStaticClass("content"), themeClasses.content, local.slotClasses?.content],
-        })}
-      >
-        <Show when={title()}>
-          <div
-            class={styles().title({
-              class: [alertStaticClass("title"), themeClasses.title, local.slotClasses?.title],
-            })}
-          >
-            {title()}
-          </div>
-        </Show>
-        <Show when={description()}>
-          <div
-            class={styles().description({
-              class: [
-                alertStaticClass("description"),
-                themeClasses.description,
-                local.slotClasses?.description,
-              ],
-            })}
-          >
-            {description()}
-          </div>
-        </Show>
-      </div>
-      <Show when={variantProps.dismissible}>
-        <CloseButton
-          inheritTextColor
-          size="sm"
-          rounded={variantProps.rounded}
-          aria-label={local.dismissButtonLabel}
-          class={styles().dismissButton({
-            class: [
-              alertStaticClass("dismissButton"),
-              themeClasses.dismissButton,
-              local.slotClasses?.dismissButton,
-            ],
-          })}
-          onClick={local.onDismiss}
-        />
+      {runIfFn(local.children)}
+      <Show when={decorators().right}>
+        <span class={decoratorClasses().right}>{decorators().right}</span>
       </Show>
     </KAlert.Root>
   );

@@ -1,5 +1,5 @@
-import { cn } from "@kobalte/pigment";
 import { Link, useLocation } from "@solidjs/router";
+import { clsx } from "clsx";
 import { Accessor, createEffect, createSignal, For, onCleanup, Suspense } from "solid-js";
 import { createServerData$ } from "solid-start/server";
 
@@ -89,11 +89,11 @@ export function TableOfContents() {
 
   return (
     <div class="hidden xl:sticky xl:top-[4.5rem] xl:block xl:h-[calc(100vh-4.5rem)] xl:flex-none xl:overflow-y-auto xl:py-4 xl:pe-2">
-      <nav aria-labelledby="on-this-page-title" class="w-56">
+      <nav aria-labelledby="on-this-page-title" class="w-60">
         <Suspense>
           <h2
             id="on-this-page-title"
-            class="font-display text-sm font-medium ms-3 text-neutral-900 dark:text-white/90"
+            class="font-display text-sm font-medium ms-3 text-slate-900 dark:text-white/90"
           >
             On this page
           </h2>
@@ -104,11 +104,11 @@ export function TableOfContents() {
                   <h3>
                     <Link
                       href={`${path.pathname}#${section.slug}`}
-                      class={cn(
-                        "block w-full font-sans transition font-normal rounded px-3 py-2 hover:bg-neutral-50 dark:hover:bg-neutral-700/20",
+                      class={clsx(
+                        "block w-full font-sans transition font-normal rounded px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-700/20",
                         section.slug === currentSection()
-                          ? "text-neutral-700 dark:text-neutral-300"
-                          : "text-neutral-600 dark:text-neutral-400",
+                          ? "text-slate-900 dark:text-slate-300"
+                          : "text-slate-600 dark:text-slate-400",
                         section.depth === 3 && "ps-6"
                       )}
                     >

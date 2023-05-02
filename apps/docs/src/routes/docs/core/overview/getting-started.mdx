@@ -1,4 +1,4 @@
-import { Alert, Button } from "@kobalte/pigment";
+import { Button } from "@kobalte/pigment";
 
 import { Preview, TabsSnippets } from "../../../../components";
 
@@ -80,18 +80,13 @@ Make sure that you have [Tailwind CSS](https://tailwindcss.com/docs/guides/solid
 ```js {2,6}
 module.exports = {
   content: [
-    "./node_modules/@kobalte/pigment/dist/**/*.{js,cjs,mjs}",
+    "./node_modules/@kobalte/pigment/dist/**/*.{js,cjs}",
     "./src/**/*.{html,js,jsx,ts,tsx,mdx}",
   ],
   theme: {},
   presets: [require("@kobalte/pigment-tailwind-preset")],
 };
 ```
-
-<Alert color="warning" variant="soft">
-  <span>Pigment is designed to work with Tailwind's default theme, without prefix, </span>
-  <span>and with [preflight](https://tailwindcss.com/docs/preflight) enabled.</span>
-</Alert>
 
 ## Using the components
 

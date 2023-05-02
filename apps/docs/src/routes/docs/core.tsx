@@ -8,10 +8,6 @@ const CORE_NAV_SECTIONS: NavSection[] = [
     title: "Overview",
     links: [
       {
-        title: "Introduction",
-        href: "/docs/core/overview/introduction",
-      },
-      {
         title: "Getting started",
         href: "/docs/core/overview/getting-started",
       },
@@ -29,12 +25,8 @@ const CORE_NAV_SECTIONS: NavSection[] = [
     title: "Customization",
     links: [
       {
-        title: "Approaches",
-        href: "/docs/core/customization/approaches",
-      },
-      {
-        title: "Global variants",
-        href: "/docs/core/customization/global-variants",
+        title: "Design tokens",
+        href: "/docs/core/customization/design-tokens",
       },
       {
         title: "Themed components",
@@ -44,20 +36,11 @@ const CORE_NAV_SECTIONS: NavSection[] = [
         title: "Dark mode",
         href: "/docs/core/customization/dark-mode",
       },
-      {
-        title: "Design tokens",
-        href: "/docs/core/customization/design-tokens",
-      },
     ],
   },
   {
     title: "Components",
-    links: [
-      {
-        title: "Alert",
-        href: "/docs/core/components/alert",
-      },
-    ],
+    links: [],
   },
 ];
 

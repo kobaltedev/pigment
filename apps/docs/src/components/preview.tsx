@@ -1,4 +1,4 @@
-import { cn } from "@kobalte/pigment";
+import { clsx } from "clsx";
 import { ComponentProps, mergeProps, splitProps } from "solid-js";
 
 interface PreviewProps extends ComponentProps<"div"> {
@@ -13,9 +13,9 @@ export function Preview(props: PreviewProps) {
 
   return (
     <div
-      class={cn(
+      class={clsx(
         local.class,
-        "pg-preview not-prose flex flex-col justify-center mt-4 overflow-y-auto p-4 border border-solid border-neutral-200 dark:bg-neutral-900 dark:border-neutral-800",
+        "pg-preview not-prose flex flex-col justify-center mt-4 overflow-y-auto p-4 border border-solid border-slate-200 dark:bg-slate-900 dark:border-slate-800",
         local.isCentered ? "items-center" : "items-stretch",
         local.isRounded ? "rounded-lg" : "rounded-t-lg"
       )}

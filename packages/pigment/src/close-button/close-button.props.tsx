@@ -1,11 +1,8 @@
-import { Button as KButton } from "@kobalte/core";
-
+import { IconButtonProps } from "../button";
 import { SlotProp } from "../utils/slot";
-import { CloseButtonVariants } from "./close-button.styles";
 
 export type CloseButtonSlots = "root";
 
 export interface CloseButtonProps
-  extends KButton.ButtonRootProps,
-    Omit<CloseButtonVariants, "disabled">,
+  extends Omit<Partial<IconButtonProps>, "slotClasses">,
     SlotProp<CloseButtonSlots> {}

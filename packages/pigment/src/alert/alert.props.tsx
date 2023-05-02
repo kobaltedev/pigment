@@ -4,21 +4,17 @@ import { JSX } from "solid-js";
 import { SlotProp } from "../utils/slot";
 import { AlertVariants } from "./alert.styles";
 
-export type AlertSlots = "root" | "icon" | "content" | "title" | "description" | "dismissButton";
+export type AlertSlots = "root" | "startDecorator" | "endDecorator";
 
-export interface AlertProps
-  extends Omit<KAlert.AlertRootProps, "title" | "color">,
-    AlertVariants,
-    SlotProp<AlertSlots> {
-  /** The title of the alert. */
-  title?: JSX.Element;
+export type AlertStatus = Exclude<AlertVariants["status"], undefined>;
 
-  /** The icon displayed next to the title. */
-  icon?: ((color: AlertVariants["color"]) => JSX.Element) | JSX.Element;
+export interface AlertProps extends KAlert.AlertRootProps, AlertVariants, SlotProp<AlertSlots> {
+  /** Whether the default start decorator should be shown. */
+  withDefaultStartDecorator?: boolean;
 
-  /** An accessible label for the dismiss button. */
-  dismissButtonLabel?: string;
+  /** The element(s) placed before the alert content. */
+  startDecorator?: ((status: AlertStatus) => JSX.Element) | JSX.Element;
 
-  /** Event handler called when the dismiss button is clicked. */
-  onDismiss?: () => void;
+  /** The element(s) placed after the alert content. */
+  endDecorator?: ((status: AlertStatus) => JSX.Element) | JSX.Element;
 }

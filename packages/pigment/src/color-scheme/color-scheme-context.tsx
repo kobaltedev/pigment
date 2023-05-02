@@ -20,7 +20,7 @@ export function useColorScheme() {
   const context = useContext(ColorSchemeContext);
 
   if (context === undefined) {
-    throw new Error("[kobalte]: `useColorScheme` must be used within a `ColorSchemeProvider`");
+    throw new Error("[pigment]: `useColorScheme` must be used within a `ColorSchemeProvider`");
   }
 
   return context;
