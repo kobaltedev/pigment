@@ -2,7 +2,12 @@ import { Link } from "@solidjs/router";
 import { clsx } from "clsx";
 import { ComponentProps } from "solid-js";
 
-import { DiscordIcon, GitHubIcon, OpenCollectiveIcon, TwitterIcon } from "./icons";
+import {
+  OpenCollectiveIcon,
+  TablerDiscordIcon,
+  TablerGitHubIcon,
+  TablerTwitterIcon,
+} from "./icons";
 
 export function Footer(props: ComponentProps<"footer">) {
   return (
@@ -36,7 +41,7 @@ export function Footer(props: ComponentProps<"footer">) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <GitHubIcon class="h-4 w-4" />
+                  <TablerGitHubIcon class="h-4 w-4" />
                 </a>
               </li>
               <li class="mb-2">
@@ -47,7 +52,7 @@ export function Footer(props: ComponentProps<"footer">) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <OpenCollectiveIcon class="h-4 w-4" />
+                  <OpenCollectiveIcon class="h-3.5 w-3.5" />
                 </a>
               </li>
               <li class="mb-2">
@@ -58,7 +63,7 @@ export function Footer(props: ComponentProps<"footer">) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <DiscordIcon class="h-4 w-4" />
+                  <TablerDiscordIcon class="h-4 w-4" />
                 </a>
               </li>
               <li class="mb-2">
@@ -69,7 +74,7 @@ export function Footer(props: ComponentProps<"footer">) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <TwitterIcon class="h-4 w-4" />
+                  <TablerTwitterIcon class="h-4 w-4" />
                 </a>
               </li>
             </ul>

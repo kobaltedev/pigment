@@ -13,5 +13,6 @@ export * from "./alert";
 export * from "./button";
 //export * from "./checkbox";
 export * from "./close-button";
+export * from "./icon";
 //export * from "./select";
 //export * from "./text-field";
