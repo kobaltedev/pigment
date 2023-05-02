@@ -1,4 +1,4 @@
-//import { AlertProps, AlertSlots } from "../alert/alert.props";
+import { AlertProps, AlertSlots } from "../alert/alert.props";
 //import { BadgeProps, BadgeSlots } from "../badge/badge.props";
 import { ButtonProps, ButtonSlots, LinkButtonProps, LinkButtonSlots } from "../button/button.props";
 //import { CheckboxProps, CheckboxSlots } from "../checkbox/checkbox.props";
@@ -17,7 +17,7 @@ export interface ComponentTheme<Props, Slots extends string> {
 /** Components configuration. */
 export interface ComponentsConfig {
   // alphabetical order
-  //Alert?: ComponentTheme<AlertProps, AlertSlots>;
+  Alert?: ComponentTheme<AlertProps, AlertSlots>;
   //Badge?: ComponentTheme<BadgeProps, BadgeSlots>;
   Button?: ComponentTheme<ButtonProps, ButtonSlots>;
   //Checkbox?: ComponentTheme<CheckboxProps, CheckboxSlots>;

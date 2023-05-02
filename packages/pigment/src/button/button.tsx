@@ -80,6 +80,7 @@ function ButtonBase(props: ButtonBaseProps) {
     "Button",
     {
       variant: "default",
+      color: "primary",
       size: "md",
       iconOnly: false,
       fullWidth: false,
@@ -102,7 +103,7 @@ function ButtonBase(props: ButtonBaseProps) {
       "startDecorator",
       "endDecorator",
     ],
-    ["variant", "size", "iconOnly", "fullWidth", "loading"]
+    ["variant", "color", "size", "iconOnly", "fullWidth", "loading"]
   );
 
   const styles = createMemo(() => buttonStyles(variantProps));
@@ -114,7 +115,7 @@ function ButtonBase(props: ButtonBaseProps) {
   });
 
   const loadingIndicatorClass = (additionalClasses?: string) => {
-    return styles().icon({
+    return styles().decorator({
       class: [
         additionalClasses,
         buttonStaticClass("loadingIndicator"),
@@ -128,14 +129,14 @@ function ButtonBase(props: ButtonBaseProps) {
     return (
       <ButtonContent
         rtl={direction() === "rtl"}
-        startDecoratorClass={styles().icon({
+        startDecoratorClass={styles().decorator({
           class: [
             buttonStaticClass("startDecorator"),
             themeClasses.startDecorator,
             local.slotClasses?.startDecorator,
           ],
         })}
-        endDecoratorClass={styles().icon({
+        endDecoratorClass={styles().decorator({
           class: [
             buttonStaticClass("endDecorator"),
             themeClasses.endDecorator,
@@ -232,14 +233,14 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
     >
       <ButtonContent
         rtl={direction() === "rtl"}
-        startDecoratorClass={styles().icon({
+        startDecoratorClass={styles().decorator({
           class: [
             linkButtonStaticClass("startDecorator"),
             themeClasses.startDecorator,
             local.slotClasses?.startDecorator,
           ],
         })}
-        endDecoratorClass={styles().icon({
+        endDecoratorClass={styles().decorator({
           class: [
             linkButtonStaticClass("endDecorator"),
             themeClasses.endDecorator,

@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
+import { For, JSX } from "solid-js";
 
+import { TablerLoader2 } from "../icons";
 import { Button, IconButton } from "./button";
 import { ButtonProps } from "./button.props";
-import { TablerLoader2 } from "../icons";
 
 type Story = StoryObj<ButtonProps>;
 
@@ -27,24 +28,73 @@ export default {
       control: { type: "text" },
     },
   },
+} as Meta<ComponentProps<typeof Button>>;
+
+export const Variants: Story = {
+  args: {
+    children: "Button",
+  },
+  // @ts-ignore
+  render: props => (
+    <div class="flex items-center space-x-4">
+      <Button {...props} variant="solid" />
+      <Button {...props} variant="soft" />
+      <Button {...props} variant="inverted" />
+      <Button {...props} variant="default" />
+      <Button {...props} variant="dashed" />
+      <Button {...props} variant="text" />
+      <Button {...props} variant="link" />
+    </div>
+  ),
+};
+
+export const Colors: Story = {
+  args: {
+    children: "Button",
+  },
+  // @ts-ignore
   render: props => (
     <div class="flex flex-col gap-4">
-      <div class="flex items-center space-x-4">
-        <Button {...props} variant="primary" />
-        <Button {...props} variant="secondary" />
-        <Button {...props} variant="default" />
-        <Button {...props} variant="dashed" />
-        <Button {...props} variant="text" />
-        <Button {...props} variant="link" />
-        <Button {...props} variant="destructive" />
-      </div>
-      <div class="flex items-center space-x-4">
-        <Button {...props} size="xs" />
-        <Button {...props} size="sm" />
-        <Button {...props} size="md" />
-        <Button {...props} size="lg" />
-        <Button {...props} size="xl" />
-      </div>
+      <For each={["solid", "soft", "inverted"] as const}>
+        {variant => (
+          <div class="flex items-center space-x-4">
+            <For
+              each={
+                ["primary", "neutral", "success", "info", "warning", "danger", "discovery"] as const
+              }
+            >
+              {color => <Button {...props} variant={variant} color={color} />}
+            </For>
+          </div>
+        )}
+      </For>
+    </div>
+  ),
+};
+
+export const Sizes: Story = {
+  args: {
+    children: "Button",
+  },
+  // @ts-ignore
+  render: props => (
+    <div class="flex items-center space-x-4">
+      <Button {...props} size="xs" />
+      <Button {...props} size="sm" />
+      <Button {...props} size="md" />
+      <Button {...props} size="lg" />
+      <Button {...props} size="xl" />
+    </div>
+  ),
+};
+
+export const Decorators: Story = {
+  args: {
+    children: "Button",
+  },
+  // @ts-ignore
+  render: props => (
+    <div class="flex flex-col gap-4">
       <div class="flex items-center space-x-4">
         <Button {...props} size="xs" startDecorator={<TablerLoader2 />} />
         <Button {...props} size="sm" startDecorator={<TablerLoader2 />} />
@@ -59,23 +109,22 @@ export default {
         <Button {...props} size="lg" endDecorator={<TablerLoader2 />} />
         <Button {...props} size="xl" endDecorator={<TablerLoader2 />} />
       </div>
-      <div class="flex items-center space-x-4">
-        <IconButton {...props} size="xs" children={<TablerLoader2 />} />
-        <IconButton {...props} size="sm" children={<TablerLoader2 />} />
-        <IconButton {...props} size="md" children={<TablerLoader2 />} />
-        <IconButton {...props} size="lg" children={<TablerLoader2 />} />
-        <IconButton {...props} size="xl" children={<TablerLoader2 />} />
-      </div>
     </div>
   ),
-} as Meta<ComponentProps<typeof Button>>;
+};
 
-export const Default: Story = {
+export const IconOnly: Story = {
   args: {
-    fullWidth: false,
-    loading: false,
-    disabled: false,
-    loadingPlacement: "center",
-    children: "Button",
+    children: TablerLoader2 as unknown as JSX.Element,
   },
+  // @ts-ignore
+  render: props => (
+    <div class="flex items-center space-x-4">
+      <IconButton {...props} size="xs" aria-label="Button" />
+      <IconButton {...props} size="sm" aria-label="Button" />
+      <IconButton {...props} size="md" aria-label="Button" />
+      <IconButton {...props} size="lg" aria-label="Button" />
+      <IconButton {...props} size="xl" aria-label="Button" />
+    </div>
+  ),
 };

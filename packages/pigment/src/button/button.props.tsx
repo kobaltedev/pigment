@@ -38,11 +38,17 @@ export interface ButtonContentProps
 
 export interface ButtonProps extends Omit<ButtonBaseProps, "iconOnly"> {}
 
+export type IconButtonSlots = "root" | "loadingIndicator";
+
 export interface IconButtonProps
   extends Omit<
-    ButtonBaseProps,
-    "iconOnly" | "loadingPlacement" | "startDecorator" | "endDecorator"
-  > {}
+      ButtonBaseProps,
+      "iconOnly" | "loadingPlacement" | "startDecorator" | "endDecorator" | "slotClasses"
+    >,
+    SlotProp<IconButtonSlots> {
+  /** An accessible label for the button. */
+  "aria-label": string;
+}
 
 /* -------------------------------------------------------------------------------------------------
  * LinkButton
@@ -63,5 +69,11 @@ export interface LinkButtonBaseProps
 
 export interface LinkButtonProps extends Omit<LinkButtonBaseProps, "iconOnly"> {}
 
+export type LinkIconButtonSlots = "root";
+
 export interface LinkIconButtonProps
-  extends Omit<LinkButtonBaseProps, "iconOnly" | "startDecorator" | "endDecorator"> {}
+  extends Omit<LinkButtonBaseProps, "iconOnly" | "startDecorator" | "endDecorator" | "slotClasses">,
+    SlotProp<LinkIconButtonSlots> {
+  /** An accessible label for the button. */
+  "aria-label": string;
+}

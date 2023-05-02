@@ -8,7 +8,7 @@ export * from "./color-scheme";
 export * from "./theme";
 
 // components
-//export * from "./alert";
+export * from "./alert";
 //export * from "./badge";
 export * from "./button";
 //export * from "./checkbox";

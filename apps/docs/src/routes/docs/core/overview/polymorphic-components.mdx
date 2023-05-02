@@ -1,3 +1,5 @@
+import { Alert } from "@kobalte/pigment";
+
 # Polymorphic components
 
 Some Pigment components accept a special `asChild` prop that lets you change the root element.
@@ -9,6 +11,11 @@ When using this pattern the following rules apply to the component with the `asC
 - CSS classes are combined.
 - Styles are combined, if same attribute exists the one from `<As>` win.
 - Event handlers are chained, The one from `<As>` get called first.
+
+<Alert status="warning" class="not-prose">
+  If you decide to change the default rendered node (e.g. change a `button` to a `div`) then it's up
+  to you to ensure the correct accessibility and functionality of your chosen node type.
+</Alert>
 
 ## With HTML elements
 

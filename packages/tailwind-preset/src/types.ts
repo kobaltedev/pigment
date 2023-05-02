@@ -73,37 +73,61 @@ export const themeTokensShapeValue = {
         DEFAULT: "",
         hover: "",
         active: "",
-        subtle: "",
+        subtle: {
+          DEFAULT: "",
+          hover: "",
+          active: "",
+        },
       },
       success: {
         DEFAULT: "",
         hover: "",
         active: "",
-        subtle: "",
+        subtle: {
+          DEFAULT: "",
+          hover: "",
+          active: "",
+        },
       },
       info: {
         DEFAULT: "",
         hover: "",
         active: "",
-        subtle: "",
+        subtle: {
+          DEFAULT: "",
+          hover: "",
+          active: "",
+        },
       },
       warning: {
         DEFAULT: "",
         hover: "",
         active: "",
-        subtle: "",
+        subtle: {
+          DEFAULT: "",
+          hover: "",
+          active: "",
+        },
       },
       danger: {
         DEFAULT: "",
         hover: "",
         active: "",
-        subtle: "",
+        subtle: {
+          DEFAULT: "",
+          hover: "",
+          active: "",
+        },
       },
       discovery: {
         DEFAULT: "",
         hover: "",
         active: "",
-        subtle: "",
+        subtle: {
+          DEFAULT: "",
+          hover: "",
+          active: "",
+        },
       },
     },
 
