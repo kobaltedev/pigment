@@ -1,27 +1,11 @@
-import {
-  colorSchemeStorageManager,
-  ColorSchemeWithSystem,
-  Select,
-  useColorScheme,
-} from "@kobalte/pigment";
-import { createSignal, JSX, onMount, Show } from "solid-js";
+import { ToggleButton as KToggleButton } from "@kobalte/core";
+import { IconButton, useColorScheme } from "@kobalte/pigment";
+import { createSignal, onMount, Show } from "solid-js";
 
-import { DesktopIcon, MoonIcon, SunIcon } from "./icons";
-
-interface ColorSchemeOption {
-  value: ColorSchemeWithSystem;
-  label: string;
-  icon: () => JSX.Element;
-}
-
-const COLOR_SCHEMES: ColorSchemeOption[] = [
-  { value: "light", label: "Light", icon: () => <SunIcon class="h-4 w-4" /> },
-  { value: "dark", label: "Dark", icon: () => <MoonIcon class="h-4 w-4" /> },
-  { value: "system", label: "System", icon: () => <DesktopIcon class="h-4 w-4" /> },
-];
+import { TablerMoonFilled, TablerSunFilled } from "./icons";
 
 export function ColorSchemeSelector() {
-  const { colorScheme, setColorScheme } = useColorScheme();
+  const { colorScheme, toggleColorScheme } = useColorScheme();
 
   const [isMounted, setIsMounted] = createSignal(false);
 
@@ -31,33 +15,18 @@ export function ColorSchemeSelector() {
 
   return (
     <Show when={isMounted()} fallback={<div class="h-9 w-9" />}>
-      <Select
-        options={COLOR_SCHEMES}
-        optionValue="value"
-        defaultValue={COLOR_SCHEMES.find(
-          option => option.value === colorSchemeStorageManager.get("system")
-        )}
-        onChange={(value: ColorSchemeOption) => setColorScheme(value.value)}
-        withDropdownIcon={false}
-        withSelectionIcon={false}
-        sameWidth={false}
-        slotClasses={{
-          button: "border-none hover:bg-ghost-neutral-surface-hover px-2",
-          value: "reset-svg text-xl",
-          listbox: "w-32",
-        }}
-        valueTemplate={() => (
-          <Show when={colorScheme() === "dark"} fallback={<SunIcon class="h-4 w-4" />}>
-            <MoonIcon class="h-4 w-4" />
-          </Show>
-        )}
-        optionTemplate={option => (
-          <span class="flex items-center gap-x-2.5 ui-group-selected:text-soft-selected-text">
-            {option.icon()}
-            {option.label}
-          </span>
-        )}
-      />
+      <IconButton
+        as={KToggleButton.Root}
+        variant="text"
+        size="sm"
+        aria-label="Toggle color scheme"
+        value={colorScheme()}
+        onChange={toggleColorScheme}
+      >
+        <Show when={colorScheme() === "dark"} fallback={<TablerSunFilled class="h-5 w-5" />}>
+          <TablerMoonFilled class="h-5 w-5" />
+        </Show>
+      </IconButton>
     </Show>
   );
 }

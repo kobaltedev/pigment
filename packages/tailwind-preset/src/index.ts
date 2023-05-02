@@ -4,8 +4,8 @@ import { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
 import animatePlugin from "tailwindcss-animate";
 
-import { PIGMENT_COLORS } from "./colors";
-import { createThemeResolver, DEFAULT_THEME_NAME, isValidTheme } from "./themes";
+import { colors } from "./colors";
+import { DEFAULT_THEME_NAME, isValidTheme, resolveTheme } from "./themes";
 import {
   PigmentOptions,
   PredefinedTheme,
@@ -14,7 +14,6 @@ import {
   TokenKey,
 } from "./types";
 import {
-  ALPHA_COLOR_CSS_VAR_SUFFIX,
   createVarsFn,
   DARK_DATA_ATTR_SELECTOR,
   flatten,
@@ -27,45 +26,23 @@ import {
   toKebabCase,
 } from "./utils";
 
-export function pigmentPreset(options: PigmentOptions | undefined = {}): Partial<Config> {
+export function pigment(options: PigmentOptions | undefined = {}): Partial<Config> {
   const cssVarPrefix = getCssVarsPrefix(options);
 
   const vars = createVarsFn(cssVarPrefix);
-  const resolveTheme = createThemeResolver(vars);
 
   return {
     darkMode: ["class", DARK_DATA_ATTR_SELECTOR],
     theme: {
       extend: {
-        fontFamily: {
-          body: vars("typography.fontFamily.body"),
-          display: vars("typography.fontFamily.display"),
-          code: vars("typography.fontFamily.code"),
-        },
         fontSize: {
           "2xs": ["10px", "14px"],
         },
         colors: {
-          ...PIGMENT_COLORS,
+          ...colors,
           ...Object.keys(flatten(themeTokensShapeValue.colors, "-")).reduce((acc, key) => {
             const formattedKey = toKebabCase(removeDefaultSuffix(key));
             acc[formattedKey] = `rgb(${vars(`colors-${key}` as TokenKey)} / <alpha-value>)`;
-            return acc;
-          }, {} as any),
-          "content-disabled": vars(ALPHA_COLOR_CSS_VAR_SUFFIX.contentDisabled as TokenKey),
-          "surface-disabled": vars(ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceDisabled as TokenKey),
-          "line-disabled": vars(ALPHA_COLOR_CSS_VAR_SUFFIX.lineDisabled as TokenKey),
-          "surface-highlighted-hover": vars(
-            ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceHighlightedHover as TokenKey
-          ),
-          "surface-highlighted-active": vars(
-            ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceHighlightedActive as TokenKey
-          ),
-        },
-        boxShadow: {
-          ...Object.keys(flatten(themeTokensShapeValue.shadows, "-")).reduce((acc, key) => {
-            const formattedKey = toKebabCase(removeDefaultSuffix(key));
-            acc[formattedKey] = vars(`shadows-${key}` as TokenKey);
             return acc;
           }, {} as any),
         },
@@ -123,32 +100,11 @@ export function pigmentPreset(options: PigmentOptions | undefined = {}): Partial
           addBase({
             [lightThemeSelector]: {
               ...(
-                Object.entries(flatten(theme.common ?? {}, "-")) as Array<[string, string]>
-              ).reduce((acc, [key, value]) => {
-                acc[cssVarName(key)] = value;
-                return acc;
-              }, {} as any),
-              ...(
                 Object.entries(flatten(theme.light ?? {}, "-")) as Array<[string, string]>
               ).reduce((acc, [key, value]) => {
                 acc[cssVarName(key)] = isHexColor(value) ? rgbColorChannel(value) : value;
                 return acc;
               }, {} as any),
-              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.contentDisabled)]: `rgb(${vars(
-                "colors.neutral.950"
-              )} / 0.3)`,
-              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceDisabled)]: `rgb(${vars(
-                "colors.neutral.950"
-              )} / 0.03)`,
-              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.lineDisabled)]: `rgb(${vars(
-                "colors.neutral.950"
-              )} / 0.06)`,
-              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceHighlightedHover)]: `rgb(${vars(
-                "colors.neutral.950"
-              )} / 0.06)`,
-              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceHighlightedActive)]: `rgb(${vars(
-                "colors.neutral.950"
-              )} / 0.14)`,
             },
           });
 
@@ -161,21 +117,6 @@ export function pigmentPreset(options: PigmentOptions | undefined = {}): Partial
                 },
                 {} as any
               ),
-              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.contentDisabled)]: `rgb(${vars(
-                "colors.neutral.300"
-              )} / 0.3)`,
-              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceDisabled)]: `rgb(${vars(
-                "colors.neutral.300"
-              )} / 0.04)`,
-              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.lineDisabled)]: `rgb(${vars(
-                "colors.neutral.300"
-              )} / 0.08)`,
-              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceHighlightedHover)]: `rgb(${vars(
-                "colors.neutral.300"
-              )} / 0.08)`,
-              [cssVarName(ALPHA_COLOR_CSS_VAR_SUFFIX.surfaceHighlightedActive)]: `rgb(${vars(
-                "colors.neutral.300"
-              )} / 0.16)`,
             },
           });
         });
@@ -188,17 +129,8 @@ export function pigmentPreset(options: PigmentOptions | undefined = {}): Partial
             // Use theme background and foreground colors.
             backgroundColor: `rgb(${vars("colors.surface.body")})`,
             color: `rgb(${vars("colors.content.DEFAULT")})`,
-          },
-        });
-
-        addUtilities({
-          ".reset-svg": {
-            "> svg": {
-              width: "1em",
-              height: "1em",
-              color: "currentColor",
-              lineHeight: "1em",
-            },
+            WebkitFontSmoothing: "antialiased",
+            MozOsxFontSmoothing: "grayscale",
           },
         });
       }),
@@ -206,5 +138,5 @@ export function pigmentPreset(options: PigmentOptions | undefined = {}): Partial
   };
 }
 
-export { PIGMENT_COLORS } from "./colors";
+export { colors } from "./colors";
 export type { CustomTheme, PigmentOptions } from "./types";

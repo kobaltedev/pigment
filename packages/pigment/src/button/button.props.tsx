@@ -8,66 +8,72 @@ import { ButtonVariants } from "./button.styles";
  * Button
  * -----------------------------------------------------------------------------------------------*/
 
-export type ButtonSlots = "root" | "startIcon" | "endIcon" | "loadingIcon";
+export type ButtonSlots = "root" | "startDecorator" | "endDecorator" | "loadingIndicator";
 
 export interface ButtonBaseProps
   extends Omit<KButton.ButtonRootProps, "asChild" | "color">,
-    Omit<ButtonVariants, "disabled">,
+    ButtonVariants,
     SlotProp<ButtonSlots> {
-  /** The label to show when the button is in a loading state. */
-  loadingText?: string;
-
   /** The icon to show when the button is in a loading state. */
-  loadingIcon?: JSX.Element | (() => JSX.Element);
+  loadingIndicator?: JSX.Element | (() => JSX.Element);
 
-  /**
-   * The placement of the loading icon when the button is in a loading state
-   * and a loading text is provided.
-   */
-  loadingIconPlacement?: "start" | "end";
+  /** The placement of the loading indicator when the button is in a loading state. */
+  loadingPlacement?: "center" | "start" | "end";
 
   /** The icon to show before the button content. */
-  startIcon?: JSX.Element | (() => JSX.Element);
+  startDecorator?: JSX.Element | (() => JSX.Element);
 
   /** The icon to show after the button content. */
-  endIcon?: JSX.Element | (() => JSX.Element);
+  endDecorator?: JSX.Element | (() => JSX.Element);
 }
 
 export interface ButtonContentProps
-  extends Pick<ButtonBaseProps, "startIcon" | "endIcon" | "children"> {
+  extends Pick<ButtonBaseProps, "startDecorator" | "endDecorator" | "children"> {
   rtl?: boolean;
 
-  startIconClass?: string;
+  startDecoratorClass?: string;
 
-  endIconClass?: string;
+  endDecoratorClass?: string;
 }
 
 export interface ButtonProps extends Omit<ButtonBaseProps, "iconOnly"> {}
 
+export type IconButtonSlots = "root" | "loadingIndicator";
+
 export interface IconButtonProps
   extends Omit<
-    ButtonBaseProps,
-    "iconOnly" | "loadingText" | "loadingIconPlacement" | "startIcon" | "endIcon" | "fullWidth"
-  > {}
+      ButtonBaseProps,
+      "iconOnly" | "loadingPlacement" | "startDecorator" | "endDecorator" | "slotClasses"
+    >,
+    SlotProp<IconButtonSlots> {
+  /** An accessible label for the button. */
+  "aria-label": string;
+}
 
 /* -------------------------------------------------------------------------------------------------
  * LinkButton
  * -----------------------------------------------------------------------------------------------*/
 
-export type LinkButtonSlots = "root" | "startIcon" | "endIcon";
+export type LinkButtonSlots = "root" | "startDecorator" | "endDecorator";
 
 export interface LinkButtonBaseProps
   extends Omit<KLink.LinkRootProps, "color">,
-    Omit<ButtonVariants, "loading" | "disabled">,
+    Omit<ButtonVariants, "loading">,
     SlotProp<LinkButtonSlots> {
   /** The icon to show before the link button content. */
-  startIcon?: JSX.Element | (() => JSX.Element);
+  startDecorator?: JSX.Element | (() => JSX.Element);
 
   /** The icon to show after the link button content. */
-  endIcon?: JSX.Element | (() => JSX.Element);
+  endDecorator?: JSX.Element | (() => JSX.Element);
 }
 
 export interface LinkButtonProps extends Omit<LinkButtonBaseProps, "iconOnly"> {}
 
+export type LinkIconButtonSlots = "root";
+
 export interface LinkIconButtonProps
-  extends Omit<LinkButtonBaseProps, "iconOnly" | "startIcon" | "endIcon" | "fullWidth"> {}
+  extends Omit<LinkButtonBaseProps, "iconOnly" | "startDecorator" | "endDecorator" | "slotClasses">,
+    SlotProp<LinkIconButtonSlots> {
+  /** An accessible label for the button. */
+  "aria-label": string;
+}
