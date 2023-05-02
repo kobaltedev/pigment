@@ -46,7 +46,7 @@ export function Header(props: HeaderProps) {
           href="/"
         >
           Pigment
-          <span class="text-3xl leading-[0] text-primary-600">.</span>
+          <span class="text-3xl leading-[0] text-content-primary">.</span>
         </Link>
         <span class="rounded bg-slate-100 px-1.5 py-1 text-sm leading-none dark:bg-slate-800 dark:text-slate-300">
           {LATEST_CORE_VERSION_NAME}

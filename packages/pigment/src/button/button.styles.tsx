@@ -11,7 +11,7 @@ export const buttonStyles = tv({
       "border border-solid",
       "cursor-pointer no-underline",
       "transition-colors",
-      "ui-disabled:text-content-disabled ui-disabled:pointer-events-none ui-disabled:shadow-none",
+      "ui-disabled:text-content-disabled ui-disabled:opacity-50 ui-disabled:pointer-events-none ui-disabled:shadow-none",
       "outline-none focus-visible:outline-ring focus-visible:outline-2 focus-visible:outline-offset-2",
     ],
     icon: "reset-svg shrink-0",
@@ -35,9 +35,15 @@ export const buttonStyles = tv({
       },
       default: {
         root: [
-          "text-content bg-white border-line shadow-sm",
+          "text-content bg-white border-line",
           "ui-not-disabled:hover:bg-surface-subtle",
-          "ui-not-disabled:active:bg-surface-subtle-hover ui-not-disabled:active:shadow-none",
+          "ui-not-disabled:active:bg-surface-subtle-hover",
+          "shadow-sm ui-not-disabled:active:shadow-none",
+          // dark
+          "dark:ui-not-disabled:bg-white/5",
+          "dark:ui-not-disabled:hover:bg-white/10",
+          "dark:ui-not-disabled:active:bg-white/[0.15]",
+          "dark:shadow-none",
         ],
       },
       dashed: {
@@ -45,6 +51,9 @@ export const buttonStyles = tv({
           "text-content bg-transparent border-dashed border-line",
           "ui-not-disabled:hover:bg-surface-subtle",
           "ui-not-disabled:active:bg-surface-subtle-hover",
+          // dark
+          "dark:ui-not-disabled:hover:bg-white/10",
+          "dark:ui-not-disabled:active:bg-white/[0.15]",
         ],
       },
       text: {
@@ -52,12 +61,16 @@ export const buttonStyles = tv({
           "text-content bg-transparent border-transparent",
           "ui-not-disabled:hover:bg-surface-subtle-hover",
           "ui-not-disabled:active:bg-surface-subtle-active",
+          // dark
+          "dark:ui-not-disabled:hover:bg-white/10",
+          "dark:ui-not-disabled:active:bg-white/[0.15]",
         ],
       },
       link: {
         root: [
-          "text-content-link border-transparent underline-offset-4",
-          "ui-not-disabled:hover:underline",
+          "text-content-link border-transparent !h-auto !p-0 underline underline-offset-4",
+          "ui-not-disabled:hover:text-content-link-hover",
+          "ui-not-disabled:active:text-content-link-active",
         ],
       },
       destructive: {
@@ -112,9 +125,15 @@ export const buttonStyles = tv({
   compoundVariants: [
     // variant + disabled
     {
-      variant: ["primary", "secondary", "default", "dashed", "destructive"],
+      variant: ["primary", "secondary", "destructive"],
       class: {
         root: "ui-disabled:bg-surface-disabled ui-disabled:border-surface-disabled",
+      },
+    },
+    {
+      variant: ["default", "dashed"],
+      class: {
+        root: "ui-disabled:bg-transparent ui-disabled:border-line-disabled",
       },
     },
     {

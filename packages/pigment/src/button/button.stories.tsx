@@ -10,10 +10,6 @@ type Story = StoryObj<ButtonProps>;
 export default {
   title: "Button",
   argTypes: {
-    variant: {
-      options: ["primary", "secondary", "default", "dashed", "text", "link", "destructive"],
-      control: { type: "select" },
-    },
     fullWidth: {
       control: { type: "boolean" },
     },
@@ -23,11 +19,8 @@ export default {
     disabled: {
       control: { type: "boolean" },
     },
-    loadingText: {
-      control: { type: "text" },
-    },
-    loadingIconPlacement: {
-      options: ["start", "end"],
+    loadingPlacement: {
+      options: ["center", "start", "end"],
       control: { type: "radio" },
     },
     children: {
@@ -37,6 +30,15 @@ export default {
   render: props => (
     <div class="flex flex-col gap-4">
       <div class="flex items-center space-x-4">
+        <Button {...props} variant="primary" />
+        <Button {...props} variant="secondary" />
+        <Button {...props} variant="default" />
+        <Button {...props} variant="dashed" />
+        <Button {...props} variant="text" />
+        <Button {...props} variant="link" />
+        <Button {...props} variant="destructive" />
+      </div>
+      <div class="flex items-center space-x-4">
         <Button {...props} size="xs" />
         <Button {...props} size="sm" />
         <Button {...props} size="md" />
@@ -44,18 +46,18 @@ export default {
         <Button {...props} size="xl" />
       </div>
       <div class="flex items-center space-x-4">
-        <Button {...props} size="xs" startIcon={<TablerLoader2 />} />
-        <Button {...props} size="sm" startIcon={<TablerLoader2 />} />
-        <Button {...props} size="md" startIcon={<TablerLoader2 />} />
-        <Button {...props} size="lg" startIcon={<TablerLoader2 />} />
-        <Button {...props} size="xl" startIcon={<TablerLoader2 />} />
+        <Button {...props} size="xs" startDecorator={<TablerLoader2 />} />
+        <Button {...props} size="sm" startDecorator={<TablerLoader2 />} />
+        <Button {...props} size="md" startDecorator={<TablerLoader2 />} />
+        <Button {...props} size="lg" startDecorator={<TablerLoader2 />} />
+        <Button {...props} size="xl" startDecorator={<TablerLoader2 />} />
       </div>
       <div class="flex items-center space-x-4">
-        <Button {...props} size="xs" endIcon={<TablerLoader2 />} />
-        <Button {...props} size="sm" endIcon={<TablerLoader2 />} />
-        <Button {...props} size="md" endIcon={<TablerLoader2 />} />
-        <Button {...props} size="lg" endIcon={<TablerLoader2 />} />
-        <Button {...props} size="xl" endIcon={<TablerLoader2 />} />
+        <Button {...props} size="xs" endDecorator={<TablerLoader2 />} />
+        <Button {...props} size="sm" endDecorator={<TablerLoader2 />} />
+        <Button {...props} size="md" endDecorator={<TablerLoader2 />} />
+        <Button {...props} size="lg" endDecorator={<TablerLoader2 />} />
+        <Button {...props} size="xl" endDecorator={<TablerLoader2 />} />
       </div>
       <div class="flex items-center space-x-4">
         <IconButton {...props} size="xs" children={<TablerLoader2 />} />
@@ -70,12 +72,10 @@ export default {
 
 export const Default: Story = {
   args: {
-    variant: "default",
     fullWidth: false,
     loading: false,
     disabled: false,
-    loadingText: "",
-    loadingIconPlacement: "start",
+    loadingPlacement: "center",
     children: "Button",
   },
 };

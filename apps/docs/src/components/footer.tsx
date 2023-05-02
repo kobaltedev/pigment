@@ -16,7 +16,7 @@ export function Footer(props: ComponentProps<"footer">) {
                 href="/"
               >
                 Pigment
-                <span class="text-3xl text-primary-600 leading-[0]">.</span>
+                <span class="text-3xl text-content-primary leading-[0]">.</span>
               </Link>
             </div>
             <div class="text-sm text-gray-600">

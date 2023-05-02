@@ -105,7 +105,7 @@ export function TableOfContents() {
                     <Link
                       href={`${path.pathname}#${section.slug}`}
                       class={clsx(
-                        "block w-full font-sans transition font-normal rounded px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-700/20",
+                        "block w-full font-sans transition font-normal rounded px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-700/20",
                         section.slug === currentSection()
                           ? "text-slate-900 dark:text-slate-300"
                           : "text-slate-600 dark:text-slate-400",

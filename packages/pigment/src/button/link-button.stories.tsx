@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 
-import { LinkIconButton, LinkButton } from "./button";
+import { LinkIconButton, LinkButton, Button } from "./button";
 import { LinkButtonProps } from "./button.props";
 import { TablerLoader2 } from "../icons";
 
@@ -10,10 +10,6 @@ type Story = StoryObj<LinkButtonProps>;
 export default {
   title: "LinkButton",
   argTypes: {
-    variant: {
-      options: ["primary", "secondary", "default", "dashed", "text", "link", "destructive"],
-      control: { type: "select" },
-    },
     fullWidth: {
       control: { type: "boolean" },
     },
@@ -30,6 +26,15 @@ export default {
   render: props => (
     <div class="flex flex-col gap-4">
       <div class="flex items-center space-x-4">
+        <LinkButton {...props} variant="primary" />
+        <LinkButton {...props} variant="secondary" />
+        <LinkButton {...props} variant="default" />
+        <LinkButton {...props} variant="dashed" />
+        <LinkButton {...props} variant="text" />
+        <LinkButton {...props} variant="link" />
+        <LinkButton {...props} variant="destructive" />
+      </div>
+      <div class="flex items-center space-x-4">
         <LinkButton {...props} size="xs" />
         <LinkButton {...props} size="sm" />
         <LinkButton {...props} size="md" />
@@ -37,18 +42,18 @@ export default {
         <LinkButton {...props} size="xl" />
       </div>
       <div class="flex items-center space-x-4">
-        <LinkButton {...props} size="xs" startIcon={<TablerLoader2 />} />
-        <LinkButton {...props} size="sm" startIcon={<TablerLoader2 />} />
-        <LinkButton {...props} size="md" startIcon={<TablerLoader2 />} />
-        <LinkButton {...props} size="lg" startIcon={<TablerLoader2 />} />
-        <LinkButton {...props} size="xl" startIcon={<TablerLoader2 />} />
+        <LinkButton {...props} size="xs" startDecorator={<TablerLoader2 />} />
+        <LinkButton {...props} size="sm" startDecorator={<TablerLoader2 />} />
+        <LinkButton {...props} size="md" startDecorator={<TablerLoader2 />} />
+        <LinkButton {...props} size="lg" startDecorator={<TablerLoader2 />} />
+        <LinkButton {...props} size="xl" startDecorator={<TablerLoader2 />} />
       </div>
       <div class="flex items-center space-x-4">
-        <LinkButton {...props} size="xs" endIcon={<TablerLoader2 />} />
-        <LinkButton {...props} size="sm" endIcon={<TablerLoader2 />} />
-        <LinkButton {...props} size="md" endIcon={<TablerLoader2 />} />
-        <LinkButton {...props} size="lg" endIcon={<TablerLoader2 />} />
-        <LinkButton {...props} size="xl" endIcon={<TablerLoader2 />} />
+        <LinkButton {...props} size="xs" endDecorator={<TablerLoader2 />} />
+        <LinkButton {...props} size="sm" endDecorator={<TablerLoader2 />} />
+        <LinkButton {...props} size="md" endDecorator={<TablerLoader2 />} />
+        <LinkButton {...props} size="lg" endDecorator={<TablerLoader2 />} />
+        <LinkButton {...props} size="xl" endDecorator={<TablerLoader2 />} />
       </div>
       <div class="flex items-center space-x-4">
         <LinkIconButton {...props} size="xs" children={<TablerLoader2 />} />

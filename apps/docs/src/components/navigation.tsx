@@ -29,8 +29,10 @@ export function Navigation(props: NavigationProps) {
                       <Link
                         href={link.href}
                         class={clsx(
-                          "flex items-center justify-between w-full font-sans transition font-normal rounded px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-700/20",
-                          link.href === location.pathname ? "text-slate-900" : "text-slate-600"
+                          "flex items-center justify-between w-full font-sans transition font-normal rounded px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-700/20",
+                          link.href === location.pathname
+                            ? "text-slate-900 dark:text-slate-300"
+                            : "text-slate-600 dark:text-slate-400"
                         )}
                       >
                         <span>{link.title}</span>

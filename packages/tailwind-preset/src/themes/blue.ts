@@ -6,12 +6,16 @@ export const blueTheme: ThemeTokens = {
   light: {
     colors: {
       content: {
-        DEFAULT: colors.slate["800"],
-        subtle: colors.slate["600"],
-        subtler: colors.slate["500"],
-        subtlest: colors.slate["400"],
-        disabled: colors.slate["300"],
-        link: colors.blue["600"],
+        DEFAULT: colors.slate["900"],
+        subtle: colors.slate["700"],
+        subtler: colors.slate["600"],
+        subtlest: colors.slate["500"],
+        disabled: colors.slate["400"],
+        link: {
+          DEFAULT: colors.blue["600"],
+          hover: colors.blue["700"],
+          active: colors.blue["800"],
+        },
 
         primary: colors.blue["600"],
         success: colors.green["600"],
@@ -41,7 +45,7 @@ export const blueTheme: ThemeTokens = {
         DEFAULT: colors.white,
         body: colors.white,
         overlay: colors.white,
-        disabled: colors.slate["50"],
+        disabled: colors.slate["200"],
         tooltip: colors.slate["900"],
 
         subtle: {
@@ -114,6 +118,117 @@ export const blueTheme: ThemeTokens = {
     },
   },
   dark: {
-    colors: {},
+    colors: {
+      content: {
+        DEFAULT: colors.slate["100"],
+        subtle: colors.slate["300"],
+        subtler: colors.slate["400"],
+        subtlest: colors.slate["500"],
+        disabled: colors.slate["600"],
+        link: {
+          DEFAULT: colors.blue["400"],
+          hover: colors.blue["300"],
+          active: colors.blue["200"],
+        },
+
+        primary: colors.blue["400"],
+        success: colors.green["400"],
+        info: colors.blue["400"],
+        warning: colors.amber["300"],
+        danger: colors.red["400"],
+        discovery: colors.violet["400"],
+
+        onPrimary: colors.slate["950"],
+        onNeutral: colors.slate["950"],
+        onSuccess: colors.sage["950"],
+        onInfo: colors.slate["950"],
+        onWarning: colors.sand["950"],
+        onDanger: colors.maroon["950"],
+        onDiscovery: colors.mauve["950"],
+
+        onPrimarySubtle: colors.blue["200"],
+        onNeutralSubtle: colors.slate["200"],
+        onSuccessSubtle: colors.green["200"],
+        onInfoSubtle: colors.blue["200"],
+        onWarningSubtle: colors.amber["200"],
+        onDangerSubtle: colors.red["200"],
+        onDiscoverySubtle: colors.violet["200"],
+      },
+
+      surface: {
+        DEFAULT: colors.slate["950"],
+        body: colors.slate["950"],
+        overlay: colors.slate["900"],
+        disabled: colors.slate["800"],
+        tooltip: colors.slate["50"],
+
+        subtle: {
+          DEFAULT: colors.slate["900"],
+          hover: colors.slate["800"],
+          active: colors.slate["700"],
+        },
+
+        primary: {
+          DEFAULT: colors.blue["400"],
+          hover: colors.blue["300"],
+          active: colors.blue["200"],
+          subtle: {
+            DEFAULT: colors.blue["900"],
+            hover: colors.blue["800"],
+            active: colors.blue["700"],
+          },
+        },
+        neutral: {
+          DEFAULT: colors.slate["400"],
+          hover: colors.slate["300"],
+          active: colors.slate["200"],
+          subtle: colors.slate["900"],
+        },
+        success: {
+          DEFAULT: colors.green["400"],
+          hover: colors.green["300"],
+          active: colors.green["200"],
+          subtle: colors.green["900"],
+        },
+        info: {
+          DEFAULT: colors.blue["400"],
+          hover: colors.blue["300"],
+          active: colors.blue["200"],
+          subtle: colors.blue["900"],
+        },
+        warning: {
+          DEFAULT: colors.amber["600"],
+          hover: colors.amber["500"],
+          active: colors.amber["400"],
+          subtle: colors.amber["900"],
+        },
+        danger: {
+          DEFAULT: colors.red["400"],
+          hover: colors.red["300"],
+          active: colors.red["200"],
+          subtle: colors.red["900"],
+        },
+        discovery: {
+          DEFAULT: colors.violet["400"],
+          hover: colors.violet["300"],
+          active: colors.violet["200"],
+          subtle: colors.violet["900"],
+        },
+      },
+
+      line: {
+        DEFAULT: colors.slate["800"],
+        disabled: colors.slate["800"],
+        primary: colors.blue["500"],
+        neutral: colors.slate["500"],
+        success: colors.green["500"],
+        info: colors.blue["500"],
+        warning: colors.amber["500"],
+        danger: colors.red["500"],
+        discovery: colors.violet["500"],
+      },
+
+      ring: colors.blue["500"],
+    },
   },
 };

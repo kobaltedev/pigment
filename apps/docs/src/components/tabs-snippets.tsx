@@ -32,7 +32,7 @@ TabsSnippets.List = (props: ComponentProps<typeof Tabs.List>) => {
       {...others}
     >
       {local.children}
-      <Tabs.Indicator class="absolute bottom-[-1px] h-0.5 bg-primary-600 transition-all" />
+      <Tabs.Indicator class="absolute bottom-[-1px] h-0.5 bg-content-primary transition-all" />
     </Tabs.List>
   );
 };

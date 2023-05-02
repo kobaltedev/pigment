@@ -16,7 +16,11 @@ export const themeTokensShapeValue = {
       subtler: "",
       subtlest: "",
       disabled: "",
-      link: "",
+      link: {
+        DEFAULT: "",
+        hover: "",
+        active: "",
+      },
 
       primary: "",
       success: "",
