@@ -13,8 +13,8 @@ export interface AlertProps extends KAlert.AlertRootProps, AlertVariants, SlotPr
   withDefaultStartDecorator?: boolean;
 
   /** The element(s) placed before the alert content. */
-  startDecorator?: ((status: AlertStatus) => JSX.Element) | JSX.Element;
+  startDecorator?: JSX.Element | ((status: AlertStatus) => JSX.Element);
 
   /** The element(s) placed after the alert content. */
-  endDecorator?: ((status: AlertStatus) => JSX.Element) | JSX.Element;
+  endDecorator?: JSX.Element | ((status: AlertStatus) => JSX.Element);
 }
