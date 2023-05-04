@@ -373,11 +373,11 @@ export const buttonStyles = tv({
 
     // button
     { iconOnly: false, fullWidth: false, class: { root: "w-auto" } },
-    { size: "xs", iconOnly: false, class: { root: "px-2 text-xs", decorator: "text-base" } },
-    { size: "sm", iconOnly: false, class: { root: "px-2.5 text-sm", decorator: "text-xl" } },
-    { size: "md", iconOnly: false, class: { root: "px-3 text-base", decorator: "text-2xl" } },
-    { size: "lg", iconOnly: false, class: { root: "px-4 text-xl", decorator: "text-[28px]" } },
-    { size: "xl", iconOnly: false, class: { root: "px-5 text-2xl", decorator: "text-[32px]" } },
+    { size: "xs", iconOnly: false, class: { root: "px-2 text-xs", decorator: "text-base/[0]" } },
+    { size: "sm", iconOnly: false, class: { root: "px-2.5 text-sm", decorator: "text-xl/[0]" } },
+    { size: "md", iconOnly: false, class: { root: "px-3 text-base", decorator: "text-2xl/[0]" } },
+    { size: "lg", iconOnly: false, class: { root: "px-4 text-xl", decorator: "text-[28px]/[0]" } },
+    { size: "xl", iconOnly: false, class: { root: "px-5 text-2xl", decorator: "text-[32px]/[0]" } },
 
     // icon only button
     { size: "xs", iconOnly: true, fullWidth: false, class: { root: "w-6" } },
@@ -386,11 +386,11 @@ export const buttonStyles = tv({
     { size: "lg", iconOnly: true, fullWidth: false, class: { root: "w-12" } },
     { size: "xl", iconOnly: true, fullWidth: false, class: { root: "w-14" } },
 
-    { size: "xs", iconOnly: true, class: { root: "text-base" } },
-    { size: "sm", iconOnly: true, class: { root: "text-xl" } },
-    { size: "md", iconOnly: true, class: { root: "text-2xl" } },
-    { size: "lg", iconOnly: true, class: { root: "text-[28px]" } },
-    { size: "xl", iconOnly: true, class: { root: "text-[32px]" } },
+    { size: "xs", iconOnly: true, class: { root: "text-base/[0]" } },
+    { size: "sm", iconOnly: true, class: { root: "text-xl/[0]" } },
+    { size: "md", iconOnly: true, class: { root: "text-2xl/[0]" } },
+    { size: "lg", iconOnly: true, class: { root: "text-[28px]/[0]" } },
+    { size: "xl", iconOnly: true, class: { root: "text-[32px]/[0]" } },
   ],
 });
 

@@ -1,0 +1,340 @@
+import { Preview } from "../../../../components";
+import {
+  WithDashedVariant,
+  WithDefaultVariant,
+  WithTextVariant,
+  WithLinkLikeVariant,
+  WithSolidPrimaryVariant,
+  WithSoftPrimaryVariant,
+  WithDangerVariant,
+  WithOtherStatusButtons,
+  WithStatusAlertExample,
+  WithInvertedAlertExample,
+  WithLinkButton,
+  WithLinkButtonAsChild,
+  WithSizes,
+  WithDecorators,
+  WithIconButton,
+  WithDisabled,
+} from "../../../../examples/button";
+
+# Button
+
+Buttons allow users to perform an action.
+
+## Import
+
+```tsx
+import { Button, IconButton, LinkButton, LinkIconButton } from "@kobalte/pigment";
+```
+
+## Variants
+
+Buttons come in multiple variants designed for specific use cases.
+
+### Solid primary button
+
+The `solid` button variant with `primary` color is best suited for the most important actions within an interface.
+
+<Preview>
+  <WithSolidPrimaryVariant />
+</Preview>
+
+```tsx
+<Button variant="solid" color="primary">
+  Create survey
+</Button>
+```
+
+### Soft primary button
+
+The `soft` button variant with `primary` color can be used as an alternative for secondary actions.
+
+<Preview>
+  <WithSoftPrimaryVariant />
+</Preview>
+
+```tsx
+<Button variant="soft" color="primary">
+  Export results
+</Button>
+```
+
+### Default button
+
+The `default` variant is the most common button within an interface, use it for secondary actions or when all actions have the same level of importance.
+
+<Preview>
+  <WithDefaultVariant />
+</Preview>
+
+```tsx
+<div class="flex items-center gap-3">
+  <Button>Copy</Button>
+  {/* Same as */}
+  <Button variant="default">Export</Button>
+</div>
+```
+
+### Dashed button
+
+The `dashed` variant can be used as a visual placeholder for insertion/creation actions.
+
+<Preview>
+  <WithDashedVariant />
+</Preview>
+
+```tsx
+<Button variant="dashed" startDecorator={<AddIcon />}>
+  Add new row
+</Button>
+```
+
+### Text button
+
+`text` buttons are designed for least important actions within an interface.
+
+<Preview>
+  <WithTextVariant />
+</Preview>
+
+```tsx
+<Button variant="text">Cancel</Button>
+```
+
+### Link (like) button
+
+The `link` variant is used to render a button that looks like a link.
+
+<Preview>
+  <WithLinkLikeVariant />
+</Preview>
+
+```tsx
+<Button variant="link">Show more</Button>
+```
+
+### Destructive button
+
+Use the `solid` or `soft` variant with the `danger` color to create a destructive button, commonly used to confirm a destructive/delete operation.
+
+<Preview>
+  <WithDangerVariant />
+</Preview>
+
+```tsx
+<div class="flex items-center gap-3">
+  <Button variant="solid" color="danger">
+    Delete survey
+  </Button>
+  <Button variant="soft" color="danger">
+    Remove answer
+  </Button>
+</div>
+```
+
+### Status button
+
+The `solid` and `soft` variant supports all Pigment semantic colors, allowing you to create _status buttons_.
+
+<Preview>
+  <WithOtherStatusButtons />
+</Preview>
+
+```tsx
+<div class="flex flex-col gap-3">
+  <For each={["solid", "soft"] as const}>
+    {variant => (
+      <div class="flex items-center gap-3">
+        <For
+          each={
+            ["primary", "neutral", "success", "info", "warning", "danger", "discovery"] as const
+          }
+        >
+          {color => (
+            <Button variant={variant} color={color} class="capitalize">
+              {color}
+            </Button>
+          )}
+        </For>
+      </div>
+    )}
+  </For>
+</div>
+```
+
+These buttons woks well when paired with others _status-related_ components like [Alert](/docs/core/components/alert) or [Badge](/docs/core/components/badge).
+
+<Preview>
+  <WithStatusAlertExample />
+</Preview>
+
+```tsx
+<Alert
+  variant="soft"
+  status="discovery"
+  withDefaultStartDecorator
+  endDecorator={
+    <div class="flex items-center gap-2.5">
+      <Button variant="soft" color="discovery" size="sm">
+        Skip
+      </Button>
+      <Button variant="solid" color="discovery" size="sm">
+        Take a tour
+      </Button>
+    </div>
+  }
+>
+  <span class="font-semibold">Learn about the latest features.</span>
+</Alert>
+```
+
+### Inverted button
+
+The `inverted` variant supports all Pigment semantic colors and can be used to create a high contrast button on a vibrant surface.
+
+<Preview>
+  <WithInvertedAlertExample />
+</Preview>
+
+```tsx
+<Alert
+  variant="solid"
+  status="info"
+  withDefaultStartDecorator
+  endDecorator={
+    <Button variant="inverted" color="info" size="sm">
+      Install now
+    </Button>
+  }
+>
+  <span class="font-semibold">New software update available.</span>
+</Alert>
+```
+
+## Button sizes
+
+<Preview>
+  <WithSizes />
+</Preview>
+
+```tsx
+<div class="flex items-center gap-3">
+  <For each={["xs", "sm", "md", "lg", "xl"] as const}>
+    {size => <Button size={size}>Button</Button>}
+  </For>
+</div>
+```
+
+## Button decorators
+
+The `startDecorator` and `endDecorator` props allows to add left and right icons to a button.
+
+<Preview>
+  <WithDecorators />
+</Preview>
+
+```tsx
+<div class="flex items-center gap-3">
+  <Button startDecorator={<ClipboardIcon />}>Copy to clipboard</Button>
+  <Button endDecorator={<ArrowNarrowRightIcon />}>Next</Button>
+</div>
+```
+
+## Disabled state
+
+<Preview>
+  <WithDisabled />
+</Preview>
+
+```tsx
+<div class="flex items-center gap-3">
+  <Button variant="solid" disabled>
+    Solid
+  </Button>
+  <Button variant="soft" disabled>
+    Soft
+  </Button>
+  <Button disabled>Default</Button>
+  <Button variant="dashed" disabled>
+    Dashed
+  </Button>
+  <Button variant="text" disabled>
+    Text
+  </Button>
+  <Button variant="link" disabled>
+    Link
+  </Button>
+</div>
+```
+
+## Loading state
+
+## IconButton
+
+The `IconButton` component renders a square button with an icon and no text content. In this case an `aria-label` is required to keep the button accessible.
+
+<Preview>
+  <WithIconButton />
+</Preview>
+
+```tsx
+<IconButton aria-label="Delete">
+  <TrashIcon />
+</IconButton>
+```
+
+## LinkButton
+
+Use the `LinkButton` or `LinkIconButton` if you need the style of a button with the functionality of a link.
+
+<Preview>
+  <WithLinkButton />
+</Preview>
+
+```tsx
+<div class="flex items-center gap-3">
+  <LinkButton href="https://github.com/kobaltedev/pigment" target="_blank">
+    Open on GitHub
+  </LinkButton>
+  <LinkIconButton
+    href="https://github.com/kobaltedev/pigment"
+    target="_blank"
+    aria-label="Open on GitHub"
+  >
+    <GitHubIcon />
+  </LinkIconButton>
+</div>
+```
+
+If you want to use the `Link` component from the [@solidjs/router](https://github.com/solidjs/solid-router) package, use the `asChild` prop paired with the `As` component to change the rendered element.
+
+<Preview>
+  <WithLinkButtonAsChild />
+</Preview>
+
+```tsx
+<LinkButton asChild>
+  <As component={Link} href="/" target="_blank">
+    Back to home
+  </As>
+</LinkButton>
+```
+
+## API Reference
+
+### Component identifier
+
+The names `Button` and `LinkButton` can be used when providing [default props](/docs/core/customization/themed-components#default-props) and [slot classes](/docs/core/customization/themed-components#slot-classes) in the theme.
+
+### Props
+
+| Prop | Description                      |
+| :--- | :------------------------------- |
+|      | ` ` <br/> **default:** ` ` <br/> |
+
+### Slots
+
+| Name | CSS selector      | Description  |
+| :--- | :---------------- | ------------ |
+| root | `.pg-button-root` | Root element |

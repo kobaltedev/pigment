@@ -51,7 +51,7 @@ export const TablerTwitterIcon = createIcon({
   ),
 });
 
-export const TablerSunFilled = createIcon({
+export const TablerSunFilledIcon = createIcon({
   path: () => (
     <path
       fill="none"
@@ -64,7 +64,7 @@ export const TablerSunFilled = createIcon({
   ),
 });
 
-export const TablerMoonFilled = createIcon({
+export const TablerMoonFilledIcon = createIcon({
   path: () => (
     <path
       fill="none"
@@ -77,7 +77,7 @@ export const TablerMoonFilled = createIcon({
   ),
 });
 
-export const TablerClipboard = createIcon({
+export const TablerClipboardIcon = createIcon({
   path: () => (
     <g
       fill="none"
@@ -92,7 +92,7 @@ export const TablerClipboard = createIcon({
   ),
 });
 
-export const TablerCheck = createIcon({
+export const TablerCheckIcon = createIcon({
   path: () => (
     <path
       fill="none"
@@ -101,6 +101,45 @@ export const TablerCheck = createIcon({
       stroke-linejoin="round"
       stroke-width="2"
       d="m5 12l5 5L20 7"
+    />
+  ),
+});
+
+export const TablerTrashIcon = createIcon({
+  path: () => (
+    <path
+      fill="none"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M4 7h16m-10 4v6m4-6v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"
+    />
+  ),
+});
+
+export const TablerPlusIcon = createIcon({
+  path: () => (
+    <path
+      fill="none"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M12 5v14m-7-7h14"
+    />
+  ),
+});
+
+export const TablerArrowNarrowRightIcon = createIcon({
+  path: () => (
+    <path
+      fill="none"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M5 12h14m-4 4l4-4m-4-4l4 4"
     />
   ),
 });
