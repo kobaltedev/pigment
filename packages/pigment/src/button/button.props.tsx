@@ -14,17 +14,17 @@ export interface ButtonBaseProps
   extends Omit<KButton.ButtonRootProps, "asChild" | "color">,
     ButtonVariants,
     SlotProp<ButtonSlots> {
-  /** The icon to show when the button is in a loading state. */
-  loadingIndicator?: JSX.Element | (() => JSX.Element);
-
-  /** The placement of the loading indicator when the button is in a loading state. */
-  loadingPlacement?: "center" | "start" | "end";
-
   /** The icon to show before the button content. */
   startDecorator?: JSX.Element | (() => JSX.Element);
 
   /** The icon to show after the button content. */
   endDecorator?: JSX.Element | (() => JSX.Element);
+
+  /** The icon to show when the button is in loading state. */
+  loadingIndicator?: JSX.Element | (() => JSX.Element);
+
+  /** The placement of the loading indicator when the button is in a loading state. */
+  loadingPlacement?: "center" | "start" | "end";
 }
 
 export interface ButtonContentProps

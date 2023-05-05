@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 import { For, JSX } from "solid-js";
 
-import { TablerLoader2 } from "../icons";
+import { TablerLoader2 } from "../icon";
 import { Button, IconButton } from "./button";
 import { ButtonProps } from "./button.props";
 

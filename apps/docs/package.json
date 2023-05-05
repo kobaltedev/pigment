@@ -29,7 +29,7 @@
     "start": "solid-start start"
   },
   "dependencies": {
-    "@kobalte/core": "0.9.3",
+    "@kobalte/core": "0.9.5",
     "@kobalte/pigment": "0.0.0",
     "@solid-primitives/media": "^2.1.6",
     "@solidjs/meta": "0.28.4",

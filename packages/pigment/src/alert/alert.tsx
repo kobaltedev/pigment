@@ -6,7 +6,7 @@ import {
   TablerAlertTriangle,
   TablerCircleCheck,
   TablerHelpHexagon,
-  TablerInfoSquareRounded,
+  TablerInfoCircle,
   TablerLifebuoy,
 } from "../icon";
 import { mergeThemeProps, useThemeClasses } from "../theme";
@@ -62,7 +62,7 @@ export function Alert(props: AlertProps) {
             <TablerCircleCheck aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
           </Match>
           <Match when={variantProps.status === "info"}>
-            <TablerInfoSquareRounded aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
+            <TablerInfoCircle aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
           </Match>
           <Match when={variantProps.status === "warning"}>
             <TablerAlertTriangle aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
@@ -95,6 +95,7 @@ export function Alert(props: AlertProps) {
         alertStaticClass("startDecorator"),
         themeClasses.startDecorator,
         local.slotClasses?.startDecorator,
+        isRTL() ? "ml-2.5" : "mr-2.5",
       ],
     });
 

@@ -53,7 +53,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@kobalte/core": "^0.9.3",
+    "@kobalte/core": "^0.9.5",
     "@kobalte/utils": "^0.7.1",
     "@solid-primitives/refs": "^1.0.2",
     "tailwind-variants": "^0.1.3"
