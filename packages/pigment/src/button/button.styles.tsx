@@ -58,8 +58,9 @@ export const buttonStyles = tv({
       link: {
         root: [
           "text-content-link border-transparent !h-auto !p-0 underline-offset-4",
-          "ui-not-disabled:hover:text-content-link-hover ui-not-disabled:hover:underline ui-not-disabled:focus:underline",
+          "ui-not-disabled:hover:text-content-link-hover",
           "ui-not-disabled:active:text-content-link-active",
+          "ui-not-disabled:hover:underline ui-not-disabled:focus-visible:underline",
         ],
       },
     },

@@ -1,10 +1,8 @@
 import { Button as KButton, Link as KLink, useLocale } from "@kobalte/core";
-import { mergeDefaultProps } from "@kobalte/utils";
-import { ComponentProps, createMemo, JSX, Match, Show, splitProps, Switch } from "solid-js";
+import { ComponentProps, createMemo, JSX, Show, splitProps } from "solid-js";
 
 import { TablerLoader2 } from "../icon";
 import { mergeThemeProps, useThemeClasses } from "../theme";
-import { getLogicalPlacement } from "../utils/get-logical-direction";
 import { makeStaticClass } from "../utils/make-static-class";
 import { runIfFn } from "../utils/run-if-fn";
 import {
@@ -26,17 +24,6 @@ import { buttonStyles } from "./button.styles";
 
 function ButtonIcon(props: ComponentProps<"span">) {
   return <span aria-hidden="true" {...props} />;
-}
-
-function ButtonLoadingIcon(props: ComponentProps<"span">) {
-  props = mergeDefaultProps(
-    {
-      children: (() => <TablerLoader2 class="animate-spin" />) as unknown as JSX.Element,
-    },
-    props
-  );
-
-  return <ButtonIcon {...props} />;
 }
 
 function ButtonContent(props: ButtonContentProps) {
@@ -86,6 +73,7 @@ function ButtonBase(props: ButtonBaseProps) {
       fullWidth: false,
       disabled: false,
       loadingPlacement: "center",
+      loadingIndicator: (() => <TablerLoader2 class="animate-spin" />) as unknown as JSX.Element,
     },
     props
   );
@@ -110,41 +98,71 @@ function ButtonBase(props: ButtonBaseProps) {
 
   const { direction } = useLocale();
 
-  const logicalLoadingPlacement = createMemo(() => {
-    return getLogicalPlacement(direction(), local.loadingPlacement ?? "center");
-  });
-
-  const loadingIndicatorClass = (additionalClasses?: string) => {
+  const loadingIndicatorClasses = createMemo(() => {
     return styles().decorator({
       class: [
-        additionalClasses,
+        local.loadingPlacement === "center" ? "absolute" : "",
         buttonStaticClass("loadingIndicator"),
         themeClasses.loadingIndicator,
         local.slotClasses?.loadingIndicator,
       ],
     });
-  };
+  });
+
+  const loadingIndicator = createMemo(() => local.loadingIndicator as unknown as JSX.Element);
+
+  const startDecorator = createMemo(() => {
+    if (variantProps.loading && local.loadingPlacement === "start") {
+      return <ButtonIcon class={loadingIndicatorClasses()}>{loadingIndicator()}</ButtonIcon>;
+    }
+
+    return local.startDecorator;
+  });
+
+  const startDecoratorClasses = createMemo(() => {
+    if (variantProps.loading && local.loadingPlacement === "start") {
+      return undefined;
+    }
+
+    return styles().decorator({
+      class: [
+        buttonStaticClass("startDecorator"),
+        themeClasses.startDecorator,
+        local.slotClasses?.startDecorator,
+      ],
+    });
+  });
+
+  const endDecorator = createMemo(() => {
+    if (variantProps.loading && local.loadingPlacement === "end") {
+      return <ButtonIcon class={loadingIndicatorClasses()}>{loadingIndicator()}</ButtonIcon>;
+    }
+
+    return local.endDecorator;
+  });
+
+  const endDecoratorClasses = createMemo(() => {
+    if (variantProps.loading && local.loadingPlacement === "end") {
+      return undefined;
+    }
+
+    return styles().decorator({
+      class: [
+        buttonStaticClass("endDecorator"),
+        themeClasses.endDecorator,
+        local.slotClasses?.endDecorator,
+      ],
+    });
+  });
 
   const content = () => {
     return (
       <ButtonContent
         rtl={direction() === "rtl"}
-        startDecoratorClass={styles().decorator({
-          class: [
-            buttonStaticClass("startDecorator"),
-            themeClasses.startDecorator,
-            local.slotClasses?.startDecorator,
-          ],
-        })}
-        endDecoratorClass={styles().decorator({
-          class: [
-            buttonStaticClass("endDecorator"),
-            themeClasses.endDecorator,
-            local.slotClasses?.endDecorator,
-          ],
-        })}
-        startDecorator={local.startDecorator}
-        endDecorator={local.endDecorator}
+        startDecoratorClass={startDecoratorClasses()}
+        endDecoratorClass={endDecoratorClasses()}
+        startDecorator={startDecorator()}
+        endDecorator={endDecorator()}
       >
         {local.children}
       </ButtonContent>
@@ -158,23 +176,11 @@ function ButtonBase(props: ButtonBaseProps) {
       })}
       {...others}
     >
-      <Show when={variantProps.loading} fallback={content()}>
-        <Switch>
-          <Match when={logicalLoadingPlacement() === "center"}>
-            <ButtonLoadingIcon class={loadingIndicatorClass("absolute")} />
-            <Show when={!variantProps.iconOnly}>
-              <span class={styles().loadingContent()}>{content()}</span>
-            </Show>
-          </Match>
-          <Match when={logicalLoadingPlacement() === "left"}>
-            <ButtonLoadingIcon class={loadingIndicatorClass()} />
-            {content()}
-          </Match>
-          <Match when={logicalLoadingPlacement() === "right"}>
-            {content()}
-            <ButtonLoadingIcon class={loadingIndicatorClass()} />
-          </Match>
-        </Switch>
+      <Show when={variantProps.loading && local.loadingPlacement === "center"} fallback={content()}>
+        <ButtonIcon class={loadingIndicatorClasses()}>{loadingIndicator()}</ButtonIcon>
+        <Show when={!variantProps.iconOnly}>
+          <span class={styles().loadingContent()}>{content()}</span>
+        </Show>
       </Show>
     </KButton.Root>
   );

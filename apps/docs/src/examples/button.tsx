@@ -3,6 +3,7 @@ import { Link } from "@solidjs/router";
 import { For } from "solid-js";
 
 import {
+  BeatLoaderIcon,
   TablerArrowNarrowRightIcon,
   TablerClipboardIcon,
   TablerGitHubIcon,
@@ -148,6 +149,10 @@ export function WithDecorators() {
   );
 }
 
+export function WithFullWidth() {
+  return <Button fullWidth>Create Survey</Button>;
+}
+
 export function WithDisabled() {
   return (
     <div class="flex items-center gap-3">
@@ -166,6 +171,50 @@ export function WithDisabled() {
       </Button>
       <Button variant="link" disabled>
         Link
+      </Button>
+    </div>
+  );
+}
+
+export function WithLoading() {
+  return (
+    <div class="flex items-center gap-3">
+      <Button variant="solid" loading>
+        Solid
+      </Button>
+      <Button variant="soft" loading>
+        Soft
+      </Button>
+      <Button loading>Default</Button>
+      <Button variant="dashed" loading>
+        Dashed
+      </Button>
+      <Button variant="text" loading>
+        Text
+      </Button>
+      <Button variant="link" loading>
+        Link
+      </Button>
+    </div>
+  );
+}
+
+export function WithCustomLoadingIndicator() {
+  return (
+    <Button loading loadingIndicator={<BeatLoaderIcon />}>
+      Export results
+    </Button>
+  );
+}
+
+export function WithLoadingPlacement() {
+  return (
+    <div class="flex items-center gap-3">
+      <Button loading loadingPlacement="start">
+        Export results
+      </Button>
+      <Button variant="solid" loading loadingPlacement="end">
+        Create survey
       </Button>
     </div>
   );
