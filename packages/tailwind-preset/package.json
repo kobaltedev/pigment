@@ -46,15 +46,15 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
-    "@kobalte/tailwindcss": "^0.6.2",
+    "@kobalte/tailwindcss": "^0.6.5",
     "dset": "^3.1.2",
     "tailwindcss-animate": "^1.0.5"
   },
   "devDependencies": {
-    "tailwindcss": "3.3.0"
+    "tailwindcss": "3.3.2"
   },
   "peerDependencies": {
-    "tailwindcss": "^3.3.0"
+    "tailwindcss": "^3.3.2"
   },
   "publishConfig": {
     "access": "public"
