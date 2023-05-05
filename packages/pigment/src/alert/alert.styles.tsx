@@ -3,7 +3,7 @@ import { tv, VariantProps } from "tailwind-variants";
 export const alertStyles = tv({
   slots: {
     root: "flex items-center p-3 rounded-md border border-solid text-base",
-    startDecorator: "leading-[0]",
+    startDecorator: "",
     endDecorator: "",
   },
   variants: {

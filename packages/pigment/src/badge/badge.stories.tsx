@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
+import { For } from "solid-js";
 
 import { Badge } from "./badge";
 import { BadgeProps } from "./badge.props";
-import { For } from "solid-js";
 
 type Story = StoryObj<BadgeProps>;
 
@@ -11,11 +11,12 @@ export default {
   title: "Badge",
   argTypes: {
     variant: {
-      options: ["solid", "soft", "dot"],
+      options: ["solid", "soft", "inverted", "dot"],
       control: { type: "select" },
     },
-    pill: {
-      control: { type: "boolean" },
+    shape: {
+      options: ["rounded", "pill", "circle"],
+      control: { type: "select" },
     },
   },
   render: props => (
@@ -42,7 +43,7 @@ export const Default: Story = {
     variant: "solid",
     color: "primary",
     size: "md",
-    pill: false,
+    shape: "rounded",
     children: "Badge",
   },
 };

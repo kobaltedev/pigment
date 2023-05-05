@@ -11,7 +11,7 @@ type Story = StoryObj<AlertProps>;
 export default {
   title: "Alert",
   argTypes: {
-    withDefaultStartDecorator: {
+    withoutDefaultStatusIcon: {
       control: { type: "boolean" },
     },
   },
@@ -77,5 +77,7 @@ export default {
 } as Meta<ComponentProps<typeof Alert>>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    withDefaultStatusIcon: false,
+  },
 };

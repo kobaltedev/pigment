@@ -42,6 +42,10 @@ const CORE_NAV_SECTIONS: NavSection[] = [
     title: "Components",
     links: [
       {
+        title: "Alert",
+        href: "/docs/core/components/alert",
+      },
+      {
         title: "Button",
         href: "/docs/core/components/button",
       },

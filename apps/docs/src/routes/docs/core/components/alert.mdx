@@ -1,0 +1,101 @@
+import { Preview } from "../../../../components";
+import { WithDecorator, WithVariant, WithStatus } from "../../../../examples/alert";
+
+# Alert
+
+Display a brief, important message in a way that attracts the user's attention without interrupting the user's task.
+
+## Import
+
+```tsx
+import { Alert } from "@kobalte/pigment";
+```
+
+## Variants
+
+The Alert component come in two variants: `solid` and `soft` (default).
+
+<Preview isCentered={false}>
+  <WithVariant />
+</Preview>
+
+```tsx
+<Alert variant="solid" status="info">
+  A new software update is available.
+</Alert>
+<Alert variant="soft" status="info">
+  A new software update is available.
+</Alert>
+```
+
+## Status
+
+The Alert component supports six different status which affect the color scheme and default status icon used: `neutral`, `success`, `info` (default), `warning`, `danger` and `discovery`.
+
+<Preview isCentered={false}>
+  <WithStatus />
+</Preview>
+
+```tsx
+<Alert variant="soft" status="neutral">
+  We are currently migrating our infrastructure.
+</Alert>
+<Alert variant="soft" status="success">
+  The data has been successfully saved on our server.
+</Alert>
+<Alert variant="soft" status="info">
+  A new software update is available.
+</Alert>
+<Alert variant="soft" status="warning">
+  Your registration token is about to expire.
+</Alert>
+<Alert variant="soft" status="danger">
+  There was an error processing your request.
+</Alert>
+<Alert variant="soft" status="discovery">
+  Learn about the latest features.
+</Alert>
+```
+
+## Decorators
+
+Use the `startDecorator` and `endDecorator` props to append actions and icons to either side of the alert.
+
+<Preview isCentered={false}>
+  <WithDecorator />
+</Preview>
+
+```tsx
+<Alert
+  variant="soft"
+  color="info"
+  startDecorator={<RocketIcon class="h-6 w-6" />}
+  endDecorator={<CloseButton variant="soft" color="info" size="sm" />}
+>
+  A new software update is available.
+</Alert>
+```
+
+## API Reference
+
+### Component identifier
+
+The name `Alert` can be used when providing [default props](/docs/core/customization/themed-components#default-props) and [slot classes](/docs/core/customization/themed-components#slot-classes) in the theme.
+
+### Props
+
+| Prop                  | Description                                                                                                                                                                                       |
+| :-------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| variant               | `"solid" \| "soft"` <br/> **default:** `"soft"` <br/> The visual style of the alert.                                                                                                              |
+| status                | `"neutral" \| "success" \| "info" \| "warning" \| "danger" \| "discovery"` <br/> **default:** `"info"` <br/> The status of the alert, which affect the color scheme and default status icon used. |
+| withDefaultStatusIcon | `boolean` <br/> **default:** `true` <br/> Whether the default status icons should be shown in place of the start decorator.                                                                       |
+| startDecorator        | `JSX.Element \| ((status) => JSX.Element)` <br/> The element to show before the alert content.                                                                                                    |
+| endDecorator          | `JSX.Element \| ((status) => JSX.Element)` <br/> The element to show after the alert content.                                                                                                     |
+
+### Slots
+
+| Name           | CSS selector                | Rendered element | Description     |
+| :------------- | :-------------------------- | :--------------- | --------------- |
+| root           | `.pg-alert-root`            | `div`            | Root element    |
+| startDecorator | `.pg-alert-start-decorator` | `span`           | Start decorator |
+| endDecorator   | `.pg-alert-end-decorator`   | `span`           | End decorator   |

@@ -23,9 +23,9 @@ export function Alert(props: AlertProps) {
   props = mergeThemeProps(
     "Alert",
     {
-      variant: "solid",
+      variant: "soft",
       status: "info",
-      withDefaultStartDecorator: false,
+      withDefaultStatusIcon: true,
     },
     props
   );
@@ -34,14 +34,7 @@ export function Alert(props: AlertProps) {
 
   const [local, variantProps, others] = splitProps(
     props,
-    [
-      "class",
-      "children",
-      "slotClasses",
-      "withDefaultStartDecorator",
-      "startDecorator",
-      "endDecorator",
-    ],
+    ["class", "children", "slotClasses", "withDefaultStatusIcon", "startDecorator", "endDecorator"],
     ["variant", "status"]
   );
 
@@ -53,7 +46,7 @@ export function Alert(props: AlertProps) {
 
   const defaultStartDecorator = () => {
     return (
-      <Show when={local.withDefaultStartDecorator}>
+      <Show when={local.withDefaultStatusIcon}>
         <Switch>
           <Match when={variantProps.status === "neutral"}>
             <TablerLifebuoy aria-hidden="true" class={DEFAULT_ICON_CLASSES} />

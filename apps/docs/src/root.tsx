@@ -53,16 +53,7 @@ export default function Root() {
         <ErrorBoundary>
           <Suspense>
             <ColorSchemeProvider>
-              <ThemeProvider
-                components={{
-                  Alert: {
-                    defaultProps: {
-                      variant: "soft",
-                      withDefaultStartDecorator: true,
-                    },
-                  },
-                }}
-              >
+              <ThemeProvider>
                 <MDXProvider components={mdxComponents}>
                   <Routes>
                     <FileRoutes />

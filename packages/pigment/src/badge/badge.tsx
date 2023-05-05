@@ -23,7 +23,7 @@ export function Badge(props: BadgeProps) {
       variant: "solid",
       color: "primary",
       size: "md",
-      pill: false,
+      shape: "rounded",
     },
     props
   );
@@ -33,7 +33,7 @@ export function Badge(props: BadgeProps) {
   const [local, variantProps, others] = splitProps(
     props,
     ["class", "slotClasses", "children"],
-    ["variant", "color", "size", "pill"]
+    ["variant", "color", "size", "shape"]
   );
 
   const { direction } = useLocale();
