@@ -27,6 +27,19 @@ export function WithSoftPrimaryVariant() {
   );
 }
 
+export function WithDangerVariant() {
+  return (
+    <div class="flex items-center gap-3">
+      <Button variant="solid" color="danger">
+        Delete survey
+      </Button>
+      <Button variant="soft" color="danger">
+        Remove answer
+      </Button>
+    </div>
+  );
+}
+
 export function WithDefaultVariant() {
   return (
     <div class="flex items-center gap-3">
@@ -50,19 +63,6 @@ export function WithTextVariant() {
 
 export function WithLinkLikeVariant() {
   return <Button variant="link">Show more</Button>;
-}
-
-export function WithDangerVariant() {
-  return (
-    <div class="flex items-center gap-3">
-      <Button variant="solid" color="danger">
-        Delete survey
-      </Button>
-      <Button variant="soft" color="danger">
-        Remove answer
-      </Button>
-    </div>
-  );
 }
 
 export function WithOtherStatusButtons() {
@@ -89,12 +89,28 @@ export function WithOtherStatusButtons() {
   );
 }
 
+export function WithInvertedAlertExample() {
+  return (
+    <Alert
+      variant="solid"
+      status="info"
+      endDecorator={
+        <Button variant="inverted" color="info" size="sm">
+          Install now
+        </Button>
+      }
+      class="w-full"
+    >
+      <span class="font-semibold">New software update available.</span>
+    </Alert>
+  );
+}
+
 export function WithStatusAlertExample() {
   return (
     <Alert
       variant="soft"
       status="discovery"
-      withDefaultStartDecorator
       endDecorator={
         <div class="flex items-center gap-2.5">
           <Button variant="soft" color="discovery" size="sm">
@@ -108,24 +124,6 @@ export function WithStatusAlertExample() {
       class="w-full"
     >
       <span class="font-semibold">Learn about the latest features.</span>
-    </Alert>
-  );
-}
-
-export function WithInvertedAlertExample() {
-  return (
-    <Alert
-      variant="solid"
-      status="info"
-      withDefaultStartDecorator
-      endDecorator={
-        <Button variant="inverted" color="info" size="sm">
-          Install now
-        </Button>
-      }
-      class="w-full"
-    >
-      <span class="font-semibold">New software update available.</span>
     </Alert>
   );
 }

@@ -13,6 +13,9 @@ export const badgeStyles = tv({
       soft: {
         root: "ring-1 ring-inset",
       },
+      inverted: {
+        root: "border border-solid",
+      },
       dot: {
         root: "text-content bg-transparent border border-solid border-line",
       },
@@ -38,12 +41,15 @@ export const badgeStyles = tv({
         dot: "h-2 w-2",
       },
     },
-    pill: {
-      true: {
+    shape: {
+      rounded: {
+        root: "rounded-md",
+      },
+      pill: {
         root: "rounded-full",
       },
-      false: {
-        root: "rounded-md",
+      circle: {
+        root: "rounded-full justify-center !p-0",
       },
     },
   },
@@ -150,6 +156,57 @@ export const badgeStyles = tv({
       },
     },
 
+    // variant inverted + color
+    {
+      variant: "inverted",
+      color: "primary",
+      class: {
+        root: "text-surface-primary bg-content-on-primary border-content-on-primary",
+      },
+    },
+    {
+      variant: "inverted",
+      color: "neutral",
+      class: {
+        root: "text-surface-neutral bg-content-on-neutral border-content-on-neutral",
+      },
+    },
+    {
+      variant: "inverted",
+      color: "success",
+      class: {
+        root: "text-surface-success bg-content-on-success border-content-on-success",
+      },
+    },
+    {
+      variant: "inverted",
+      color: "info",
+      class: {
+        root: "text-surface-info bg-content-on-info border-content-on-info",
+      },
+    },
+    {
+      variant: "inverted",
+      color: "warning",
+      class: {
+        root: "text-surface-warning bg-content-on-warning border-content-on-warning",
+      },
+    },
+    {
+      variant: "inverted",
+      color: "danger",
+      class: {
+        root: "text-surface-danger bg-content-on-danger border-content-on-danger",
+      },
+    },
+    {
+      variant: "inverted",
+      color: "discovery",
+      class: {
+        root: "text-surface-discovery bg-content-on-discovery border-content-on-discovery",
+      },
+    },
+
     // variant dot + color
     { variant: "dot", color: "primary", class: { dot: "fill-surface-primary" } },
     { variant: "dot", color: "neutral", class: { dot: "fill-surface-neutral" } },
@@ -162,6 +219,10 @@ export const badgeStyles = tv({
     // variant dot + size
     { variant: "dot", size: "md", class: { root: "gap-1.5" } },
     { variant: "dot", size: "lg", class: { root: "gap-2" } },
+
+    // shape circle + size
+    { shape: "circle", size: "md", class: { root: "w-6" } },
+    { shape: "circle", size: "lg", class: { root: "w-7" } },
   ],
 });
 

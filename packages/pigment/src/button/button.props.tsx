@@ -14,13 +14,13 @@ export interface ButtonBaseProps
   extends Omit<KButton.ButtonRootProps, "asChild" | "color">,
     ButtonVariants,
     SlotProp<ButtonSlots> {
-  /** The icon to show before the button content. */
+  /** The element to show before the button content. */
   startDecorator?: JSX.Element | (() => JSX.Element);
 
-  /** The icon to show after the button content. */
+  /** The element to show after the button content. */
   endDecorator?: JSX.Element | (() => JSX.Element);
 
-  /** The icon to show when the button is in loading state. */
+  /** The element to show when the button is in loading state. */
   loadingIndicator?: JSX.Element | (() => JSX.Element);
 
   /** The placement of the loading indicator when the button is in a loading state. */
@@ -60,10 +60,10 @@ export interface LinkButtonBaseProps
   extends Omit<KLink.LinkRootProps, "color">,
     Omit<ButtonVariants, "loading">,
     SlotProp<LinkButtonSlots> {
-  /** The icon to show before the link button content. */
+  /** The element to show before the link button content. */
   startDecorator?: JSX.Element | (() => JSX.Element);
 
-  /** The icon to show after the link button content. */
+  /** The element to show after the link button content. */
   endDecorator?: JSX.Element | (() => JSX.Element);
 }
 

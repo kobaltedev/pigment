@@ -6,7 +6,7 @@ export const blueTheme: ThemeTokens = {
   light: {
     colors: {
       content: {
-        DEFAULT: colors.slate["900"],
+        DEFAULT: colors.slate["800"],
         subtle: colors.slate["700"],
         subtler: colors.slate["600"],
         subtlest: colors.slate["500"],

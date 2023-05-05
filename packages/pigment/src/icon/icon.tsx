@@ -9,7 +9,7 @@ export interface IconProps extends JSX.SvgSVGAttributes<SVGSVGElement> {
 }
 
 const iconStyles = tv({
-  base: "inline-block shrink-0 text-current align-middle h-[1em] w-[1em] leading-[1em]",
+  base: "block align-middle shrink-0 text-current h-[1em] w-[1em]",
 });
 
 export function Icon(props: IconProps) {
