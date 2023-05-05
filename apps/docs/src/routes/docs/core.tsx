@@ -8,6 +8,10 @@ const CORE_NAV_SECTIONS: NavSection[] = [
     title: "Overview",
     links: [
       {
+        title: "Introduction",
+        href: "/docs/core/overview/introduction",
+      },
+      {
         title: "Getting started",
         href: "/docs/core/overview/getting-started",
       },
@@ -24,6 +28,10 @@ const CORE_NAV_SECTIONS: NavSection[] = [
   {
     title: "Customization",
     links: [
+      {
+        title: "Approaches",
+        href: "/docs/core/customization/approaches",
+      },
       {
         title: "Design tokens",
         href: "/docs/core/customization/design-tokens",

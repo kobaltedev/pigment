@@ -20,6 +20,12 @@ An open source design system for building SolidJS application.
 
 For full documentation, visit [pigment.kobalte.dev](https://pigment.kobalte.dev/).
 
+## Acknowledgment
+
+- Atlassian Design System - https://atlassian.design/
+- Nord Design System - https://nordhealth.design/
+- Joy UI - https://mui.com/joy-ui/getting-started/overview/
+
 ## License
 
 This project is licensed under the MIT License.

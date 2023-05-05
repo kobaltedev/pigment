@@ -1,5 +1,5 @@
 const twTheme = require("tailwindcss/defaultTheme");
-const { pigment } = require("@kobalte/pigment-tailwind-preset");
+const { pigment, colors } = require("@kobalte/pigment-tailwind-preset");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -16,6 +16,9 @@ module.exports = {
       maxWidth: {
         "8xl": "88rem",
       },
+      colors: {
+        ...colors
+      }
     },
   },
   presets: [

@@ -39,7 +39,6 @@ export function pigment(options: PigmentOptions | undefined = {}): Partial<Confi
           "2xs": ["10px", "14px"],
         },
         colors: {
-          ...colors,
           ...Object.keys(flatten(themeTokensShapeValue.colors, "-")).reduce((acc, key) => {
             const formattedKey = toKebabCase(removeDefaultSuffix(key));
             acc[formattedKey] = `rgb(${vars(`colors-${key}` as TokenKey)} / <alpha-value>)`;
@@ -54,7 +53,7 @@ export function pigment(options: PigmentOptions | undefined = {}): Partial<Confi
     plugins: [
       animatePlugin,
       kobaltePlugin,
-      plugin(({ addBase, addUtilities }) => {
+      plugin(({ addBase }) => {
         const themes: Array<[PredefinedTheme | string, ThemeTokens]> = [];
 
         const cssVarName = (key: string) => {
@@ -139,4 +138,4 @@ export function pigment(options: PigmentOptions | undefined = {}): Partial<Confi
 }
 
 export { colors } from "./colors";
-export type { CustomTheme, PigmentOptions } from "./types";
+export type { CustomTheme, ExtendedTheme, PigmentOptions } from "./types";
