@@ -58,7 +58,7 @@ To use a theme (pre-made or custom), add it to the Pigment preset in your `tailw
 ```js {13}
 // tailwind.config.cjs
 
-const { pigment } = require("@kobalte/pigment-tailwind-preset");
+const pigment = require("@kobalte/pigment-tailwind-preset");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -68,7 +68,7 @@ module.exports = {
   ],
   theme: {},
   presets: [
-    pigment({
+    pigment.preset({
       themes: ["blue", "slate"], // `blue` and `slate` are pre-made themes.
     }),
   ],
@@ -103,7 +103,7 @@ To do that, create or extend a theme in the Pigment preset of your `tailwind.con
 ```js
 // tailwind.config.cjs
 
-const { pigment } = require("@kobalte/pigment-tailwind-preset");
+const pigment = require("@kobalte/pigment-tailwind-preset");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -113,7 +113,7 @@ module.exports = {
   ],
   theme: {},
   presets: [
-    pigment({
+    pigment.preset({
       themes: [
         {
           // The name of your theme, used in the data attribute (ex: `data-pg-theme="my-theme"`).
@@ -169,7 +169,7 @@ Each design token of a Pigment theme will generate a CSS variable prefixed with 
 ```js {13}
 // tailwind.config.cjs
 
-const { pigment } = require("@kobalte/pigment-tailwind-preset");
+const pigment = require("@kobalte/pigment-tailwind-preset");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -179,7 +179,7 @@ module.exports = {
   ],
   theme: {},
   presets: [
-    pigment({
+    pigment.preset({
       cssVarPrefix: "app-",
       themes: [
         {

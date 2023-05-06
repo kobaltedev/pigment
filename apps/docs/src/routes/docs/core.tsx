@@ -33,6 +33,10 @@ const CORE_NAV_SECTIONS: NavSection[] = [
         href: "/docs/core/customization/approaches",
       },
       {
+        title: "Color system",
+        href: "/docs/core/customization/color-system",
+      },
+      {
         title: "Design tokens",
         href: "/docs/core/customization/design-tokens",
       },

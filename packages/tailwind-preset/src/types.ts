@@ -164,7 +164,7 @@ export type TokenKey = FlattenObjectKeys<ColorSchemeTokens>;
 /** A function to get the css variable of a token. */
 export type VarsFn = (token: TokenKey) => string;
 
-export type PredefinedTheme = "blue";
+export type PredefinedTheme = "blue" | "slate";
 
 export interface ExtendedTheme {
   /** The name of the extended theme. */
@@ -188,6 +188,9 @@ export interface CustomTheme {
 export interface PigmentOptions {
   /** The prefix to use in the generated css variables. */
   cssVarPrefix?: string;
+
+  /** Whether Pigment colors should be included in the Tailwind theme configuration. */
+  includeColors?: boolean;
 
   /** The themes available in the application. */
   themes?: Array<PredefinedTheme | ExtendedTheme | CustomTheme>;

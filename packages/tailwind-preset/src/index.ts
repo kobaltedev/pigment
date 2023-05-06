@@ -26,7 +26,7 @@ import {
   toKebabCase,
 } from "./utils";
 
-export function pigment(options: PigmentOptions | undefined = {}): Partial<Config> {
+function preset(options: PigmentOptions | undefined = {}): Partial<Config> {
   const cssVarPrefix = getCssVarsPrefix(options);
 
   const vars = createVarsFn(cssVarPrefix);
@@ -39,6 +39,7 @@ export function pigment(options: PigmentOptions | undefined = {}): Partial<Confi
           "2xs": ["10px", "14px"],
         },
         colors: {
+          ...(options?.includeColors ? colors : {}),
           ...Object.keys(flatten(themeTokensShapeValue.colors, "-")).reduce((acc, key) => {
             const formattedKey = toKebabCase(removeDefaultSuffix(key));
             acc[formattedKey] = `rgb(${vars(`colors-${key}` as TokenKey)} / <alpha-value>)`;
@@ -137,5 +138,8 @@ export function pigment(options: PigmentOptions | undefined = {}): Partial<Confi
   };
 }
 
-export { colors } from "./colors";
+export default {
+  preset,
+  colors,
+};
 export type { CustomTheme, ExtendedTheme, PigmentOptions } from "./types";
