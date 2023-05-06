@@ -76,15 +76,21 @@ Make sure that you have [Tailwind CSS](https://tailwindcss.com/docs/guides/solid
 
 1. Add Pigment in the `content` array, in order to get the classes applied to the components.
 2. Require the preset for Tailwind CSS.
+3. Include Pigment colors to your theme configuration (optional).
 
-```js {2,6}
+```js {4,8-10}
+const pigment = require("@kobalte/pigment-tailwind-preset");
+
 module.exports = {
   content: [
     "./node_modules/@kobalte/pigment/dist/**/*.{js,cjs}",
     "./src/**/*.{html,js,jsx,ts,tsx,mdx}",
   ],
-  theme: {},
-  presets: [require("@kobalte/pigment-tailwind-preset")],
+  presets: [
+    pigment.preset({
+      includeColors: true,
+    }),
+  ],
 };
 ```
 

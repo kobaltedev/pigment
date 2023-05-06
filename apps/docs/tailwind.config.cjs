@@ -1,5 +1,5 @@
 const twTheme = require("tailwindcss/defaultTheme");
-const { pigment } = require("@kobalte/pigment-tailwind-preset");
+const pigment = require("@kobalte/pigment-tailwind-preset");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -19,7 +19,8 @@ module.exports = {
     },
   },
   presets: [
-    pigment({
+    pigment.preset({
+      includeColors: true,
       themes: ["blue"],
     }),
   ],

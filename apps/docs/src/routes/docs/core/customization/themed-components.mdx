@@ -1,3 +1,5 @@
+import { Alert } from "@kobalte/pigment";
+
 # Themed components
 
 Learn how to apply custom styles to components at global level.
@@ -78,3 +80,8 @@ function App() {
   );
 }
 ```
+
+<Alert class="[&>p]:!m-0">
+  Pigment use [tailwind-variants](https://www.tailwind-variants.org/) under the hood, which
+  automatically merges conflicting classes.
+</Alert>

@@ -1,0 +1,249 @@
+import { Alert } from "@kobalte/pigment";
+
+import { Preview } from "../../../../components";
+
+# Approaches
+
+Learn about the different approaches available to customize Pigment components, depending on the situation.
+
+## The `slotClasses` prop
+
+To customizing only a specific instance of a given component, use the `slotClasses` prop.
+
+Supported by every Pigment components, it allows you to apply CSS classes to internal parts (slots) of a component.
+
+<Preview isCentered={false}>
+  <Alert
+    variant="soft"
+    status="info"
+    slotClasses={{
+      root: "rounded-md bg-indigo-50 border-indigo-300 dark:bg-indigo-900 dark:border-indigo-700",
+      startDecorator: "text-indigo-500 text-2xl dark:text-indigo-400",
+    }}
+  >
+    A new software update is available.
+  </Alert>
+</Preview>
+
+```tsx {3-6}
+<Alert
+  variant="soft"
+  status="info"
+  slotClasses={{
+    root: "rounded-md bg-indigo-50 border-indigo-300 dark:bg-indigo-900 dark:border-indigo-700",
+    startDecorator: "text-indigo-500 text-2xl dark:text-indigo-400",
+  }}
+>
+  A new software update is available.
+</Alert>
+```
+
+<Alert class="not-prose">
+  To know which slots are available checkout the _"Slots"_ section in each component documentation.
+</Alert>
+
+## Theming
+
+To ensure every instance of a given component looks the same across you app, use Pigment's theming API.
+
+Theming in Pigment is done in two places:
+
+- **`tailwind.config.cjs`**: define your design tokens such as colors using the Pigment preset for Tailwind CSS.
+- **`ThemeProvider`**: define how each component, and their different variants and states, uses the design tokens.
+
+### Using a theme
+
+To use a theme (pre-made or custom), add it to the Pigment preset in your `tailwind.config.cjs`.
+
+```js {13}
+// tailwind.config.cjs
+
+const pigment = require("@kobalte/pigment-tailwind-preset");
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./node_modules/@kobalte/pigment/dist/**/*.{js,cjs}",
+    "./src/**/*.{html,js,jsx,ts,tsx,mdx}",
+  ],
+  theme: {},
+  presets: [
+    pigment.preset({
+      themes: ["blue", "slate"], // `blue` and `slate` are pre-made themes.
+    }),
+  ],
+};
+```
+
+The first theme in the array is applied by default, to apply a specific theme add the `[data-pg-theme]` attribute to any component in your DOM tree, and provide the theme name as value:
+
+```tsx {2,4}
+export default function App() {
+  return (
+    <div data-pg-theme="custom">
+      This div will use the "custom" theme.
+      <span data-pg-theme="blue">This span will use the "blue" theme.</span>
+    </div>
+  );
+}
+```
+
+<Alert class="not-prose">
+  If no theme is provided in the Pigment preset, the `blue` theme will be used by default.
+</Alert>
+
+### Creating a theme
+
+Pigment uses the concept of design tokens to name and store design decisions. A theme is just a named set of design tokens.
+
+To print your own design language into Pigment components, start by customizing these tokens first, as every component uses them.
+
+To do that, create or extend a theme in the Pigment preset of your `tailwind.config.cjs`:
+
+```js
+// tailwind.config.cjs
+
+const pigment = require("@kobalte/pigment-tailwind-preset");
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./node_modules/@kobalte/pigment/dist/**/*.{js,cjs}",
+    "./src/**/*.{html,js,jsx,ts,tsx,mdx}",
+  ],
+  theme: {},
+  presets: [
+    pigment.preset({
+      themes: [
+        {
+          // The name of your theme, used in the data attribute (ex: `data-pg-theme="my-theme"`).
+          name: "my-theme",
+
+          // Extend the "blue" theme, or omit to create a theme from scratch.
+          extend: "blue",
+
+          // Your custom design tokens.
+          tokens: {
+            // Light mode tokens.
+            light: {
+              colors: {
+                content: {
+                  DEFAULT: "#1e293b",
+                  subtle: "#334155",
+                  subtler: "#475569",
+                  subtlest: "#64748b",
+                  onPrimary: "#fff",
+                },
+                surface: {
+                  primary: {
+                    DEFAULT: "#2563eb",
+                    hover: "#1d4ed8",
+                    active: "#1e40af",
+                  },
+                },
+                //...
+              },
+            },
+            // Dark mode tokens.
+            dark: {
+              //...
+            },
+          },
+        },
+      ],
+    }),
+  ],
+};
+```
+
+Under the hood, the Pigment preset will add the tokens to Tailwind, allowing you to use them in utility classes.
+
+```tsx
+<button class="text-content-on-primary bg-surface-primary">Button</button>
+```
+
+### Custom CSS variables prefix
+
+Each design token of a Pigment theme will generate a CSS variable prefixed with `pg-` by default. If you want to change the prefix to something else, provide the `cssVarPrefix` to the Pigment preset:
+
+```js {13}
+// tailwind.config.cjs
+
+const pigment = require("@kobalte/pigment-tailwind-preset");
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./node_modules/@kobalte/pigment/dist/**/*.{js,cjs}",
+    "./src/**/*.{html,js,jsx,ts,tsx,mdx}",
+  ],
+  theme: {},
+  presets: [
+    pigment.preset({
+      cssVarPrefix: "app-",
+      themes: [
+        {
+          name: "my-theme",
+          extend: "blue",
+          tokens: {
+            light: {
+              colors: {
+                surface: {
+                  primary: {
+                    DEFAULT: "#2563eb",
+                  },
+                },
+              },
+            },
+          },
+        },
+      ],
+    }),
+  ],
+};
+```
+
+The generated CSS variables will be:
+
+```css
+[data-pg-theme="my-theme"] {
+  --app-colors-surface-primary: 37 99 235;
+}
+```
+
+<Alert class="[&>p]:!m-0">
+  Notice that the provided hex color is converted to rgb color channels to support Tailwind [opacity
+  modifier](https://tailwindcss.com/docs/customizing-colors#using-css-variables) syntax.
+</Alert>
+
+### Customizing components
+
+Each Pigment component uses a pre-defined set of design tokens. To change that while ensuring that every instance has the same styles, do it targeting the component directly from the `ThemeProvider`.
+
+Here's a preview of how you'd change the button's primary background color:
+
+```tsx {6-12}
+import { clsx } from "clsx";
+import { Button, ThemeProvider } from "@kobalte/pigment";
+
+export function App() {
+  return (
+    <ThemeProvider
+      components={{
+        Button: {
+          slotClasses: props => ({
+            root: clsx(props.variant === "solid" && props.color === "primary" && "bg-slate-600"),
+          }),
+        },
+      }}
+    >
+      <Button>Button</Button>
+    </ThemeProvider>
+  );
+}
+```
+
+<Alert class="[&>p]:!m-0">
+  Pigment use [tailwind-variants](https://www.tailwind-variants.org/) under the hood, which
+  automatically merges conflicting classes.
+</Alert>

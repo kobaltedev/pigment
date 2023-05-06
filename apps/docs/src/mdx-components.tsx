@@ -22,7 +22,7 @@ export const mdxComponents = {
     return (
       <span class={clsx(local.class, "not-prose")}>
         <code
-          class="pg-code rounded text-slate-800 bg-slate-100 px-[0.4em] py-[0.2em] text-[0.9em] font-mono break-words dark:text-slate-300 dark:bg-slate-900/60"
+          class="pg-code rounded text-slate-800 bg-slate-900/5 px-[0.4em] py-[0.2em] text-[0.9em] font-mono break-words dark:text-slate-300 dark:bg-slate-900/60"
           {...others}
         />
       </span>
