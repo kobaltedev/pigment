@@ -33,11 +33,11 @@ export const badgeStyles = tv({
     },
     size: {
       md: {
-        root: "h-6 px-2 text-xs",
+        root: "h-6",
         dot: "h-1.5 w-1.5",
       },
       lg: {
-        root: "h-7 px-2.5 text-sm",
+        root: "h-7",
         dot: "h-2 w-2",
       },
     },
@@ -49,7 +49,7 @@ export const badgeStyles = tv({
         root: "rounded-full",
       },
       circle: {
-        root: "rounded-full justify-center !p-0",
+        root: "rounded-full justify-center p-0",
       },
     },
   },
@@ -220,9 +220,17 @@ export const badgeStyles = tv({
     { variant: "dot", size: "md", class: { root: "gap-1.5" } },
     { variant: "dot", size: "lg", class: { root: "gap-2" } },
 
+    // shape rounded + size
+    { shape: "rounded", size: "md", class: { root: "px-2 text-xs" } },
+    { shape: "rounded", size: "lg", class: { root: "px-2.5 text-sm" } },
+
+    // shape pill + size
+    { shape: "pill", size: "md", class: { root: "px-2.5 text-xs" } },
+    { shape: "pill", size: "lg", class: { root: "px-3 text-sm" } },
+
     // shape circle + size
-    { shape: "circle", size: "md", class: { root: "w-6" } },
-    { shape: "circle", size: "lg", class: { root: "w-7" } },
+    { shape: "circle", size: "md", class: { root: "w-6 text-xs/[0]" } },
+    { shape: "circle", size: "lg", class: { root: "w-7 text-sm/[0]" } },
   ],
 });
 
