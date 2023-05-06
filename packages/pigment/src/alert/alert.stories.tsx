@@ -10,11 +10,7 @@ type Story = StoryObj<AlertProps>;
 
 export default {
   title: "Alert",
-  argTypes: {
-    withoutDefaultStatusIcon: {
-      control: { type: "boolean" },
-    },
-  },
+  argTypes: {},
   render: props => (
     <div class="flex items-center space-x-4">
       <For each={["solid", "soft"] as const}>
@@ -77,7 +73,5 @@ export default {
 } as Meta<ComponentProps<typeof Alert>>;
 
 export const Default: Story = {
-  args: {
-    withDefaultStatusIcon: false,
-  },
+  args: {},
 };

@@ -1,0 +1,81 @@
+import { Preview } from "../../../../components";
+import { WithCreateIcon } from "../../../../examples/icon";
+
+# Icon
+
+Icon allow to render Pigment compliant svg components.
+
+```tsx
+import { Icon, createIcon } from "@kobalte/pigment";
+```
+
+## Usage with a third-party icon library
+
+The `Icon` component accept an `as` prop, which you can use to render icon from third-party libraries inside other Pigment components.
+
+```tsx
+import { Button, Icon } from "@kobalte/pigment";
+import { CartIcon } from "some-icon-library";
+
+function Demo() {
+  return <Button startDecorator={<Icon as={CartIcon} />}>My cart</Button>;
+}
+```
+
+## Creating custom icon
+
+Use the `createIcon` function to create custom, Pigment compliant, icon components.
+
+<Preview>
+  <WithCreateIcon class="h-6 w-6" />
+</Preview>
+
+```tsx
+import { createIcon } from "@kobalte/pigment";
+
+const BoxIcon = createIcon({
+  viewBox: "0 0 24 24",
+  path: () => (
+    <path
+      d="m20 7l-8-4l-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+      fill="none"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+    />
+  ),
+});
+
+function Demo() {
+  return <BoxIcon class="h-6 w-6" />;
+}
+```
+
+### Tips for generating icon from design tools
+
+- Export icons as `svg` from your design tool ([Sketch](https://www.sketch.com/), [Figma](https://www.figma.com/), etc...).
+- Use a tool like [SVGminify](https://www.svgminify.com/) to reduce the size and minify the markup.
+- Set the `fill` or `stroke` prop of your svg path to `currentColor`.
+
+## API Reference
+
+### Icon
+
+#### Props
+
+`Icon` supports any `svg` attributes.
+
+| Name | Description                                                 |
+| ---- | ----------------------------------------------------------- |
+| as   | `ValidComponent` <br/> The custom icon component to render. |
+
+### createIcon
+
+#### Params
+
+| Name         | Description                                                                       |
+| ------------ | --------------------------------------------------------------------------------- |
+| viewBox      | `string` <br/> **default:** `"0 0 24 24"` <br/> The icon `svg` viewBox.           |
+| path         | `() => JSX.Element` <br/> A function that return the `svg` path or group element. |
+| defaultProps | `IconProps` <br/> Default props automatically passed to the component.            |
