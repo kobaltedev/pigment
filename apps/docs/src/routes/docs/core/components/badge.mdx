@@ -1,0 +1,125 @@
+import { Preview } from "../../../../components";
+import {
+  WithVariant,
+  WithInvertedVariant,
+  WithColor,
+  WithSize,
+  WithShape,
+} from "../../../../examples/badge";
+
+# Badge
+
+Badges are visual indicators for numeric values such as tallies and scores.
+
+# Import
+
+```tsx
+import { Badge } from "@kobalte/pigment";
+```
+
+## Variants
+
+The Badge component comes in four variants: `solid`, `soft` (default), `inverted` and `dot`.
+
+<Preview>
+  <WithVariant />
+</Preview>
+
+```tsx
+<Badge variant="solid">Solid</Badge>
+<Badge variant="soft">Soft</Badge>
+<Badge variant="dot">Dot</Badge>
+```
+
+The `inverted` variant can be used to create a high contrast badge on a vibrant surface of the same `color|status`.
+
+<Preview>
+  <WithInvertedVariant />
+</Preview>
+
+```tsx {5-7}
+<Button
+  variant="solid"
+  color="primary"
+  startDecorator={<TablerTagIcon />}
+  endDecorator={
+    <Badge variant="inverted" color="primary" class="flex">
+      12
+    </Badge>
+  }
+>
+  Labels
+</Button>
+```
+
+## Colors
+
+Badges supports all Pigment semantic colors: `primary`, `neutral`, `success`, `info` (default), `warning`, `danger` and `discovery`.
+
+<Preview>
+  <WithColor />
+</Preview>
+
+```tsx
+<For each={["solid", "soft", "inverted", "dot"]}>
+  {variant => (
+    <div class="flex items-center gap-3">
+      <For each={["primary", "neutral", "success", "info", "warning", "danger", "discovery"]}>
+        {color => (
+          <Badge variant={variant} color={color} class="capitalize">
+            {color}
+          </Badge>
+        )}
+      </For>
+    </div>
+  )}
+</For>
+```
+
+## Sizes
+
+The Badge component comes in two sizes: `md` (default) and `lg`.
+
+<Preview>
+  <WithSize />
+</Preview>
+
+```tsx
+<Badge size="md">Medium</Badge>
+<Badge size="lg">Large</Badge>
+```
+
+## Shapes
+
+Badges supports three different shapes: `rounded` (default), `pill` and `circle`.
+
+<Preview>
+  <WithShape />
+</Preview>
+
+```tsx
+<Badge shape="rounded">+100</Badge>
+<Badge shape="pill">12</Badge>
+<Badge shape="circle">1</Badge>
+```
+
+## API Reference
+
+### Component identifier
+
+The name `Badge` can be used when providing [default props](/docs/core/customization/themed-components#default-props) and [slot classes](/docs/core/customization/themed-components#slot-classes) in the theme.
+
+### Props
+
+| Prop    | Description                                                                                                                                          |
+| :------ | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
+| variant | `"solid" \| "soft" \| "inverted" \| "dot"` <br/> **default:** `"solid"` <br/> The visual style of the badge.                                         |
+| color   | `"primary" \| "neutral" \| "success" \| "info" \| "warning" \| "danger" \| "discovery"` <br/> **default:** `"primary"` <br/> The color of the badge. |
+| size    | `"md" \| "lg"` <br/> **default:** `"md"` <br/> The size of the badge.                                                                                |
+| shape   | `"rounded" \| "pill" \| "circle"` <br/> **default:** `"rounded"` <br/> The shape of the badge.                                                       |
+
+### Slots
+
+| Name | CSS selector     | Rendered element | Description  |
+| :--- | :--------------- | :--------------- | ------------ |
+| root | `.pg-badge-root` | `span`           | Root element |

@@ -6,25 +6,31 @@ import { Alert } from "@kobalte/pigment";
   Pigment is not available yet on `npm`.
 </Alert>
 
-Pigment is an open source design system for SolidJS, built with [Kobalte](https://kobalte.dev) and [Tailwind CSS](https://tailwindcss.com/). It provides ready to use components for building **web applications** with a consistent look and feel.
+Pigment is an open source **design system** for SolidJS, built with [Kobalte](https://kobalte.dev) and [Tailwind CSS](https://tailwindcss.com/). It provides a set of ready-to-use components for building web applications with a consistent look and feel.
 
-## Principles
+## Why a design system ?
 
-### Simple
+First of all, if you are a designer looking at this, you are surely telling yourself _"wait, this is not a design system"_...and you're right 😅.
 
-Designed to expose a minimalist API so that you can quickly build what you want.
+A design system is much more than a set of component implemented in a particular technology. However, I use the term design system to make it clear that this is **NOT** a multipurpose, generalist, component library.
 
-### Accessible
+What does this mean ?
 
-Built on top of [Kobalte](https://kobalte.dev) a UI toolkit for building accessible web apps and design systems with SolidJS.
+- **It's opinionated:** Several design decisions have been made to make the components accessible, consistent and easy to use.
+  This mean you _may_ face behaviors that you disagree with but that cannot be changed.
 
-### Consistent
+- **It's not highly customizable:** For sure there is a [theming API](/docs/core/customization/approaches) to make the components fits your brand, but this is not the main goal of the library.
+  This mean you _may_ find components that you will not be able to customize exactly like you want.
+  If your customization requirements go beyond changing the color palette and want full control over the appearance, I recommend using a headless library like [Kobalte](https://kobalte.dev).
 
-Comes with pre-made themes with support for light and dark modes that ensure a consistent experience across your app.
+- **It does not contain dozens of component variants:** In most component libraries you will find an incredible amount variant, size and color options for buttons, alerts, badges, so on and so forth.
+  Pigment contains only the minimum necessary to allow you to create consistent user interfaces.
+
+- **It's not a one-size-fits-all solution:** The purpose of this library is **not** to be _"the"_ component library for SolidJS and try to solve everyone's problems.
+  I strongly believe that the ideal UI library is the one that you have built yourself.
+  However, if you like the visual style and the API, I think Pigment is a good option for prototypes, MVPs, and for developers without design skills to produce attractive and accessible user interfaces.
 
 ## Acknowledgment
-
-Pigment would not have been possible without the prior art done by other meaningful projects including:
 
 - Atlassian Design System - https://atlassian.design/
 - Nord Design System - https://nordhealth.design/

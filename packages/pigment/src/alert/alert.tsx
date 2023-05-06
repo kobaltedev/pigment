@@ -25,7 +25,6 @@ export function Alert(props: AlertProps) {
     {
       variant: "soft",
       status: "info",
-      withDefaultStatusIcon: true,
     },
     props
   );
@@ -34,7 +33,7 @@ export function Alert(props: AlertProps) {
 
   const [local, variantProps, others] = splitProps(
     props,
-    ["class", "children", "slotClasses", "withDefaultStatusIcon", "startDecorator", "endDecorator"],
+    ["class", "children", "slotClasses", "startDecorator", "endDecorator"],
     ["variant", "status"]
   );
 
@@ -46,33 +45,31 @@ export function Alert(props: AlertProps) {
 
   const defaultStartDecorator = () => {
     return (
-      <Show when={local.withDefaultStatusIcon}>
-        <Switch>
-          <Match when={variantProps.status === "neutral"}>
-            <TablerLifebuoy aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
-          </Match>
-          <Match when={variantProps.status === "success"}>
-            <TablerCircleCheck aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
-          </Match>
-          <Match when={variantProps.status === "info"}>
-            <TablerInfoCircle aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
-          </Match>
-          <Match when={variantProps.status === "warning"}>
-            <TablerAlertTriangle aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
-          </Match>
-          <Match when={variantProps.status === "danger"}>
-            <TablerAlertOctagon aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
-          </Match>
-          <Match when={variantProps.status === "discovery"}>
-            <TablerHelpHexagon aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
-          </Match>
-        </Switch>
-      </Show>
+      <Switch>
+        <Match when={variantProps.status === "neutral"}>
+          <TablerLifebuoy aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
+        </Match>
+        <Match when={variantProps.status === "success"}>
+          <TablerCircleCheck aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
+        </Match>
+        <Match when={variantProps.status === "info"}>
+          <TablerInfoCircle aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
+        </Match>
+        <Match when={variantProps.status === "warning"}>
+          <TablerAlertTriangle aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
+        </Match>
+        <Match when={variantProps.status === "danger"}>
+          <TablerAlertOctagon aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
+        </Match>
+        <Match when={variantProps.status === "discovery"}>
+          <TablerHelpHexagon aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
+        </Match>
+      </Switch>
     );
   };
 
   const decorators = createMemo(() => {
-    const start = runIfFn(local.startDecorator ?? defaultStartDecorator(), variantProps.status!);
+    const start = runIfFn(local.startDecorator, variantProps.status!) ?? defaultStartDecorator();
 
     const end = runIfFn(local.endDecorator, variantProps.status!);
 

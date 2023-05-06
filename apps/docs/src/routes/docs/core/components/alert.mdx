@@ -3,7 +3,7 @@ import { WithDecorator, WithVariant, WithStatus } from "../../../../examples/ale
 
 # Alert
 
-Display a brief, important message in a way that attracts the user's attention without interrupting the user's task.
+Alerts display a brief, important message in a way that attracts the user's attention without interrupting the user's task.
 
 ## Import
 
@@ -13,7 +13,7 @@ import { Alert } from "@kobalte/pigment";
 
 ## Variants
 
-The Alert component come in two variants: `solid` and `soft` (default).
+The Alert component comes in two variants: `solid` and `soft` (default).
 
 <Preview isCentered={false}>
   <WithVariant />
@@ -84,13 +84,12 @@ The name `Alert` can be used when providing [default props](/docs/core/customiza
 
 ### Props
 
-| Prop                  | Description                                                                                                                                                                                       |
-| :-------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| variant               | `"solid" \| "soft"` <br/> **default:** `"soft"` <br/> The visual style of the alert.                                                                                                              |
-| status                | `"neutral" \| "success" \| "info" \| "warning" \| "danger" \| "discovery"` <br/> **default:** `"info"` <br/> The status of the alert, which affect the color scheme and default status icon used. |
-| withDefaultStatusIcon | `boolean` <br/> **default:** `true` <br/> Whether the default status icons should be shown in place of the start decorator.                                                                       |
-| startDecorator        | `JSX.Element \| ((status) => JSX.Element)` <br/> The element to show before the alert content.                                                                                                    |
-| endDecorator          | `JSX.Element \| ((status) => JSX.Element)` <br/> The element to show after the alert content.                                                                                                     |
+| Prop           | Description                                                                                                                                                                                       |
+| :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| variant        | `"solid" \| "soft"` <br/> **default:** `"soft"` <br/> The visual style of the alert.                                                                                                              |
+| status         | `"neutral" \| "success" \| "info" \| "warning" \| "danger" \| "discovery"` <br/> **default:** `"info"` <br/> The status of the alert, which affect the color scheme and default status icon used. |
+| startDecorator | `JSX.Element \| ((status) => JSX.Element)` <br/> The element to show before the alert content.                                                                                                    |
+| endDecorator   | `JSX.Element \| ((status) => JSX.Element)` <br/> The element to show after the alert content.                                                                                                     |
 
 ### Slots
 

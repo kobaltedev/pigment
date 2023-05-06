@@ -9,9 +9,6 @@ export type AlertSlots = "root" | "startDecorator" | "endDecorator";
 export type AlertStatus = Exclude<AlertVariants["status"], undefined>;
 
 export interface AlertProps extends KAlert.AlertRootProps, AlertVariants, SlotProp<AlertSlots> {
-  /** Whether the default status icons should be shown in place of the start decorator. */
-  withDefaultStatusIcon?: boolean;
-
   /** The element to show before the alert content. */
   startDecorator?: JSX.Element | ((status: AlertStatus) => JSX.Element);
 
