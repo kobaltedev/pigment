@@ -38,7 +38,7 @@ export function Header(props: HeaderProps) {
   const isChangelogPath = useMatch(() => "/docs/changelog/*");
 
   return (
-    <header class="sticky top-0 z-10 flex flex-wrap items-center justify-between bg-surface-body border-b border-b-slate-200 dark:border-b-slate-900 px-4 transition duration-500 lg:px-4 ">
+    <header class="sticky top-0 z-10 flex flex-wrap items-center justify-between bg-surface-body border-b border-b-slate-200 dark:border-b-slate-800 px-4 transition duration-500 lg:px-4 ">
       {props.drawerContent}
       <div class="relative flex flex-grow basis-0 items-center space-x-2">
         <Link

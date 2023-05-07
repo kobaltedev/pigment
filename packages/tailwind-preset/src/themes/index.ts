@@ -1,12 +1,10 @@
 import { PredefinedTheme, ThemeTokens } from "../types";
-import { blueTheme } from "./blue";
-import { slateTheme } from "./slate";
+import { baseTheme } from "./base";
 
-export const DEFAULT_THEME_NAME: PredefinedTheme = "blue";
+export const DEFAULT_THEME_NAME: PredefinedTheme = "base";
 
 const PREDEFINED_THEMES: Record<PredefinedTheme, ThemeTokens> = {
-  blue: blueTheme,
-  slate: slateTheme,
+  base: baseTheme,
 };
 
 export function isValidTheme(theme: string) {

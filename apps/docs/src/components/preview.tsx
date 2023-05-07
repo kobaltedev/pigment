@@ -15,7 +15,7 @@ export function Preview(props: PreviewProps) {
     <div
       class={clsx(
         local.class,
-        "pg-preview not-prose flex flex-col justify-center mt-4 overflow-y-auto p-4 border border-solid border-slate-200 dark:bg-slate-900 dark:border-slate-800",
+        "pg-preview not-prose flex flex-col justify-center mt-4 overflow-y-auto p-4 border border-solid border-slate-200 dark:bg-slate-800 dark:border-slate-700",
         local.isCentered ? "items-center" : "items-stretch",
         local.isRounded ? "rounded-lg" : "rounded-t-lg"
       )}

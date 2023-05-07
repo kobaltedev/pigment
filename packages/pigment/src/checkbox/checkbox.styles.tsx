@@ -45,6 +45,7 @@ export const checkboxStyles = tv({
       md: {
         root: "gap-x-2",
         control: "h-4 w-4 text-base rounded",
+        labelWrapper: "gap-y-0.5",
         label: "text-sm",
         supportText: "text-xs",
         errorIndicator: "text-sm",
@@ -52,6 +53,7 @@ export const checkboxStyles = tv({
       lg: {
         root: "gap-x-2.5",
         control: "h-5 w-5 text-xl rounded",
+        labelWrapper: "gap-y-1",
         label: "text-base",
         supportText: "text-sm",
         errorIndicator: "text-base",

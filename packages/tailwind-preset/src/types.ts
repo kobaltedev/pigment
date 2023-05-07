@@ -164,7 +164,7 @@ export type TokenKey = FlattenObjectKeys<ColorSchemeTokens>;
 /** A function to get the css variable of a token. */
 export type VarsFn = (token: TokenKey) => string;
 
-export type PredefinedTheme = "blue" | "slate";
+export type PredefinedTheme = "base";
 
 export interface ExtendedTheme {
   /** The name of the extended theme. */

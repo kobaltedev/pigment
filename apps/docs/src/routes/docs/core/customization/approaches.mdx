@@ -53,7 +53,7 @@ Theming in Pigment is done in two places:
 
 ### Using a theme
 
-To use a theme (pre-made or custom), add it to the Pigment preset in your `tailwind.config.cjs`.
+To use a theme, add it to the Pigment preset in your `tailwind.config.cjs`.
 
 ```js {13}
 // tailwind.config.cjs
@@ -69,7 +69,7 @@ module.exports = {
   theme: {},
   presets: [
     pigment.preset({
-      themes: ["blue", "slate"], // `blue` and `slate` are pre-made themes.
+      themes: ["base"], // `base` is Pigment default theme.
     }),
   ],
 };
@@ -82,14 +82,14 @@ export default function App() {
   return (
     <div data-pg-theme="custom">
       This div will use the "custom" theme.
-      <span data-pg-theme="blue">This span will use the "blue" theme.</span>
+      <span data-pg-theme="base">This span will use the "base" theme.</span>
     </div>
   );
 }
 ```
 
 <Alert class="not-prose">
-  If no theme is provided in the Pigment preset, the `blue` theme will be used by default.
+  If no theme is provided in the Pigment preset, the `base` theme will be used.
 </Alert>
 
 ### Creating a theme

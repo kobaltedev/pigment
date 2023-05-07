@@ -18,11 +18,6 @@ module.exports = {
       },
     },
   },
-  presets: [
-    pigment.preset({
-      includeColors: true,
-      themes: ["blue"],
-    }),
-  ],
+  presets: [pigment.preset({ includeColors: true })],
   plugins: [require("@tailwindcss/typography")],
 };

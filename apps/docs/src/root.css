@@ -142,8 +142,8 @@ pre.shiki {
 }
 
 [data-pg-color-scheme="dark"] pre.shiki {
-  border-color: theme("colors.slate.800");
-  background-color: theme("colors.slate.900") !important;
+  border-color: theme("colors.slate.700");
+  background-color: theme("colors.slate.800") !important;
 }
 
 /* Reset mdx-components `code`. */
