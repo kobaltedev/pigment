@@ -1,7 +1,7 @@
 import { Button as KButton, Link as KLink, useLocale } from "@kobalte/core";
 import { ComponentProps, createMemo, JSX, Show, splitProps } from "solid-js";
 
-import { TablerLoader2 } from "../icon";
+import { TablerLoaderIcon } from "../icon";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
 import { runIfFn } from "../utils/run-if-fn";
@@ -73,7 +73,7 @@ function ButtonBase(props: ButtonBaseProps) {
       fullWidth: false,
       disabled: false,
       loadingPlacement: "center",
-      loadingIndicator: (() => <TablerLoader2 class="animate-spin" />) as unknown as JSX.Element,
+      loadingIndicator: (() => <TablerLoaderIcon class="animate-spin" />) as unknown as JSX.Element,
     },
     props
   );

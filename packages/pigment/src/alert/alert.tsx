@@ -2,12 +2,12 @@ import { Alert as KAlert, useLocale } from "@kobalte/core";
 import { createMemo, Match, Show, splitProps, Switch } from "solid-js";
 
 import {
-  TablerAlertOctagon,
-  TablerAlertTriangle,
-  TablerCircleCheck,
-  TablerHelpHexagon,
-  TablerInfoCircle,
-  TablerLifebuoy,
+  TablerAlertOctagonIcon,
+  TablerAlertTriangleIcon,
+  TablerCircleCheckIcon,
+  TablerHelpHexagonIcon,
+  TablerInfoCircleIcon,
+  TablerLifebuoyIcon,
 } from "../icon";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
@@ -47,22 +47,22 @@ export function Alert(props: AlertProps) {
     return (
       <Switch>
         <Match when={variantProps.status === "neutral"}>
-          <TablerLifebuoy aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
+          <TablerLifebuoyIcon aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
         </Match>
         <Match when={variantProps.status === "success"}>
-          <TablerCircleCheck aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
+          <TablerCircleCheckIcon aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
         </Match>
         <Match when={variantProps.status === "info"}>
-          <TablerInfoCircle aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
+          <TablerInfoCircleIcon aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
         </Match>
         <Match when={variantProps.status === "warning"}>
-          <TablerAlertTriangle aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
+          <TablerAlertTriangleIcon aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
         </Match>
         <Match when={variantProps.status === "danger"}>
-          <TablerAlertOctagon aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
+          <TablerAlertOctagonIcon aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
         </Match>
         <Match when={variantProps.status === "discovery"}>
-          <TablerHelpHexagon aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
+          <TablerHelpHexagonIcon aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
         </Match>
       </Switch>
     );

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 import { For, JSX } from "solid-js";
 
-import { TablerLoader2 } from "../icon";
+import { TablerLoaderIcon } from "../icon";
 import { Button, IconButton } from "./button";
 import { ButtonProps } from "./button.props";
 
@@ -96,18 +96,18 @@ export const Decorators: Story = {
   render: props => (
     <div class="flex flex-col gap-4">
       <div class="flex items-center space-x-4">
-        <Button {...props} size="xs" startDecorator={<TablerLoader2 />} />
-        <Button {...props} size="sm" startDecorator={<TablerLoader2 />} />
-        <Button {...props} size="md" startDecorator={<TablerLoader2 />} />
-        <Button {...props} size="lg" startDecorator={<TablerLoader2 />} />
-        <Button {...props} size="xl" startDecorator={<TablerLoader2 />} />
+        <Button {...props} size="xs" startDecorator={<TablerLoaderIcon />} />
+        <Button {...props} size="sm" startDecorator={<TablerLoaderIcon />} />
+        <Button {...props} size="md" startDecorator={<TablerLoaderIcon />} />
+        <Button {...props} size="lg" startDecorator={<TablerLoaderIcon />} />
+        <Button {...props} size="xl" startDecorator={<TablerLoaderIcon />} />
       </div>
       <div class="flex items-center space-x-4">
-        <Button {...props} size="xs" endDecorator={<TablerLoader2 />} />
-        <Button {...props} size="sm" endDecorator={<TablerLoader2 />} />
-        <Button {...props} size="md" endDecorator={<TablerLoader2 />} />
-        <Button {...props} size="lg" endDecorator={<TablerLoader2 />} />
-        <Button {...props} size="xl" endDecorator={<TablerLoader2 />} />
+        <Button {...props} size="xs" endDecorator={<TablerLoaderIcon />} />
+        <Button {...props} size="sm" endDecorator={<TablerLoaderIcon />} />
+        <Button {...props} size="md" endDecorator={<TablerLoaderIcon />} />
+        <Button {...props} size="lg" endDecorator={<TablerLoaderIcon />} />
+        <Button {...props} size="xl" endDecorator={<TablerLoaderIcon />} />
       </div>
     </div>
   ),
@@ -115,7 +115,7 @@ export const Decorators: Story = {
 
 export const IconOnly: Story = {
   args: {
-    children: TablerLoader2 as unknown as JSX.Element,
+    children: TablerLoaderIcon as unknown as JSX.Element,
   },
   // @ts-ignore
   render: props => (
