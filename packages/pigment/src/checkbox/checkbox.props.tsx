@@ -11,7 +11,7 @@ export type CheckboxSlots =
   | "labelWrapper"
   | "label"
   | "description"
-  | "error"
+  | "errorMessage"
   | "errorIndicator";
 
 export interface CheckboxProps
@@ -34,7 +34,7 @@ export interface CheckboxProps
   description?: JSX.Element | (() => JSX.Element);
 
   /** The error message that gives the user information about how to fix a validation error on the checkbox. */
-  error?: JSX.Element | (() => JSX.Element);
+  errorMessage?: JSX.Element | (() => JSX.Element);
 
   /** The icon to show next to the error message. */
   errorIndicator?: JSX.Element | (() => JSX.Element);

@@ -1,0 +1,64 @@
+import { Preview } from "../../../../components";
+import {
+  WithDescription,
+  WithDisabled,
+  WithInvalid,
+  WithSize,
+} from "../../../../examples/checkbox";
+
+# Checkbox
+
+A control that allows the user to toggle between checked and not checked.
+
+## Import
+
+```tsx
+import { Checkbox } from "@kobalte/pigment";
+```
+
+## Sizes
+
+The Checkbox component comes in two sizes: `md` (default) and `lg`.
+
+<Preview>
+  <WithSize />
+</Preview>
+
+```tsx
+<Checkbox size="md" label="Medium" />
+<Checkbox size="lg" label="Large" />
+```
+
+## Description
+
+<Preview>
+  <WithDescription />
+</Preview>
+
+## Invalid state
+
+Use the `invalid` prop to mark the checkbox as invalid. Additionally, you can pass an extra error message using the `errorMessage` prop.
+
+<Preview>
+  <WithInvalid />
+</Preview>
+
+```tsx
+<Checkbox
+  label="Subscribe"
+  errorMessage="You must be a subscriber to receive our newsletter"
+  invalid
+/>
+```
+
+## Disabled state
+
+Use the `disabled` prop to disable the checkbox.
+
+<Preview>
+  <WithDisabled />
+</Preview>
+
+```tsx
+<Checkbox label="Subscribe" disabled />
+```

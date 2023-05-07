@@ -28,7 +28,7 @@ export default {
     description: {
       control: { type: "text" },
     },
-    error: {
+    errorMessage: {
       control: { type: "text" },
     },
   },
@@ -42,7 +42,7 @@ export const Default: Story = {
     invalid: false,
     disabled: false,
     label: "Remember me",
-    error: "Please check the box.",
+    errorMessage: "Please check the box.",
   },
 };
 
@@ -54,6 +54,6 @@ export const WithDescription: Story = {
     disabled: false,
     label: "Comments",
     description: "Get notified when someones posts a comment on a posting.",
-    error: "Please check the box.",
+    errorMessage: "Please check the box.",
   },
 };
