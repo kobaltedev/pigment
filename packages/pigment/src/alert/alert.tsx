@@ -1,5 +1,6 @@
 import { Alert as KAlert } from "@kobalte/core";
-import { createMemo, JSX, Match, Show, splitProps, Switch, ValidComponent } from "solid-js";
+import { createMemo, JSX, Show, splitProps, ValidComponent } from "solid-js";
+import { Dynamic } from "solid-js/web";
 
 import {
   TablerAlertOctagonIcon,
@@ -14,7 +15,6 @@ import { makeStaticClass } from "../utils/make-static-class";
 import { runIfFn } from "../utils/run-if-fn";
 import { AlertProps, AlertSlots } from "./alert.props";
 import { alertStyles, AlertVariants } from "./alert.styles";
-import { Dynamic } from "solid-js/web";
 
 const alertStaticClass = makeStaticClass<AlertSlots>("alert");
 
@@ -84,7 +84,7 @@ export function Alert(props: AlertProps) {
           {startDecorator()}
         </Show>
       </span>
-      {local.children as unknown as JSX.Element}
+      {local.children}
       <Show when={endDecorator()}>
         <span
           class={styles().endDecorator({

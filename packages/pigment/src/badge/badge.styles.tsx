@@ -34,11 +34,11 @@ export const badgeStyles = tv({
     size: {
       md: {
         root: "h-6",
-        dot: "h-1.5 w-1.5",
+        dot: "h-1.5 w-1.5 me-1.5",
       },
       lg: {
         root: "h-7",
-        dot: "h-2 w-2",
+        dot: "h-2 w-2 me-2",
       },
     },
     shape: {
@@ -215,10 +215,6 @@ export const badgeStyles = tv({
     { variant: "dot", color: "warning", class: { dot: "fill-surface-warning" } },
     { variant: "dot", color: "danger", class: { dot: "fill-surface-danger" } },
     { variant: "dot", color: "discovery", class: { dot: "fill-surface-discovery" } },
-
-    // variant dot + size
-    { variant: "dot", size: "md", class: { root: "gap-1.5" } },
-    { variant: "dot", size: "lg", class: { root: "gap-2" } },
 
     // shape rounded + size
     { shape: "rounded", size: "md", class: { root: "px-2 text-xs" } },
