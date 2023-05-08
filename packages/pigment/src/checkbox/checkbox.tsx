@@ -110,6 +110,7 @@ export function Checkbox(props: CheckboxProps) {
     <KCheckbox.Root
       class={styles().root({
         class: [
+          isRTL() ? "items-end" : "items-start",
           checkboxStaticClass("root"),
           themeClasses.root,
           local.slotClasses?.root,
@@ -121,7 +122,16 @@ export function Checkbox(props: CheckboxProps) {
     >
       {state => (
         <>
-          <div class="flex items-center group/action">
+          <div
+            class={styles().actionWrapper({
+              class: [
+                isRTL() ? "flex-row-reverse" : "flex-row",
+                checkboxStaticClass("actionWrapper"),
+                themeClasses.actionWrapper,
+                local.slotClasses?.actionWrapper,
+              ],
+            })}
+          >
             <KCheckbox.Input
               {...local.inputProps}
               ref={local.ref}

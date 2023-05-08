@@ -2,7 +2,7 @@ import { tv, VariantProps } from "tailwind-variants";
 
 export const checkboxStyles = tv({
   slots: {
-    root: "group inline-flex flex-col items-start",
+    root: "group inline-flex flex-col",
     input: "peer",
     control: [
       "inline-flex justify-center items-center grow-0 shrink-0 border border-solid transition-colors",
@@ -32,6 +32,7 @@ export const checkboxStyles = tv({
       "ui-not-disabled:ui-invalid:peer-indeterminate:border-surface-danger ui-not-disabled:ui-invalid:group-hover/action:peer-indeterminate:border-surface-danger-hover ui-not-disabled:ui-invalid:group-active/action:peer-indeterminate:border-surface-danger-active",
     ],
     indicator: "inline-flex justify-center items-center",
+    actionWrapper: "flex items-center group/action",
     supportTextWrapper: "flex flex-col grow shrink items-start",
     label: [
       "text-content",
