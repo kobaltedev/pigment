@@ -2,7 +2,7 @@ import { tv, VariantProps } from "tailwind-variants";
 
 export const checkboxStyles = tv({
   slots: {
-    root: "group inline-flex flex-col",
+    root: "group inline-flex flex-col items-start",
     input: "peer",
     control: [
       "inline-flex justify-center items-center grow-0 shrink-0 border border-solid transition-colors",
@@ -33,11 +33,11 @@ export const checkboxStyles = tv({
     ],
     indicator: "inline-flex justify-center items-center",
     actionWrapper: "flex items-center group/action",
-    supportTextWrapper: "flex flex-col grow shrink items-start",
     label: [
       "text-content",
       "ui-disabled:text-content-disabled ui-disabled:opacity-50 ui-disabled:pointer-events-none",
     ],
+    supportTextWrapper: "flex flex-col items-start grow shrink",
     supportText:
       "ui-disabled:text-content-disabled ui-disabled:opacity-50 ui-disabled:pointer-events-none",
     errorIndicator: "",
@@ -45,16 +45,18 @@ export const checkboxStyles = tv({
   variants: {
     size: {
       md: {
+        root: "gap-y-0.5",
         control: "h-4 w-4 text-base rounded",
-        supportTextWrapper: "gap-y-0.5",
-        label: "text-sm",
+        label: "ps-2 text-sm",
+        supportTextWrapper: "ps-6 gap-y-1",
         supportText: "text-xs",
         errorIndicator: "text-sm",
       },
       lg: {
+        root: "gap-y-1",
         control: "h-5 w-5 text-xl rounded",
-        supportTextWrapper: "gap-y-1",
-        label: "text-base",
+        label: "ps-3 text-base",
+        supportTextWrapper: "ps-8 gap-y-1.5",
         supportText: "text-sm",
         errorIndicator: "text-base",
       },

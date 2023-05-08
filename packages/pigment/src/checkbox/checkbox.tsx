@@ -1,4 +1,4 @@
-import { Checkbox as KCheckbox, useLocale } from "@kobalte/core";
+import { Checkbox as KCheckbox } from "@kobalte/core";
 import { createMemo, JSX, Show, splitProps } from "solid-js";
 
 import { createIcon, TablerAlertOctagonIcon } from "../icon";
@@ -70,10 +70,6 @@ export function Checkbox(props: CheckboxProps) {
 
   const styles = createMemo(() => checkboxStyles(variantProps));
 
-  const { direction } = useLocale();
-
-  const isRTL = () => direction() === "rtl";
-
   const label = createMemo(() => local.label as unknown as JSX.Element);
   const description = createMemo(() => local.description as unknown as JSX.Element);
   const errorMessage = createMemo(() => local.errorMessage as unknown as JSX.Element);
@@ -88,29 +84,10 @@ export function Checkbox(props: CheckboxProps) {
     return description() || showError();
   };
 
-  const labelPadding = () => {
-    switch (variantProps.size) {
-      case "md":
-        return isRTL() ? "pr-2" : "pl-2";
-      case "lg":
-        return isRTL() ? "pr-3" : "pl-3";
-    }
-  };
-
-  const supportTextWrapperPadding = () => {
-    switch (variantProps.size) {
-      case "md":
-        return isRTL() ? "pr-6" : "pl-6";
-      case "lg":
-        return isRTL() ? "pr-8" : "pl-8";
-    }
-  };
-
   return (
     <KCheckbox.Root
       class={styles().root({
         class: [
-          isRTL() ? "items-end" : "items-start",
           checkboxStaticClass("root"),
           themeClasses.root,
           local.slotClasses?.root,
@@ -125,7 +102,6 @@ export function Checkbox(props: CheckboxProps) {
           <div
             class={styles().actionWrapper({
               class: [
-                isRTL() ? "flex-row-reverse" : "flex-row",
                 checkboxStaticClass("actionWrapper"),
                 themeClasses.actionWrapper,
                 local.slotClasses?.actionWrapper,
@@ -168,7 +144,6 @@ export function Checkbox(props: CheckboxProps) {
               <KCheckbox.Label
                 class={styles().label({
                   class: [
-                    labelPadding(),
                     checkboxStaticClass("label"),
                     themeClasses.label,
                     local.slotClasses?.label,
@@ -183,7 +158,6 @@ export function Checkbox(props: CheckboxProps) {
             <div
               class={styles().supportTextWrapper({
                 class: [
-                  supportTextWrapperPadding(),
                   checkboxStaticClass("supportTextWrapper"),
                   themeClasses.supportTextWrapper,
                   local.slotClasses?.supportTextWrapper,
@@ -208,7 +182,7 @@ export function Checkbox(props: CheckboxProps) {
                 <KCheckbox.ErrorMessage
                   class={styles().supportText({
                     class: [
-                      "inline-flex items-center gap-x-1 mt-0.5 text-content-danger",
+                      "inline-flex items-center gap-x-1 text-content-danger",
                       checkboxStaticClass("errorMessage"),
                       themeClasses.errorMessage,
                       local.slotClasses?.errorMessage,
