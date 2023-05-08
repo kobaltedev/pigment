@@ -24,7 +24,7 @@ export const buttonStyles = tv({
       inverted: {},
       default: {
         root: [
-          "text-content bg-white border-line",
+          "text-content bg-surface border-line",
           "ui-not-disabled:hover:bg-surface-subtle",
           "ui-not-disabled:active:bg-surface-subtle-hover",
           "shadow-sm ui-not-disabled:active:shadow-none",

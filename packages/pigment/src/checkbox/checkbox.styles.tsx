@@ -7,7 +7,7 @@ export const checkboxStyles = tv({
     control: [
       "inline-flex justify-center items-center grow-0 shrink-0 border border-solid transition-colors",
       "ui-not-disabled:text-content-on-primary",
-      "bg-white dark:bg-surface-neutral-subtle ui-not-invalid:border-line",
+      "bg-surface ui-not-invalid:border-line",
       "ui-not-disabled:group-hover/action:bg-surface-neutral-subtle",
       "ui-disabled:border-line-disabled ui-disabled:text-content-disabled ui-disabled:opacity-50 ui-disabled:pointer-events-none",
       "peer-focus-visible:outline peer-focus-visible:outline-ring peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2",
