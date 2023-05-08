@@ -29,8 +29,6 @@ export interface ButtonBaseProps
 
 export interface ButtonContentProps
   extends Pick<ButtonBaseProps, "startDecorator" | "endDecorator" | "children"> {
-  rtl?: boolean;
-
   startDecoratorClass?: string;
 
   endDecoratorClass?: string;

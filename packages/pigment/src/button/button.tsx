@@ -1,10 +1,9 @@
-import { Button as KButton, Link as KLink, useLocale } from "@kobalte/core";
+import { Button as KButton, Link as KLink } from "@kobalte/core";
 import { ComponentProps, createMemo, JSX, Show, splitProps } from "solid-js";
 
 import { TablerLoaderIcon } from "../icon";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
-import { runIfFn } from "../utils/run-if-fn";
 import {
   ButtonBaseProps,
   ButtonContentProps,
@@ -27,30 +26,17 @@ function ButtonIcon(props: ComponentProps<"span">) {
 }
 
 function ButtonContent(props: ButtonContentProps) {
-  const leftIcon = createMemo(() => {
-    return runIfFn(props.rtl ? props.endDecorator : props.startDecorator);
-  });
-
-  const rightIcon = createMemo(() => {
-    return runIfFn(props.rtl ? props.startDecorator : props.endDecorator);
-  });
-
-  const leftIconClass = () => {
-    return props.rtl ? props.endDecoratorClass : props.startDecoratorClass;
-  };
-
-  const rightIconClass = () => {
-    return props.rtl ? props.startDecoratorClass : props.endDecoratorClass;
-  };
+  const startDecorator = createMemo(() => props.startDecorator as unknown as JSX.Element);
+  const endDecorator = createMemo(() => props.endDecorator as unknown as JSX.Element);
 
   return (
     <>
-      <Show when={leftIcon()}>
-        <ButtonIcon class={leftIconClass()}>{leftIcon()}</ButtonIcon>
+      <Show when={startDecorator()}>
+        <ButtonIcon class={props.startDecoratorClass}>{startDecorator()}</ButtonIcon>
       </Show>
       {props.children}
-      <Show when={rightIcon()}>
-        <ButtonIcon class={rightIconClass()}>{rightIcon()}</ButtonIcon>
+      <Show when={endDecorator()}>
+        <ButtonIcon class={props.endDecoratorClass}>{endDecorator()}</ButtonIcon>
       </Show>
     </>
   );
@@ -96,8 +82,6 @@ function ButtonBase(props: ButtonBaseProps) {
 
   const styles = createMemo(() => buttonStyles(variantProps));
 
-  const { direction } = useLocale();
-
   const loadingIndicatorClasses = createMemo(() => {
     return styles().decorator({
       class: [
@@ -119,6 +103,14 @@ function ButtonBase(props: ButtonBaseProps) {
     return local.startDecorator;
   });
 
+  const endDecorator = createMemo(() => {
+    if (variantProps.loading && local.loadingPlacement === "end") {
+      return <ButtonIcon class={loadingIndicatorClasses()}>{loadingIndicator()}</ButtonIcon>;
+    }
+
+    return local.endDecorator;
+  });
+
   const startDecoratorClasses = createMemo(() => {
     if (variantProps.loading && local.loadingPlacement === "start") {
       return undefined;
@@ -131,14 +123,6 @@ function ButtonBase(props: ButtonBaseProps) {
         local.slotClasses?.startDecorator,
       ],
     });
-  });
-
-  const endDecorator = createMemo(() => {
-    if (variantProps.loading && local.loadingPlacement === "end") {
-      return <ButtonIcon class={loadingIndicatorClasses()}>{loadingIndicator()}</ButtonIcon>;
-    }
-
-    return local.endDecorator;
   });
 
   const endDecoratorClasses = createMemo(() => {
@@ -158,7 +142,6 @@ function ButtonBase(props: ButtonBaseProps) {
   const content = () => {
     return (
       <ButtonContent
-        rtl={direction() === "rtl"}
         startDecoratorClass={startDecoratorClasses()}
         endDecoratorClass={endDecoratorClasses()}
         startDecorator={startDecorator()}
@@ -221,8 +204,6 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
     ["variant", "size", "iconOnly", "fullWidth"]
   );
 
-  const { direction } = useLocale();
-
   const styles = createMemo(() => buttonStyles(variantProps));
 
   return (
@@ -238,7 +219,6 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
       {...others}
     >
       <ButtonContent
-        rtl={direction() === "rtl"}
         startDecoratorClass={styles().decorator({
           class: [
             linkButtonStaticClass("startDecorator"),
