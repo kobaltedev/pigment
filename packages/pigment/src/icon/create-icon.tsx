@@ -23,7 +23,7 @@ export function createIcon(options: CreateIconOptions) {
 
   return (props: IconProps) => (
     <Icon viewBox={viewBox} {...defaultProps} {...props}>
-      {options.path()}
+      {options.path as unknown as JSX.Element}
     </Icon>
   );
 }
