@@ -1,4 +1,4 @@
-import { As, LinkButton, LinkIconButton } from "@kobalte/pigment";
+import { As, Badge, LinkButton, LinkIconButton } from "@kobalte/pigment";
 import { Link, useMatch } from "@solidjs/router";
 import { JSX, ParentProps } from "solid-js";
 
@@ -48,9 +48,9 @@ export function Header(props: HeaderProps) {
           Pigment
           <span class="text-3xl leading-[0] text-content-primary">.</span>
         </Link>
-        <span class="rounded bg-slate-100 px-1.5 py-1 text-sm leading-none dark:bg-slate-800 dark:text-slate-300">
+        <Badge variant="soft" color="neutral">
           {LATEST_CORE_VERSION_NAME}
-        </span>
+        </Badge>
       </div>
 
       <div class="relative flex items-center basis-0 justify-end h-14 md:flex-grow">

@@ -1,5 +1,5 @@
 import { Preview } from "../../../../components";
-import { WithDecorator, WithVariant, WithStatus } from "../../../../examples/alert";
+import { WithDecorator, WithVariant, WithStatus, WithBasicUsage } from "../../../../examples/alert";
 
 # Alert
 
@@ -11,7 +11,19 @@ Display a brief, important message in a way that attracts the user's attention w
 import { Alert } from "@kobalte/pigment";
 ```
 
-## Variants
+## Basic usage
+
+<Preview>
+  <WithBasicUsage />
+</Preview>
+
+```tsx
+<Alert>A new software update is available.</Alert>
+```
+
+## Customization
+
+### Variants
 
 The Alert component comes in two variants: `solid` and `soft` (default).
 
@@ -28,7 +40,7 @@ The Alert component comes in two variants: `solid` and `soft` (default).
 </Alert>
 ```
 
-## Status
+### Status
 
 The Alert component supports six different status which affect the color scheme and default status icon used: `neutral`, `success`, `info` (default), `warning`, `danger` and `discovery`.
 
@@ -57,7 +69,7 @@ The Alert component supports six different status which affect the color scheme 
 </Alert>
 ```
 
-## Decorators
+### Decorators
 
 Use the `startDecorator` and `endDecorator` props to append actions and icons to either side of the alert.
 

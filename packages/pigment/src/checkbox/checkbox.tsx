@@ -83,16 +83,33 @@ export function Checkbox(props: CheckboxProps) {
     return local.invalid && errorMessage();
   };
 
-  // Prevent mounting the label wrapper when there is no text to show.
-  const showLabelWrapper = () => {
-    return label() || description() || showError();
+  // Prevent mounting the supporting texts wrapper when there is no text to show.
+  const showSupportTextWrapper = () => {
+    return description() || showError();
+  };
+
+  const labelPadding = () => {
+    switch (variantProps.size) {
+      case "md":
+        return isRTL() ? "pr-2" : "pl-2";
+      case "lg":
+        return isRTL() ? "pr-3" : "pl-3";
+    }
+  };
+
+  const supportTextWrapperPadding = () => {
+    switch (variantProps.size) {
+      case "md":
+        return isRTL() ? "pr-6" : "pl-6";
+      case "lg":
+        return isRTL() ? "pr-8" : "pl-8";
+    }
   };
 
   return (
     <KCheckbox.Root
       class={styles().root({
         class: [
-          isRTL() ? "flex-row-reverse" : "flex-row",
           checkboxStaticClass("root"),
           themeClasses.root,
           local.slotClasses?.root,
@@ -104,62 +121,65 @@ export function Checkbox(props: CheckboxProps) {
     >
       {state => (
         <>
-          <KCheckbox.Input
-            {...local.inputProps}
-            ref={local.ref}
-            id={local.id}
-            class={styles().input({ class: local.inputProps?.class })}
-          />
-          <KCheckbox.Control
-            class={styles().control({
-              class: [
-                checkboxStaticClass("control"),
-                themeClasses.control,
-                local.slotClasses?.control,
-              ],
-            })}
-          >
-            <KCheckbox.Indicator
-              class={styles().indicator({
+          <div class="flex items-center group/action">
+            <KCheckbox.Input
+              {...local.inputProps}
+              ref={local.ref}
+              id={local.id}
+              class={styles().input({ class: local.inputProps?.class })}
+            />
+            <KCheckbox.Control
+              class={styles().control({
                 class: [
-                  checkboxStaticClass("indicator"),
-                  themeClasses.indicator,
-                  local.slotClasses?.indicator,
+                  checkboxStaticClass("control"),
+                  themeClasses.control,
+                  local.slotClasses?.control,
                 ],
               })}
             >
-              <Show
-                when={state.indeterminate()}
-                fallback={local.checkedIndicator as unknown as JSX.Element}
+              <KCheckbox.Indicator
+                class={styles().indicator({
+                  class: [
+                    checkboxStaticClass("indicator"),
+                    themeClasses.indicator,
+                    local.slotClasses?.indicator,
+                  ],
+                })}
               >
-                {local.indeterminateIndicator as unknown as JSX.Element}
-              </Show>
-            </KCheckbox.Indicator>
-          </KCheckbox.Control>
-          <Show when={showLabelWrapper()}>
+                <Show
+                  when={state.indeterminate()}
+                  fallback={local.checkedIndicator as unknown as JSX.Element}
+                >
+                  {local.indeterminateIndicator as unknown as JSX.Element}
+                </Show>
+              </KCheckbox.Indicator>
+            </KCheckbox.Control>
+            <Show when={label()}>
+              <KCheckbox.Label
+                class={styles().label({
+                  class: [
+                    labelPadding(),
+                    checkboxStaticClass("label"),
+                    themeClasses.label,
+                    local.slotClasses?.label,
+                  ],
+                })}
+              >
+                {label()}
+              </KCheckbox.Label>
+            </Show>
+          </div>
+          <Show when={showSupportTextWrapper()}>
             <div
-              class={styles().labelWrapper({
+              class={styles().supportTextWrapper({
                 class: [
-                  checkboxStaticClass("labelWrapper"),
-                  themeClasses.labelWrapper,
-                  local.slotClasses?.labelWrapper,
+                  supportTextWrapperPadding(),
+                  checkboxStaticClass("supportTextWrapper"),
+                  themeClasses.supportTextWrapper,
+                  local.slotClasses?.supportTextWrapper,
                 ],
               })}
             >
-              <Show when={label()}>
-                <KCheckbox.Label
-                  class={styles().label({
-                    class: [
-                      description() ? "font-medium" : "",
-                      checkboxStaticClass("label"),
-                      themeClasses.label,
-                      local.slotClasses?.label,
-                    ],
-                  })}
-                >
-                  {label()}
-                </KCheckbox.Label>
-              </Show>
               <Show when={description()}>
                 <KCheckbox.Description
                   class={styles().supportText({
@@ -178,8 +198,7 @@ export function Checkbox(props: CheckboxProps) {
                 <KCheckbox.ErrorMessage
                   class={styles().supportText({
                     class: [
-                      label() || description() ? "mt-0.5" : "",
-                      "inline-flex items-center gap-x-1 text-content-danger",
+                      "inline-flex items-center gap-x-1 mt-0.5 text-content-danger",
                       checkboxStaticClass("errorMessage"),
                       themeClasses.errorMessage,
                       local.slotClasses?.errorMessage,

@@ -54,7 +54,7 @@ function preset(options: PigmentOptions | undefined = {}): Partial<Config> {
     plugins: [
       animatePlugin,
       kobaltePlugin,
-      plugin(({ addBase }) => {
+      plugin(({ addBase, addUtilities }) => {
         const themes: Array<[PredefinedTheme | string, ThemeTokens]> = [];
 
         const cssVarName = (key: string) => {
@@ -131,6 +131,12 @@ function preset(options: PigmentOptions | undefined = {}): Partial<Config> {
             color: `rgb(${vars("colors.content.DEFAULT")})`,
             WebkitFontSmoothing: "antialiased",
             MozOsxFontSmoothing: "grayscale",
+          },
+        });
+
+        addUtilities({
+          ".display-inherit": {
+            display: "inherit",
           },
         });
       }),

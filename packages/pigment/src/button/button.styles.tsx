@@ -14,7 +14,7 @@ export const buttonStyles = tv({
       "ui-disabled:text-content-disabled ui-disabled:opacity-50 ui-disabled:pointer-events-none ui-disabled:shadow-none",
       "outline-none focus-visible:outline-ring focus-visible:outline-2 focus-visible:outline-offset-2",
     ],
-    decorator: "",
+    decorator: "display-inherit",
     loadingContent: "inline-flex items-center justify-center opacity-0",
   },
   variants: {

@@ -1,5 +1,9 @@
 import { Checkbox } from "@kobalte/pigment";
 
+export function WithBasicUsage() {
+  return <Checkbox label="Subscribe" />;
+}
+
 export function WithSize() {
   return (
     <div class="flex items-center gap-3">

@@ -8,7 +8,7 @@ export type CheckboxSlots =
   | "root"
   | "control"
   | "indicator"
-  | "labelWrapper"
+  | "supportTextWrapper"
   | "label"
   | "description"
   | "errorMessage"

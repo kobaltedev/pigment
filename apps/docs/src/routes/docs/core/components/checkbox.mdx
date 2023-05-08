@@ -1,5 +1,6 @@
 import { Preview } from "../../../../components";
 import {
+  WithBasicUsage,
   WithDescription,
   WithDisabled,
   WithInvalid,
@@ -16,7 +17,19 @@ A control that allows the user to toggle between checked and not checked.
 import { Checkbox } from "@kobalte/pigment";
 ```
 
-## Sizes
+## Basic usage
+
+<Preview>
+  <WithBasicUsage />
+</Preview>
+
+```tsx
+<Checkbox label="Subscribe" />
+```
+
+## Customization
+
+### Sizes
 
 The Checkbox component comes in two sizes: `md` (default) and `lg`.
 
@@ -29,13 +42,13 @@ The Checkbox component comes in two sizes: `md` (default) and `lg`.
 <Checkbox size="lg" label="Large" />
 ```
 
-## Description
+### Description
 
 <Preview>
   <WithDescription />
 </Preview>
 
-## Invalid state
+### Invalid state
 
 Use the `invalid` prop to mark the checkbox as invalid. Additionally, you can pass an extra error message using the `errorMessage` prop.
 
@@ -51,7 +64,7 @@ Use the `invalid` prop to mark the checkbox as invalid. Additionally, you can pa
 />
 ```
 
-## Disabled state
+### Disabled state
 
 Use the `disabled` prop to disable the checkbox.
 

@@ -5,19 +5,32 @@ import {
   WithColor,
   WithSize,
   WithShape,
+  WithBasicUsage,
 } from "../../../../examples/badge";
 
 # Badge
 
 Visual indicators for numeric values such as tallies and scores.
 
-# Import
+## Import
 
 ```tsx
 import { Badge } from "@kobalte/pigment";
 ```
 
-## Variants
+## Basic usage
+
+<Preview>
+  <WithBasicUsage />
+</Preview>
+
+```tsx
+<Badge>v1.0.0</Badge>
+```
+
+## Customization
+
+### Variants
 
 The Badge component comes in four variants: `solid`, `soft` (default), `inverted` and `dot`.
 
@@ -52,7 +65,7 @@ The `inverted` variant can be used to create a high contrast badge on a vibrant 
 </Button>
 ```
 
-## Colors
+### Colors
 
 Badges supports all Pigment semantic colors: `primary`, `neutral`, `success`, `info` (default), `warning`, `danger` and `discovery`.
 
@@ -76,7 +89,7 @@ Badges supports all Pigment semantic colors: `primary`, `neutral`, `success`, `i
 </For>
 ```
 
-## Sizes
+### Sizes
 
 The Badge component comes in two sizes: `md` (default) and `lg`.
 
@@ -89,7 +102,7 @@ The Badge component comes in two sizes: `md` (default) and `lg`.
 <Badge size="lg">Large</Badge>
 ```
 
-## Shapes
+### Shapes
 
 Badges supports three different shapes: `rounded` (default), `pill` and `circle`.
 

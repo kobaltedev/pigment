@@ -3,6 +3,10 @@ import { For } from "solid-js";
 
 import { TablerTagIcon } from "../components";
 
+export function WithBasicUsage() {
+  return <Badge>v1.0.0</Badge>;
+}
+
 export function WithVariant() {
   return (
     <div class="flex items-center gap-3">

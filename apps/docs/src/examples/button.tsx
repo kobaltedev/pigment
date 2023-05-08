@@ -11,6 +11,10 @@ import {
   TablerTrashIcon,
 } from "../components";
 
+export function WithBasicUsage() {
+  return <Button>New pull request</Button>;
+}
+
 export function WithSolidPrimaryVariant() {
   return (
     <Button variant="solid" color="primary">
