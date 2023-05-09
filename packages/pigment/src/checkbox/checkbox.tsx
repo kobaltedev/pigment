@@ -1,7 +1,7 @@
 import { Checkbox as KCheckbox } from "@kobalte/core";
 import { createMemo, JSX, Show, splitProps } from "solid-js";
 
-import { createIcon, TablerAlertOctagonIcon } from "../icon";
+import { createIcon } from "../icon";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
 import { CheckboxProps, CheckboxSlots } from "./checkbox.props";
@@ -40,9 +40,8 @@ export function Checkbox(props: CheckboxProps) {
       size: "md",
       disabled: false,
       inputProps: {},
-      errorIndicator: () => <TablerAlertOctagonIcon />,
-      checkedIndicator: () => <CheckboxCheckIcon />,
-      indeterminateIndicator: () => <CheckboxIndeterminateIcon />,
+      checkedIcon: () => <CheckboxCheckIcon />,
+      indeterminateIcon: () => <CheckboxIndeterminateIcon />,
     },
     props
   );
@@ -61,9 +60,8 @@ export function Checkbox(props: CheckboxProps) {
       "label",
       "description",
       "errorMessage",
-      "errorIndicator",
-      "checkedIndicator",
-      "indeterminateIndicator",
+      "checkedIcon",
+      "indeterminateIcon",
     ],
     ["size"]
   );
@@ -73,7 +71,6 @@ export function Checkbox(props: CheckboxProps) {
   const label = createMemo(() => local.label as unknown as JSX.Element);
   const description = createMemo(() => local.description as unknown as JSX.Element);
   const errorMessage = createMemo(() => local.errorMessage as unknown as JSX.Element);
-  const errorIndicator = createMemo(() => local.errorIndicator as unknown as JSX.Element);
 
   const showError = () => {
     return local.invalid && errorMessage();
@@ -124,19 +121,15 @@ export function Checkbox(props: CheckboxProps) {
               })}
             >
               <KCheckbox.Indicator
-                class={styles().indicator({
-                  class: [
-                    checkboxStaticClass("indicator"),
-                    themeClasses.indicator,
-                    local.slotClasses?.indicator,
-                  ],
+                class={styles().icon({
+                  class: [checkboxStaticClass("icon"), themeClasses.icon, local.slotClasses?.icon],
                 })}
               >
                 <Show
                   when={state.indeterminate()}
-                  fallback={local.checkedIndicator as unknown as JSX.Element}
+                  fallback={local.checkedIcon as unknown as JSX.Element}
                 >
-                  {local.indeterminateIndicator as unknown as JSX.Element}
+                  {local.indeterminateIcon as unknown as JSX.Element}
                 </Show>
               </KCheckbox.Indicator>
             </KCheckbox.Control>
@@ -182,26 +175,14 @@ export function Checkbox(props: CheckboxProps) {
                 <KCheckbox.ErrorMessage
                   class={styles().supportText({
                     class: [
-                      "inline-flex items-center gap-x-1 text-content-danger",
+                      "text-content-danger",
                       checkboxStaticClass("errorMessage"),
                       themeClasses.errorMessage,
                       local.slotClasses?.errorMessage,
                     ],
                   })}
                 >
-                  <span
-                    aria-hidden="true"
-                    class={styles().errorIndicator({
-                      class: [
-                        checkboxStaticClass("errorIndicator"),
-                        themeClasses.errorIndicator,
-                        local.slotClasses?.errorIndicator,
-                      ],
-                    })}
-                  >
-                    {errorIndicator()}
-                  </span>
-                  <span>{errorMessage()}</span>
+                  {errorMessage()}
                 </KCheckbox.ErrorMessage>
               </Show>
             </div>

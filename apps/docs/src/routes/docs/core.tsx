@@ -75,6 +75,15 @@ const CORE_NAV_SECTIONS: NavSection[] = [
       },
     ],
   },
+  {
+    title: "3rd party integrations",
+    links: [
+      {
+        title: "Modular Forms",
+        href: "/docs/core/integrations/modular-forms",
+      },
+    ],
+  },
 ];
 
 export default function CoreLayout() {

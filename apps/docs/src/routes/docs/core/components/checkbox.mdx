@@ -2,10 +2,13 @@ import { Preview } from "../../../../components";
 import {
   WithBasicUsage,
   WithDescription,
+  WithCustomIcon,
   WithDisabled,
   WithIndeterminate,
   WithInvalid,
   WithSize,
+  WithDefaultChecked,
+  WithControlledChecked,
 } from "../../../../examples/checkbox";
 
 # Checkbox
@@ -26,6 +29,43 @@ import { Checkbox } from "@kobalte/pigment";
 
 ```tsx
 <Checkbox label="Subscribe" />
+```
+
+### Default checked
+
+An initial, uncontrolled value can be provided using the `defaultChecked` prop.
+
+<Preview>
+  <WithDefaultChecked />
+</Preview>
+
+```tsx
+<Checkbox label="Subscribe" defaultChecked />
+```
+
+### Controlled checked
+
+The `checked` prop can be used to make the checked state controlled. The `onChange` event is fired when the user presses the checkbox.
+
+<Preview>
+  <WithControlledChecked />
+</Preview>
+
+```tsx
+import { Checkbox } from "@kobalte/pigment";
+import { createSignal } from "solid-js";
+
+function ControlledExample() {
+  const [checked, setChecked] = createSignal(false);
+
+  return (
+    <Checkbox
+      label={checked() ? "Unsubscribe" : "Subscribe"}
+      checked={checked()}
+      onChange={setChecked}
+    />
+  );
+}
 ```
 
 ## Customization
@@ -53,6 +93,23 @@ Use the `description` prop to associate additional help text with a checkbox.
 
 ```tsx
 <Checkbox label="Subscribe" description="You will receive our weekly newsletter" />
+```
+
+### Icons
+
+Use the `checkedIcon` and `indeterminateIcon` props to customize the checked or indeterminate states.
+
+<Preview>
+  <WithCustomIcon />
+</Preview>
+
+```tsx
+<Checkbox label="Checked" checkedIcon={<CrossIcon />} checked />
+<Checkbox
+  label="Indeterminate"
+  indeterminateIcon={<QuestionMarkIcon />}
+  indeterminate
+/>
 ```
 
 ### Indeterminate state

@@ -128,6 +128,7 @@ export const baseTheme: ThemeTokens = {
 
       line: {
         DEFAULT: colors.slate["200"],
+        subtle: colors.slate["100"],
         disabled: colors.slate["200"],
         primary: colors.blue["500"],
         neutral: colors.slate["500"],
@@ -266,6 +267,7 @@ export const baseTheme: ThemeTokens = {
 
       line: {
         DEFAULT: colors.slate["700"],
+        subtle: colors.slate["800"],
         disabled: colors.slate["700"],
         primary: colors.blue["400"],
         neutral: colors.slate["400"],

@@ -31,7 +31,7 @@ export const checkboxStyles = tv({
       "ui-not-disabled:ui-invalid:ui-indeterminate:bg-surface-danger ui-not-disabled:ui-invalid:group-hover/action:ui-indeterminate:bg-surface-danger-hover ui-not-disabled:ui-invalid:group-active/action:ui-indeterminate:bg-surface-danger-active",
       "ui-not-disabled:ui-invalid:ui-indeterminate:border-surface-danger ui-not-disabled:ui-invalid:group-hover/action:ui-indeterminate:border-surface-danger-hover ui-not-disabled:ui-invalid:group-active/action:ui-indeterminate:border-surface-danger-active",
     ],
-    indicator: "inline-flex justify-center items-center",
+    icon: "inline-flex justify-center items-center",
     actionWrapper: "flex items-center group/action",
     label: [
       "text-content",
@@ -40,7 +40,6 @@ export const checkboxStyles = tv({
     supportTextWrapper: "flex flex-col items-start grow shrink",
     supportText:
       "ui-disabled:text-content-disabled ui-disabled:opacity-50 ui-disabled:pointer-events-none",
-    errorIndicator: "",
   },
   variants: {
     size: {
@@ -50,7 +49,6 @@ export const checkboxStyles = tv({
         label: "ps-2 text-sm",
         supportTextWrapper: "ps-6 gap-y-1",
         supportText: "text-xs",
-        errorIndicator: "text-sm",
       },
       lg: {
         root: "gap-y-1",
@@ -58,7 +56,6 @@ export const checkboxStyles = tv({
         label: "ps-3 text-base",
         supportTextWrapper: "ps-8 gap-y-1.5",
         supportText: "text-sm",
-        errorIndicator: "text-base",
       },
     },
   },

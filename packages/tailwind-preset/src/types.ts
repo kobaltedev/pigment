@@ -133,6 +133,7 @@ export const themeTokensShapeValue = {
 
     line: {
       DEFAULT: "",
+      subtle: "",
       disabled: "",
       primary: "",
       neutral: "",

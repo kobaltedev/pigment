@@ -1,8 +1,26 @@
-import { Checkbox } from "@kobalte/pigment";
+import { Checkbox, TablerCrossIcon } from "@kobalte/pigment";
 import { createSignal } from "solid-js";
+
+import { TablerQuestionMarkIcon } from "../components";
 
 export function WithBasicUsage() {
   return <Checkbox label="Subscribe" />;
+}
+
+export function WithDefaultChecked() {
+  return <Checkbox label="Subscribe" defaultChecked />;
+}
+
+export function WithControlledChecked() {
+  const [checked, setChecked] = createSignal(false);
+
+  return (
+    <Checkbox
+      label={checked() ? "Unsubscribe" : "Subscribe"}
+      checked={checked()}
+      onChange={setChecked}
+    />
+  );
 }
 
 export function WithSize() {
@@ -16,6 +34,19 @@ export function WithSize() {
 
 export function WithDescription() {
   return <Checkbox label="Subscribe" description="You will receive our weekly newsletter" />;
+}
+
+export function WithCustomIcon() {
+  return (
+    <div class="flex items-center gap-3">
+      <Checkbox label="Checked" checkedIcon={<TablerCrossIcon />} checked />
+      <Checkbox
+        label="Indeterminate"
+        indeterminateIcon={<TablerQuestionMarkIcon />}
+        indeterminate
+      />
+    </div>
+  );
 }
 
 export function WithIndeterminate() {

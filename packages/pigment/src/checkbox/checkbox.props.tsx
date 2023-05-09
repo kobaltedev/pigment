@@ -7,13 +7,12 @@ import { CheckboxVariants } from "./checkbox.styles";
 export type CheckboxSlots =
   | "root"
   | "control"
-  | "indicator"
+  | "icon"
   | "label"
   | "actionWrapper"
-  | "supportTextWrapper"
   | "description"
   | "errorMessage"
-  | "errorIndicator";
+  | "supportTextWrapper";
 
 export interface CheckboxProps
   extends Omit<KCheckbox.CheckboxRootProps, "ref" | "validationState">,
@@ -37,12 +36,9 @@ export interface CheckboxProps
   /** The error message that gives the user information about how to fix a validation error on the checkbox. */
   errorMessage?: JSX.Element | (() => JSX.Element);
 
-  /** The icon to show next to the error message. */
-  errorIndicator?: JSX.Element | (() => JSX.Element);
-
   /** The icon to show when the checkbox is in a checked state. */
-  checkedIndicator?: JSX.Element | (() => JSX.Element);
+  checkedIcon?: JSX.Element | (() => JSX.Element);
 
   /** The icon to show when the checkbox is in an indeterminate state. */
-  indeterminateIndicator?: JSX.Element | (() => JSX.Element);
+  indeterminateIcon?: JSX.Element | (() => JSX.Element);
 }
