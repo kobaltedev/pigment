@@ -22,9 +22,6 @@ export function WithVariant() {
 export function WithStatus() {
   return (
     <div class="flex flex-col gap-4">
-      <Alert variant="soft" status="neutral">
-        We are currently migrating our infrastructure.
-      </Alert>
       <Alert variant="soft" status="success">
         The data has been successfully saved on our server.
       </Alert>

@@ -30,7 +30,6 @@ export const themeTokensShapeValue = {
       discovery: "",
 
       onPrimary: "",
-      onNeutral: "",
       onSuccess: "",
       onInfo: "",
       onWarning: "",
@@ -38,7 +37,6 @@ export const themeTokensShapeValue = {
       onDiscovery: "",
 
       onPrimarySubtle: "",
-      onNeutralSubtle: "",
       onSuccessSubtle: "",
       onInfoSubtle: "",
       onWarningSubtle: "",
@@ -49,27 +47,21 @@ export const themeTokensShapeValue = {
     surface: {
       DEFAULT: "",
       body: "",
+      raised: "",
       overlay: "",
+      sunken: "",
       disabled: "",
       tooltip: "",
 
-      subtle: {
-        DEFAULT: "",
-        hover: "",
-        active: "",
-      },
-
-      primary: {
-        DEFAULT: "",
-        hover: "",
-        active: "",
+      neutral: {
         subtle: {
           DEFAULT: "",
           hover: "",
           active: "",
         },
       },
-      neutral: {
+
+      primary: {
         DEFAULT: "",
         hover: "",
         active: "",
@@ -136,7 +128,6 @@ export const themeTokensShapeValue = {
       subtle: "",
       disabled: "",
       primary: "",
-      neutral: "",
       success: "",
       info: "",
       warning: "",

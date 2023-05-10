@@ -48,9 +48,7 @@ export function Header(props: HeaderProps) {
           Pigment
           <span class="text-3xl leading-[0] text-content-primary">.</span>
         </Link>
-        <Badge variant="soft" color="neutral">
-          {LATEST_CORE_VERSION_NAME}
-        </Badge>
+        <Badge variant="soft">{LATEST_CORE_VERSION_NAME}</Badge>
       </div>
 
       <div class="relative flex items-center basis-0 justify-end h-14 md:flex-grow">

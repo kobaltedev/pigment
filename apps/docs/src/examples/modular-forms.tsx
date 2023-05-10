@@ -16,7 +16,7 @@ export function ModularFormsExample() {
 
   return (
     <Form
-      class="flex flex-col w-full max-w-md p-5 rounded-md shadow border border-line bg-surface dark:border-line-subtle"
+      class="flex flex-col w-full max-w-md p-5 rounded-lg shadow border border-line-subtle bg-surface-raised"
       onSubmit={handleSubmit}
     >
       <h2 class="text-2xl text-content font-bold mb-0.5">Welcome to Pigment</h2>

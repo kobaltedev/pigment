@@ -178,7 +178,7 @@ The `solid` and `soft` variant supports all Pigment semantic colors, allowing yo
 <For each={["solid", "soft"]}>
   {variant => (
     <div class="flex items-center gap-3">
-      <For each={["primary", "neutral", "success", "info", "warning", "danger", "discovery"]}>
+      <For each={["primary", "success", "info", "warning", "danger", "discovery"]}>
         {color => (
           <Button variant={variant} color={color} class="capitalize">
             {color}
@@ -386,19 +386,19 @@ The name `Button` can be used when providing [default props](/docs/core/customiz
 
 #### Props
 
-| Prop             | Description                                                                                                                                         |
-| :--------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
-| variant          | `"solid" \| "soft" \| "inverted" \| "default" \| "dashed" \| "text" \| "link"` <br/> **default:** `default` <br/> The visual style of the button.   |
-| color            | `"primary" \| "neutral" \| "success" \| "info" \| "warning" \| "danger" \| "discovery"` <br/> **default:** `primary` <br/> The color of the button. |
-| size             | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` <br/> **default:** `md` <br/> The size of the button.                                                        |
-| startDecorator   | `JSX.Element \| (() => JSX.Element)` <br/> The element to show before the button content.                                                           |
-| endDecorator     | `JSX.Element \| (() => JSX.Element)` <br/> The element to show after the button content.                                                            |
-| loadingIndicator | `JSX.Element \| (() => JSX.Element)` <br/> The element to show when the button is in loading state.                                                 |
-| loadingPlacement | `"center" \| "start" \| "end"` <br/> **default:** `center` <br/> The placement of the loading indicator when the button is in a loading state.      |
-| loading          | `boolean` <br/> **default:** `false` <br/> Whether the button is in loading state.                                                                  |
-| disabled         | `boolean` <br/> **default:** `false` <br/> Whether the button is disabled.                                                                          |
-| fullWith         | `boolean` <br/> **default:** `false` <br/> Whether the button should take all available width.                                                      |
-| slotClasses      | `Partial<Record<ButtonSlots, string>>` <br/> Addiitonal CSS classes to be passed to the component slots.                                            |
+| Prop             | Description                                                                                                                                       |
+| :--------------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
+| variant          | `"solid" \| "soft" \| "inverted" \| "default" \| "dashed" \| "text" \| "link"` <br/> **default:** `default` <br/> The visual style of the button. |
+| color            | `"primary" \| "success" \| "info" \| "warning" \| "danger" \| "discovery"` <br/> **default:** `primary` <br/> The color of the button.            |
+| size             | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` <br/> **default:** `md` <br/> The size of the button.                                                      |
+| startDecorator   | `JSX.Element \| (() => JSX.Element)` <br/> The element to show before the button content.                                                         |
+| endDecorator     | `JSX.Element \| (() => JSX.Element)` <br/> The element to show after the button content.                                                          |
+| loadingIndicator | `JSX.Element \| (() => JSX.Element)` <br/> The element to show when the button is in loading state.                                               |
+| loadingPlacement | `"center" \| "start" \| "end"` <br/> **default:** `center` <br/> The placement of the loading indicator when the button is in a loading state.    |
+| loading          | `boolean` <br/> **default:** `false` <br/> Whether the button is in loading state.                                                                |
+| disabled         | `boolean` <br/> **default:** `false` <br/> Whether the button is disabled.                                                                        |
+| fullWith         | `boolean` <br/> **default:** `false` <br/> Whether the button should take all available width.                                                    |
+| slotClasses      | `Partial<Record<ButtonSlots, string>>` <br/> Addiitonal CSS classes to be passed to the component slots.                                          |
 
 #### Slots
 

@@ -8,7 +8,6 @@ import {
   TablerCircleCheckIcon,
   TablerHelpHexagonIcon,
   TablerInfoCircleIcon,
-  TablerLifebuoyIcon,
 } from "../icon";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
@@ -19,7 +18,6 @@ import { alertStyles, AlertVariants } from "./alert.styles";
 const alertStaticClass = makeStaticClass<AlertSlots>("alert");
 
 const ALERT_ICONS: Record<Exclude<AlertVariants["status"], undefined>, ValidComponent> = {
-  neutral: TablerLifebuoyIcon,
   success: TablerCircleCheckIcon,
   info: TablerInfoCircleIcon,
   warning: TablerAlertTriangleIcon,

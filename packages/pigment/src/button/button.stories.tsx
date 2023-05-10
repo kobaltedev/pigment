@@ -58,11 +58,7 @@ export const Colors: Story = {
       <For each={["solid", "soft", "inverted"] as const}>
         {variant => (
           <div class="flex items-center space-x-4">
-            <For
-              each={
-                ["primary", "neutral", "success", "info", "warning", "danger", "discovery"] as const
-              }
-            >
+            <For each={["primary", "success", "info", "warning", "danger", "discovery"] as const}>
               {color => <Button {...props} variant={variant} color={color} />}
             </For>
           </div>

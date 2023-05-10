@@ -40,11 +40,7 @@ export function WithColor() {
       <For each={["solid", "soft", "inverted", "dot"] as const}>
         {variant => (
           <div class="flex items-center gap-3">
-            <For
-              each={
-                ["primary", "neutral", "success", "info", "warning", "danger", "discovery"] as const
-              }
-            >
+            <For each={["primary", "success", "info", "warning", "danger", "discovery"] as const}>
               {color => (
                 <Badge variant={variant} color={color} class="capitalize">
                   {color}

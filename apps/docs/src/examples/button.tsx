@@ -75,11 +75,7 @@ export function WithOtherStatusButtons() {
       <For each={["solid", "soft"] as const}>
         {variant => (
           <div class="flex items-center gap-3">
-            <For
-              each={
-                ["primary", "neutral", "success", "info", "warning", "danger", "discovery"] as const
-              }
-            >
+            <For each={["primary", "success", "info", "warning", "danger", "discovery"] as const}>
               {color => (
                 <Button variant={variant} color={color} class="capitalize">
                   {color}

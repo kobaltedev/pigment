@@ -12,7 +12,6 @@ export const alertStyles = tv({
       soft: {},
     },
     status: {
-      neutral: {},
       success: {},
       info: {},
       warning: {},
@@ -22,13 +21,6 @@ export const alertStyles = tv({
   },
   compoundVariants: [
     // variant solid + status
-    {
-      variant: "solid",
-      status: "neutral",
-      class: {
-        root: "text-content-on-neutral bg-surface-neutral border-surface-neutral",
-      },
-    },
     {
       variant: "solid",
       status: "success",
@@ -66,13 +58,6 @@ export const alertStyles = tv({
     },
 
     // variant soft + status
-    {
-      variant: "soft",
-      status: "neutral",
-      class: {
-        root: "text-content-on-neutral-subtle bg-surface-neutral-subtle border-surface-neutral-subtle",
-      },
-    },
     {
       variant: "soft",
       status: "success",

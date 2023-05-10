@@ -42,16 +42,13 @@ The Alert component comes in two variants: `solid` and `soft` (default).
 
 ### Status
 
-The Alert component supports six different status which affect the color scheme and default status icon used: `neutral`, `success`, `info` (default), `warning`, `danger` and `discovery`.
+The Alert component supports six different status which affect the color scheme and default status icon used: `success`, `info` (default), `warning`, `danger` and `discovery`.
 
 <Preview isCentered={false}>
   <WithStatus />
 </Preview>
 
 ```tsx
-<Alert variant="soft" status="neutral">
-  We are currently migrating our infrastructure.
-</Alert>
 <Alert variant="soft" status="success">
   The data has been successfully saved on our server.
 </Alert>
@@ -96,12 +93,12 @@ The name `Alert` can be used when providing [default props](/docs/core/customiza
 
 ### Props
 
-| Prop           | Description                                                                                                                                                                                       |
-| :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| variant        | `"solid" \| "soft"` <br/> **default:** `"soft"` <br/> The visual style of the alert.                                                                                                              |
-| status         | `"neutral" \| "success" \| "info" \| "warning" \| "danger" \| "discovery"` <br/> **default:** `"info"` <br/> The status of the alert, which affect the color scheme and default status icon used. |
-| startDecorator | `JSX.Element \| ((status) => JSX.Element)` <br/> The element to show before the alert content.                                                                                                    |
-| endDecorator   | `JSX.Element \| ((status) => JSX.Element)` <br/> The element to show after the alert content.                                                                                                     |
+| Prop           | Description                                                                                                                                                                          |
+| :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| variant        | `"solid" \| "soft"` <br/> **default:** `"soft"` <br/> The visual style of the alert.                                                                                                 |
+| status         | `"success" \| "info" \| "warning" \| "danger" \| "discovery"` <br/> **default:** `"info"` <br/> The status of the alert, which affect the color scheme and default status icon used. |
+| startDecorator | `JSX.Element \| ((status) => JSX.Element)` <br/> The element to show before the alert content.                                                                                       |
+| endDecorator   | `JSX.Element \| ((status) => JSX.Element)` <br/> The element to show after the alert content.                                                                                        |
 
 ### Slots
 

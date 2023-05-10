@@ -67,7 +67,7 @@ The `inverted` variant can be used to create a high contrast badge on a vibrant 
 
 ### Colors
 
-Badges supports all Pigment semantic colors: `primary`, `neutral`, `success`, `info` (default), `warning`, `danger` and `discovery`.
+Badges supports all Pigment semantic colors: `primary`, `success`, `info` (default), `warning`, `danger` and `discovery`.
 
 <Preview>
   <WithColor />
@@ -77,7 +77,7 @@ Badges supports all Pigment semantic colors: `primary`, `neutral`, `success`, `i
 <For each={["solid", "soft", "inverted", "dot"]}>
   {variant => (
     <div class="flex items-center gap-3">
-      <For each={["primary", "neutral", "success", "info", "warning", "danger", "discovery"]}>
+      <For each={["primary", "success", "info", "warning", "danger", "discovery"]}>
         {color => (
           <Badge variant={variant} color={color} class="capitalize">
             {color}
@@ -124,12 +124,12 @@ The name `Badge` can be used when providing [default props](/docs/core/customiza
 
 ### Props
 
-| Prop    | Description                                                                                                                                          |
-| :------ | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
-| variant | `"solid" \| "soft" \| "inverted" \| "dot"` <br/> **default:** `"solid"` <br/> The visual style of the badge.                                         |
-| color   | `"primary" \| "neutral" \| "success" \| "info" \| "warning" \| "danger" \| "discovery"` <br/> **default:** `"primary"` <br/> The color of the badge. |
-| size    | `"md" \| "lg"` <br/> **default:** `"md"` <br/> The size of the badge.                                                                                |
-| shape   | `"rounded" \| "pill" \| "circle"` <br/> **default:** `"rounded"` <br/> The shape of the badge.                                                       |
+| Prop    | Description                                                                                                                             |
+| :------ | :-------------------------------------------------------------------------------------------------------------------------------------- |
+| variant | `"solid" \| "soft" \| "inverted" \| "dot"` <br/> **default:** `"solid"` <br/> The visual style of the badge.                            |
+| color   | `"primary" \| "success" \| "info" \| "warning" \| "danger" \| "discovery"` <br/> **default:** `"primary"` <br/> The color of the badge. |
+| size    | `"md" \| "lg"` <br/> **default:** `"md"` <br/> The size of the badge.                                                                   |
+| shape   | `"rounded" \| "pill" \| "circle"` <br/> **default:** `"rounded"` <br/> The shape of the badge.                                          |
 
 ### Slots
 

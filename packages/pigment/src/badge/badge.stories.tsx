@@ -24,11 +24,7 @@ export default {
       <For each={["md", "lg"] as const}>
         {size => (
           <div class="flex items-center space-x-4">
-            <For
-              each={
-                ["primary", "neutral", "success", "info", "warning", "danger", "discovery"] as const
-              }
-            >
+            <For each={["primary", "success", "info", "warning", "danger", "discovery"] as const}>
               {color => <Badge {...props} size={size} color={color} />}
             </For>
           </div>

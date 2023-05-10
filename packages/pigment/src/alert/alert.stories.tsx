@@ -18,14 +18,6 @@ export default {
           <div class="flex flex-col gap-4">
             <Alert
               variant={variant}
-              status="neutral"
-              endDecorator={<CloseButton size="sm" variant={variant} color="neutral" />}
-              {...props}
-            >
-              <span>We are currently migrating our infrastructure.</span>
-            </Alert>
-            <Alert
-              variant={variant}
               status="success"
               endDecorator={<CloseButton size="sm" variant={variant} color="success" />}
               {...props}
