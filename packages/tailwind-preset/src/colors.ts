@@ -6,7 +6,153 @@
  * https://github.com/tailwindlabs/tailwindcss/blob/7f555c432d7f801fcac82fbf1331a5ed8986c4c1/src/public/colors.js
  */
 
-export const colors = {
+import { GRAYSCALE_NAMES } from "./grayscales";
+
+export const DARK_COLOR_NAMES = [...GRAYSCALE_NAMES, "maroon"] as const;
+export const BRIGHT_COLOR_NAMES = ["amber", "yellow", "lime"] as const;
+
+const COLOR_NAMES = [
+  ...DARK_COLOR_NAMES,
+  ...BRIGHT_COLOR_NAMES,
+  "green",
+  "emerald",
+  "teal",
+  "cyan",
+  "sky",
+  "blue",
+  "indigo",
+  "violet",
+  "purple",
+  "fuchsia",
+  "pink",
+  "rose",
+  "red",
+  "orange",
+] as const;
+
+export type DarkColor = (typeof DARK_COLOR_NAMES)[number];
+export type BrightColor = (typeof BRIGHT_COLOR_NAMES)[number];
+export type Color = (typeof COLOR_NAMES)[number];
+
+export type ColorStep =
+  | "50"
+  | "100"
+  | "200"
+  | "300"
+  | "400"
+  | "500"
+  | "600"
+  | "700"
+  | "800"
+  | "900"
+  | "950";
+
+export const colors: Record<Color, Record<ColorStep, string>> = {
+  /* Pure gray. */
+  gray: {
+    50: "#fafafa",
+    100: "#f5f5f5",
+    200: "#e6e6e6",
+    300: "#d4d4d4",
+    400: "#a3a3a3",
+    500: "#737373",
+    600: "#525252",
+    700: "#404040",
+    800: "#262626",
+    900: "#171717",
+    950: "#0a0a0a",
+  },
+
+  /* Gray based on desaturated purple hues. */
+  mauve: {
+    50: "#faf9fb",
+    100: "#f5f3f6",
+    200: "#e8e5eb",
+    300: "#d6d1db",
+    400: "#a69cb0",
+    500: "#766b80",
+    600: "#574b63",
+    700: "#463852",
+    800: "#2d1f37",
+    900: "#1e1127",
+    950: "#0b0311",
+  },
+
+  /* Gray based on desaturated blue hues. */
+  slate: {
+    50: "#f9fafb",
+    100: "#f3f5f6",
+    200: "#e5e8eb",
+    300: "#d1d6db",
+    400: "#9ca5b0",
+    500: "#6b7380",
+    600: "#4b5263",
+    700: "#383f52",
+    800: "#1f2537",
+    900: "#111727",
+    950: "#030611",
+  },
+
+  /* Gray based on desaturated green hues. */
+  sage: {
+    50: "#f9fbf9",
+    100: "#f3f6f4",
+    200: "#e5ebe7",
+    300: "#d1dbd5",
+    400: "#9cb0a3",
+    500: "#6b8072",
+    600: "#4b6353",
+    700: "#385241",
+    800: "#1f3729",
+    900: "#11271a",
+    950: "#031109",
+  },
+
+  /* Gray based on desaturated lime hues. */
+  olive: {
+    50: "#fafbf9",
+    100: "#f5f6f3",
+    200: "#e9ebe5",
+    300: "#d8dbd1",
+    400: "#a8b09c",
+    500: "#77806b",
+    600: "#59634b",
+    700: "#475238",
+    800: "#2d371f",
+    900: "#1d2711",
+    950: "#0a1103",
+  },
+
+  /* Gray based on desaturated yellow hues. */
+  sand: {
+    50: "#fbfbf9",
+    100: "#f6f6f3",
+    200: "#ebeae5",
+    300: "#dbd9d1",
+    400: "#b0ac9c",
+    500: "#807b6b",
+    600: "#635b4b",
+    700: "#524738",
+    800: "#372c1f",
+    900: "#271b11",
+    950: "#110903",
+  },
+
+  /* Gray based on desaturated red hues. */
+  maroon: {
+    50: "#fbf9f9",
+    100: "#f6f3f3",
+    200: "#ebe5e5",
+    300: "#dbd1d1",
+    400: "#b09c9c",
+    500: "#806b6b",
+    600: "#634b4b",
+    700: "#523838",
+    800: "#371f1f",
+    900: "#271111",
+    950: "#110303",
+  },
+
   green: {
     50: "#f2fdf5",
     100: "#defce9",

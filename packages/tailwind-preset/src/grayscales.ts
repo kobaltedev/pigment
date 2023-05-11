@@ -6,7 +6,34 @@
  * https://www.radix-ui.com/docs/colors/palette-composition/the-scales#grays
  */
 
-export const grayscales = {
+export const GRAYSCALE_NAMES = ["gray", "mauve", "slate", "sage", "olive", "sand"] as const;
+export const GRAYSCALE_DARK_NAMES = [
+  "grayDark",
+  "mauveDark",
+  "slateDark",
+  "sageDark",
+  "oliveDark",
+  "sandDark",
+] as const;
+
+export type Grayscale = (typeof GRAYSCALE_NAMES)[number];
+export type GrayscaleDark = (typeof GRAYSCALE_DARK_NAMES)[number];
+
+export type GrayscaleStep =
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9"
+  | "10"
+  | "11"
+  | "12";
+
+export const grayscales: Record<Grayscale | GrayscaleDark, Record<GrayscaleStep, string>> = {
   // @radix/colors - gray
   gray: {
     1: "#fcfcfc",

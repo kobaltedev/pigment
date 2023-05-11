@@ -149,31 +149,16 @@ export interface ThemeTokens {
   dark: DeepPartial<ColorSchemeTokens>;
 }
 
-export type PartialThemeTokens = DeepPartial<ThemeTokens>;
-
 export type TokenKey = FlattenObjectKeys<ColorSchemeTokens>;
 
 /** A function to get the css variable of a token. */
 export type VarsFn = (token: TokenKey) => string;
 
-export type PredefinedTheme = "base";
-
-export interface ExtendedTheme {
-  /** The name of the extended theme. */
+export interface Theme {
+  /** The name of the theme. */
   name: string;
 
-  /** The predefined theme to extend. */
-  extend: PredefinedTheme;
-
-  /** The design tokens of the extended theme. */
-  tokens: PartialThemeTokens;
-}
-
-export interface CustomTheme {
-  /** The name of the custom theme. */
-  name: string;
-
-  /** The design tokens of the custom theme. */
+  /** The design tokens of the theme. */
   tokens: ThemeTokens;
 }
 
@@ -182,5 +167,5 @@ export interface PigmentOptions {
   cssVarPrefix?: string;
 
   /** The themes available in the application. */
-  themes?: Array<PredefinedTheme | ExtendedTheme | CustomTheme>;
+  themes?: Array<Theme>;
 }

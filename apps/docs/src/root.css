@@ -41,7 +41,7 @@
   }
 
   .pg-table .pg-code {
-    @apply font-medium text-content-primary bg-surface-primary-subtle dark:bg-transparent py-0.5 px-1 whitespace-nowrap;
+    @apply font-medium text-content-primary dark:text-content-primary bg-surface-primary-subtle dark:bg-transparent py-0.5 px-1 whitespace-nowrap;
   }
 
   .pg-table td {

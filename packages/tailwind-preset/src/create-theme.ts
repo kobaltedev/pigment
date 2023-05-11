@@ -1,45 +1,20 @@
-import { colors } from "./colors";
-import { grayscales } from "./grayscales";
-import { ThemeTokens } from "./types";
+/* -----------------------------------------------------------------------------------------------------------------------------------
+ * NOTE ABOUT COLORS:
+ * We use @radix/colors for the `neutral` palette because it offers more possibilities than Tailwind's grays, specially in dark mode.
+ * We use customized Tailwind colors for `statuses` palettes because contrast is better than Radix's steps 9 and 10.
+ * ----------------------------------------------------------------------------------------------------------------------------------*/
 
-const GRAYSCALES = ["gray", "mauve", "slate", "sage", "olive", "sand"] as const;
-
-const BRIGHT_COLORS = ["amber", "yellow", "lime"] as const;
-
-const COLORS = [
-  "green",
-  "emerald",
-  "teal",
-  "cyan",
-  "sky",
-  "blue",
-  "indigo",
-  "violet",
-  "purple",
-  "fuchsia",
-  "pink",
-  "rose",
-  "red",
-  "orange",
-  ...BRIGHT_COLORS,
-] as const;
-
-type Grayscale = (typeof GRAYSCALES)[number];
-type BrightColor = (typeof BRIGHT_COLORS)[number];
-type Color = (typeof COLORS)[number];
-type GrayscaleStep = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12";
-type ColorStep =
-  | "50"
-  | "100"
-  | "200"
-  | "300"
-  | "400"
-  | "500"
-  | "600"
-  | "700"
-  | "800"
-  | "900"
-  | "950";
+import {
+  BRIGHT_COLOR_NAMES,
+  BrightColor,
+  Color,
+  colors,
+  ColorStep,
+  DARK_COLOR_NAMES,
+  DarkColor,
+} from "./colors";
+import { Grayscale, grayscales, GrayscaleStep } from "./grayscales";
+import { Theme } from "./types";
 
 interface SemanticColors {
   neutral: Grayscale;
@@ -52,11 +27,19 @@ interface SemanticColors {
 }
 
 interface CreateThemeOptions {
-  light: SemanticColors;
-  dark: SemanticColors;
+  name: string;
+  lightColors: SemanticColors;
+  darkColors?: Partial<SemanticColors>;
 }
 
-const COLOR_GRAYSCALE_MAP: Record<Color, Grayscale> = {
+const COLOR_TO_GRAYSCALE_MAP: Record<Color, Grayscale> = {
+  gray: "gray",
+  mauve: "mauve",
+  slate: "slate",
+  sage: "sage",
+  olive: "olive",
+  sand: "sand",
+  maroon: "mauve",
   green: "sage",
   emerald: "sage",
   teal: "sage",
@@ -76,12 +59,29 @@ const COLOR_GRAYSCALE_MAP: Record<Color, Grayscale> = {
   lime: "olive",
 };
 
-function isGrayscaleColor(color: Color | Grayscale): color is Grayscale {
-  return GRAYSCALES.includes(color as any);
+function isDarkColor(color: Color): color is DarkColor {
+  return DARK_COLOR_NAMES.includes(color as any);
 }
 
 function isBrightColor(color: Color): color is BrightColor {
-  return BRIGHT_COLORS.includes(color as any);
+  return BRIGHT_COLOR_NAMES.includes(color as any);
+}
+
+function colorValueOf(
+  color: Color,
+  step: ColorStep,
+  brightStep: ColorStep = step,
+  darkStep: ColorStep = step
+): string {
+  if (isBrightColor(color)) {
+    return colors[color][brightStep];
+  }
+
+  if (isDarkColor(color)) {
+    return colors[color][darkStep];
+  }
+
+  return colors[color][step];
 }
 
 function inverseGrayscaleValueOf(
@@ -90,7 +90,7 @@ function inverseGrayscaleValueOf(
   fallback: string
 ): string {
   if (isBrightColor(color)) {
-    return darkGrayscaleValueOf(COLOR_GRAYSCALE_MAP[color], darkGrayscaleStep);
+    return darkGrayscaleValueOf(COLOR_TO_GRAYSCALE_MAP[color], darkGrayscaleStep);
   }
 
   return fallback;
@@ -104,208 +104,199 @@ function darkGrayscaleValueOf(grayscale: Grayscale, step: GrayscaleStep): string
   return grayscales[`${grayscale}Dark`][step];
 }
 
-function colorValueOf(color: Color, step: ColorStep, brightStep: ColorStep = step): string {
-  return colors[color][isBrightColor(color) ? brightStep : step];
-}
-
 const white = "#ffffff";
 
-/* -----------------------------------------------------------------------------------------------------------------------------------
- * NOTE ABOUT COLORS:
- * We use @radix/colors for the `neutral` palette because it offers more possibilities than Tailwind's grays, specially in dark mode.
- * We use Tailwind colors for `statuses` palettes because contrast is better than Radix's steps 9 and 10.
- * ---------------------------------------------------------------------------------------------------------------------------------*/
-
-// TODO: support grayscale as primary color
-
 /** Create a theme based on Pigment color palettes. */
-export function createTheme(options: CreateThemeOptions): ThemeTokens {
+export function createTheme(options: CreateThemeOptions): Theme {
+  const { name, lightColors } = options;
+
+  const darkColors: SemanticColors = {
+    neutral: options.darkColors?.neutral ?? lightColors.neutral,
+    primary: options.darkColors?.primary ?? lightColors.primary,
+    success: options.darkColors?.success ?? lightColors.success,
+    info: options.darkColors?.info ?? lightColors.info,
+    warning: options.darkColors?.warning ?? lightColors.warning,
+    danger: options.darkColors?.danger ?? lightColors.danger,
+    discovery: options.darkColors?.discovery ?? lightColors.discovery,
+  };
+
   return {
-    light: {
-      colors: {
-        content: {
-          DEFAULT: grayscaleValueOf(options.light.neutral, "12"),
-          subtle: grayscaleValueOf(options.light.neutral, "11"),
-          subtler: grayscaleValueOf(options.light.neutral, "10"),
-          subtlest: grayscaleValueOf(options.light.neutral, "9"),
-          disabled: grayscaleValueOf(options.light.neutral, "8"),
-          link: {
-            DEFAULT: colorValueOf(options.light.primary, "700"),
-            hover: colorValueOf(options.light.primary, "800"),
-            active: colorValueOf(options.light.primary, "900"),
+    name,
+    tokens: {
+      light: {
+        colors: {
+          content: {
+            DEFAULT: grayscaleValueOf(lightColors.neutral, "12"),
+            subtle: grayscaleValueOf(lightColors.neutral, "11"),
+            subtler: grayscaleValueOf(lightColors.neutral, "10"),
+            subtlest: grayscaleValueOf(lightColors.neutral, "9"),
+            disabled: grayscaleValueOf(lightColors.neutral, "8"),
+            link: {
+              DEFAULT: colorValueOf(lightColors.primary, "700", "700", "800"),
+              hover: colorValueOf(lightColors.primary, "800", "800", "900"),
+              active: colorValueOf(lightColors.primary, "900", "900", "950"),
+            },
+
+            primary: colorValueOf(lightColors.primary, "700", "700", "800"),
+            success: colorValueOf(lightColors.success, "700", "700", "800"),
+            info: colorValueOf(lightColors.info, "700", "700", "800"),
+            warning: colorValueOf(lightColors.warning, "700", "700", "800"),
+            danger: colorValueOf(lightColors.danger, "700", "700", "800"),
+            discovery: colorValueOf(lightColors.discovery, "700", "700", "800"),
+
+            onPrimary: inverseGrayscaleValueOf(lightColors.primary, "2", white),
+            onSuccess: inverseGrayscaleValueOf(lightColors.success, "2", white),
+            onInfo: inverseGrayscaleValueOf(lightColors.info, "2", white),
+            onWarning: inverseGrayscaleValueOf(lightColors.warning, "2", white),
+            onDanger: inverseGrayscaleValueOf(lightColors.danger, "2", white),
+            onDiscovery: inverseGrayscaleValueOf(lightColors.discovery, "2", white),
+
+            onPrimarySubtle: colorValueOf(lightColors.primary, "800"),
+            onSuccessSubtle: colorValueOf(lightColors.success, "800"),
+            onInfoSubtle: colorValueOf(lightColors.info, "800"),
+            onWarningSubtle: colorValueOf(lightColors.warning, "800"),
+            onDangerSubtle: colorValueOf(lightColors.danger, "800"),
+            onDiscoverySubtle: colorValueOf(lightColors.discovery, "800"),
           },
 
-          primary: colorValueOf(options.light.primary, "700"),
-          success: colorValueOf(options.light.success, "700"),
-          info: colorValueOf(options.light.info, "700"),
-          warning: colorValueOf(options.light.warning, "700"),
-          danger: colorValueOf(options.light.danger, "700"),
-          discovery: colorValueOf(options.light.discovery, "700"),
+          surface: {
+            DEFAULT: white,
+            body: white,
+            raised: white,
+            overlay: white,
+            sunken: grayscaleValueOf(lightColors.neutral, "1"),
+            disabled: grayscaleValueOf(lightColors.neutral, "5"),
+            tooltip: darkGrayscaleValueOf(lightColors.neutral, "3"),
 
-          onPrimary: inverseGrayscaleValueOf(options.light.primary, "2", white),
-          onSuccess: inverseGrayscaleValueOf(options.light.success, "2", white),
-          onInfo: inverseGrayscaleValueOf(options.light.info, "2", white),
-          onWarning: inverseGrayscaleValueOf(options.light.warning, "2", white),
-          onDanger: inverseGrayscaleValueOf(options.light.danger, "2", white),
-          onDiscovery: inverseGrayscaleValueOf(options.light.discovery, "2", white),
-
-          onPrimarySubtle: colorValueOf(options.light.primary, "800"),
-          onSuccessSubtle: colorValueOf(options.light.success, "800"),
-          onInfoSubtle: colorValueOf(options.light.info, "800"),
-          onWarningSubtle: colorValueOf(options.light.warning, "800"),
-          onDangerSubtle: colorValueOf(options.light.danger, "800"),
-          onDiscoverySubtle: colorValueOf(options.light.discovery, "800"),
-        },
-
-        surface: {
-          DEFAULT: white,
-          body: white,
-          raised: white,
-          overlay: white,
-          sunken: grayscaleValueOf(options.light.neutral, "1"),
-          disabled: grayscaleValueOf(options.light.neutral, "5"),
-          tooltip: darkGrayscaleValueOf(options.light.neutral, "3"),
-
-          neutral: {
-            subtle: {
-              DEFAULT: grayscaleValueOf(options.light.neutral, "3"),
-              hover: grayscaleValueOf(options.light.neutral, "4"),
-              active: grayscaleValueOf(options.light.neutral, "5"),
+            neutral: {
+              subtle: {
+                DEFAULT: grayscaleValueOf(lightColors.neutral, "3"),
+                hover: grayscaleValueOf(lightColors.neutral, "4"),
+                active: grayscaleValueOf(lightColors.neutral, "5"),
+              },
             },
+
+            ...(["primary", "success", "info", "warning", "danger", "discovery"] as const).reduce(
+              (acc, color) => {
+                acc[color] = {
+                  DEFAULT: colorValueOf(lightColors[color], "600", "400", "800"),
+                  hover: colorValueOf(lightColors[color], "700", "500", "900"),
+                  active: colorValueOf(lightColors[color], "800", "600", "950"),
+                  subtle: {
+                    DEFAULT: colorValueOf(lightColors[color], "100"),
+                    hover: colorValueOf(lightColors[color], "200"),
+                    active: colorValueOf(lightColors[color], "300"),
+                  },
+                };
+
+                return acc;
+              },
+              {} as any
+            ),
           },
 
-          ...(["primary", "success", "info", "warning", "danger", "discovery"] as const).reduce(
-            (acc, color) => {
-              acc[color] = {
-                DEFAULT: colorValueOf(options.light[color], "600", "400"),
-                hover: colorValueOf(options.light[color], "700", "500"),
-                active: colorValueOf(options.light[color], "800", "600"),
-                subtle: {
-                  DEFAULT: colorValueOf(options.light[color], "100"),
-                  hover: colorValueOf(options.light[color], "200"),
-                  active: colorValueOf(options.light[color], "300"),
-                },
-              };
+          line: {
+            DEFAULT: grayscaleValueOf(lightColors.neutral, "7"),
+            subtle: grayscaleValueOf(lightColors.neutral, "6"),
+            disabled: grayscaleValueOf(lightColors.neutral, "5"),
+            primary: colorValueOf(lightColors.primary, "500", "500", "600"),
+            success: colorValueOf(lightColors.success, "500", "500", "600"),
+            info: colorValueOf(lightColors.info, "500", "500", "600"),
+            warning: colorValueOf(lightColors.warning, "500", "500", "600"),
+            danger: colorValueOf(lightColors.danger, "500", "500", "600"),
+            discovery: colorValueOf(lightColors.discovery, "500", "500", "600"),
+          },
 
-              return acc;
-            },
-            {} as any
-          ),
+          ring: colorValueOf(lightColors.primary, "500", "500", "600"),
         },
-
-        line: {
-          DEFAULT: grayscaleValueOf(options.light.neutral, "7"),
-          subtle: grayscaleValueOf(options.light.neutral, "6"),
-          disabled: grayscaleValueOf(options.light.neutral, "5"),
-          primary: colorValueOf(options.light.primary, "500"),
-          success: colorValueOf(options.light.success, "500"),
-          info: colorValueOf(options.light.info, "500"),
-          warning: colorValueOf(options.light.warning, "500"),
-          danger: colorValueOf(options.light.danger, "500"),
-          discovery: colorValueOf(options.light.discovery, "500"),
-        },
-
-        ring: colorValueOf(options.light.primary, "500"),
       },
-    },
-    dark: {
-      colors: {
-        content: {
-          DEFAULT: darkGrayscaleValueOf(options.dark.neutral, "12"),
-          subtle: darkGrayscaleValueOf(options.dark.neutral, "11"),
-          subtler: darkGrayscaleValueOf(options.dark.neutral, "10"),
-          subtlest: darkGrayscaleValueOf(options.dark.neutral, "9"),
-          disabled: darkGrayscaleValueOf(options.dark.neutral, "8"),
-          link: {
-            DEFAULT: colorValueOf(options.dark.primary, "400"),
-            hover: colorValueOf(options.dark.primary, "300"),
-            active: colorValueOf(options.dark.primary, "200"),
+      dark: {
+        colors: {
+          content: {
+            DEFAULT: darkGrayscaleValueOf(darkColors.neutral, "12"),
+            subtle: darkGrayscaleValueOf(darkColors.neutral, "11"),
+            subtler: darkGrayscaleValueOf(darkColors.neutral, "10"),
+            subtlest: darkGrayscaleValueOf(darkColors.neutral, "9"),
+            disabled: darkGrayscaleValueOf(darkColors.neutral, "8"),
+            link: {
+              DEFAULT: colorValueOf(darkColors.primary, "400", "400", "200"),
+              hover: colorValueOf(darkColors.primary, "300", "300", "100"),
+              active: colorValueOf(darkColors.primary, "200", "200", "50"),
+            },
+
+            primary: colorValueOf(darkColors.primary, "400", "400", "200"),
+            success: colorValueOf(darkColors.success, "400", "400", "200"),
+            info: colorValueOf(darkColors.info, "400", "400", "200"),
+            warning: colorValueOf(darkColors.warning, "400", "400", "200"),
+            danger: colorValueOf(darkColors.danger, "400", "400", "200"),
+            discovery: colorValueOf(darkColors.discovery, "400", "400", "200"),
+
+            onPrimary: darkGrayscaleValueOf(COLOR_TO_GRAYSCALE_MAP[darkColors.primary], "2"),
+            onSuccess: darkGrayscaleValueOf(COLOR_TO_GRAYSCALE_MAP[darkColors.success], "2"),
+            onInfo: darkGrayscaleValueOf(COLOR_TO_GRAYSCALE_MAP[darkColors.info], "2"),
+            onWarning: darkGrayscaleValueOf(COLOR_TO_GRAYSCALE_MAP[darkColors.warning], "2"),
+            onDanger: darkGrayscaleValueOf(COLOR_TO_GRAYSCALE_MAP[darkColors.danger], "2"),
+            onDiscovery: darkGrayscaleValueOf(COLOR_TO_GRAYSCALE_MAP[darkColors.discovery], "2"),
+
+            onPrimarySubtle: colorValueOf(darkColors.primary, "200"),
+            onSuccessSubtle: colorValueOf(darkColors.success, "200"),
+            onInfoSubtle: colorValueOf(darkColors.info, "200"),
+            onWarningSubtle: colorValueOf(darkColors.warning, "200"),
+            onDangerSubtle: colorValueOf(darkColors.danger, "200"),
+            onDiscoverySubtle: colorValueOf(darkColors.discovery, "200"),
           },
 
-          primary: colorValueOf(options.dark.primary, "400"),
-          success: colorValueOf(options.dark.success, "400"),
-          info: colorValueOf(options.dark.info, "400"),
-          warning: colorValueOf(options.dark.warning, "400"),
-          danger: colorValueOf(options.dark.danger, "400"),
-          discovery: colorValueOf(options.dark.discovery, "400"),
+          surface: {
+            DEFAULT: darkGrayscaleValueOf(darkColors.neutral, "2"),
+            body: darkGrayscaleValueOf(darkColors.neutral, "2"),
+            raised: darkGrayscaleValueOf(darkColors.neutral, "3"),
+            overlay: darkGrayscaleValueOf(darkColors.neutral, "4"),
+            sunken: darkGrayscaleValueOf(darkColors.neutral, "1"),
+            disabled: darkGrayscaleValueOf(darkColors.neutral, "5"),
+            tooltip: grayscaleValueOf(darkColors.neutral, "1"),
 
-          onPrimary: darkGrayscaleValueOf(COLOR_GRAYSCALE_MAP[options.dark.primary], "2"),
-          onSuccess: darkGrayscaleValueOf(COLOR_GRAYSCALE_MAP[options.dark.success], "2"),
-          onInfo: darkGrayscaleValueOf(COLOR_GRAYSCALE_MAP[options.dark.info], "2"),
-          onWarning: darkGrayscaleValueOf(COLOR_GRAYSCALE_MAP[options.dark.warning], "2"),
-          onDanger: darkGrayscaleValueOf(COLOR_GRAYSCALE_MAP[options.dark.danger], "2"),
-          onDiscovery: darkGrayscaleValueOf(COLOR_GRAYSCALE_MAP[options.dark.discovery], "2"),
-
-          onPrimarySubtle: colorValueOf(options.dark.primary, "200"),
-          onSuccessSubtle: colorValueOf(options.dark.success, "200"),
-          onInfoSubtle: colorValueOf(options.dark.info, "200"),
-          onWarningSubtle: colorValueOf(options.dark.warning, "200"),
-          onDangerSubtle: colorValueOf(options.dark.danger, "200"),
-          onDiscoverySubtle: colorValueOf(options.dark.discovery, "200"),
-        },
-
-        surface: {
-          DEFAULT: darkGrayscaleValueOf(options.dark.neutral, "2"),
-          body: darkGrayscaleValueOf(options.dark.neutral, "2"),
-          raised: darkGrayscaleValueOf(options.dark.neutral, "3"),
-          overlay: darkGrayscaleValueOf(options.dark.neutral, "4"),
-          sunken: darkGrayscaleValueOf(options.dark.neutral, "1"),
-          disabled: darkGrayscaleValueOf(options.dark.neutral, "5"),
-          tooltip: grayscaleValueOf(options.dark.neutral, "1"),
-
-          neutral: {
-            subtle: {
-              DEFAULT: darkGrayscaleValueOf(options.dark.neutral, "3"),
-              hover: darkGrayscaleValueOf(options.dark.neutral, "4"),
-              active: darkGrayscaleValueOf(options.dark.neutral, "5"),
+            neutral: {
+              subtle: {
+                DEFAULT: darkGrayscaleValueOf(darkColors.neutral, "3"),
+                hover: darkGrayscaleValueOf(darkColors.neutral, "4"),
+                active: darkGrayscaleValueOf(darkColors.neutral, "5"),
+              },
             },
+
+            ...(["primary", "success", "info", "warning", "danger", "discovery"] as const).reduce(
+              (acc, color) => {
+                acc[color] = {
+                  DEFAULT: colorValueOf(darkColors[color], "400", "400", "200"),
+                  hover: colorValueOf(darkColors[color], "300", "300", "100"),
+                  active: colorValueOf(darkColors[color], "200", "200", "50"),
+                  subtle: {
+                    DEFAULT: colorValueOf(darkColors[color], "900"),
+                    hover: colorValueOf(darkColors[color], "800"),
+                    active: colorValueOf(darkColors[color], "700"),
+                  },
+                };
+
+                return acc;
+              },
+              {} as any
+            ),
           },
 
-          ...(["primary", "success", "info", "warning", "danger", "discovery"] as const).reduce(
-            (acc, color) => {
-              acc[color] = {
-                DEFAULT: colorValueOf(options.dark[color], "400"),
-                hover: colorValueOf(options.dark[color], "300"),
-                active: colorValueOf(options.dark[color], "200"),
-                subtle: {
-                  DEFAULT: colorValueOf(options.dark[color], "900"),
-                  hover: colorValueOf(options.dark[color], "800"),
-                  active: colorValueOf(options.dark[color], "700"),
-                },
-              };
+          line: {
+            DEFAULT: darkGrayscaleValueOf(darkColors.neutral, "7"),
+            subtle: darkGrayscaleValueOf(darkColors.neutral, "6"),
+            disabled: darkGrayscaleValueOf(darkColors.neutral, "5"),
+            primary: colorValueOf(darkColors.primary, "500", "500", "400"),
+            success: colorValueOf(darkColors.success, "500", "500", "400"),
+            info: colorValueOf(darkColors.info, "500", "500", "400"),
+            warning: colorValueOf(darkColors.warning, "500", "500", "400"),
+            danger: colorValueOf(darkColors.danger, "500", "500", "400"),
+            discovery: colorValueOf(darkColors.discovery, "500", "500", "400"),
+          },
 
-              return acc;
-            },
-            {} as any
-          ),
+          ring: colorValueOf(darkColors.primary, "500", "500", "400"),
         },
-
-        line: {
-          DEFAULT: darkGrayscaleValueOf(options.dark.neutral, "7"),
-          subtle: darkGrayscaleValueOf(options.dark.neutral, "6"),
-          disabled: darkGrayscaleValueOf(options.dark.neutral, "5"),
-          primary: colorValueOf(options.dark.primary, "500"),
-          success: colorValueOf(options.dark.success, "500"),
-          info: colorValueOf(options.dark.info, "500"),
-          warning: colorValueOf(options.dark.warning, "500"),
-          danger: colorValueOf(options.dark.danger, "500"),
-          discovery: colorValueOf(options.dark.discovery, "500"),
-        },
-
-        ring: colorValueOf(options.dark.primary, "500"),
       },
     },
   };
-}
-
-/** Create a theme with the same light and dark palette, based on Pigment color palettes. */
-export function createSimpleTheme(colors: SemanticColors) {
-  return createTheme({
-    light: {
-      ...colors,
-    },
-    dark: {
-      ...colors,
-    },
-  });
 }
