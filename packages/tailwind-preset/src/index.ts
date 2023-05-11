@@ -39,7 +39,6 @@ function preset(options: PigmentOptions | undefined = {}): Partial<Config> {
           "2xs": ["10px", "14px"],
         },
         colors: {
-          ...(options?.includeColors ? colors : {}),
           ...Object.keys(flatten(themeTokensShapeValue.colors, "-")).reduce((acc, key) => {
             const formattedKey = toKebabCase(removeDefaultSuffix(key));
             acc[formattedKey] = `rgb(${vars(`colors-${key}` as TokenKey)} / <alpha-value>)`;

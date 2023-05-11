@@ -7,5 +7,5 @@ module.exports = {
     process.env.NODE_ENV !== "production" ? "./dev/**/*.{js,jsx,ts,tsx}" : "",
   ],
   darkMode: "class",
-  presets: [pigment.preset({ includeColors: true })],
+  presets: [pigment.preset()],
 };

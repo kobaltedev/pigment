@@ -1,12 +1,12 @@
 import { Button, Checkbox } from "@kobalte/pigment";
-import { createForm, required, SubmitHandler } from "@modular-forms/solid";
+import { createForm, required, setValue, SubmitHandler } from "@modular-forms/solid";
 
 type SignUpForm = {
   newsletter: boolean;
 };
 
 export function ModularFormsExample() {
-  const [, { Form, Field }] = createForm<SignUpForm>({
+  const [signupForm, { Form, Field }] = createForm<SignUpForm>({
     validateOn: "submit",
   });
 
@@ -33,6 +33,7 @@ export function ModularFormsExample() {
               ref={props.ref}
               name={props.name}
               checked={field.value}
+              onChange={checked => setValue(signupForm, "newsletter", checked)}
               inputProps={{
                 onInput: props.onInput,
                 onChange: props.onChange,

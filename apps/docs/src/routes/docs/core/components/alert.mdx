@@ -99,6 +99,7 @@ The name `Alert` can be used when providing [default props](/docs/core/customiza
 | status         | `"success" \| "info" \| "warning" \| "danger" \| "discovery"` <br/> **default:** `"info"` <br/> The status of the alert, which affect the color scheme and default status icon used. |
 | startDecorator | `JSX.Element \| ((status) => JSX.Element)` <br/> The element to show before the alert content.                                                                                       |
 | endDecorator   | `JSX.Element \| ((status) => JSX.Element)` <br/> The element to show after the alert content.                                                                                        |
+| slotClasses    | `Partial<Record<AlertSlots, string>>` <br/> Addiitonal CSS classes to be passed to the component slots.                                                                              |
 
 ### Slots
 

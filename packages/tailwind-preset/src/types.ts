@@ -181,9 +181,6 @@ export interface PigmentOptions {
   /** The prefix to use in the generated css variables. */
   cssVarPrefix?: string;
 
-  /** Whether Pigment colors should be included in the Tailwind theme configuration. */
-  includeColors?: boolean;
-
   /** The themes available in the application. */
   themes?: Array<PredefinedTheme | ExtendedTheme | CustomTheme>;
 }

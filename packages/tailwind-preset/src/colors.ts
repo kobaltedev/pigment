@@ -1,112 +1,12 @@
+/*!
+ * Portions of this file are based on code from tailwindcss.
+ * MIT Licensed, Copyright (c) 2020 Tailwind Labs.
+ *
+ * Credits to the Tailwind Labs team:
+ * https://github.com/tailwindlabs/tailwindcss/blob/7f555c432d7f801fcac82fbf1331a5ed8986c4c1/src/public/colors.js
+ */
+
 export const colors = {
-  white: "#ffffff",
-  black: "#000000",
-
-  /* Pure gray. */
-  gray: {
-    50: "#fafafa",
-    100: "#f5f5f5",
-    200: "#e6e6e6",
-    300: "#d4d4d4",
-    400: "#a3a3a3",
-    500: "#737373",
-    600: "#525252",
-    700: "#404040",
-    800: "#262626",
-    900: "#171717",
-    950: "#0a0a0a",
-  },
-
-  /* Grayscale based on desaturated purple hues - pair with violet/purple/fuchsia. */
-  mauve: {
-    50: "#fafafa",
-    100: "#f5f4f5",
-    200: "#e6e4e7",
-    300: "#d6d4d8",
-    400: "#a6a1aa",
-    500: "#75717a",
-    600: "#57525b",
-    700: "#433f46",
-    800: "#29272a",
-    900: "#1a181b",
-    950: "#0a090b",
-  },
-
-  /* Grayscale based on desaturated blue hues - pair with indigo/blue/sky/cyan. */
-  slate: {
-    50: "#fafafa",
-    100: "#f4f5f5",
-    200: "#e4e6e7",
-    300: "#d4d6d8",
-    400: "#a1a5aa",
-    500: "#71747a",
-    600: "#52555b",
-    700: "#3f4146",
-    800: "#27282a",
-    900: "#18191b",
-    950: "#090a0b",
-  },
-
-  /* Grayscale based on desaturated green hues - pair with teal/emerald/green. */
-  sage: {
-    50: "#fafafa",
-    100: "#f4f5f5",
-    200: "#e4e7e5",
-    300: "#d4d8d6",
-    400: "#a1aaa4",
-    500: "#717a74",
-    600: "#525b55",
-    700: "#3f4641",
-    800: "#272a29",
-    900: "#181b19",
-    950: "#090b0a",
-  },
-
-  /* Grayscale based on desaturated lime hues - pair with green/lime. */
-  olive: {
-    50: "#fafafa",
-    100: "#f5f5f4",
-    200: "#e6e7e4",
-    300: "#d7d8d4",
-    400: "#a7aaa1",
-    500: "#767a71",
-    600: "#575b52",
-    700: "#43463f",
-    800: "#292a27",
-    900: "#1a1b18",
-    950: "#0a0b09",
-  },
-
-  /* Grayscale based on desaturated yellow hues - pair with orange/amber/yellow. */
-  sand: {
-    50: "#fafafa",
-    100: "#f5f5f4",
-    200: "#e7e7e4",
-    300: "#d8d7d4",
-    400: "#aaa8a1",
-    500: "#7a7871",
-    600: "#5b5852",
-    700: "#46433f",
-    800: "#2a2927",
-    900: "#1b1918",
-    950: "#0b0a09",
-  },
-
-  /* Grayscale based on desaturated red hues - pair with pink/rose/red. */
-  maroon: {
-    50: "#fafafa",
-    100: "#f5f4f4",
-    200: "#e7e4e4",
-    300: "#d8d4d4",
-    400: "#aaa1a1",
-    500: "#7a7171",
-    600: "#5b5252",
-    700: "#463f3f",
-    800: "#2a2727",
-    900: "#1b1818",
-    950: "#0b0909",
-  },
-
   green: {
     50: "#f2fdf5",
     100: "#defce9",

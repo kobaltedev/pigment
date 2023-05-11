@@ -1,74 +1,41 @@
 import { colors } from "../colors";
+import { createSimpleTheme, createTheme } from "../create-theme";
+import { grayscales } from "../grayscales";
 import { ThemeTokens } from "../types";
 
-/* -----------------------------------------------------------------------------------------------------------------------------------
- * NOTE ABOUT COLORS:
- * We use @radix/colors for the `neutral` palette because it offers more possibilities than Tailwind's grays, specially in dark mode.
- * We use Tailwind colors for `statuses` palettes because contrast is better than Radix's steps 9 and 10.
- * ---------------------------------------------------------------------------------------------------------------------------------*/
-
-/** primary AND neutral color palette. */
-const neutral = {
-  // @radix/colors - slate
-  light1: "#fbfcfd",
-  light2: "#f8f9fa",
-  light3: "#f1f3f5",
-  light4: "#eceef0",
-  light5: "#e6e8eb",
-  light6: "#dfe3e6",
-  light7: "#d7dbdf",
-  light8: "#c1c8cd",
-  light9: "#889096",
-  light10: "#7e868c",
-  light11: "#687076",
-  light12: "#11181c",
-
-  // @radix/colors - slateDark
-  dark1: "#151718",
-  dark2: "#1a1d1e",
-  dark3: "#202425",
-  dark4: "#26292b",
-  dark5: "#2b2f31",
-  dark6: "#313538",
-  dark7: "#3a3f42",
-  dark8: "#4c5155",
-  dark9: "#697177",
-  dark10: "#787f85",
-  dark11: "#9ba1a6",
-  dark12: "#ecedee",
-};
+const white = "#ffffff";
 
 /** Pigment default theme tokens. */
 export const baseTheme: ThemeTokens = {
   light: {
     colors: {
       content: {
-        DEFAULT: neutral.light12,
-        subtle: neutral.light11,
-        subtler: neutral.light10,
-        subtlest: neutral.light9,
-        disabled: neutral.light8,
+        DEFAULT: grayscales.slate["12"],
+        subtle: grayscales.slate["11"],
+        subtler: grayscales.slate["10"],
+        subtlest: grayscales.slate["9"],
+        disabled: grayscales.slate["8"],
         link: {
-          DEFAULT: neutral.dark3,
-          hover: neutral.dark2,
-          active: neutral.dark1,
+          DEFAULT: grayscales.slateDark["3"],
+          hover: grayscales.slateDark["2"],
+          active: grayscales.slateDark["1"],
         },
 
-        primary: neutral.dark3,
+        primary: grayscales.slateDark["3"],
         success: colors.green["700"],
         info: colors.blue["700"],
         warning: colors.amber["700"],
         danger: colors.red["700"],
         discovery: colors.violet["700"],
 
-        onPrimary: colors.white,
-        onSuccess: colors.white,
-        onInfo: colors.white,
-        onWarning: colors.sand["900"],
-        onDanger: colors.white,
-        onDiscovery: colors.white,
+        onPrimary: white,
+        onSuccess: white,
+        onInfo: white,
+        onWarning: grayscales.sandDark["2"],
+        onDanger: white,
+        onDiscovery: white,
 
-        onPrimarySubtle: neutral.dark2,
+        onPrimarySubtle: grayscales.slateDark["2"],
         onSuccessSubtle: colors.green["800"],
         onInfoSubtle: colors.blue["800"],
         onWarningSubtle: colors.amber["800"],
@@ -77,30 +44,30 @@ export const baseTheme: ThemeTokens = {
       },
 
       surface: {
-        DEFAULT: colors.white,
-        body: colors.white,
-        raised: colors.white,
-        overlay: colors.white,
-        sunken: neutral.light1,
-        disabled: neutral.light5,
-        tooltip: neutral.dark3,
+        DEFAULT: white,
+        body: white,
+        raised: white,
+        overlay: white,
+        sunken: grayscales.slate["1"],
+        disabled: grayscales.slate["5"],
+        tooltip: grayscales.slateDark["3"],
 
         neutral: {
           subtle: {
-            DEFAULT: neutral.light3,
-            hover: neutral.light4,
-            active: neutral.light5,
+            DEFAULT: grayscales.slate["3"],
+            hover: grayscales.slate["4"],
+            active: grayscales.slate["5"],
           },
         },
 
         primary: {
-          DEFAULT: neutral.dark3,
-          hover: neutral.dark2,
-          active: neutral.dark1,
+          DEFAULT: grayscales.slateDark["3"],
+          hover: grayscales.slateDark["2"],
+          active: grayscales.slateDark["1"],
           subtle: {
-            DEFAULT: neutral.light3,
-            hover: neutral.light4,
-            active: neutral.light5,
+            DEFAULT: grayscales.slate["3"],
+            hover: grayscales.slate["4"],
+            active: grayscales.slate["5"],
           },
         },
         success: {
@@ -156,10 +123,10 @@ export const baseTheme: ThemeTokens = {
       },
 
       line: {
-        DEFAULT: neutral.light7,
-        subtle: neutral.light6,
-        disabled: neutral.light5,
-        primary: neutral.light7,
+        DEFAULT: grayscales.slate["7"],
+        subtle: grayscales.slate["6"],
+        disabled: grayscales.slate["5"],
+        primary: grayscales.slate["7"],
         success: colors.green["500"],
         info: colors.blue["500"],
         warning: colors.amber["500"],
@@ -167,17 +134,17 @@ export const baseTheme: ThemeTokens = {
         discovery: colors.violet["500"],
       },
 
-      ring: neutral.light7,
+      ring: grayscales.slate["7"],
     },
   },
   dark: {
     colors: {
       content: {
-        DEFAULT: neutral.dark12,
-        subtle: neutral.dark11,
-        subtler: neutral.dark10,
-        subtlest: neutral.dark9,
-        disabled: neutral.dark8,
+        DEFAULT: grayscales.slateDark["12"],
+        subtle: grayscales.slateDark["11"],
+        subtler: grayscales.slateDark["10"],
+        subtlest: grayscales.slateDark["9"],
+        disabled: grayscales.slateDark["8"],
         link: {
           DEFAULT: colors.teal["400"],
           hover: colors.teal["300"],
@@ -191,12 +158,12 @@ export const baseTheme: ThemeTokens = {
         danger: colors.red["400"],
         discovery: colors.violet["400"],
 
-        onPrimary: colors.sage["900"],
-        onSuccess: colors.sage["900"],
-        onInfo: colors.slate["900"],
-        onWarning: colors.sand["900"],
-        onDanger: colors.maroon["900"],
-        onDiscovery: colors.mauve["900"],
+        onPrimary: grayscales.sageDark["2"],
+        onSuccess: grayscales.sageDark["2"],
+        onInfo: grayscales.slateDark["2"],
+        onWarning: grayscales.sandDark["2"],
+        onDanger: grayscales.mauveDark["2"],
+        onDiscovery: grayscales.mauveDark["2"],
 
         onPrimarySubtle: colors.teal["200"],
         onSuccessSubtle: colors.green["200"],
@@ -207,19 +174,19 @@ export const baseTheme: ThemeTokens = {
       },
 
       surface: {
-        DEFAULT: neutral.dark2,
-        body: neutral.dark2,
-        raised: neutral.dark3,
-        overlay: neutral.dark4,
-        sunken: neutral.dark1,
-        disabled: neutral.dark5,
-        tooltip: neutral.light1,
+        DEFAULT: grayscales.slateDark["2"],
+        body: grayscales.slateDark["2"],
+        raised: grayscales.slateDark["3"],
+        overlay: grayscales.slateDark["4"],
+        sunken: grayscales.slateDark["1"],
+        disabled: grayscales.slateDark["5"],
+        tooltip: grayscales.slate["1"],
 
         neutral: {
           subtle: {
-            DEFAULT: neutral.dark3,
-            hover: neutral.dark4,
-            active: neutral.dark5,
+            DEFAULT: grayscales.slateDark["3"],
+            hover: grayscales.slateDark["4"],
+            active: grayscales.slateDark["5"],
           },
         },
 
@@ -286,9 +253,9 @@ export const baseTheme: ThemeTokens = {
       },
 
       line: {
-        DEFAULT: neutral.dark7,
-        subtle: neutral.dark6,
-        disabled: neutral.dark5,
+        DEFAULT: grayscales.slateDark["7"],
+        subtle: grayscales.slateDark["6"],
+        disabled: grayscales.slateDark["5"],
         primary: colors.teal["500"],
         success: colors.green["500"],
         info: colors.blue["500"],

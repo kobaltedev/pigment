@@ -16,8 +16,11 @@ module.exports = {
       maxWidth: {
         "8xl": "88rem",
       },
+      colors: {
+        ...pigment.colors
+      }
     },
   },
-  presets: [pigment.preset({ includeColors: true })],
+  presets: [pigment.preset()],
   plugins: [require("@tailwindcss/typography")],
 };
