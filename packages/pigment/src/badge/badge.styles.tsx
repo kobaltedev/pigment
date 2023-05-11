@@ -100,42 +100,42 @@ export const badgeStyles = tv({
       variant: "soft",
       color: "primary",
       class: {
-        root: "text-content-on-primary-subtle bg-surface-primary-subtle/70 ring-surface-primary-subtle-active",
+        root: "text-content-on-primary-subtle bg-surface-primary-subtle/50 ring-surface-primary-subtle-active/70",
       },
     },
     {
       variant: "soft",
       color: "success",
       class: {
-        root: "text-content-on-success-subtle bg-surface-success-subtle/70 ring-surface-success-subtle-active",
+        root: "text-content-on-success-subtle bg-surface-success-subtle/50 ring-surface-success-subtle-active/70",
       },
     },
     {
       variant: "soft",
       color: "info",
       class: {
-        root: "text-content-on-info-subtle bg-surface-info-subtle/70 ring-surface-info-subtle-active",
+        root: "text-content-on-info-subtle bg-surface-info-subtle/50 ring-surface-info-subtle-active/70",
       },
     },
     {
       variant: "soft",
       color: "warning",
       class: {
-        root: "text-content-on-warning-subtle bg-surface-warning-subtle/70 ring-surface-warning-subtle-active",
+        root: "text-content-on-warning-subtle bg-surface-warning-subtle/50 ring-surface-warning-subtle-active/70",
       },
     },
     {
       variant: "soft",
       color: "danger",
       class: {
-        root: "text-content-on-danger-subtle bg-surface-danger-subtle/70 ring-surface-danger-subtle-active",
+        root: "text-content-on-danger-subtle bg-surface-danger-subtle/50 ring-surface-danger-subtle-active/70",
       },
     },
     {
       variant: "soft",
       color: "discovery",
       class: {
-        root: "text-content-on-discovery-subtle bg-surface-discovery-subtle/70 ring-surface-discovery-subtle-active",
+        root: "text-content-on-discovery-subtle bg-surface-discovery-subtle/50 ring-surface-discovery-subtle-active/70",
       },
     },
 

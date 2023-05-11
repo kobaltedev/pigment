@@ -32,6 +32,7 @@ export function ModularFormsExample() {
             <Checkbox
               ref={props.ref}
               name={props.name}
+              checked={field.value}
               inputProps={{
                 onInput: props.onInput,
                 onChange: props.onChange,
@@ -52,7 +53,6 @@ export function ModularFormsExample() {
                 </span>
               }
               errorMessage={field.error}
-              checked={field.value}
             />
           )}
         </Field>
