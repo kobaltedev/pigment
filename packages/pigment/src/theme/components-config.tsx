@@ -4,6 +4,7 @@ import { ButtonProps, ButtonSlots, LinkButtonProps, LinkButtonSlots } from "../b
 import { CheckboxProps, CheckboxSlots } from "../checkbox/checkbox.props";
 import { CloseButtonProps, CloseButtonSlots } from "../close-button/close-button.props";
 //import { SelectProps, SelectSlots } from "../select/select.props";
+import { SurfaceProps, SurfaceSlots } from "../surface/surface.props";
 //import { TextFieldProps, TextFieldSlots } from "../text-field/text-field.props";
 
 export interface ComponentTheme<Props, Slots extends string> {
@@ -24,5 +25,6 @@ export interface ComponentsConfig {
   CloseButton?: ComponentTheme<CloseButtonProps, CloseButtonSlots>;
   LinkButton?: ComponentTheme<LinkButtonProps, LinkButtonSlots>;
   //Select?: ComponentTheme<SelectProps<any>, SelectSlots>;
+  Surface?: ComponentTheme<SurfaceProps, SurfaceSlots>;
   //TextField?: ComponentTheme<TextFieldProps, TextFieldSlots>;
 }

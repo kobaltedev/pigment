@@ -164,7 +164,7 @@ export function createTheme(options: CreateThemeOptions): Theme {
             body: white,
             raised: white,
             overlay: white,
-            sunken: grayscaleValueOf(lightColors.neutral, "1"),
+            sunken: grayscaleValueOf(lightColors.neutral, "2"),
             disabled: grayscaleValueOf(lightColors.neutral, "5"),
             tooltip: darkGrayscaleValueOf(lightColors.neutral, "3"),
 

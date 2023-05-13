@@ -1,10 +1,26 @@
+import { createTheme } from "./create-theme";
+
+/** Pigment default theme tokens. */
+export const baseTheme = createTheme({
+  name: "base",
+  lightColors: {
+    neutral: "slate",
+    primary: "blue",
+    success: "green",
+    info: "sky",
+    warning: "amber",
+    danger: "red",
+    discovery: "violet",
+  },
+});
+
+/*
 import { colors } from "./colors";
 import { grayscales } from "./grayscales";
 import { Theme } from "./types";
 
 const white = "#ffffff";
 
-/** Pigment default theme tokens. */
 export const baseTheme: Theme = {
   name: "base",
   tokens: {
@@ -49,7 +65,7 @@ export const baseTheme: Theme = {
           body: white,
           raised: white,
           overlay: white,
-          sunken: grayscales.slate["1"],
+          sunken: grayscales.slate["2"],
           disabled: grayscales.slate["5"],
           tooltip: grayscales.slateDark["3"],
 
@@ -270,3 +286,4 @@ export const baseTheme: Theme = {
     },
   },
 };
+*/

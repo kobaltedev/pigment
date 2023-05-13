@@ -15,4 +15,5 @@ export * from "./checkbox";
 export * from "./close-button";
 export * from "./icon";
 //export * from "./select";
+export * from "./surface";
 //export * from "./text-field";

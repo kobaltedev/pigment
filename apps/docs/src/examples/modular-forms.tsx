@@ -1,5 +1,6 @@
-import { Button, Checkbox } from "@kobalte/pigment";
+import { Button, Checkbox, Surface } from "@kobalte/pigment";
 import { createForm, required, setValue, SubmitHandler } from "@modular-forms/solid";
+import { As } from "@kobalte/core";
 
 type SignUpForm = {
   newsletter: boolean;
@@ -15,52 +16,57 @@ export function ModularFormsExample() {
   };
 
   return (
-    <Form
-      class="flex flex-col w-full max-w-md p-5 rounded-lg shadow border border-line-subtle bg-surface-raised"
-      onSubmit={handleSubmit}
+    <Surface
+      variant="raised"
+      border="all"
+      class="flex flex-col w-full max-w-md p-5 rounded-lg"
+      asChild
     >
-      <h2 class="text-2xl text-content font-bold mb-0.5">Welcome to Pigment</h2>
-      <p class="text-base text-content-subtle">Sign up to continue</p>
-      <div class="flex flex-col gap-5 my-6">
-        [TODO]: add more components
-        <Field
-          name="newsletter"
-          type="boolean"
-          validate={[required("You must accept our terms and conditions")]}
-        >
-          {(field, props) => (
-            <Checkbox
-              ref={props.ref}
-              name={props.name}
-              checked={field.value}
-              onChange={checked => setValue(signupForm, "newsletter", checked)}
-              inputProps={{
-                onInput: props.onInput,
-                onChange: props.onChange,
-                onBlur: props.onBlur,
-              }}
-              invalid={!!field.error}
-              label={
-                <>
-                  I have read and agree to the <span class="font-medium">terms and conditions</span>
-                </>
-              }
-              description={
-                <span>
-                  Read our{" "}
-                  <a href="/" target="_blank">
-                    terms and conditions
-                  </a>
-                </span>
-              }
-              errorMessage={field.error}
-            />
-          )}
-        </Field>
-      </div>
-      <Button type="submit" variant="solid">
-        Sign up
-      </Button>
-    </Form>
+      <As component={Form} onSubmit={handleSubmit}>
+        <h2 class="text-2xl text-content font-bold mb-0.5">Welcome to Pigment</h2>
+        <p class="text-base text-content-subtle">Sign up to continue</p>
+        <div class="flex flex-col gap-5 my-6">
+          [TODO]: add more components when available
+          <Field
+            name="newsletter"
+            type="boolean"
+            validate={[required("You must accept our terms and conditions")]}
+          >
+            {(field, props) => (
+              <Checkbox
+                ref={props.ref}
+                name={props.name}
+                checked={field.value}
+                onChange={checked => setValue(signupForm, "newsletter", checked)}
+                inputProps={{
+                  onInput: props.onInput,
+                  onChange: props.onChange,
+                  onBlur: props.onBlur,
+                }}
+                invalid={!!field.error}
+                label={
+                  <>
+                    I have read and agree to the{" "}
+                    <span class="font-medium">terms and conditions</span>
+                  </>
+                }
+                description={
+                  <span>
+                    Read our{" "}
+                    <a href="/" target="_blank">
+                      terms and conditions
+                    </a>
+                  </span>
+                }
+                errorMessage={field.error}
+              />
+            )}
+          </Field>
+        </div>
+        <Button type="submit" variant="solid">
+          Sign up
+        </Button>
+      </As>
+    </Surface>
   );
 }
