@@ -1,7 +1,53 @@
-export const colors = {
-  white: "#ffffff",
-  black: "#000000",
+/*!
+ * Portions of this file are based on code from tailwindcss.
+ * MIT Licensed, Copyright (c) 2020 Tailwind Labs.
+ *
+ * Credits to the Tailwind Labs team:
+ * https://github.com/tailwindlabs/tailwindcss/blob/7f555c432d7f801fcac82fbf1331a5ed8986c4c1/src/public/colors.js
+ */
 
+import { GRAYSCALE_NAMES } from "./grayscales";
+
+export const DARK_COLOR_NAMES = [...GRAYSCALE_NAMES, "maroon"] as const;
+export const BRIGHT_COLOR_NAMES = ["amber", "yellow", "lime"] as const;
+
+const COLOR_NAMES = [
+  ...DARK_COLOR_NAMES,
+  ...BRIGHT_COLOR_NAMES,
+  "green",
+  "emerald",
+  "teal",
+  "cyan",
+  "sky",
+  "blue",
+  "indigo",
+  "violet",
+  "purple",
+  "fuchsia",
+  "pink",
+  "rose",
+  "red",
+  "orange",
+] as const;
+
+export type DarkColor = (typeof DARK_COLOR_NAMES)[number];
+export type BrightColor = (typeof BRIGHT_COLOR_NAMES)[number];
+export type Color = (typeof COLOR_NAMES)[number];
+
+export type ColorStep =
+  | "50"
+  | "100"
+  | "200"
+  | "300"
+  | "400"
+  | "500"
+  | "600"
+  | "700"
+  | "800"
+  | "900"
+  | "950";
+
+export const colors: Record<Color, Record<ColorStep, string>> = {
   /* Pure gray. */
   gray: {
     50: "#fafafa",
@@ -17,7 +63,7 @@ export const colors = {
     950: "#0a0a0a",
   },
 
-  /* Grayscale based on desaturated purple hues - pair with violet/purple/fuchsia. */
+  /* Gray based on desaturated purple hues. */
   mauve: {
     50: "#faf9fb",
     100: "#f5f3f6",
@@ -32,7 +78,7 @@ export const colors = {
     950: "#0b0311",
   },
 
-  /* Grayscale based on desaturated blue hues - pair with indigo/blue/sky/cyan. */
+  /* Gray based on desaturated blue hues. */
   slate: {
     50: "#f9fafb",
     100: "#f3f5f6",
@@ -47,7 +93,7 @@ export const colors = {
     950: "#030611",
   },
 
-  /* Grayscale based on desaturated green hues - pair with teal/emerald/green. */
+  /* Gray based on desaturated green hues. */
   sage: {
     50: "#f9fbf9",
     100: "#f3f6f4",
@@ -62,7 +108,7 @@ export const colors = {
     950: "#031109",
   },
 
-  /* Grayscale based on desaturated lime hues - pair with green/lime. */
+  /* Gray based on desaturated lime hues. */
   olive: {
     50: "#fafbf9",
     100: "#f5f6f3",
@@ -77,7 +123,7 @@ export const colors = {
     950: "#0a1103",
   },
 
-  /* Grayscale based on desaturated yellow hues - pair with orange/amber/yellow. */
+  /* Gray based on desaturated yellow hues. */
   sand: {
     50: "#fbfbf9",
     100: "#f6f6f3",
@@ -92,7 +138,7 @@ export const colors = {
     950: "#110903",
   },
 
-  /* Grayscale based on desaturated red hues - pair with pink/rose/red. */
+  /* Gray based on desaturated red hues. */
   maroon: {
     50: "#fbf9f9",
     100: "#f6f3f3",

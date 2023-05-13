@@ -1,6 +1,6 @@
 import { createIcon } from "./create-icon";
 
-export const TablerLoader2 = createIcon({
+export const TablerLoaderIcon = createIcon({
   path: () => (
     <path
       fill="none"
@@ -13,7 +13,7 @@ export const TablerLoader2 = createIcon({
   ),
 });
 
-export const TablerX = createIcon({
+export const TablerCrossIcon = createIcon({
   path: () => (
     <path
       fill="none"
@@ -26,22 +26,7 @@ export const TablerX = createIcon({
   ),
 });
 
-export const TablerLifebuoy = createIcon({
-  path: () => (
-    <g
-      fill="none"
-      stroke="currentColor"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-    >
-      <path d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0-8 0" />
-      <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0m12 3l3.35 3.35M9 15l-3.35 3.35m0-12.7L9 9m9.35-3.35L15 9" />
-    </g>
-  ),
-});
-
-export const TablerInfoCircle = createIcon({
+export const TablerInfoCircleIcon = createIcon({
   path: () => (
     <g
       fill="none"
@@ -56,7 +41,7 @@ export const TablerInfoCircle = createIcon({
   ),
 });
 
-export const TablerCircleCheck = createIcon({
+export const TablerCircleCheckIcon = createIcon({
   path: () => (
     <g
       fill="none"
@@ -71,7 +56,7 @@ export const TablerCircleCheck = createIcon({
   ),
 });
 
-export const TablerAlertTriangle = createIcon({
+export const TablerAlertTriangleIcon = createIcon({
   path: () => (
     <path
       fill="none"
@@ -84,7 +69,7 @@ export const TablerAlertTriangle = createIcon({
   ),
 });
 
-export const TablerAlertOctagon = createIcon({
+export const TablerAlertOctagonIcon = createIcon({
   path: () => (
     <path
       fill="none"
@@ -97,7 +82,7 @@ export const TablerAlertOctagon = createIcon({
   ),
 });
 
-export const TablerHelpHexagon = createIcon({
+export const TablerHelpHexagonIcon = createIcon({
   path: () => (
     <g
       fill="none"
@@ -109,5 +94,18 @@ export const TablerHelpHexagon = createIcon({
       <path d="M19.875 6.27c.7.398 1.13 1.143 1.125 1.948v7.284c0 .809-.443 1.555-1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1-2.184 0l-6.75-4.27A2.225 2.225 0 0 1 3 15.502V8.217c0-.809.443-1.554 1.158-1.947l6.75-3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033zM12 16v.01" />
       <path d="M12 13a2 2 0 0 0 .914-3.782a1.98 1.98 0 0 0-2.414.483" />
     </g>
+  ),
+});
+
+export const TablerCheckIcon = createIcon({
+  path: () => (
+    <path
+      fill="none"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="m5 12l5 5L20 7"
+    />
   ),
 });

@@ -1,5 +1,10 @@
 import { Alert, CloseButton } from "@kobalte/pigment";
+
 import { TablerRocketIcon } from "../components";
+
+export function WithBasicUsage() {
+  return <Alert>A new software update is available.</Alert>;
+}
 
 export function WithVariant() {
   return (
@@ -17,9 +22,6 @@ export function WithVariant() {
 export function WithStatus() {
   return (
     <div class="flex flex-col gap-4">
-      <Alert variant="soft" status="neutral">
-        We are currently migrating our infrastructure.
-      </Alert>
       <Alert variant="soft" status="success">
         The data has been successfully saved on our server.
       </Alert>

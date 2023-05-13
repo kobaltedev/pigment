@@ -1,4 +1,4 @@
-import { Polymorphic, useLocale } from "@kobalte/core";
+import { Polymorphic } from "@kobalte/core";
 import { ComponentProps, createMemo, Show, splitProps } from "solid-js";
 
 import { mergeThemeProps, useThemeClasses } from "../theme";
@@ -36,12 +36,6 @@ export function Badge(props: BadgeProps) {
     ["variant", "color", "size", "shape"]
   );
 
-  const { direction } = useLocale();
-
-  const isRTL = () => direction() === "rtl";
-
-  const showDot = () => variantProps.variant === "dot";
-
   const styles = createMemo(() => badgeStyles(variantProps));
 
   return (
@@ -52,13 +46,10 @@ export function Badge(props: BadgeProps) {
       })}
       {...others}
     >
-      <Show when={showDot() && !isRTL()}>
+      <Show when={variantProps.variant === "dot"}>
         <Dot class={styles().dot()} />
       </Show>
       {local.children}
-      <Show when={showDot() && isRTL()}>
-        <Dot class={styles().dot()} />
-      </Show>
     </Polymorphic>
   );
 }

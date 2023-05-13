@@ -20,11 +20,12 @@ import {
   WithCustomLoadingIndicator,
   WithLoadingPlacement,
   WithFullWidth,
+  WithBasicUsage,
 } from "../../../../examples/button";
 
 # Button
 
-Buttons allow users to perform an action.
+Enables users to trigger an action or event, such as submitting a form, opening a dialog, canceling an action, or performing a delete operation.
 
 ## Import
 
@@ -32,11 +33,23 @@ Buttons allow users to perform an action.
 import { Button, IconButton, LinkButton, LinkIconButton } from "@kobalte/pigment";
 ```
 
-## Variants
+## Basic usage
+
+<Preview>
+  <WithBasicUsage />
+</Preview>
+
+```tsx
+<Button>New pull request</Button>
+```
+
+## Customization
+
+### Variants
 
 Buttons comes in multiple variants designed for specific use cases.
 
-### Primary
+#### Primary
 
 The `solid` button variant with `primary` color is best suited for the most important action within an interface.
 
@@ -62,7 +75,7 @@ The `soft` button variant with `primary` color can be used as an alternative for
 </Button>
 ```
 
-### Destructive
+#### Destructive
 
 Use the `solid` or `soft` variant with the `danger` color to create a destructive button, commonly used to confirm a destructive/delete operation.
 
@@ -79,7 +92,7 @@ Use the `solid` or `soft` variant with the `danger` color to create a destructiv
 </Button>
 ```
 
-### Default
+#### Default
 
 The `default` variant is the most common button within an interface, use it for secondary actions or when all actions have the same level of importance.
 
@@ -93,7 +106,7 @@ The `default` variant is the most common button within an interface, use it for 
 <Button variant="default">Export</Button>
 ```
 
-### Dashed
+#### Dashed
 
 The `dashed` variant can be used as a visual placeholder for insertion/creation actions.
 
@@ -107,7 +120,7 @@ The `dashed` variant can be used as a visual placeholder for insertion/creation 
 </Button>
 ```
 
-### Text
+#### Text
 
 `text` buttons are designed for least important actions within an interface.
 
@@ -119,7 +132,7 @@ The `dashed` variant can be used as a visual placeholder for insertion/creation 
 <Button variant="text">Cancel</Button>
 ```
 
-### Link
+#### Link
 
 The `link` variant is used to render a button that looks like a link.
 
@@ -131,7 +144,7 @@ The `link` variant is used to render a button that looks like a link.
 <Button variant="link">Show more</Button>
 ```
 
-### Inverted
+#### Inverted
 
 The `inverted` variant supports all Pigment semantic colors and can be used to create a high contrast button on a vibrant surface of the same `color|status`.
 
@@ -153,7 +166,7 @@ The `inverted` variant supports all Pigment semantic colors and can be used to c
 </Alert>
 ```
 
-## Status buttons
+### Status buttons
 
 The `solid` and `soft` variant supports all Pigment semantic colors, allowing you to create _status buttons_.
 
@@ -165,7 +178,7 @@ The `solid` and `soft` variant supports all Pigment semantic colors, allowing yo
 <For each={["solid", "soft"]}>
   {variant => (
     <div class="flex items-center gap-3">
-      <For each={["primary", "neutral", "success", "info", "warning", "danger", "discovery"]}>
+      <For each={["primary", "success", "info", "warning", "danger", "discovery"]}>
         {color => (
           <Button variant={variant} color={color} class="capitalize">
             {color}
@@ -202,7 +215,7 @@ These buttons works well when paired with others _status-related_ components lik
 </Alert>
 ```
 
-## Sizes
+### Sizes
 
 The Button component comes in five sizes: `xs`, `sm`, `md` (default), `lg` and `xl`.
 
@@ -218,7 +231,7 @@ The Button component comes in five sizes: `xs`, `sm`, `md` (default), `lg` and `
 <Button size="xl">Button</Button>
 ```
 
-## Decorators
+### Decorators
 
 Use the `startDecorator` and `endDecorator` props to append icons to either side of the button.
 
@@ -233,7 +246,7 @@ Use the `startDecorator` and `endDecorator` props to append icons to either side
 
 If you want to create your own icon components check out the [Icon](/docs/core/components/icon) documentation.
 
-## Full width
+### Full width
 
 Use the `fullWith` prop to make the button fill all available width.
 
@@ -245,7 +258,7 @@ Use the `fullWith` prop to make the button fill all available width.
 <Button fullWidth>Create Survey</Button>
 ```
 
-## Disabled state
+### Disabled state
 
 Use the `disabled` prop to disable interaction with the button.
 
@@ -262,7 +275,7 @@ Use the `disabled` prop to disable interaction with the button.
 <Button variant="link" disabled>Link</Button>
 ```
 
-## Loading state
+### Loading state
 
 Use the `loading` prop to indicate a busy button.
 
@@ -279,7 +292,7 @@ Use the `loading` prop to indicate a busy button.
 <Button variant="link" loading>Link</Button>
 ```
 
-### Loading indicator
+#### Loading indicator
 
 By default, a loading button show a spinner and leave the button's width unchanged. Use the `loadingIndicator` prop to replace it with a custom indicator.
 
@@ -293,7 +306,7 @@ By default, a loading button show a spinner and leave the button's width unchang
 </Button>
 ```
 
-### Loading placement
+#### Loading placement
 
 The `loadingPlacement` prop is used to define the placement of the button's loading indicator and supports the following values:
 
@@ -373,19 +386,19 @@ The name `Button` can be used when providing [default props](/docs/core/customiz
 
 #### Props
 
-| Prop             | Description                                                                                                                                         |
-| :--------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
-| variant          | `"solid" \| "soft" \| "inverted" \| "default" \| "dashed" \| "text" \| "link"` <br/> **default:** `default` <br/> The visual style of the button.   |
-| color            | `"primary" \| "neutral" \| "success" \| "info" \| "warning" \| "danger" \| "discovery"` <br/> **default:** `primary` <br/> The color of the button. |
-| size             | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` <br/> **default:** `md` <br/> The size of the button.                                                        |
-| startDecorator   | `JSX.Element \| (() => JSX.Element)` <br/> The element to show before the button content.                                                           |
-| endDecorator     | `JSX.Element \| (() => JSX.Element)` <br/> The element to show after the button content.                                                            |
-| loadingIndicator | `JSX.Element \| (() => JSX.Element)` <br/> The element to show when the button is in loading state.                                                 |
-| loadingPlacement | `"center" \| "start" \| "end"` <br/> **default:** `center` <br/> The placement of the loading indicator when the button is in a loading state.      |
-| loading          | `boolean` <br/> **default:** `false` <br/> Whether the button is in loading state.                                                                  |
-| disabled         | `boolean` <br/> **default:** `false` <br/> Whether the button is disabled.                                                                          |
-| fullWith         | `boolean` <br/> **default:** `false` <br/> Whether the button should take all available width.                                                      |
-| slotClasses      | `Partial<Record<ButtonSlots, string>>` <br/> Addiitonal CSS classes to be passed to the component slots.                                            |
+| Prop             | Description                                                                                                                                       |
+| :--------------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
+| variant          | `"solid" \| "soft" \| "inverted" \| "default" \| "dashed" \| "text" \| "link"` <br/> **default:** `default` <br/> The visual style of the button. |
+| color            | `"primary" \| "success" \| "info" \| "warning" \| "danger" \| "discovery"` <br/> **default:** `primary` <br/> The color of the button.            |
+| size             | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` <br/> **default:** `md` <br/> The size of the button.                                                      |
+| startDecorator   | `JSX.Element \| (() => JSX.Element)` <br/> The element to show before the button content.                                                         |
+| endDecorator     | `JSX.Element \| (() => JSX.Element)` <br/> The element to show after the button content.                                                          |
+| loadingIndicator | `JSX.Element \| (() => JSX.Element)` <br/> The element to show when the button is in loading state.                                               |
+| loadingPlacement | `"center" \| "start" \| "end"` <br/> **default:** `center` <br/> The placement of the loading indicator when the button is in a loading state.    |
+| loading          | `boolean` <br/> **default:** `false` <br/> Whether the button is in loading state.                                                                |
+| disabled         | `boolean` <br/> **default:** `false` <br/> Whether the button is disabled.                                                                        |
+| fullWith         | `boolean` <br/> **default:** `false` <br/> Whether the button should take all available width.                                                    |
+| slotClasses      | `Partial<Record<ButtonSlots, string>>` <br/> Addiitonal CSS classes to be passed to the component slots.                                          |
 
 #### Slots
 

@@ -41,7 +41,7 @@
   }
 
   .pg-table .pg-code {
-    @apply p-0 whitespace-nowrap bg-transparent dark:bg-transparent text-content-primary dark:text-content-primary;
+    @apply font-medium text-content-primary dark:text-content-primary bg-transparent dark:bg-transparent p-0 whitespace-nowrap;
   }
 
   .pg-table td {
@@ -142,8 +142,8 @@ pre.shiki {
 }
 
 [data-pg-color-scheme="dark"] pre.shiki {
-  border-color: theme("colors.slate.800");
-  background-color: theme("colors.slate.900") !important;
+  border-color: theme("colors.slate.700");
+  background-color: theme("colors.slate.800") !important;
 }
 
 /* Reset mdx-components `code`. */

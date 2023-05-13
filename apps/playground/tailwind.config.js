@@ -7,5 +7,5 @@ module.exports = {
     "./node_modules/@kobalte/pigment/dist/**/*.{js,cjs,mjs}",
     "./src/**/*.{html,js,jsx,ts,tsx}",
   ],
-  presets: [pigment.preset({ includeColors: true })],
+  presets: [pigment.preset()],
 };

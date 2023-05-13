@@ -1,0 +1,231 @@
+import { Preview } from "../../../../components";
+import {
+  WithBasicUsage,
+  WithDescription,
+  WithCustomIcon,
+  WithDisabled,
+  WithIndeterminate,
+  WithInvalid,
+  WithSize,
+  WithDefaultChecked,
+  WithControlledChecked,
+} from "../../../../examples/checkbox";
+
+# Checkbox
+
+A control that allows the user to toggle between checked and not checked.
+
+## Import
+
+```tsx
+import { Checkbox } from "@kobalte/pigment";
+```
+
+## Basic usage
+
+<Preview>
+  <WithBasicUsage />
+</Preview>
+
+```tsx
+<Checkbox label="Subscribe" />
+```
+
+### Default checked
+
+An initial, uncontrolled value can be provided using the `defaultChecked` prop.
+
+<Preview>
+  <WithDefaultChecked />
+</Preview>
+
+```tsx
+<Checkbox label="Subscribe" defaultChecked />
+```
+
+### Controlled checked
+
+The `checked` prop can be used to make the checked state controlled. The `onChange` event is fired when the user presses the checkbox.
+
+<Preview>
+  <WithControlledChecked />
+</Preview>
+
+```tsx
+import { Checkbox } from "@kobalte/pigment";
+import { createSignal } from "solid-js";
+
+function ControlledExample() {
+  const [checked, setChecked] = createSignal(false);
+
+  return (
+    <Checkbox
+      label={checked() ? "Unsubscribe" : "Subscribe"}
+      checked={checked()}
+      onChange={setChecked}
+    />
+  );
+}
+```
+
+## Customization
+
+### Sizes
+
+The Checkbox component comes in two sizes: `md` (default) and `lg`.
+
+<Preview>
+  <WithSize />
+</Preview>
+
+```tsx
+<Checkbox size="md" label="Medium" />
+<Checkbox size="lg" label="Large" />
+```
+
+### Description
+
+Use the `description` prop to associate additional help text with a checkbox.
+
+<Preview>
+  <WithDescription />
+</Preview>
+
+```tsx
+<Checkbox label="Subscribe" description="You will receive our weekly newsletter" />
+```
+
+### Icons
+
+Use the `checkedIcon` and `indeterminateIcon` props to customize the checked or indeterminate states.
+
+<Preview>
+  <WithCustomIcon />
+</Preview>
+
+```tsx
+<Checkbox label="Checked" checkedIcon={<CrossIcon />} checked />
+<Checkbox
+  label="Indeterminate"
+  indeterminateIcon={<QuestionMarkIcon />}
+  indeterminate
+/>
+```
+
+### Indeterminate state
+
+Use the `indeterminate` prop to mark a checkbox as _"partially checked"_.
+
+<Preview>
+  <WithIndeterminate />
+</Preview>
+
+```tsx {7, 14}
+import { Checkbox } from "@kobalte/pigment";
+import { createSignal } from "solid-js";
+
+function IndeterminateExample() {
+  const [checkedItems, setCheckedItems] = createSignal([true, false]);
+
+  const allChecked = () => checkedItems().every(Boolean);
+  const isIndeterminate = () => checkedItems().some(Boolean) && !allChecked();
+
+  return (
+    <div class="flex flex-col">
+      <Checkbox
+        label="Permissions"
+        checked={allChecked()}
+        indeterminate={isIndeterminate()}
+        onChange={checked => setCheckedItems([checked, checked])}
+      />
+      <div class="flex flex-col items-start ps-6 mt-2 gap-2">
+        <Checkbox
+          label="Read"
+          checked={checkedItems()[0]}
+          onChange={checked => setCheckedItems([checked, checkedItems()[1]])}
+        />
+        <Checkbox
+          label="Write"
+          checked={checkedItems()[1]}
+          onChange={checked => setCheckedItems([checkedItems()[0], checked])}
+        />
+      </div>
+    </div>
+  );
+}
+```
+
+### Invalid state
+
+Use the `invalid` prop to mark the checkbox as invalid. Additionally, you can pass an extra error message using the `errorMessage` prop.
+
+<Preview>
+  <WithInvalid />
+</Preview>
+
+```tsx
+<Checkbox
+  label="Subscribe"
+  errorMessage="You must be a subscriber to receive our newsletter"
+  invalid
+/>
+```
+
+### Disabled state
+
+Use the `disabled` prop to disable the checkbox.
+
+<Preview>
+  <WithDisabled />
+</Preview>
+
+```tsx
+<Checkbox label="Subscribe" disabled />
+```
+
+## HTML Form integration
+
+[TODO]
+
+## API Reference
+
+### Component identifier
+
+The name `Checkbox` can be used when providing [default props](/docs/core/customization/themed-components#default-props) and [slot classes](/docs/core/customization/themed-components#slot-classes) in the theme.
+
+### Props
+
+| Prop              | Description                                                                                                                                                                                         |
+| :---------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ref               | `Ref<HTMLInputElement>` <br/> A ref to the inner `<input>` element.                                                                                                                                 |
+| inputProps        | `ComponentProps<"input">` <br/> Additional props to be spread on the inner `<input>` element.                                                                                                       |
+| checked           | `boolean` <br/> The controlled checked state of the checkbox.                                                                                                                                       |
+| defaultChecked    | `boolean` <br/> The default checked state when initially rendered. Useful when you do not need to control the checked state.                                                                        |
+| onChange          | `(checked: boolean) => void` <br/> Event handler called when the checked state of the checkbox changes.                                                                                             |
+| indeterminate     | `boolean` <br/> **default:** `false` <br/> Whether the checkbox is in an indeterminate state.                                                                                                       |
+| name              | `string` <br/> The name of the checkbox, used when submitting an HTML form. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname).                             |
+| value             | `string` <br/> **default:** `"on"` <br/> The value of the checkbox, used when submitting an HTML form. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefvalue). |
+| required          | `boolean` <br/> **default:** `false` <br/> Whether the user must check the checkbox before the owning form can be submitted.                                                                        |
+| disabled          | `boolean` <br/> **default:** `false` <br/> Whether the checkbox is disabled.                                                                                                                        |
+| readOnly          | `boolean` <br/> **default:** `false` <br/> Whether the checkbox can be checked but not changed by the user.                                                                                         |
+| invalid           | `boolean` <br/> **default:** `false` <br/> Whether the checkbox is invalid regarding the validation rules.                                                                                          |
+| size              | `"md" \| "lg"` <br/> **default:** `"md"` <br/> The size of the checkbox.                                                                                                                            |
+| label             | `JSX.Element \| (() => JSX.Element)` <br/> The label that gives the user information on the checkbox.                                                                                               |
+| description       | `JSX.Element \| (() => JSX.Element)` <br/> The description that gives the user more information on the checkbox.                                                                                    |
+| errorMessage      | `JSX.Element \| (() => JSX.Element)` <br/> The error message that gives the user information about how to fix a validation error on the checkbox.                                                   |
+| checkedIcon       | `JSX.Element \| (() => JSX.Element)` <br/> The icon to show when the checkbox is in a checked state.                                                                                                |
+| indeterminateIcon | `JSX.Element \| (() => JSX.Element)` <br/> The icon to show when the checkbox is in an indeterminate state.                                                                                         |
+| slotClasses       | `Partial<Record<CheckboxSlots, string>>` <br/> Addiitonal CSS classes to be passed to the component slots.                                                                                          |
+
+### Slots
+
+| Name               | CSS selector                        | Rendered element | Description                                     |
+| :----------------- | :---------------------------------- | :--------------- | ----------------------------------------------- |
+| root               | `.pg-checkbox-root`                 | `div`            | Root element                                    |
+| control            | `.pg-checkbox-control`              | `div`            | Element that visualy represent a checkbox       |
+| icon               | `.pg-checkbox-icon`                 | `div`            | Container for the checked or indeterminate icon |
+| label              | `.pg-checkbox-label`                | `label`          | Label element                                   |
+| actionWrapper      | `.pg-checkbox-action-wrapper`       | `div`            | Wrap `control` and `label`                      |
+| description        | `.pg-checkbox-description`          | `div`            | Description/help text element                   |
+| errorMessage       | `.pg-checkbox-error-message`        | `div`            | Error message element                           |
+| supportTextWrapper | `.pg-checkbox-support-text-wrapper` | `div`            | Wrap `description` and `errorMessage`           |

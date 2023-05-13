@@ -14,7 +14,7 @@ export const buttonStyles = tv({
       "ui-disabled:text-content-disabled ui-disabled:opacity-50 ui-disabled:pointer-events-none ui-disabled:shadow-none",
       "outline-none focus-visible:outline-ring focus-visible:outline-2 focus-visible:outline-offset-2",
     ],
-    decorator: "",
+    decorator: "display-inherit",
     loadingContent: "inline-flex items-center justify-center opacity-0",
   },
   variants: {
@@ -24,9 +24,9 @@ export const buttonStyles = tv({
       inverted: {},
       default: {
         root: [
-          "text-content bg-white border-line",
-          "ui-not-disabled:hover:bg-surface-subtle",
-          "ui-not-disabled:active:bg-surface-subtle-hover",
+          "text-content bg-surface border-line",
+          "ui-not-disabled:hover:bg-surface-neutral-subtle",
+          "ui-not-disabled:active:bg-surface-neutral-subtle-hover",
           "shadow-sm ui-not-disabled:active:shadow-none",
           // dark
           "dark:ui-not-disabled:bg-white/5",
@@ -38,8 +38,8 @@ export const buttonStyles = tv({
       dashed: {
         root: [
           "text-content bg-transparent border-dashed border-line",
-          "ui-not-disabled:hover:bg-surface-subtle",
-          "ui-not-disabled:active:bg-surface-subtle-hover",
+          "ui-not-disabled:hover:bg-surface-neutral-subtle",
+          "ui-not-disabled:active:bg-surface-neutral-subtle-hover",
           // dark
           "dark:ui-not-disabled:hover:bg-white/10",
           "dark:ui-not-disabled:active:bg-white/[0.15]",
@@ -48,8 +48,8 @@ export const buttonStyles = tv({
       text: {
         root: [
           "text-content bg-transparent border-transparent",
-          "ui-not-disabled:hover:bg-surface-subtle-hover",
-          "ui-not-disabled:active:bg-surface-subtle-active",
+          "ui-not-disabled:hover:bg-surface-neutral-subtle",
+          "ui-not-disabled:active:bg-surface-neutral-subtle-hover",
           // dark
           "dark:ui-not-disabled:hover:bg-white/10",
           "dark:ui-not-disabled:active:bg-white/[0.15]",
@@ -66,7 +66,6 @@ export const buttonStyles = tv({
     },
     color: {
       primary: {},
-      neutral: {},
       success: {},
       info: {},
       warning: {},
@@ -124,17 +123,6 @@ export const buttonStyles = tv({
           "text-content-on-primary bg-surface-primary border-surface-primary",
           "ui-not-disabled:hover:bg-surface-primary-hover ui-not-disabled:hover:border-surface-primary-hover",
           "ui-not-disabled:active:bg-surface-primary-active ui-not-disabled:active:border-surface-primary-active",
-        ],
-      },
-    },
-    {
-      variant: "solid",
-      color: "neutral",
-      class: {
-        root: [
-          "text-content-on-neutral bg-surface-neutral border-surface-neutral",
-          "ui-not-disabled:hover:bg-surface-neutral-hover ui-not-disabled:hover:border-surface-neutral-hover",
-          "ui-not-disabled:active:bg-surface-neutral-active ui-not-disabled:active:border-surface-neutral-active",
         ],
       },
     },
@@ -208,17 +196,6 @@ export const buttonStyles = tv({
     },
     {
       variant: "soft",
-      color: "neutral",
-      class: {
-        root: [
-          "text-content-on-neutral-subtle bg-surface-neutral-subtle border-surface-neutral-subtle",
-          "ui-not-disabled:hover:bg-surface-neutral-subtle-hover ui-not-disabled:hover:border-surface-neutral-subtle-hover",
-          "ui-not-disabled:active:bg-surface-neutral-subtle-active ui-not-disabled:active:border-surface-neutral-subtle-active",
-        ],
-      },
-    },
-    {
-      variant: "soft",
       color: "success",
       class: {
         root: [
@@ -282,17 +259,6 @@ export const buttonStyles = tv({
           "text-surface-primary bg-content-on-primary border-transparent",
           "ui-not-disabled:hover:bg-content-on-primary/90",
           "ui-not-disabled:active:bg-content-on-primary/80",
-        ],
-      },
-    },
-    {
-      variant: "inverted",
-      color: "neutral",
-      class: {
-        root: [
-          "text-surface-neutral bg-content-on-neutral border-transparent",
-          "ui-not-disabled:hover:bg-content-on-neutral/90",
-          "ui-not-disabled:active:bg-content-on-neutral/80",
         ],
       },
     },

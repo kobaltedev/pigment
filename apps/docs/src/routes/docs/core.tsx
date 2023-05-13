@@ -32,14 +32,13 @@ const CORE_NAV_SECTIONS: NavSection[] = [
         title: "Approaches",
         href: "/docs/core/customization/approaches",
       },
-      {
-        title: "Color system",
-        href: "/docs/core/customization/color-system",
-      },
+      // TODO: add this page when library is done and theme API is finalized
+      /*
       {
         title: "Design tokens",
         href: "/docs/core/customization/design-tokens",
       },
+      */
       {
         title: "Themed components",
         href: "/docs/core/customization/themed-components",
@@ -66,8 +65,21 @@ const CORE_NAV_SECTIONS: NavSection[] = [
         href: "/docs/core/components/button",
       },
       {
+        title: "Checkbox",
+        href: "/docs/core/components/checkbox",
+      },
+      {
         title: "Icon",
         href: "/docs/core/components/icon",
+      },
+    ],
+  },
+  {
+    title: "3rd party integrations",
+    links: [
+      {
+        title: "Modular Forms",
+        href: "/docs/core/integrations/modular-forms",
       },
     ],
   },

@@ -1,5 +1,5 @@
-import { mergeDefaultProps } from "@kobalte/utils";
-import { JSX, splitProps, ValidComponent } from "solid-js";
+import { isString, mergeDefaultProps } from "@kobalte/utils";
+import { createMemo, JSX, Show, splitProps, ValidComponent } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import { tv } from "tailwind-variants";
 
@@ -25,7 +25,11 @@ export function Icon(props: IconProps) {
 
   const [local, others] = splitProps(props, ["as", "class"]);
 
+  const classes = createMemo(() => iconStyles({ class: local.class }));
+
   return (
-    <Dynamic component={local.as ?? "svg"} class={iconStyles({ class: local.class })} {...others} />
+    <Show when={local.as && !isString(local.as)} fallback={<svg class={classes()} {...others} />}>
+      <Dynamic component={local.as} class={classes()} {...others} />
+    </Show>
   );
 }

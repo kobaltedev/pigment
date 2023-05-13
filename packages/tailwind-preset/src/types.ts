@@ -30,7 +30,6 @@ export const themeTokensShapeValue = {
       discovery: "",
 
       onPrimary: "",
-      onNeutral: "",
       onSuccess: "",
       onInfo: "",
       onWarning: "",
@@ -38,7 +37,6 @@ export const themeTokensShapeValue = {
       onDiscovery: "",
 
       onPrimarySubtle: "",
-      onNeutralSubtle: "",
       onSuccessSubtle: "",
       onInfoSubtle: "",
       onWarningSubtle: "",
@@ -49,27 +47,21 @@ export const themeTokensShapeValue = {
     surface: {
       DEFAULT: "",
       body: "",
+      raised: "",
       overlay: "",
+      sunken: "",
       disabled: "",
       tooltip: "",
 
-      subtle: {
-        DEFAULT: "",
-        hover: "",
-        active: "",
-      },
-
-      primary: {
-        DEFAULT: "",
-        hover: "",
-        active: "",
+      neutral: {
         subtle: {
           DEFAULT: "",
           hover: "",
           active: "",
         },
       },
-      neutral: {
+
+      primary: {
         DEFAULT: "",
         hover: "",
         active: "",
@@ -133,9 +125,9 @@ export const themeTokensShapeValue = {
 
     line: {
       DEFAULT: "",
+      subtle: "",
       disabled: "",
       primary: "",
-      neutral: "",
       success: "",
       info: "",
       warning: "",
@@ -157,31 +149,16 @@ export interface ThemeTokens {
   dark: DeepPartial<ColorSchemeTokens>;
 }
 
-export type PartialThemeTokens = DeepPartial<ThemeTokens>;
-
 export type TokenKey = FlattenObjectKeys<ColorSchemeTokens>;
 
 /** A function to get the css variable of a token. */
 export type VarsFn = (token: TokenKey) => string;
 
-export type PredefinedTheme = "blue" | "slate";
-
-export interface ExtendedTheme {
-  /** The name of the extended theme. */
+export interface Theme {
+  /** The name of the theme. */
   name: string;
 
-  /** The predefined theme to extend. */
-  extend: PredefinedTheme;
-
-  /** The design tokens of the extended theme. */
-  tokens: PartialThemeTokens;
-}
-
-export interface CustomTheme {
-  /** The name of the custom theme. */
-  name: string;
-
-  /** The design tokens of the custom theme. */
+  /** The design tokens of the theme. */
   tokens: ThemeTokens;
 }
 
@@ -189,9 +166,6 @@ export interface PigmentOptions {
   /** The prefix to use in the generated css variables. */
   cssVarPrefix?: string;
 
-  /** Whether Pigment colors should be included in the Tailwind theme configuration. */
-  includeColors?: boolean;
-
   /** The themes available in the application. */
-  themes?: Array<PredefinedTheme | ExtendedTheme | CustomTheme>;
+  themes?: Array<Theme>;
 }

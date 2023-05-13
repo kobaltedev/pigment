@@ -1,23 +1,29 @@
-import { Alert as KAlert, useLocale } from "@kobalte/core";
-import { createMemo, Match, Show, splitProps, Switch } from "solid-js";
+import { Alert as KAlert } from "@kobalte/core";
+import { createMemo, JSX, Show, splitProps, ValidComponent } from "solid-js";
+import { Dynamic } from "solid-js/web";
 
 import {
-  TablerAlertOctagon,
-  TablerAlertTriangle,
-  TablerCircleCheck,
-  TablerHelpHexagon,
-  TablerInfoCircle,
-  TablerLifebuoy,
+  TablerAlertOctagonIcon,
+  TablerAlertTriangleIcon,
+  TablerCircleCheckIcon,
+  TablerHelpHexagonIcon,
+  TablerInfoCircleIcon,
 } from "../icon";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
 import { runIfFn } from "../utils/run-if-fn";
 import { AlertProps, AlertSlots } from "./alert.props";
-import { alertStyles } from "./alert.styles";
+import { alertStyles, AlertVariants } from "./alert.styles";
 
 const alertStaticClass = makeStaticClass<AlertSlots>("alert");
 
-const DEFAULT_ICON_CLASSES = "h-6 w-6";
+const ALERT_ICONS: Record<Exclude<AlertVariants["status"], undefined>, ValidComponent> = {
+  success: TablerCircleCheckIcon,
+  info: TablerInfoCircleIcon,
+  warning: TablerAlertTriangleIcon,
+  danger: TablerAlertOctagonIcon,
+  discovery: TablerHelpHexagonIcon,
+};
 
 export function Alert(props: AlertProps) {
   props = mergeThemeProps(
@@ -37,71 +43,14 @@ export function Alert(props: AlertProps) {
     ["variant", "status"]
   );
 
-  const { direction } = useLocale();
-
-  const isRTL = () => direction() == "rtl";
-
   const styles = createMemo(() => alertStyles(variantProps));
 
-  const defaultStartDecorator = () => {
-    return (
-      <Switch>
-        <Match when={variantProps.status === "neutral"}>
-          <TablerLifebuoy aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
-        </Match>
-        <Match when={variantProps.status === "success"}>
-          <TablerCircleCheck aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
-        </Match>
-        <Match when={variantProps.status === "info"}>
-          <TablerInfoCircle aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
-        </Match>
-        <Match when={variantProps.status === "warning"}>
-          <TablerAlertTriangle aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
-        </Match>
-        <Match when={variantProps.status === "danger"}>
-          <TablerAlertOctagon aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
-        </Match>
-        <Match when={variantProps.status === "discovery"}>
-          <TablerHelpHexagon aria-hidden="true" class={DEFAULT_ICON_CLASSES} />
-        </Match>
-      </Switch>
-    );
-  };
-
-  const decorators = createMemo(() => {
-    const start = runIfFn(local.startDecorator, variantProps.status!) ?? defaultStartDecorator();
-
-    const end = runIfFn(local.endDecorator, variantProps.status!);
-
-    return {
-      left: isRTL() ? end : start,
-      right: isRTL() ? start : end,
-    };
+  const startDecorator = createMemo(() => {
+    return runIfFn(local.startDecorator, variantProps.status!);
   });
 
-  const decoratorClasses = createMemo(() => {
-    const start = styles().startDecorator({
-      class: [
-        alertStaticClass("startDecorator"),
-        themeClasses.startDecorator,
-        local.slotClasses?.startDecorator,
-        isRTL() ? "ml-2.5" : "mr-2.5",
-      ],
-    });
-
-    const end = styles().endDecorator({
-      class: [
-        alertStaticClass("endDecorator"),
-        themeClasses.endDecorator,
-        local.slotClasses?.endDecorator,
-        isRTL() ? "mr-auto" : "ml-auto",
-      ],
-    });
-
-    return {
-      left: isRTL() ? end : start,
-      right: isRTL() ? start : end,
-    };
+  const endDecorator = createMemo(() => {
+    return runIfFn(local.endDecorator, variantProps.status!);
   });
 
   return (
@@ -111,12 +60,41 @@ export function Alert(props: AlertProps) {
       })}
       {...others}
     >
-      <Show when={decorators().left}>
-        <span class={decoratorClasses().left}>{decorators().left}</span>
-      </Show>
-      {runIfFn(local.children)}
-      <Show when={decorators().right}>
-        <span class={decoratorClasses().right}>{decorators().right}</span>
+      <span
+        class={styles().startDecorator({
+          class: [
+            alertStaticClass("startDecorator"),
+            themeClasses.startDecorator,
+            local.slotClasses?.startDecorator,
+          ],
+        })}
+      >
+        <Show
+          when={startDecorator()}
+          fallback={
+            <Dynamic
+              component={ALERT_ICONS[variantProps.status!]}
+              aria-hidden="true"
+              class="h-6 w-6"
+            />
+          }
+        >
+          {startDecorator()}
+        </Show>
+      </span>
+      {local.children}
+      <Show when={endDecorator()}>
+        <span
+          class={styles().endDecorator({
+            class: [
+              alertStaticClass("endDecorator"),
+              themeClasses.endDecorator,
+              local.slotClasses?.endDecorator,
+            ],
+          })}
+        >
+          {endDecorator()}
+        </span>
       </Show>
     </KAlert.Root>
   );

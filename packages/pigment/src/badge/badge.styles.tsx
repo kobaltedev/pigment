@@ -21,24 +21,21 @@ export const badgeStyles = tv({
       },
     },
     color: {
-      // semantic
       primary: {},
-      neutral: {},
       success: {},
       info: {},
       warning: {},
       danger: {},
       discovery: {},
-      // decorative
     },
     size: {
       md: {
         root: "h-6",
-        dot: "h-1.5 w-1.5",
+        dot: "h-1.5 w-1.5 me-1.5",
       },
       lg: {
         root: "h-7",
-        dot: "h-2 w-2",
+        dot: "h-2 w-2 me-2",
       },
     },
     shape: {
@@ -60,13 +57,6 @@ export const badgeStyles = tv({
       color: "primary",
       class: {
         root: "text-content-on-primary bg-surface-primary border-surface-primary",
-      },
-    },
-    {
-      variant: "solid",
-      color: "neutral",
-      class: {
-        root: "text-content-on-neutral bg-surface-neutral border-surface-neutral",
       },
     },
     {
@@ -115,13 +105,6 @@ export const badgeStyles = tv({
     },
     {
       variant: "soft",
-      color: "neutral",
-      class: {
-        root: "text-content-on-neutral-subtle bg-surface-neutral-subtle/50 ring-surface-neutral-subtle-active/70",
-      },
-    },
-    {
-      variant: "soft",
       color: "success",
       class: {
         root: "text-content-on-success-subtle bg-surface-success-subtle/50 ring-surface-success-subtle-active/70",
@@ -166,13 +149,6 @@ export const badgeStyles = tv({
     },
     {
       variant: "inverted",
-      color: "neutral",
-      class: {
-        root: "text-surface-neutral bg-content-on-neutral border-content-on-neutral",
-      },
-    },
-    {
-      variant: "inverted",
       color: "success",
       class: {
         root: "text-surface-success bg-content-on-success border-content-on-success",
@@ -209,16 +185,11 @@ export const badgeStyles = tv({
 
     // variant dot + color
     { variant: "dot", color: "primary", class: { dot: "fill-surface-primary" } },
-    { variant: "dot", color: "neutral", class: { dot: "fill-surface-neutral" } },
     { variant: "dot", color: "success", class: { dot: "fill-surface-success" } },
     { variant: "dot", color: "info", class: { dot: "fill-surface-info" } },
     { variant: "dot", color: "warning", class: { dot: "fill-surface-warning" } },
     { variant: "dot", color: "danger", class: { dot: "fill-surface-danger" } },
     { variant: "dot", color: "discovery", class: { dot: "fill-surface-discovery" } },
-
-    // variant dot + size
-    { variant: "dot", size: "md", class: { root: "gap-1.5" } },
-    { variant: "dot", size: "lg", class: { root: "gap-2" } },
 
     // shape rounded + size
     { shape: "rounded", size: "md", class: { root: "px-2 text-xs" } },
