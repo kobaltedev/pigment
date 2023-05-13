@@ -131,10 +131,11 @@ export function createTheme(options: CreateThemeOptions): Theme {
             subtler: grayscaleValueOf(lightColors.neutral, "10"),
             subtlest: grayscaleValueOf(lightColors.neutral, "9"),
             disabled: grayscaleValueOf(lightColors.neutral, "8"),
+
             link: {
               DEFAULT: colorValueOf(lightColors.primary, "700", "700", "800"),
-              hover: colorValueOf(lightColors.primary, "800", "800", "900"),
-              active: colorValueOf(lightColors.primary, "900", "900", "950"),
+              hover: colorValueOf(lightColors.primary, "700", "700", "800"),
+              active: colorValueOf(lightColors.primary, "800", "800", "900"),
             },
 
             primary: colorValueOf(lightColors.primary, "700", "700", "800"),
@@ -218,10 +219,11 @@ export function createTheme(options: CreateThemeOptions): Theme {
             subtler: darkGrayscaleValueOf(darkColors.neutral, "10"),
             subtlest: darkGrayscaleValueOf(darkColors.neutral, "9"),
             disabled: darkGrayscaleValueOf(darkColors.neutral, "8"),
+
             link: {
               DEFAULT: colorValueOf(darkColors.primary, "400", "400", "200"),
-              hover: colorValueOf(darkColors.primary, "300", "300", "100"),
-              active: colorValueOf(darkColors.primary, "200", "200", "50"),
+              hover: colorValueOf(darkColors.primary, "400", "400", "200"),
+              active: colorValueOf(darkColors.primary, "300", "300", "100"),
             },
 
             primary: colorValueOf(darkColors.primary, "400", "400", "200"),

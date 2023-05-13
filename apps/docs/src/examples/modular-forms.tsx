@@ -1,6 +1,6 @@
-import { Button, Checkbox, Surface } from "@kobalte/pigment";
-import { createForm, required, setValue, SubmitHandler } from "@modular-forms/solid";
 import { As } from "@kobalte/core";
+import { Anchor, Button, Checkbox, Surface } from "@kobalte/pigment";
+import { createForm, required, setValue, SubmitHandler } from "@modular-forms/solid";
 
 type SignUpForm = {
   newsletter: boolean;
@@ -53,9 +53,9 @@ export function ModularFormsExample() {
                 description={
                   <span>
                     Read our{" "}
-                    <a href="/" target="_blank">
+                    <Anchor href="/" external>
                       terms and conditions
-                    </a>
+                    </Anchor>
                   </span>
                 }
                 errorMessage={field.error}

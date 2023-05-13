@@ -9,6 +9,7 @@ export * from "./theme";
 
 // components
 export * from "./alert";
+export * from "./anchor";
 export * from "./badge";
 export * from "./button";
 export * from "./checkbox";

@@ -1,5 +1,7 @@
 import { tv, VariantProps } from "tailwind-variants";
 
+import { focusStyles } from "../utils/styles";
+
 export const buttonStyles = tv({
   slots: {
     root: [
@@ -12,7 +14,7 @@ export const buttonStyles = tv({
       "cursor-pointer no-underline",
       "transition-colors",
       "ui-disabled:text-content-disabled ui-disabled:opacity-50 ui-disabled:pointer-events-none ui-disabled:shadow-none",
-      "outline-none focus-visible:outline-ring focus-visible:outline-2 focus-visible:outline-offset-2",
+      focusStyles,
     ],
     decorator: "display-inherit",
     loadingContent: "inline-flex items-center justify-center opacity-0",
@@ -57,7 +59,7 @@ export const buttonStyles = tv({
       },
       link: {
         root: [
-          "text-content-link border-transparent !h-auto !p-0 underline-offset-4",
+          "text-content-link border-transparent !h-auto !p-0 underline-offset-2",
           "ui-not-disabled:hover:text-content-link-hover",
           "ui-not-disabled:active:text-content-link-active",
           "ui-not-disabled:hover:underline ui-not-disabled:focus-visible:underline",
