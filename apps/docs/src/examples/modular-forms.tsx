@@ -1,8 +1,9 @@
 import { As } from "@kobalte/core";
-import { Anchor, Button, Checkbox, Surface } from "@kobalte/pigment";
+import { Anchor, Button, Checkbox, Surface, TextField } from "@kobalte/pigment";
 import { createForm, required, setValue, SubmitHandler } from "@modular-forms/solid";
 
 type SignUpForm = {
+  email: string;
   newsletter: boolean;
 };
 
@@ -19,7 +20,7 @@ export function ModularFormsExample() {
     <Surface
       variant="raised"
       border="all"
-      class="flex flex-col w-full max-w-md p-5 rounded-lg"
+      class="flex flex-col w-full max-w-sm p-6 rounded-lg"
       asChild
     >
       <As component={Form} onSubmit={handleSubmit}>
@@ -27,6 +28,25 @@ export function ModularFormsExample() {
         <p class="text-base text-content-subtle">Sign up to continue</p>
         <div class="flex flex-col gap-5 my-6">
           [TODO]: add more components when available
+          <Field name="email" validate={[required("You must provide an email address")]}>
+            {(field, props) => (
+              <TextField
+                ref={props.ref}
+                name={props.name}
+                value={field.value}
+                onChange={value => setValue(signupForm, "email", value)}
+                inputProps={{
+                  onInput: props.onInput,
+                  onChange: props.onChange,
+                  onBlur: props.onBlur,
+                }}
+                invalid={!!field.error}
+                label="Email"
+                placeholder="example@acme.com"
+                errorMessage={field.error}
+              />
+            )}
+          </Field>
           <Field
             name="newsletter"
             type="boolean"
@@ -46,8 +66,7 @@ export function ModularFormsExample() {
                 invalid={!!field.error}
                 label={
                   <>
-                    I have read and agree to the{" "}
-                    <span class="font-medium">terms and conditions</span>
+                    I agree to the <span class="font-medium">terms and conditions</span>
                   </>
                 }
                 description={

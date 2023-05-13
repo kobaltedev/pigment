@@ -6,7 +6,7 @@ import { CheckboxProps, CheckboxSlots } from "../checkbox/checkbox.props";
 import { CloseButtonProps, CloseButtonSlots } from "../close-button/close-button.props";
 //import { SelectProps, SelectSlots } from "../select/select.props";
 import { SurfaceProps, SurfaceSlots } from "../surface/surface.props";
-//import { TextFieldProps, TextFieldSlots } from "../text-field/text-field.props";
+import { TextFieldProps, TextFieldSlots } from "../text-field/text-field.props";
 
 export interface ComponentTheme<Props, Slots extends string> {
   /** Default props to be passed to the component. */
@@ -28,5 +28,5 @@ export interface ComponentsConfig {
   LinkButton?: ComponentTheme<LinkButtonProps, LinkButtonSlots>;
   //Select?: ComponentTheme<SelectProps<any>, SelectSlots>;
   Surface?: ComponentTheme<SurfaceProps, SurfaceSlots>;
-  //TextField?: ComponentTheme<TextFieldProps, TextFieldSlots>;
+  TextField?: ComponentTheme<TextFieldProps, TextFieldSlots>;
 }
