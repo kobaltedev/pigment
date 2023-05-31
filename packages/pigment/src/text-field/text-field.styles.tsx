@@ -5,8 +5,8 @@ import { inputFocusStyles } from "../utils/styles";
 const baseInputStyles = [
   "appearance-none relative",
   "m-0 w-full",
-  "border border-solid",
-  "text-content bg-surface ui-not-invalid:border-line",
+  "border border-solid ui-not-invalid:border-line",
+  "text-content bg-surface",
   "ui-not-disabled:placeholder:text-content-subtlest",
   "ui-not-disabled:ui-invalid:border-line-danger",
   "ui-disabled:text-content-disabled ui-disabled:bg-surface-disabled ui-disabled:border-line-disabled ui-disabled:opacity-50 ui-disabled:pointer-events-none ui-disabled:placeholder:text-content-disabled",
@@ -23,46 +23,77 @@ export const textFieldStyles = tv({
     root: "group flex flex-col items-start",
     input: [...baseInputStyles],
     textArea: [...baseInputStyles, "h-full resize"],
-    leadingIcon: [...baseIconStyles, "start-0 text-icon-subtle"],
-    trailingIcon: [...baseIconStyles, "end-0 text-icon-subtle"],
-    errorIcon: [...baseIconStyles, "end-0 text-icon-danger"],
+    leadingIcon: [...baseIconStyles, "start-0 text-icon-subtler"],
+    trailingIcon: [...baseIconStyles, "end-0 text-icon-subtler"],
     label: [
       "text-content font-medium",
       "ui-disabled:text-content-disabled ui-disabled:opacity-50 ui-disabled:pointer-events-none",
     ],
     supportText:
       "ui-disabled:text-content-disabled ui-disabled:opacity-50 ui-disabled:pointer-events-none",
+    errorIcon: [
+      "flex items-center text-icon-danger",
+      "ui-disabled:text-icon-disabled ui-disabled:opacity-50",
+    ],
   },
   variants: {
     size: {
       md: {
-        input: "h-10 text-base rounded-md",
-        textArea: "py-2.5 px-3 text-base rounded-md",
+        input: "ps-[--pg-text-field-input-ps] pe-[--pg-text-field-input-pe] h-10 text-base",
+        textArea: "py-2 px-3 text-base rounded-md",
         leadingIcon: "ps-3 text-xl",
         trailingIcon: "pe-3 text-xl",
-        errorIcon: "pe-3 text-xl",
         label: "text-sm",
         supportText: "text-sm",
+        errorIcon: "text-xl",
       },
     },
-    hasLeadingIcon: {
-      true: {},
+    hasLeadingAddon: {
+      true: {
+        input: "focus-visible:z-[1]",
+      },
       false: {},
     },
-    hasTrailingIcon: {
-      true: {},
+    hasTrailingAddon: {
+      true: {
+        input: "focus-visible:z-[1]",
+      },
       false: {},
     },
   },
   compoundVariants: [
-    // size + no decorators
-    { size: "md", hasLeadingIcon: false, class: { input: "ps-3" } },
-    { size: "md", hasTrailingIcon: false, class: { input: "pe-3" } },
-
-    // size + decorators
-    { size: "md", hasLeadingIcon: true, class: { input: "ps-10" } },
-    { size: "md", hasTrailingIcon: true, class: { input: "pe-10" } },
+    // size + no addons
+    { size: "md", hasLeadingAddon: false, class: { input: "rounded-s-md" } },
+    { size: "md", hasTrailingAddon: false, class: { input: "rounded-e-md" } },
   ],
 });
 
 export type TextFieldVariants = VariantProps<typeof textFieldStyles>;
+
+export const inputAddonStyles = tv({
+  slots: {
+    root: "flex items-center border-y border-solid border-line text-content-subtle bg-surface-neutral-subtle",
+  },
+  variants: {
+    size: {
+      md: {
+        root: "px-3",
+      },
+    },
+    trailing: {
+      true: {
+        root: "border-e",
+      },
+      false: {
+        root: "border-s",
+      },
+    },
+  },
+  compoundVariants: [
+    // size + placement
+    { size: "md", trailing: false, class: { root: "rounded-s-md" } },
+    { size: "md", trailing: true, class: { root: "rounded-e-md" } },
+  ],
+});
+
+export type InputAddonVariants = VariantProps<typeof inputAddonStyles>;

@@ -4,7 +4,7 @@ import { JSX } from "solid-js";
 import { SlotProp } from "../utils/slot";
 import { AlertVariants } from "./alert.styles";
 
-export type AlertSlots = "root" | "leadingSection" | "trailingSection";
+export type AlertSlots = "root" | "icon" | "leadingSection" | "trailingSection";
 
 export type AlertStatus = Exclude<AlertVariants["status"], undefined>;
 

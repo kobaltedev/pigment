@@ -1,13 +1,31 @@
-import { TextField as KTextField } from "@kobalte/core";
-import { ComponentProps, createMemo, JSX, mergeProps, Show, splitProps } from "solid-js";
+import { Polymorphic, TextField as KTextField } from "@kobalte/core";
+import { mergeDefaultProps } from "@kobalte/utils";
+import {
+  ComponentProps,
+  createMemo,
+  JSX,
+  Match,
+  mergeProps,
+  Show,
+  splitProps,
+  Switch,
+} from "solid-js";
 
-import { TablerAlertTriangleFilled } from "../icon";
+import { TablerAlertCircleFilledIcon } from "../icon";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
-import { TextFieldProps, TextFieldSlots } from "./text-field.props";
-import { textFieldStyles } from "./text-field.styles";
+import { InputAddonProps, TextFieldProps, TextFieldSlots } from "./text-field.props";
+import { inputAddonStyles, textFieldStyles } from "./text-field.styles";
 
 const textFieldStaticClass = makeStaticClass<TextFieldSlots>("text-field");
+
+function getDefaultInputPaddingInline(size: TextFieldProps["size"], hasIcon: boolean) {
+  switch (size) {
+    case "md":
+    default:
+      return hasIcon ? "2.5rem" : "0.75rem";
+  }
+}
 
 export function TextField(props: TextFieldProps) {
   props = mergeThemeProps(
@@ -18,7 +36,7 @@ export function TextField(props: TextFieldProps) {
       invalid: false,
       disabled: false,
       inputProps: {},
-      errorIcon: () => <TablerAlertTriangleFilled />,
+      errorIcon: () => <TablerAlertCircleFilledIcon />,
     },
     props
   );
@@ -43,6 +61,12 @@ export function TextField(props: TextFieldProps) {
       "errorIcon",
       "leadingIcon",
       "trailingIcon",
+      "leadingElement",
+      "trailingElement",
+      "leadingElementWidth",
+      "trailingElementWidth",
+      "leadingAddon",
+      "trailingAddon",
     ],
     ["size"]
   );
@@ -52,22 +76,35 @@ export function TextField(props: TextFieldProps) {
   const errorMessage = createMemo(() => local.errorMessage as unknown as JSX.Element);
   const leadingIcon = createMemo(() => local.leadingIcon as unknown as JSX.Element);
   const trailingIcon = createMemo(() => local.trailingIcon as unknown as JSX.Element);
-
-  const showError = () => {
-    return local.invalid && errorMessage() != null && errorMessage() != "";
-  };
+  const leadingElement = createMemo(() => local.leadingElement as unknown as JSX.Element);
+  const trailingElement = createMemo(() => local.trailingElement as unknown as JSX.Element);
+  const leadingAddon = createMemo(() => local.leadingAddon as unknown as JSX.Element);
+  const trailingAddon = createMemo(() => local.trailingAddon as unknown as JSX.Element);
 
   const variantProps = mergeProps(
     {
-      get hasLeadingIcon() {
-        return leadingIcon() != null;
+      get hasLeadingAddon() {
+        return leadingAddon() != null;
       },
-      get hasTrailingIcon() {
-        return showError() || trailingIcon() != null;
+      get hasTrailingAddon() {
+        return trailingAddon() != null;
       },
     },
     partialVariantProps
   );
+
+  const inputPaddingInlineStart = createMemo(() => {
+    return (
+      local.leadingElementWidth ?? getDefaultInputPaddingInline(variantProps.size, !!leadingIcon())
+    );
+  });
+
+  const inputPaddingInlineEnd = createMemo(() => {
+    return (
+      local.trailingElementWidth ??
+      getDefaultInputPaddingInline(variantProps.size, !!trailingIcon())
+    );
+  });
 
   const styles = createMemo(() => textFieldStyles(variantProps));
 
@@ -136,83 +173,130 @@ export function TextField(props: TextFieldProps) {
           />
         }
       >
-        <div class="relative self-stretch">
-          <KTextField.Input
-            {...(local.inputProps as ComponentProps<"input">)}
-            ref={local.ref as HTMLInputElement}
-            id={local.id}
-            type={local.type}
-            placeholder={local.placeholder}
-            class={styles().input({
-              class: [
-                textFieldStaticClass("input"),
-                themeClasses.input,
-                local.slotClasses?.input,
-                local.inputProps?.class,
-              ],
-            })}
-          />
-          <Show when={leadingIcon()}>
-            <div
-              data-invalid={local.invalid ? "" : undefined}
-              data-disabled={others.disabled ? "" : undefined}
-              class={styles().leadingIcon({
+        <div class="flex items-stretch self-stretch">
+          {leadingAddon()}
+          <div
+            class="relative grow"
+            style={{
+              "--pg-text-field-input-ps": inputPaddingInlineStart(),
+              "--pg-text-field-input-pe": inputPaddingInlineEnd(),
+            }}
+          >
+            <KTextField.Input
+              {...(local.inputProps as ComponentProps<"input">)}
+              ref={local.ref as HTMLInputElement}
+              id={local.id}
+              type={local.type}
+              placeholder={local.placeholder}
+              class={styles().input({
                 class: [
-                  textFieldStaticClass("leadingIcon"),
-                  themeClasses.leadingIcon,
-                  local.slotClasses?.leadingIcon,
+                  textFieldStaticClass("input"),
+                  themeClasses.input,
+                  local.slotClasses?.input,
+                  local.inputProps?.class,
                 ],
               })}
-            >
-              {leadingIcon()}
-            </div>
-          </Show>
-          <Show when={trailingIcon() && !showError()}>
-            <div
-              data-invalid={local.invalid ? "" : undefined}
-              data-disabled={others.disabled ? "" : undefined}
-              class={styles().trailingIcon({
-                class: [
-                  textFieldStaticClass("trailingIcon"),
-                  themeClasses.trailingIcon,
-                  local.slotClasses?.trailingIcon,
-                ],
-              })}
-            >
-              {trailingIcon()}
-            </div>
-          </Show>
-          <Show when={showError()}>
-            <div
-              data-invalid={local.invalid ? "" : undefined}
-              data-disabled={others.disabled ? "" : undefined}
-              class={styles().errorIcon({
-                class: [
-                  textFieldStaticClass("errorIcon"),
-                  themeClasses.errorIcon,
-                  local.slotClasses?.errorIcon,
-                ],
-              })}
-            >
-              {local.errorIcon as unknown as JSX.Element}
-            </div>
-          </Show>
+            />
+            <Switch>
+              <Match when={leadingElement()}>
+                <div
+                  data-invalid={local.invalid ? "" : undefined}
+                  data-disabled={others.disabled ? "" : undefined}
+                  class="absolute inset-y-0 start-0"
+                >
+                  {leadingElement()}
+                </div>
+              </Match>
+              <Match when={leadingIcon()}>
+                <div
+                  aria-hidden="true"
+                  data-invalid={local.invalid ? "" : undefined}
+                  data-disabled={others.disabled ? "" : undefined}
+                  class={styles().leadingIcon({
+                    class: [
+                      textFieldStaticClass("leadingIcon"),
+                      themeClasses.leadingIcon,
+                      local.slotClasses?.leadingIcon,
+                    ],
+                  })}
+                >
+                  {leadingIcon()}
+                </div>
+              </Match>
+            </Switch>
+            <Switch>
+              <Match when={trailingElement()}>
+                <div
+                  data-invalid={local.invalid ? "" : undefined}
+                  data-disabled={others.disabled ? "" : undefined}
+                  class="absolute inset-y-0 end-0"
+                >
+                  {trailingElement()}
+                </div>
+              </Match>
+              <Match when={trailingIcon()}>
+                <div
+                  aria-hidden="true"
+                  data-invalid={local.invalid ? "" : undefined}
+                  data-disabled={others.disabled ? "" : undefined}
+                  class={styles().trailingIcon({
+                    class: [
+                      textFieldStaticClass("trailingIcon"),
+                      themeClasses.trailingIcon,
+                      local.slotClasses?.trailingIcon,
+                    ],
+                  })}
+                >
+                  {trailingIcon()}
+                </div>
+              </Match>
+            </Switch>
+          </div>
+          {trailingAddon()}
         </div>
       </Show>
-      <Show when={showError()}>
+      <Show when={local.invalid && errorMessage()}>
         <KTextField.ErrorMessage
           class={styles().supportText({
             class: [
-              "text-content-danger mt-1.5",
+              "flex items-center gap-x-1 text-content-danger mt-1.5",
               textFieldStaticClass("errorMessage"),
               themeClasses.errorMessage,
               local.slotClasses?.errorMessage,
             ],
           })}
         >
+          <div
+            aria-hidden="true"
+            class={styles().errorIcon({
+              class: [
+                textFieldStaticClass("errorIcon"),
+                themeClasses.errorIcon,
+                local.slotClasses?.errorIcon,
+              ],
+            })}
+          >
+            {local.errorIcon as unknown as JSX.Element}
+          </div>
           {errorMessage()}
         </KTextField.ErrorMessage>
       </Show>
     </KTextField.Root>
   );
+}
+
+export function InputAddon(props: InputAddonProps) {
+  props = mergeDefaultProps(
+    {
+      size: "md",
+      trailing: false,
+    },
+    props
+  );
+
+  const [local, variantProps, others] = splitProps(props, ["class"], ["size", "trailing"]);
+
+  const styles = createMemo(() => inputAddonStyles(variantProps));
+
+  return <Polymorphic as="div" class={styles().root({ class: local.class })} {...others} />;
 }

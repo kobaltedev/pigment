@@ -1,8 +1,9 @@
-import { TextField as KTextField } from "@kobalte/core";
+import { AsChildProp, TextField as KTextField } from "@kobalte/core";
+import { OverrideComponentProps } from "@kobalte/utils";
 import { ComponentProps, JSX, Ref } from "solid-js";
 
 import { SlotProp } from "../utils/slot";
-import { TextFieldVariants } from "./text-field.styles";
+import { InputAddonVariants, TextFieldVariants } from "./text-field.styles";
 
 export type TextFieldSlots =
   | "root"
@@ -36,15 +37,6 @@ export interface TextFieldProps
   /** Whether the text field is invalid regarding the validation rules. */
   invalid?: boolean;
 
-  /** The icon to show before the input value. */
-  leadingIcon?: JSX.Element | (() => JSX.Element);
-
-  /** The icon to show after the input value. */
-  trailingIcon?: JSX.Element | (() => JSX.Element);
-
-  /** The icon to show next to the error message. */
-  errorIcon?: JSX.Element | (() => JSX.Element);
-
   /** The label that gives the user information on the text field. */
   label?: JSX.Element | (() => JSX.Element);
 
@@ -53,4 +45,34 @@ export interface TextFieldProps
 
   /** The error message that gives the user information about how to fix a validation error on the text field. */
   errorMessage?: JSX.Element | (() => JSX.Element);
+
+  /** The icon to show next to the error message. */
+  errorIcon?: JSX.Element | (() => JSX.Element);
+
+  /** The icon to show before the input value. */
+  leadingIcon?: JSX.Element | (() => JSX.Element);
+
+  /** The icon to show after the input value. */
+  trailingIcon?: JSX.Element | (() => JSX.Element);
+
+  /** The element to show before the input value. */
+  leadingElement?: JSX.Element | (() => JSX.Element);
+
+  /** The element to show after the input value. */
+  trailingElement?: JSX.Element | (() => JSX.Element);
+
+  /** Width of leading element, used to calculate the input `padding-inline-start`. */
+  leadingElementWidth?: JSX.CSSProperties["padding-inline-start"];
+
+  /** Width of trailing element, used to calculate the input `padding-inline-end`. */
+  trailingElementWidth?: JSX.CSSProperties["padding-inline-end"];
+
+  /** The element to show before the input element. */
+  leadingAddon?: JSX.Element | (() => JSX.Element);
+
+  /** The element to show after the input element. */
+  trailingAddon?: JSX.Element | (() => JSX.Element);
 }
+
+export interface InputAddonProps
+  extends OverrideComponentProps<"div", InputAddonVariants & AsChildProp> {}

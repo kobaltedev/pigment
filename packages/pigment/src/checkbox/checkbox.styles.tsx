@@ -40,6 +40,10 @@ export const checkboxStyles = tv({
     supportTextWrapper: "flex flex-col items-start grow shrink",
     supportText:
       "ui-disabled:text-content-disabled ui-disabled:opacity-50 ui-disabled:pointer-events-none",
+    errorIcon: [
+      "flex items-center text-icon-danger",
+      "ui-disabled:text-icon-disabled ui-disabled:opacity-50",
+    ],
   },
   variants: {
     size: {
@@ -49,6 +53,7 @@ export const checkboxStyles = tv({
         label: "ps-2 text-sm",
         supportTextWrapper: "ps-6 gap-y-0.5",
         supportText: "text-sm",
+        errorIcon: "text-xl",
       },
       lg: {
         root: "gap-y-1",
@@ -56,6 +61,7 @@ export const checkboxStyles = tv({
         label: "ps-3 text-base",
         supportTextWrapper: "ps-8 gap-y-1",
         supportText: "text-base",
+        errorIcon: "text-2xl",
       },
     },
   },

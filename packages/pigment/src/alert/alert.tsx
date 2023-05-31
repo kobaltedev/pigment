@@ -3,11 +3,11 @@ import { createMemo, Show, splitProps, ValidComponent } from "solid-js";
 import { Dynamic } from "solid-js/web";
 
 import {
-  TablerAlertCircleIcon,
-  TablerAlertTriangleIcon,
-  TablerCircleCheckIcon,
-  TablerHelpCircleIcon,
-  TablerInfoCircleIcon,
+  TablerAlertCircleFilledIcon,
+  TablerAlertTriangleFilledIcon,
+  TablerCircleCheckFilledIcon,
+  TablerHelpCircleFilledIcon,
+  TablerInfoCircleFilledIcon,
 } from "../icon";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
@@ -18,11 +18,11 @@ import { alertStyles, AlertVariants } from "./alert.styles";
 const alertStaticClass = makeStaticClass<AlertSlots>("alert");
 
 const ALERT_ICONS: Record<Exclude<AlertVariants["status"], undefined>, ValidComponent> = {
-  success: TablerCircleCheckIcon,
-  info: TablerInfoCircleIcon,
-  warning: TablerAlertTriangleIcon,
-  danger: TablerAlertCircleIcon,
-  discovery: TablerHelpCircleIcon,
+  success: TablerCircleCheckFilledIcon,
+  info: TablerInfoCircleFilledIcon,
+  warning: TablerAlertTriangleFilledIcon,
+  danger: TablerAlertCircleFilledIcon,
+  discovery: TablerHelpCircleFilledIcon,
 };
 
 export function Alert(props: AlertProps) {
@@ -75,7 +75,9 @@ export function Alert(props: AlertProps) {
             <Dynamic
               component={ALERT_ICONS[variantProps.status!]}
               aria-hidden="true"
-              class="h-6 w-6"
+              class={styles().icon({
+                class: [alertStaticClass("icon"), themeClasses.icon, local.slotClasses?.icon],
+              })}
             />
           }
         >

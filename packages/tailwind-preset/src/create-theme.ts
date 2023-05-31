@@ -173,6 +173,20 @@ export function createTheme(options: CreateThemeOptions): Theme {
             warning: colorValueOf(lightColors.warning, "600", "600", "700"),
             danger: colorValueOf(lightColors.danger, "600", "600", "700"),
             discovery: colorValueOf(lightColors.discovery, "600", "600", "700"),
+
+            onPrimary: inverseGrayscaleValueOf(lightColors.primary, "3", white),
+            onSuccess: inverseGrayscaleValueOf(lightColors.success, "3", white),
+            onInfo: inverseGrayscaleValueOf(lightColors.info, "3", white),
+            onWarning: inverseGrayscaleValueOf(lightColors.warning, "3", white),
+            onDanger: inverseGrayscaleValueOf(lightColors.danger, "3", white),
+            onDiscovery: inverseGrayscaleValueOf(lightColors.discovery, "3", white),
+
+            onPrimarySubtle: colorValueOf(lightColors.primary, "700"),
+            onSuccessSubtle: colorValueOf(lightColors.success, "700"),
+            onInfoSubtle: colorValueOf(lightColors.info, "700"),
+            onWarningSubtle: colorValueOf(lightColors.warning, "700"),
+            onDangerSubtle: colorValueOf(lightColors.danger, "700"),
+            onDiscoverySubtle: colorValueOf(lightColors.discovery, "700"),
           },
 
           surface: {
@@ -276,6 +290,20 @@ export function createTheme(options: CreateThemeOptions): Theme {
             warning: colorValueOf(darkColors.warning, "500", "500", "300"),
             danger: colorValueOf(darkColors.danger, "500", "500", "300"),
             discovery: colorValueOf(darkColors.discovery, "500", "500", "300"),
+
+            onPrimary: darkGrayscaleValueOf(COLOR_TO_GRAYSCALE_MAP[darkColors.primary], "3"),
+            onSuccess: darkGrayscaleValueOf(COLOR_TO_GRAYSCALE_MAP[darkColors.success], "3"),
+            onInfo: darkGrayscaleValueOf(COLOR_TO_GRAYSCALE_MAP[darkColors.info], "3"),
+            onWarning: darkGrayscaleValueOf(COLOR_TO_GRAYSCALE_MAP[darkColors.warning], "3"),
+            onDanger: darkGrayscaleValueOf(COLOR_TO_GRAYSCALE_MAP[darkColors.danger], "3"),
+            onDiscovery: darkGrayscaleValueOf(COLOR_TO_GRAYSCALE_MAP[darkColors.discovery], "3"),
+
+            onPrimarySubtle: colorValueOf(darkColors.primary, "300"),
+            onSuccessSubtle: colorValueOf(darkColors.success, "300"),
+            onInfoSubtle: colorValueOf(darkColors.info, "300"),
+            onWarningSubtle: colorValueOf(darkColors.warning, "300"),
+            onDangerSubtle: colorValueOf(darkColors.danger, "300"),
+            onDiscoverySubtle: colorValueOf(darkColors.discovery, "300"),
           },
 
           surface: {

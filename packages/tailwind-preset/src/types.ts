@@ -57,6 +57,20 @@ export const themeTokensShapeValue = {
       warning: "",
       danger: "",
       discovery: "",
+
+      onPrimary: "",
+      onSuccess: "",
+      onInfo: "",
+      onWarning: "",
+      onDanger: "",
+      onDiscovery: "",
+
+      onPrimarySubtle: "",
+      onSuccessSubtle: "",
+      onInfoSubtle: "",
+      onWarningSubtle: "",
+      onDangerSubtle: "",
+      onDiscoverySubtle: "",
     },
 
     surface: {

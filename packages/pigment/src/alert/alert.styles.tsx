@@ -3,6 +3,7 @@ import { tv, VariantProps } from "tailwind-variants";
 export const alertStyles = tv({
   slots: {
     root: "flex items-center p-3 rounded-md border border-solid text-base",
+    icon: "h-6 w-6",
     leadingSection: "display-inherit flex-none me-2.5",
     trailingSection: "display-inherit flex-none ms-auto",
   },
@@ -26,6 +27,7 @@ export const alertStyles = tv({
       status: "success",
       class: {
         root: "text-content-on-success bg-surface-success border-surface-success",
+        icon: "text-icon-on-success",
       },
     },
     {
@@ -33,6 +35,7 @@ export const alertStyles = tv({
       status: "info",
       class: {
         root: "text-content-on-info bg-surface-info border-surface-info",
+        icon: "text-icon-on-info",
       },
     },
     {
@@ -40,6 +43,7 @@ export const alertStyles = tv({
       status: "warning",
       class: {
         root: "text-content-on-warning bg-surface-warning border-surface-warning",
+        icon: "text-icon-on-warning",
       },
     },
     {
@@ -47,6 +51,7 @@ export const alertStyles = tv({
       status: "danger",
       class: {
         root: "text-content-on-danger bg-surface-danger border-surface-danger",
+        icon: "text-icon-on-danger",
       },
     },
     {
@@ -54,6 +59,7 @@ export const alertStyles = tv({
       status: "discovery",
       class: {
         root: "text-content-on-discovery bg-surface-discovery border-surface-discovery",
+        icon: "text-icon-on-discovery",
       },
     },
 
@@ -63,6 +69,7 @@ export const alertStyles = tv({
       status: "success",
       class: {
         root: "text-content-on-success-subtle bg-surface-success-subtle border-surface-success-subtle",
+        icon: "text-icon-on-success-subtle",
       },
     },
     {
@@ -70,6 +77,7 @@ export const alertStyles = tv({
       status: "info",
       class: {
         root: "text-content-on-info-subtle bg-surface-info-subtle border-surface-info-subtle",
+        icon: "text-icon-on-info-subtle",
       },
     },
     {
@@ -77,6 +85,7 @@ export const alertStyles = tv({
       status: "warning",
       class: {
         root: "text-content-on-warning-subtle bg-surface-warning-subtle border-surface-warning-subtle",
+        icon: "text-icon-on-warning-subtle",
       },
     },
     {
@@ -84,6 +93,7 @@ export const alertStyles = tv({
       status: "danger",
       class: {
         root: "text-content-on-danger-subtle bg-surface-danger-subtle border-surface-danger-subtle",
+        icon: "text-icon-on-danger-subtle",
       },
     },
     {
@@ -91,6 +101,7 @@ export const alertStyles = tv({
       status: "discovery",
       class: {
         root: "text-content-on-discovery-subtle bg-surface-discovery-subtle border-surface-discovery-subtle",
+        icon: "text-icon-on-discovery-subtle",
       },
     },
   ],
