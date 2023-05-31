@@ -9,7 +9,10 @@ export type AlertSlots = "root" | "icon" | "leadingSection" | "trailingSection";
 export type AlertStatus = Exclude<AlertVariants["status"], undefined>;
 
 export interface AlertProps extends KAlert.AlertRootProps, AlertVariants, SlotProp<AlertSlots> {
-  /** The element to show before the alert content. */
+  /** The icon to show before the alert content. */
+  icon?: JSX.Element | ((status: AlertStatus) => JSX.Element);
+
+  /** The element to show before the alert content, in place of the `icon`. */
   leadingSection?: JSX.Element | ((status: AlertStatus) => JSX.Element);
 
   /** The element to show after the alert content. */

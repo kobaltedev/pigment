@@ -39,11 +39,15 @@ export function Alert(props: AlertProps) {
 
   const [local, variantProps, others] = splitProps(
     props,
-    ["class", "children", "slotClasses", "leadingSection", "trailingSection"],
+    ["class", "children", "slotClasses", "icon", "leadingSection", "trailingSection"],
     ["variant", "status"]
   );
 
   const styles = createMemo(() => alertStyles(variantProps));
+
+  const icon = createMemo(() => {
+    return runIfFn(local.icon, variantProps.status!);
+  });
 
   const leadingSection = createMemo(() => {
     return runIfFn(local.leadingSection, variantProps.status!);
@@ -72,13 +76,19 @@ export function Alert(props: AlertProps) {
         <Show
           when={leadingSection()}
           fallback={
-            <Dynamic
-              component={ALERT_ICONS[variantProps.status!]}
+            <span
               aria-hidden="true"
               class={styles().icon({
                 class: [alertStaticClass("icon"), themeClasses.icon, local.slotClasses?.icon],
               })}
-            />
+            >
+              <Show
+                when={icon()}
+                fallback={<Dynamic component={ALERT_ICONS[variantProps.status!]} />}
+              >
+                {icon()}
+              </Show>
+            </span>
           }
         >
           {leadingSection()}

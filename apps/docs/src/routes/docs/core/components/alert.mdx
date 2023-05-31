@@ -66,9 +66,9 @@ The Alert component supports six different status which affect the color scheme 
 </Alert>
 ```
 
-### Decorators
+### Sections
 
-Use the `leadingSection` and `trailingSection` props to append actions and icons to either side of the alert.
+Use the `leadingSection` and `trailingSection` props to append content to either side of the alert.
 
 <Preview isCentered={false}>
   <WithDecorator />
@@ -78,7 +78,7 @@ Use the `leadingSection` and `trailingSection` props to append actions and icons
 <Alert
   variant="soft"
   color="info"
-  leadingSection={<RocketIcon class="h-6 w-6" />}
+  icon={<RocketIcon />}
   trailingSection={<CloseButton variant="soft" color="info" size="sm" />}
 >
   A new software update is available.

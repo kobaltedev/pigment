@@ -55,10 +55,10 @@ export interface TextFieldProps
   /** The icon to show after the input value. */
   trailingIcon?: JSX.Element | (() => JSX.Element);
 
-  /** The element to show before the input value. */
+  /** The element to show before the input value, in place of the `leadingIcon`. */
   leadingSection?: JSX.Element | (() => JSX.Element);
 
-  /** The element to show after the input value. */
+  /** The element to show after the input value, in place of the `trailingIcon`. */
   trailingSection?: JSX.Element | (() => JSX.Element);
 
   /** Width of leading element, used to calculate the input `padding-inline-start`. */

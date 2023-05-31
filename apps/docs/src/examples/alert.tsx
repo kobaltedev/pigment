@@ -46,7 +46,7 @@ export function WithDecorator() {
     <Alert
       variant="soft"
       color="info"
-      leadingSection={<TablerRocketIcon class="h-6 w-6" />}
+      icon={<TablerRocketIcon />}
       trailingSection={<CloseButton variant="soft" color="info" size="sm" />}
     >
       A new software update is available.
