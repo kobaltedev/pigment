@@ -11,6 +11,14 @@ type Story = StoryObj<ButtonProps>;
 export default {
   title: "Button",
   argTypes: {
+    variant: {
+      options: ["solid", "soft", "inverted", "default", "dashed", "text", "link"],
+      control: { type: "select" },
+    },
+    color: {
+      options: ["primary", "success", "info", "warning", "danger", "discovery"],
+      control: { type: "select" },
+    },
     fullWidth: {
       control: { type: "boolean" },
     },

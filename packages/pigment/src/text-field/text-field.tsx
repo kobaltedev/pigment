@@ -61,10 +61,10 @@ export function TextField(props: TextFieldProps) {
       "errorIcon",
       "leadingIcon",
       "trailingIcon",
-      "leadingElement",
-      "trailingElement",
-      "leadingElementWidth",
-      "trailingElementWidth",
+      "leadingSection",
+      "trailingSection",
+      "leadingSectionWidth",
+      "trailingSectionWidth",
       "leadingAddon",
       "trailingAddon",
     ],
@@ -76,8 +76,8 @@ export function TextField(props: TextFieldProps) {
   const errorMessage = createMemo(() => local.errorMessage as unknown as JSX.Element);
   const leadingIcon = createMemo(() => local.leadingIcon as unknown as JSX.Element);
   const trailingIcon = createMemo(() => local.trailingIcon as unknown as JSX.Element);
-  const leadingElement = createMemo(() => local.leadingElement as unknown as JSX.Element);
-  const trailingElement = createMemo(() => local.trailingElement as unknown as JSX.Element);
+  const leadingSection = createMemo(() => local.leadingSection as unknown as JSX.Element);
+  const trailingSection = createMemo(() => local.trailingSection as unknown as JSX.Element);
   const leadingAddon = createMemo(() => local.leadingAddon as unknown as JSX.Element);
   const trailingAddon = createMemo(() => local.trailingAddon as unknown as JSX.Element);
 
@@ -95,13 +95,13 @@ export function TextField(props: TextFieldProps) {
 
   const inputPaddingInlineStart = createMemo(() => {
     return (
-      local.leadingElementWidth ?? getDefaultInputPaddingInline(variantProps.size, !!leadingIcon())
+      local.leadingSectionWidth ?? getDefaultInputPaddingInline(variantProps.size, !!leadingIcon())
     );
   });
 
   const inputPaddingInlineEnd = createMemo(() => {
     return (
-      local.trailingElementWidth ??
+      local.trailingSectionWidth ??
       getDefaultInputPaddingInline(variantProps.size, !!trailingIcon())
     );
   });
@@ -198,13 +198,13 @@ export function TextField(props: TextFieldProps) {
               })}
             />
             <Switch>
-              <Match when={leadingElement()}>
+              <Match when={leadingSection()}>
                 <div
                   data-invalid={local.invalid ? "" : undefined}
                   data-disabled={others.disabled ? "" : undefined}
                   class="absolute inset-y-0 start-0"
                 >
-                  {leadingElement()}
+                  {leadingSection()}
                 </div>
               </Match>
               <Match when={leadingIcon()}>
@@ -225,13 +225,13 @@ export function TextField(props: TextFieldProps) {
               </Match>
             </Switch>
             <Switch>
-              <Match when={trailingElement()}>
+              <Match when={trailingSection()}>
                 <div
                   data-invalid={local.invalid ? "" : undefined}
                   data-disabled={others.disabled ? "" : undefined}
                   class="absolute inset-y-0 end-0"
                 >
-                  {trailingElement()}
+                  {trailingSection()}
                 </div>
               </Match>
               <Match when={trailingIcon()}>

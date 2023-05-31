@@ -89,14 +89,14 @@ export const WithElement: Story = {
     label: "E-mail",
     description: "We will never share your email.",
     errorMessage: "Please enter a valid email address.",
-    leadingElementWidth: "40px",
-    trailingElementWidth: "2.5rem",
-    leadingElement: () => (
+    leadingSectionWidth: "40px",
+    trailingSectionWidth: "2.5rem",
+    leadingSection: () => (
       <IconButton variant="text" size="sm" class="mt-1 ms-1" aria-label="">
         <TablerEyeIcon />
       </IconButton>
     ),
-    trailingElement: () => (
+    trailingSection: () => (
       <IconButton variant="text" size="sm" class="mt-1 me-1" aria-label="">
         <TablerEyeIcon />
       </IconButton>
