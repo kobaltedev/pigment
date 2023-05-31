@@ -3,8 +3,8 @@ import { tv, VariantProps } from "tailwind-variants";
 export const alertStyles = tv({
   slots: {
     root: "flex items-center p-3 rounded-md border border-solid text-base",
-    startDecorator: "display-inherit flex-none me-2.5",
-    endDecorator: "display-inherit flex-none ms-auto",
+    leadingSection: "display-inherit flex-none me-2.5",
+    trailingSection: "display-inherit flex-none ms-auto",
   },
   variants: {
     variant: {

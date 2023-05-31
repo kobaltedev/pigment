@@ -7,14 +7,16 @@ import { TextFieldVariants } from "./text-field.styles";
 export type TextFieldSlots =
   | "root"
   | "label"
-  | "control"
   | "input"
+  | "leadingIcon"
+  | "trailingIcon"
+  | "errorIcon"
   | "description"
   | "errorMessage";
 
 export interface TextFieldProps
   extends Omit<KTextField.TextFieldRootProps, "ref" | "validationState">,
-    Omit<TextFieldVariants, "focused">,
+    Omit<TextFieldVariants, "hasLeadingIcon" | "hasTrailingIcon">,
     SlotProp<TextFieldSlots> {
   /** A ref to the inner `<input>` or `<textarea>` element. */
   ref?: Ref<HTMLInputElement | HTMLTextAreaElement>;
@@ -33,6 +35,15 @@ export interface TextFieldProps
 
   /** Whether the text field is invalid regarding the validation rules. */
   invalid?: boolean;
+
+  /** The icon to show before the input value. */
+  leadingIcon?: JSX.Element | (() => JSX.Element);
+
+  /** The icon to show after the input value. */
+  trailingIcon?: JSX.Element | (() => JSX.Element);
+
+  /** The icon to show next to the error message. */
+  errorIcon?: JSX.Element | (() => JSX.Element);
 
   /** The label that gives the user information on the text field. */
   label?: JSX.Element | (() => JSX.Element);

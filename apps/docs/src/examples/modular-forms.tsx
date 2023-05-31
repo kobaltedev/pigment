@@ -1,6 +1,6 @@
 import { As } from "@kobalte/core";
 import { Anchor, Button, Checkbox, Surface, TextField } from "@kobalte/pigment";
-import { createForm, required, setValue, SubmitHandler } from "@modular-forms/solid";
+import { createForm, required, email, setValue, SubmitHandler } from "@modular-forms/solid";
 
 type SignUpForm = {
   email: string;
@@ -26,9 +26,8 @@ export function ModularFormsExample() {
       <As component={Form} onSubmit={handleSubmit}>
         <h2 class="text-2xl text-content font-bold mb-0.5">Welcome to Pigment</h2>
         <p class="text-base text-content-subtle">Sign up to continue</p>
-        <div class="flex flex-col gap-5 my-6">
-          [TODO]: add more components when available
-          <Field name="email" validate={[required("You must provide an email address")]}>
+        <div class="flex flex-col gap-6 my-6">
+          <Field name="email" validate={[email("Please enter a valid email address")]}>
             {(field, props) => (
               <TextField
                 ref={props.ref}

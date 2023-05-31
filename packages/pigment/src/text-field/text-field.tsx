@@ -1,18 +1,9 @@
-import { TextField as KTextField, useLocale } from "@kobalte/core";
-import { callHandler } from "@kobalte/utils";
-import {
-  ComponentProps,
-  createMemo,
-  createSignal,
-  JSX,
-  mergeProps,
-  Show,
-  splitProps,
-} from "solid-js";
+import { TextField as KTextField } from "@kobalte/core";
+import { ComponentProps, createMemo, JSX, mergeProps, Show, splitProps } from "solid-js";
 
+import { TablerAlertTriangleFilled } from "../icon";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
-import { runIfFn } from "../utils/run-if-fn";
 import { TextFieldProps, TextFieldSlots } from "./text-field.props";
 import { textFieldStyles } from "./text-field.styles";
 
@@ -27,6 +18,7 @@ export function TextField(props: TextFieldProps) {
       invalid: false,
       disabled: false,
       inputProps: {},
+      errorIcon: () => <TablerAlertTriangleFilled />,
     },
     props
   );
@@ -48,40 +40,36 @@ export function TextField(props: TextFieldProps) {
       "label",
       "description",
       "errorMessage",
+      "errorIcon",
+      "leadingIcon",
+      "trailingIcon",
     ],
     ["size"]
   );
 
-  const [isFocused, setIsFocused] = createSignal(false);
-
   const label = createMemo(() => local.label as unknown as JSX.Element);
   const description = createMemo(() => local.description as unknown as JSX.Element);
   const errorMessage = createMemo(() => local.errorMessage as unknown as JSX.Element);
+  const leadingIcon = createMemo(() => local.leadingIcon as unknown as JSX.Element);
+  const trailingIcon = createMemo(() => local.trailingIcon as unknown as JSX.Element);
 
   const showError = () => {
-    return local.invalid && errorMessage();
+    return local.invalid && errorMessage() != null && errorMessage() != "";
   };
 
   const variantProps = mergeProps(
     {
-      get focused() {
-        return isFocused();
+      get hasLeadingIcon() {
+        return leadingIcon() != null;
+      },
+      get hasTrailingIcon() {
+        return showError() || trailingIcon() != null;
       },
     },
     partialVariantProps
   );
 
   const styles = createMemo(() => textFieldStyles(variantProps));
-
-  const onInputFocus: JSX.FocusEventHandlerUnion<HTMLInputElement, FocusEvent> = e => {
-    callHandler<any, FocusEvent>(e, local.inputProps?.onFocus as any);
-    setIsFocused(true);
-  };
-
-  const onInputBlur: JSX.FocusEventHandlerUnion<HTMLInputElement, FocusEvent> = e => {
-    callHandler<any, FocusEvent>(e, local.inputProps?.onBlur as any);
-    setIsFocused(false);
-  };
 
   return (
     <KTextField.Root
@@ -99,7 +87,12 @@ export function TextField(props: TextFieldProps) {
       <Show when={label()}>
         <KTextField.Label
           class={styles().label({
-            class: [textFieldStaticClass("label"), themeClasses.label, local.slotClasses?.label],
+            class: [
+              description() ? "" : "mb-1",
+              textFieldStaticClass("label"),
+              themeClasses.label,
+              local.slotClasses?.label,
+            ],
           })}
         >
           {label()}
@@ -114,7 +107,7 @@ export function TextField(props: TextFieldProps) {
         <KTextField.Description
           class={styles().supportText({
             class: [
-              "text-content-subtle",
+              "text-content-subtle mb-1",
               textFieldStaticClass("description"),
               themeClasses.description,
               local.slotClasses?.description,
@@ -143,17 +136,7 @@ export function TextField(props: TextFieldProps) {
           />
         }
       >
-        <div
-          data-invalid={local.invalid ? "" : undefined}
-          data-disabled={others.disabled ? "" : undefined}
-          class={styles().control({
-            class: [
-              textFieldStaticClass("control"),
-              themeClasses.control,
-              local.slotClasses?.control,
-            ],
-          })}
-        >
+        <div class="relative self-stretch">
           <KTextField.Input
             {...(local.inputProps as ComponentProps<"input">)}
             ref={local.ref as HTMLInputElement}
@@ -168,16 +151,59 @@ export function TextField(props: TextFieldProps) {
                 local.inputProps?.class,
               ],
             })}
-            onFocus={onInputFocus}
-            onBlur={onInputBlur}
           />
+          <Show when={leadingIcon()}>
+            <div
+              data-invalid={local.invalid ? "" : undefined}
+              data-disabled={others.disabled ? "" : undefined}
+              class={styles().leadingIcon({
+                class: [
+                  textFieldStaticClass("leadingIcon"),
+                  themeClasses.leadingIcon,
+                  local.slotClasses?.leadingIcon,
+                ],
+              })}
+            >
+              {leadingIcon()}
+            </div>
+          </Show>
+          <Show when={trailingIcon() && !showError()}>
+            <div
+              data-invalid={local.invalid ? "" : undefined}
+              data-disabled={others.disabled ? "" : undefined}
+              class={styles().trailingIcon({
+                class: [
+                  textFieldStaticClass("trailingIcon"),
+                  themeClasses.trailingIcon,
+                  local.slotClasses?.trailingIcon,
+                ],
+              })}
+            >
+              {trailingIcon()}
+            </div>
+          </Show>
+          <Show when={showError()}>
+            <div
+              data-invalid={local.invalid ? "" : undefined}
+              data-disabled={others.disabled ? "" : undefined}
+              class={styles().errorIcon({
+                class: [
+                  textFieldStaticClass("errorIcon"),
+                  themeClasses.errorIcon,
+                  local.slotClasses?.errorIcon,
+                ],
+              })}
+            >
+              {local.errorIcon as unknown as JSX.Element}
+            </div>
+          </Show>
         </div>
       </Show>
       <Show when={showError()}>
         <KTextField.ErrorMessage
           class={styles().supportText({
             class: [
-              "text-content-danger",
+              "text-content-danger mt-1.5",
               textFieldStaticClass("errorMessage"),
               themeClasses.errorMessage,
               local.slotClasses?.errorMessage,

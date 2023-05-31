@@ -4,14 +4,14 @@ import { JSX } from "solid-js";
 import { SlotProp } from "../utils/slot";
 import { AlertVariants } from "./alert.styles";
 
-export type AlertSlots = "root" | "startDecorator" | "endDecorator";
+export type AlertSlots = "root" | "leadingSection" | "trailingSection";
 
 export type AlertStatus = Exclude<AlertVariants["status"], undefined>;
 
 export interface AlertProps extends KAlert.AlertRootProps, AlertVariants, SlotProp<AlertSlots> {
   /** The element to show before the alert content. */
-  startDecorator?: JSX.Element | ((status: AlertStatus) => JSX.Element);
+  leadingSection?: JSX.Element | ((status: AlertStatus) => JSX.Element);
 
   /** The element to show after the alert content. */
-  endDecorator?: JSX.Element | ((status: AlertStatus) => JSX.Element);
+  trailingSection?: JSX.Element | ((status: AlertStatus) => JSX.Element);
 }

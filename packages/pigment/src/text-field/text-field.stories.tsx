@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 
+import { TablerAlertCircleIcon, TablerAlertTriangleIcon } from "../icon";
 import { TextField } from "./text-field";
 import { TextFieldProps } from "./text-field.props";
+import { I18nProvider } from "@kobalte/core";
 
 type Story = StoryObj<TextFieldProps>;
 
@@ -10,7 +12,7 @@ export default {
   title: "TextField",
   argTypes: {
     size: {
-      options: ["sm", "md", "lg"],
+      options: ["md"],
       control: { type: "select" },
     },
     invalid: {
@@ -52,5 +54,21 @@ export const Default: Story = {
     label: "E-mail",
     description: "We will never share your email.",
     errorMessage: "Please enter a valid email address.",
+  },
+};
+
+export const WithIcon: Story = {
+  args: {
+    size: "md",
+    invalid: false,
+    required: false,
+    disabled: false,
+    multiline: false,
+    placeholder: "example@acme.com",
+    label: "E-mail",
+    description: "We will never share your email.",
+    errorMessage: "Please enter a valid email address.",
+    leadingIcon: () => <TablerAlertCircleIcon />,
+    trailingIcon: () => <TablerAlertTriangleIcon />,
   },
 };

@@ -69,7 +69,7 @@ export const TablerAlertTriangleIcon = createIcon({
   ),
 });
 
-export const TablerAlertOctagonIcon = createIcon({
+export const TablerAlertCircleIcon = createIcon({
   path: () => (
     <path
       fill="none"
@@ -77,12 +77,12 @@ export const TablerAlertOctagonIcon = createIcon({
       stroke-linecap="round"
       stroke-linejoin="round"
       stroke-width="2"
-      d="M9.103 2h5.794a3 3 0 0 1 2.122.879l4.101 4.1A3 3 0 0 1 22 9.104v5.794a3 3 0 0 1-.879 2.122l-4.1 4.101a3 3 0 0 1-2.123.88H9.103a3 3 0 0 1-2.122-.88l-4.101-4.1A3 3 0 0 1 2 14.897V9.103a3 3 0 0 1 .879-2.122l4.1-4.101A3 3 0 0 1 9.104 2zM12 8v4m0 4h.01"
+      d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0-18 0m9-4v4m0 4h.01"
     />
   ),
 });
 
-export const TablerHelpHexagonIcon = createIcon({
+export const TablerHelpCircleIcon = createIcon({
   path: () => (
     <g
       fill="none"
@@ -91,8 +91,20 @@ export const TablerHelpHexagonIcon = createIcon({
       stroke-linejoin="round"
       stroke-width="2"
     >
-      <path d="M19.875 6.27c.7.398 1.13 1.143 1.125 1.948v7.284c0 .809-.443 1.555-1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1-2.184 0l-6.75-4.27A2.225 2.225 0 0 1 3 15.502V8.217c0-.809.443-1.554 1.158-1.947l6.75-3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033zM12 16v.01" />
+      <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0-18 0m9 4v.01" />
       <path d="M12 13a2 2 0 0 0 .914-3.782a1.98 1.98 0 0 0-2.414.483" />
+    </g>
+  ),
+});
+
+export const TablerAlertTriangleFilled = createIcon({
+  path: () => (
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+      <path d="M0 0h24v24H0z" />
+      <path
+        fill="currentColor"
+        d="M11.94 2a2.99 2.99 0 0 1 2.45 1.279l.108.164l8.431 14.074a2.989 2.989 0 0 1-2.366 4.474l-.2.009H3.507a2.99 2.99 0 0 1-2.648-4.308l.101-.189L9.385 3.438A2.989 2.989 0 0 1 11.94 2zm.07 14l-.127.007a1 1 0 0 0 0 1.986L12 18l.127-.007a1 1 0 0 0 0-1.986L12.01 16zM12 8a1 1 0 0 0-.993.883L11 9v4l.007.117a1 1 0 0 0 1.986 0L13 13V9l-.007-.117A1 1 0 0 0 12 8z"
+      />
     </g>
   ),
 });

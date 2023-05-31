@@ -19,7 +19,7 @@ export default {
             <Alert
               variant={variant}
               status="success"
-              endDecorator={<CloseButton size="sm" variant={variant} color="success" />}
+              trailingSection={<CloseButton size="sm" variant={variant} color="success" />}
               {...props}
             >
               <span>The data has been successfully saved on our server.</span>
@@ -27,7 +27,7 @@ export default {
             <Alert
               variant={variant}
               status="info"
-              endDecorator={<CloseButton size="sm" variant={variant} color="info" />}
+              trailingSection={<CloseButton size="sm" variant={variant} color="info" />}
               {...props}
             >
               <span class="font-semibold">Software update</span>
@@ -36,7 +36,7 @@ export default {
             <Alert
               variant={variant}
               status="warning"
-              endDecorator={<CloseButton size="sm" variant={variant} color="warning" />}
+              trailingSection={<CloseButton size="sm" variant={variant} color="warning" />}
               {...props}
             >
               <span>Your registration token is about to expire.</span>
@@ -44,7 +44,7 @@ export default {
             <Alert
               variant={variant}
               status="danger"
-              endDecorator={<CloseButton size="sm" variant={variant} color="danger" />}
+              trailingSection={<CloseButton size="sm" variant={variant} color="danger" />}
               {...props}
             >
               <span>There was an error processing your request.</span>
@@ -52,7 +52,7 @@ export default {
             <Alert
               variant={variant}
               status="discovery"
-              endDecorator={<CloseButton size="sm" variant={variant} color="discovery" />}
+              trailingSection={<CloseButton size="sm" variant={variant} color="discovery" />}
               {...props}
             >
               <span>Learn what's new in v1.0.</span>

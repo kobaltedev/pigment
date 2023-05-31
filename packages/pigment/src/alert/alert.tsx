@@ -1,12 +1,12 @@
 import { Alert as KAlert } from "@kobalte/core";
-import { createMemo, JSX, Show, splitProps, ValidComponent } from "solid-js";
+import { createMemo, Show, splitProps, ValidComponent } from "solid-js";
 import { Dynamic } from "solid-js/web";
 
 import {
-  TablerAlertOctagonIcon,
+  TablerAlertCircleIcon,
   TablerAlertTriangleIcon,
   TablerCircleCheckIcon,
-  TablerHelpHexagonIcon,
+  TablerHelpCircleIcon,
   TablerInfoCircleIcon,
 } from "../icon";
 import { mergeThemeProps, useThemeClasses } from "../theme";
@@ -21,8 +21,8 @@ const ALERT_ICONS: Record<Exclude<AlertVariants["status"], undefined>, ValidComp
   success: TablerCircleCheckIcon,
   info: TablerInfoCircleIcon,
   warning: TablerAlertTriangleIcon,
-  danger: TablerAlertOctagonIcon,
-  discovery: TablerHelpHexagonIcon,
+  danger: TablerAlertCircleIcon,
+  discovery: TablerHelpCircleIcon,
 };
 
 export function Alert(props: AlertProps) {
@@ -39,18 +39,18 @@ export function Alert(props: AlertProps) {
 
   const [local, variantProps, others] = splitProps(
     props,
-    ["class", "children", "slotClasses", "startDecorator", "endDecorator"],
+    ["class", "children", "slotClasses", "leadingSection", "trailingSection"],
     ["variant", "status"]
   );
 
   const styles = createMemo(() => alertStyles(variantProps));
 
-  const startDecorator = createMemo(() => {
-    return runIfFn(local.startDecorator, variantProps.status!);
+  const leadingSection = createMemo(() => {
+    return runIfFn(local.leadingSection, variantProps.status!);
   });
 
-  const endDecorator = createMemo(() => {
-    return runIfFn(local.endDecorator, variantProps.status!);
+  const trailingSection = createMemo(() => {
+    return runIfFn(local.trailingSection, variantProps.status!);
   });
 
   return (
@@ -61,16 +61,16 @@ export function Alert(props: AlertProps) {
       {...others}
     >
       <span
-        class={styles().startDecorator({
+        class={styles().leadingSection({
           class: [
-            alertStaticClass("startDecorator"),
-            themeClasses.startDecorator,
-            local.slotClasses?.startDecorator,
+            alertStaticClass("leadingSection"),
+            themeClasses.leadingSection,
+            local.slotClasses?.leadingSection,
           ],
         })}
       >
         <Show
-          when={startDecorator()}
+          when={leadingSection()}
           fallback={
             <Dynamic
               component={ALERT_ICONS[variantProps.status!]}
@@ -79,21 +79,21 @@ export function Alert(props: AlertProps) {
             />
           }
         >
-          {startDecorator()}
+          {leadingSection()}
         </Show>
       </span>
       {local.children}
-      <Show when={endDecorator()}>
+      <Show when={trailingSection()}>
         <span
-          class={styles().endDecorator({
+          class={styles().trailingSection({
             class: [
-              alertStaticClass("endDecorator"),
-              themeClasses.endDecorator,
-              local.slotClasses?.endDecorator,
+              alertStaticClass("trailingSection"),
+              themeClasses.trailingSection,
+              local.slotClasses?.trailingSection,
             ],
           })}
         >
-          {endDecorator()}
+          {trailingSection()}
         </span>
       </Show>
     </KAlert.Root>
