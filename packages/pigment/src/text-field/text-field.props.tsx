@@ -10,9 +10,11 @@ export type TextFieldSlots =
   | "input"
   | "leadingIcon"
   | "trailingIcon"
-  | "errorIcon"
+  | "leadingSection"
+  | "trailingSection"
   | "description"
-  | "errorMessage";
+  | "errorMessage"
+  | "errorIcon";
 
 export interface TextFieldProps
   extends Omit<KTextField.TextFieldRootProps, "ref" | "validationState">,
@@ -24,7 +26,7 @@ export interface TextFieldProps
   /** Additional props to be spread on the inner `<input>` or `<textarea>` element. */
   inputProps?: ComponentProps<"input"> | ComponentProps<"textarea">;
 
-  /** The type of content handled by the text field. */
+  /** When not multiline, the type of content handled by the text field. */
   type?: "text" | "email" | "tel" | "password" | "url" | "number" | "date" | string;
 
   /** The placeholder displayed when the text field is empty. */
@@ -60,11 +62,11 @@ export interface TextFieldProps
   /** The element to show after the input value, in place of the `trailingIcon`. */
   trailingSection?: JSX.Element | (() => JSX.Element);
 
-  /** Width of leading element, used to calculate the input `padding-inline-start`. */
-  leadingSectionWidth?: JSX.CSSProperties["padding-inline-start"];
+  /** Width of leading section (in pixel), used to calculate the input `padding-inline-start`. */
+  leadingSectionWidth?: number;
 
-  /** Width of trailing element, used to calculate the input `padding-inline-end`. */
-  trailingSectionWidth?: JSX.CSSProperties["padding-inline-end"];
+  /** Width of trailing section (in pixel), used to calculate the input `padding-inline-end`. */
+  trailingSectionWidth?: number;
 
   /** The element to show before the input element. */
   leadingAddon?: JSX.Element | (() => JSX.Element);

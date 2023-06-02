@@ -20,17 +20,6 @@ import { textFieldStyles } from "./text-field.styles";
 
 const textFieldStaticClass = makeStaticClass<TextFieldSlots>("text-field");
 
-function getDefaultInputPaddingInline(size: TextFieldProps["size"], hasIcon: boolean) {
-  switch (size) {
-    case "sm":
-      return hasIcon ? "1.75rem" : "0.5rem";
-    case "md":
-      return hasIcon ? "2.5rem" : "0.75rem";
-    case "lg":
-      return hasIcon ? "3rem" : "0.875rem";
-  }
-}
-
 export function TextField(props: TextFieldProps) {
   props = mergeThemeProps(
     "TextField",
@@ -87,6 +76,12 @@ export function TextField(props: TextFieldProps) {
 
   const variantProps = mergeProps(
     {
+      get hasLeadingIcon() {
+        return leadingIcon() != null;
+      },
+      get hasTrailingIcon() {
+        return trailingIcon() != null;
+      },
       get hasLeadingAddon() {
         return leadingAddon() != null;
       },
@@ -96,19 +91,6 @@ export function TextField(props: TextFieldProps) {
     },
     partialVariantProps
   );
-
-  const inputPaddingInlineStart = createMemo(() => {
-    return (
-      local.leadingSectionWidth ?? getDefaultInputPaddingInline(variantProps.size, !!leadingIcon())
-    );
-  });
-
-  const inputPaddingInlineEnd = createMemo(() => {
-    return (
-      local.trailingSectionWidth ??
-      getDefaultInputPaddingInline(variantProps.size, !!trailingIcon())
-    );
-  });
 
   const styles = createMemo(() => textFieldStyles(variantProps));
 
@@ -191,8 +173,8 @@ export function TextField(props: TextFieldProps) {
           <div
             class="relative grow"
             style={{
-              "--pg-text-field-input-ps": inputPaddingInlineStart(),
-              "--pg-text-field-input-pe": inputPaddingInlineEnd(),
+              "--pg-text-field-leading-section-width": `${local.leadingSectionWidth ?? 0}px`,
+              "--pg-text-field-trailing-section-width": `${local.trailingSectionWidth ?? 0}px`,
             }}
           >
             <KTextField.Input
@@ -212,7 +194,16 @@ export function TextField(props: TextFieldProps) {
             />
             <Switch>
               <Match when={leadingSection()}>
-                <div class="absolute inset-y-0 start-0" {...stateDataAttrs}>
+                <div
+                  class={styles().leadingSection({
+                    class: [
+                      textFieldStaticClass("leadingSection"),
+                      themeClasses.leadingSection,
+                      local.slotClasses?.leadingSection,
+                    ],
+                  })}
+                  {...stateDataAttrs}
+                >
                   {leadingSection()}
                 </div>
               </Match>
@@ -234,7 +225,16 @@ export function TextField(props: TextFieldProps) {
             </Switch>
             <Switch>
               <Match when={trailingSection()}>
-                <div class="absolute inset-y-0 end-0" {...stateDataAttrs}>
+                <div
+                  class={styles().trailingSection({
+                    class: [
+                      textFieldStaticClass("trailingSection"),
+                      themeClasses.trailingSection,
+                      local.slotClasses?.trailingSection,
+                    ],
+                  })}
+                  {...stateDataAttrs}
+                >
                   {trailingSection()}
                 </div>
               </Match>

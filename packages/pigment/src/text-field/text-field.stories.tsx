@@ -91,15 +91,15 @@ export const WithSection: Story = {
     label: "E-mail",
     description: "We will never share your email.",
     errorMessage: "Please enter a valid email address.",
-    leadingSectionWidth: "40px",
-    trailingSectionWidth: "2.5rem",
+    leadingSectionWidth: 32,
+    trailingSectionWidth: 32,
     leadingSection: () => (
-      <IconButton variant="text" size="sm" class="mt-1 ms-1" aria-label="">
+      <IconButton variant="text" size="sm" class="my-1 ms-1" aria-label="Eye">
         <TablerEyeIcon />
       </IconButton>
     ),
     trailingSection: () => (
-      <IconButton variant="text" size="sm" class="mt-1 me-1" aria-label="">
+      <IconButton variant="text" size="sm" class="my-1 me-1" aria-label="Eye">
         <TablerEyeIcon />
       </IconButton>
     ),
