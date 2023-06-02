@@ -86,11 +86,11 @@ function colorValueOf(
 
 function inverseGrayscaleValueOf(
   color: Color,
-  darkGrayscaleStep: GrayscaleStep,
+  darkGrayscaleStepOnBrightColor: GrayscaleStep,
   fallback: string
 ): string {
   if (isBrightColor(color)) {
-    return darkGrayscaleValueOf(COLOR_TO_GRAYSCALE_MAP[color], darkGrayscaleStep);
+    return darkGrayscaleValueOf(COLOR_TO_GRAYSCALE_MAP[color], darkGrayscaleStepOnBrightColor);
   }
 
   return fallback;
@@ -131,10 +131,11 @@ export function createTheme(options: CreateThemeOptions): Theme {
             subtler: grayscaleValueOf(lightColors.neutral, "10"),
             subtlest: grayscaleValueOf(lightColors.neutral, "9"),
             disabled: grayscaleValueOf(lightColors.neutral, "8"),
+
             link: {
               DEFAULT: colorValueOf(lightColors.primary, "700", "700", "800"),
-              hover: colorValueOf(lightColors.primary, "800", "800", "900"),
-              active: colorValueOf(lightColors.primary, "900", "900", "950"),
+              hover: colorValueOf(lightColors.primary, "700", "700", "800"),
+              active: colorValueOf(lightColors.primary, "800", "800", "900"),
             },
 
             primary: colorValueOf(lightColors.primary, "700", "700", "800"),
@@ -157,6 +158,35 @@ export function createTheme(options: CreateThemeOptions): Theme {
             onWarningSubtle: colorValueOf(lightColors.warning, "800"),
             onDangerSubtle: colorValueOf(lightColors.danger, "800"),
             onDiscoverySubtle: colorValueOf(lightColors.discovery, "800"),
+          },
+
+          icon: {
+            DEFAULT: grayscaleValueOf(lightColors.neutral, "11"),
+            subtle: grayscaleValueOf(lightColors.neutral, "10"),
+            subtler: grayscaleValueOf(lightColors.neutral, "9"),
+            subtlest: grayscaleValueOf(lightColors.neutral, "8"),
+            disabled: grayscaleValueOf(lightColors.neutral, "7"),
+
+            primary: colorValueOf(lightColors.primary, "600", "600", "700"),
+            success: colorValueOf(lightColors.success, "600", "600", "700"),
+            info: colorValueOf(lightColors.info, "600", "600", "700"),
+            warning: colorValueOf(lightColors.warning, "600", "600", "700"),
+            danger: colorValueOf(lightColors.danger, "600", "600", "700"),
+            discovery: colorValueOf(lightColors.discovery, "600", "600", "700"),
+
+            onPrimary: inverseGrayscaleValueOf(lightColors.primary, "6", white),
+            onSuccess: inverseGrayscaleValueOf(lightColors.success, "6", white),
+            onInfo: inverseGrayscaleValueOf(lightColors.info, "6", white),
+            onWarning: inverseGrayscaleValueOf(lightColors.warning, "6", white),
+            onDanger: inverseGrayscaleValueOf(lightColors.danger, "6", white),
+            onDiscovery: inverseGrayscaleValueOf(lightColors.discovery, "6", white),
+
+            onPrimarySubtle: colorValueOf(lightColors.primary, "600"),
+            onSuccessSubtle: colorValueOf(lightColors.success, "600"),
+            onInfoSubtle: colorValueOf(lightColors.info, "600"),
+            onWarningSubtle: colorValueOf(lightColors.warning, "600"),
+            onDangerSubtle: colorValueOf(lightColors.danger, "600"),
+            onDiscoverySubtle: colorValueOf(lightColors.discovery, "600"),
           },
 
           surface: {
@@ -218,10 +248,11 @@ export function createTheme(options: CreateThemeOptions): Theme {
             subtler: darkGrayscaleValueOf(darkColors.neutral, "10"),
             subtlest: darkGrayscaleValueOf(darkColors.neutral, "9"),
             disabled: darkGrayscaleValueOf(darkColors.neutral, "8"),
+
             link: {
               DEFAULT: colorValueOf(darkColors.primary, "400", "400", "200"),
-              hover: colorValueOf(darkColors.primary, "300", "300", "100"),
-              active: colorValueOf(darkColors.primary, "200", "200", "50"),
+              hover: colorValueOf(darkColors.primary, "400", "400", "200"),
+              active: colorValueOf(darkColors.primary, "300", "300", "100"),
             },
 
             primary: colorValueOf(darkColors.primary, "400", "400", "200"),
@@ -244,6 +275,35 @@ export function createTheme(options: CreateThemeOptions): Theme {
             onWarningSubtle: colorValueOf(darkColors.warning, "200"),
             onDangerSubtle: colorValueOf(darkColors.danger, "200"),
             onDiscoverySubtle: colorValueOf(darkColors.discovery, "200"),
+          },
+
+          icon: {
+            DEFAULT: darkGrayscaleValueOf(darkColors.neutral, "11"),
+            subtle: darkGrayscaleValueOf(darkColors.neutral, "10"),
+            subtler: darkGrayscaleValueOf(darkColors.neutral, "9"),
+            subtlest: darkGrayscaleValueOf(darkColors.neutral, "8"),
+            disabled: darkGrayscaleValueOf(darkColors.neutral, "7"),
+
+            primary: colorValueOf(darkColors.primary, "500", "500", "300"),
+            success: colorValueOf(darkColors.success, "500", "500", "300"),
+            info: colorValueOf(darkColors.info, "500", "500", "300"),
+            warning: colorValueOf(darkColors.warning, "500", "500", "300"),
+            danger: colorValueOf(darkColors.danger, "500", "500", "300"),
+            discovery: colorValueOf(darkColors.discovery, "500", "500", "300"),
+
+            onPrimary: darkGrayscaleValueOf(COLOR_TO_GRAYSCALE_MAP[darkColors.primary], "3"),
+            onSuccess: darkGrayscaleValueOf(COLOR_TO_GRAYSCALE_MAP[darkColors.success], "3"),
+            onInfo: darkGrayscaleValueOf(COLOR_TO_GRAYSCALE_MAP[darkColors.info], "3"),
+            onWarning: darkGrayscaleValueOf(COLOR_TO_GRAYSCALE_MAP[darkColors.warning], "3"),
+            onDanger: darkGrayscaleValueOf(COLOR_TO_GRAYSCALE_MAP[darkColors.danger], "3"),
+            onDiscovery: darkGrayscaleValueOf(COLOR_TO_GRAYSCALE_MAP[darkColors.discovery], "3"),
+
+            onPrimarySubtle: colorValueOf(darkColors.primary, "400"),
+            onSuccessSubtle: colorValueOf(darkColors.success, "400"),
+            onInfoSubtle: colorValueOf(darkColors.info, "400"),
+            onWarningSubtle: colorValueOf(darkColors.warning, "400"),
+            onDangerSubtle: colorValueOf(darkColors.danger, "400"),
+            onDiscoverySubtle: colorValueOf(darkColors.discovery, "400"),
           },
 
           surface: {

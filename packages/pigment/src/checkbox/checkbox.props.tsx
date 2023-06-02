@@ -12,6 +12,7 @@ export type CheckboxSlots =
   | "actionWrapper"
   | "description"
   | "errorMessage"
+  | "errorIcon"
   | "supportTextWrapper";
 
 export interface CheckboxProps
@@ -41,4 +42,7 @@ export interface CheckboxProps
 
   /** The icon to show when the checkbox is in an indeterminate state. */
   indeterminateIcon?: JSX.Element | (() => JSX.Element);
+
+  /** The icon to show next to the error message. */
+  errorIcon?: JSX.Element | (() => JSX.Element);
 }

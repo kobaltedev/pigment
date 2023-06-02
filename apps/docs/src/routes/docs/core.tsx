@@ -72,6 +72,10 @@ const CORE_NAV_SECTIONS: NavSection[] = [
         title: "Icon",
         href: "/docs/core/components/icon",
       },
+      {
+        title: "TextField",
+        href: "/docs/core/components/text-field",
+      },
     ],
   },
   {

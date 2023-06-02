@@ -55,7 +55,7 @@ export function WithDefaultVariant() {
 
 export function WithDashedVariant() {
   return (
-    <Button variant="dashed" startDecorator={<TablerPlusIcon />}>
+    <Button variant="dashed" leadingIcon={<TablerPlusIcon />}>
       Add new row
     </Button>
   );
@@ -94,7 +94,7 @@ export function WithInvertedAlertExample() {
     <Alert
       variant="solid"
       status="info"
-      endDecorator={
+      trailingSection={
         <Button variant="inverted" color="info" size="sm">
           Install now
         </Button>
@@ -111,7 +111,7 @@ export function WithStatusAlertExample() {
     <Alert
       variant="soft"
       status="discovery"
-      endDecorator={
+      trailingSection={
         <div class="flex items-center gap-2.5">
           <Button variant="soft" color="discovery" size="sm">
             Skip
@@ -141,8 +141,8 @@ export function WithSizes() {
 export function WithDecorators() {
   return (
     <div class="flex items-center gap-3">
-      <Button startDecorator={<TablerClipboardIcon />}>Copy to clipboard</Button>
-      <Button endDecorator={<TablerArrowNarrowRightIcon />}>Next</Button>
+      <Button leadingIcon={<TablerClipboardIcon />}>Copy to clipboard</Button>
+      <Button trailingIcon={<TablerArrowNarrowRightIcon />}>Next</Button>
     </div>
   );
 }
@@ -199,7 +199,7 @@ export function WithLoading() {
 
 export function WithCustomLoadingIndicator() {
   return (
-    <Button loading loadingIndicator={<BeatLoaderIcon />}>
+    <Button loading loadingIcon={<BeatLoaderIcon />}>
       Export results
     </Button>
   );
@@ -208,10 +208,10 @@ export function WithCustomLoadingIndicator() {
 export function WithLoadingPlacement() {
   return (
     <div class="flex items-center gap-3">
-      <Button loading loadingPlacement="start">
+      <Button loading loadingPlacement="leading">
         Export results
       </Button>
-      <Button variant="solid" loading loadingPlacement="end">
+      <Button variant="solid" loading loadingPlacement="trailing">
         Create survey
       </Button>
     </div>

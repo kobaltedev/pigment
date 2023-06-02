@@ -44,6 +44,35 @@ export const themeTokensShapeValue = {
       onDiscoverySubtle: "",
     },
 
+    icon: {
+      DEFAULT: "",
+      subtle: "",
+      subtler: "",
+      subtlest: "",
+      disabled: "",
+
+      primary: "",
+      success: "",
+      info: "",
+      warning: "",
+      danger: "",
+      discovery: "",
+
+      onPrimary: "",
+      onSuccess: "",
+      onInfo: "",
+      onWarning: "",
+      onDanger: "",
+      onDiscovery: "",
+
+      onPrimarySubtle: "",
+      onSuccessSubtle: "",
+      onInfoSubtle: "",
+      onWarningSubtle: "",
+      onDangerSubtle: "",
+      onDiscoverySubtle: "",
+    },
+
     surface: {
       DEFAULT: "",
       body: "",

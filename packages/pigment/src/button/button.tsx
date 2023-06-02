@@ -26,17 +26,17 @@ function ButtonIcon(props: ComponentProps<"span">) {
 }
 
 function ButtonContent(props: ButtonContentProps) {
-  const startDecorator = createMemo(() => props.startDecorator as unknown as JSX.Element);
-  const endDecorator = createMemo(() => props.endDecorator as unknown as JSX.Element);
+  const leadingIcon = createMemo(() => props.leadingIcon as unknown as JSX.Element);
+  const trailingIcon = createMemo(() => props.trailingIcon as unknown as JSX.Element);
 
   return (
     <>
-      <Show when={startDecorator()}>
-        <ButtonIcon class={props.startDecoratorClass}>{startDecorator()}</ButtonIcon>
+      <Show when={leadingIcon()}>
+        <ButtonIcon class={props.leadingIconClass}>{leadingIcon()}</ButtonIcon>
       </Show>
       {props.children}
-      <Show when={endDecorator()}>
-        <ButtonIcon class={props.endDecoratorClass}>{endDecorator()}</ButtonIcon>
+      <Show when={trailingIcon()}>
+        <ButtonIcon class={props.trailingIconClass}>{trailingIcon()}</ButtonIcon>
       </Show>
     </>
   );
@@ -59,7 +59,7 @@ function ButtonBase(props: ButtonBaseProps) {
       fullWidth: false,
       disabled: false,
       loadingPlacement: "center",
-      loadingIndicator: (() => <TablerLoaderIcon class="animate-spin" />) as unknown as JSX.Element,
+      loadingIcon: () => <TablerLoaderIcon class="animate-spin" />,
     },
     props
   );
@@ -72,69 +72,69 @@ function ButtonBase(props: ButtonBaseProps) {
       "class",
       "slotClasses",
       "children",
-      "loadingIndicator",
+      "loadingIcon",
       "loadingPlacement",
-      "startDecorator",
-      "endDecorator",
+      "leadingIcon",
+      "trailingIcon",
     ],
     ["variant", "color", "size", "iconOnly", "fullWidth", "loading"]
   );
 
   const styles = createMemo(() => buttonStyles(variantProps));
 
-  const loadingIndicatorClasses = createMemo(() => {
-    return styles().decorator({
+  const loadingIconClasses = createMemo(() => {
+    return styles().icon({
       class: [
         local.loadingPlacement === "center" ? "absolute" : "",
-        buttonStaticClass("loadingIndicator"),
-        themeClasses.loadingIndicator,
-        local.slotClasses?.loadingIndicator,
+        buttonStaticClass("loadingIcon"),
+        themeClasses.loadingIcon,
+        local.slotClasses?.loadingIcon,
       ],
     });
   });
 
-  const loadingIndicator = createMemo(() => local.loadingIndicator as unknown as JSX.Element);
+  const loadingIcon = createMemo(() => local.loadingIcon as unknown as JSX.Element);
 
-  const startDecorator = createMemo(() => {
-    if (variantProps.loading && local.loadingPlacement === "start") {
-      return <ButtonIcon class={loadingIndicatorClasses()}>{loadingIndicator()}</ButtonIcon>;
+  const leadingIcon = createMemo(() => {
+    if (variantProps.loading && local.loadingPlacement === "leading") {
+      return <ButtonIcon class={loadingIconClasses()}>{loadingIcon()}</ButtonIcon>;
     }
 
-    return local.startDecorator;
+    return local.leadingIcon;
   });
 
-  const endDecorator = createMemo(() => {
-    if (variantProps.loading && local.loadingPlacement === "end") {
-      return <ButtonIcon class={loadingIndicatorClasses()}>{loadingIndicator()}</ButtonIcon>;
+  const trailingIcon = createMemo(() => {
+    if (variantProps.loading && local.loadingPlacement === "trailing") {
+      return <ButtonIcon class={loadingIconClasses()}>{loadingIcon()}</ButtonIcon>;
     }
 
-    return local.endDecorator;
+    return local.trailingIcon;
   });
 
-  const startDecoratorClasses = createMemo(() => {
-    if (variantProps.loading && local.loadingPlacement === "start") {
+  const leadingIconClasses = createMemo(() => {
+    if (variantProps.loading && local.loadingPlacement === "leading") {
       return undefined;
     }
 
-    return styles().decorator({
+    return styles().icon({
       class: [
-        buttonStaticClass("startDecorator"),
-        themeClasses.startDecorator,
-        local.slotClasses?.startDecorator,
+        buttonStaticClass("leadingIcon"),
+        themeClasses.leadingIcon,
+        local.slotClasses?.leadingIcon,
       ],
     });
   });
 
-  const endDecoratorClasses = createMemo(() => {
-    if (variantProps.loading && local.loadingPlacement === "end") {
+  const trailingIconClasses = createMemo(() => {
+    if (variantProps.loading && local.loadingPlacement === "trailing") {
       return undefined;
     }
 
-    return styles().decorator({
+    return styles().icon({
       class: [
-        buttonStaticClass("endDecorator"),
-        themeClasses.endDecorator,
-        local.slotClasses?.endDecorator,
+        buttonStaticClass("trailingIcon"),
+        themeClasses.trailingIcon,
+        local.slotClasses?.trailingIcon,
       ],
     });
   });
@@ -142,10 +142,10 @@ function ButtonBase(props: ButtonBaseProps) {
   const content = () => {
     return (
       <ButtonContent
-        startDecoratorClass={startDecoratorClasses()}
-        endDecoratorClass={endDecoratorClasses()}
-        startDecorator={startDecorator()}
-        endDecorator={endDecorator()}
+        leadingIconClass={leadingIconClasses()}
+        trailingIconClass={trailingIconClasses()}
+        leadingIcon={leadingIcon()}
+        trailingIcon={trailingIcon()}
       >
         {local.children}
       </ButtonContent>
@@ -160,7 +160,7 @@ function ButtonBase(props: ButtonBaseProps) {
       {...others}
     >
       <Show when={variantProps.loading && local.loadingPlacement === "center"} fallback={content()}>
-        <ButtonIcon class={loadingIndicatorClasses()}>{loadingIndicator()}</ButtonIcon>
+        <ButtonIcon class={loadingIconClasses()}>{loadingIcon()}</ButtonIcon>
         <Show when={!variantProps.iconOnly}>
           <span class={styles().loadingContent()}>{content()}</span>
         </Show>
@@ -200,7 +200,7 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
 
   const [local, variantProps, others] = splitProps(
     props,
-    ["class", "slotClasses", "children", "startDecorator", "endDecorator"],
+    ["class", "slotClasses", "children", "leadingIcon", "trailingIcon"],
     ["variant", "size", "iconOnly", "fullWidth"]
   );
 
@@ -219,22 +219,22 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
       {...others}
     >
       <ButtonContent
-        startDecoratorClass={styles().decorator({
+        leadingIconClass={styles().icon({
           class: [
-            linkButtonStaticClass("startDecorator"),
-            themeClasses.startDecorator,
-            local.slotClasses?.startDecorator,
+            linkButtonStaticClass("leadingIcon"),
+            themeClasses.leadingIcon,
+            local.slotClasses?.leadingIcon,
           ],
         })}
-        endDecoratorClass={styles().decorator({
+        trailingIconClass={styles().icon({
           class: [
-            linkButtonStaticClass("endDecorator"),
-            themeClasses.endDecorator,
-            local.slotClasses?.endDecorator,
+            linkButtonStaticClass("trailingIcon"),
+            themeClasses.trailingIcon,
+            local.slotClasses?.trailingIcon,
           ],
         })}
-        startDecorator={local.startDecorator}
-        endDecorator={local.endDecorator}
+        leadingIcon={local.leadingIcon}
+        trailingIcon={local.trailingIcon}
       >
         {local.children}
       </ButtonContent>

@@ -187,6 +187,49 @@ export const TablerQuestionMarkIcon = createIcon({
   ),
 });
 
+export const TablerMailIcon = createIcon({
+  path: () => (
+    <g
+      fill="none"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+    >
+      <path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" />
+      <path d="m3 7l9 6l9-6" />
+    </g>
+  ),
+});
+
+export const TablerQuestionCircleIcon = createIcon({
+  path: () => (
+    <g
+      fill="none"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+    >
+      <path d="M12 16v.01M12 13a2 2 0 0 0 .914-3.782a1.98 1.98 0 0 0-2.414.483" />
+      <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0" />
+    </g>
+  ),
+});
+
+export const TablerSearchIcon = createIcon({
+  path: () => (
+    <path
+      fill="none"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m18 11l-6-6"
+    />
+  ),
+});
+
 export const BeatLoaderIcon = createIcon({
   viewBox: "0 0 120 30",
   path: () => (

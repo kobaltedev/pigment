@@ -11,6 +11,14 @@ type Story = StoryObj<ButtonProps>;
 export default {
   title: "Button",
   argTypes: {
+    variant: {
+      options: ["solid", "soft", "inverted", "default", "dashed", "text", "link"],
+      control: { type: "select" },
+    },
+    color: {
+      options: ["primary", "success", "info", "warning", "danger", "discovery"],
+      control: { type: "select" },
+    },
     fullWidth: {
       control: { type: "boolean" },
     },
@@ -21,7 +29,7 @@ export default {
       control: { type: "boolean" },
     },
     loadingPlacement: {
-      options: ["center", "start", "end"],
+      options: ["center", "leading", "trailing"],
       control: { type: "radio" },
     },
     children: {
@@ -84,7 +92,7 @@ export const Sizes: Story = {
   ),
 };
 
-export const Decorators: Story = {
+export const Icons: Story = {
   args: {
     children: "Button",
   },
@@ -92,18 +100,18 @@ export const Decorators: Story = {
   render: props => (
     <div class="flex flex-col gap-4">
       <div class="flex items-center space-x-4">
-        <Button {...props} size="xs" startDecorator={<TablerLoaderIcon />} />
-        <Button {...props} size="sm" startDecorator={<TablerLoaderIcon />} />
-        <Button {...props} size="md" startDecorator={<TablerLoaderIcon />} />
-        <Button {...props} size="lg" startDecorator={<TablerLoaderIcon />} />
-        <Button {...props} size="xl" startDecorator={<TablerLoaderIcon />} />
+        <Button {...props} size="xs" leadingIcon={<TablerLoaderIcon />} />
+        <Button {...props} size="sm" leadingIcon={<TablerLoaderIcon />} />
+        <Button {...props} size="md" leadingIcon={<TablerLoaderIcon />} />
+        <Button {...props} size="lg" leadingIcon={<TablerLoaderIcon />} />
+        <Button {...props} size="xl" leadingIcon={<TablerLoaderIcon />} />
       </div>
       <div class="flex items-center space-x-4">
-        <Button {...props} size="xs" endDecorator={<TablerLoaderIcon />} />
-        <Button {...props} size="sm" endDecorator={<TablerLoaderIcon />} />
-        <Button {...props} size="md" endDecorator={<TablerLoaderIcon />} />
-        <Button {...props} size="lg" endDecorator={<TablerLoaderIcon />} />
-        <Button {...props} size="xl" endDecorator={<TablerLoaderIcon />} />
+        <Button {...props} size="xs" trailingIcon={<TablerLoaderIcon />} />
+        <Button {...props} size="sm" trailingIcon={<TablerLoaderIcon />} />
+        <Button {...props} size="md" trailingIcon={<TablerLoaderIcon />} />
+        <Button {...props} size="lg" trailingIcon={<TablerLoaderIcon />} />
+        <Button {...props} size="xl" trailingIcon={<TablerLoaderIcon />} />
       </div>
     </div>
   ),

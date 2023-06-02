@@ -115,7 +115,7 @@ The `dashed` variant can be used as a visual placeholder for insertion/creation 
 </Preview>
 
 ```tsx
-<Button variant="dashed" startDecorator={<AddIcon />}>
+<Button variant="dashed" leadingIcon={<AddIcon />}>
   Add new row
 </Button>
 ```
@@ -152,11 +152,11 @@ The `inverted` variant supports all Pigment semantic colors and can be used to c
   <WithInvertedAlertExample />
 </Preview>
 
-```tsx
+```tsx {2,4}
 <Alert
   variant="solid"
   status="info"
-  endDecorator={
+  trailingSection={
     <Button variant="inverted" color="info" size="sm">
       Install now
     </Button>
@@ -196,11 +196,11 @@ These buttons works well when paired with others _status-related_ components lik
   <WithStatusAlertExample />
 </Preview>
 
-```tsx
+```tsx {2,5,8}
 <Alert
   variant="soft"
   status="discovery"
-  endDecorator={
+  trailingSection={
     <div class="flex items-center gap-2.5">
       <Button variant="soft" color="discovery" size="sm">
         Skip
@@ -231,17 +231,17 @@ The Button component comes in five sizes: `xs`, `sm`, `md` (default), `lg` and `
 <Button size="xl">Button</Button>
 ```
 
-### Decorators
+### Icons
 
-Use the `startDecorator` and `endDecorator` props to append icons to either side of the button.
+Use the `leadingIcon` and `trailingIcon` props to append icons to either side of the button.
 
 <Preview>
   <WithDecorators />
 </Preview>
 
 ```tsx
-<Button startDecorator={<ClipboardIcon />}>Copy to clipboard</Button>
-<Button endDecorator={<ArrowNarrowRightIcon />}>Next</Button>
+<Button leadingIcon={<ClipboardIcon />}>Copy to clipboard</Button>
+<Button trailingIcon={<ArrowNarrowRightIcon />}>Next</Button>
 ```
 
 If you want to create your own icon components check out the [Icon](/docs/core/components/icon) documentation.
@@ -292,37 +292,37 @@ Use the `loading` prop to indicate a busy button.
 <Button variant="link" loading>Link</Button>
 ```
 
-#### Loading indicator
+#### Loading icon
 
-By default, a loading button show a spinner and leave the button's width unchanged. Use the `loadingIndicator` prop to replace it with a custom indicator.
+By default, a loading button show a spinner and leave the button's width unchanged. Use the `loadingIcon` prop to replace it with a custom icon.
 
 <Preview>
   <WithCustomLoadingIndicator />
 </Preview>
 
 ```tsx
-<Button loading loadingIndicator={<BeatLoaderIcon />}>
+<Button loading loadingIcon={<BeatLoaderIcon />}>
   Export results
 </Button>
 ```
 
 #### Loading placement
 
-The `loadingPlacement` prop is used to define the placement of the button's loading indicator and supports the following values:
+The `loadingPlacement` prop is used to define the placement of the button's loading icon and supports the following values:
 
-- `center` (default): The loading indicator replaces the button's content when in the loading state.
-- `start`: The loading indicator replaces the `startDecorator` when in the loading state.
-- `end`: The loading indicator replaces the `endDecorator` when in the loading state.
+- `center` (default): The loading icon replaces the button's content when in the loading state.
+- `leading`: The loading icon replaces the `leadingIcon` when in the loading state.
+- `trailing`: The loading icon replaces the `trailingIcon` when in the loading state.
 
 <Preview>
   <WithLoadingPlacement />
 </Preview>
 
 ```tsx
-<Button loading loadingPlacement="start">
+<Button loading loadingPlacement="leading">
   Export results
 </Button>
-<Button variant="solid" loading loadingPlacement="end">
+<Button variant="solid" loading loadingPlacement="trailing">
   Create survey
 </Button>
 ```
@@ -391,10 +391,10 @@ The name `Button` can be used when providing [default props](/docs/core/customiz
 | variant          | `"solid" \| "soft" \| "inverted" \| "default" \| "dashed" \| "text" \| "link"` <br/> **default:** `default` <br/> The visual style of the button. |
 | color            | `"primary" \| "success" \| "info" \| "warning" \| "danger" \| "discovery"` <br/> **default:** `primary` <br/> The color of the button.            |
 | size             | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` <br/> **default:** `md` <br/> The size of the button.                                                      |
-| startDecorator   | `JSX.Element \| (() => JSX.Element)` <br/> The element to show before the button content.                                                         |
-| endDecorator     | `JSX.Element \| (() => JSX.Element)` <br/> The element to show after the button content.                                                          |
-| loadingIndicator | `JSX.Element \| (() => JSX.Element)` <br/> The element to show when the button is in loading state.                                               |
-| loadingPlacement | `"center" \| "start" \| "end"` <br/> **default:** `center` <br/> The placement of the loading indicator when the button is in a loading state.    |
+| leadingIcon      | `JSX.Element \| (() => JSX.Element)` <br/> The icon to show before the button content.                                                            |
+| trailingIcon     | `JSX.Element \| (() => JSX.Element)` <br/> The icon to show after the button content.                                                             |
+| loadingIcon      | `JSX.Element \| (() => JSX.Element)` <br/> The icon to show when the button is in loading state.                                                  |
+| loadingPlacement | `"center" \| "leading" \| "trailing"` <br/> **default:** `center` <br/> The placement of the loading icon when the button is in a loading state.  |
 | loading          | `boolean` <br/> **default:** `false` <br/> Whether the button is in loading state.                                                                |
 | disabled         | `boolean` <br/> **default:** `false` <br/> Whether the button is disabled.                                                                        |
 | fullWith         | `boolean` <br/> **default:** `false` <br/> Whether the button should take all available width.                                                    |
@@ -402,12 +402,12 @@ The name `Button` can be used when providing [default props](/docs/core/customiz
 
 #### Slots
 
-| Name             | CSS selector                   | Rendered element | Description       |
-| :--------------- | :----------------------------- | :--------------- | ----------------- |
-| root             | `.pg-button-root`              | `button`         | Root element      |
-| startDecorator   | `.pg-button-start-decorator`   | `span`           | Start decorator   |
-| endDecorator     | `.pg-button-end-decorator`     | `span`           | End decorator     |
-| loadingIndicator | `.pg-button-loading-indicator` | `span`           | Loading indicator |
+| Name         | CSS selector               | Rendered element | Description   |
+| :----------- | :------------------------- | :--------------- | ------------- |
+| root         | `.pg-button-root`          | `button`         | Root element  |
+| leadingIcon  | `.pg-button-leading-icon`  | `span`           | Leading icon  |
+| trailingIcon | `.pg-button-trailing-icon` | `span`           | Trailing icon |
+| loadingIcon  | `.pg-button-loading-icon`  | `span`           | Loading icon  |
 
 ### IconButton
 
@@ -417,24 +417,24 @@ The name `Button` can be used when providing [default props](/docs/core/customiz
 
 #### Props
 
-| Prop             | Description                                                                                                                                         |
-| :--------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
-| aria-label       | `"string"` <br/> An accessible label for the button.                                                                                                |
-| variant          | `"solid" \| "soft" \| "inverted" \| "default" \| "dashed" \| "text" \| "link"` <br/> **default:** `default` <br/> The visual style of the button.   |
-| color            | `"primary" \| "neutral" \| "success" \| "info" \| "warning" \| "danger" \| "discovery"` <br/> **default:** `primary` <br/> The color of the button. |
-| size             | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` <br/> **default:** `md` <br/> The size of the button.                                                        |
-| loadingIndicator | `JSX.Element \| (() => JSX.Element)` <br/> The element to show when the button is in loading state.                                                 |
-| loading          | `boolean` <br/> **default:** `false` <br/> Whether the button is in loading state.                                                                  |
-| disabled         | `boolean` <br/> **default:** `false` <br/> Whether the button is disabled.                                                                          |
-| fullWith         | `boolean` <br/> **default:** `false` <br/> Whether the button should take all available width.                                                      |
-| slotClasses      | `Partial<Record<IconButtonSlots, string>>` <br/> Addiitonal CSS classes to be passed to the component slots.                                        |
+| Prop        | Description                                                                                                                                         |
+| :---------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
+| aria-label  | `"string"` <br/> An accessible label for the button.                                                                                                |
+| variant     | `"solid" \| "soft" \| "inverted" \| "default" \| "dashed" \| "text" \| "link"` <br/> **default:** `default` <br/> The visual style of the button.   |
+| color       | `"primary" \| "neutral" \| "success" \| "info" \| "warning" \| "danger" \| "discovery"` <br/> **default:** `primary` <br/> The color of the button. |
+| size        | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` <br/> **default:** `md` <br/> The size of the button.                                                        |
+| loadingIcon | `JSX.Element \| (() => JSX.Element)` <br/> The icon to show when the button is in loading state.                                                    |
+| loading     | `boolean` <br/> **default:** `false` <br/> Whether the button is in loading state.                                                                  |
+| disabled    | `boolean` <br/> **default:** `false` <br/> Whether the button is disabled.                                                                          |
+| fullWith    | `boolean` <br/> **default:** `false` <br/> Whether the button should take all available width.                                                      |
+| slotClasses | `Partial<Record<IconButtonSlots, string>>` <br/> Addiitonal CSS classes to be passed to the component slots.                                        |
 
 #### Slots
 
-| Name             | CSS selector                   | Rendered element | Description       |
-| :--------------- | :----------------------------- | :--------------- | ----------------- |
-| root             | `.pg-button-root`              | `button`         | Root element      |
-| loadingIndicator | `.pg-button-loading-indicator` | `span`           | Loading indicator |
+| Name        | CSS selector              | Rendered element | Description  |
+| :---------- | :------------------------ | :--------------- | ------------ |
+| root        | `.pg-button-root`         | `button`         | Root element |
+| loadingIcon | `.pg-button-loading-icon` | `span`           | Loading icon |
 
 ### LinkButton
 
@@ -444,24 +444,24 @@ The name `LinkButton` can be used when providing [default props](/docs/core/cust
 
 #### Props
 
-| Prop           | Description                                                                                                                                         |
-| :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
-| variant        | `"solid" \| "soft" \| "inverted" \| "default" \| "dashed" \| "text" \| "link"` <br/> **default:** `default` <br/> The visual style of the button.   |
-| color          | `"primary" \| "neutral" \| "success" \| "info" \| "warning" \| "danger" \| "discovery"` <br/> **default:** `primary` <br/> The color of the button. |
-| size           | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` <br/> **default:** `md` <br/> The size of the button.                                                        |
-| startDecorator | `JSX.Element \| (() => JSX.Element)` <br/> The element to show before the button content.                                                           |
-| endDecorator   | `JSX.Element \| (() => JSX.Element)` <br/> The element to show after the button content.                                                            |
-| disabled       | `boolean` <br/> **default:** `false` <br/> Whether the button is disabled.                                                                          |
-| fullWith       | `boolean` <br/> **default:** `false` <br/> Whether the button should take all available width.                                                      |
-| slotClasses    | `Partial<Record<LinkButtonSlots, string>>` <br/> Addiitonal CSS classes to be passed to the component slots.                                        |
+| Prop         | Description                                                                                                                                         |
+| :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
+| variant      | `"solid" \| "soft" \| "inverted" \| "default" \| "dashed" \| "text" \| "link"` <br/> **default:** `default` <br/> The visual style of the button.   |
+| color        | `"primary" \| "neutral" \| "success" \| "info" \| "warning" \| "danger" \| "discovery"` <br/> **default:** `primary` <br/> The color of the button. |
+| size         | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` <br/> **default:** `md` <br/> The size of the button.                                                        |
+| leadingIcon  | `JSX.Element \| (() => JSX.Element)` <br/> The icon to show before the button content.                                                              |
+| trailingIcon | `JSX.Element \| (() => JSX.Element)` <br/> The icon to show after the button content.                                                               |
+| disabled     | `boolean` <br/> **default:** `false` <br/> Whether the button is disabled.                                                                          |
+| fullWith     | `boolean` <br/> **default:** `false` <br/> Whether the button should take all available width.                                                      |
+| slotClasses  | `Partial<Record<LinkButtonSlots, string>>` <br/> Addiitonal CSS classes to be passed to the component slots.                                        |
 
 #### Slots
 
-| Name           | CSS selector                      | Rendered element | Description     |
-| :------------- | :-------------------------------- | :--------------- | --------------- |
-| root           | `.pg-link-button-root`            | `a`              | Root element    |
-| startDecorator | `.pg-link-button-start-decorator` | `span`           | Start decorator |
-| endDecorator   | `.pg-link-button-end-decorator`   | `span`           | End decorator   |
+| Name         | CSS selector                    | Rendered element | Description   |
+| :----------- | :------------------------------ | :--------------- | ------------- |
+| root         | `.pg-link-button-root`          | `a`              | Root element  |
+| leadingIcon  | `.pg-link-button-leading-icon`  | `span`           | Leading icon  |
+| trailingIcon | `.pg-link-button-trailing-icon` | `span`           | Trailing icon |
 
 ### LinkIconButton
 

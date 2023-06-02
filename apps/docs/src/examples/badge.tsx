@@ -22,8 +22,8 @@ export function WithInvertedVariant() {
     <Button
       variant="solid"
       color="primary"
-      startDecorator={<TablerTagIcon />}
-      endDecorator={
+      leadingIcon={<TablerTagIcon />}
+      trailingIcon={
         <Badge variant="inverted" color="primary" class="flex">
           12
         </Badge>

@@ -1,0 +1,334 @@
+import { Preview } from "../../../../components";
+import {
+  WithBasicUsage,
+  WithControlledValue,
+  WithCustomAddon,
+  WithCustomInputAddon,
+  WithDefaultValue,
+  WithDescription,
+  WithDisabledState,
+  WithIcon,
+  WithInvalidState,
+  WithLabel,
+  WithMultiline,
+  WithSection,
+  WithSize,
+  WithTextAddon,
+} from "../../../../examples/text-field";
+
+# TextField
+
+A text input that allow users to input custom text entries with a keyboard.
+
+## Import
+
+```tsx
+import { TextField } from "@kobalte/pigment";
+```
+
+## Basic usage
+
+<Preview>
+  <WithBasicUsage />
+</Preview>
+
+```tsx
+<TextField placeholder="E-mail" />
+```
+
+### Default value
+
+An initial, uncontrolled value can be provided using the `defaultValue` prop.
+
+<Preview>
+  <WithDefaultValue />
+</Preview>
+
+```tsx
+<TextField defaultValue="example@acme.com" placeholder="E-mail" />
+```
+
+### Controlled value
+
+The `value` prop can be used to make the value controlled. The `onChange` event is fired when the user type into the input.
+
+<Preview>
+  <WithControlledValue />
+</Preview>
+
+```tsx {4,8}
+import { TextField } from "@kobalte/pigment";
+import { createSignal } from "solid-js";
+
+function ControlledExample() {
+  const [value, setValue] = createSignal("example@acme.com");
+
+  return (
+    <div>
+      <TextField value={value()} onChange={setValue} placeholder="E-mail" />
+      <p class="text-sm text-content-subtle mt-2">
+        Value: <span class="font-medium italic">{value()}</span>
+      </p>
+    </div>
+  );
+}
+```
+
+### Multiline
+
+Use the `multiline` prop to create a multiline text-field. Internally an HTML `textarea` will be rendered instead of an `input`.
+
+<Preview>
+  <WithMultiline />
+</Preview>
+
+```tsx
+<TextField multiline placeholder="Tell us more about you..." />
+```
+
+## Customization
+
+### Sizes
+
+The TextField component comes in three sizes: `sm`, `md` (default) and `lg`.
+
+<Preview>
+  <WithSize />
+</Preview>
+
+```tsx
+<TextField size="sm" placeholder="Small" />
+<TextField size="md" placeholder="Medium" />
+<TextField size="lg" placeholder="Large" />
+```
+
+### Label
+
+Use the `label` prop to provide an accessible label for the text-field.
+
+<Preview>
+  <WithLabel />
+</Preview>
+
+```tsx
+<TextField label="E-mail" placeholder="example@acme.com" />
+```
+
+### Description
+
+Use the `description` prop to associate additional help text with a text-field.
+
+<Preview>
+  <WithDescription />
+</Preview>
+
+```tsx {2}
+<TextField
+  label="E-mail"
+  description="We'll never share your email"
+  placeholder="example@acme.com"
+/>
+```
+
+### Icons
+
+Use the `leadingIcon` and `trailingIcon` props to append icons to either side of the text-field's input.
+
+<Preview>
+  <WithIcon />
+</Preview>
+
+```tsx {3,8}
+<TextField
+  label="E-mail"
+  placeholder="example@acme.com"
+  leadingIcon={<MailIcon />}
+/>
+<TextField
+  label="Account number"
+  placeholder="000-00-0000"
+  trailingIcon={<QuestionCircleIcon />}
+/>
+```
+
+If you want to create your own icon components check out the [Icon](/docs/core/components/icon) documentation.
+
+### Sections
+
+Use the `leadingSection` and `trailingSection` props to append more complex elements than icons to either side of the text-field's input.
+
+Additionally, the `leadingSectionWidth` and `trailingSectionWidth` can be used to adjust the text-field's input padding to prevent overlapping with the input value.
+
+<Preview>
+  <WithSection />
+</Preview>
+
+```tsx {2-7,11-16}
+<TextField
+  placeholder="Search..."
+  leadingSectionWidth={32}
+  leadingSection={
+    <IconButton variant="text" size="sm" class="my-1 ms-1" aria-label="Perform search">
+      <TablerSearchIcon />
+    </IconButton>
+  }
+/>
+<TextField
+  placeholder="E-mail"
+  trailingSectionWidth={94}
+  trailingSection={
+    <Button variant="solid" size="sm" class="my-1 me-1">
+      Subscribe
+    </Button>
+  }
+/>
+```
+
+### Addons
+
+The `leadingAddon` and `trailingAddon` can be used to append elements to either side of the text-field, **outside** the input.
+
+<Preview>
+  <WithTextAddon />
+</Preview>
+
+```tsx
+<TextField placeholder="Twitter" leadingAddon="@" />
+<TextField placeholder="Height" trailingAddon="inch" />
+<TextField placeholder="Amount" leadingAddon="$" trailingAddon="USD" />
+```
+
+If your addons are more complex than text, you can pass `JSX` elements as value for each prop.
+
+Use Pigment's `InputAddon` component to get the same look and feel of _"string addons"_:
+
+<Preview>
+  <WithCustomInputAddon />
+</Preview>
+
+```tsx {2-6,10-14}
+<TextField
+  placeholder="Twitter"
+  leadingAddon={
+    <InputAddon class="px-2">
+      <TablerTwitterIcon class="text-xl" />
+    </InputAddon>
+  }
+/>
+<TextField
+  placeholder="Discord"
+  trailingAddon={
+    <InputAddon placement="trailing" class="px-2">
+      <TablerDiscordIcon class="text-xl" />
+    </InputAddon>
+  }
+/>
+```
+
+Or use any component you like for a custom result:
+
+<Preview>
+  <WithCustomAddon />
+</Preview>
+
+```tsx {2-6}
+<TextField
+  placeholder="E-mail"
+  trailingAddon={
+    <Button variant="solid" class="rounded-s-none -ms-px">
+      Subscribe
+    </Button>
+  }
+/>
+```
+
+### Invalid state
+
+Use the `invalid` prop to mark the text-field as invalid. Additionally, you can pass an extra error message using the `errorMessage` prop.
+
+<Preview>
+  <WithInvalidState />
+</Preview>
+
+```tsx {3-4}
+<TextField
+  placeholder="E-mail"
+  defaultValue="example@acme"
+  errorMessage="Please enter a valid email address"
+  invalid
+/>
+```
+
+### Disabled state
+
+Use the `disabled` prop to disable the text-field.
+
+<Preview>
+  <WithDisabledState />
+</Preview>
+
+```tsx {4}
+<TextField
+  placeholder="example@acme.com"
+  label="E-mail"
+  description="We'll never share your email"
+  disabled
+/>
+```
+
+## HTML Form integration
+
+[TODO]
+
+## API Reference
+
+### Component identifier
+
+The name `TextField` can be used when providing [default props](/docs/core/customization/themed-components#default-props) and [slot classes](/docs/core/customization/themed-components#slot-classes) in the theme.
+
+### Props
+
+| Prop                 | Description                                                                                                                                                               |
+| :------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| ref                  | `Ref<HTMLInputElement \| HTMLTextAreaElement>` <br/> A ref to the inner `<input>` or `<textarea>` element.                                                                |
+| inputProps           | `ComponentProps<"input"> \| ComponentProps<"textarea">` <br/> Additional props to be spread on the inner `<input>` or `<textarea>` element.                               |
+| type                 | `"text" \| "email" \| "tel" \| "password" \| "url" \| "number" \| "date"` <br/> When not multiline, the type of content handled by the text field.                        |
+| placeholder          | `string` <br/> The placeholder displayed when the text-field is empty.                                                                                                    |
+| value                | `string` <br/> The controlled value of the text-field.                                                                                                                    |
+| defaultValue         | `string` <br/> The default value when initially rendered. Useful when you do not need to control the value.                                                               |
+| onChange             | `(value: string) => void` <br/> Event handler called when the value of the text-field changes.                                                                            |
+| name                 | `string` <br/> The name of the text-field, used when submitting an HTML form. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname). |
+| required             | `boolean` <br/> **default:** `false` <br/> Whether the user must fill the text-field before the owning form can be submitted.                                             |
+| disabled             | `boolean` <br/> **default:** `false` <br/> Whether the text-field is disabled.                                                                                            |
+| readOnly             | `boolean` <br/> **default:** `false` <br/> Whether the text-field can be checked but not changed by the user.                                                             |
+| invalid              | `boolean` <br/> **default:** `false` <br/> Whether the text-field is invalid regarding the validation rules.                                                              |
+| multiline            | `boolean` <br/> **default:** `false` <br/> Whether the text field should render a `<textarea>` instead of an `<input>`.                                                   |
+| size                 | `"sm" \| "md" \| "lg"` <br/> **default:** `"md"` <br/> The size of the text-field.                                                                                        |
+| label                | `JSX.Element \| (() => JSX.Element)` <br/> The label that gives the user information on the text-field.                                                                   |
+| description          | `JSX.Element \| (() => JSX.Element)` <br/> The description that gives the user more information on the text-field.                                                        |
+| errorMessage         | `JSX.Element \| (() => JSX.Element)` <br/> The error message that gives the user information about how to fix a validation error on the text-field.                       |
+| errorIcon            | `JSX.Element \| (() => JSX.Element)` <br/> The icon to show next to the error message.                                                                                    |
+| leadingIcon          | `JSX.Element \| (() => JSX.Element)` <br/> The icon to show before the input value.                                                                                       |
+| trailingIcon         | `JSX.Element \| (() => JSX.Element)` <br/> The icon to show after the input value.                                                                                        |
+| leadingSection       | `JSX.Element \| (() => JSX.Element)` <br/> The element to show before the input value, in place of the `leadingIcon`.                                                     |
+| trailingSection      | `JSX.Element \| (() => JSX.Element)` <br/> The element to show after the input value, in place of the `trailingIcon`.                                                     |
+| leadingSectionWidth  | `number` <br/> Width of leading section (in pixel), used to calculate the input `padding-inline-start`.                                                                   |
+| trailingSectionWidth | `number` <br/> Width of trailing section (in pixel), used to calculate the input `padding-inline-end`.                                                                    |
+| leadingAddon         | `JSX.Element \| (() => JSX.Element)` <br/> The element to show before the input element.                                                                                  |
+| trailingAddon        | `JSX.Element \| (() => JSX.Element)` <br/> The element to show after the input element.                                                                                   |
+| slotClasses          | `Partial<Record<TextFieldSlots, string>>` <br/> Addiitonal CSS classes to be passed to the component slots.                                                               |
+
+### Slots
+
+| Name            | CSS selector                      | Rendered element      | Description                   |
+| :-------------- | :-------------------------------- | :-------------------- | ----------------------------- |
+| root            | `.pg-text-field-root`             | `div`                 | Root element                  |
+| label           | `.pg-text-field-label`            | `label`               | Label element                 |
+| input           | `.pg-text-field-input`            | `input` \| `textarea` | Input element                 |
+| leadingIcon     | `.pg-text-field-leading-icon`     | `div`                 | Leading icon wrapper          |
+| trailingIcon    | `.pg-text-field-trailing-icon`    | `div`                 | Trailing icon wrapper         |
+| leadingSection  | `.pg-text-field-leading-section`  | `div`                 | Leading section wrapper       |
+| trailingSection | `.pg-text-field-trailing-section` | `div`                 | Trailing section wrapper      |
+| description     | `.pg-text-field-description`      | `div`                 | Description/help text element |
+| errorMessage    | `.pg-text-field-error-message`    | `div`                 | Error message element         |
+| errorIcon       | `.pg-text-field-error-icon`       | `div`                 | Error icon wrapper            |

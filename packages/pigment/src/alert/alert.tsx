@@ -1,13 +1,13 @@
 import { Alert as KAlert } from "@kobalte/core";
-import { createMemo, JSX, Show, splitProps, ValidComponent } from "solid-js";
+import { createMemo, Show, splitProps, ValidComponent } from "solid-js";
 import { Dynamic } from "solid-js/web";
 
 import {
-  TablerAlertOctagonIcon,
-  TablerAlertTriangleIcon,
-  TablerCircleCheckIcon,
-  TablerHelpHexagonIcon,
-  TablerInfoCircleIcon,
+  TablerAlertCircleFilledIcon,
+  TablerAlertTriangleFilledIcon,
+  TablerCircleCheckFilledIcon,
+  TablerHelpCircleFilledIcon,
+  TablerInfoCircleFilledIcon,
 } from "../icon";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
@@ -18,11 +18,11 @@ import { alertStyles, AlertVariants } from "./alert.styles";
 const alertStaticClass = makeStaticClass<AlertSlots>("alert");
 
 const ALERT_ICONS: Record<Exclude<AlertVariants["status"], undefined>, ValidComponent> = {
-  success: TablerCircleCheckIcon,
-  info: TablerInfoCircleIcon,
-  warning: TablerAlertTriangleIcon,
-  danger: TablerAlertOctagonIcon,
-  discovery: TablerHelpHexagonIcon,
+  success: TablerCircleCheckFilledIcon,
+  info: TablerInfoCircleFilledIcon,
+  warning: TablerAlertTriangleFilledIcon,
+  danger: TablerAlertCircleFilledIcon,
+  discovery: TablerHelpCircleFilledIcon,
 };
 
 export function Alert(props: AlertProps) {
@@ -39,18 +39,22 @@ export function Alert(props: AlertProps) {
 
   const [local, variantProps, others] = splitProps(
     props,
-    ["class", "children", "slotClasses", "startDecorator", "endDecorator"],
+    ["class", "children", "slotClasses", "icon", "leadingSection", "trailingSection"],
     ["variant", "status"]
   );
 
   const styles = createMemo(() => alertStyles(variantProps));
 
-  const startDecorator = createMemo(() => {
-    return runIfFn(local.startDecorator, variantProps.status!);
+  const icon = createMemo(() => {
+    return runIfFn(local.icon, variantProps.status!);
   });
 
-  const endDecorator = createMemo(() => {
-    return runIfFn(local.endDecorator, variantProps.status!);
+  const leadingSection = createMemo(() => {
+    return runIfFn(local.leadingSection, variantProps.status!);
+  });
+
+  const trailingSection = createMemo(() => {
+    return runIfFn(local.trailingSection, variantProps.status!);
   });
 
   return (
@@ -61,39 +65,47 @@ export function Alert(props: AlertProps) {
       {...others}
     >
       <span
-        class={styles().startDecorator({
+        class={styles().leadingSection({
           class: [
-            alertStaticClass("startDecorator"),
-            themeClasses.startDecorator,
-            local.slotClasses?.startDecorator,
+            alertStaticClass("leadingSection"),
+            themeClasses.leadingSection,
+            local.slotClasses?.leadingSection,
           ],
         })}
       >
         <Show
-          when={startDecorator()}
+          when={leadingSection()}
           fallback={
-            <Dynamic
-              component={ALERT_ICONS[variantProps.status!]}
+            <span
               aria-hidden="true"
-              class="h-6 w-6"
-            />
+              class={styles().icon({
+                class: [alertStaticClass("icon"), themeClasses.icon, local.slotClasses?.icon],
+              })}
+            >
+              <Show
+                when={icon()}
+                fallback={<Dynamic component={ALERT_ICONS[variantProps.status!]} />}
+              >
+                {icon()}
+              </Show>
+            </span>
           }
         >
-          {startDecorator()}
+          {leadingSection()}
         </Show>
       </span>
       {local.children}
-      <Show when={endDecorator()}>
+      <Show when={trailingSection()}>
         <span
-          class={styles().endDecorator({
+          class={styles().trailingSection({
             class: [
-              alertStaticClass("endDecorator"),
-              themeClasses.endDecorator,
-              local.slotClasses?.endDecorator,
+              alertStaticClass("trailingSection"),
+              themeClasses.trailingSection,
+              local.slotClasses?.trailingSection,
             ],
           })}
         >
-          {endDecorator()}
+          {trailingSection()}
         </span>
       </Show>
     </KAlert.Root>

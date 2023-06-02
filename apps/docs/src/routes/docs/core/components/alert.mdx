@@ -66,9 +66,9 @@ The Alert component supports six different status which affect the color scheme 
 </Alert>
 ```
 
-### Decorators
+### Sections
 
-Use the `startDecorator` and `endDecorator` props to append actions and icons to either side of the alert.
+Use the `leadingSection` and `trailingSection` props to append content to either side of the alert.
 
 <Preview isCentered={false}>
   <WithDecorator />
@@ -78,8 +78,8 @@ Use the `startDecorator` and `endDecorator` props to append actions and icons to
 <Alert
   variant="soft"
   color="info"
-  startDecorator={<RocketIcon class="h-6 w-6" />}
-  endDecorator={<CloseButton variant="soft" color="info" size="sm" />}
+  icon={<RocketIcon />}
+  trailingSection={<CloseButton variant="soft" color="info" size="sm" />}
 >
   A new software update is available.
 </Alert>
@@ -93,18 +93,18 @@ The name `Alert` can be used when providing [default props](/docs/core/customiza
 
 ### Props
 
-| Prop           | Description                                                                                                                                                                          |
-| :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| variant        | `"solid" \| "soft"` <br/> **default:** `"soft"` <br/> The visual style of the alert.                                                                                                 |
-| status         | `"success" \| "info" \| "warning" \| "danger" \| "discovery"` <br/> **default:** `"info"` <br/> The status of the alert, which affect the color scheme and default status icon used. |
-| startDecorator | `JSX.Element \| ((status) => JSX.Element)` <br/> The element to show before the alert content.                                                                                       |
-| endDecorator   | `JSX.Element \| ((status) => JSX.Element)` <br/> The element to show after the alert content.                                                                                        |
-| slotClasses    | `Partial<Record<AlertSlots, string>>` <br/> Addiitonal CSS classes to be passed to the component slots.                                                                              |
+| Prop            | Description                                                                                                                                                                          |
+| :-------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| variant         | `"solid" \| "soft"` <br/> **default:** `"soft"` <br/> The visual style of the alert.                                                                                                 |
+| status          | `"success" \| "info" \| "warning" \| "danger" \| "discovery"` <br/> **default:** `"info"` <br/> The status of the alert, which affect the color scheme and default status icon used. |
+| leadingSection  | `JSX.Element \| ((status) => JSX.Element)` <br/> The element to show before the alert content.                                                                                       |
+| trailingSection | `JSX.Element \| ((status) => JSX.Element)` <br/> The element to show after the alert content.                                                                                        |
+| slotClasses     | `Partial<Record<AlertSlots, string>>` <br/> Addiitonal CSS classes to be passed to the component slots.                                                                              |
 
 ### Slots
 
-| Name           | CSS selector                | Rendered element | Description     |
-| :------------- | :-------------------------- | :--------------- | --------------- |
-| root           | `.pg-alert-root`            | `div`            | Root element    |
-| startDecorator | `.pg-alert-start-decorator` | `span`           | Start decorator |
-| endDecorator   | `.pg-alert-end-decorator`   | `span`           | End decorator   |
+| Name            | CSS selector                 | Rendered element | Description      |
+| :-------------- | :--------------------------- | :--------------- | ---------------- |
+| root            | `.pg-alert-root`             | `div`            | Root element     |
+| leadingSection  | `.pg-alert-leading-section`  | `span`           | Leading section  |
+| trailingSection | `.pg-alert-trailing-section` | `span`           | Trailing section |

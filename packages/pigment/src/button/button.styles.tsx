@@ -1,5 +1,7 @@
 import { tv, VariantProps } from "tailwind-variants";
 
+import { focusStyles } from "../utils/styles";
+
 export const buttonStyles = tv({
   slots: {
     root: [
@@ -12,9 +14,9 @@ export const buttonStyles = tv({
       "cursor-pointer no-underline",
       "transition-colors",
       "ui-disabled:text-content-disabled ui-disabled:opacity-50 ui-disabled:pointer-events-none ui-disabled:shadow-none",
-      "outline-none focus-visible:outline-ring focus-visible:outline-2 focus-visible:outline-offset-2",
+      focusStyles,
     ],
-    decorator: "display-inherit",
+    icon: "display-inherit",
     loadingContent: "inline-flex items-center justify-center opacity-0",
   },
   variants: {
@@ -57,7 +59,7 @@ export const buttonStyles = tv({
       },
       link: {
         root: [
-          "text-content-link border-transparent !h-auto !p-0 underline-offset-4",
+          "text-content-link border-transparent !h-auto !p-0 underline-offset-2",
           "ui-not-disabled:hover:text-content-link-hover",
           "ui-not-disabled:active:text-content-link-active",
           "ui-not-disabled:hover:underline ui-not-disabled:focus-visible:underline",
@@ -340,11 +342,11 @@ export const buttonStyles = tv({
 
     // button
     { iconOnly: false, fullWidth: false, class: { root: "w-auto" } },
-    { size: "xs", iconOnly: false, class: { root: "px-2 text-xs", decorator: "text-base" } },
-    { size: "sm", iconOnly: false, class: { root: "px-2.5 text-sm", decorator: "text-xl" } },
-    { size: "md", iconOnly: false, class: { root: "px-3 text-base", decorator: "text-2xl" } },
-    { size: "lg", iconOnly: false, class: { root: "px-4 text-xl", decorator: "text-[28px]" } },
-    { size: "xl", iconOnly: false, class: { root: "px-5 text-2xl", decorator: "text-[32px]" } },
+    { size: "xs", iconOnly: false, class: { root: "px-2 text-xs", icon: "text-base" } },
+    { size: "sm", iconOnly: false, class: { root: "px-2.5 text-sm", icon: "text-xl" } },
+    { size: "md", iconOnly: false, class: { root: "px-3 text-base", icon: "text-2xl" } },
+    { size: "lg", iconOnly: false, class: { root: "px-4 text-xl", icon: "text-[28px]" } },
+    { size: "xl", iconOnly: false, class: { root: "px-5 text-2xl", icon: "text-[32px]" } },
 
     // icon only button
     { size: "xs", iconOnly: true, class: { root: "text-base" } },
