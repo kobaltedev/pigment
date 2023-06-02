@@ -1,5 +1,5 @@
-import { Polymorphic, TextField as KTextField } from "@kobalte/core";
-import { mergeDefaultProps } from "@kobalte/utils";
+import { TextField as KTextField } from "@kobalte/core";
+import { isString } from "@kobalte/utils";
 import {
   ComponentProps,
   createMemo,
@@ -12,18 +12,22 @@ import {
 } from "solid-js";
 
 import { TablerAlertCircleFilledIcon } from "../icon";
+import { InputAddon } from "../input";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
-import { InputAddonProps, TextFieldProps, TextFieldSlots } from "./text-field.props";
-import { inputAddonStyles, textFieldStyles } from "./text-field.styles";
+import { TextFieldProps, TextFieldSlots } from "./text-field.props";
+import { textFieldStyles } from "./text-field.styles";
 
 const textFieldStaticClass = makeStaticClass<TextFieldSlots>("text-field");
 
 function getDefaultInputPaddingInline(size: TextFieldProps["size"], hasIcon: boolean) {
   switch (size) {
+    case "sm":
+      return hasIcon ? "1.75rem" : "0.5rem";
     case "md":
-    default:
       return hasIcon ? "2.5rem" : "0.75rem";
+    case "lg":
+      return hasIcon ? "3rem" : "0.875rem";
   }
 }
 
@@ -108,6 +112,11 @@ export function TextField(props: TextFieldProps) {
 
   const styles = createMemo(() => textFieldStyles(variantProps));
 
+  const stateDataAttrs = createMemo(() => ({
+    "data-invalid": local.invalid ? "" : undefined,
+    "data-disabled": others.disabled ? "" : undefined,
+  }));
+
   return (
     <KTextField.Root
       class={styles().root({
@@ -174,7 +183,11 @@ export function TextField(props: TextFieldProps) {
         }
       >
         <div class="flex items-stretch self-stretch">
-          {leadingAddon()}
+          <Show when={isString(leadingAddon())} fallback={leadingAddon()}>
+            <InputAddon size={variantProps.size} placement="leading" {...stateDataAttrs}>
+              {leadingAddon()}
+            </InputAddon>
+          </Show>
           <div
             class="relative grow"
             style={{
@@ -199,19 +212,13 @@ export function TextField(props: TextFieldProps) {
             />
             <Switch>
               <Match when={leadingSection()}>
-                <div
-                  data-invalid={local.invalid ? "" : undefined}
-                  data-disabled={others.disabled ? "" : undefined}
-                  class="absolute inset-y-0 start-0"
-                >
+                <div class="absolute inset-y-0 start-0" {...stateDataAttrs}>
                   {leadingSection()}
                 </div>
               </Match>
               <Match when={leadingIcon()}>
                 <div
                   aria-hidden="true"
-                  data-invalid={local.invalid ? "" : undefined}
-                  data-disabled={others.disabled ? "" : undefined}
                   class={styles().leadingIcon({
                     class: [
                       textFieldStaticClass("leadingIcon"),
@@ -219,6 +226,7 @@ export function TextField(props: TextFieldProps) {
                       local.slotClasses?.leadingIcon,
                     ],
                   })}
+                  {...stateDataAttrs}
                 >
                   {leadingIcon()}
                 </div>
@@ -226,19 +234,13 @@ export function TextField(props: TextFieldProps) {
             </Switch>
             <Switch>
               <Match when={trailingSection()}>
-                <div
-                  data-invalid={local.invalid ? "" : undefined}
-                  data-disabled={others.disabled ? "" : undefined}
-                  class="absolute inset-y-0 end-0"
-                >
+                <div class="absolute inset-y-0 end-0" {...stateDataAttrs}>
                   {trailingSection()}
                 </div>
               </Match>
               <Match when={trailingIcon()}>
                 <div
                   aria-hidden="true"
-                  data-invalid={local.invalid ? "" : undefined}
-                  data-disabled={others.disabled ? "" : undefined}
                   class={styles().trailingIcon({
                     class: [
                       textFieldStaticClass("trailingIcon"),
@@ -246,13 +248,18 @@ export function TextField(props: TextFieldProps) {
                       local.slotClasses?.trailingIcon,
                     ],
                   })}
+                  {...stateDataAttrs}
                 >
                   {trailingIcon()}
                 </div>
               </Match>
             </Switch>
           </div>
-          {trailingAddon()}
+          <Show when={isString(trailingAddon())} fallback={trailingAddon()}>
+            <InputAddon size={variantProps.size} placement="trailing" {...stateDataAttrs}>
+              {trailingAddon()}
+            </InputAddon>
+          </Show>
         </div>
       </Show>
       <Show when={local.invalid && errorMessage()}>
@@ -275,6 +282,7 @@ export function TextField(props: TextFieldProps) {
                 local.slotClasses?.errorIcon,
               ],
             })}
+            {...stateDataAttrs}
           >
             {local.errorIcon as unknown as JSX.Element}
           </div>
@@ -283,20 +291,4 @@ export function TextField(props: TextFieldProps) {
       </Show>
     </KTextField.Root>
   );
-}
-
-export function InputAddon(props: InputAddonProps) {
-  props = mergeDefaultProps(
-    {
-      size: "md",
-      trailing: false,
-    },
-    props
-  );
-
-  const [local, variantProps, others] = splitProps(props, ["class"], ["size", "trailing"]);
-
-  const styles = createMemo(() => inputAddonStyles(variantProps));
-
-  return <Polymorphic as="div" class={styles().root({ class: local.class })} {...others} />;
 }

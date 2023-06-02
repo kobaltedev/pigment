@@ -1,9 +1,11 @@
+// Use exact path to prevent circular deps.
 import { AlertProps, AlertSlots } from "../alert/alert.props";
 import { AnchorProps, AnchorSlots } from "../anchor/anchor.props";
 import { BadgeProps, BadgeSlots } from "../badge/badge.props";
 import { ButtonProps, ButtonSlots, LinkButtonProps, LinkButtonSlots } from "../button/button.props";
 import { CheckboxProps, CheckboxSlots } from "../checkbox/checkbox.props";
 import { CloseButtonProps, CloseButtonSlots } from "../close-button/close-button.props";
+import { InputAddonProps, InputAddonSlots } from "../input/input-addon.props";
 //import { SelectProps, SelectSlots } from "../select/select.props";
 import { SurfaceProps, SurfaceSlots } from "../surface/surface.props";
 import { TextFieldProps, TextFieldSlots } from "../text-field/text-field.props";
@@ -25,6 +27,7 @@ export interface ComponentsConfig {
   Button?: ComponentTheme<ButtonProps, ButtonSlots>;
   Checkbox?: ComponentTheme<CheckboxProps, CheckboxSlots>;
   CloseButton?: ComponentTheme<CloseButtonProps, CloseButtonSlots>;
+  InputAddon?: ComponentTheme<InputAddonProps, InputAddonSlots>;
   LinkButton?: ComponentTheme<LinkButtonProps, LinkButtonSlots>;
   //Select?: ComponentTheme<SelectProps<any>, SelectSlots>;
   Surface?: ComponentTheme<SurfaceProps, SurfaceSlots>;

@@ -15,6 +15,7 @@ export * from "./button";
 export * from "./checkbox";
 export * from "./close-button";
 export * from "./icon";
+export * from "./input";
 //export * from "./select";
 export * from "./surface";
 export * from "./text-field";

@@ -1,9 +1,8 @@
-import { AsChildProp, TextField as KTextField } from "@kobalte/core";
-import { OverrideComponentProps } from "@kobalte/utils";
+import { TextField as KTextField } from "@kobalte/core";
 import { ComponentProps, JSX, Ref } from "solid-js";
 
 import { SlotProp } from "../utils/slot";
-import { InputAddonVariants, TextFieldVariants } from "./text-field.styles";
+import { TextFieldVariants } from "./text-field.styles";
 
 export type TextFieldSlots =
   | "root"
@@ -73,6 +72,3 @@ export interface TextFieldProps
   /** The element to show after the input element. */
   trailingAddon?: JSX.Element | (() => JSX.Element);
 }
-
-export interface InputAddonProps
-  extends OverrideComponentProps<"div", InputAddonVariants & AsChildProp> {}

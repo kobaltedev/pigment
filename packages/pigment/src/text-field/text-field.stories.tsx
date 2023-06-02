@@ -4,12 +4,14 @@ import type { ComponentProps } from "solid-js";
 import { Button, IconButton } from "../button";
 import {
   TablerAlertCircleFilledIcon,
+  TablerAlertTriangleFilledIcon,
   TablerEyeIcon,
   TablerHelpCircleFilledIcon,
   TablerInfoCircleFilledIcon,
 } from "../icon";
-import { InputAddon, TextField } from "./text-field";
+import { TextField } from "./text-field";
 import { TextFieldProps } from "./text-field.props";
+import { InputAddon } from "../input";
 
 type Story = StoryObj<TextFieldProps>;
 
@@ -17,7 +19,7 @@ export default {
   title: "TextField",
   argTypes: {
     size: {
-      options: ["md"],
+      options: ["sm", "md", "lg"],
       control: { type: "select" },
     },
     invalid: {
@@ -78,7 +80,7 @@ export const WithIcon: Story = {
   },
 };
 
-export const WithElement: Story = {
+export const WithSection: Story = {
   args: {
     size: "md",
     invalid: false,
@@ -104,7 +106,7 @@ export const WithElement: Story = {
   },
 };
 
-export const WithInputAddon: Story = {
+export const WithStringAddon: Story = {
   args: {
     size: "md",
     invalid: false,
@@ -114,8 +116,50 @@ export const WithInputAddon: Story = {
     placeholder: "acme",
     label: "Website",
     errorMessage: "Please enter a valid url.",
-    leadingAddon: () => <InputAddon>https://</InputAddon>,
-    trailingAddon: () => <InputAddon trailing>.com</InputAddon>,
+    leadingAddon: "https://",
+    trailingAddon: ".com",
+  },
+};
+
+export const WithCustomInputAddon: Story = {
+  args: {
+    size: "md",
+    invalid: false,
+    required: false,
+    disabled: false,
+    multiline: false,
+    placeholder: "acme",
+    label: "Website",
+    errorMessage: "Please enter a valid url.",
+    leadingAddon: () => (
+      <InputAddon class="px-2">
+        <TablerEyeIcon class="text-xl" />
+      </InputAddon>
+    ),
+    trailingAddon: () => (
+      <InputAddon placement="trailing" class="px-2">
+        <TablerAlertTriangleFilledIcon class="text-xl" />
+      </InputAddon>
+    ),
+  },
+};
+
+export const WithMultipleCustomInputAddon: Story = {
+  args: {
+    size: "md",
+    invalid: false,
+    required: false,
+    disabled: false,
+    multiline: false,
+    placeholder: "acme",
+    label: "Website",
+    errorMessage: "Please enter a valid url.",
+    leadingAddon: () => (
+      <div class="flex divide-x divide-line">
+        <InputAddon>$</InputAddon>
+        <InputAddon placement="center">0.00</InputAddon>
+      </div>
+    ),
   },
 };
 
