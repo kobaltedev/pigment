@@ -2,16 +2,10 @@ import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 
 import { Button, IconButton } from "../button";
-import {
-  TablerAlertCircleFilledIcon,
-  TablerAlertTriangleFilledIcon,
-  TablerEyeIcon,
-  TablerHelpCircleFilledIcon,
-  TablerInfoCircleFilledIcon,
-} from "../icon";
+import { Icon } from "../icon";
+import { InputAddon } from "../input";
 import { TextField } from "./text-field";
 import { TextFieldProps } from "./text-field.props";
-import { InputAddon } from "../input";
 
 type Story = StoryObj<TextFieldProps>;
 
@@ -75,8 +69,8 @@ export const WithIcon: Story = {
     label: "E-mail",
     description: "We will never share your email.",
     errorMessage: "Please enter a valid email address.",
-    leadingIcon: () => <TablerAlertCircleFilledIcon />,
-    trailingIcon: () => <TablerHelpCircleFilledIcon />,
+    leadingIcon: "i-tabler-alert-circle-filled",
+    trailingIcon: "i-tabler-help-circle-filled",
   },
 };
 
@@ -94,14 +88,10 @@ export const WithSection: Story = {
     leadingSectionWidth: 32,
     trailingSectionWidth: 32,
     leadingSection: () => (
-      <IconButton variant="text" size="sm" class="my-1 ms-1" aria-label="Eye">
-        <TablerEyeIcon />
-      </IconButton>
+      <IconButton variant="text" size="sm" class="my-1 ms-1" aria-label="Eye" icon="i-tabler-eye" />
     ),
     trailingSection: () => (
-      <IconButton variant="text" size="sm" class="my-1 me-1" aria-label="Eye">
-        <TablerEyeIcon />
-      </IconButton>
+      <IconButton variant="text" size="sm" class="my-1 me-1" aria-label="Eye" icon="i-tabler-eye" />
     ),
   },
 };
@@ -133,12 +123,12 @@ export const WithCustomInputAddon: Story = {
     errorMessage: "Please enter a valid url.",
     leadingAddon: () => (
       <InputAddon class="px-2">
-        <TablerEyeIcon class="text-xl" />
+        <Icon name="i-tabler-eye" class="text-xl" />
       </InputAddon>
     ),
     trailingAddon: () => (
       <InputAddon placement="trailing" class="px-2">
-        <TablerAlertTriangleFilledIcon class="text-xl" />
+        <Icon name="i-tabler-alert-triangle-filled" class="text-xl" />
       </InputAddon>
     ),
   },
@@ -174,9 +164,11 @@ export const WithCustomAddon: Story = {
     label: "Website",
     errorMessage: "Please enter a valid input.",
     leadingAddon: () => (
-      <IconButton class="border-e-0 rounded-e-none shadow-none" aria-label="">
-        <TablerInfoCircleFilledIcon />
-      </IconButton>
+      <IconButton
+        class="border-e-0 rounded-e-none shadow-none"
+        aria-label=""
+        icon="i-tabler-info-circle-filled"
+      />
     ),
     trailingAddon: () => (
       <Button variant="solid" class="-ml-px rounded-s-none shadow-none">

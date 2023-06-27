@@ -11,9 +11,9 @@ import {
   Switch,
 } from "solid-js";
 
-import { TablerAlertCircleFilledIcon } from "../icon";
+import { Icon } from "../icon";
 import { InputAddon } from "../input";
-import { mergeThemeProps, useThemeClasses } from "../theme";
+import { mergeThemeProps, useThemeClasses, useThemeContext } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
 import { TextFieldProps, TextFieldSlots } from "./text-field.props";
 import { textFieldStyles } from "./text-field.styles";
@@ -21,6 +21,8 @@ import { textFieldStyles } from "./text-field.styles";
 const textFieldStaticClass = makeStaticClass<TextFieldSlots>("text-field");
 
 export function TextField(props: TextFieldProps) {
+  const themeContext = useThemeContext();
+
   props = mergeThemeProps(
     "TextField",
     {
@@ -29,7 +31,7 @@ export function TextField(props: TextFieldProps) {
       invalid: false,
       disabled: false,
       inputProps: {},
-      errorIcon: () => <TablerAlertCircleFilledIcon />,
+      errorIcon: themeContext.errorIcon,
     },
     props
   );
@@ -67,12 +69,34 @@ export function TextField(props: TextFieldProps) {
   const label = createMemo(() => local.label as unknown as JSX.Element);
   const description = createMemo(() => local.description as unknown as JSX.Element);
   const errorMessage = createMemo(() => local.errorMessage as unknown as JSX.Element);
-  const leadingIcon = createMemo(() => local.leadingIcon as unknown as JSX.Element);
-  const trailingIcon = createMemo(() => local.trailingIcon as unknown as JSX.Element);
   const leadingSection = createMemo(() => local.leadingSection as unknown as JSX.Element);
   const trailingSection = createMemo(() => local.trailingSection as unknown as JSX.Element);
   const leadingAddon = createMemo(() => local.leadingAddon as unknown as JSX.Element);
   const trailingAddon = createMemo(() => local.trailingAddon as unknown as JSX.Element);
+
+  const leadingIcon = createMemo(() => {
+    if (isString(local.leadingIcon)) {
+      return <Icon name={local.leadingIcon as string} />;
+    }
+
+    return local.leadingIcon as unknown as JSX.Element;
+  });
+
+  const trailingIcon = createMemo(() => {
+    if (isString(local.trailingIcon)) {
+      return <Icon name={local.trailingIcon as string} />;
+    }
+
+    return local.trailingIcon as unknown as JSX.Element;
+  });
+
+  const errorIcon = createMemo(() => {
+    if (isString(local.errorIcon)) {
+      return <Icon name={local.errorIcon as string} />;
+    }
+
+    return local.errorIcon as unknown as JSX.Element;
+  });
 
   const variantProps = mergeProps(
     {
@@ -284,7 +308,7 @@ export function TextField(props: TextFieldProps) {
             })}
             {...stateDataAttrs}
           >
-            {local.errorIcon as unknown as JSX.Element}
+            {errorIcon()}
           </div>
           {errorMessage()}
         </KTextField.ErrorMessage>

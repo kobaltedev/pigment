@@ -1,8 +1,6 @@
 import { Badge, Button } from "@kobalte/pigment";
 import { For } from "solid-js";
 
-import { TablerTagIcon } from "../components";
-
 export function WithBasicUsage() {
   return <Badge>v1.0.0</Badge>;
 }
@@ -22,7 +20,7 @@ export function WithInvertedVariant() {
     <Button
       variant="solid"
       color="primary"
-      leadingIcon={<TablerTagIcon />}
+      leadingIcon="i-tabler-tag"
       trailingIcon={
         <Badge variant="inverted" color="primary" class="flex">
           12

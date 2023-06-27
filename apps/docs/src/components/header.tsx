@@ -1,10 +1,9 @@
-import { As, Badge, LinkButton, LinkIconButton } from "@kobalte/pigment";
+import { As, Badge, Icon, LinkButton, LinkIconButton } from "@kobalte/pigment";
 import { Link, useMatch } from "@solidjs/router";
 import { JSX, ParentProps } from "solid-js";
 
 import { LATEST_CORE_CHANGELOG_URL, LATEST_CORE_VERSION_NAME } from "../VERSIONS";
 import { ColorSchemeSelector } from "./color-scheme-selector";
-import { TablerGitHubIcon } from "./icons";
 
 interface HeaderProps {
   drawerContent?: JSX.Element;
@@ -68,7 +67,7 @@ export function Header(props: HeaderProps) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <TablerGitHubIcon class="h-5 w-5" />
+            <Icon name="i-tabler-brand-github" class="h-5 w-5" />
           </As>
         </LinkIconButton>
         <ColorSchemeSelector />

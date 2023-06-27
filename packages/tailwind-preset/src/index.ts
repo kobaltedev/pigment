@@ -2,6 +2,7 @@ import kobaltePlugin from "@kobalte/tailwindcss";
 import { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
 import animatePlugin from "tailwindcss-animate";
+import { iconsPlugin, getIconCollections } from "@egoist/tailwindcss-icons";
 
 import { baseTheme } from "./base-theme";
 import { colors } from "./colors";
@@ -45,6 +46,9 @@ function preset(options: PigmentOptions | undefined = {}): Partial<Config> {
     plugins: [
       animatePlugin,
       kobaltePlugin,
+      iconsPlugin({
+        collections: getIconCollections(options?.iconCollections ?? ["tabler"]),
+      }),
       plugin(({ addBase, addUtilities }) => {
         const themes: Array<Theme> = options.themes ?? [baseTheme];
 

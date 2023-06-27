@@ -2,14 +2,7 @@ import { Alert, As, Button, IconButton, LinkButton, LinkIconButton } from "@koba
 import { Link } from "@solidjs/router";
 import { For } from "solid-js";
 
-import {
-  BeatLoaderIcon,
-  TablerArrowNarrowRightIcon,
-  TablerClipboardIcon,
-  TablerGitHubIcon,
-  TablerPlusIcon,
-  TablerTrashIcon,
-} from "../components";
+import { BeatLoaderIcon } from "../components";
 
 export function WithBasicUsage() {
   return <Button>New pull request</Button>;
@@ -55,7 +48,7 @@ export function WithDefaultVariant() {
 
 export function WithDashedVariant() {
   return (
-    <Button variant="dashed" leadingIcon={<TablerPlusIcon />}>
+    <Button variant="dashed" leadingIcon="i-tabler-plus">
       Add new row
     </Button>
   );
@@ -138,11 +131,11 @@ export function WithSizes() {
   );
 }
 
-export function WithDecorators() {
+export function WithIcons() {
   return (
     <div class="flex items-center gap-3">
-      <Button leadingIcon={<TablerClipboardIcon />}>Copy to clipboard</Button>
-      <Button trailingIcon={<TablerArrowNarrowRightIcon />}>Next</Button>
+      <Button leadingIcon="i-tabler-clipboard">Copy to clipboard</Button>
+      <Button trailingIcon="i-tabler-arrow-narrow-right">Next</Button>
     </div>
   );
 }
@@ -219,11 +212,7 @@ export function WithLoadingPlacement() {
 }
 
 export function WithIconButton() {
-  return (
-    <IconButton aria-label="Delete">
-      <TablerTrashIcon />
-    </IconButton>
-  );
+  return <IconButton aria-label="Delete" icon="i-tabler-trash" />;
 }
 
 export function WithLinkButton() {
@@ -236,9 +225,8 @@ export function WithLinkButton() {
         href="https://github.com/kobaltedev/pigment"
         target="_blank"
         aria-label="Open on GitHub"
-      >
-        <TablerGitHubIcon />
-      </LinkIconButton>
+        icon="i-tabler-brand-github"
+      />
     </div>
   );
 }

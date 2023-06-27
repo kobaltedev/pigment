@@ -47,14 +47,23 @@ export interface TextFieldProps
   /** The error message that gives the user information about how to fix a validation error on the text field. */
   errorMessage?: JSX.Element | (() => JSX.Element);
 
-  /** The icon to show next to the error message. */
-  errorIcon?: JSX.Element | (() => JSX.Element);
+  /**
+   * The icon to show next to the error message.
+   * Can be an Iconify icon name following the pattern `i-{collection_name}-{icon_name}`.
+   */
+  errorIcon?: string | JSX.Element | (() => JSX.Element);
 
-  /** The icon to show before the input value. */
-  leadingIcon?: JSX.Element | (() => JSX.Element);
+  /**
+   * The icon to show before the input value.
+   * Can be an Iconify icon name following the pattern `i-{collection_name}-{icon_name}`.
+   */
+  leadingIcon?: string | JSX.Element | (() => JSX.Element);
 
-  /** The icon to show after the input value. */
-  trailingIcon?: JSX.Element | (() => JSX.Element);
+  /**
+   * The icon to show after the input value.
+   * Can be an Iconify icon name following the pattern `i-{collection_name}-{icon_name}`.
+   */
+  trailingIcon?: string | JSX.Element | (() => JSX.Element);
 
   /** The element to show before the input value, in place of the `leadingIcon`. */
   leadingSection?: JSX.Element | (() => JSX.Element);

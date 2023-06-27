@@ -1,14 +1,8 @@
 import { Alert as KAlert } from "@kobalte/core";
-import { createMemo, Show, splitProps, ValidComponent } from "solid-js";
-import { Dynamic } from "solid-js/web";
+import { isString } from "@kobalte/utils";
+import { createMemo, Show, splitProps } from "solid-js";
 
-import {
-  TablerAlertCircleFilledIcon,
-  TablerAlertTriangleFilledIcon,
-  TablerCircleCheckFilledIcon,
-  TablerHelpCircleFilledIcon,
-  TablerInfoCircleFilledIcon,
-} from "../icon";
+import { Icon } from "../icon";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
 import { runIfFn } from "../utils/run-if-fn";
@@ -17,12 +11,12 @@ import { alertStyles, AlertVariants } from "./alert.styles";
 
 const alertStaticClass = makeStaticClass<AlertSlots>("alert");
 
-const ALERT_ICONS: Record<Exclude<AlertVariants["status"], undefined>, ValidComponent> = {
-  success: TablerCircleCheckFilledIcon,
-  info: TablerInfoCircleFilledIcon,
-  warning: TablerAlertTriangleFilledIcon,
-  danger: TablerAlertCircleFilledIcon,
-  discovery: TablerHelpCircleFilledIcon,
+const ALERT_ICONS: Record<Exclude<AlertVariants["status"], undefined>, string> = {
+  success: "i-tabler-circle-check-filled",
+  info: "i-tabler-info-circle-filled",
+  warning: "i-tabler-alert-triangle-filled",
+  danger: "i-tabler-alert-circle-filled",
+  discovery: "i-tabler-help-circle-filled",
 };
 
 export function Alert(props: AlertProps) {
@@ -82,11 +76,10 @@ export function Alert(props: AlertProps) {
                 class: [alertStaticClass("icon"), themeClasses.icon, local.slotClasses?.icon],
               })}
             >
-              <Show
-                when={icon()}
-                fallback={<Dynamic component={ALERT_ICONS[variantProps.status!]} />}
-              >
-                {icon()}
+              <Show when={icon()} fallback={<Icon name={ALERT_ICONS[variantProps.status!]} />}>
+                <Show when={isString(icon())} fallback={icon()}>
+                  <Icon name={icon() as string} />
+                </Show>
               </Show>
             </span>
           }

@@ -1,12 +1,5 @@
-import { Button, IconButton, InputAddon, TextField } from "@kobalte/pigment";
+import { Button, Icon, IconButton, InputAddon, TextField } from "@kobalte/pigment";
 import { createSignal } from "solid-js";
-import {
-  TablerDiscordIcon,
-  TablerMailIcon,
-  TablerQuestionCircleIcon,
-  TablerSearchIcon,
-  TablerTwitterIcon,
-} from "../components";
 
 export function WithBasicUsage() {
   return <TextField placeholder="E-mail" />;
@@ -60,11 +53,11 @@ export function WithDescription() {
 export function WithIcon() {
   return (
     <div class="flex flex-col gap-3">
-      <TextField label="E-mail" placeholder="example@acme.com" leadingIcon={<TablerMailIcon />} />
+      <TextField label="E-mail" placeholder="example@acme.com" leadingIcon="i-tabler-mail" />
       <TextField
         label="Account number"
         placeholder="000-00-0000"
-        trailingIcon={<TablerQuestionCircleIcon />}
+        trailingIcon="i-tabler-question-circle"
       />
     </div>
   );
@@ -77,9 +70,13 @@ export function WithSection() {
         placeholder="Search..."
         leadingSectionWidth={32}
         leadingSection={
-          <IconButton variant="text" size="sm" class="my-1 ms-1" aria-label="Perform search">
-            <TablerSearchIcon />
-          </IconButton>
+          <IconButton
+            variant="text"
+            size="sm"
+            class="my-1 ms-1"
+            aria-label="Perform search"
+            icon="i-tabler-search"
+          />
         }
       />
       <TextField
@@ -112,7 +109,7 @@ export function WithCustomInputAddon() {
         placeholder="Twitter"
         leadingAddon={
           <InputAddon class="px-2">
-            <TablerTwitterIcon class="text-xl" />
+            <Icon name="i-tabler-brand-twitter" class="text-xl" />
           </InputAddon>
         }
       />
@@ -120,7 +117,7 @@ export function WithCustomInputAddon() {
         placeholder="Discord"
         trailingAddon={
           <InputAddon placement="trailing" class="px-2">
-            <TablerDiscordIcon class="text-xl" />
+            <Icon name="i-tabler-brand-discord" class="text-xl" />
           </InputAddon>
         }
       />

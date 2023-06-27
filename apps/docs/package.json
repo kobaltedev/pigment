@@ -29,7 +29,7 @@
     "start": "solid-start start"
   },
   "dependencies": {
-    "@kobalte/core": "0.9.6",
+    "@kobalte/core": "0.9.7",
     "@kobalte/pigment": "0.0.0",
     "@modular-forms/solid": "0.13.2",
     "@solid-primitives/media": "2.1.6",
@@ -41,6 +41,7 @@
     "undici": "5.22.0"
   },
   "devDependencies": {
+    "@iconify-json/tabler": "^1.1.79",
     "@kobalte/pigment-tailwind-preset": "0.0.0",
     "@mdx-js/mdx": "2.3.0",
     "@mdx-js/rollup": "2.3.0",
@@ -61,7 +62,7 @@
     "tailwindcss": "3.3.2",
     "typescript": "4.9.5",
     "unist-util-visit": "4.1.2",
-    "vite": "3.2.5"
+    "vite": "3.2.7"
   },
   "engines": {
     "node": ">=16"

@@ -37,12 +37,21 @@ export interface CheckboxProps
   /** The error message that gives the user information about how to fix a validation error on the checkbox. */
   errorMessage?: JSX.Element | (() => JSX.Element);
 
-  /** The icon to show when the checkbox is in a checked state. */
-  checkedIcon?: JSX.Element | (() => JSX.Element);
+  /**
+   * The icon to show when the checkbox is in a checked state.
+   * Can be an Iconify icon name following the pattern `i-{collection_name}-{icon_name}`.
+   */
+  checkedIcon?: string | JSX.Element | (() => JSX.Element);
 
-  /** The icon to show when the checkbox is in an indeterminate state. */
-  indeterminateIcon?: JSX.Element | (() => JSX.Element);
+  /**
+   * The icon to show when the checkbox is in an indeterminate state.
+   * Can be an Iconify icon name following the pattern `i-{collection_name}-{icon_name}`.
+   */
+  indeterminateIcon?: string | JSX.Element | (() => JSX.Element);
 
-  /** The icon to show next to the error message. */
-  errorIcon?: JSX.Element | (() => JSX.Element);
+  /**
+   * The icon to show next to the error message.
+   * Can be an Iconify icon name following the pattern `i-{collection_name}-{icon_name}`.
+   */
+  errorIcon?: string | JSX.Element | (() => JSX.Element);
 }

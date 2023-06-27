@@ -46,6 +46,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
+    "@egoist/tailwindcss-icons": "^1.1.0",
     "@kobalte/tailwindcss": "^0.6.5",
     "tailwindcss-animate": "^1.0.5"
   },

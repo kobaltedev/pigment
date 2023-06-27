@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 import { For, JSX } from "solid-js";
 
-import { TablerLoaderIcon } from "../icon";
 import { Button, IconButton } from "./button";
 import { ButtonProps } from "./button.props";
 
@@ -100,35 +99,32 @@ export const Icons: Story = {
   render: props => (
     <div class="flex flex-col gap-4">
       <div class="flex items-center space-x-4">
-        <Button {...props} size="xs" leadingIcon={<TablerLoaderIcon />} />
-        <Button {...props} size="sm" leadingIcon={<TablerLoaderIcon />} />
-        <Button {...props} size="md" leadingIcon={<TablerLoaderIcon />} />
-        <Button {...props} size="lg" leadingIcon={<TablerLoaderIcon />} />
-        <Button {...props} size="xl" leadingIcon={<TablerLoaderIcon />} />
+        <Button {...props} size="xs" leadingIcon="i-tabler-loader-2" />
+        <Button {...props} size="sm" leadingIcon="i-tabler-loader-2" />
+        <Button {...props} size="md" leadingIcon="i-tabler-loader-2" />
+        <Button {...props} size="lg" leadingIcon="i-tabler-loader-2" />
+        <Button {...props} size="xl" leadingIcon="i-tabler-loader-2" />
       </div>
       <div class="flex items-center space-x-4">
-        <Button {...props} size="xs" trailingIcon={<TablerLoaderIcon />} />
-        <Button {...props} size="sm" trailingIcon={<TablerLoaderIcon />} />
-        <Button {...props} size="md" trailingIcon={<TablerLoaderIcon />} />
-        <Button {...props} size="lg" trailingIcon={<TablerLoaderIcon />} />
-        <Button {...props} size="xl" trailingIcon={<TablerLoaderIcon />} />
+        <Button {...props} size="xs" trailingIcon="i-tabler-loader-2" />
+        <Button {...props} size="sm" trailingIcon="i-tabler-loader-2" />
+        <Button {...props} size="md" trailingIcon="i-tabler-loader-2" />
+        <Button {...props} size="lg" trailingIcon="i-tabler-loader-2" />
+        <Button {...props} size="xl" trailingIcon="i-tabler-loader-2" />
       </div>
     </div>
   ),
 };
 
 export const IconOnly: Story = {
-  args: {
-    children: TablerLoaderIcon as unknown as JSX.Element,
-  },
   // @ts-ignore
   render: props => (
     <div class="flex items-center space-x-4">
-      <IconButton {...props} size="xs" aria-label="Button" />
-      <IconButton {...props} size="sm" aria-label="Button" />
-      <IconButton {...props} size="md" aria-label="Button" />
-      <IconButton {...props} size="lg" aria-label="Button" />
-      <IconButton {...props} size="xl" aria-label="Button" />
+      <IconButton {...props} icon="i-tabler-loader-2" size="xs" aria-label="Button" />
+      <IconButton {...props} icon="i-tabler-loader-2" size="sm" aria-label="Button" />
+      <IconButton {...props} icon="i-tabler-loader-2" size="md" aria-label="Button" />
+      <IconButton {...props} icon="i-tabler-loader-2" size="lg" aria-label="Button" />
+      <IconButton {...props} icon="i-tabler-loader-2" size="xl" aria-label="Button" />
     </div>
   ),
 };

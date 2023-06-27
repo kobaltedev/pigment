@@ -1,9 +1,8 @@
 import { COMMON_INTL_MESSAGES, createMessageFormatter } from "@kobalte/core";
-import { JSX, splitProps } from "solid-js";
+import { splitProps } from "solid-js";
 import { cnBase } from "tailwind-variants";
 
 import { IconButton } from "../button";
-import { TablerCrossIcon } from "../icon";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
 import { CloseButtonProps, CloseButtonSlots } from "./close-button.props";
@@ -15,7 +14,7 @@ export function CloseButton(props: CloseButtonProps) {
     "CloseButton",
     {
       size: "md",
-      children: (() => <TablerCrossIcon />) as unknown as JSX.Element,
+      icon: "i-tabler-x",
     },
     props
   );

@@ -142,16 +142,14 @@ Use the `leadingIcon` and `trailingIcon` props to append icons to either side of
 <TextField
   label="E-mail"
   placeholder="example@acme.com"
-  leadingIcon={<MailIcon />}
+  leadingIcon="i-tabler-mail"
 />
 <TextField
   label="Account number"
   placeholder="000-00-0000"
-  trailingIcon={<QuestionCircleIcon />}
+  trailingIcon="i-tabler-question-circle"
 />
 ```
-
-If you want to create your own icon components check out the [Icon](/docs/core/components/icon) documentation.
 
 ### Sections
 
@@ -163,14 +161,12 @@ Additionally, the `leadingSectionWidth` and `trailingSectionWidth` can be used t
   <WithSection />
 </Preview>
 
-```tsx {2-7,11-16}
+```tsx {2-5,9-14}
 <TextField
   placeholder="Search..."
   leadingSectionWidth={32}
   leadingSection={
-    <IconButton variant="text" size="sm" class="my-1 ms-1" aria-label="Perform search">
-      <TablerSearchIcon />
-    </IconButton>
+    <IconButton variant="text" size="sm" class="my-1 ms-1" aria-label="Perform search" icon="i-tabler-search"/>
   }
 />
 <TextField
@@ -211,7 +207,7 @@ Use Pigment's `InputAddon` component to get the same look and feel of _"string a
   placeholder="Twitter"
   leadingAddon={
     <InputAddon class="px-2">
-      <TablerTwitterIcon class="text-xl" />
+      <Icon name="i-tabler-brand-twitter" class="text-xl" />
     </InputAddon>
   }
 />
@@ -219,7 +215,7 @@ Use Pigment's `InputAddon` component to get the same look and feel of _"string a
   placeholder="Discord"
   trailingAddon={
     <InputAddon placement="trailing" class="px-2">
-      <TablerDiscordIcon class="text-xl" />
+      <Icon name="i-tabler-brand-discord" class="text-xl" />
     </InputAddon>
   }
 />

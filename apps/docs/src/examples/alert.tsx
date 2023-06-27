@@ -1,7 +1,5 @@
 import { Alert, CloseButton } from "@kobalte/pigment";
 
-import { TablerRocketIcon } from "../components";
-
 export function WithBasicUsage() {
   return <Alert>A new software update is available.</Alert>;
 }
@@ -46,7 +44,7 @@ export function WithDecorator() {
     <Alert
       variant="soft"
       color="info"
-      icon={<TablerRocketIcon />}
+      icon="i-tabler-rocket"
       trailingSection={<CloseButton variant="soft" color="info" size="sm" />}
     >
       A new software update is available.

@@ -1,7 +1,5 @@
-import { Checkbox, TablerCrossIcon } from "@kobalte/pigment";
+import { Checkbox } from "@kobalte/pigment";
 import { createSignal } from "solid-js";
-
-import { TablerQuestionMarkIcon } from "../components";
 
 export function WithBasicUsage() {
   return <Checkbox label="Subscribe" />;
@@ -39,12 +37,8 @@ export function WithDescription() {
 export function WithCustomIcon() {
   return (
     <div class="flex items-center gap-3">
-      <Checkbox label="Checked" checkedIcon={<TablerCrossIcon />} checked />
-      <Checkbox
-        label="Indeterminate"
-        indeterminateIcon={<TablerQuestionMarkIcon />}
-        indeterminate
-      />
+      <Checkbox label="Checked" checkedIcon="i-tabler-x" checked />
+      <Checkbox label="Indeterminate" indeterminateIcon="i-tabler-question-mark" indeterminate />
     </div>
   );
 }

@@ -13,7 +13,7 @@ import {
   WithLinkButton,
   WithLinkButtonAsChild,
   WithSizes,
-  WithDecorators,
+  WithIcons,
   WithIconButton,
   WithDisabled,
   WithLoading,
@@ -236,15 +236,13 @@ The Button component comes in five sizes: `xs`, `sm`, `md` (default), `lg` and `
 Use the `leadingIcon` and `trailingIcon` props to append icons to either side of the button.
 
 <Preview>
-  <WithDecorators />
+  <WithIcons />
 </Preview>
 
 ```tsx
-<Button leadingIcon={<ClipboardIcon />}>Copy to clipboard</Button>
-<Button trailingIcon={<ArrowNarrowRightIcon />}>Next</Button>
+<Button leadingIcon="i-tabler-clipboard">Copy to clipboard</Button>
+<Button trailingIcon="i-tabler-arrow-narrow-right">Next</Button>
 ```
-
-If you want to create your own icon components check out the [Icon](/docs/core/components/icon) documentation.
 
 ### Full width
 
@@ -336,9 +334,7 @@ The `IconButton` component renders a square button with an icon and no text cont
 </Preview>
 
 ```tsx
-<IconButton aria-label="Delete">
-  <TrashIcon />
-</IconButton>
+<IconButton aria-label="Delete" icon="i-tabler-trash" />
 ```
 
 ## LinkButton
@@ -357,9 +353,8 @@ Use the `LinkButton` or `LinkIconButton` if you need the style of a button with 
   href="https://github.com/kobaltedev/pigment"
   target="_blank"
   aria-label="Open on GitHub"
->
-  <GitHubIcon />
-</LinkIconButton>
+  icon="i-tabler-brand-github"
+/>
 ```
 
 If you want to use the `Link` component from the [@solidjs/router](https://github.com/solidjs/solid-router) package, use the `asChild` prop paired with the `As` component to change the rendered element.

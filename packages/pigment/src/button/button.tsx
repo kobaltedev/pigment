@@ -1,7 +1,7 @@
 import { Button as KButton, Link as KLink } from "@kobalte/core";
-import { ComponentProps, createMemo, JSX, Show, splitProps } from "solid-js";
+import { children, ComponentProps, createMemo, JSX, Show, splitProps } from "solid-js";
 
-import { TablerLoaderIcon } from "../icon";
+import { Icon } from "../icon";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
 import {
@@ -16,6 +16,7 @@ import {
   LinkIconButtonProps,
 } from "./button.props";
 import { buttonStyles } from "./button.styles";
+import { isString } from "@kobalte/utils";
 
 /* -------------------------------------------------------------------------------------------------
  * Common
@@ -59,7 +60,7 @@ function ButtonBase(props: ButtonBaseProps) {
       fullWidth: false,
       disabled: false,
       loadingPlacement: "center",
-      loadingIcon: () => <TablerLoaderIcon class="animate-spin" />,
+      loadingIcon: "i-tabler-loader-2",
     },
     props
   );
@@ -93,14 +94,24 @@ function ButtonBase(props: ButtonBaseProps) {
     });
   });
 
-  const loadingIcon = createMemo(() => local.loadingIcon as unknown as JSX.Element);
+  const loadingIcon = createMemo(() => {
+    if (isString(local.loadingIcon)) {
+      return <Icon name={local.loadingIcon as string} class="animate-spin" />;
+    }
+
+    return local.loadingIcon as unknown as JSX.Element;
+  });
 
   const leadingIcon = createMemo(() => {
     if (variantProps.loading && local.loadingPlacement === "leading") {
       return <ButtonIcon class={loadingIconClasses()}>{loadingIcon()}</ButtonIcon>;
     }
 
-    return local.leadingIcon;
+    if (isString(local.leadingIcon)) {
+      return <Icon name={local.leadingIcon as string} />;
+    }
+
+    return local.leadingIcon as unknown as JSX.Element;
   });
 
   const trailingIcon = createMemo(() => {
@@ -108,7 +119,11 @@ function ButtonBase(props: ButtonBaseProps) {
       return <ButtonIcon class={loadingIconClasses()}>{loadingIcon()}</ButtonIcon>;
     }
 
-    return local.trailingIcon;
+    if (isString(local.trailingIcon)) {
+      return <Icon name={local.trailingIcon as string} />;
+    }
+
+    return local.trailingIcon as unknown as JSX.Element;
   });
 
   const leadingIconClasses = createMemo(() => {
@@ -174,7 +189,24 @@ export function Button(props: ButtonProps) {
 }
 
 export function IconButton(props: IconButtonProps) {
-  return <ButtonBase iconOnly {...props} />;
+  const [local, others] = splitProps(props, ["icon", "children"]);
+
+  const resolvedChildren = children(() => local.children);
+
+  return (
+    <ButtonBase iconOnly {...others}>
+      <Show
+        when={resolvedChildren()}
+        fallback={
+          <Show when={isString(local.icon)} fallback={local.icon as unknown as JSX.Element}>
+            <Icon name={local.icon as string} />
+          </Show>
+        }
+      >
+        {resolvedChildren()}
+      </Show>
+    </ButtonBase>
+  );
 }
 
 /* -------------------------------------------------------------------------------------------------
@@ -206,6 +238,22 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
 
   const styles = createMemo(() => buttonStyles(variantProps));
 
+  const leadingIcon = createMemo(() => {
+    if (isString(local.leadingIcon)) {
+      return <Icon name={local.leadingIcon as string} />;
+    }
+
+    return local.leadingIcon as unknown as JSX.Element;
+  });
+
+  const trailingIcon = createMemo(() => {
+    if (isString(local.trailingIcon)) {
+      return <Icon name={local.trailingIcon as string} />;
+    }
+
+    return local.trailingIcon as unknown as JSX.Element;
+  });
+
   return (
     <KLink.Root
       class={styles().root({
@@ -233,8 +281,8 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
             local.slotClasses?.trailingIcon,
           ],
         })}
-        leadingIcon={local.leadingIcon}
-        trailingIcon={local.trailingIcon}
+        leadingIcon={leadingIcon()}
+        trailingIcon={trailingIcon()}
       >
         {local.children}
       </ButtonContent>
@@ -247,5 +295,22 @@ export function LinkButton(props: LinkButtonProps) {
 }
 
 export function LinkIconButton(props: LinkIconButtonProps) {
-  return <LinkButtonBase iconOnly {...props} />;
+  const [local, others] = splitProps(props, ["icon", "children"]);
+
+  const resolvedChildren = children(() => local.children);
+
+  return (
+    <LinkButtonBase iconOnly {...others}>
+      <Show
+        when={resolvedChildren()}
+        fallback={
+          <Show when={isString(local.icon)} fallback={local.icon as unknown as JSX.Element}>
+            <Icon name={local.icon as string} />
+          </Show>
+        }
+      >
+        {resolvedChildren()}
+      </Show>
+    </LinkButtonBase>
+  );
 }

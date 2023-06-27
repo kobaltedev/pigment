@@ -53,12 +53,13 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@kobalte/core": "^0.9.6",
+    "@kobalte/core": "^0.9.7",
     "@kobalte/utils": "^0.7.2",
     "@solid-primitives/refs": "^1.0.2",
     "tailwind-variants": "^0.1.5"
   },
   "devDependencies": {
+    "@iconify-json/tabler": "^1.1.79",
     "@kobalte/pigment-tailwind-preset": "0.0.0",
     "@storybook/addon-a11y": "7.0.0",
     "@storybook/addon-essentials": "7.0.0",

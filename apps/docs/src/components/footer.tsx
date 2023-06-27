@@ -1,13 +1,9 @@
+import { Icon } from "@kobalte/pigment";
 import { Link } from "@solidjs/router";
 import { clsx } from "clsx";
 import { ComponentProps } from "solid-js";
 
-import {
-  OpenCollectiveIcon,
-  TablerDiscordIcon,
-  TablerGitHubIcon,
-  TablerTwitterIcon,
-} from "./icons";
+import { OpenCollectiveIcon } from "./icons";
 
 export function Footer(props: ComponentProps<"footer">) {
   return (
@@ -41,7 +37,7 @@ export function Footer(props: ComponentProps<"footer">) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <TablerGitHubIcon class="h-4 w-4" />
+                  <Icon name="i-tabler-brand-github" class="h-4 w-4" />
                 </a>
               </li>
               <li class="mb-2">
@@ -63,7 +59,7 @@ export function Footer(props: ComponentProps<"footer">) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <TablerDiscordIcon class="h-4 w-4" />
+                  <Icon name="i-tabler-brand-discord" class="h-4 w-4" />
                 </a>
               </li>
               <li class="mb-2">
@@ -74,7 +70,7 @@ export function Footer(props: ComponentProps<"footer">) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <TablerTwitterIcon class="h-4 w-4" />
+                  <Icon name="i-tabler-brand-twitter" class="h-4 w-4" />
                 </a>
               </li>
             </ul>

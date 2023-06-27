@@ -3,8 +3,6 @@ import { Title as MetaTitle } from "@solidjs/meta";
 import { clsx } from "clsx";
 import { ComponentProps, createSignal, Show, splitProps } from "solid-js";
 
-import { TablerCheckIcon, TablerClipboardIcon } from "./components";
-
 export const mdxComponents = {
   h1: (props: ComponentProps<"h1">) => {
     const [local, others] = splitProps(props, ["children"]);
@@ -54,11 +52,8 @@ export const mdxComponents = {
           size="xs"
           class="pg-copy-btn absolute top-2 right-2 z-10"
           onClick={copyToClipboard}
-        >
-          <Show when={isCopied()} fallback={<TablerClipboardIcon />}>
-            <TablerCheckIcon />
-          </Show>
-        </IconButton>
+          icon={isCopied() ? "i-tabler-check" : "i-tabler-clipboard"}
+        />
         {local.children}
       </pre>
     );

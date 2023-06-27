@@ -55,7 +55,7 @@ Theming in Pigment is done in two places:
 
 To use a theme, add it to the Pigment preset in your `tailwind.config.cjs`.
 
-```js {13}
+```js {13-26}
 // tailwind.config.cjs
 
 const pigment = require("@kobalte/pigment-tailwind-preset");
@@ -69,7 +69,20 @@ module.exports = {
   theme: {},
   presets: [
     pigment.preset({
-      themes: ["base"], // `base` is Pigment default theme.
+      themes: [
+        pigment.createTheme({
+          name: "base",
+          lightColors: {
+            neutral: "slate",
+            primary: "blue",
+            success: "green",
+            info: "sky",
+            warning: "amber",
+            danger: "red",
+            discovery: "violet",
+          },
+        }),
+      ],
     }),
   ],
 };

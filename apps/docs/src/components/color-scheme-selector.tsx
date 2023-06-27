@@ -1,8 +1,6 @@
 import { ToggleButton as KToggleButton } from "@kobalte/core";
-import { IconButton, useColorScheme } from "@kobalte/pigment";
+import { Icon, IconButton, useColorScheme } from "@kobalte/pigment";
 import { createSignal, onMount, Show } from "solid-js";
-
-import { TablerMoonFilledIcon, TablerSunFilledIcon } from "./icons";
 
 export function ColorSchemeSelector() {
   const { colorScheme, toggleColorScheme } = useColorScheme();
@@ -22,11 +20,13 @@ export function ColorSchemeSelector() {
         aria-label="Toggle color scheme"
         value={colorScheme()}
         onChange={toggleColorScheme}
-      >
-        <Show when={colorScheme() === "dark"} fallback={<TablerSunFilledIcon class="h-5 w-5" />}>
-          <TablerMoonFilledIcon class="h-5 w-5" />
-        </Show>
-      </IconButton>
+        icon={
+          <Icon
+            name={colorScheme() === "dark" ? "i-tabler-moon-filled" : "i-tabler-sun-filled"}
+            class="h-5 w-5"
+          />
+        }
+      />
     </Show>
   );
 }
