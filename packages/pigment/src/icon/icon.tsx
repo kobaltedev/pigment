@@ -13,7 +13,7 @@ const iconStyles = tv({
 });
 
 export function Icon(props: IconProps) {
-  props = mergeDefaultProps(
+  const mergedProps = mergeDefaultProps(
     {
       viewBox: "0 0 24 24",
       color: "currentColor",
@@ -23,7 +23,7 @@ export function Icon(props: IconProps) {
     props
   );
 
-  const [local, others] = splitProps(props, ["as", "class"]);
+  const [local, others] = splitProps(mergedProps, ["as", "class"]);
 
   const classes = createMemo(() => iconStyles({ class: local.class }));
 

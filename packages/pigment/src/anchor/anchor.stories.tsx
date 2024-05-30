@@ -3,8 +3,9 @@ import type { ComponentProps } from "solid-js";
 
 import { Anchor } from "./anchor";
 import { AnchorProps } from "./anchor.props";
+import { OverrideComponentProps } from "@kobalte/utils";
 
-type Story = StoryObj<AnchorProps>;
+type Story = StoryObj<OverrideComponentProps<"a", AnchorProps>>;
 
 export default {
   title: "Anchor",
@@ -22,7 +23,7 @@ export default {
       control: { type: "text" },
     },
   },
-} as Meta<ComponentProps<typeof Anchor>>;
+} as Meta<OverrideComponentProps<"a", AnchorProps>>;
 
 export const Default: Story = {
   args: {

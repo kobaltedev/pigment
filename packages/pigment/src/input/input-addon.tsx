@@ -1,5 +1,5 @@
-import { Polymorphic } from "@kobalte/core";
-import { createMemo, splitProps } from "solid-js";
+import { Polymorphic, PolymorphicProps } from "@kobalte/core/polymorphic";
+import { createMemo, splitProps, ValidComponent } from "solid-js";
 
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
@@ -8,20 +8,22 @@ import { inputAddonStyles } from "./input-addon.styles";
 
 const inputAddonStaticClass = makeStaticClass<InputAddonSlots>("input-addon");
 
-export function InputAddon(props: InputAddonProps) {
-  props = mergeThemeProps(
+export function InputAddon<T extends ValidComponent = "div">(
+  props: PolymorphicProps<T, InputAddonProps>
+) {
+  const mergedProps = mergeThemeProps(
     "InputAddon",
     {
       size: "md",
       placement: "leading",
     },
-    props
+    props as InputAddonProps
   );
 
-  const themeClasses = useThemeClasses<InputAddonSlots>("InputAddon", props);
+  const themeClasses = useThemeClasses<InputAddonSlots>("InputAddon", mergedProps);
 
   const [local, variantProps, others] = splitProps(
-    props,
+    mergedProps,
     ["class", "slotClasses"],
     ["size", "placement"]
   );

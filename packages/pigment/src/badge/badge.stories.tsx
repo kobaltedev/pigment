@@ -1,3 +1,4 @@
+import { OverrideComponentProps } from "@kobalte/utils";
 import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 import { For } from "solid-js";
@@ -5,7 +6,7 @@ import { For } from "solid-js";
 import { Badge } from "./badge";
 import { BadgeProps } from "./badge.props";
 
-type Story = StoryObj<BadgeProps>;
+type Story = StoryObj<OverrideComponentProps<"span", BadgeProps>>;
 
 export default {
   title: "Badge",
@@ -32,7 +33,7 @@ export default {
       </For>
     </div>
   ),
-} as Meta<ComponentProps<typeof Badge>>;
+} as Meta<OverrideComponentProps<"span", BadgeProps>>;
 
 export const Default: Story = {
   args: {

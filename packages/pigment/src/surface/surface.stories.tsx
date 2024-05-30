@@ -1,10 +1,11 @@
+import { OverrideComponentProps } from "@kobalte/utils";
 import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 
 import { Surface } from "./surface";
 import { SurfaceProps } from "./surface.props";
 
-type Story = StoryObj<SurfaceProps>;
+type Story = StoryObj<OverrideComponentProps<"div", SurfaceProps>>;
 
 export default {
   title: "Surface",
@@ -17,7 +18,7 @@ export default {
       control: { type: "text" },
     },
   },
-} as Meta<ComponentProps<typeof Surface>>;
+} as Meta<OverrideComponentProps<"div", SurfaceProps>>;
 
 export const Variants: Story = {
   args: {
