@@ -17,8 +17,8 @@ module.exports = {
         "8xl": "88rem",
       },
       colors: {
-        ...pigment.colors
-      }
+        ...pigment.colors,
+      },
     },
   },
   presets: [pigment.preset()],

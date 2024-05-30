@@ -1,4 +1,4 @@
-import { Direction } from "@kobalte/core";
+import { Direction } from "@kobalte/core/i18n";
 
 export type LogicalPlacement = "center" | "left" | "right";
 

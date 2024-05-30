@@ -1,4 +1,4 @@
-import { Alert, As, Button, IconButton, LinkButton, LinkIconButton } from "@kobalte/pigment";
+import { Alert, Button, IconButton, LinkButton, LinkIconButton } from "@kobalte/pigment";
 import { Link } from "@solidjs/router";
 import { For } from "solid-js";
 
@@ -245,10 +245,8 @@ export function WithLinkButton() {
 
 export function WithLinkButtonAsChild() {
   return (
-    <LinkButton asChild>
-      <As component={Link} href="/" target="_blank">
-        Back to home
-      </As>
+    <LinkButton as={Link} href="/" target="_blank">
+      Back to home
     </LinkButton>
   );
 }

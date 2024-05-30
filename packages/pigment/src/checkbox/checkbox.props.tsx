@@ -1,5 +1,5 @@
-import { Checkbox as KCheckbox } from "@kobalte/core";
-import { JSX, Ref } from "solid-js";
+import type { CheckboxRootProps, CheckboxInputProps } from "@kobalte/core/checkbox";
+import { JSX, Ref, ValidComponent } from "solid-js";
 
 import { SlotProp } from "../utils/slot";
 import { CheckboxVariants } from "./checkbox.styles";
@@ -15,15 +15,18 @@ export type CheckboxSlots =
   | "errorIcon"
   | "supportTextWrapper";
 
-export interface CheckboxProps
-  extends Omit<KCheckbox.CheckboxRootProps, "ref" | "validationState">,
+export interface CheckboxProps<T extends ValidComponent = "div">
+  extends Omit<CheckboxRootProps<T>, "ref" | "validationState">,
     CheckboxVariants,
     SlotProp<CheckboxSlots> {
   /** A ref to the inner `<input>` element. */
   ref?: Ref<HTMLInputElement>;
 
   /** Additional props to be spread on the inner `<input>` element. */
-  inputProps?: KCheckbox.CheckboxInputProps;
+  inputProps?: CheckboxInputProps & {
+    /** Custom classes applied to the element */
+    class?: string;
+  };
 
   /** Whether the checkbox is invalid regarding the validation rules. */
   invalid?: boolean;
@@ -45,4 +48,7 @@ export interface CheckboxProps
 
   /** The icon to show next to the error message. */
   errorIcon?: JSX.Element | (() => JSX.Element);
+
+  /** Custom classes applied to the element */
+  class?: string;
 }

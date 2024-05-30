@@ -1,5 +1,5 @@
-import { TextField as KTextField } from "@kobalte/core";
-import { ComponentProps, JSX, Ref } from "solid-js";
+import type { TextFieldRootProps } from "@kobalte/core/text-field";
+import { ComponentProps, JSX, Ref, ValidComponent } from "solid-js";
 
 import { SlotProp } from "../utils/slot";
 import { TextFieldVariants } from "./text-field.styles";
@@ -16,8 +16,8 @@ export type TextFieldSlots =
   | "errorMessage"
   | "errorIcon";
 
-export interface TextFieldProps
-  extends Omit<KTextField.TextFieldRootProps, "ref" | "validationState">,
+export interface TextFieldProps<T extends ValidComponent = "div">
+  extends Omit<TextFieldRootProps<T>, "ref" | "validationState">,
     Omit<TextFieldVariants, "hasLeadingIcon" | "hasTrailingIcon">,
     SlotProp<TextFieldSlots> {
   /** A ref to the inner `<input>` or `<textarea>` element. */
@@ -73,4 +73,7 @@ export interface TextFieldProps
 
   /** The element to show after the input element. */
   trailingAddon?: JSX.Element | (() => JSX.Element);
+
+  /** Custom classes applied to the element */
+  class?: string;
 }

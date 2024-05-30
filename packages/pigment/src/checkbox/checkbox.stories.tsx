@@ -1,10 +1,11 @@
+import { OverrideComponentProps } from "@kobalte/utils";
 import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 
 import { Checkbox } from "./checkbox";
 import { CheckboxProps } from "./checkbox.props";
 
-type Story = StoryObj<CheckboxProps>;
+type Story = StoryObj<OverrideComponentProps<"div", CheckboxProps>>;
 
 export default {
   title: "Checkbox",
@@ -33,7 +34,7 @@ export default {
     },
   },
   render: props => <Checkbox {...props} />,
-} as Meta<ComponentProps<typeof Checkbox>>;
+} as Meta<OverrideComponentProps<"div", CheckboxProps>>;
 
 export const Default: Story = {
   args: {

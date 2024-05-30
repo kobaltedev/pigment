@@ -1,4 +1,4 @@
-import { Tabs } from "@kobalte/core";
+import { Tabs, TabsTriggerProps } from "@kobalte/core/tabs";
 import { clsx } from "clsx";
 import { ComponentProps, ParentComponent, splitProps } from "solid-js";
 
@@ -8,12 +8,12 @@ type TabsSnippetsComposite = {
   Content: typeof Tabs.Content;
 };
 
-export const TabsSnippets: ParentComponent<ComponentProps<typeof Tabs.Root>> &
+export const TabsSnippets: ParentComponent<ComponentProps<typeof Tabs>> &
   TabsSnippetsComposite = props => {
   const [local, others] = splitProps(props, ["class"]);
 
   return (
-    <Tabs.Root
+    <Tabs
       class={clsx(
         "pg-tabs-snippets not-prose my-6 overflow-y-auto rounded-lg border border-solid border-slate-200 bg-slate-50 dark:bg-slate-950 dark:border-slate-800",
         local.class
@@ -46,7 +46,7 @@ TabsSnippets.Trigger = (props: ComponentProps<typeof Tabs.Trigger>) => {
         "outline-none text-sm px-3 py-2 text-slate-700 ui-selected:font-medium focus-visible:bg-slate-200 dark:text-white/80 dark:focus-visible:bg-slate-800",
         local.class
       )}
-      {...others}
+      {...(others as TabsTriggerProps)}
     />
   );
 };

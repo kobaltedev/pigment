@@ -1,5 +1,5 @@
 // external libs
-export { As, I18nProvider, useLocale } from "@kobalte/core";
+export { I18nProvider, useLocale } from "@kobalte/core/i18n";
 
 // utils
 export * from "./color-scheme";

@@ -1,12 +1,12 @@
+import { OverrideComponentProps } from "@kobalte/utils";
 import type { Meta, StoryObj } from "@storybook/html";
-import type { ComponentProps } from "solid-js";
 import { For } from "solid-js";
 
 import { CloseButton } from "../close-button";
 import { Alert } from "./alert";
 import { AlertProps } from "./alert.props";
 
-type Story = StoryObj<AlertProps>;
+type Story = StoryObj<OverrideComponentProps<"div", AlertProps>>;
 
 export default {
   title: "Alert",
@@ -62,7 +62,7 @@ export default {
       </For>
     </div>
   ),
-} as Meta<ComponentProps<typeof Alert>>;
+} as Meta<OverrideComponentProps<"div", AlertProps>>;
 
 export const Default: Story = {
   args: {},
