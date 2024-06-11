@@ -1,4 +1,4 @@
-import { As, Badge, Icon, LinkButton, LinkIconButton } from "@kobalte/pigment";
+import { Badge, Icon, LinkButton, LinkIconButton } from "@kobalte/pigment";
 import { Link, useMatch } from "@solidjs/router";
 import { JSX, ParentProps } from "solid-js";
 
@@ -16,18 +16,18 @@ interface HeaderLink extends ParentProps {
 
 function HeaderLink(props: HeaderLink) {
   return (
-    <LinkButton variant="text" size="sm" asChild>
-      <As
-        component={Link}
-        href={props.href}
-        class={
-          props.isActive
-            ? "text-slate-900 dark:text-slate-50"
-            : "font-normal text-slate-700 dark:text-slate-200"
-        }
-      >
-        {props.children}
-      </As>
+    <LinkButton
+      variant="text"
+      size="sm"
+      as={Link}
+      href={props.href}
+      class={
+        props.isActive
+          ? "text-slate-900 dark:text-slate-50"
+          : "font-normal text-slate-700 dark:text-slate-200"
+      }
+    >
+      {props.children}
     </LinkButton>
   );
 }
@@ -60,15 +60,17 @@ export function Header(props: HeaderProps) {
             Changelog
           </HeaderLink>
         </div>
-        <LinkIconButton variant="text" size="sm" class="me-2.5" aria-label="GitHub" asChild>
-          <As
-            component={Link}
-            href="https://github.com/kobaltedev/pigment"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Icon name="i-tabler-brand-github" class="h-5 w-5" />
-          </As>
+        <LinkIconButton
+          variant="text"
+          size="sm"
+          class="me-2.5"
+          aria-label="GitHub"
+          as={Link}
+          href="https://github.com/kobaltedev/pigment"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon name="i-tabler-brand-github" class="h-5 w-5" />
         </LinkIconButton>
         <ColorSchemeSelector />
       </div>

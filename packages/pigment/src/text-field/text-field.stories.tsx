@@ -6,8 +6,9 @@ import { Icon } from "../icon";
 import { InputAddon } from "../input";
 import { TextField } from "./text-field";
 import { TextFieldProps } from "./text-field.props";
+import { OverrideComponentProps } from "@kobalte/utils";
 
-type Story = StoryObj<TextFieldProps>;
+type Story = StoryObj<OverrideComponentProps<"div", TextFieldProps>>;
 
 export default {
   title: "TextField",
@@ -42,7 +43,7 @@ export default {
     },
   },
   render: props => <TextField class="w-full max-w-xs" {...props} />,
-} as Meta<ComponentProps<typeof TextField>>;
+} as Meta<OverrideComponentProps<"div", TextFieldProps>>;
 
 export const Default: Story = {
   args: {

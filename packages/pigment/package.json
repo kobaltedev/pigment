@@ -53,10 +53,10 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@kobalte/core": "^0.9.7",
-    "@kobalte/utils": "^0.7.2",
-    "@solid-primitives/refs": "^1.0.2",
-    "tailwind-variants": "^0.1.5"
+    "@kobalte/core": "^0.13.2",
+    "@kobalte/utils": "^0.9.0",
+    "@solid-primitives/refs": "^1.0.8",
+    "tailwind-variants": "^0.2.1"
   },
   "devDependencies": {
     "@iconify-json/tabler": "^1.1.79",

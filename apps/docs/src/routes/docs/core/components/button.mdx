@@ -357,17 +357,15 @@ Use the `LinkButton` or `LinkIconButton` if you need the style of a button with 
 />
 ```
 
-If you want to use the `Link` component from the [@solidjs/router](https://github.com/solidjs/solid-router) package, use the `asChild` prop paired with the `As` component to change the rendered element.
+If you want to use the `Link` component from the [@solidjs/router](https://github.com/solidjs/solid-router) package, use the `as` prop to change the rendered element.
 
 <Preview>
   <WithLinkButtonAsChild />
 </Preview>
 
 ```tsx
-<LinkButton asChild>
-  <As component={Link} href="/" target="_blank">
-    Back to home
-  </As>
+<LinkButton as={Link} href="/" target="_blank">
+  Back to homeQ
 </LinkButton>
 ```
 

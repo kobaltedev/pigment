@@ -1,5 +1,7 @@
-import { Button as KButton, Link as KLink } from "@kobalte/core";
-import { children, ComponentProps, createMemo, JSX, Show, splitProps } from "solid-js";
+import { Button as KButton } from "@kobalte/core/button";
+import { Button as KButton } from "@kobalte/core/button";
+import { Link as KLink } from "@kobalte/core/link";
+import { children, ComponentProps, createMemo, JSX, Show, splitProps, ValidComponent } from "solid-js";
 
 import { Icon } from "../icon";
 import { mergeThemeProps, useThemeClasses } from "../theme";
@@ -17,6 +19,7 @@ import {
 } from "./button.props";
 import { buttonStyles } from "./button.styles";
 import { isString } from "@kobalte/utils";
+import { PolymorphicProps } from "@kobalte/core/polymorphic";
 
 /* -------------------------------------------------------------------------------------------------
  * Common
@@ -49,8 +52,10 @@ function ButtonContent(props: ButtonContentProps) {
 
 const buttonStaticClass = makeStaticClass<ButtonSlots>("button");
 
-function ButtonBase(props: ButtonBaseProps) {
-  props = mergeThemeProps(
+function ButtonBase<T extends ValidComponent = "button">(
+  props: PolymorphicProps<T, ButtonBaseProps<T>>
+) {
+  const mergedProps = mergeThemeProps(
     "Button",
     {
       variant: "default",
@@ -62,13 +67,13 @@ function ButtonBase(props: ButtonBaseProps) {
       loadingPlacement: "center",
       loadingIcon: "i-tabler-loader-2",
     },
-    props
+    props as ButtonBaseProps
   );
 
-  const themeClasses = useThemeClasses<ButtonSlots>("Button", props);
+  const themeClasses = useThemeClasses<ButtonSlots>("Button", mergedProps);
 
   const [local, variantProps, others] = splitProps(
-    props,
+    mergedProps,
     [
       "class",
       "slotClasses",
@@ -168,7 +173,7 @@ function ButtonBase(props: ButtonBaseProps) {
   };
 
   return (
-    <KButton.Root
+    <KButton
       class={styles().root({
         class: [buttonStaticClass("root"), themeClasses.root, local.slotClasses?.root, local.class],
       })}
@@ -180,15 +185,19 @@ function ButtonBase(props: ButtonBaseProps) {
           <span class={styles().loadingContent()}>{content()}</span>
         </Show>
       </Show>
-    </KButton.Root>
+    </KButton>
   );
 }
 
-export function Button(props: ButtonProps) {
-  return <ButtonBase iconOnly={false} {...props} />;
+export function Button<T extends ValidComponent = "button">(
+  props: PolymorphicProps<T, ButtonProps<T>>
+) {
+  return <ButtonBase iconOnly={false} {...(props as ButtonProps)} />;
 }
 
-export function IconButton(props: IconButtonProps) {
+export function IconButton<T extends ValidComponent = "button">(
+  props: PolymorphicProps<T, IconButtonProps<T>>
+) {
   const [local, others] = splitProps(props, ["icon", "children"]);
 
   const resolvedChildren = children(() => local.children);
@@ -215,8 +224,10 @@ export function IconButton(props: IconButtonProps) {
 
 const linkButtonStaticClass = makeStaticClass<LinkButtonSlots>("link-button");
 
-function LinkButtonBase(props: LinkButtonBaseProps) {
-  props = mergeThemeProps(
+function LinkButtonBase<T extends ValidComponent = "a">(
+  props: PolymorphicProps<T, LinkButtonBaseProps<T>>
+) {
+  const mergedProps = mergeThemeProps(
     "LinkButton",
     {
       variant: "default",
@@ -225,13 +236,13 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
       fullWidth: false,
       disabled: false,
     },
-    props
+    props as LinkButtonBaseProps
   );
 
-  const themeClasses = useThemeClasses<LinkButtonSlots>("LinkButton", props);
+  const themeClasses = useThemeClasses<LinkButtonSlots>("LinkButton", mergedProps);
 
   const [local, variantProps, others] = splitProps(
-    props,
+    mergedProps,
     ["class", "slotClasses", "children", "leadingIcon", "trailingIcon"],
     ["variant", "size", "iconOnly", "fullWidth"]
   );
@@ -255,7 +266,7 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
   });
 
   return (
-    <KLink.Root
+    <KLink
       class={styles().root({
         class: [
           linkButtonStaticClass("root"),
@@ -286,12 +297,14 @@ function LinkButtonBase(props: LinkButtonBaseProps) {
       >
         {local.children}
       </ButtonContent>
-    </KLink.Root>
+    </KLink>
   );
 }
 
-export function LinkButton(props: LinkButtonProps) {
-  return <LinkButtonBase iconOnly={false} {...props} />;
+export function LinkButton<T extends ValidComponent = "a">(
+  props: PolymorphicProps<T, LinkButtonProps<T>>
+) {
+  return <LinkButtonBase iconOnly={false} {...(props as LinkButtonProps)} />;
 }
 
 export function LinkIconButton(props: LinkIconButtonProps) {

@@ -1,3 +1,4 @@
+import { OverrideComponentProps } from "@kobalte/utils";
 import type { Meta, StoryObj } from "@storybook/html";
 import type { ComponentProps } from "solid-js";
 import { For, JSX } from "solid-js";
@@ -5,7 +6,7 @@ import { For, JSX } from "solid-js";
 import { Button, IconButton } from "./button";
 import { ButtonProps } from "./button.props";
 
-type Story = StoryObj<ButtonProps>;
+type Story = StoryObj<OverrideComponentProps<"button", ButtonProps>>;
 
 export default {
   title: "Button",
@@ -35,7 +36,7 @@ export default {
       control: { type: "text" },
     },
   },
-} as Meta<ComponentProps<typeof Button>>;
+} as Meta<OverrideComponentProps<"button", ButtonProps>>;
 
 export const Variants: Story = {
   args: {

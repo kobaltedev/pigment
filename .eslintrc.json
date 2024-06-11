@@ -14,6 +14,7 @@
     "import/newline-after-import": "warn",
     "import/no-duplicates": "error",
     "import/no-named-as-default-member": "off",
+    "import/no-unresolved": "off",
     "simple-import-sort/imports": "warn",
     "simple-import-sort/exports": "warn",
     "@typescript-eslint/ban-ts-comment": "off",
@@ -22,6 +23,7 @@
     "@typescript-eslint/no-namespace": "off",
     "@typescript-eslint/no-empty-interface": "off",
     "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
     "jsx-a11y/no-autofocus": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "jsx-a11y/no-noninteractive-element-interactions": "off"

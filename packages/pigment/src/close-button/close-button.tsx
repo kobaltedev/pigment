@@ -1,29 +1,31 @@
-import { COMMON_INTL_MESSAGES, createMessageFormatter } from "@kobalte/core";
-import { splitProps } from "solid-js";
+import { PolymorphicProps } from "@kobalte/core/polymorphic";
+import { JSX, splitProps, ValidComponent } from "solid-js";
 import { cnBase } from "tailwind-variants";
 
 import { IconButton } from "../button";
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
 import { CloseButtonProps, CloseButtonSlots } from "./close-button.props";
+import { CLOSE_BUTTON_INTL_TRANSLATIONS } from "./close-button.intl";
 
 const closeButtonStaticClass = makeStaticClass<CloseButtonSlots>("close-button");
 
-export function CloseButton(props: CloseButtonProps) {
-  props = mergeThemeProps(
+export function CloseButton<T extends ValidComponent = "button">(
+  props: PolymorphicProps<T, CloseButtonProps>
+) {
+  const mergedProps = mergeThemeProps(
     "CloseButton",
     {
       size: "md",
       icon: "i-tabler-x",
+      translations: CLOSE_BUTTON_INTL_TRANSLATIONS,
     },
-    props
+    props as CloseButtonProps
   );
 
-  const themeClasses = useThemeClasses<CloseButtonSlots>("CloseButton", props);
+  const themeClasses = useThemeClasses<CloseButtonSlots>("CloseButton", mergedProps);
 
-  const [local, others] = splitProps(props, ["class", "slotClasses", "aria-label"]);
-
-  const messageFormatter = createMessageFormatter(() => COMMON_INTL_MESSAGES);
+  const [local, others] = splitProps(mergedProps, ["class", "slotClasses", "aria-label"]);
 
   return (
     <IconButton
@@ -33,7 +35,7 @@ export function CloseButton(props: CloseButtonProps) {
         local.slotClasses?.root,
         local.class
       )}
-      aria-label={local["aria-label"] || messageFormatter().format("dismiss")}
+      aria-label={local["aria-label"] || mergedProps.translations!.dismiss}
       {...others}
     />
   );

@@ -1,6 +1,7 @@
-import { Alert as KAlert } from "@kobalte/core";
 import { isString } from "@kobalte/utils";
-import { createMemo, Show, splitProps } from "solid-js";
+import { Alert as KAlert } from "@kobalte/core/alert";
+import { createMemo, Show, splitProps, ValidComponent } from "solid-js";
+import { Dynamic } from "solid-js/web";
 
 import { Icon } from "../icon";
 import { mergeThemeProps, useThemeClasses } from "../theme";
@@ -8,6 +9,7 @@ import { makeStaticClass } from "../utils/make-static-class";
 import { runIfFn } from "../utils/run-if-fn";
 import { AlertProps, AlertSlots } from "./alert.props";
 import { alertStyles, AlertVariants } from "./alert.styles";
+import { PolymorphicProps } from "@kobalte/core/polymorphic";
 
 const alertStaticClass = makeStaticClass<AlertSlots>("alert");
 
@@ -19,20 +21,20 @@ const ALERT_ICONS: Record<Exclude<AlertVariants["status"], undefined>, string> =
   discovery: "i-tabler-help-circle-filled",
 };
 
-export function Alert(props: AlertProps) {
-  props = mergeThemeProps(
+export function Alert<T extends ValidComponent = "div">(props: PolymorphicProps<T, AlertProps<T>>) {
+  const mergedProps = mergeThemeProps(
     "Alert",
     {
       variant: "soft",
       status: "info",
     },
-    props
+    props as AlertProps
   );
 
-  const themeClasses = useThemeClasses<AlertSlots>("Alert", props);
+  const themeClasses = useThemeClasses<AlertSlots>("Alert", mergedProps);
 
   const [local, variantProps, others] = splitProps(
-    props,
+    mergedProps,
     ["class", "children", "slotClasses", "icon", "leadingSection", "trailingSection"],
     ["variant", "status"]
   );
@@ -52,7 +54,7 @@ export function Alert(props: AlertProps) {
   });
 
   return (
-    <KAlert.Root
+    <KAlert
       class={styles().root({
         class: [alertStaticClass("root"), themeClasses.root, local.slotClasses?.root, local.class],
       })}
@@ -101,6 +103,6 @@ export function Alert(props: AlertProps) {
           {trailingSection()}
         </span>
       </Show>
-    </KAlert.Root>
+    </KAlert>
   );
 }

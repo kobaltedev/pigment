@@ -1,16 +1,19 @@
-import { Checkbox as KCheckbox } from "@kobalte/core";
+import { Checkbox as KCheckbox } from "@kobalte/core/checkbox";
+import { createMemo, JSX, Show, splitProps, ValidComponent } from "solid-js";
 import { isString } from "@kobalte/utils";
-import { createMemo, JSX, Show, splitProps } from "solid-js";
 
 import { Icon } from "../icon";
 import { mergeThemeProps, useThemeClasses, useThemeContext } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
 import { CheckboxProps, CheckboxSlots } from "./checkbox.props";
 import { checkboxStyles } from "./checkbox.styles";
+import { PolymorphicProps } from "@kobalte/core/polymorphic";
 
 const checkboxStaticClass = makeStaticClass<CheckboxSlots>("checkbox");
 
-export function Checkbox(props: CheckboxProps) {
+export function Checkbox<T extends ValidComponent = "div">(
+  props: PolymorphicProps<T, CheckboxProps<T>>
+) {
   const themeContext = useThemeContext();
 
   props = mergeThemeProps(
@@ -23,13 +26,13 @@ export function Checkbox(props: CheckboxProps) {
       indeterminateIcon: "i-tabler-minus",
       errorIcon: themeContext.errorIcon,
     },
-    props
+    props as CheckboxProps
   );
 
-  const themeClasses = useThemeClasses<CheckboxSlots>("Checkbox", props);
+  const themeClasses = useThemeClasses<CheckboxSlots>("Checkbox", mergedProps);
 
   const [local, variantProps, others] = splitProps(
-    props,
+    mergedProps,
     [
       "ref",
       "id",
@@ -87,7 +90,7 @@ export function Checkbox(props: CheckboxProps) {
   });
 
   return (
-    <KCheckbox.Root
+    <KCheckbox
       class={styles().root({
         class: [
           checkboxStaticClass("root"),
@@ -203,6 +206,6 @@ export function Checkbox(props: CheckboxProps) {
           </Show>
         </>
       )}
-    </KCheckbox.Root>
+    </KCheckbox>
   );
 }

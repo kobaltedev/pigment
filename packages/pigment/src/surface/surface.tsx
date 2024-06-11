@@ -1,5 +1,5 @@
-import { Polymorphic } from "@kobalte/core";
-import { createMemo, splitProps } from "solid-js";
+import { Polymorphic, PolymorphicProps } from "@kobalte/core/polymorphic";
+import { createMemo, splitProps, ValidComponent } from "solid-js";
 
 import { mergeThemeProps, useThemeClasses } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
@@ -8,20 +8,22 @@ import { surfaceStyles } from "./surface.styles";
 
 const surfaceStaticClass = makeStaticClass<SurfaceSlots>("surface");
 
-export function Surface(props: SurfaceProps) {
-  props = mergeThemeProps(
+export function Surface<T extends ValidComponent = "div">(
+  props: PolymorphicProps<T, SurfaceProps>
+) {
+  const mergedProps = mergeThemeProps(
     "Surface",
     {
       variant: "default",
       border: "none",
     },
-    props
+    props as SurfaceProps
   );
 
-  const themeClasses = useThemeClasses<SurfaceSlots>("Surface", props);
+  const themeClasses = useThemeClasses<SurfaceSlots>("Surface", mergedProps);
 
   const [local, variantProps, others] = splitProps(
-    props,
+    mergedProps,
     ["class", "slotClasses"],
     ["variant", "border"]
   );

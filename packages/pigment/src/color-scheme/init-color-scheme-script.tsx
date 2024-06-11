@@ -28,7 +28,7 @@ function normalize(initialColorScheme: ColorSchemeWithSystem) {
 }
 
 export function InitColorSchemeScript(props: ColorSchemeScriptProps) {
-  props = mergeDefaultProps(
+  const mergedProps = mergeDefaultProps(
     {
       defaultScheme: FALLBACK_COLOR_SCHEME_VALUE,
       storageKey: COLOR_SCHEME_STORAGE_KEY,
@@ -36,13 +36,13 @@ export function InitColorSchemeScript(props: ColorSchemeScriptProps) {
     props
   );
 
-  const init = normalize(props.defaultScheme!);
+  const init = normalize(mergedProps.defaultScheme!);
 
   return (
     <script
       id="pg-init-color-scheme-script"
-      nonce={props.nonce}
-      innerHTML={`!(function(){try{var a=function(c){var v="(prefers-color-scheme: dark)",h=window.matchMedia(v).matches?"dark":"light",r=c==="system"?h:c,o=document.documentElement,i=r==="dark";return o.style.colorScheme=r,o.dataset.pgColorScheme=r,c},n=a,m="${init}",e="${props.storageKey}",t=localStorage.getItem(e);t?a(t):localStorage.setItem(e,a(m))}catch(a){}})();`.trim()}
+      nonce={mergedProps.nonce}
+      innerHTML={`!(function(){try{var a=function(c){var v="(prefers-color-scheme: dark)",h=window.matchMedia(v).matches?"dark":"light",r=c==="system"?h:c,o=document.documentElement,i=r==="dark";return o.style.colorScheme=r,o.dataset.pgColorScheme=r,c},n=a,m="${init}",e="${mergedProps.storageKey}",t=localStorage.getItem(e);t?a(t):localStorage.setItem(e,a(m))}catch(a){}})();`.trim()}
     />
   );
 }

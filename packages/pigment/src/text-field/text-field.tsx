@@ -1,7 +1,10 @@
-import { TextField as KTextField } from "@kobalte/core";
+import {
+  TextField as KTextField,
+  TextFieldInputProps,
+  TextFieldTextAreaProps,
+} from "@kobalte/core/text-field";
 import { isString } from "@kobalte/utils";
 import {
-  ComponentProps,
   createMemo,
   JSX,
   Match,
@@ -9,6 +12,7 @@ import {
   Show,
   splitProps,
   Switch,
+  ValidComponent,
 } from "solid-js";
 
 import { Icon } from "../icon";
@@ -17,13 +21,16 @@ import { mergeThemeProps, useThemeClasses, useThemeContext } from "../theme";
 import { makeStaticClass } from "../utils/make-static-class";
 import { TextFieldProps, TextFieldSlots } from "./text-field.props";
 import { textFieldStyles } from "./text-field.styles";
+import { PolymorphicProps } from "@kobalte/core/polymorphic";
 
 const textFieldStaticClass = makeStaticClass<TextFieldSlots>("text-field");
 
-export function TextField(props: TextFieldProps) {
+export function TextField<T extends ValidComponent = "div">(
+  props: PolymorphicProps<T, TextFieldProps<T>>
+) {
   const themeContext = useThemeContext();
 
-  props = mergeThemeProps(
+  const mergedProps = mergeThemeProps(
     "TextField",
     {
       type: "text",
@@ -33,13 +40,13 @@ export function TextField(props: TextFieldProps) {
       inputProps: {},
       errorIcon: themeContext.errorIcon,
     },
-    props
+    props as TextFieldProps
   );
 
-  const themeClasses = useThemeClasses<TextFieldSlots>("TextField", props);
+  const themeClasses = useThemeClasses<TextFieldSlots>("TextField", mergedProps);
 
   const [local, partialVariantProps, others] = splitProps(
-    props,
+    mergedProps,
     [
       "ref",
       "id",
@@ -124,7 +131,7 @@ export function TextField(props: TextFieldProps) {
   }));
 
   return (
-    <KTextField.Root
+    <KTextField
       class={styles().root({
         class: [
           textFieldStaticClass("root"),
@@ -173,7 +180,7 @@ export function TextField(props: TextFieldProps) {
         when={!local.multiline}
         fallback={
           <KTextField.TextArea
-            {...(local.inputProps as ComponentProps<"textarea">)}
+            {...(local.inputProps as TextFieldTextAreaProps)}
             ref={local.ref as HTMLTextAreaElement}
             id={local.id}
             placeholder={local.placeholder}
@@ -202,7 +209,7 @@ export function TextField(props: TextFieldProps) {
             }}
           >
             <KTextField.Input
-              {...(local.inputProps as ComponentProps<"input">)}
+              {...(local.inputProps as TextFieldInputProps)}
               ref={local.ref as HTMLInputElement}
               id={local.id}
               type={local.type}
@@ -313,6 +320,6 @@ export function TextField(props: TextFieldProps) {
           {errorMessage()}
         </KTextField.ErrorMessage>
       </Show>
-    </KTextField.Root>
+    </KTextField>
   );
 }
